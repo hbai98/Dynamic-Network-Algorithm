@@ -16,22 +16,21 @@ class NodeListSpec {
     class functionTest{
         private Node node1;
         private Node node2;
+        private Node node3;
+        private Node node4;
 
         @BeforeEach
         void init(){
             nodeList = new NodeList();
             node1 = new Node("1",2.3,"1");
             node2 = new Node("2",2.5,"1");
-
-
-
-
+            node3 = new Node("1",2.8,"1");
+            node4 = new Node("1",2.0,"1");
         }
         @DisplayName("can only adds node with greater value.")
         @Test
         void add() {
-            Node node3 = new Node("1",2.8,"1");
-            Node node4 = new Node("1",2.0,"1");
+
             // prepare list with elements
             assertTrue(nodeList.add(node1));
             assertTrue(nodeList.add(node2));
@@ -40,11 +39,34 @@ class NodeListSpec {
             assertEquals(2,nodeList.size());
             assertFalse(nodeList.add(node4));
         }
+        @DisplayName("sorts based on names")
+        @Test
+        void sort(){
+            nodeList.add(node2);
+            nodeList.add(node1);
+
+            nodeList.sort();
+            assertThat(nodeList).containsSequence(Arrays.asList(node1,node2));
+        }
+        @DisplayName("adds according to node ascending value.")
+        @Test
+        void vAscdAdd(){
+            nodeList.add(node1);
+            nodeList.add(node2);
+
+            nodeList.vAscAdd(node3);
+            assertThat(nodeList).containsSequence(Arrays.asList(node1,node2,node3));
+            nodeList.vAscAdd(node4);
+            assertThat(nodeList).containsSequence(Arrays.asList(node4,node1,node2,node3));
+
+
+        }
     }
     @Nested
     class Other{
+        @DisplayName("should be null is nothing has been added. ")
         @Test
-        void test(){
+        void nullTest(){
             assertNull(nodeList);
         }
     }

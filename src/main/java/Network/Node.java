@@ -1,8 +1,8 @@
 package Network;
-/**
- Author: Haotian Bai
- Shanghai University, department of computer science
- */
+
+// Author: Haotian Bai
+// Shanghai University, department of computer science
+
 
 /**
  * Node for Protein network
