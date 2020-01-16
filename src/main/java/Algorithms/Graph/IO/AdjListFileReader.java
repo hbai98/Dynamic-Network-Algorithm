@@ -1,9 +1,7 @@
-package IO;
+package Algorithms.Graph.IO;
 
-import Network.Edge;
-import Network.EdgeList;
-import Network.Node;
-import loci.formats.in.SIFReader;
+import Algorithms.Graph.Network.Edge;
+import Algorithms.Graph.Network.EdgeList;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -68,8 +66,8 @@ public class AdjListFileReader {
                 if (token.length() != 0) {
                     sifLine.add(token);
                 }
-                parseLine(graph, sifLine);
             }
+            parseLine(graph, sifLine);
         }
         if (closeWhenFinished) {
             input.close();
@@ -122,6 +120,7 @@ public class AdjListFileReader {
                 graph.add(new Edge(srcName,tgtName,weight));
             }
         }
+        sifLine.clear();
     }
 
     public static boolean isNumeric(String str) {

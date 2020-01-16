@@ -1,11 +1,10 @@
-package Network;
+package Algorithms.Graph.Network;
 // Author: Haotian Bai
 // Shanghai University, department of computer science
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.Arrays;
 

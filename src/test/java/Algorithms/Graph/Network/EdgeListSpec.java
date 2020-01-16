@@ -1,4 +1,4 @@
-package Network;
+package Algorithms.Graph.Network;
 // Author: Haotian Bai
 // Shanghai University, department of computer science
 import org.junit.jupiter.api.BeforeEach;
@@ -6,8 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -58,6 +56,11 @@ class EdgeListSpec {
         void getVetEdg() {
             EdgeList tpList = edges.getVetEdg(new Node("3"));
             assertThat(tpList).contains(edge_2,edge_4);
+        }
+        @DisplayName("able to print all edges")
+        @Test
+        void printTest(){
+            edges.printAll();
         }
     }
 }

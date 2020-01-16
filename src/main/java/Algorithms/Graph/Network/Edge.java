@@ -1,4 +1,4 @@
-package Network;
+package Algorithms.Graph.Network;
 // Author: Haotian Bai
 // Shanghai University, department of computer science
 import org.jgrapht.graph.DefaultEdge;
@@ -16,8 +16,8 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
 
     /**
      * For easing the comparision between edges. <p>Limit:
-     * the edge is both undirected and its components are with the descending name order.
-     * This constructor will make "undirected" edges follow ascending name order.</>
+     * the edge is both undirected and its components are with the ascending name order.
+     * This constructor will force "undirected" edges follow ascending name order if it's not the case.</>
      */
     public Edge(String src, String tgt, double weight, Type type) throws IllegalArgumentException {
         this.source = new Node(src);
@@ -33,6 +33,11 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
             target = tpNode;
         }
     }
+    /**
+     * For easing the comparision between edges. <p>Limit:
+     * the edge is both undirected and its components are with the ascending name order.
+     * This constructor will force "undirected" edges follow ascending name order if it's not the case.</>
+     */
     public Edge(String src, String tgt, double weight){
         this.source = new Node(src);
         this.target = new Node(tgt);
@@ -44,6 +49,11 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
             target = tpNode;
         }
     }
+    /**
+     * For easing the comparision between edges. <p>Limit:
+     * the edge is both undirected and its components are with the ascending name order.
+     * This constructor will force "undirected" edges follow ascending name order if it's not the case.</>
+     */
     public Edge(String src, String tgt){
         this.source = new Node(src);
         this.target = new Node(tgt);

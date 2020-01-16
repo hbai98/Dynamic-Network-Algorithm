@@ -1,4 +1,4 @@
-package HGA;
+package Algorithms.Graph.HGA;
 // Author: Haotian Bai
 // Shanghai University, department of computer science
 /**
@@ -12,7 +12,7 @@ package HGA;
  * IEEE/ACM transactions on Computational Biology and Bioinformatics- Jan,2015 for further information
  */
 public class Score {
-    public String nodeType; // protein type, from NBM
+    public String nodeType; // protein type, from Algorithms.Graph.NBM
     public String networkType_1;
     public String networkType_2;
 

@@ -1,4 +1,4 @@
-package Network;
+package Algorithms.Graph.Network;
 // Author: Haotian Bai
 // Shanghai University, department of computer science
 import org.junit.jupiter.api.BeforeEach;

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>Haotian.Algorithms.Graph</groupId>
+    <groupId>Haotian.Algorithms.Algorithms.Graph</groupId>
     <artifactId>HGA</artifactId>
     <version>1.0-SNAPSHOT</version>
     <build>
@@ -43,7 +43,7 @@
         </dependency>
 <!--        Local jar from bio-formats for further learning-->
         <dependency>
-            <groupId>Haotian.Algorithms.IO</groupId>
+            <groupId>Haotian.Algorithms.Algorithms.Graph.IO</groupId>
             <artifactId>bioFormats</artifactId>
             <version>1.0</version>
         </dependency>

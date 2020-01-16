@@ -1,11 +1,11 @@
-package Network;
+package Algorithms.Graph.Network;
 // Author: Haotian Bai
 // Shanghai University, department of computer science
 import java.util.*;
 
 public class NodeList extends LinkedList<Node> {
     /***
-     * Add a protein into list. If it already existed(same name), choose the one with
+     * Add a {@code}node into list. If it already existed(same name), choose the one with
      * greater value
      * @param node node to be added
      * @return true for success
