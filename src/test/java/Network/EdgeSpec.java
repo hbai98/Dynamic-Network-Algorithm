@@ -25,4 +25,10 @@ class EdgeSpec {
         assertTrue(edge_1.compareTo(edge_2)<0);
         assertTrue(edge_1.compareTo(edge_3)>0);
     }
+    @DisplayName("able to construct in 3 parameters")
+    @Test
+    void constructorTest() {
+        Edge edgeTest = new Edge("1","2",1.0);
+        assertEquals(edgeTest,edge_1);
+    }
 }

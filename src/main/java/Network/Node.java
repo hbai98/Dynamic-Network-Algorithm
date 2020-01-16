@@ -17,23 +17,23 @@ public class Node implements Comparable<Node> {
     protected int degree;
     protected int index;
 
-    Node(String strName, double value, String strLayerCode) {
+    public Node(String strName, double value, String strLayerCode) {
         this.strName = strName;
         this.value = value;
         this.strLayerCode = strLayerCode;
     }
 
-    Node(String strName) {
+    public Node(String strName) {
         this.strName = strName;
         this.value = 0.0d;
     }
 
-    Node(double value) {
+    public Node(double value) {
         this.value = value;
         this.strName = "";
     }
 
-    Node(String strName, double value) {
+    public Node(String strName, double value) {
         this.strName = strName;
         this.value = value;
     }

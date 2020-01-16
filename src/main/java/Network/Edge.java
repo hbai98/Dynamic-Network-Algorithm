@@ -19,7 +19,7 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
      * the edge is both undirected and its components are with the descending name order.
      * This constructor will make "undirected" edges follow ascending name order.</>
      */
-    Edge(String src, String tgt, double weight, Type type) throws IllegalArgumentException {
+    public Edge(String src, String tgt, double weight, Type type) throws IllegalArgumentException {
         this.source = new Node(src);
         this.target = new Node(tgt);
         this.weight = weight;
@@ -27,6 +27,28 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
         if (!type.equals(Type.UNDIRECTED)) {
             throw new IllegalArgumentException("The edge should be undirected.");
         }
+        if(src.compareTo(tgt) > 0){
+            Node tpNode = source;
+            source = target;
+            target = tpNode;
+        }
+    }
+    public Edge(String src, String tgt, double weight){
+        this.source = new Node(src);
+        this.target = new Node(tgt);
+        this.weight = weight;
+        this.type = Type.UNDIRECTED;
+        if(src.compareTo(tgt) > 0){
+            Node tpNode = source;
+            source = target;
+            target = tpNode;
+        }
+    }
+    public Edge(String src, String tgt){
+        this.source = new Node(src);
+        this.target = new Node(tgt);
+        this.weight = 0.0d;
+        this.type = Type.UNDIRECTED;
         if(src.compareTo(tgt) > 0){
             Node tpNode = source;
             source = target;
