@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="bioformats-6.3.1">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/src/main/resources/bioformats-6.3.1.tar" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

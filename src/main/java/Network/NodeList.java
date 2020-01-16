@@ -13,9 +13,9 @@ public class NodeList extends LinkedList<Node> {
     @Override
     public boolean add(Node node) {
         for (Node tpNode : this) {
-            if (tpNode.strProteinName.equals(node.strProteinName)) {
-                if (tpNode.proteinValue < node.proteinValue) {
-                    tpNode.setProteinValue(node.proteinValue);
+            if (tpNode.strName.equals(node.strName)) {
+                if (tpNode.value < node.value) {
+                    tpNode.setValue(node.value);
                     return true;
                 } else return false;
             }
@@ -27,7 +27,7 @@ public class NodeList extends LinkedList<Node> {
 
     public Node findByName(String strProteinName) {
         for (Node tpNode : this) {
-            if (tpNode.strProteinName.equals(strProteinName)) {
+            if (tpNode.strName.equals(strProteinName)) {
                 return tpNode;
             }
         }
@@ -48,7 +48,7 @@ public class NodeList extends LinkedList<Node> {
         sort(new Comparator<Node>() {
             @Override
             public int compare(Node o1, Node o2) {
-                return o1.strProteinName.compareTo(o2.strProteinName);
+                return o1.strName.compareTo(o2.strName);
             }
         });
     }
@@ -62,7 +62,7 @@ public class NodeList extends LinkedList<Node> {
         int index = Collections.binarySearch(this, node, new Comparator<Node>() {
             @Override
             public int compare(Node o1, Node o2) {
-                return o1.strProteinName.compareTo(o2.strProteinName);
+                return o1.strName.compareTo(o2.strName);
             }
         });
         if (index >= 0) {
@@ -79,14 +79,14 @@ public class NodeList extends LinkedList<Node> {
      */
     public void vAscAdd(Node node) {
 
-        double nodeToaddVal = node.proteinValue;
+        double nodeToaddVal = node.value;
         if (this.isEmpty()) super.add(node);
         else {
             Iterator<Node> iterator = this.iterator();
             int index = 0;
             while(iterator.hasNext()){
                 Node tmpNode = iterator.next();
-                double tmpVal = tmpNode.proteinValue;
+                double tmpVal = tmpNode.value;
                 if(tmpVal > nodeToaddVal){
                     super.add(index,node);
                     break;
