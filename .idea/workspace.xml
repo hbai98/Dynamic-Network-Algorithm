@@ -2,31 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/IOTest/simpleGraph_1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HGA/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/Score.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IO/AdjListFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/IO/AdjListFileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Network/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/Edge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Network/EdgeList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/EdgeList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Network/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Network/NodeList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/NodeList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/formats-gpl-6.3.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/formats-gpl-6.3.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/IO/AdjListFileReaderSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/IO/AdjListFileReaderSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Network/EdgeListSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Network/EdgeListSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Network/EdgeSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Network/EdgeSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Network/NodeListSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Network/NodeListSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Network/NodeSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Network/NodeSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/simpleGraph_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/wrongForTest_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/IOTest/wrongForTest_1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/IO/SIFFileReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Network/Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Network/Edge.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Network/EdgeList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Network/EdgeList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Network/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Network/Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/formats-gpl-6.3.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/IO/SIFFileReaderSpec.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Network/EdgeListSpec$FuncTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Network/EdgeListSpec$FuncTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/Utils/HomoGene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/HomoGene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/NodeList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/NodeList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Network/NodeListSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Network/NodeListSpec.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -89,38 +69,23 @@
       <recent name="IO" />
       <recent name="Network" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Development\Algorithms\src\test\java\resources\IOTest" />
-      <recent name="E:\Development\Algorithms\lib" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="Algorithms.Graph" />
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Development\Algorithms\src\main\resources" />
       <recent name="E:\Development\Algorithms\src\main\java" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Development\Algorithms\src\test\java\resources\IOTest" />
+      <recent name="E:\Development\Algorithms\lib" />
+    </key>
   </component>
-  <component name="RunManager" selected="JUnit.EdgeSpec.constructorTest">
-    <configuration name="AdjListFileReaderSpec" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.IO.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.IO" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.IO.AdjListFileReaderSpec" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.NodeListSpec$functionTest.removeAllTest">
     <configuration name="AdjListFileReaderSpec.PatternTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
@@ -186,20 +151,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="NodeListSpec$functionTest.removeAllTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Algorithms.Graph.Network.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.Network" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Network.NodeListSpec$functionTest" />
+      <option name="METHOD_NAME" value="removeAllTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="JUnit.AdjListFileReaderSpec" />
       <item itemvalue="JUnit.AdjListFileReaderSpec.PatternTest" />
       <item itemvalue="JUnit.AdjListFileReaderSpec.ReadTest" />
       <item itemvalue="JUnit.EdgeSpec.constructorTest" />
       <item itemvalue="JUnit.EdgeListSpec$FuncTest.printTest" />
+      <item itemvalue="JUnit.NodeListSpec$functionTest.removeAllTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.NodeListSpec$functionTest.removeAllTest" />
         <item itemvalue="JUnit.EdgeSpec.constructorTest" />
         <item itemvalue="JUnit.EdgeListSpec$FuncTest.printTest" />
         <item itemvalue="JUnit.AdjListFileReaderSpec.ReadTest" />
         <item itemvalue="JUnit.AdjListFileReaderSpec.PatternTest" />
-        <item itemvalue="JUnit.AdjListFileReaderSpec" />
       </list>
     </recent_temporary>
   </component>
@@ -225,7 +206,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1578987258138</updated>
-      <workItem from="1578987261496" duration="54791000" />
+      <workItem from="1578987261496" duration="55268000" />
+      <workItem from="1579242097599" duration="2688000" />
     </task>
     <servers />
   </component>
@@ -260,18 +242,18 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="286" y="250" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1579083988452" />
-    <state x="668" y="466" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1579181739541">
+    <state x="668" y="466" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1579242295267">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="668" y="466" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1579181739541" />
+    <state x="668" y="466" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1579242295267" />
     <state x="270" y="402" width="431" height="290" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1579007488699">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="270" y="402" width="431" height="290" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1080@0.0.1920.1080" timestamp="1579007488699" />
-    <state x="744" y="420" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1579181745942">
+    <state x="744" y="420" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1579242298871">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="744" y="420" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1920.1080@0.0.1920.1080" timestamp="1579181745942" />
+    <state x="744" y="420" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1920.1080@0.0.1920.1080" timestamp="1579242298871" />
     <state x="301" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1579168322386">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -328,10 +310,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="245" y="243" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1579160764363" />
-    <state x="144" y="242" width="672" height="678" key="search.everywhere.popup" timestamp="1578999902707">
+    <state x="145" y="242" width="672" height="678" key="search.everywhere.popup" timestamp="1579246974522">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="144" y="242" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1578999902707" />
+    <state x="145" y="242" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1579246974522" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

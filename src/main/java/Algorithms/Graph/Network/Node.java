@@ -101,15 +101,11 @@ public class Node implements Comparable<Node> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Node node = (Node) o;
-        return Double.compare(node.value, value) == 0 &&
-                degree == node.degree &&
-                index == node.index &&
-                strName.equals(node.strName) &&
-                Objects.equals(strLayerCode, node.strLayerCode);
+        return Objects.equals(strName, node.strName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(strName, value, strLayerCode, degree, index);
+        return Objects.hash(strName);
     }
 }

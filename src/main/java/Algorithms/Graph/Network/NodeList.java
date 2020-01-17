@@ -36,9 +36,7 @@ public class NodeList extends LinkedList<Node> {
     }
 
     public void removeAll(Node node) {
-        Collection<Node> nodes = new LinkedList<Node>();
-        nodes.add(node);
-        this.removeAll(nodes);
+        super.removeAll(Collections.singletonList(node));
     }
 
     /**
