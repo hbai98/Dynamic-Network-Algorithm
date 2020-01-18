@@ -24,15 +24,23 @@ public class NodeList extends LinkedList<Node> {
         return super.add(node);
     }
 
+    public boolean add(String strNode){
+        return this.add(new Node(strNode));
+    }
 
-    public Node findByName(String strProteinName) {
+
+    public Node findByName(String strNode) {
         for (Node tpNode : this) {
-            if (tpNode.strName.equals(strProteinName)) {
+            if (tpNode.strName.equals(strNode)) {
                 return tpNode;
             }
         }
         return null;
 
+    }
+
+    public void remove(String strNode) {
+        this.removeAll(new Node(strNode));
     }
 
     public void removeAll(Node node) {
