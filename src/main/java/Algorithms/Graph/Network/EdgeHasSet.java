@@ -5,13 +5,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 
-import static Algorithms.Graph.IO.AdjListFileReader.read;
+import static Algorithms.Graph.IO.AdjListFileReader.readToEL;
 
 /**
- * This class can be defined as HashSet
+ * This class can be defined as HashSet， while the edge's weight will not get updated
+ * if there's higher value --> so it would not be treated as a self-update graph.
  * for the occurance of the same edges will not be allowed in lists
  */
-public class EdgeList extends HashSet<Edge> {
+public class EdgeHasSet extends HashSet<Edge> {
     // file to store the edges
     protected String filename;
 
@@ -38,8 +39,8 @@ public class EdgeList extends HashSet<Edge> {
      * @param node node to be found
      * @return hasSet with all edges
      */
-    public EdgeList getVetEdg(Node node) {
-        EdgeList res = new EdgeList();
+    public EdgeHasSet getVetEdg(Node node) {
+        EdgeHasSet res = new EdgeHasSet();
         forEach(edge -> {
             if(edge.source.equals(node)||edge.target.equals(node)){
                 res.add(edge);
@@ -48,8 +49,8 @@ public class EdgeList extends HashSet<Edge> {
         return res;
     }
 
-    protected EdgeList readFromFile(String filename) throws IOException {
-        return read(filename);
+    protected EdgeHasSet readFromFile(String filename) throws IOException {
+        return readToEL(filename);
     }
 
     public void printAll(){

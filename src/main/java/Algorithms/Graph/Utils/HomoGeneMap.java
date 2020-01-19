@@ -48,18 +48,53 @@ public class HomoGeneMap extends LinkedList<HomoGene> {
      * remove tgtHG from list(tgtHead).
      * @param tgtHead headName of the list.
      * @param tgtHG name of the homoGene to be removed.
+     * @return true for success.
      */
-    public void removeOneHG(String tgtHead,String tgtHG){
+    public boolean removeOneHG(String tgtHead,String tgtHG){
         int index = Collections.binarySearch(this,new HomoGene(tgtHead), Comparator.comparing(o -> o.proteinName));
-        this.get(index).remove(tgtHG);
+        if(index >= 0){
+            this.get(index).remove(tgtHG);
+            return true;
+        }
+        else{
+          return false;
+        }
     }
     /**
      * add tgtHG to list(tgtHead).
      * @param tgtHead headName of the list.
      * @param tgtHG name of the homoGene to be removed.
+     * @return true for already node exist.
      */
-    public void addOneHG(String tgtHead,String tgtHG){
+    // TODO a little duplicated !
+    public boolean addOneHG(String tgtHead,String tgtHG){
         int index = Collections.binarySearch(this,new HomoGene(tgtHead), Comparator.comparing(o -> o.proteinName));
-        this.get(index).add(tgtHG);
+        if(index >= 0){
+            this.get(index).add(tgtHG);
+            return true;
+        }
+        else{
+            add(-index-1,new HomoGene(tgtHead));
+            this.get(-index-1).add(tgtHG);
+            return false;
+        }
+    }
+    /**
+     * add tgtHG to list(tgtHead) with <code>weight</code>.
+     * @param tgtHead headName of the list.
+     * @param tgtHG name of the homoGene to be removed.
+     * @return true for node already exist.
+     */
+    public boolean addOneHG(String tgtHead,String tgtHG,double weight){
+        int index = Collections.binarySearch(this,new HomoGene(tgtHead), Comparator.comparing(o -> o.proteinName));
+        if(index >= 0){
+            this.get(index).add(tgtHG,weight);
+            return true;
+        }
+        else{
+            add(-index-1,new HomoGene(tgtHead));
+            this.get(-index-1).add(tgtHG,weight);
+            return false;
+        }
     }
 }

@@ -27,7 +27,9 @@ public class NodeList extends LinkedList<Node> {
     public boolean add(String strNode){
         return this.add(new Node(strNode));
     }
-
+    public boolean add(String strNode, double weight) {
+        return this.add(new Node(strNode,weight));
+    }
 
     public Node findByName(String strNode) {
         for (Node tpNode : this) {
@@ -104,5 +106,6 @@ public class NodeList extends LinkedList<Node> {
             super.add(index,node);
         }
     }
+
 
 }

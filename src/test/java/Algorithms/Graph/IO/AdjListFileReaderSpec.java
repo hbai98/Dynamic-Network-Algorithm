@@ -1,7 +1,9 @@
 package Algorithms.Graph.IO;
 
 import Algorithms.Graph.Network.Edge;
-import Algorithms.Graph.Network.EdgeList;
+import Algorithms.Graph.Network.EdgeHasSet;
+import Algorithms.Graph.Utils.HomoGene;
+import Algorithms.Graph.Utils.HomoGeneMap;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -35,20 +37,41 @@ class AdjListFileReaderSpec {
         assertNotEquals(Arrays.toString(new String[]{"TMA", "STD", "BBQ"}), Arrays.toString(tokens_2));
         assertEquals(Arrays.toString(new String[]{"TMA", "STD", "BBQ"}), tokens_3.toString());
     }
-    @DisplayName("able to read a graph from the specific well-formatting file. ")
+    @DisplayName("able to read a graph to EdgeList from the specific well-formatting file. ")
     @Test
     void ReadTest(){
         try {
-            EdgeList graph = read("src/test/java/resources/IOTest/simpleGraph_1.txt");
-            assertThat(graph).contains(new Edge("A","B",0.2),new Edge("A","C",0.3),
+            EdgeHasSet graph = readToEL("src/test/java/resources/IOTest/simpleGraph_1.txt");
+            // the EdgeList graph is not a self-update graph (automatic replace edges with higher values)
+            assertThat(graph).contains(new Edge("A","B",0.2),new Edge("A","C",0.6),new Edge("A","C",0.3),
                     new Edge("A","D",0.4),new Edge("C","B",0.7));
         } catch (IOException e) {
             e.printStackTrace();
         }
         try {
-            EdgeList graph = read("src/test/java/resources/IOTest/wrongForTest_1.txt");
+            EdgeHasSet graph = readToEL("src/test/java/resources/IOTest/wrongForTest_1.txt");
         } catch (IOException e) {
             assertEquals("The file input format is not correct. Plus: some name-value pairs are incorrect!", e.getMessage());
+        }
+    }
+
+    @DisplayName("able to read a graph to ArrayList from the specific well-formatting file. ")
+    @Test
+    void ReadToArrayListTest(){
+        try {
+            // homoGeneMap is a self-update graph
+            HomoGeneMap graph = readToAdjL("src/test/java/resources/IOTest/simpleGraph_1.txt");
+            HomoGene forTestA = new HomoGene("A");
+            HomoGene forTestB = new HomoGene("C");
+            forTestA.add("B",0.2);
+            forTestA.add("C",0.3);
+            forTestA.add("D",0.4);
+            forTestB.add("A",0.7);
+            forTestB.add("B",0.7);
+
+            assertThat(graph).contains(forTestA,forTestB);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

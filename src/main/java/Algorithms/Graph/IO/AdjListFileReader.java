@@ -1,10 +1,10 @@
 package Algorithms.Graph.IO;
 
 import Algorithms.Graph.Network.Edge;
-import Algorithms.Graph.Network.EdgeList;
+import Algorithms.Graph.Network.EdgeHasSet;
+import Algorithms.Graph.Utils.HomoGeneMap;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Vector;
@@ -27,32 +27,71 @@ import java.util.regex.Pattern;
  * </p>
  */
 public class AdjListFileReader {
-
+    public enum returnGraphType{AdjNodeList,EdgeList}
     /**
-     * Parses the file given by <code>inputFilePath</code>.
+     * Parses the file given by <code>inputFilePath</code> to EdgeList.
      */
-    public static EdgeList read(String inputFilePath) throws IOException, FileNotFoundException {
-        return read(new BufferedReader(new FileReader(inputFilePath)), true);
+    public static EdgeHasSet readToEL(String inputFilePath) throws IOException {
+
+        return readToEL(new BufferedReader(new FileReader(inputFilePath)), true);
     }
 
     /**
-     * Parses the file given by <code>input</code>. It will
+     * Parses the file given by <code>input</code>to EdgeList. It will
      * close the reader when finished parsing.
      */
-    public static EdgeList read(BufferedReader input) throws IOException {
-        return read(input, true);
+    public static EdgeHasSet readToEL(BufferedReader input) throws IOException {
+        return readToEL(input, true);
     }
+    //-------------------------AdjNodeList【homoGeneMap】 return type has been added in switch choices------------------------
 
+    public static HomoGeneMap readToAdjL(String inputFilePath) throws IOException {
+
+        return readToAdjL(new BufferedReader(new FileReader(inputFilePath)), true);
+    }
     /**
-     * Parses a SIF file.
+     * Parses a arrayList format file to ArrayList.
      *
      * @param input             the reader to read the SIF file from
      * @param closeWhenFinished if true, this method will close
      *                          the reader when finished reading; otherwise, it will
      *                          not close it.
      */
-    public static EdgeList read(BufferedReader input, boolean closeWhenFinished) throws IOException {
-        EdgeList graph = new EdgeList();
+    // TODO a bit of duplicated with readToEL()! find a better way to solve!
+    private static HomoGeneMap readToAdjL(BufferedReader input, boolean closeWhenFinished) throws IOException{
+        HomoGeneMap graph = new HomoGeneMap();
+        // matches sequence of one or more whitespace characters.
+        Pattern splitter = Pattern.compile("\\s+");
+        Vector<String> sifLine = new Vector<>();
+        String line;
+
+        while ((line = input.readLine()) != null) {
+            String[] tokens = splitter.split(line);
+            //  it will be handled in pareLine()
+            // which will throw an IOException if not the right case.
+            for (String token : tokens) {
+                if (token.length() != 0) {
+                    sifLine.add(token);
+                }
+            }
+            parseLine(graph, sifLine);
+        }
+        if (closeWhenFinished) {
+            input.close();
+        }
+        return graph;
+    }
+
+    /**
+     * Parses a arrayList format file to EdgeList.
+     *
+     * @param input             the reader to read the SIF file from
+     * @param closeWhenFinished if true, this method will close
+     *                          the reader when finished reading; otherwise, it will
+     *                          not close it.
+     */
+    public static EdgeHasSet readToEL(BufferedReader input, boolean closeWhenFinished) throws IOException {
+        EdgeHasSet graph = new EdgeHasSet();
         // matches sequence of one or more whitespace characters.
         Pattern splitter = Pattern.compile("\\s+");
         Vector<String> sifLine = new Vector<>();
@@ -92,11 +131,14 @@ public class AdjListFileReader {
      * @param graph   EdgeList to contain result
      * @param sifLine result very line
      */
-    private static void parseLine(EdgeList graph, Vector<String> sifLine) throws IOException {
+    private static void parseLine(EdgeHasSet graph, Vector<String> sifLine) throws IOException {
         // 0 -> nothing changes
         // 2 - > self-loop
         if (sifLine.size() == 2) {
             String name = sifLine.get(0);
+            if (isNumeric(sifLine.get(1))){
+                throw new IOException("The file input format is not correct. Plus: some name-value pairs are incorrect!");
+            }
             double weight = Double.parseDouble(sifLine.get(1));
             graph.add(new Edge(name, name, weight));
         } else if ((sifLine.size() - 1) % 2 != 0 || sifLine.size() == 1) {
@@ -118,6 +160,38 @@ public class AdjListFileReader {
                 double weight = Double.parseDouble(input);
                 // create edge & add
                 graph.add(new Edge(srcName,tgtName,weight));
+            }
+        }
+        sifLine.clear();
+    }
+
+    private static void parseLine(HomoGeneMap graph,Vector<String> sifLine) throws IOException {
+        if (sifLine.size() == 2) {
+            String name = sifLine.get(0);
+            if (isNumeric(sifLine.get(1))){
+                throw new IOException("The file input format is not correct. Plus: some name-value pairs are incorrect!");
+            }
+            double weight = Double.parseDouble(sifLine.get(1));
+            graph.addOneHG(name,name,weight);
+        } else if ((sifLine.size() - 1) % 2 != 0 || sifLine.size() == 1) {
+            throw new IOException("The file input format is not correct.");
+        } else {
+            String srcName = sifLine.get(0);
+            // name value ... and it has already checked (sifLine.size()-1) % 2 == 0
+            for (int index = 1; index < sifLine.size(); index += 2) {
+                // name
+                String tgtName = sifLine.get(index);
+                if (isNumeric(tgtName)){
+                    throw new IOException("The file input format is not correct. Plus: some name-value pairs are incorrect!");
+                }
+                // value
+                String input = sifLine.get(index+1);
+                if (!isNumeric(input)) {
+                    throw new IOException("The file input format is not correct. Plus: some name-value pairs are incorrect!");
+                }
+                double weight = Double.parseDouble(input);
+                // create edge & add
+                graph.addOneHG(srcName,tgtName,weight);
             }
         }
         sifLine.clear();
