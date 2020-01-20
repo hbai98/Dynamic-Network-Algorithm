@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>Haotian.Algorithms.Algorithms.Graph</groupId>
+    <groupId>org.BHT.Algorithms.Graph</groupId>
     <artifactId>HGA</artifactId>
     <version>1.0-SNAPSHOT</version>
     <build>
@@ -22,7 +22,7 @@
     </build>
 
     <dependencies>
-<!--        JUNIT5 for unit testing-->
+        <!--        JUNIT5 for unit testing-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -35,17 +35,17 @@
             <version>3.14.0</version>
             <scope>test</scope>
         </dependency>
-<!--        jgrapht for network class building-->
+        <!-- jgrapht for graph data structure-->
         <dependency>
             <groupId>org.jgrapht</groupId>
             <artifactId>jgrapht-core</artifactId>
             <version>1.3.1</version>
         </dependency>
-<!--        Local jar from bio-formats for further learning-->
+        <!-- java linear algebra lib for algorithms building -->
         <dependency>
-            <groupId>Haotian.Algorithms.Algorithms.Graph.IO</groupId>
-            <artifactId>bioFormats</artifactId>
-            <version>1.0</version>
+            <groupId>org.jblas</groupId>
+            <artifactId>jblas</artifactId>
+            <version>1.2.4</version>
         </dependency>
     </dependencies>
 

@@ -10,7 +10,7 @@ import static Algorithms.Graph.IO.AdjListFileReader.readToEL;
 /**
  * This class can be defined as HashSet， while the edge's weight will not get updated
  * if there's higher value --> so it would not be treated as a self-update graph.
- * for the occurance of the same edges will not be allowed in lists
+ * Thus, it will allow 'same' edges with different weights.
  */
 public class EdgeHasSet extends HashSet<Edge> {
     // file to store the edges
