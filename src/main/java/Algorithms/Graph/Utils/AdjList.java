@@ -1,12 +1,10 @@
 package Algorithms.Graph.Utils;
 
+import Algorithms.Graph.Network.NodeList;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * This class is meant to make a graph based on adjacent list which
@@ -23,7 +21,7 @@ public class AdjList extends LinkedList<HNodeList> {
     private DoubleMatrix mat;
     // used to construct the matrix
 
-    protected AdjList(){
+    public AdjList(){
     }
 
     /**
@@ -41,26 +39,70 @@ public class AdjList extends LinkedList<HNodeList> {
      *             <li>V: column position of the matrix</li>
      *         </ol>
      *     <p>
-     *         time complexity: O(n + (n-1)*n) -> O(n^2)
+     *         time complexity: O(n + (n-1)*n + n) -> O(n^2)
      *     </p>
      * </p>
      * @return Similar matrix
      */
-    private DoubleMatrix toMatrix() {
-        // step 1
-
-        HashMap<String,Integer> map = new HashMap<>();
-
+    protected DoubleMatrix toMatrix() {
+        // step 1: find the longest nodeList.
+        Pair<Integer,Integer> result = findLongest();
+        int maxCol = result.getFirst();
+        int loc = result.getSecond();
+        // step 2：create the dictionary
+        HashMap<String,Integer> map = dict(loc);
+        // step 3 : get the matrix
+        return mapping(map);
     }
     // step 1: find the longest nodeList.
-    private Pair<Integer,Integer> findLongest(){
-        int MaxCol = 0;
-        forEach(
-                HNodeList ->{
-                    
-                }
-        );
+    private Pair<Integer, Integer> findLongest(){
+        int maxCol = 0;
+        int loc = -1;
+        for (int index = 0; index < this.size(); index++) {
+            int size = this.get(index).size();
+            if(size > maxCol) {
+                maxCol = size;
+                loc = index;
+            }
+        }
+        return new Pair<>(maxCol,loc);
     }
+
+    /**
+     * step 2：create the dictionary
+     * @param rowIndex the index of the longest NodeList
+     * @return map for the matrix's column
+     */
+    private HashMap<String,Integer> dict(int rowIndex){
+        // node name , index
+        HashMap<String,Integer> map = new HashMap<>();
+        NodeList list = this.get(rowIndex);
+        for (int i = 0; i < list.size(); i++) {
+            map.put(list.get(i).getStrName(),i);
+        }
+        return map;
+    }
+
+    /**
+     * Iterate other nodeLists mapping the selected longest.
+     * @param map the longest map
+     */
+    private DoubleMatrix mapping( HashMap<String,Integer> map){
+        int row = this.size();
+        int col = map.size();
+        DoubleMatrix matrix = new DoubleMatrix(row,col);
+        for (int r = 0; r < this.size(); r++) {
+            NodeList list = this.get(r);
+            DoubleMatrix rowVector = new DoubleMatrix(col);
+            list.forEach(node -> {
+                rowVector.put(map.get(node.getStrName()),node.getValue());
+            });
+            matrix.putRow(r,rowVector);
+        }
+        return matrix;
+    }
+
+
 
     /**
      * add a list with to graph, if it exists(same head name),combine two of them; else add the list to the graph.
@@ -84,11 +126,11 @@ public class AdjList extends LinkedList<HNodeList> {
 
     /**
      * find node head's all nodes.
-     * @param geneToSearch target node
+     * @param tgtNode target node
      */
-    public HNodeList get(String geneToSearch){
+    public HNodeList get(String tgtNode){
         for(HNodeList hNodeList : this){
-            if(hNodeList.signName.equals(geneToSearch)){
+            if(hNodeList.signName.equals(tgtNode)){
                 return hNodeList;
             }
         }

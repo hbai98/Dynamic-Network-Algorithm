@@ -28,8 +28,7 @@ public class HNodeList extends NodeList {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         HNodeList nodes = (HNodeList) o;
-        return ID == nodes.ID &&
-                signName.equals(nodes.signName);
+        return signName.equals(nodes.signName);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package Algorithms.Graph.Utils;
 
 import Algorithms.Graph.Network.Node;
+import org.jblas.DoubleMatrix;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,7 +11,7 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("This homoGeneMap is")
-class hNodeListMapSpec {
+class AdjListSpec {
     private HNodeList homo_1;
     private HNodeList homo_2;
     private HNodeList homo_3;
@@ -36,12 +37,40 @@ class hNodeListMapSpec {
         graph.add(homo_3);
         assertEquals(2, graph.size());
     }
-    @DisplayName("able to remove one HG")
+    @DisplayName("able to remove one Node.")
     @Test
-    void removeOneHGTest(){
+    void removeOneTest(){
         graph.add(homo_1);
         graph.add(homo_3);
         graph.removeOneNode("3232","1");
         assertEquals(1,graph.get(1).size());
+    }
+    @DisplayName("able to output the matrix.")
+    @Test
+    void OutPutTest(){
+        graph.add(homo_1);
+        homo_2 = new HNodeList("0000");
+        homo_2.addAll(Arrays.asList(new Node("1",0.3),new Node("2",0.1)));
+        graph.add(homo_2);
+        graph.add(homo_3);
+        DoubleMatrix matrix = graph.toMatrix();
+        DoubleMatrix test = new DoubleMatrix(new double[][]{
+                {0.3,0.1},{0.3,0.6},{0.2,0.2}
+        } );
+        assertEquals(test,matrix);
+    }
+    @DisplayName("able to output the different matrix.")
+    @Test
+    void OutPut_2Test(){
+        graph.add(homo_1);
+        homo_2 = new HNodeList("0000");
+        homo_2.addAll(Arrays.asList(new Node("1",0.3),new Node("2",0.1),new Node("3",0.4)));
+        graph.add(homo_2);
+        graph.add(homo_3);
+        DoubleMatrix matrix = graph.toMatrix();
+        DoubleMatrix test = new DoubleMatrix(new double[][]{
+                {0.3,0.1,0.4},{0.3,0.6,0.},{0.2,0.2,0.}
+        } );
+        assertEquals(test,matrix);
     }
 }
