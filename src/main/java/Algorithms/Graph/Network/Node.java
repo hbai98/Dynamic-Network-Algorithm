@@ -14,8 +14,8 @@ public class Node implements Comparable<Node> {
     protected double value;
     protected String strLayerCode;
     // position in similarity matrix
-    protected int degree;
-    protected int index;
+    protected int row;
+    protected int col;
 
     public Node(String strName, double value, String strLayerCode) {
         this.strName = strName;
@@ -54,12 +54,12 @@ public class Node implements Comparable<Node> {
         return strLayerCode;
     }
 
-    public int getIndex() {
-        return index;
+    public int getCol() {
+        return col;
     }
 
-    public int getDegree() {
-        return degree;
+    public int getRow() {
+        return row;
     }
 
     // ----------------------SET-------------------------------
@@ -75,12 +75,12 @@ public class Node implements Comparable<Node> {
         this.strLayerCode = strLayerCode;
     }
 
-    public void setIndex(int index) {
-        this.index = index;
+    public void setCol(int col) {
+        this.col = col;
     }
 
-    public void setDegree(int degree) {
-        this.degree = degree;
+    public void setRow(int row) {
+        this.row = row;
     }
 
     /**

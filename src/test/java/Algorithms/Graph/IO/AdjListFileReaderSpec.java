@@ -2,8 +2,8 @@ package Algorithms.Graph.IO;
 
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHasSet;
-import Algorithms.Graph.Utils.HomoGene;
-import Algorithms.Graph.Utils.HomoGeneMap;
+import Algorithms.Graph.Utils.HNodeList;
+import Algorithms.Graph.Utils.AdjList;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -60,9 +60,9 @@ class AdjListFileReaderSpec {
     void ReadToArrayListTest(){
         try {
             // homoGeneMap is a self-update graph
-            HomoGeneMap graph = readToAdjL("src/test/java/resources/IOTest/simpleGraph_1.txt");
-            HomoGene forTestA = new HomoGene("A");
-            HomoGene forTestB = new HomoGene("C");
+            AdjList graph = readToAdjL("src/test/java/resources/IOTest/simpleGraph_1.txt");
+            HNodeList forTestA = new HNodeList("A");
+            HNodeList forTestB = new HNodeList("C");
             forTestA.add("B",0.2);
             forTestA.add("C",0.3);
             forTestA.add("D",0.4);

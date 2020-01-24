@@ -1,23 +1,22 @@
 package Algorithms.Graph.Utils;
 
 import Algorithms.Graph.Network.Node;
-import Algorithms.Graph.Network.NodeList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("The homeGene list is")
-class HomoGeneSpec {
+class hNodeListSpec {
     private Node node1;
     private Node node2;
     private Node node3;
     private Node node4;
-    private HomoGene homoGene;
+    private HNodeList hNodeList;
 
     @BeforeEach
     void init(){
-        homoGene = new HomoGene("3232");
+        hNodeList = new HNodeList("3232");
         node1 = new Node("1",2.3,"1");
         node2 = new Node("2",2.5,"1");
         node3 = new Node("1",2.8,"1");
@@ -29,11 +28,11 @@ class HomoGeneSpec {
     @Test
     void add(){
         // prepare list with elements
-        assertTrue(homoGene.add(node1));
-        assertTrue(homoGene.add(node2));
+        assertTrue(hNodeList.add(node1));
+        assertTrue(hNodeList.add(node2));
         // test
-        assertTrue(homoGene.add(node3));
-        assertEquals(2,homoGene.size());
-        assertFalse(homoGene.add(node4));
+        assertTrue(hNodeList.add(node3));
+        assertEquals(2, hNodeList.size());
+        assertFalse(hNodeList.add(node4));
     }
 }

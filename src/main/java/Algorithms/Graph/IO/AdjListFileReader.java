@@ -2,7 +2,7 @@ package Algorithms.Graph.IO;
 
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHasSet;
-import Algorithms.Graph.Utils.HomoGeneMap;
+import Algorithms.Graph.Utils.AdjList;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -45,7 +45,7 @@ public class AdjListFileReader {
     }
     //-------------------------AdjNodeList【homoGeneMap】 return type has been added in switch choices------------------------
 
-    public static HomoGeneMap readToAdjL(String inputFilePath) throws IOException {
+    public static AdjList readToAdjL(String inputFilePath) throws IOException {
 
         return readToAdjL(new BufferedReader(new FileReader(inputFilePath)), true);
     }
@@ -58,8 +58,8 @@ public class AdjListFileReader {
      *                          not close it.
      */
     // TODO a bit of duplicated with readToEL()! find a better way to solve!
-    private static HomoGeneMap readToAdjL(BufferedReader input, boolean closeWhenFinished) throws IOException{
-        HomoGeneMap graph = new HomoGeneMap();
+    private static AdjList readToAdjL(BufferedReader input, boolean closeWhenFinished) throws IOException{
+        AdjList graph = new AdjList();
         // matches sequence of one or more whitespace characters.
         Pattern splitter = Pattern.compile("\\s+");
         Vector<String> sifLine = new Vector<>();
@@ -165,14 +165,14 @@ public class AdjListFileReader {
         sifLine.clear();
     }
 
-    private static void parseLine(HomoGeneMap graph,Vector<String> sifLine) throws IOException {
+    private static void parseLine(AdjList graph, Vector<String> sifLine) throws IOException {
         if (sifLine.size() == 2) {
             String name = sifLine.get(0);
             if (isNumeric(sifLine.get(1))){
                 throw new IOException("The file input format is not correct. Plus: some name-value pairs are incorrect!");
             }
             double weight = Double.parseDouble(sifLine.get(1));
-            graph.addOneHG(name,name,weight);
+            graph.addOneNode(name,name,weight);
         } else if ((sifLine.size() - 1) % 2 != 0 || sifLine.size() == 1) {
             throw new IOException("The file input format is not correct.");
         } else {
@@ -191,7 +191,7 @@ public class AdjListFileReader {
                 }
                 double weight = Double.parseDouble(input);
                 // create edge & add
-                graph.addOneHG(srcName,tgtName,weight);
+                graph.addOneNode(srcName,tgtName,weight);
             }
         }
         sifLine.clear();

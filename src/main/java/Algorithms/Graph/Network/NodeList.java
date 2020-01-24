@@ -3,6 +3,11 @@ package Algorithms.Graph.Network;
 // Shanghai University, department of computer science
 import java.util.*;
 
+/**
+ * This class can be used as a list class while automatically
+ * clean nodes with duplicated names and leave the node with a higher value.
+ *
+ */
 public class NodeList extends LinkedList<Node> {
     /***
      * Add a {@code}node into list. If it already existed(same name), choose the one with
@@ -67,12 +72,7 @@ public class NodeList extends LinkedList<Node> {
      * @param node node to be added
      */
     public void sortedAdd(Node node) {
-        int index = Collections.binarySearch(this, node, new Comparator<Node>() {
-            @Override
-            public int compare(Node o1, Node o2) {
-                return o1.strName.compareTo(o2.strName);
-            }
-        });
+        int index = Collections.binarySearch(this, node, Comparator.comparing(o -> o.strName));
         if (index >= 0) {
             this.add(index, node);
         } else {

@@ -5,19 +5,19 @@ import Algorithms.Graph.Network.NodeList;
 import java.util.Objects;
 
 /**
- * This class is aimed to save one specific protein's homologous proteins as
+ * This class is aimed to save nodes with a signName as
  * a edgeList defined in Network.NodeList
  */
-public class HomoGene extends NodeList {
+public class HNodeList extends NodeList {
     // target protein
     //----------keys-----------
-    protected String proteinName;
+    protected String signName;
     protected int ID;
     //---------
     protected int score;
 
-    public HomoGene(String proteinName){
-        this.proteinName = proteinName;
+    public HNodeList(String signName){
+        this.signName = signName;
         this.ID = -1;
         this.score = -1;
     }
@@ -27,20 +27,20 @@ public class HomoGene extends NodeList {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        HomoGene nodes = (HomoGene) o;
+        HNodeList nodes = (HNodeList) o;
         return ID == nodes.ID &&
-                proteinName.equals(nodes.proteinName);
+                signName.equals(nodes.signName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), proteinName, ID);
+        return Objects.hash(super.hashCode(), signName, ID);
     }
 
    //---------------PUBLIC------------------
 
-    public String getProteinName() {
-        return proteinName;
+    public String getSignName() {
+        return signName;
     }
 
     public int getID() {
@@ -52,8 +52,8 @@ public class HomoGene extends NodeList {
     }
     //-----------------SET-----------------
 
-    public void setProteinName(String proteinName) {
-        this.proteinName = proteinName;
+    public void setSignName(String signName) {
+        this.signName = signName;
     }
 
     public void setID(int ID) {
