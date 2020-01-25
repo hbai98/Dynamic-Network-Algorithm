@@ -6,11 +6,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-@DisplayName("This homoGeneMap is")
+@DisplayName("This AdjList is")
 class AdjListSpec {
     private HNodeList homo_1;
     private HNodeList homo_2;
@@ -42,7 +43,7 @@ class AdjListSpec {
     void removeOneTest(){
         graph.add(homo_1);
         graph.add(homo_3);
-        graph.removeOneNode("3232","1");
+        graph.removeAllNode("3232","1");
         assertEquals(1,graph.get(1).size());
     }
     @DisplayName("able to output the matrix.")
@@ -59,7 +60,7 @@ class AdjListSpec {
         } );
         assertEquals(test,matrix);
     }
-    @DisplayName("able to output the different matrix.")
+    @DisplayName("able to output the matrix.")
     @Test
     void OutPut_2Test(){
         graph.add(homo_1);
@@ -73,4 +74,25 @@ class AdjListSpec {
         } );
         assertEquals(test,matrix);
     }
+    @DisplayName("can't find matrix's value if the arrayList don't have a order.")
+    @Test
+    void findMatrixValTest_1() throws IOException {
+        graph.add(homo_1);
+        homo_2 = new HNodeList("0000");
+        homo_2.addAll(Arrays.asList(new Node("1",0.3),new Node("2",0.1),new Node("3",0.4)));
+        graph.add(homo_2);
+        graph.add(homo_3);
+        assertNotEquals(0.1,graph.getMatrixVal("0000","1"));
+    }
+    @DisplayName("can find matrix's value if the arrayList has a order.")
+    @Test
+    void findMatrixValTest_2() throws IOException {
+        homo_1.sortAddAll(new Node("5",0.2),new Node("3",0.6));
+        graph.add(homo_1);
+        homo_2 = new HNodeList("0000");
+        homo_2.sortAddAll(new Node("1",0.3),new Node("2",0.1),new Node("3",0.4));
+        graph.add(homo_2);
+        assertEquals(0.3,graph.getMatrixVal("0000","1"));
+    }
+
 }

@@ -1,39 +1,46 @@
 package Algorithms.Graph.Network;
 // Author: Haotian Bai
 // Shanghai University, department of computer science
+
+import Algorithms.Graph.Utils.HNodeList;
+
 import java.util.*;
 
 /**
  * This class can be used as a list class while automatically
  * clean nodes with duplicated names and leave the node with a higher value.
- *
  */
 public class NodeList extends LinkedList<Node> {
     /***
      * Add a {@code}node into list. If it already existed(same name), choose the one with
-     * greater value
+     * greater value, and the nodeList keeps it's nodes with the characteristic of
+     * single existence.
      * @param node node to be added
-     * @return true for success
+     * @return true for the node has already been added.
      */
     @Override
     public boolean add(Node node) {
         for (Node tpNode : this) {
-            if (tpNode.strName.equals(node.strName)) {
+            // find one same node, return;
+            if (tpNode.equals(node)) {
                 if (tpNode.value < node.value) {
                     tpNode.setValue(node.value);
                     return true;
-                } else return false;
+                } else {
+                    return false;
+                }
             }
         }
         // not found
         return super.add(node);
     }
 
-    public boolean add(String strNode){
+    public boolean add(String strNode) {
         return this.add(new Node(strNode));
     }
+
     public boolean add(String strNode, double weight) {
-        return this.add(new Node(strNode,weight));
+        return this.add(new Node(strNode, weight));
     }
 
     public Node findByName(String strNode) {
@@ -43,7 +50,20 @@ public class NodeList extends LinkedList<Node> {
             }
         }
         return null;
+    }
 
+    /**
+     * Find node according to the name, but before use this method,
+     * user should ensure the nodeList has already be in order.
+     * @param strNode node to be found
+     * @return node found or null
+     */
+    public Node sortFindByName(String strNode) {
+        int index = Collections.binarySearch(this,new Node(strNode), Comparator.comparing(o -> o.strName));
+        if (index >= 0) {
+            return this.get(index);
+        }
+        else return null;
     }
 
     public void remove(String strNode) {
@@ -71,7 +91,7 @@ public class NodeList extends LinkedList<Node> {
      *
      * @param node node to be added
      */
-    public void sortedAdd(Node node) {
+    public void sortAdd(Node node) {
         int index = Collections.binarySearch(this, node, Comparator.comparing(o -> o.strName));
         if (index >= 0) {
             this.add(index, node);
@@ -81,29 +101,34 @@ public class NodeList extends LinkedList<Node> {
     }
 
     /**
-     * add a node according to the ascending sequence of the nodes' value
+     * add a node while not interfere with the sorted sequence
      *
-     * @param node node to be added
+     * @param strNode node's name to be added
      */
-    public void vAscAdd(Node node) {
+    public void sortAdd(String strNode) {
+        this.sortAdd( new Node(strNode));
+    }
 
-        double nodeToaddVal = node.value;
-        if (this.isEmpty()) super.add(node);
-        else {
-            Iterator<Node> iterator = this.iterator();
-            int index = 0;
-            while(iterator.hasNext()){
-                Node tmpNode = iterator.next();
-                double tmpVal = tmpNode.value;
-                if(tmpVal > nodeToaddVal){
-                    super.add(index,node);
-                    break;
-                }
-                else{
-                    index++;
-                }
-            }
-            super.add(index,node);
+    /**
+     * add a node while not interfere with the sorted sequence
+     *
+     * @param strNode node's name
+     * @param weight  node's weight
+     */
+    public void sortAdd(String strNode, double weight) {
+        this.sortAdd(strNode, weight);
+    }
+
+    /**
+     * add a node while not interfere with the sorted sequence
+     *
+     * @param strNode node's name
+     * @param weight  node's weight
+     */
+    public void sortAddAll(Node... nodes) {
+        for (Node node :
+                nodes) {
+            sortAdd(node);
         }
     }
 

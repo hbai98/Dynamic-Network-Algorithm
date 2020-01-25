@@ -2,7 +2,7 @@ package Algorithms.Graph;
 // Author: Haotian Bai
 // Shanghai University, department of computer science
 
-import Algorithms.Graph.IO.MyReader;
+import Algorithms.Graph.IO.MyMatrixReader;
 import org.jblas.DoubleMatrix;
 
 import java.io.IOException;
@@ -50,7 +50,7 @@ public class Hungarian {
      * @throws IOException read false.
      */
     protected Hungarian(String sourcePath) throws IOException {
-        MyReader reader = new MyReader(sourcePath);
+        MyMatrixReader reader = new MyMatrixReader(sourcePath);
         mat = new DoubleMatrix(reader.out());
         // Get min to initialize the result size
         int tpMin = Math.min(mat.columns,mat.rows);

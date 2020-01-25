@@ -4,6 +4,7 @@ import Algorithms.Graph.Network.NodeList;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -19,21 +20,21 @@ import java.util.*;
  */
 public class AdjList extends LinkedList<HNodeList> {
     private DoubleMatrix mat;
-    // used to construct the matrix
 
+    // used to construct the matrix
     public AdjList(){
     }
 
     /**
      * <ol>
      *     <li>Find the longest nodeList,and then initialize the matrix.</li>
-     *     <li>Iterate other nodeLists mapping the selected longest.</li>
+     *     <li>Iterate other nodeLists mapping the other graph's NodeSet(NodeList).</li>
      * </ol>
      * <p>
      *     Time complexity: O(n+(n-1)*1/2*(1+n)*n) - > O(n^3) -> brute force
      * </p>
      * <p>
-     *     construct a HashMap <K,V> where:
+     *     construct a HashMap <K,V> & colMap , rowMap where:
      *         <ol>
      *             <li>K: nodeName </li>
      *             <li>V: column position of the matrix</li>
@@ -59,7 +60,9 @@ public class AdjList extends LinkedList<HNodeList> {
         int maxCol = 0;
         int loc = -1;
         for (int index = 0; index < this.size(); index++) {
-            int size = this.get(index).size();
+            // copy the rowMap
+            HNodeList tpList = this.get(index);
+            int size = tpList.size();
             if(size > maxCol) {
                 maxCol = size;
                 loc = index;
@@ -70,7 +73,6 @@ public class AdjList extends LinkedList<HNodeList> {
 
     /**
      * step 2：create the dictionary
-     * @param rowIndex the index of the longest NodeList
      * @return map for the matrix's column
      */
     private HashMap<String,Integer> dict(int rowIndex){
@@ -84,7 +86,7 @@ public class AdjList extends LinkedList<HNodeList> {
     }
 
     /**
-     * Iterate other nodeLists mapping the selected longest.
+     * Iterate other nodeLists mapping the other graph's NodeSet(NodeList).
      * @param map the longest map
      */
     private DoubleMatrix mapping( HashMap<String,Integer> map){
@@ -128,7 +130,7 @@ public class AdjList extends LinkedList<HNodeList> {
      * find node head's all nodes.
      * @param tgtNode target node
      */
-    public HNodeList get(String tgtNode){
+    public HNodeList getNodeList(String tgtNode){
         for(HNodeList hNodeList : this){
             if(hNodeList.signName.equals(tgtNode)){
                 return hNodeList;
@@ -137,13 +139,23 @@ public class AdjList extends LinkedList<HNodeList> {
         return null;
     }
 
+    public double getMatrixVal(String tgtHead, String tgtNode) throws IOException {
+        int index = Collections.binarySearch(this,new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
+        if(index >= 0){
+            return this.get(index).sortFindByName(tgtNode).getValue();
+        }
+        else{
+            throw new IOException("Can't find the target head");
+        }
+    }
+
     /**
      * remove tgtNode from list(tgtHead).
      * @param tgtHead headName of the list.
      * @param tgtNode name of the node to be removed.
      * @return true for success.
      */
-    public boolean removeOneNode(String tgtHead, String tgtNode){
+    public boolean removeAllNode(String tgtHead, String tgtNode){
         int index = Collections.binarySearch(this,new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
         if(index >= 0){
             this.get(index).remove(tgtNode);
@@ -173,6 +185,24 @@ public class AdjList extends LinkedList<HNodeList> {
         }
     }
     /**
+     * add tgtHG to list(tgtHead),and keep the target list an ascending order.
+     * @param tgtHead headName of the list.
+     * @param tgtNode name of the homoGene to be removed.
+     * @return true for already node exist.
+     */
+    public boolean sortAddOneNode(String tgtHead, String tgtNode){
+        int index = Collections.binarySearch(this,new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
+        if(index >= 0){
+            this.get(index).sortAdd(tgtNode);
+            return true;
+        }
+        else{
+            add(-index-1,new HNodeList(tgtHead));
+            this.get(-index-1).sortAdd(tgtNode);
+            return false;
+        }
+    }
+    /**
      * add tgtNode to list(tgtHead) with <code>weight</code>.
      * @param tgtHead headName of the list.
      * @param tgtNode name of the Node to be removed.
@@ -190,4 +220,29 @@ public class AdjList extends LinkedList<HNodeList> {
             return false;
         }
     }
+
+    /**
+     * add tgtNode to list(tgtHead) with <code>weight</code>,and
+     * keep the target list an ascending order.
+     * @param tgtHead headName of the list.
+     * @param tgtNode name of the Node to be removed.
+     * @return true for node already exist.
+     */
+    public boolean sortAddOneNode(String tgtHead, String tgtNode, double weight){
+        int index = Collections.binarySearch(this,new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
+        if(index >= 0){
+            this.get(index).sortAdd(tgtNode,weight);
+            return true;
+        }
+        else{
+            add(-index-1,new HNodeList(tgtHead));
+            this.get(-index-1).sortAdd(tgtNode,weight);
+            return false;
+        }
+    }
+    //------------------PUBLIC-----------------------------
+
+
+
+
 }

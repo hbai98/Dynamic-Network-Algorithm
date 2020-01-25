@@ -2,6 +2,8 @@ package Algorithms.Graph.IO;
 
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHasSet;
+import Algorithms.Graph.Network.Node;
+import Algorithms.Graph.Network.NodeList;
 import Algorithms.Graph.Utils.AdjList;
 
 import java.io.BufferedReader;
@@ -11,7 +13,9 @@ import java.util.Vector;
 import java.util.regex.Pattern;
 
 /**
- * <p>This class is mean to create a FileReader aimed to read file with the format like the adjacent list</p>
+ * <p>This class is mean to create a FileReader aimed to read file with the format like the adjacent list
+ *  or create a matrix.
+ * </p>
  * <br>
  * <p>
  * source Node : target Node(i) weight(i)
@@ -27,7 +31,9 @@ import java.util.regex.Pattern;
  * </p>
  */
 public class AdjListFileReader {
-    public enum returnGraphType{AdjNodeList,EdgeList}
+    private static NodeList graph_1;
+    private static NodeList graph_2;
+
     /**
      * Parses the file given by <code>inputFilePath</code> to EdgeList.
      */
@@ -128,25 +134,29 @@ public class AdjListFileReader {
      *     The third line indicates how to specify a node that has no relationships with other nodes.
      * </p>
      *
+     *
      * @param graph   EdgeList to contain result
      * @param sifLine result very line
      */
     private static void parseLine(EdgeHasSet graph, Vector<String> sifLine) throws IOException {
-        // 0 -> nothing changes
+        int sifSize = sifLine.size();
+        if(sifSize == 0){
+            throw new IOException("Nothing has been input!.");
+        }
         // 2 - > self-loop
-        if (sifLine.size() == 2) {
+        if (sifSize == 2) {
             String name = sifLine.get(0);
             if (isNumeric(sifLine.get(1))){
                 throw new IOException("The file input format is not correct. Plus: some name-value pairs are incorrect!");
             }
             double weight = Double.parseDouble(sifLine.get(1));
             graph.add(new Edge(name, name, weight));
-        } else if ((sifLine.size() - 1) % 2 != 0 || sifLine.size() == 1) {
+        } else if ((sifSize - 1) % 2 != 0 || sifSize == 1) {
             throw new IOException("The file input format is not correct.");
         } else {
             String srcName = sifLine.get(0);
-            // name value ... and it has already checked (sifLine.size()-1) % 2 == 0
-            for (int index = 1; index < sifLine.size(); index += 2) {
+            // name value ... and it has already checked (sifSize-1) % 2 == 0
+            for (int index = 1; index < sifSize ; index += 2) {
                 // name
                 String tgtName = sifLine.get(index);
                 if (isNumeric(tgtName)){
@@ -160,25 +170,48 @@ public class AdjListFileReader {
                 double weight = Double.parseDouble(input);
                 // create edge & add
                 graph.add(new Edge(srcName,tgtName,weight));
+                addToNodeList(srcName,tgtName);
+
             }
         }
         sifLine.clear();
     }
-
+    /**
+     * <ol>
+     *     <li>node1 node2 value12</li>
+     *     <li>node2 node3 value23 node4 value24 node5 value25</>
+     *     <li>node0 value00</li>
+     *  </ol>
+     * <p>
+     *     The first line identifies two nodes, called node1 and node2, and the weight of the edge between node1 node2. The second line specifies three new nodes, node3, node4, and node5; here “node2” refers to the same node as in the first line.
+     *     The second line also specifies three relationships, all of the individual weight and with node2 as the source, with node3, node4, and node5 as the targets.
+     *     This second form is simply shorthand for specifying multiple relationships of the same type with the same source node.
+     *     The third line indicates how to specify a node that has no relationships with other nodes.
+     * </p>
+     *
+     * <p>NOTICE:add() -> use sortAdd()</p>
+     *
+     * @param graph   EdgeList to contain result
+     * @param sifLine result very line
+     */
     private static void parseLine(AdjList graph, Vector<String> sifLine) throws IOException {
-        if (sifLine.size() == 2) {
+        int sifSize = sifLine.size();
+        if(sifSize == 0){
+            throw new IOException("Nothing has been input!.");
+        }
+        if (sifSize == 2) {
             String name = sifLine.get(0);
             if (isNumeric(sifLine.get(1))){
                 throw new IOException("The file input format is not correct. Plus: some name-value pairs are incorrect!");
             }
             double weight = Double.parseDouble(sifLine.get(1));
             graph.addOneNode(name,name,weight);
-        } else if ((sifLine.size() - 1) % 2 != 0 || sifLine.size() == 1) {
+        } else if ((sifSize  - 1) % 2 != 0 || sifSize  == 1) {
             throw new IOException("The file input format is not correct.");
         } else {
             String srcName = sifLine.get(0);
-            // name value ... and it has already checked (sifLine.size()-1) % 2 == 0
-            for (int index = 1; index < sifLine.size(); index += 2) {
+            // name value ... and it has already checked (sifSize -1) % 2 == 0
+            for (int index = 1; index < sifSize ; index += 2) {
                 // name
                 String tgtName = sifLine.get(index);
                 if (isNumeric(tgtName)){
@@ -191,7 +224,8 @@ public class AdjListFileReader {
                 }
                 double weight = Double.parseDouble(input);
                 // create edge & add
-                graph.addOneNode(srcName,tgtName,weight);
+                graph.sortAddOneNode(srcName,tgtName,weight);
+                addToNodeList(srcName,tgtName);
             }
         }
         sifLine.clear();
@@ -206,4 +240,17 @@ public class AdjListFileReader {
         }
     }
 
+    private static void addToNodeList(String srcName,String tgtName){
+        // record to nodeLists
+        graph_1.add(srcName);
+        graph_2.add(tgtName);
+    }
+    //------------------PUBLIC-----------------------------
+    public static NodeList getGraph_1() {
+        return graph_1;
+    }
+
+    public static NodeList getGraph_2() {
+        return graph_2;
+    }
 }

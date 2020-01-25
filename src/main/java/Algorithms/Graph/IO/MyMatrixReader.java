@@ -11,13 +11,13 @@ import java.util.Vector;
  * Mainly for test.
  */
 //TODO make it adapted to byte[] reading and work with jblas.
-public class MyReader {
+public class MyMatrixReader {
     Scanner input;
     int rows = 0;
     int cols = 0;
     int MAX = 0;
     double[][] result;
-    public MyReader(String sourcePath) throws IOException {
+    public MyMatrixReader(String sourcePath) throws IOException {
         input = new Scanner(new File(sourcePath));
         if(input.hasNextLine()){
             if(input.hasNextInt()){

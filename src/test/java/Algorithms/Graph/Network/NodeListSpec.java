@@ -31,7 +31,6 @@ class NodeListSpec {
         @DisplayName("can only adds node with greater value.")
         @Test
         void add() {
-
             // prepare list with elements
             assertTrue(nodeList.add(node1));
             assertTrue(nodeList.add(node2));
@@ -49,18 +48,7 @@ class NodeListSpec {
             nodeList.sort();
             assertThat(nodeList).containsSequence(Arrays.asList(node1,node2));
         }
-        @DisplayName("adds according to node ascending value.")
-        @Test
-        void vAscdAdd(){
-            nodeList.add(node1);
-            nodeList.add(node2);
 
-            nodeList.vAscAdd(node3);
-            assertThat(nodeList).containsSequence(Arrays.asList(node1,node2,node3));
-            nodeList.vAscAdd(node4);
-            assertThat(nodeList).containsSequence(Arrays.asList(node4,node1,node2,node3));
-
-        }
         @DisplayName("removes all nodes with the same name.")
         @Test
         void removeAllTest(){
@@ -68,6 +56,8 @@ class NodeListSpec {
             nodeList.removeAll(new Node("1"));
             assertEquals(1, nodeList.size());
         }
+
+
     }
     @Nested
     class Other{
