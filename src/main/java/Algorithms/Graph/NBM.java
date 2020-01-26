@@ -13,7 +13,6 @@ import java.util.*;
 
 public class NBM {
     protected AdjList simList;
-    protected DoubleMatrix mat;
     private HashSet<String> graph_1;
     private HashSet<String> graph_2;
     private HashMap<String,String> bestPairNodeG1;
@@ -50,26 +49,23 @@ public class NBM {
         this.graph_1 = graph_1;
         this.graph_2 = graph_2;
         this.simList = simList;
-        this.mat = simList.toMatrix();
         // pq
         pqEdge = new PriorityQueue<>(Comparator.comparingDouble(Edge::getWeight));
     }
 
     private void init(AdjList simList){
         this.simList = simList;
-        this.mat = simList.toMatrix();
         this.graph_1 = simList.getRowSet();
         this.graph_2 = simList.getColSet();
         // pq
         pqEdge = new PriorityQueue<>(Comparator.comparingDouble(Edge::getWeight));
     }
     /**
-     * iterate(matrix&nodeList) nodes in Graph1 and finds every node it's best pair( with the greatest weight )
+     * iterate(nodeList) nodes in Graph1 and finds every node it's best pair( with the greatest weight )
      */
     protected void findBestPairs() {
         assert(simList!=null&&graph_1!=null&&graph_2!=null);
         HashMap<String,Integer> rowMap = simList.getRowMap();
-        HashMap<String,Integer> colMap = simList.getColMap();
         graph_1.forEach(strNode->{
             int row = rowMap.get(strNode);
             Pair<Integer, Node> res = simList.findMaxOfList(row);

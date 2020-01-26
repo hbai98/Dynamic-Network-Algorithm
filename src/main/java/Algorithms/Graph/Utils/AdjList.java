@@ -19,6 +19,7 @@ import java.util.*;
  * </p>
  */
 public class AdjList extends LinkedList<HNodeList> {
+
     private DoubleMatrix mat;
     //------------------similarity matrix----------
     private HashSet<String> rowSet;
@@ -308,12 +309,15 @@ public class AdjList extends LinkedList<HNodeList> {
         return rowSet;
     }
 
-    public HashMap<String, Integer> getRowMap() {
-        if(mat == null){
-            mat = this.toMatrix();
+    public HashMap<String,Integer> getRowMap(){
+        if(rowMap == null){
+            for (int r = 0; r < this.size(); r++) {
+                HNodeList list = this.get(r);
+                rowMap.put(list.getSignName(), r);
+            }
             return rowMap;
         }
-        return rowMap;
+        else return rowMap;
     }
     public HashMap<String, Integer> getColMap() {
         if(mat == null){
