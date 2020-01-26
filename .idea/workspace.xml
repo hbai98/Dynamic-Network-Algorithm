@@ -3,25 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Hungarian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Hungarian.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/IO/AdjListFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/IO/AdjListFileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/IO/MyReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/IO/MyMatrixReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/NodeList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/NodeList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/AdjList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/AdjList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Network/NodeListSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Network/NodeListSpec.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Utils/AdjListSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Utils/AdjListSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/IO/AdjListFileReader$returnGraphType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/IO/AdjListFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/IO/AdjListFileReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/IO/MyReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/NodeList$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/NodeList$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/NodeList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/NodeList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/AdjList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/AdjList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/NodeListSpec$Other.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/NodeListSpec$Other.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/NodeListSpec$functionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/NodeListSpec$functionTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Utils/AdjListSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Utils/AdjListSpec.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +93,7 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.AdjListSpec.findMatrixValTest_2">
-    <configuration name="AdjListSpec" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AdjListSpec.OutPut_2Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
@@ -117,7 +103,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="Algorithms.Graph.Utils" />
       <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Utils.AdjListSpec" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="OutPut_2Test" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -186,19 +173,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.AdjListSpec" />
       <item itemvalue="JUnit.NodeListSpec$functionTest" />
       <item itemvalue="JUnit.AdjListSpec.findMatrixValTest" />
       <item itemvalue="JUnit.AdjListSpec.findMatrixValTest_1" />
       <item itemvalue="JUnit.AdjListSpec.findMatrixValTest_2" />
+      <item itemvalue="JUnit.AdjListSpec.OutPut_2Test" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.AdjListSpec.findMatrixValTest_2" />
+        <item itemvalue="JUnit.AdjListSpec.OutPut_2Test" />
         <item itemvalue="JUnit.AdjListSpec.findMatrixValTest_1" />
         <item itemvalue="JUnit.AdjListSpec.findMatrixValTest" />
         <item itemvalue="JUnit.NodeListSpec$functionTest" />
-        <item itemvalue="JUnit.AdjListSpec" />
       </list>
     </recent_temporary>
   </component>
@@ -229,7 +216,8 @@
       <workItem from="1579263249493" duration="31541000" />
       <workItem from="1579738177382" duration="2242000" />
       <workItem from="1579747297659" duration="19204000" />
-      <workItem from="1579831377939" duration="34009000" />
+      <workItem from="1579831377939" duration="34674000" />
+      <workItem from="1580028543405" duration="5071000" />
     </task>
     <servers />
   </component>
@@ -294,50 +282,54 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="1196" y="247" key="#xdebugger.evaluate/0.0.1920.1080@0.0.1920.1080" timestamp="1579511493737" />
+    <state width="403" height="466" key="DebuggerActiveHint" timestamp="1580033783785">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="403" height="466" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1580033783785" />
     <state x="162" y="225" key="FileChooserDialogImpl" timestamp="1579781498938">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="162" y="225" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1579781498938" />
     <state x="203" y="281" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1579173438855" />
-    <state width="1493" height="326" key="GridCell.Tab.0.bottom" timestamp="1579963609839">
+    <state width="1493" height="326" key="GridCell.Tab.0.bottom" timestamp="1580036954872">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="326" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1579963609839" />
+    <state width="1493" height="326" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580036954872" />
     <state width="917" height="326" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="326" key="GridCell.Tab.0.center" timestamp="1579963609839">
+    <state width="1493" height="326" key="GridCell.Tab.0.center" timestamp="1580036954872">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="326" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1579963609839" />
+    <state width="1493" height="326" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580036954872" />
     <state width="917" height="326" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="326" key="GridCell.Tab.0.left" timestamp="1579963609839">
+    <state width="1493" height="326" key="GridCell.Tab.0.left" timestamp="1580036954872">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="326" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1579963609839" />
+    <state width="1493" height="326" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580036954872" />
     <state width="917" height="326" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465822" />
-    <state width="1493" height="326" key="GridCell.Tab.0.right" timestamp="1579963609839">
+    <state width="1493" height="326" key="GridCell.Tab.0.right" timestamp="1580036954872">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="326" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1579963609839" />
+    <state width="1493" height="326" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580036954872" />
     <state width="917" height="326" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="220" key="GridCell.Tab.1.bottom" timestamp="1579963498508">
+    <state width="1493" height="220" key="GridCell.Tab.1.bottom" timestamp="1580036799668">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="220" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1579963498508" />
+    <state width="1493" height="220" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580036799668" />
     <state width="917" height="326" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466610" />
-    <state width="1493" height="220" key="GridCell.Tab.1.center" timestamp="1579963498508">
+    <state width="1493" height="220" key="GridCell.Tab.1.center" timestamp="1580036799668">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="220" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1579963498508" />
+    <state width="1493" height="220" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1580036799668" />
     <state width="917" height="326" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
-    <state width="1493" height="220" key="GridCell.Tab.1.left" timestamp="1579963498508">
+    <state width="1493" height="220" key="GridCell.Tab.1.left" timestamp="1580036799667">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="220" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1579963498508" />
+    <state width="1493" height="220" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1580036799667" />
     <state width="917" height="326" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
-    <state width="1493" height="220" key="GridCell.Tab.1.right" timestamp="1579963498508">
+    <state width="1493" height="220" key="GridCell.Tab.1.right" timestamp="1580036799668">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="220" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1579963498508" />
+    <state width="1493" height="220" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1580036799668" />
     <state width="917" height="326" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
     <state x="639" y="216" key="Maven.ArtifactSearchDialog" timestamp="1579071348260">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -357,6 +349,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="1242" y="318" key="chooseDestDirectoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1579502121251" />
+    <state x="449" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1580028633774">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="449" y="257" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1580028633774" />
     <state x="245" y="243" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1579499692303">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

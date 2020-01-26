@@ -63,14 +63,19 @@ class AdjListSpec {
     @DisplayName("able to output the matrix.")
     @Test
     void OutPut_2Test(){
+        homo_1 = new HNodeList("3232");
+        homo_1.addAll(Arrays.asList(new Node("5",0.2),new Node("2",0.2)));
         graph.add(homo_1);
         homo_2 = new HNodeList("0000");
-        homo_2.addAll(Arrays.asList(new Node("1",0.3),new Node("2",0.1),new Node("3",0.4)));
+        homo_2.addAll(Arrays.asList(new Node("1",0.3),new Node("4",0.1),new Node("3",0.4)));
         graph.add(homo_2);
+        homo_3 = new HNodeList("1211");
+        homo_3.addAll(Arrays.asList(new Node("1",0.3),new Node("2",0.6)));
         graph.add(homo_3);
         DoubleMatrix matrix = graph.toMatrix();
         DoubleMatrix test = new DoubleMatrix(new double[][]{
-                {0.3,0.1,0.4},{0.3,0.6,0.},{0.2,0.2,0.}
+                {0.3,0.,0.4,0.1,0.},{ 0.3,0.6,0.,0.,0.},{0.,0.2,0.,0.,0.2}
+
         } );
         assertEquals(test,matrix);
     }

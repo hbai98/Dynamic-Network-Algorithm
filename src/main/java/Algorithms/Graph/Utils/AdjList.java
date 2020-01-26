@@ -1,9 +1,12 @@
 package Algorithms.Graph.Utils;
 
+import Algorithms.Graph.IO.AdjListFileReader;
+import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Network.NodeList;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
+import java.awt.List;
 import java.io.IOException;
 import java.util.*;
 
@@ -20,14 +23,11 @@ import java.util.*;
  */
 public class AdjList extends LinkedList<HNodeList> {
     private DoubleMatrix mat;
-
     // used to construct the matrix
-    public AdjList(){
-    }
 
     /**
      * <ol>
-     *     <li>Find the longest nodeList,and then initialize the matrix.</li>
+     *     <li>initialize the matrix.</li>
      *     <li>Iterate other nodeLists mapping the other graph's NodeSet(NodeList).</li>
      * </ol>
      * <p>
@@ -46,62 +46,82 @@ public class AdjList extends LinkedList<HNodeList> {
      * @return Similar matrix
      */
     protected DoubleMatrix toMatrix() {
-        // step 1: find the longest nodeList.
-        Pair<Integer,Integer> result = findLongest();
-        int maxCol = result.getFirst();
-        int loc = result.getSecond();
-        // step 2：create the dictionary
-        HashMap<String,Integer> map = dict(loc);
-        // step 3 : get the matrix
-        return mapping(map);
+        if (mat == null) {
+            // step 1: initialize the matrix.
+            HashSet<String> colSet = init();
+            // step 2：create the dictionary
+            HashMap<String, Integer> colList = dict(colSet);
+            // step 3 : get the matrix
+            mapping(colList);
+        }
+        return mat;
+
     }
-    // step 1: find the longest nodeList.
-    private Pair<Integer, Integer> findLongest(){
-        int maxCol = 0;
-        int loc = -1;
-        for (int index = 0; index < this.size(); index++) {
-            // copy the rowMap
-            HNodeList tpList = this.get(index);
-            int size = tpList.size();
-            if(size > maxCol) {
-                maxCol = size;
-                loc = index;
+    protected DoubleMatrix toMatrix(HashSet<String> graph_1,HashSet<String> graph_2) {
+        if (mat == null) {
+            // step 1: initialize the matrix.
+            init(graph_1, graph_2);
+            // step 2：create the dictionary
+            HashMap<String, Integer> colList = dict(graph_2);
+            // step 3 : get the matrix
+            mapping(colList);
+        }
+        return mat;
+
+    }
+    // step 1: initialize the matrix.
+    private void init(HashSet<String> graph_1,HashSet<String> graph_2){
+        mat = new DoubleMatrix(graph_1.size(),graph_2.size());
+    }
+    // alter: step_1
+
+    /**
+     * iterate over the adjList to init.
+     * return colSet.
+     */
+    private HashSet<String> init(){
+        int row = 0;
+        int col = 0;
+        HashSet<String> colSet = new HashSet<>();
+        for (NodeList list: this) {
+            row++;
+            for (Node node: list) {
+                colSet.add(node.getStrName());
             }
         }
-        return new Pair<>(maxCol,loc);
+        mat = new DoubleMatrix(row,colSet.size());
+        return colSet;
     }
 
     /**
      * step 2：create the dictionary
      * @return map for the matrix's column
      */
-    private HashMap<String,Integer> dict(int rowIndex){
+    private HashMap<String,Integer> dict(HashSet<String> colSet){
         // node name , index
         HashMap<String,Integer> map = new HashMap<>();
-        NodeList list = this.get(rowIndex);
-        for (int i = 0; i < list.size(); i++) {
-            map.put(list.get(i).getStrName(),i);
+        ArrayList<String> colList = new ArrayList<String>(colSet);
+        colList.sort(Comparator.naturalOrder());
+        HashMap<String,Integer> hashMap = new HashMap<>();
+        for (int i = 0; i < colList.size(); i++) {
+            hashMap.put(colList.get(i),i);
         }
-        return map;
+        return hashMap;
     }
 
     /**
-     * Iterate other nodeLists mapping the other graph's NodeSet(NodeList).
-     * @param map the longest map
+     * Iterate all nodeLists mapping the colList.
+     * @param colMap the map for the matrix's column
      */
-    private DoubleMatrix mapping( HashMap<String,Integer> map){
-        int row = this.size();
-        int col = map.size();
-        DoubleMatrix matrix = new DoubleMatrix(row,col);
+    private void mapping(HashMap<String,Integer> colMap){
         for (int r = 0; r < this.size(); r++) {
             NodeList list = this.get(r);
-            DoubleMatrix rowVector = new DoubleMatrix(col);
+            DoubleMatrix rowVector = new DoubleMatrix(colMap.size());
             list.forEach(node -> {
-                rowVector.put(map.get(node.getStrName()),node.getValue());
+                rowVector.put(colMap.get(node.getStrName()),node.getValue());
             });
-            matrix.putRow(r,rowVector);
+            mat.putRow(r,rowVector);
         }
-        return matrix;
     }
 
 

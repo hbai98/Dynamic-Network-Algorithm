@@ -9,6 +9,7 @@ import Algorithms.Graph.Utils.AdjList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Vector;
 import java.util.regex.Pattern;
 
@@ -31,8 +32,8 @@ import java.util.regex.Pattern;
  * </p>
  */
 public class AdjListFileReader {
-    private static NodeList graph_1;
-    private static NodeList graph_2;
+    private static HashSet<String> graph_1;
+    private static HashSet<String> graph_2;
 
     /**
      * Parses the file given by <code>inputFilePath</code> to EdgeList.
@@ -246,11 +247,11 @@ public class AdjListFileReader {
         graph_2.add(tgtName);
     }
     //------------------PUBLIC-----------------------------
-    public static NodeList getGraph_1() {
+    public static HashSet<String> getGraph_1() {
         return graph_1;
     }
 
-    public static NodeList getGraph_2() {
+    public static HashSet<String>  getGraph_2() {
         return graph_2;
     }
 }
