@@ -74,4 +74,13 @@ class AdjListFileReaderSpec {
             e.printStackTrace();
         }
     }
+
+    @DisplayName("able to read a medium-level graph")
+    @Test
+    void ReadMediumGraph() throws IOException {
+        AdjList graph = readToAdjL("src/test/java/resources/IOTest/mediumGraph.txt");
+        assertEquals(0.986,graph.getMatrixVal("RPS9A","RPS9"));
+        assertEquals(0.756,graph.getMatrixVal("YRF1-4","EIF4A3"));
+
+    }
 }

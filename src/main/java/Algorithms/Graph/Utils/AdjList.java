@@ -1,12 +1,9 @@
 package Algorithms.Graph.Utils;
 
-import Algorithms.Graph.IO.AdjListFileReader;
 import Algorithms.Graph.Network.Node;
-import Algorithms.Graph.Network.NodeList;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
-import java.awt.List;
 import java.io.IOException;
 import java.util.*;
 
@@ -23,6 +20,12 @@ import java.util.*;
  */
 public class AdjList extends LinkedList<HNodeList> {
     private DoubleMatrix mat;
+    //------------------similarity matrix----------
+    private HashSet<String> rowSet;
+    private HashSet<String> colSet;
+    private HashMap<String,Integer> rowMap;
+    private HashMap<String,Integer> colMap;
+
     // used to construct the matrix
 
     /**
@@ -45,7 +48,7 @@ public class AdjList extends LinkedList<HNodeList> {
      * </p>
      * @return Similar matrix
      */
-    protected DoubleMatrix toMatrix() {
+    public DoubleMatrix toMatrix() {
         if (mat == null) {
             // step 1: initialize the matrix.
             HashSet<String> colSet = init();
@@ -71,6 +74,8 @@ public class AdjList extends LinkedList<HNodeList> {
     }
     // step 1: initialize the matrix.
     private void init(HashSet<String> graph_1,HashSet<String> graph_2){
+        this.rowSet = graph_1;
+        this.colSet = graph_2;
         mat = new DoubleMatrix(graph_1.size(),graph_2.size());
     }
     // alter: step_1
@@ -83,12 +88,17 @@ public class AdjList extends LinkedList<HNodeList> {
         int row = 0;
         int col = 0;
         HashSet<String> colSet = new HashSet<>();
-        for (NodeList list: this) {
+        HashSet<String> rowSet = new HashSet<>();
+
+        for (HNodeList list: this) {
             row++;
+            rowSet.add(list.getSignName());
             for (Node node: list) {
                 colSet.add(node.getStrName());
             }
         }
+        this.rowSet = rowSet;
+        this.colSet = colSet;
         mat = new DoubleMatrix(row,colSet.size());
         return colSet;
     }
@@ -106,6 +116,7 @@ public class AdjList extends LinkedList<HNodeList> {
         for (int i = 0; i < colList.size(); i++) {
             hashMap.put(colList.get(i),i);
         }
+        colMap = hashMap;
         return hashMap;
     }
 
@@ -115,7 +126,8 @@ public class AdjList extends LinkedList<HNodeList> {
      */
     private void mapping(HashMap<String,Integer> colMap){
         for (int r = 0; r < this.size(); r++) {
-            NodeList list = this.get(r);
+            HNodeList list = this.get(r);
+            rowMap.put(list.getSignName(),r);
             DoubleMatrix rowVector = new DoubleMatrix(colMap.size());
             list.forEach(node -> {
                 rowVector.put(colMap.get(node.getStrName()),node.getValue());
@@ -128,6 +140,9 @@ public class AdjList extends LinkedList<HNodeList> {
 
     /**
      * add a list with to graph, if it exists(same head name),combine two of them; else add the list to the graph.
+     * <p>
+     *     Notice: automatically sort() according to the name's lexicographical order.
+     * </p>
      * @param hNodeList a list to be added
      * @return true for already exist.
      */
@@ -260,9 +275,51 @@ public class AdjList extends LinkedList<HNodeList> {
             return false;
         }
     }
+
+    public Pair<Integer, Node> findMaxOfList(String rowName){
+        int index = Collections.binarySearch(this,new HNodeList(rowName), Comparator.comparing(o -> o.signName));
+        if(index >=0){
+            return new Pair<Integer,Node>(index,this.get(index).findMax());
+        }
+        else{
+            throw new IllegalArgumentException("Can't the rowName HNodeList in the adjList");
+        }
+    }
+    public Pair<Integer,Node> findMaxOfList(int rowIndex){
+        assert(rowIndex>=0);
+        return new Pair<>(rowIndex, this.get(rowIndex).findMax());
+    }
     //------------------PUBLIC-----------------------------
 
 
+    public HashSet<String> getColSet() {
+        if(mat == null){
+            mat = this.toMatrix();
+            return colSet;
+        }
+        return colSet;
+    }
 
+    public HashSet<String> getRowSet() {
+        if(mat == null){
+            mat = this.toMatrix();
+            return rowSet;
+        }
+        return rowSet;
+    }
 
+    public HashMap<String, Integer> getRowMap() {
+        if(mat == null){
+            mat = this.toMatrix();
+            return rowMap;
+        }
+        return rowMap;
+    }
+    public HashMap<String, Integer> getColMap() {
+        if(mat == null){
+            mat = this.toMatrix();
+            return colMap;
+        }
+        return colMap;
+    }
 }

@@ -13,7 +13,8 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
     protected Node target;
     protected double weight;
     protected Type type;
-
+    protected int matRow = -1;
+    protected int matCol = -1;
     /**
      * For easing the comparision between edges. <p>Limit:
      * the edge is both undirected and its components are with the ascending name order.
@@ -66,6 +67,55 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
         }
     }
 
+    public Edge(Node src,Node tgt,double weight){
+        this.source = src;
+        this.target = tgt;
+        this.weight = weight;
+        this.type = Type.UNDIRECTED;
+        if(src.compareTo(tgt) > 0){
+            Node tpNode = source;
+            source = target;
+            target = tpNode;
+        }
+    }
+
+    public Edge(Node src,Node tgt){
+        this.source = src;
+        this.target = tgt;
+        this.weight = 0.0d;
+        this.type = Type.UNDIRECTED;
+        if(src.compareTo(tgt) > 0){
+            Node tpNode = source;
+            source = target;
+            target = tpNode;
+        }
+    }
+    public Edge(Node src,Node tgt, int matRow ,int matCol){
+        this.source = src;
+        this.target = tgt;
+        this.weight = 0.0d;
+        this.matRow = matRow;
+        this.matCol = matCol;
+        this.type = Type.UNDIRECTED;
+        if(src.compareTo(tgt) > 0){
+            Node tpNode = source;
+            source = target;
+            target = tpNode;
+        }
+    }
+    public Edge(Node src,Node tgt, int matRow ,int matCol,double weight){
+        this.source = src;
+        this.target = tgt;
+        this.weight = weight;
+        this.matRow = matRow;
+        this.matCol = matCol;
+        this.type = Type.UNDIRECTED;
+        if(src.compareTo(tgt) > 0){
+            Node tpNode = source;
+            source = target;
+            target = tpNode;
+        }
+    }
     //--------------------PUBLIC ACCESS---------------------------
     @Override
     public Node getSource() {
@@ -83,6 +133,14 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
 
     public Type getType() {
         return type;
+    }
+
+    public int getMatCol() {
+        return matCol;
+    }
+
+    public int getMatRow() {
+        return matRow;
     }
 //    -----------------SET--------------------
 
@@ -103,6 +161,13 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
         this.type = type;
     }
 
+    public void setMatCol(int matCol) {
+        this.matCol = matCol;
+    }
+
+    public void setMatRow(int matRow) {
+        this.matRow = matRow;
+    }
     /**
      * Method for the comparision between edges with the rule as the followings:
      * <p>1. source node takes first considerations, (lexicographical way in its name)</p>

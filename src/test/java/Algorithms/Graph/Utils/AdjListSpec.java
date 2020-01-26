@@ -99,5 +99,12 @@ class AdjListSpec {
         graph.add(homo_2);
         assertEquals(0.3,graph.getMatrixVal("0000","1"));
     }
+    @DisplayName("can find the row's max value.")
+    @Test
+    void findMaxTest(){
+        homo_1.addAll(Arrays.asList(new Node("1",0.2),new Node("2",0.8)));
+        graph.add(homo_1);
+        assertEquals(0.8,graph.findMaxOfList("3232"));
+    }
 
 }

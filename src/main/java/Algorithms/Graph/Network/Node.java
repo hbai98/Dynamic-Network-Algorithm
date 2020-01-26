@@ -14,6 +14,7 @@ public class Node implements Comparable<Node> {
     protected double value;
     protected String strLayerCode;
 
+
     public Node(String strName, double value, String strLayerCode) {
         this.strName = strName;
         this.value = value;
@@ -35,9 +36,14 @@ public class Node implements Comparable<Node> {
         this.value = value;
     }
 
+
+
+
     /***
      * methods for public access
      */
+
+
 
     public double getValue() {
         return value;
@@ -63,6 +69,7 @@ public class Node implements Comparable<Node> {
     public void setStrLayerCode(String strLayerCode) {
         this.strLayerCode = strLayerCode;
     }
+
 
 
     /**

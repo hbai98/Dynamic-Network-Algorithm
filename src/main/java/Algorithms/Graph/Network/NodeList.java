@@ -106,7 +106,7 @@ public class NodeList extends LinkedList<Node> {
      * @param strNode node's name to be added
      */
     public void sortAdd(String strNode) {
-        this.sortAdd( new Node(strNode));
+        this.sortAdd(new Node(strNode));
     }
 
     /**
@@ -116,20 +116,31 @@ public class NodeList extends LinkedList<Node> {
      * @param weight  node's weight
      */
     public void sortAdd(String strNode, double weight) {
-        this.sortAdd(strNode, weight);
+        this.sortAdd(new Node(strNode,weight));
     }
 
     /**
      * add a node while not interfere with the sorted sequence
      *
-     * @param strNode node's name
-     * @param weight  node's weight
      */
     public void sortAddAll(Node... nodes) {
         for (Node node :
                 nodes) {
             sortAdd(node);
         }
+    }
+
+    public Node findMax(){
+        double max = Double.MIN_NORMAL;
+        Node tpNode = null;
+        for (Node node:this) {
+            double val = node.getValue();
+            if(val > max){
+                max = val;
+                tpNode = node;
+            }
+        }
+        return tpNode;
     }
 
 

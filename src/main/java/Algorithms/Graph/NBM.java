@@ -6,16 +6,18 @@ import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Network.NodeList;
 import Algorithms.Graph.Utils.AdjList;
 import org.jblas.DoubleMatrix;
+import org.jgrapht.alg.util.Pair;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.PriorityQueue;
-import java.util.Set;
+import java.io.IOException;
+import java.util.*;
 
 public class NBM {
     protected AdjList simList;
+    protected DoubleMatrix mat;
     private HashSet<String> graph_1;
     private HashSet<String> graph_2;
+    private HashMap<String,String> bestPairNodeG1;
+    private HashMap<String,Double> bestPairWeightG1;
 
     protected PriorityQueue<Edge> pqEdge;
 
@@ -27,6 +29,8 @@ public class NBM {
         init(simList);
         // step 1
 //        findBestPairs();
+        // step 2
+
     }
 
     /**
@@ -37,20 +41,44 @@ public class NBM {
      * @param graph_2 HashSet from reader
      */
     protected NBM(AdjList simList,HashSet<String> graph_1,HashSet<String> graph_2){
-        init(simList);
+        init(simList,graph_1,graph_2);
         // step 1
 //        findBestPairs();
     }
+
+    private void init(AdjList simList, HashSet<String> graph_1, HashSet<String> graph_2) {
+        this.graph_1 = graph_1;
+        this.graph_2 = graph_2;
+        this.simList = simList;
+        this.mat = simList.toMatrix();
+        // pq
+        pqEdge = new PriorityQueue<>(Comparator.comparingDouble(Edge::getWeight));
+    }
+
     private void init(AdjList simList){
         this.simList = simList;
-
+        this.mat = simList.toMatrix();
+        this.graph_1 = simList.getRowSet();
+        this.graph_2 = simList.getColSet();
+        // pq
+        pqEdge = new PriorityQueue<>(Comparator.comparingDouble(Edge::getWeight));
     }
     /**
-     * iterate nodes in Graph1 and finds every node it's best pair( with the greatest weight )
+     * iterate(matrix&nodeList) nodes in Graph1 and finds every node it's best pair( with the greatest weight )
      */
     protected void findBestPairs() {
-        assert(simList!=null);
-
+        assert(simList!=null&&graph_1!=null&&graph_2!=null);
+        HashMap<String,Integer> rowMap = simList.getRowMap();
+        HashMap<String,Integer> colMap = simList.getColMap();
+        graph_1.forEach(strNode->{
+            int row = rowMap.get(strNode);
+            Pair<Integer, Node> res = simList.findMaxOfList(row);
+            int col = res.getFirst();
+            Node tgtNode = res.getSecond();
+            pqEdge.add(new Edge(new Node(strNode),tgtNode,row,col,tgtNode.getValue()));
+            bestPairNodeG1.put(strNode, tgtNode.getStrName());
+            bestPairWeightG1.put(strNode,tgtNode.getValue());
+        });
     }
 
 

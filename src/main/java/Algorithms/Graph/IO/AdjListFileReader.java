@@ -32,8 +32,8 @@ import java.util.regex.Pattern;
  * </p>
  */
 public class AdjListFileReader {
-    private static HashSet<String> graph_1;
-    private static HashSet<String> graph_2;
+    private static HashSet<String> graph_1 = new HashSet<>();
+    private static HashSet<String> graph_2 = new HashSet<>();
 
     /**
      * Parses the file given by <code>inputFilePath</code> to EdgeList.
