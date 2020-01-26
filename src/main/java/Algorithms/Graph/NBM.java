@@ -14,11 +14,29 @@ import java.util.Set;
 
 public class NBM {
     protected AdjList simList;
-    private NodeList graph_1;
-    private NodeList graph_2;
+    private HashSet<String> graph_1;
+    private HashSet<String> graph_2;
 
     protected PriorityQueue<Edge> pqEdge;
+
+    /**
+     * NBM
+     * @param simList AdjList to represent the similarity matrix
+     */
     protected NBM(AdjList simList){
+        init(simList);
+        // step 1
+//        findBestPairs();
+    }
+
+    /**
+     * NBM
+     * get HashSet from the reader.
+     * @param simList AdjList to represent the similarity matrix
+     * @param graph_1 HashSet from reader
+     * @param graph_2 HashSet from reader
+     */
+    protected NBM(AdjList simList,HashSet<String> graph_1,HashSet<String> graph_2){
         init(simList);
         // step 1
 //        findBestPairs();
@@ -32,9 +50,7 @@ public class NBM {
      */
     protected void findBestPairs() {
         assert(simList!=null);
-        for (Node node : graph_1) {
 
-        }
     }
 
 
