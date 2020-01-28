@@ -55,15 +55,15 @@ public class NodeList extends LinkedList<Node> {
     /**
      * Find node according to the name, but before use this method,
      * user should ensure the nodeList has already be in order.
+     *
      * @param strNode node to be found
      * @return node found or null
      */
     public Node sortFindByName(String strNode) {
-        int index = Collections.binarySearch(this,new Node(strNode), Comparator.comparing(o -> o.strName));
+        int index = Collections.binarySearch(this, new Node(strNode), Comparator.comparing(o -> o.strName));
         if (index >= 0) {
             return this.get(index);
-        }
-        else return null;
+        } else return null;
     }
 
     public void remove(String strNode) {
@@ -88,13 +88,18 @@ public class NodeList extends LinkedList<Node> {
 
     /**
      * add a node while not interfere with the sorted sequence
+     * <p>
+     * Only add while the node's weight is greater.
+     * </p>
      *
      * @param node node to be added
      */
     public void sortAdd(Node node) {
         int index = Collections.binarySearch(this, node, Comparator.comparing(o -> o.strName));
         if (index >= 0) {
-            this.add(index, node);
+            if (node.getValue() > this.get(index).getValue()) {
+                this.get(index).setValue(node.getValue());
+            }
         } else {
             this.add(-index - 1, node);
         }
@@ -102,6 +107,9 @@ public class NodeList extends LinkedList<Node> {
 
     /**
      * add a node while not interfere with the sorted sequence
+     * <p>
+     * Only add while the node's weight is greater.
+     * </p>
      *
      * @param strNode node's name to be added
      */
@@ -111,17 +119,22 @@ public class NodeList extends LinkedList<Node> {
 
     /**
      * add a node while not interfere with the sorted sequence
+     * <p>
+     * Only add while the node's weight is greater.
+     * </p>
      *
      * @param strNode node's name
      * @param weight  node's weight
      */
     public void sortAdd(String strNode, double weight) {
-        this.sortAdd(new Node(strNode,weight));
+        this.sortAdd(new Node(strNode, weight));
     }
 
     /**
      * add a node while not interfere with the sorted sequence
-     *
+     * <p>
+     * Only add while the node's weight is greater.
+     * </p>
      */
     public void sortAddAll(Node... nodes) {
         for (Node node :
@@ -130,12 +143,12 @@ public class NodeList extends LinkedList<Node> {
         }
     }
 
-    public Node findMax(){
+    public Node findMax() {
         double max = Double.MIN_NORMAL;
         Node tpNode = null;
-        for (Node node:this) {
+        for (Node node : this) {
             double val = node.getValue();
-            if(val > max){
+            if (val > max) {
                 max = val;
                 tpNode = node;
             }

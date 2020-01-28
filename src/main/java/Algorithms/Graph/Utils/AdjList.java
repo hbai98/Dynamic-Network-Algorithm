@@ -87,7 +87,6 @@ public class AdjList extends LinkedList<HNodeList> {
      */
     private HashSet<String> init(){
         int row = 0;
-        int col = 0;
         HashSet<String> colSet = new HashSet<>();
         HashSet<String> rowSet = new HashSet<>();
 
@@ -110,7 +109,6 @@ public class AdjList extends LinkedList<HNodeList> {
      */
     private HashMap<String,Integer> dict(HashSet<String> colSet){
         // node name , index
-        HashMap<String,Integer> map = new HashMap<>();
         ArrayList<String> colList = new ArrayList<String>(colSet);
         colList.sort(Comparator.naturalOrder());
         HashMap<String,Integer> hashMap = new HashMap<>();
@@ -118,6 +116,7 @@ public class AdjList extends LinkedList<HNodeList> {
             hashMap.put(colList.get(i),i);
         }
         colMap = hashMap;
+
         return hashMap;
     }
 

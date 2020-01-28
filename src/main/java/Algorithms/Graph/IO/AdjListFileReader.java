@@ -2,8 +2,6 @@ package Algorithms.Graph.IO;
 
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHasSet;
-import Algorithms.Graph.Network.Node;
-import Algorithms.Graph.Network.NodeList;
 import Algorithms.Graph.Utils.AdjList;
 
 import java.io.BufferedReader;
@@ -32,13 +30,13 @@ import java.util.regex.Pattern;
  * </p>
  */
 public class AdjListFileReader {
-    private static HashSet<String> graph_1 = new HashSet<>();
-    private static HashSet<String> graph_2 = new HashSet<>();
+    private HashSet<String> graph_1 = new HashSet<>();
+    private HashSet<String> graph_2 = new HashSet<>();
 
     /**
      * Parses the file given by <code>inputFilePath</code> to EdgeList.
      */
-    public static EdgeHasSet readToEL(String inputFilePath) throws IOException {
+    public EdgeHasSet readToEL(String inputFilePath) throws IOException {
 
         return readToEL(new BufferedReader(new FileReader(inputFilePath)), true);
     }
@@ -47,12 +45,12 @@ public class AdjListFileReader {
      * Parses the file given by <code>input</code>to EdgeList. It will
      * close the reader when finished parsing.
      */
-    public static EdgeHasSet readToEL(BufferedReader input) throws IOException {
+    public EdgeHasSet readToEL(BufferedReader input) throws IOException {
         return readToEL(input, true);
     }
     //-------------------------AdjNodeList【homoGeneMap】 return type has been added in switch choices------------------------
 
-    public static AdjList readToAdjL(String inputFilePath) throws IOException {
+    public AdjList readToAdjL(String inputFilePath) throws IOException {
 
         return readToAdjL(new BufferedReader(new FileReader(inputFilePath)), true);
     }
@@ -65,7 +63,7 @@ public class AdjListFileReader {
      *                          not close it.
      */
     // TODO a bit of duplicated with readToEL()! find a better way to solve!
-    private static AdjList readToAdjL(BufferedReader input, boolean closeWhenFinished) throws IOException{
+    private AdjList readToAdjL(BufferedReader input, boolean closeWhenFinished) throws IOException{
         AdjList graph = new AdjList();
         // matches sequence of one or more whitespace characters.
         Pattern splitter = Pattern.compile("\\s+");
@@ -97,7 +95,7 @@ public class AdjListFileReader {
      *                          the reader when finished reading; otherwise, it will
      *                          not close it.
      */
-    public static EdgeHasSet readToEL(BufferedReader input, boolean closeWhenFinished) throws IOException {
+    public EdgeHasSet readToEL(BufferedReader input, boolean closeWhenFinished) throws IOException {
         EdgeHasSet graph = new EdgeHasSet();
         // matches sequence of one or more whitespace characters.
         Pattern splitter = Pattern.compile("\\s+");
@@ -139,7 +137,7 @@ public class AdjListFileReader {
      * @param graph   EdgeList to contain result
      * @param sifLine result very line
      */
-    private static void parseLine(EdgeHasSet graph, Vector<String> sifLine) throws IOException {
+    private void parseLine(EdgeHasSet graph, Vector<String> sifLine) throws IOException {
         int sifSize = sifLine.size();
         if(sifSize == 0){
             throw new IOException("Nothing has been input!.");
@@ -173,6 +171,7 @@ public class AdjListFileReader {
                 graph.add(new Edge(srcName,tgtName,weight));
                 addToNodeList(srcName,tgtName);
 
+
             }
         }
         sifLine.clear();
@@ -195,7 +194,7 @@ public class AdjListFileReader {
      * @param graph   EdgeList to contain result
      * @param sifLine result very line
      */
-    private static void parseLine(AdjList graph, Vector<String> sifLine) throws IOException {
+    private void parseLine(AdjList graph, Vector<String> sifLine) throws IOException {
         int sifSize = sifLine.size();
         if(sifSize == 0){
             throw new IOException("Nothing has been input!.");
@@ -225,6 +224,7 @@ public class AdjListFileReader {
                 }
                 double weight = Double.parseDouble(input);
                 // create edge & add
+                // Contain the lexicographical order to prevent the case of same edges.
                 graph.sortAddOneNode(srcName,tgtName,weight);
                 addToNodeList(srcName,tgtName);
             }
@@ -232,7 +232,12 @@ public class AdjListFileReader {
         sifLine.clear();
     }
 
-    public static boolean isNumeric(String str) {
+
+
+
+
+
+    public boolean isNumeric(String str) {
         try {
             Double.parseDouble(str);
             return true;
@@ -241,17 +246,27 @@ public class AdjListFileReader {
         }
     }
 
-    private static void addToNodeList(String srcName,String tgtName){
+    private void addToNodeList(String srcName,String tgtName){
         // record to nodeLists
         graph_1.add(srcName);
         graph_2.add(tgtName);
     }
     //------------------PUBLIC-----------------------------
-    public static HashSet<String> getGraph_1() {
+
+    /**
+     * Please execute read instruction before calling this method.
+     * @return HashSet of nodes' names in graph_1
+     */
+    public HashSet<String> getGraph_1() {
+        assert(graph_1!=null);
         return graph_1;
     }
-
-    public static HashSet<String>  getGraph_2() {
+    /**
+     * Please execute read instruction before calling this method.
+     * @return HashSet of nodes' names in graph_2
+     */
+    public HashSet<String>  getGraph_2() {
+        assert(graph_2!=null);
         return graph_2;
     }
 }

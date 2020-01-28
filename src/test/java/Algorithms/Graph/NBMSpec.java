@@ -1,7 +1,30 @@
 package Algorithms.Graph;
 
-import static org.junit.jupiter.api.Assertions.*;
+import Algorithms.Graph.IO.AdjListFileReader;
+import Algorithms.Graph.Utils.AdjList;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.util.HashSet;
+
+@DisplayName("THe algorithm's ")
 class NBMSpec {
+    AdjList list;
+    HashSet<String> graph_1;
+    HashSet<String>  graph_2;
 
+    @BeforeEach
+    void init() throws IOException {
+        AdjListFileReader reader = new AdjListFileReader();
+        list = reader.readToAdjL("src/test/java/resources/IOTest/simpleGraph_1.txt");
+        graph_1 = reader.getGraph_1();
+        graph_2 = reader.getGraph_2();
+    }
+    @DisplayName("findBestPair finish.")
+    @Test
+    void findBestPairTest(){
+
+    }
 }

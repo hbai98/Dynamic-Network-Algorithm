@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static Algorithms.Graph.IO.AdjListFileReader.*;
+
 @DisplayName("SIFFileReader is")
 class AdjListFileReaderSpec {
     @DisplayName("able to use pattern to split. ")
@@ -41,7 +41,8 @@ class AdjListFileReaderSpec {
     @Test
     void ReadTest(){
         try {
-            EdgeHasSet graph = readToEL("src/test/java/resources/IOTest/simpleGraph_1.txt");
+            AdjListFileReader reader = new AdjListFileReader();
+            EdgeHasSet graph = reader.readToEL("src/test/java/resources/IOTest/simpleGraph_1.txt");
             // the EdgeList graph is not a self-update graph (automatic replace edges with higher values)
             assertThat(graph).contains(new Edge("A","B",0.2),new Edge("A","C",0.6),new Edge("A","C",0.3),
                     new Edge("A","D",0.4),new Edge("C","B",0.7));
@@ -49,7 +50,8 @@ class AdjListFileReaderSpec {
             e.printStackTrace();
         }
         try {
-            EdgeHasSet graph = readToEL("src/test/java/resources/IOTest/wrongForTest_1.txt");
+            AdjListFileReader reader = new AdjListFileReader();
+            EdgeHasSet graph = reader.readToEL("src/test/java/resources/IOTest/wrongForTest_1.txt");
         } catch (IOException e) {
             assertEquals("The file input format is not correct. Plus: some name-value pairs are incorrect!", e.getMessage());
         }
@@ -60,13 +62,14 @@ class AdjListFileReaderSpec {
     void ReadToArrayListTest(){
         try {
             // homoGeneMap is a self-update graph
-            AdjList graph = readToAdjL("src/test/java/resources/IOTest/simpleGraph_1.txt");
+            AdjListFileReader reader = new AdjListFileReader();
+            AdjList graph = reader.readToAdjL("src/test/java/resources/IOTest/simpleGraph_1.txt");
             HNodeList forTestA = new HNodeList("A");
             HNodeList forTestB = new HNodeList("C");
             forTestA.add("B",0.2);
             forTestA.add("C",0.3);
             forTestA.add("D",0.4);
-            forTestB.add("A",0.7);
+            forTestB.add("A",0.6);
             forTestB.add("B",0.7);
 
             assertThat(graph).contains(forTestA,forTestB);
@@ -78,7 +81,8 @@ class AdjListFileReaderSpec {
     @DisplayName("able to read a medium-level graph")
     @Test
     void ReadMediumGraph() throws IOException {
-        AdjList graph = readToAdjL("src/test/java/resources/IOTest/mediumGraph.txt");
+        AdjListFileReader reader = new AdjListFileReader();
+        AdjList graph = reader.readToAdjL("src/test/java/resources/IOTest/mediumGraph.txt");
         assertEquals(0.986,graph.getMatrixVal("RPS9A","RPS9"));
         assertEquals(0.756,graph.getMatrixVal("YRF1-4","EIF4A3"));
 

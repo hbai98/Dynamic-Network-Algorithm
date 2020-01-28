@@ -1,14 +1,10 @@
 package Algorithms.Graph;
 
-import Algorithms.Graph.IO.AdjListFileReader;
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.Node;
-import Algorithms.Graph.Network.NodeList;
 import Algorithms.Graph.Utils.AdjList;
-import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
-import java.io.IOException;
 import java.util.*;
 
 public class NBM {

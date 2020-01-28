@@ -1,11 +1,11 @@
 package Algorithms.Graph.Network;
 // Author: Haotian Bai
 // Shanghai University, department of computer science
+import Algorithms.Graph.IO.AdjListFileReader;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
-
-import static Algorithms.Graph.IO.AdjListFileReader.readToEL;
 
 /**
  * This class can be defined as HashSet， while the edge's weight will not get updated
@@ -50,7 +50,8 @@ public class EdgeHasSet extends HashSet<Edge> {
     }
 
     protected EdgeHasSet readFromFile(String filename) throws IOException {
-        return readToEL(filename);
+        AdjListFileReader reader = new AdjListFileReader();
+        return reader.readToEL(filename);
     }
 
     public void printAll(){

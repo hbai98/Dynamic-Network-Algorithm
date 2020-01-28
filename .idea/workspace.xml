@@ -2,8 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/BLAST/LocalBlast.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/IO/AdjListFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/IO/AdjListFileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/EdgeHasSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/EdgeHasSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/NodeList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/NodeList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/AdjList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/AdjList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/IO/AdjListFileReaderSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/IO/AdjListFileReaderSpec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/NBMSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/NBMSpec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/IO/AdjListFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/IO/AdjListFileReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/EdgeHasSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/EdgeHasSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/NodeList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/NodeList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/AdjList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/AdjList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/IO/AdjListFileReaderSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/IO/AdjListFileReaderSpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/NBMSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/NBMSpec.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +30,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -89,7 +103,7 @@
       <recent name="Algorithms.Graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AdjListFileReaderSpec.ReadMediumGraph">
+  <component name="RunManager" selected="JUnit.AdjListFileReaderSpec.ReadToArrayListTest">
     <configuration name="AdjListFileReaderSpec.ReadMediumGraph" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
@@ -106,49 +120,49 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdjListSpec" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AdjListFileReaderSpec.ReadTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.Utils.*" />
+          <option name="PATTERN" value="Algorithms.Graph.IO.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.Utils" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Utils.AdjListSpec" />
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.IO" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.IO.AdjListFileReaderSpec" />
+      <option name="METHOD_NAME" value="ReadTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdjListFileReaderSpec.ReadToArrayListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Algorithms.Graph.IO.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.IO" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.IO.AdjListFileReaderSpec" />
+      <option name="METHOD_NAME" value="ReadToArrayListTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NBMSpec" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Algorithms.Graph.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Algorithms.Graph" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.NBMSpec" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdjListSpec.findMatrixValTest_2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.Utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.Utils" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Utils.AdjListSpec" />
-      <option name="METHOD_NAME" value="findMatrixValTest_2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdjListSpec.findMaxTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.Utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.Utils" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Utils.AdjListSpec" />
-      <option name="METHOD_NAME" value="findMaxTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -170,19 +184,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.AdjListSpec.findMatrixValTest_2" />
-      <item itemvalue="JUnit.AdjListSpec" />
-      <item itemvalue="JUnit.AdjListSpec.findMaxTest" />
       <item itemvalue="JUnit.NodeSpec.compareTo" />
+      <item itemvalue="JUnit.NBMSpec" />
       <item itemvalue="JUnit.AdjListFileReaderSpec.ReadMediumGraph" />
+      <item itemvalue="JUnit.AdjListFileReaderSpec.ReadToArrayListTest" />
+      <item itemvalue="JUnit.AdjListFileReaderSpec.ReadTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AdjListFileReaderSpec.ReadToArrayListTest" />
+        <item itemvalue="JUnit.NBMSpec" />
+        <item itemvalue="JUnit.AdjListFileReaderSpec.ReadTest" />
         <item itemvalue="JUnit.AdjListFileReaderSpec.ReadMediumGraph" />
         <item itemvalue="JUnit.NodeSpec.compareTo" />
-        <item itemvalue="JUnit.AdjListSpec.findMaxTest" />
-        <item itemvalue="JUnit.AdjListSpec" />
-        <item itemvalue="JUnit.AdjListSpec.findMatrixValTest_2" />
       </list>
     </recent_temporary>
   </component>
@@ -214,7 +228,8 @@
       <workItem from="1579738177382" duration="2242000" />
       <workItem from="1579747297659" duration="19204000" />
       <workItem from="1579831377939" duration="34674000" />
-      <workItem from="1580028543405" duration="14297000" />
+      <workItem from="1580028543405" duration="15899000" />
+      <workItem from="1580185921719" duration="7719000" />
     </task>
     <servers />
   </component>
@@ -270,10 +285,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="744" y="420" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1920.1080@0.0.1920.1080" timestamp="1579242298871" />
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1579959837574">
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1580191941829">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.864@0.0.1536.864" timestamp="1579959837574" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.864@0.0.1536.864" timestamp="1580191941829" />
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1579405057461" />
     <state x="1196" y="247" key="#xdebugger.evaluate" timestamp="1579511493737">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -288,45 +303,45 @@
     </state>
     <state x="162" y="225" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1579781498938" />
     <state x="203" y="281" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1579173438855" />
-    <state width="1493" height="326" key="GridCell.Tab.0.bottom" timestamp="1580046642242">
+    <state width="1493" height="447" key="GridCell.Tab.0.bottom" timestamp="1580193699063">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="326" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580046642242" />
+    <state width="1493" height="447" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580193699063" />
     <state width="917" height="326" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="326" key="GridCell.Tab.0.center" timestamp="1580046642242">
+    <state width="1493" height="447" key="GridCell.Tab.0.center" timestamp="1580193699062">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="326" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580046642242" />
+    <state width="1493" height="447" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580193699062" />
     <state width="917" height="326" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="326" key="GridCell.Tab.0.left" timestamp="1580046642242">
+    <state width="1493" height="447" key="GridCell.Tab.0.left" timestamp="1580193699062">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="326" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580046642242" />
+    <state width="1493" height="447" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580193699062" />
     <state width="917" height="326" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465822" />
-    <state width="1493" height="326" key="GridCell.Tab.0.right" timestamp="1580046642242">
+    <state width="1493" height="447" key="GridCell.Tab.0.right" timestamp="1580193699063">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="326" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580046642242" />
+    <state width="1493" height="447" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580193699063" />
     <state width="917" height="326" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="220" key="GridCell.Tab.1.bottom" timestamp="1580046594315">
+    <state width="1493" height="225" key="GridCell.Tab.1.bottom" timestamp="1580193531044">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="220" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580046594315" />
+    <state width="1493" height="225" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580193531044" />
     <state width="917" height="326" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466610" />
-    <state width="1493" height="220" key="GridCell.Tab.1.center" timestamp="1580046594315">
+    <state width="1493" height="225" key="GridCell.Tab.1.center" timestamp="1580193531044">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="220" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1580046594315" />
+    <state width="1493" height="225" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1580193531044" />
     <state width="917" height="326" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
-    <state width="1493" height="220" key="GridCell.Tab.1.left" timestamp="1580046594315">
+    <state width="1493" height="225" key="GridCell.Tab.1.left" timestamp="1580193531043">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="220" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1580046594315" />
+    <state width="1493" height="225" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1580193531043" />
     <state width="917" height="326" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
-    <state width="1493" height="220" key="GridCell.Tab.1.right" timestamp="1580046594315">
+    <state width="1493" height="225" key="GridCell.Tab.1.right" timestamp="1580193531044">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="220" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1580046594315" />
+    <state width="1493" height="225" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1580193531044" />
     <state width="917" height="326" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
     <state x="639" y="216" key="Maven.ArtifactSearchDialog" timestamp="1579071348260">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -367,9 +382,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="178" y="127" key="new project wizard/0.0.1536.864@0.0.1536.864" timestamp="1579781515214" />
-    <state x="145" y="242" width="672" height="678" key="search.everywhere.popup" timestamp="1579246974522">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="116" y="194" width="672" height="543" key="search.everywhere.popup" timestamp="1580187136774">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state x="116" y="194" width="672" height="543" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1580187136774" />
     <state x="145" y="242" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1579246974522" />
   </component>
   <component name="XDebuggerManager">
@@ -381,15 +397,21 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/IO/AdjListFileReader.java</url>
-          <line>245</line>
-          <option name="timeStamp" value="5" />
+          <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/NBMSpec.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/IO/AdjListFileReaderSpec.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="((Algorithms.Graph.Utils.AdjList)this).get(1).get(0)" custom="Algorithms.Graph.Utils.AdjList" />
+        <watch expression="list.get(0).get(1)" />
       </configuration>
     </watches-manager>
   </component>
