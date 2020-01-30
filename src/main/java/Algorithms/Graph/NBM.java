@@ -1,4 +1,6 @@
 package Algorithms.Graph;
+// Author: Haotian Bai
+// Shanghai University, department of computer science
 
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.Node;

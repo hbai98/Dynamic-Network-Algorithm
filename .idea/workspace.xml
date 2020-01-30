@@ -2,27 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/BLAST/LocalBlast.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/GlobalAlignment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/FastaFileReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/coronavirus2019.faa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/sars2003.faa" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/IO/AdjListFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/IO/AdjListFileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/EdgeHasSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/EdgeHasSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/NodeList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/NodeList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/AdjList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/AdjList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/IO/AdjListFileReaderSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/IO/AdjListFileReaderSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/NBMSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/NBMSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/IO/AdjListFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/IO/AdjListFileReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BLAST/LocalBlast.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/EdgeHasSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/EdgeHasSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/NodeList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/NodeList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/AdjList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/AdjList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/IO/AdjListFileReaderSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/IO/AdjListFileReaderSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/NBMSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/NBMSpec.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Algorithms" />
@@ -103,7 +110,20 @@
       <recent name="Algorithms.Graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AdjListFileReaderSpec.ReadToArrayListTest">
+  <component name="RunManager" selected="Application.FastaFileReader">
+    <configuration name="FastaFileReader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Alignment.IO.FastaFileReader" />
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Alignment.IO.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AdjListFileReaderSpec.ReadMediumGraph" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
@@ -167,36 +187,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NodeSpec.compareTo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.Network.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.Network" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Network.NodeSpec" />
-      <option name="METHOD_NAME" value="compareTo" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="JUnit.NodeSpec.compareTo" />
       <item itemvalue="JUnit.NBMSpec" />
       <item itemvalue="JUnit.AdjListFileReaderSpec.ReadMediumGraph" />
       <item itemvalue="JUnit.AdjListFileReaderSpec.ReadToArrayListTest" />
       <item itemvalue="JUnit.AdjListFileReaderSpec.ReadTest" />
+      <item itemvalue="Application.FastaFileReader" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.FastaFileReader" />
         <item itemvalue="JUnit.AdjListFileReaderSpec.ReadToArrayListTest" />
         <item itemvalue="JUnit.NBMSpec" />
         <item itemvalue="JUnit.AdjListFileReaderSpec.ReadTest" />
         <item itemvalue="JUnit.AdjListFileReaderSpec.ReadMediumGraph" />
-        <item itemvalue="JUnit.NodeSpec.compareTo" />
       </list>
     </recent_temporary>
   </component>
@@ -229,7 +233,7 @@
       <workItem from="1579747297659" duration="19204000" />
       <workItem from="1579831377939" duration="34674000" />
       <workItem from="1580028543405" duration="15899000" />
-      <workItem from="1580185921719" duration="7719000" />
+      <workItem from="1580185921719" duration="24368000" />
     </task>
     <servers />
   </component>
@@ -240,9 +244,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1033" y="199" key="#Inspections" timestamp="1579511109130">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="429" y="144" key="#Inspections" timestamp="1580298400873">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state x="429" y="144" key="#Inspections/0.0.1536.864@0.0.1536.864" timestamp="1580298400873" />
     <state x="1033" y="199" key="#Inspections/0.0.1920.1080@0.0.1920.1080" timestamp="1579511109130" />
     <state x="553" y="199" key="#Project_Structure" timestamp="1578987312361">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -290,9 +295,10 @@
     </state>
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.864@0.0.1536.864" timestamp="1580191941829" />
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1579405057461" />
-    <state x="1196" y="247" key="#xdebugger.evaluate" timestamp="1579511493737">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="480" y="198" key="#xdebugger.evaluate" timestamp="1580299089121">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state x="480" y="198" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1580299089121" />
     <state x="1196" y="247" key="#xdebugger.evaluate/0.0.1920.1080@0.0.1920.1080" timestamp="1579511493737" />
     <state width="403" height="466" key="DebuggerActiveHint" timestamp="1580033783785">
       <screen x="0" y="0" width="1536" height="864" />
@@ -303,54 +309,54 @@
     </state>
     <state x="162" y="225" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1579781498938" />
     <state x="203" y="281" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1579173438855" />
-    <state width="1493" height="447" key="GridCell.Tab.0.bottom" timestamp="1580193699063">
+    <state width="1478" height="223" key="GridCell.Tab.0.bottom" timestamp="1580299157292">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="447" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580193699063" />
+    <state width="1478" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580299157292" />
     <state width="917" height="326" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="447" key="GridCell.Tab.0.center" timestamp="1580193699062">
+    <state width="1478" height="223" key="GridCell.Tab.0.center" timestamp="1580299157292">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="447" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580193699062" />
+    <state width="1478" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580299157292" />
     <state width="917" height="326" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="447" key="GridCell.Tab.0.left" timestamp="1580193699062">
+    <state width="1478" height="223" key="GridCell.Tab.0.left" timestamp="1580299157292">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="447" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580193699062" />
+    <state width="1478" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580299157292" />
     <state width="917" height="326" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465822" />
-    <state width="1493" height="447" key="GridCell.Tab.0.right" timestamp="1580193699063">
+    <state width="1478" height="223" key="GridCell.Tab.0.right" timestamp="1580299157292">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="447" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580193699063" />
+    <state width="1478" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580299157292" />
     <state width="917" height="326" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="225" key="GridCell.Tab.1.bottom" timestamp="1580193531044">
+    <state width="1478" height="223" key="GridCell.Tab.1.bottom" timestamp="1580299157604">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580193531044" />
+    <state width="1478" height="223" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580299157604" />
     <state width="917" height="326" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466610" />
-    <state width="1493" height="225" key="GridCell.Tab.1.center" timestamp="1580193531044">
+    <state width="1478" height="223" key="GridCell.Tab.1.center" timestamp="1580299157603">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1580193531044" />
+    <state width="1478" height="223" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1580299157603" />
     <state width="917" height="326" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
-    <state width="1493" height="225" key="GridCell.Tab.1.left" timestamp="1580193531043">
+    <state width="1478" height="223" key="GridCell.Tab.1.left" timestamp="1580299157603">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1580193531043" />
+    <state width="1478" height="223" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1580299157603" />
     <state width="917" height="326" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
-    <state width="1493" height="225" key="GridCell.Tab.1.right" timestamp="1580193531044">
+    <state width="1478" height="223" key="GridCell.Tab.1.right" timestamp="1580299157604">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="225" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1580193531044" />
+    <state width="1478" height="223" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1580299157604" />
     <state width="917" height="326" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
     <state x="639" y="216" key="Maven.ArtifactSearchDialog" timestamp="1579071348260">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="639" y="216" key="Maven.ArtifactSearchDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1579071348260" />
-    <state x="0" y="92" key="SettingsEditor" timestamp="1579738201713">
+    <state x="0" y="15" key="SettingsEditor" timestamp="1580297230967">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="0" y="92" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1579738201713" />
+    <state x="0" y="15" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1580297230967" />
     <state x="0" y="115" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1579173372977" />
     <state width="389" height="437" key="XDebugger.FullValuePopup" timestamp="1579754235146">
       <screen x="0" y="0" width="1536" height="864" />
@@ -402,9 +408,9 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/IO/AdjListFileReaderSpec.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="13" />
+          <url>file://$PROJECT_DIR$/src/main/java/Alignment/IO/FastaFileReader.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
