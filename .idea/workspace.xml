@@ -2,15 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/GlobalAlignment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/FastaFileReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/resources/coronavirus2019.faa" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/resources/sars2003.faa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/BLAST.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/BLASTN.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/BLASTP.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/BlastRunnerPar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/BlastRunnerSeq.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/HSP.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/Alignment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/AlignmentPrinter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/AlignmentStats.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/Blosum62.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/DefaultAlignmentStats.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/NucleotideSequence.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/ProteinDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/ProteinSequence.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/Sequence.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/BLAST/LocalBlast.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/GlobalAlignment.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +80,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -102,6 +111,7 @@
       <recent name="E:\Development\Algorithms\lib" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Development\Algorithms\src\main\java\Alignment\IO\BlAST" />
       <recent name="E:\Development\Algorithms\src\main\resources" />
       <recent name="E:\Development\Algorithms\src\main\java" />
     </key>
@@ -233,7 +243,7 @@
       <workItem from="1579747297659" duration="19204000" />
       <workItem from="1579831377939" duration="34674000" />
       <workItem from="1580028543405" duration="15899000" />
-      <workItem from="1580185921719" duration="24368000" />
+      <workItem from="1580185921719" duration="32592000" />
     </task>
     <servers />
   </component>
@@ -309,45 +319,45 @@
     </state>
     <state x="162" y="225" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1579781498938" />
     <state x="203" y="281" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1579173438855" />
-    <state width="1478" height="223" key="GridCell.Tab.0.bottom" timestamp="1580299157292">
+    <state width="723" height="223" key="GridCell.Tab.0.bottom" timestamp="1580435504732">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1478" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580299157292" />
+    <state width="723" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580435504732" />
     <state width="917" height="326" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1478" height="223" key="GridCell.Tab.0.center" timestamp="1580299157292">
+    <state width="723" height="223" key="GridCell.Tab.0.center" timestamp="1580435504732">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1478" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580299157292" />
+    <state width="723" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580435504732" />
     <state width="917" height="326" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1478" height="223" key="GridCell.Tab.0.left" timestamp="1580299157292">
+    <state width="723" height="223" key="GridCell.Tab.0.left" timestamp="1580435504731">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1478" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580299157292" />
+    <state width="723" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580435504731" />
     <state width="917" height="326" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465822" />
-    <state width="1478" height="223" key="GridCell.Tab.0.right" timestamp="1580299157292">
+    <state width="723" height="223" key="GridCell.Tab.0.right" timestamp="1580435504732">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1478" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580299157292" />
+    <state width="723" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580435504732" />
     <state width="917" height="326" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1478" height="223" key="GridCell.Tab.1.bottom" timestamp="1580299157604">
+    <state width="723" height="223" key="GridCell.Tab.1.bottom" timestamp="1580435504732">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1478" height="223" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580299157604" />
+    <state width="723" height="223" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580435504732" />
     <state width="917" height="326" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466610" />
-    <state width="1478" height="223" key="GridCell.Tab.1.center" timestamp="1580299157603">
+    <state width="723" height="223" key="GridCell.Tab.1.center" timestamp="1580435504732">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1478" height="223" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1580299157603" />
+    <state width="723" height="223" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1580435504732" />
     <state width="917" height="326" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
-    <state width="1478" height="223" key="GridCell.Tab.1.left" timestamp="1580299157603">
+    <state width="723" height="223" key="GridCell.Tab.1.left" timestamp="1580435504732">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1478" height="223" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1580299157603" />
+    <state width="723" height="223" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1580435504732" />
     <state width="917" height="326" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
-    <state width="1478" height="223" key="GridCell.Tab.1.right" timestamp="1580299157604">
+    <state width="723" height="223" key="GridCell.Tab.1.right" timestamp="1580435504732">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1478" height="223" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1580299157604" />
+    <state width="723" height="223" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1580435504732" />
     <state width="917" height="326" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
     <state x="639" y="216" key="Maven.ArtifactSearchDialog" timestamp="1579071348260">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -406,11 +416,6 @@
           <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/NBMSpec.java</url>
           <line>21</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Alignment/IO/FastaFileReader.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
