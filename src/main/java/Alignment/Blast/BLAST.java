@@ -64,7 +64,8 @@ abstract public class BLAST {
         seeds = findSeeds(querySeq);
 
         //1: find all exact matches between a word and some position in the subject
-        int pos = 1;
+        //start from 2 position, 1 position is unused
+        int pos = 2;
         for (int seed : seeds) {
             pos = indexOf(subjectSeq, subSeq(querySeq, seed, seed + wordLength), pos);
             while(pos != -1){
@@ -73,7 +74,7 @@ abstract public class BLAST {
                 //HSP region
                 pos = indexOf(subjectSeq,subSeq(querySeq,seed,seed+wordLength-1),pos+1);
             }
-            pos = 1;
+            pos = 2;
         }
 
         //2: look for exact matches for seed words in the subject
@@ -116,6 +117,8 @@ abstract public class BLAST {
                 queryIndex--;
                 subjectIndex--;
             }
+            currScore = rawScore(subSeq(querySeq,hsp.qPos - startRange,hsp.qPos + wordLength + endRange),subSeq(subjectSeq,hsp.sPos - startRange,hsp.sPos + wordLength + endRange));
+            eScore = findEScore(currScore,querySeq.getLength()-1,subjectSeq.getLength()-1);
         }
         return eScore;
     }
@@ -160,4 +163,38 @@ abstract public class BLAST {
         }
         return found;
     }
+
+    /**
+     * Calculates the raw score (sum of all pairwise scores)
+     * of two aligned strings, as scored by the scoring function
+     *
+     * @param seq1 first sequence
+     * @param seq2 second sequence
+     * @return the raw score
+     */
+    <T extends AbstractSequence<? extends AbstractCompound>> int rawScore(T seq1, T seq2)
+    {
+        int score = 0;
+        for(int i = seq1.getBioBegin(), j = seq2.getBioBegin(); i < seq1.getBioEnd() && j < seq2.getBioEnd(); i++,j++)
+        {
+            score += getScore(seq1.getCompoundAt(i),seq2.getCompoundAt(j));
+        }
+        return score;
+    }
+
+    /**
+     * Computes the expect score for an alignment
+     *
+     * @param score the alignment's raw score
+     * @param qLen the length of the aligned range in the query
+     * @param sLen the total length of the subject space (ex. the database size)
+     * @return the alignment's E score
+     */
+    private double findEScore(int score, int qLen, long sLen)
+    {
+        double result;
+        result = K * qLen * sLen * Math.exp(-score*LAM);
+        return result;
+    }
+
 }

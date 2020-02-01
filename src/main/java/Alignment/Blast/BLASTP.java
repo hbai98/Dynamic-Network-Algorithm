@@ -23,9 +23,9 @@ public class BLASTP extends BLAST {
     /**
      * The default constructor sets parameters for use with the BLOSUM62 matrix
      *
-     * @param dbLength the total number of amino acids in the database
+//     * @param dbLength the total number of amino acids in the database
      */
-    public BLASTP(long dbLength) {
+    public BLASTP() {
         //these are based on NCBI's defaults
         this.wordLength = 3;
         this.wordCutoff = 13;
@@ -34,7 +34,7 @@ public class BLASTP extends BLAST {
         this.eCutoff = 10;
         this.K = 0.134;    //values obtained from BLAST, page 66
         this.LAM = 0.318;
-        this.dbLength = dbLength;
+//        this.dbLength = dbLength;
     }
 
     /**

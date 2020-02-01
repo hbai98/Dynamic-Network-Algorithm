@@ -1,5 +1,6 @@
 package Alignment.Blast;
 
+import Alignment.IO.FastaFileReader;
 import org.biojava.nbio.core.exceptions.CompoundNotFoundException;
 import org.biojava.nbio.core.sequence.DNASequence;
 import org.biojava.nbio.core.sequence.ProteinSequence;
@@ -24,7 +25,7 @@ class BLASTSpec {
       seq2 = new DNASequence("ACG");
       blast = new BLAST() {
           @Override
-          protected int getScore(AminoAcidCompound a, AminoAcidCompound b) {
+          protected<T extends AbstractCompound> int getScore( T a, T b) {
               return 0;
           }
 
@@ -52,6 +53,16 @@ class BLASTSpec {
         blast.subSeq(seq1,1,2);
         assertEquals(1,seq1.getBioBegin());
         assertEquals(2, seq1.getBioEnd());
+    }
+
+    @DisplayName("give the right evalue ")
+    @Test
+    void E_value() throws Exception {
+        FastaFileReader reader = new FastaFileReader("src/main/java/resources/coronavirus2019.faa","src/main/java/resources/sars2003.faa");
+        ProteinSequence sequence1 = reader.getSeq_1().get("QHD43415.1 orf1ab polyprotein (pp1ab) [Wuhan seafood market pneumonia virus]");
+        ProteinSequence sequence2 = reader.getSeq_2().get("AAP41037.1 spike glycoprotein [Severe acute respiratory syndrome-related coronavirus]");
+        BLASTP blastp = new BLASTP();
+        System.out.println(blastp.align(sequence1,sequence2));
     }
 
 }
