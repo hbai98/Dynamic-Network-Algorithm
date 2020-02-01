@@ -2,30 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/Blast/BLAST.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/Blast/BLASTP.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Alignment/Blast/HSP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Alignment/Blast/BLASTSpec.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/BLAST.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/BLASTN.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/BLASTP.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/BlastRunnerPar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/BlastRunnerSeq.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/HSP.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/Alignment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/AlignmentPrinter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/AlignmentStats.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/Blosum62.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/DefaultAlignmentStats.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/NucleotideSequence.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/ProteinDatabase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/ProteinSequence.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/IO/BlAST/pjbio/Sequence.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Alignment/IO/ReaderGeneBank.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Alignment/LocalBlast.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/Blast/BLAST.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Alignment/Blast/BLAST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Alignment/Blast/BLASTP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Alignment/Blast/BLASTP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Alignment/BlAST/BLAST.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Alignment/BlAST/BLAST.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Alignment/BlAST/BLASTN.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Alignment/BlAST/BLASTP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Alignment/BlAST/BLASTP.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Alignment/BlAST/HSP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Alignment/BlAST/HSP.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Alignment/BlAST/pjbio/Alignment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Alignment/BlAST/pjbio/AlignmentPrinter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Alignment/BlAST/pjbio/AlignmentStats.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Alignment/BlAST/pjbio/Blosum62.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Alignment/BlAST/pjbio/DefaultAlignmentStats.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Alignment/BlAST/pjbio/NucleotideSequence.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Alignment/BlAST/pjbio/ProteinDatabase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Alignment/BlAST/pjbio/ProteinSequence.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Alignment/BlAST/pjbio/Sequence.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Alignment/BlAST/BLASTPSpec.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +46,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -93,18 +87,18 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="Alignment.Blast" />
       <recent name="Alignment.BlAST" />
       <recent name="Algorithms.Graph" />
       <recent name="Algorithms.Graph.Utils" />
       <recent name="IO" />
-      <recent name="Network" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -127,36 +121,7 @@
       <recent name="Algorithms.Graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BLASTPSpec.rightEvalue_2">
-    <configuration name="FastaFileReader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Alignment.IO.FastaFileReader" />
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Alignment.IO.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdjListFileReaderSpec.ReadToArrayListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.IO.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.IO" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.IO.AdjListFileReaderSpec" />
-      <option name="METHOD_NAME" value="ReadToArrayListTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.BLASTSpec.indexOfTest">
     <configuration name="BLASTPSpec.rightEvalue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
@@ -205,20 +170,52 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BLASTSpec.findSub" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Alignment.Blast.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Alignment.Blast" />
+      <option name="MAIN_CLASS_NAME" value="Alignment.Blast.BLASTSpec" />
+      <option name="METHOD_NAME" value="findSub" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BLASTSpec.indexOfTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Alignment.Blast.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Alignment.Blast" />
+      <option name="MAIN_CLASS_NAME" value="Alignment.Blast.BLASTSpec" />
+      <option name="METHOD_NAME" value="indexOfTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="Application.FastaFileReader" />
-      <item itemvalue="JUnit.AdjListFileReaderSpec.ReadToArrayListTest" />
       <item itemvalue="JUnit.BLASTPSpec.rightEvalue" />
       <item itemvalue="JUnit.BLASTPSpec.rightEvalue_2" />
       <item itemvalue="JUnit.BLASTPSpec.rightEvalue_1" />
+      <item itemvalue="JUnit.BLASTSpec.findSub" />
+      <item itemvalue="JUnit.BLASTSpec.indexOfTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BLASTSpec.indexOfTest" />
+        <item itemvalue="JUnit.BLASTSpec.findSub" />
         <item itemvalue="JUnit.BLASTPSpec.rightEvalue_2" />
         <item itemvalue="JUnit.BLASTPSpec.rightEvalue_1" />
         <item itemvalue="JUnit.BLASTPSpec.rightEvalue" />
-        <item itemvalue="Application.FastaFileReader" />
-        <item itemvalue="JUnit.AdjListFileReaderSpec.ReadToArrayListTest" />
       </list>
     </recent_temporary>
   </component>
@@ -254,7 +251,8 @@
       <workItem from="1580185921719" duration="33027000" />
       <workItem from="1580443725981" duration="197000" />
       <workItem from="1580453967718" duration="75000" />
-      <workItem from="1580454066408" duration="10976000" />
+      <workItem from="1580454066408" duration="24181000" />
+      <workItem from="1580543962136" duration="8031000" />
     </task>
     <servers />
   </component>
@@ -294,10 +292,10 @@
     </state>
     <state x="159" y="277" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1579751520936" />
     <state x="199" y="346" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1579406110939" />
-    <state x="229" y="200" key="#com.intellij.ide.util.MemberChooser" timestamp="1580471794020">
+    <state x="229" y="200" key="#com.intellij.ide.util.MemberChooser" timestamp="1580542007994">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="229" y="200" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1580471794020" />
+    <state x="229" y="200" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1580542007994" />
     <state x="286" y="250" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1579083988452" />
     <state x="1172" y="316" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1579502127906">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -325,68 +323,68 @@
     </state>
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.864@0.0.1536.864" timestamp="1580191941829" />
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1579405057461" />
-    <state x="302" y="226" key="#xdebugger.evaluate" timestamp="1580456510956">
+    <state x="660" y="34" key="#xdebugger.evaluate" timestamp="1580551540787">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="302" y="226" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1580456510956" />
+    <state x="660" y="34" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1580551540787" />
     <state x="1196" y="247" key="#xdebugger.evaluate/0.0.1920.1080@0.0.1920.1080" timestamp="1579511493737" />
-    <state width="664" height="466" key="DebuggerActiveHint" timestamp="1580457998126">
+    <state width="664" height="466" key="DebuggerActiveHint" timestamp="1580554023880">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="664" height="466" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1580457998126" />
+    <state width="664" height="466" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1580554023880" />
     <state x="162" y="225" key="FileChooserDialogImpl" timestamp="1579781498938">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="162" y="225" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1579781498938" />
     <state x="203" y="281" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1579173438855" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1580458993870">
+    <state width="1493" height="208" key="GridCell.Tab.0.bottom" timestamp="1580555860650">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580458993870" />
+    <state width="1493" height="208" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580555860650" />
     <state width="917" height="326" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1580458993870">
+    <state width="1493" height="208" key="GridCell.Tab.0.center" timestamp="1580555860650">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580458993870" />
+    <state width="1493" height="208" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580555860650" />
     <state width="917" height="326" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1580458993870">
+    <state width="1493" height="208" key="GridCell.Tab.0.left" timestamp="1580555860650">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580458993870" />
+    <state width="1493" height="208" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580555860650" />
     <state width="917" height="326" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465822" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1580458993870">
+    <state width="1493" height="208" key="GridCell.Tab.0.right" timestamp="1580555860650">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580458993870" />
+    <state width="1493" height="208" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580555860650" />
     <state width="917" height="326" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1580458993870">
+    <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1580555795968">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580458993870" />
+    <state width="1493" height="223" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580555795968" />
     <state width="917" height="326" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466610" />
-    <state width="1493" height="223" key="GridCell.Tab.1.center" timestamp="1580458993870">
+    <state width="1493" height="223" key="GridCell.Tab.1.center" timestamp="1580555795968">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1580458993870" />
+    <state width="1493" height="223" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1580555795968" />
     <state width="917" height="326" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
-    <state width="1493" height="223" key="GridCell.Tab.1.left" timestamp="1580458993870">
+    <state width="1493" height="223" key="GridCell.Tab.1.left" timestamp="1580555795968">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1580458993870" />
+    <state width="1493" height="223" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1580555795968" />
     <state width="917" height="326" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
-    <state width="1493" height="223" key="GridCell.Tab.1.right" timestamp="1580458993870">
+    <state width="1493" height="223" key="GridCell.Tab.1.right" timestamp="1580555795968">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1580458993870" />
+    <state width="1493" height="223" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1580555795968" />
     <state width="917" height="326" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
     <state x="639" y="216" key="Maven.ArtifactSearchDialog" timestamp="1579071348260">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="639" y="216" key="Maven.ArtifactSearchDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1579071348260" />
-    <state x="0" y="15" key="SettingsEditor" timestamp="1580443756621">
+    <state x="0" y="15" key="SettingsEditor" timestamp="1580530831630">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="0" y="15" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1580443756621" />
+    <state x="0" y="15" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1580530831630" />
     <state x="0" y="115" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1579173372977" />
     <state width="389" height="437" key="XDebugger.FullValuePopup" timestamp="1579754235146">
       <screen x="0" y="0" width="1536" height="864" />
@@ -401,10 +399,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="449" y="257" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1580453977708" />
-    <state x="196" y="194" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1580455336335">
+    <state x="196" y="194" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1580538004827">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="196" y="194" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.864@0.0.1536.864" timestamp="1580455336335" />
+    <state x="196" y="194" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.864@0.0.1536.864" timestamp="1580538004827" />
     <state x="245" y="243" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1579499692303" />
     <state x="321" y="169" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1579754544336">
       <screen x="0" y="0" width="1536" height="864" />
@@ -439,11 +437,5 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="JUnit">
-        <watch expression="((Algorithms.Graph.Utils.AdjList)this).get(1).get(0)" custom="Algorithms.Graph.Utils.AdjList" />
-        <watch expression="list.get(0).get(1)" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

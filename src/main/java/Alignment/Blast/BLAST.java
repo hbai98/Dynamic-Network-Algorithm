@@ -1,10 +1,14 @@
 package Alignment.Blast;
 
+import org.biojava.nbio.alignment.Alignments;
+import org.biojava.nbio.core.alignment.template.SequencePair;
+import org.biojava.nbio.core.search.io.Hsp;
+import org.biojava.nbio.core.sequence.IntronSequence;
 import org.biojava.nbio.core.sequence.compound.AminoAcidCompound;
-import org.biojava.nbio.core.sequence.template.AbstractCompound;
-import org.biojava.nbio.core.sequence.template.AbstractSequence;
+import org.biojava.nbio.core.sequence.template.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Class BLAST is an abstract base class that implements the original BLAST ungapped
@@ -32,7 +36,7 @@ abstract public class BLAST {
      * @param b the second residue
      * @return the score of a paired with b
      */
-    protected abstract int getScore(AminoAcidCompound a, AminoAcidCompound b) ;
+    protected abstract<T extends AbstractCompound> int getScore(T a, T b) ;
 
     /**
      * Finds the set of significant words from a query sequence
@@ -40,7 +44,7 @@ abstract public class BLAST {
      * @param querySeq a sequence to be decomposed into words
      * @return an array of indices representing the position of each word
      */
-    protected abstract int[] findSeeds(AbstractSequence<AbstractCompound> querySeq);
+    protected abstract<T extends AbstractSequence<? extends AbstractCompound>> int[] findSeeds(T querySeq);
 
     /**
      * Performs the BLAST ungapped alignment by finding all significant
@@ -50,13 +54,110 @@ abstract public class BLAST {
      * @param subjectSeq the subject sequence
      * @return E-VALUE
      */
-    public double align(AbstractSequence<AbstractCompound> querySeq, AbstractSequence<AbstractCompound> subjectSeq){
+    public <T extends AbstractSequence<? extends AbstractCompound>>double align( T querySeq, T subjectSeq){
         ArrayList<HSP> hits = new ArrayList<HSP>();
         int[] seeds;
         int queryIndex, subjectIndex;
-        double eScore;
+        double eScore = 0.0;
 
         //0 ： find the significant seeds
         seeds = findSeeds(querySeq);
+
+        //1: find all exact matches between a word and some position in the subject
+        int pos = 1;
+        for (int seed : seeds) {
+            pos = indexOf(subjectSeq, subSeq(querySeq, seed, seed + wordLength), pos);
+            while(pos != -1){
+                //HSP(word's position in query, word's position in subject)
+                hits.add(new HSP(seed, pos));
+                //HSP region
+                pos = indexOf(subjectSeq,subSeq(querySeq,seed,seed+wordLength-1),pos+1);
+            }
+            pos = 1;
+        }
+
+        //2: look for exact matches for seed words in the subject
+        for(HSP hsp: hits){
+            int currScore, fScore = 0, rScore = 0, alignscore = 0, difference = 0, startRange = 0, endRange = 0;
+
+            //extend forward
+            queryIndex = hsp.qPos + wordLength;
+            subjectIndex = hsp.sPos + wordLength;
+            while(queryIndex < querySeq.getLength() && subjectIndex < subjectSeq.getLength())
+            {
+                fScore = alignscore;
+                alignscore += getScore(querySeq.getCompoundAt(queryIndex),subjectSeq.getCompoundAt(subjectIndex));
+                difference += (fScore - alignscore);
+
+                //stop extending if the accumulated difference reaches the cutoff
+                if(difference >= scoreCutoff) break;
+
+                endRange++;
+                queryIndex++;
+                subjectIndex++;
+            }
+            //reset for next extension
+            difference = 0;
+            alignscore = 0;
+            queryIndex = hsp.qPos - 1;
+            subjectIndex = hsp.sPos - 1;
+
+            //extend backwards
+            while(queryIndex > 0 && subjectIndex > 0)
+            {
+                rScore = alignscore;
+                alignscore += getScore(querySeq.getCompoundAt(queryIndex),subjectSeq.getCompoundAt(subjectIndex));
+                difference += (rScore - alignscore);
+
+                //stop extending if the accumulated difference reaches the cutoff
+                if(difference >= scoreCutoff) break;
+
+                startRange++;
+                queryIndex--;
+                subjectIndex--;
+            }
+        }
+        return eScore;
+    }
+
+    /**
+     * mark the start and end of the sequence, [start, end-1]
+     * @return the polished sequence
+     */
+    protected <T extends AbstractSequence<? extends AbstractCompound>> T subSeq(T sequence, int start, int end){
+        sequence.setBioBegin(start);
+        sequence.setBioEnd(end);
+        return sequence;
+    }
+
+    /**
+     * A basic search function that finds the first occurrence of pat in
+     * seq, beginning at start
+     *
+     * @param seq a sequence
+     * @param pat the substring to be searched for
+     * @param start the start index in str
+     * @return the index of the first occurrence of pat in seq, or -1 if not found
+     */
+    <T extends AbstractSequence<? extends AbstractCompound>>int indexOf(T seq, T pat, int start)
+    {
+        int found = -1;
+        int patLen = pat.getBioEnd() - pat.getBioBegin();
+        if(patLen == 0) {
+            return found;
+        }
+        int seqLen = seq.getLength();
+        for(int i = start; i < seqLen - patLen && found == -1; i++)
+        {
+            int j = 0;
+            // getCompoundAt() index starts from 1.
+            while(j < patLen && seq.getCompoundAt(i+j) == pat.getCompoundAt(pat.getBioBegin()+j)) {
+                j++;
+            }
+            if(j == patLen){
+                found = i;
+            }
+        }
+        return found;
     }
 }
