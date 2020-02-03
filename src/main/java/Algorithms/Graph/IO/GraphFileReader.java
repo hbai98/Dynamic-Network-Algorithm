@@ -30,8 +30,13 @@ import java.util.regex.Pattern;
  * </p>
  */
 public class GraphFileReader {
-    private HashSet<String> graph_1 = new HashSet<>();
-    private HashSet<String> graph_2 = new HashSet<>();
+    private HashSet<String> graph_1;
+    private HashSet<String> graph_2;
+
+    public GraphFileReader(){
+        graph_1 = new HashSet<>();
+        graph_2 = new HashSet<>();
+    }
 
     /**
      * Parses the file given by <code>inputFilePath</code> to EdgeList.

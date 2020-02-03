@@ -29,4 +29,5 @@ class GraphFileWriterSpec {
         AdjList list = reader.readToAdjL("src/test/java/resources/IOTest/mediumGraph.txt");
         writer.writeToTxt(list,"test","src/test/java/resources/IOTest/");
     }
+
 }

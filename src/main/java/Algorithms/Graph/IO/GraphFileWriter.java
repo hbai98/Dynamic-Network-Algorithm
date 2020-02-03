@@ -1,6 +1,8 @@
 package Algorithms.Graph.IO;
 
+import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Utils.AdjList;
+import Algorithms.Graph.Utils.HNodeList;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -9,33 +11,37 @@ import java.util.regex.Pattern;
 public class GraphFileWriter {
     BufferedWriter bufWriter;
 
-    public void writeToTxt(AdjList graph,String fileName,String filePath) throws FileNotFoundException, UnsupportedEncodingException {
-        OutputStreamWriter writer = new OutputStreamWriter(
-                new FileOutputStream(filePath+fileName+".txt"), StandardCharsets.UTF_8);
-        BufferedWriter bufWriter = new BufferedWriter(writer);
-
-        graph.forEach(list -> {
-            String headName = list.getSignName();
-            String result = replaceSpace_(headName);
-
-            try {
-                bufWriter.write(result+" ");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            list.forEach(node -> {
-                try {
-                    bufWriter.write(node.getStrName()+" "+node.getValue()+" ");
-                } catch (IOException e) {
-                    e.printStackTrace();
+    public void writeToTxt(AdjList graph, String fileName, String filePath) throws FileNotFoundException, UnsupportedEncodingException {
+        if (!filePath.endsWith("/")) {
+            filePath += "/";
+        }
+        try {
+            OutputStreamWriter writer = new OutputStreamWriter(
+                    new FileOutputStream(filePath + fileName + ".txt"), StandardCharsets.UTF_8);
+            bufWriter = new BufferedWriter(writer);
+            for (HNodeList list : graph) {
+                String headName = list.getSignName();
+                String result = replaceSpace_(headName);
+                bufWriter.write(result + " ");
+                for (Node node : list) {
+                    String nodeName = replaceSpace_(node.getStrName());
+                    bufWriter.write(nodeName + " " + node.getValue() + " ");
                 }
-            });
-            try {
                 bufWriter.write("\n");
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-        });
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (bufWriter != null) {
+                    bufWriter.flush();
+                    bufWriter.close();
+                }
+            } catch (Exception ex) {
+                System.out.println("Error in closing the BufferedWriter" + ex);
+            }
+        }
+
     }
 
     public String replaceSpace_(String headName) {

@@ -18,7 +18,7 @@ class NBMSpec {
     @BeforeEach
     void init() throws IOException {
         GraphFileReader reader = new GraphFileReader();
-        list = reader.readToAdjL("src/test/java/resources/IOTest/simpleGraph_1.txt");
+        list = reader.readToAdjL("src/main/java/resources/smith_watermanRes.txt");
         graph_1 = reader.getGraph_1();
         graph_2 = reader.getGraph_2();
     }

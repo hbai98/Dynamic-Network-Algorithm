@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -85,6 +86,13 @@ class GraphFileReaderSpec {
         AdjList graph = reader.readToAdjL("src/test/java/resources/IOTest/mediumGraph.txt");
         assertEquals(0.986,graph.getMatrixVal("RPS9A","RPS9"));
         assertEquals(0.756,graph.getMatrixVal("YRF1-4","EIF4A3"));
-
     }
+    @DisplayName("able to get a HashSet.")
+    @Test
+    void getHashSet() throws IOException {
+        GraphFileReader reader = new GraphFileReader();
+        AdjList graph = reader.readToAdjL("src/test/java/resources/IOTest/mediumGraph.txt");
+        HashSet<String> graph1 = reader.getGraph_1();
+    }
+
 }
