@@ -118,8 +118,10 @@ abstract public class BLAST {
                 subjectIndex--;
             }
             currScore = rawScore(subSeq(querySeq,hsp.qPos - startRange,hsp.qPos + wordLength + endRange),subSeq(subjectSeq,hsp.sPos - startRange,hsp.sPos + wordLength + endRange));
-            eScore = findEScore(currScore,querySeq.getLength()-1,subjectSeq.getLength()-1);
+            eScore += findEScore(currScore,querySeq.getLength()-1,subjectSeq.getLength()-1);
+
         }
+        // TODO
         return eScore;
     }
 

@@ -1,7 +1,7 @@
 package Algorithms.Graph.Network;
 // Author: Haotian Bai
 // Shanghai University, department of computer science
-import Algorithms.Graph.IO.AdjListFileReader;
+import Algorithms.Graph.IO.GraphFileReader;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -50,7 +50,7 @@ public class EdgeHasSet extends HashSet<Edge> {
     }
 
     protected EdgeHasSet readFromFile(String filename) throws IOException {
-        AdjListFileReader reader = new AdjListFileReader();
+        GraphFileReader reader = new GraphFileReader();
         return reader.readToEL(filename);
     }
 

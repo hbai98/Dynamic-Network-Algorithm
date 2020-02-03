@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("SIFFileReader is")
-class AdjListFileReaderSpec {
+class GraphFileReaderSpec {
     @DisplayName("able to use pattern to split. ")
     @Test
     // The first character cannot be space.-> test whether each element for it's length > 0
@@ -41,7 +41,7 @@ class AdjListFileReaderSpec {
     @Test
     void ReadTest(){
         try {
-            AdjListFileReader reader = new AdjListFileReader();
+            GraphFileReader reader = new GraphFileReader();
             EdgeHasSet graph = reader.readToEL("src/test/java/resources/IOTest/simpleGraph_1.txt");
             // the EdgeList graph is not a self-update graph (automatic replace edges with higher values)
             assertThat(graph).contains(new Edge("A","B",0.2),new Edge("A","C",0.6),new Edge("A","C",0.3),
@@ -50,7 +50,7 @@ class AdjListFileReaderSpec {
             e.printStackTrace();
         }
         try {
-            AdjListFileReader reader = new AdjListFileReader();
+            GraphFileReader reader = new GraphFileReader();
             EdgeHasSet graph = reader.readToEL("src/test/java/resources/IOTest/wrongForTest_1.txt");
         } catch (IOException e) {
             assertEquals("The file input format is not correct. Plus: some name-value pairs are incorrect!", e.getMessage());
@@ -62,7 +62,7 @@ class AdjListFileReaderSpec {
     void ReadToArrayListTest(){
         try {
             // homoGeneMap is a self-update graph
-            AdjListFileReader reader = new AdjListFileReader();
+            GraphFileReader reader = new GraphFileReader();
             AdjList graph = reader.readToAdjL("src/test/java/resources/IOTest/simpleGraph_1.txt");
             HNodeList forTestA = new HNodeList("A");
             HNodeList forTestB = new HNodeList("C");
@@ -81,7 +81,7 @@ class AdjListFileReaderSpec {
     @DisplayName("able to read a medium-level graph")
     @Test
     void ReadMediumGraph() throws IOException {
-        AdjListFileReader reader = new AdjListFileReader();
+        GraphFileReader reader = new GraphFileReader();
         AdjList graph = reader.readToAdjL("src/test/java/resources/IOTest/mediumGraph.txt");
         assertEquals(0.986,graph.getMatrixVal("RPS9A","RPS9"));
         assertEquals(0.756,graph.getMatrixVal("YRF1-4","EIF4A3"));

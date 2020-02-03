@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
  * * && https://github.com/svn2github/cytoscape/blob/master/csplugins/trunk/ucsd/slotia/oiler/src/oiler/io/SIFReader.java
  * </p>
  */
-public class AdjListFileReader {
+public class GraphFileReader {
     private HashSet<String> graph_1 = new HashSet<>();
     private HashSet<String> graph_2 = new HashSet<>();
 

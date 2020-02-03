@@ -1,6 +1,6 @@
 package Algorithms.Graph;
 
-import Algorithms.Graph.IO.AdjListFileReader;
+import Algorithms.Graph.IO.GraphFileReader;
 import Algorithms.Graph.Utils.AdjList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -17,7 +17,7 @@ class NBMSpec {
 
     @BeforeEach
     void init() throws IOException {
-        AdjListFileReader reader = new AdjListFileReader();
+        GraphFileReader reader = new GraphFileReader();
         list = reader.readToAdjL("src/test/java/resources/IOTest/simpleGraph_1.txt");
         graph_1 = reader.getGraph_1();
         graph_2 = reader.getGraph_2();
