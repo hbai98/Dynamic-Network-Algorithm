@@ -13,6 +13,7 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
     protected Node target;
     protected double weight;
     protected Type type;
+    // used to record the edge's position in the similarity matrix
     protected int matRow = -1;
     protected int matCol = -1;
     /**

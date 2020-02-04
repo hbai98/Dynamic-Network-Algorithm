@@ -285,9 +285,9 @@ public class AdjList extends LinkedList<HNodeList> {
             throw new IllegalArgumentException("Can't the rowName HNodeList in the adjList");
         }
     }
-    public Pair<Integer,Node> findMaxOfList(int rowIndex){
-        assert(rowIndex>=0);
-        return new Pair<>(rowIndex, this.get(rowIndex).findMax());
+    public Node findMaxOfList(int rowIndex){
+        assert(rowIndex>=0&&rowIndex<this.size());
+        return this.get(rowIndex).findMax();
     }
     //------------------PUBLIC-----------------------------
 

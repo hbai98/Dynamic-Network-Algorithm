@@ -5,6 +5,7 @@ package Algorithms.Graph;
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Utils.AdjList;
+import Algorithms.Graph.Utils.HNodeList;
 import org.jgrapht.alg.util.Pair;
 
 import java.util.*;
@@ -13,8 +14,7 @@ public class NBM {
     protected AdjList simList;
     private HashSet<String> graph_1;
     private HashSet<String> graph_2;
-    private HashMap<String,String> bestPairNodeG1;
-    private HashMap<String,Double> bestPairWeightG1;
+    private HashMap<String,Node> bestPairNodes;
 
     protected PriorityQueue<Edge> pqEdge;
 
@@ -49,31 +49,33 @@ public class NBM {
         this.simList = simList;
         // pq
         pqEdge = new PriorityQueue<>(Comparator.comparingDouble(Edge::getWeight));
+        // bestPairNodes -> for indexing the best pair
+        bestPairNodes = new HashMap<>();
     }
 
     private void init(AdjList simList){
-        this.simList = simList;
-        this.graph_1 = simList.getRowSet();
-        this.graph_2 = simList.getColSet();
-        // pq
-        pqEdge = new PriorityQueue<>(Comparator.comparingDouble(Edge::getWeight));
+        init(simList,simList.getRowSet(),simList.getColSet());
     }
     /**
      * iterate(nodeList) nodes in Graph1 and finds every node it's best pair( with the greatest weight )
      */
     protected void findBestPairs() {
         assert(simList!=null&&graph_1!=null&&graph_2!=null);
-        HashMap<String,Integer> rowMap = simList.getRowMap();
-        graph_1.forEach(strNode->{
-            int row = rowMap.get(strNode);
-            Pair<Integer, Node> res = simList.findMaxOfList(row);
-            int col = res.getFirst();
-            Node tgtNode = res.getSecond();
-            pqEdge.add(new Edge(new Node(strNode),tgtNode,row,col,tgtNode.getValue()));
-            bestPairNodeG1.put(strNode, tgtNode.getStrName());
-            bestPairWeightG1.put(strNode,tgtNode.getValue());
-        });
+        for (int index = 0; index < simList.size(); index++) {
+            HNodeList list = simList.get(index);
+            String listHeadName = list.getSignName();
+            // save the current result
+            Node tgtNode = simList.findMaxOfList(index);
+            pqEdge.add(new Edge(new Node(listHeadName),tgtNode,tgtNode.getValue()));
+            bestPairNodes.put(listHeadName,tgtNode);
+        }
     }
 
 
+//    ---------------------------------PUBLIC-------------------------
+
+    public HashMap<String, Node> getBestPairNodes() {
+        assert (bestPairNodes!=null);
+        return bestPairNodes;
+    }
 }
