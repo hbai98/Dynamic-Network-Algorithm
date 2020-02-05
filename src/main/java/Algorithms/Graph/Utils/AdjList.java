@@ -6,28 +6,30 @@ import org.jgrapht.alg.util.Pair;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * This class is meant to make a graph based on adjacent list which
- *  has already been defined in Network, and the next step is to
+ * has already been defined in Network, and the next step is to
  * provide another LinkList to wrap NodeLists.
  * <p>
- *     The order has remained lexicographically ascending, which can then
- *    be characterized as a matrix. This matrix is maintained simultaneously
- *    for the convenience of shifting the matrix to Hungarian (which can only be
- *    manipulated using matrices.)
+ * The order has remained lexicographically ascending, which can then
+ * be characterized as a matrix. This matrix is maintained simultaneously
+ * for the convenience of shifting the matrix to Hungarian (which can only be
+ * manipulated using matrices.)
  * </p>
  */
 public class AdjList extends LinkedList<HNodeList> {
 
     private DoubleMatrix mat;
     //------------------similarity matrix----------
-    private HashSet<String> rowSet;
-    private HashSet<String> colSet;
-    private HashMap<String,Integer> rowMap;
-    private HashMap<String,Integer> colMap;
+    private HashSet<String> rowNodeList;
+    private HashSet<String> colNodeList;
+    private HashMap<String, Integer> rowMap;
+    private HashMap<String, Integer> colMap;
     //---------------Reverse the adjList--------------> src <-> tgt
     private AdjList revList;
+
     /**
      * <ol>
      *     <li>initialize the matrix.</li>
@@ -46,6 +48,7 @@ public class AdjList extends LinkedList<HNodeList> {
      *         time complexity: O(n + (n-1)*n + n) -> O(n^2)
      *     </p>
      * </p>
+     *
      * @return Similar matrix
      */
     public DoubleMatrix toMatrix() {
@@ -60,7 +63,8 @@ public class AdjList extends LinkedList<HNodeList> {
         return mat;
 
     }
-    protected DoubleMatrix toMatrix(HashSet<String> graph_1,HashSet<String> graph_2) {
+
+    protected DoubleMatrix toMatrix(HashSet<String> graph_1, HashSet<String> graph_2) {
         if (mat == null) {
             // step 1: initialize the matrix.
             init(graph_1, graph_2);
@@ -72,11 +76,12 @@ public class AdjList extends LinkedList<HNodeList> {
         return mat;
 
     }
+
     // step 1: initialize the matrix.
-    private void init(HashSet<String> graph_1,HashSet<String> graph_2){
-        this.rowSet = graph_1;
-        this.colSet = graph_2;
-        mat = new DoubleMatrix(graph_1.size(),graph_2.size());
+    private void init(HashSet<String> graph_1, HashSet<String> graph_2) {
+        this.rowNodeList = graph_1;
+        this.colNodeList = graph_2;
+        mat = new DoubleMatrix(graph_1.size(), graph_2.size());
     }
     // alter: step_1
 
@@ -84,35 +89,36 @@ public class AdjList extends LinkedList<HNodeList> {
      * iterate over the adjList to init.
      * return colSet.
      */
-    private HashSet<String> init(){
+    private HashSet<String> init() {
         int row = 0;
         HashSet<String> colSet = new HashSet<>();
         HashSet<String> rowSet = new HashSet<>();
 
-        for (HNodeList list: this) {
+        for (HNodeList list : this) {
             row++;
             rowSet.add(list.getSignName());
-            for (Node node: list) {
+            for (Node node : list) {
                 colSet.add(node.getStrName());
             }
         }
-        this.rowSet = rowSet;
-        this.colSet = colSet;
-        mat = new DoubleMatrix(row,colSet.size());
+        this.rowNodeList = rowSet;
+        this.colNodeList = colSet;
+        mat = new DoubleMatrix(row, colSet.size());
         return colSet;
     }
 
     /**
      * step 2：create the dictionary
+     *
      * @return map for the matrix's column
      */
-    private HashMap<String,Integer> dict(HashSet<String> colSet){
+    private HashMap<String, Integer> dict(HashSet<String> colSet) {
         // node name , index
         ArrayList<String> colList = new ArrayList<String>(colSet);
         colList.sort(Comparator.naturalOrder());
-        HashMap<String,Integer> hashMap = new HashMap<>();
+        HashMap<String, Integer> hashMap = new HashMap<>();
         for (int i = 0; i < colList.size(); i++) {
-            hashMap.put(colList.get(i),i);
+            hashMap.put(colList.get(i), i);
         }
         colMap = hashMap;
 
@@ -122,17 +128,18 @@ public class AdjList extends LinkedList<HNodeList> {
     /**
      * Step 3:
      * Iterate all nodeLists mapping the colList.
+     *
      * @param colMap the map for the matrix's column
      */
-    private void mapping(HashMap<String,Integer> colMap){
+    private void mapping(HashMap<String, Integer> colMap) {
         for (int r = 0; r < this.size(); r++) {
             HNodeList list = this.get(r);
-            rowMap.put(list.getSignName(),r);
+            rowMap.put(list.getSignName(), r);
             DoubleMatrix rowVector = new DoubleMatrix(colMap.size());
             list.forEach(node -> {
-                rowVector.put(colMap.get(node.getStrName()),node.getValue());
+                rowVector.put(colMap.get(node.getStrName()), node.getValue());
             });
-            mat.putRow(r,rowVector);
+            mat.putRow(r, rowVector);
         }
     }
 
@@ -140,21 +147,21 @@ public class AdjList extends LinkedList<HNodeList> {
     /**
      * add a list with to graph, if it exists(same head name),combine two of them; else add the list to the graph.
      * <p>
-     *     Notice: automatically sort() according to the name's lexicographical order.
+     * Notice: automatically sort() according to the name's lexicographical order.
      * </p>
+     *
      * @param hNodeList a list to be added
      * @return true for already exist.
      */
     @Override
     public boolean add(HNodeList hNodeList) {
-        assert(hNodeList!=null);
+        assert (hNodeList != null);
         int index = Collections.binarySearch(this, hNodeList, Comparator.comparing(o -> o.signName));
-        if(index >= 0){
+        if (index >= 0) {
             this.get(index).addAll(hNodeList);
             return true;
-        }
-        else{
-            add(-index-1, hNodeList);
+        } else {
+            add(-index - 1, hNodeList);
             return false;
         }
     }
@@ -162,105 +169,110 @@ public class AdjList extends LinkedList<HNodeList> {
 
     /**
      * find node head's all nodes.
+     *
      * @param tgtNode target node
      */
-    public HNodeList getNeighborsList(String tgtNode){
-        for(HNodeList hNodeList : this){
-            if(hNodeList.signName.equals(tgtNode)){
+    public HNodeList getNeighborsList(String tgtNode) {
+        for (HNodeList hNodeList : this) {
+            if (hNodeList.signName.equals(tgtNode)) {
                 return hNodeList;
             }
         }
         return null;
     }
+
     /**
      * find node head's all nodes.
      * <br>
      * <p>NOTICE: use it in the condition that the adjList has been sorted.</p>
+     *
      * @param tgtNode target node
      */
-    public HNodeList sortGetNeighborsList(String tgtNode){
-        int index = Collections.binarySearch(this,new HNodeList(tgtNode), Comparator.comparing(o -> o.signName));
+    public HNodeList sortGetNeighborsList(String tgtNode) {
+        int index = Collections.binarySearch(this, new HNodeList(tgtNode), Comparator.comparing(o -> o.signName));
         return this.get(index);
     }
 
     public double getMatrixVal(String tgtHead, String tgtNode) throws IOException {
-        int index = Collections.binarySearch(this,new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
-        if(index >= 0){
+        int index = Collections.binarySearch(this, new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
+        if (index >= 0) {
             return this.get(index).sortFindByName(tgtNode).getValue();
-        }
-        else{
+        } else {
             throw new IOException("Can't find the target head");
         }
     }
 
     /**
      * remove tgtNode from list(tgtHead).
+     *
      * @param tgtHead headName of the list.
      * @param tgtNode name of the node to be removed.
      * @return true for success.
      */
-    public boolean removeAllNode(String tgtHead, String tgtNode){
-        int index = Collections.binarySearch(this,new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
-        if(index >= 0){
+    public boolean removeAllNode(String tgtHead, String tgtNode) {
+        int index = Collections.binarySearch(this, new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
+        if (index >= 0) {
             this.get(index).remove(tgtNode);
             return true;
-        }
-        else{
-          return false;
+        } else {
+            return false;
         }
     }
+
     /**
      * add tgtHG to list(tgtHead).
+     *
      * @param tgtHead headName of the list.
      * @param tgtNode name of the homoGene to be removed.
      * @return true for already node exist.
      */
     // TODO a little duplicated !
-    public boolean addOneNode(String tgtHead, String tgtNode){
-        int index = Collections.binarySearch(this,new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
-        if(index >= 0){
+    public boolean addOneNode(String tgtHead, String tgtNode) {
+        int index = Collections.binarySearch(this, new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
+        if (index >= 0) {
             this.get(index).add(tgtNode);
             return true;
-        }
-        else{
-            add(-index-1,new HNodeList(tgtHead));
-            this.get(-index-1).add(tgtNode);
+        } else {
+            add(-index - 1, new HNodeList(tgtHead));
+            this.get(-index - 1).add(tgtNode);
             return false;
         }
     }
+
     /**
      * add tgtHG to list(tgtHead),and keep the target list an ascending order.
+     *
      * @param tgtHead headName of the list.
      * @param tgtNode name of the homoGene to be removed.
      * @return true for already node exist.
      */
-    public boolean sortAddOneNode(String tgtHead, String tgtNode){
-        int index = Collections.binarySearch(this,new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
-        if(index >= 0){
+    public boolean sortAddOneNode(String tgtHead, String tgtNode) {
+        int index = Collections.binarySearch(this, new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
+        if (index >= 0) {
             this.get(index).sortAdd(tgtNode);
             return true;
-        }
-        else{
-            add(-index-1,new HNodeList(tgtHead));
-            this.get(-index-1).sortAdd(tgtNode);
+        } else {
+            add(-index - 1, new HNodeList(tgtHead));
+            this.get(-index - 1).sortAdd(tgtNode);
             return false;
         }
     }
+
     /**
      * add tgtNode to list(tgtHead) with <code>weight</code>.
+     *
      * @param tgtHead headName of the list.
      * @param tgtNode name of the Node to be removed.
      * @return true for node already exist.
      */
-    public boolean addOneNode(String tgtHead, String tgtNode, double weight){
-        int index = Collections.binarySearch(this,new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
-        if(index >= 0){
-            this.get(index).add(tgtNode,weight);
+    public boolean addOneNode(String tgtHead, String tgtNode, double weight) {
+        int index = Collections.binarySearch(this, new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
+        if (index >= 0) {
+            this.get(index).add(tgtNode, weight);
             return true;
-        }
-        else{
-            add(-index-1,new HNodeList(tgtHead));
-            this.get(-index-1).add(tgtNode,weight);
+        } else {
+            add(-index - 1, new HNodeList(tgtHead));
+            this.get(-index - 1).add(tgtNode, weight);
             return false;
         }
     }
@@ -268,43 +280,43 @@ public class AdjList extends LinkedList<HNodeList> {
     /**
      * add tgtNode to list(tgtHead) with <code>weight</code>,and
      * keep the target list an ascending order.
+     *
      * @param tgtHead headName of the list.
      * @param tgtNode name of the Node to be removed.
      * @return true for node already exist.
      */
-    public boolean sortAddOneNode(String tgtHead, String tgtNode, double weight){
-        int index = Collections.binarySearch(this,new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
-        if(index >= 0){
-            this.get(index).sortAdd(tgtNode,weight);
+    public boolean sortAddOneNode(String tgtHead, String tgtNode, double weight) {
+        int index = Collections.binarySearch(this, new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
+        if (index >= 0) {
+            this.get(index).sortAdd(tgtNode, weight);
             return true;
-        }
-        else{
-            add(-index-1,new HNodeList(tgtHead));
-            this.get(-index-1).sortAdd(tgtNode,weight);
+        } else {
+            add(-index - 1, new HNodeList(tgtHead));
+            this.get(-index - 1).sortAdd(tgtNode, weight);
             return false;
         }
     }
 
-    public Pair<Integer, Node> findMaxOfList(String rowName){
-        int index = Collections.binarySearch(this,new HNodeList(rowName), Comparator.comparing(o -> o.signName));
-        if(index >=0){
-            return new Pair<Integer,Node>(index,this.get(index).findMax());
-        }
-        else{
+    public Pair<Integer, Node> findMaxOfList(String rowName) {
+        int index = Collections.binarySearch(this, new HNodeList(rowName), Comparator.comparing(o -> o.signName));
+        if (index >= 0) {
+            return new Pair<Integer, Node>(index, this.get(index).findMax());
+        } else {
             throw new IllegalArgumentException("Can't the rowName HNodeList in the adjList");
         }
     }
-    public Node findMaxOfList(int rowIndex){
-        assert(rowIndex>=0&&rowIndex<this.size());
+
+    public Node findMaxOfList(int rowIndex) {
+        assert (rowIndex >= 0 && rowIndex < this.size());
         return this.get(rowIndex).findMax();
     }
 
     public AdjList getRevList() {
         AdjList rev = new AdjList();
-        forEach(list->{
+        forEach(list -> {
             String headName = list.getSignName();
             list.forEach(node -> {
-                rev.sortAddOneNode(node.getStrName(),headName,node.getValue());
+                rev.sortAddOneNode(node.getStrName(), headName, node.getValue());
             });
         });
         return rev;
@@ -312,39 +324,54 @@ public class AdjList extends LinkedList<HNodeList> {
     //------------------PUBLIC-----------------------------
 
 
-    public HashSet<String> getColSet() {
-        if(mat == null){
+    public HashSet<String> getColNodeList() {
+        if (mat == null) {
             mat = this.toMatrix();
-            return colSet;
+            return colNodeList;
         }
-        return colSet;
+        return colNodeList;
     }
 
-    public HashSet<String> getRowSet() {
-        if(mat == null){
+    public HashSet<String> getRowNodeList() {
+        if (mat == null) {
             mat = this.toMatrix();
-            return rowSet;
+            return rowNodeList;
         }
-        return rowSet;
+        return rowNodeList;
     }
 
-    public HashMap<String,Integer> getRowMap(){
-        if(rowMap == null){
+    public HashMap<String, Integer> getRowMap() {
+
+        if (rowMap == null) {
             for (int r = 0; r < this.size(); r++) {
                 HNodeList list = this.get(r);
                 rowMap.put(list.getSignName(), r);
             }
             return rowMap;
-        }
-        else return rowMap;
+        } else return rowMap;
     }
+
     public HashMap<String, Integer> getColMap() {
-        if(mat == null){
+        if (colMap == null) {
             mat = this.toMatrix();
             return colMap;
         }
         return colMap;
     }
 
+    public DoubleMatrix getMat() {
+        if (mat != null) {
+            return mat;
+        }
+        return this.toMatrix();
+    }
 
+    public Pair<Node, Node> getNodeNameByMatrixIndex(int i, int j) {
+        if (mat == null) {
+            mat = this.toMatrix();
+        } else {
+            // switch key and value only because of the bi-direction relationship maintained by the NodeList
+            HashMap<Integer, String> swapColMap = mapSwitch();
+        }
+    }
 }

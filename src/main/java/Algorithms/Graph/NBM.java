@@ -133,6 +133,7 @@ public class NBM {
             }
             // direct neighbors of the head node
             HNodeList neb1 = simList.sortGetNeighborsList(srcNode.getStrName());
+            HNodeList neb2 = revSimList.sortGetNeighborsList(tgtNode.getStrName());
         }
     }
 
