@@ -34,6 +34,13 @@ public class EdgeHasSet extends HashSet<Edge> {
     }
 
     /**
+     * Undirected edge by default
+     */
+    public boolean add(String src,String tgt,double weight){
+        return add(new Edge(src,tgt,weight));
+    }
+
+    /**
      * Find edges contains {@code} node
      *
      * @param node node to be found
@@ -47,6 +54,32 @@ public class EdgeHasSet extends HashSet<Edge> {
             }
         });
         return res;
+    }
+
+    /**
+     * check hashSet if there's a edge has {@code}node as its source
+     * @return true if being found
+     */
+    public boolean findNodeEdgeSrc(Node node){
+        for (Edge edge:this) {
+            if(edge.source.equals(node)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * check hashSet if there's a edge has {@code}node as its target
+     * @return true if being found
+     */
+    public boolean findNodeEdgeTgt(Node node){
+        for (Edge edge:this) {
+            if(edge.target.equals(node)){
+                return true;
+            }
+        }
+        return false;
     }
 
     protected EdgeHasSet readFromFile(String filename) throws IOException {

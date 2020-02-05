@@ -1,5 +1,6 @@
 package Algorithms.Graph;
 
+import Algorithms.Graph.IO.MyMatrixReader;
 import org.jblas.DoubleMatrix;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,10 +15,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @DisplayName("The Hungarian algorithm is able to")
 class HungarianSpec {
     Hungarian alg;
+    DoubleMatrix mat;
     @BeforeEach
     void init(){
         try {
-            alg = new Hungarian("src/test/java/resources/AlgTest/SmallMatrix.txt");
+            MyMatrixReader reader = new MyMatrixReader("src/test/java/resources/AlgTest/Hungarian/coverZerosTest.txt");
+            mat = new DoubleMatrix(reader.out());
+            alg = new Hungarian(mat, Hungarian.ProblemType.minLoc);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,11 +44,6 @@ class HungarianSpec {
     @DisplayName("cover 0 greedily.")
     @Test
     void coverZeroTest(){
-        try {
-            alg = new Hungarian("src/test/java/resources/AlgTest/Hungarian/coverZerosTest.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         alg.subtractRowMinimal();
         alg.subtractColMinimal();
         alg.greedyCoverZeros();
@@ -58,15 +57,20 @@ class HungarianSpec {
         }
         assertEquals(2,tmp);
     }
-    @DisplayName("is a final Test")
+    @DisplayName("is a final Test fro minLoc.")
     @Test
     void FinalTest(){
-        try {
-            alg = new Hungarian("src/test/java/resources/AlgTest/Hungarian/coverZerosTest.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         int[] result = alg.getResult();
         assertThat(result).containsSequence(2,0,1);
     }
+
+    @DisplayName("is a final Test fro maxLoc.")
+    @Test
+    void FinalTest_2() throws IOException {
+        alg = new Hungarian(mat, Hungarian.ProblemType.maxLoc);
+        int[] result = alg.getResult();
+        assertThat(result).containsSequence(1,2,0);
+    }
+
+
 }

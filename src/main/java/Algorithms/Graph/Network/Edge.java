@@ -5,7 +5,7 @@ import org.jgrapht.graph.DefaultEdge;
 
 import java.util.Objects;
 
-public class Edge extends DefaultEdge implements Comparable<Edge> {
+public class Edge extends DefaultEdge {
 
     public enum Type {UNDIRECTED, DIRECTED}
 
@@ -26,14 +26,12 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
         this.target = new Node(tgt);
         this.weight = weight;
         this.type = type;
-        if (!type.equals(Type.UNDIRECTED)) {
-            throw new IllegalArgumentException("The edge should be undirected.");
-        }
-        if(src.compareTo(tgt) > 0){
-            Node tpNode = source;
-            source = target;
-            target = tpNode;
-        }
+
+//        if(src.compareTo(tgt) > 0){
+//            Node tpNode = source;
+//            source = target;
+//            target = tpNode;
+//        }
     }
     /**
      * For easing the comparision between edges. <p>Limit:
@@ -45,11 +43,11 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
         this.target = new Node(tgt);
         this.weight = weight;
         this.type = Type.UNDIRECTED;
-        if(src.compareTo(tgt) > 0){
-            Node tpNode = source;
-            source = target;
-            target = tpNode;
-        }
+//        if(src.compareTo(tgt) > 0){
+//            Node tpNode = source;
+//            source = target;
+//            target = tpNode;
+//        }
     }
     /**
      * For easing the comparision between edges. <p>Limit:
@@ -61,11 +59,11 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
         this.target = new Node(tgt);
         this.weight = 0.0d;
         this.type = Type.UNDIRECTED;
-        if(src.compareTo(tgt) > 0){
-            Node tpNode = source;
-            source = target;
-            target = tpNode;
-        }
+//        if(src.compareTo(tgt) > 0){
+//            Node tpNode = source;
+//            source = target;
+//            target = tpNode;
+//        }
     }
 
     public Edge(Node src,Node tgt,double weight){
@@ -73,11 +71,11 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
         this.target = tgt;
         this.weight = weight;
         this.type = Type.UNDIRECTED;
-        if(src.compareTo(tgt) > 0){
-            Node tpNode = source;
-            source = target;
-            target = tpNode;
-        }
+//        if(src.compareTo(tgt) > 0){
+//            Node tpNode = source;
+//            source = target;
+//            target = tpNode;
+//        }
     }
 
     public Edge(Node src,Node tgt){
@@ -85,11 +83,11 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
         this.target = tgt;
         this.weight = 0.0d;
         this.type = Type.UNDIRECTED;
-        if(src.compareTo(tgt) > 0){
-            Node tpNode = source;
-            source = target;
-            target = tpNode;
-        }
+//        if(src.compareTo(tgt) > 0){
+//            Node tpNode = source;
+//            source = target;
+//            target = tpNode;
+//        }
     }
     public Edge(Node src,Node tgt, int matRow ,int matCol){
         this.source = src;
@@ -98,11 +96,11 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
         this.matRow = matRow;
         this.matCol = matCol;
         this.type = Type.UNDIRECTED;
-        if(src.compareTo(tgt) > 0){
-            Node tpNode = source;
-            source = target;
-            target = tpNode;
-        }
+//        if(src.compareTo(tgt) > 0){
+//            Node tpNode = source;
+//            source = target;
+//            target = tpNode;
+//        }
     }
     public Edge(Node src,Node tgt, int matRow ,int matCol,double weight){
         this.source = src;
@@ -111,11 +109,11 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
         this.matRow = matRow;
         this.matCol = matCol;
         this.type = Type.UNDIRECTED;
-        if(src.compareTo(tgt) > 0){
-            Node tpNode = source;
-            source = target;
-            target = tpNode;
-        }
+//        if(src.compareTo(tgt) > 0){
+//            Node tpNode = source;
+//            source = target;
+//            target = tpNode;
+//        }
     }
     //--------------------PUBLIC ACCESS---------------------------
     @Override
@@ -169,24 +167,24 @@ public class Edge extends DefaultEdge implements Comparable<Edge> {
     public void setMatRow(int matRow) {
         this.matRow = matRow;
     }
-    /**
-     * Method for the comparision between edges with the rule as the followings:
-     * <p>1. source node takes first considerations, (lexicographical way in its name)</p>
-     * <p>2. then the second</p>
-     *
-     * @param o another edge to be compared
-     * @return value 0 for equal, less than 0 for the edge < edge o, greater than 0 for the edge > edge 0
-     */
-    @Override
-    public int compareTo(Edge o) {
-        Node src = o.source;
-        Node tgt = o.target;
-        int tmpCpResult = this.source.compareTo(src);
-        if (tmpCpResult==0){
-            return this.target.compareTo(tgt);
-        }
-        return tmpCpResult;
-    }
+//    /**
+//     * Method for the comparision between edges with the rule as the followings:
+//     * <p>1. source node takes first considerations, (lexicographical way in its name)</p>
+//     * <p>2. then the second</p>
+//     *
+//     * @param o another edge to be compared
+//     * @return value 0 for equal, less than 0 for the edge < edge o, greater than 0 for the edge > edge 0
+//     */
+//    @Override
+//    public int compareTo(Edge o) {
+//        Node src = o.source;
+//        Node tgt = o.target;
+//        int tmpCpResult = this.source.compareTo(src);
+//        if (tmpCpResult==0){
+//            return this.target.compareTo(tgt);
+//        }
+//        return tmpCpResult;
+//    }
 
     @Override
     public String toString() {

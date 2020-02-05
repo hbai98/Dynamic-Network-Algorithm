@@ -19,12 +19,12 @@ class EdgeSpec {
         edge_3 = new Edge("1","1",1.0, Edge.Type.UNDIRECTED);
 
     }
-    @DisplayName("comparable according to the rules predefined.")
-    @Test
-    void compareTo() {
-        assertTrue(edge_1.compareTo(edge_2)<0);
-        assertTrue(edge_1.compareTo(edge_3)>0);
-    }
+//    @DisplayName("comparable according to the rules predefined.")
+//    @Test
+//    void compareTo() {
+//        assertTrue(edge_1.compareTo(edge_2)<0);
+//        assertTrue(edge_1.compareTo(edge_3)>0);
+//    }
     @DisplayName("able to construct in 3 parameters")
     @Test
     void constructorTest() {

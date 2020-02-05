@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -32,7 +31,7 @@ class NBMSpec {
     void findBestPairTest(){
         NBM nbm = new NBM(list,graph_1,graph_2);
         nbm.findBestPairs();
-        HashMap<String,Node> hashMap = nbm.getBestPairNodes();
+        HashMap<String,Node> hashMap = nbm.getMostSimPairMap();
         HashMap<String,Node> result = new HashMap<>();
         result.put("A",new Node("D",0.4));
         result.put("C",new Node("A",0.7));

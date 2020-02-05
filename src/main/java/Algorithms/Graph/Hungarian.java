@@ -2,10 +2,11 @@ package Algorithms.Graph;
 // Author: Haotian Bai
 // Shanghai University, department of computer science
 
-import Algorithms.Graph.IO.MyMatrixReader;
+import Algorithms.Graph.Utils.AdjList;
 import org.jblas.DoubleMatrix;
 
 import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
 
 /**
  * For the high computation performance, the matrix (DoubleMatrix) is based on
@@ -42,24 +43,24 @@ public class Hungarian {
     protected Direction[][] status;
     // record the mapping result
     private int[] result;
-
+    enum ProblemType {maxLoc,minLoc}
     /**
      * Start the algorithm.
      *
-     * @param sourcePath file to read
      * @throws IOException read false.
      */
-    protected Hungarian(String sourcePath) throws IOException {
-        MyMatrixReader reader = new MyMatrixReader(sourcePath);
-        mat = new DoubleMatrix(reader.out());
-        // Get min to initialize the result size
-        int tpMin = Math.min(mat.columns,mat.rows);
-        //Index of the column selected by every row (The final result)
-        result = new int[tpMin];
-        numLine = 0;
-        // Fill zeros if not the same width and height, it will change the shape of the matrix.
-        fillZeros();
-        status = new Direction[matCol][matRow];
+    protected Hungarian(DoubleMatrix mat, ProblemType type) throws IOException, InvalidAlgorithmParameterException {
+        init(mat,type);
+        hungarian();
+    }
+
+    protected Hungarian(AdjList list, ProblemType type) throws IOException, InvalidAlgorithmParameterException {
+        DoubleMatrix mat = list.toMatrix();
+        init(mat,type);
+        hungarian();
+    }
+
+    private void hungarian() throws InvalidAlgorithmParameterException {
         //Hungarian algorithm
         subtractRowMinimal(); // step 1
         subtractColMinimal();//step 2
@@ -68,9 +69,28 @@ public class Hungarian {
             shiftZeros(); // step 4
             greedyCoverZeros(); // step 3
         }
-        optimize(); // step 5
+        if(!optimize()){
+            throw new InvalidAlgorithmParameterException("The matrix for allocation is invalid.");
+        }; // step 5
     }
 
+    private void init(DoubleMatrix mat, ProblemType type) {
+        if(type == ProblemType.maxLoc){
+            this.mat = mat.neg();
+        }
+        else{
+            this.mat = mat;
+        }
+        // Get min to initialize the result size
+        int tpMin = Math.min(mat.columns,mat.rows);
+        //Index of the column selected by every row (The final result)
+        result = new int[tpMin];
+        numLine = 0;
+        // Fill zeros if not the same width and height, it will change the shape of the matrix.
+        fillZeros();
+        status = new Direction[matCol][matRow];
+
+    }
 
 
     private void fillZeros() {
@@ -259,12 +279,12 @@ public class Hungarian {
     }
     /**
      * Step 5 : get the assignment result, one row - > one column.
-     * brute force solution
+     * brute force solution: O(mn)
      */
     //TODO find a better solution!
-    private void optimize(){
+    private boolean optimize(){
         boolean[] colReserved = new boolean[matCol];
-        recurse(0,colReserved);
+        return recurse(0,colReserved);
     }
     private boolean recurse(int row, boolean[] colReserved) {
 
