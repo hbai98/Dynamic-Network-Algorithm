@@ -16,20 +16,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisplayName("THe algorithm's ")
 class NBMSpec {
     AdjList list;
-    HashSet<String> graph_1;
-    HashSet<String>  graph_2;
+    AdjList revList;
 
     @BeforeEach
     void init() throws IOException {
         GraphFileReader reader = new GraphFileReader();
         list = reader.readToAdjL("src/test/java/resources/IOTest/HomoGeneMap_1");
-        graph_1 = reader.getGraph_1();
-        graph_2 = reader.getGraph_2();
+        revList = reader.getRevAdjList();
+
     }
     @DisplayName("findBestPair finish.")
     @Test
     void findBestPairTest(){
-        NBM nbm = new NBM(list,graph_1,graph_2);
+        NBM nbm = new NBM(list,revList,);
         nbm.findBestPairs();
         HashMap<String,Node> hashMap = nbm.getMostSimPairMap();
         HashMap<String,Node> result = new HashMap<>();

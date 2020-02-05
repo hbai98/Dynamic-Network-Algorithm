@@ -26,9 +26,8 @@ public class AdjList extends LinkedList<HNodeList> {
     private HashSet<String> colSet;
     private HashMap<String,Integer> rowMap;
     private HashMap<String,Integer> colMap;
-
-    // used to construct the matrix
-
+    //---------------Reverse the adjList--------------> src <-> tgt
+    private AdjList revList;
     /**
      * <ol>
      *     <li>initialize the matrix.</li>
@@ -121,6 +120,7 @@ public class AdjList extends LinkedList<HNodeList> {
     }
 
     /**
+     * Step 3:
      * Iterate all nodeLists mapping the colList.
      * @param colMap the map for the matrix's column
      */
@@ -135,7 +135,6 @@ public class AdjList extends LinkedList<HNodeList> {
             mat.putRow(r,rowVector);
         }
     }
-
 
 
     /**
@@ -165,13 +164,23 @@ public class AdjList extends LinkedList<HNodeList> {
      * find node head's all nodes.
      * @param tgtNode target node
      */
-    public HNodeList getNodeList(String tgtNode){
+    public HNodeList getNeighborsList(String tgtNode){
         for(HNodeList hNodeList : this){
             if(hNodeList.signName.equals(tgtNode)){
                 return hNodeList;
             }
         }
         return null;
+    }
+    /**
+     * find node head's all nodes.
+     * <br>
+     * <p>NOTICE: use it in the condition that the adjList has been sorted.</p>
+     * @param tgtNode target node
+     */
+    public HNodeList sortGetNeighborsList(String tgtNode){
+        int index = Collections.binarySearch(this,new HNodeList(tgtNode), Comparator.comparing(o -> o.signName));
+        return this.get(index);
     }
 
     public double getMatrixVal(String tgtHead, String tgtNode) throws IOException {
@@ -289,6 +298,17 @@ public class AdjList extends LinkedList<HNodeList> {
         assert(rowIndex>=0&&rowIndex<this.size());
         return this.get(rowIndex).findMax();
     }
+
+    public AdjList getRevList() {
+        AdjList rev = new AdjList();
+        forEach(list->{
+            String headName = list.getSignName();
+            list.forEach(node -> {
+                rev.sortAddOneNode(node.getStrName(),headName,node.getValue());
+            });
+        });
+        return rev;
+    }
     //------------------PUBLIC-----------------------------
 
 
@@ -325,4 +345,6 @@ public class AdjList extends LinkedList<HNodeList> {
         }
         return colMap;
     }
+
+
 }

@@ -1,12 +1,12 @@
-package Algorithms.Graph.Network;
+package Algorithms.Graph.Utils;
 // Author: Haotian Bai
 // Shanghai University, department of computer science
-
+import Algorithms.Graph.Network.Node;
 import org.jgrapht.graph.DefaultEdge;
 
 import java.util.Objects;
 
-public class Edge extends DefaultEdge {
+public class CpEdge extends DefaultEdge implements Comparable<CpEdge>{
 
     public enum Type {UNDIRECTED, DIRECTED}
 
@@ -17,67 +17,105 @@ public class Edge extends DefaultEdge {
     // used to record the edge's position in the similarity matrix
     protected int matRow = -1;
     protected int matCol = -1;
-
-    public Edge(String src, String tgt, double weight, Type type) throws IllegalArgumentException {
+    /**
+     * For easing the comparision between edges. <p>Limit:
+     * the edge is both undirected and its components are with the ascending name order.
+     * This constructor will force "undirected" edges follow ascending name order if it's not the case.</>
+     */
+    public CpEdge(String src, String tgt, double weight, Type type) throws IllegalArgumentException {
         this.source = new Node(src);
         this.target = new Node(tgt);
         this.weight = weight;
         this.type = type;
 
+        if(src.compareTo(tgt) > 0){
+            Node tpNode = source;
+            source = target;
+            target = tpNode;
+        }
     }
-
-    public Edge(String src, String tgt, double weight) {
+    /**
+     * For easing the comparision between edges. <p>Limit:
+     * the edge is both undirected and its components are with the ascending name order.
+     * This constructor will force "undirected" edges follow ascending name order if it's not the case.</>
+     */
+    public CpEdge(String src, String tgt, double weight){
         this.source = new Node(src);
         this.target = new Node(tgt);
         this.weight = weight;
         this.type = Type.UNDIRECTED;
-
+        if(src.compareTo(tgt) > 0){
+            Node tpNode = source;
+            source = target;
+            target = tpNode;
+        }
     }
-
-    public Edge(String src, String tgt) {
+    /**
+     * For easing the comparision between edges. <p>Limit:
+     * the edge is both undirected and its components are with the ascending name order.
+     * This constructor will force "undirected" edges follow ascending name order if it's not the case.</>
+     */
+    public CpEdge(String src, String tgt){
         this.source = new Node(src);
         this.target = new Node(tgt);
         this.weight = 0.0d;
         this.type = Type.UNDIRECTED;
-
+        if(src.compareTo(tgt) > 0){
+            Node tpNode = source;
+            source = target;
+            target = tpNode;
+        }
     }
 
-    public Edge(Node src, Node tgt, double weight) {
+    public CpEdge(Node src, Node tgt, double weight){
         this.source = src;
         this.target = tgt;
         this.weight = weight;
         this.type = Type.UNDIRECTED;
-
+        if(src.compareTo(tgt) > 0){
+            Node tpNode = source;
+            source = target;
+            target = tpNode;
+        }
     }
 
-    public Edge(Node src, Node tgt) {
+    public CpEdge(Node src, Node tgt){
         this.source = src;
         this.target = tgt;
         this.weight = 0.0d;
         this.type = Type.UNDIRECTED;
-
+        if(src.compareTo(tgt) > 0){
+            Node tpNode = source;
+            source = target;
+            target = tpNode;
+        }
     }
-
-    public Edge(Node src, Node tgt, int matRow, int matCol) {
+    public CpEdge(Node src, Node tgt, int matRow , int matCol){
         this.source = src;
         this.target = tgt;
         this.weight = 0.0d;
         this.matRow = matRow;
         this.matCol = matCol;
         this.type = Type.UNDIRECTED;
-
+        if(src.compareTo(tgt) > 0){
+            Node tpNode = source;
+            source = target;
+            target = tpNode;
+        }
     }
-
-    public Edge(Node src, Node tgt, int matRow, int matCol, double weight) {
+    public CpEdge(Node src, Node tgt, int matRow , int matCol, double weight){
         this.source = src;
         this.target = tgt;
         this.weight = weight;
         this.matRow = matRow;
         this.matCol = matCol;
         this.type = Type.UNDIRECTED;
-
+        if(src.compareTo(tgt) > 0){
+            Node tpNode = source;
+            source = target;
+            target = tpNode;
+        }
     }
-
     //--------------------PUBLIC ACCESS---------------------------
     @Override
     public Node getSource() {
@@ -130,7 +168,24 @@ public class Edge extends DefaultEdge {
     public void setMatRow(int matRow) {
         this.matRow = matRow;
     }
-
+    /**
+     * Method for the comparision between edges with the rule as the followings:
+     * <p>1. source node takes first considerations, (lexicographical way in its name)</p>
+     * <p>2. then the second</p>
+     *
+     * @param o another edge to be compared
+     * @return value 0 for equal, less than 0 for the edge < edge o, greater than 0 for the edge > edge 0
+     */
+    @Override
+    public int compareTo(CpEdge o) {
+        Node src = o.source;
+        Node tgt = o.target;
+        int tmpCpResult = this.source.compareTo(src);
+        if (tmpCpResult==0){
+            return this.target.compareTo(tgt);
+        }
+        return tmpCpResult;
+    }
 
     @Override
     public String toString() {
@@ -146,7 +201,7 @@ public class Edge extends DefaultEdge {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Edge edge = (Edge) o;
+        CpEdge edge = (CpEdge) o;
         return Double.compare(edge.weight, weight) == 0 &&
                 source.equals(edge.source) &&
                 target.equals(edge.target) &&

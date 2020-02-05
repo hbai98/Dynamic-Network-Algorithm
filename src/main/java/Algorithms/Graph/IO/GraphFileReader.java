@@ -32,10 +32,13 @@ import java.util.regex.Pattern;
 public class GraphFileReader {
     private HashSet<String> graph_1;
     private HashSet<String> graph_2;
-
+    //-------------------------
+    private AdjList revAdjList;
     public GraphFileReader(){
         graph_1 = new HashSet<>();
         graph_2 = new HashSet<>();
+        //----------------------
+        revAdjList = new AdjList();
     }
 
     /**
@@ -231,6 +234,7 @@ public class GraphFileReader {
                 // create edge & add
                 // Contain the lexicographical order to prevent the case of same edges.
                 graph.sortAddOneNode(srcName,tgtName,weight);
+                revAdjList.sortAddOneNode(tgtName,srcName,weight);
                 addToNodeList(srcName,tgtName);
             }
         }
@@ -273,5 +277,10 @@ public class GraphFileReader {
     public HashSet<String>  getGraph_2() {
         assert(graph_2!=null);
         return graph_2;
+    }
+
+    public AdjList getRevAdjList() {
+        assert (revAdjList!=null);
+        return revAdjList;
     }
 }
