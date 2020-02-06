@@ -40,7 +40,7 @@ class NBMSpec {
             Pair<Node,Node> tp = list.getNodeNameByMatrixIndex(i,j);
             initMap.add(new Edge(tp.getFirst(),tp.getSecond(),tp.getSecond().getValue()));
         }
-        NBM nbm = new NBM(list,revList,initMap);
+        NBM nbm = new NBM(list,revList,initMap,0);
         nbm.findBestPairs();
         HashMap<String,Node> hashMap = nbm.getMostSimPairMap();
         HashMap<String,Node> result = new HashMap<>();
