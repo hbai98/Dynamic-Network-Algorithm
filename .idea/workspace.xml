@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/EdgeHasSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/EdgeHasSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/AdjList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/AdjList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/NBMSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/NBMSpec.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,7 +244,7 @@
       <workItem from="1580641558678" duration="2355000" />
       <workItem from="1580643978602" duration="24846000" />
       <workItem from="1580812685681" duration="10365000" />
-      <workItem from="1580874889316" duration="30551000" />
+      <workItem from="1580874889316" duration="31934000" />
     </task>
     <servers />
   </component>

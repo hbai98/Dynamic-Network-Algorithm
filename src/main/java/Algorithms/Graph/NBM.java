@@ -20,13 +20,32 @@ import Algorithms.Graph.Utils.HNodeList;
 import java.util.*;
 
 /**
- * Let n be the number of vertices and d be the
+ * Time complexity:
+ * <p>Let n be the number of vertices and d be the
  * maximum degree of vertices. The initial computation of
  * matrix W and insertions into the priority queue take O(n2)
  * time, assuming uniform distance measures. In each iteration,
  * the algorithm removes one pair from and inserts at
  * most d2 unmatched pairs into the priority queue. Totally,
  * there are O(n) iterations. Thus, the time complexity is O(n*d^2*logn).
+ * </p>
+ * <br>
+ * <p>---------------------------------------------------------------------------</p>
+ * <br>
+ * <p>In order to find common substructures, we develop a new
+ * graph mapping method called Neighbor Biased Mapping
+ * (NBM) shown in Alg. 1. Initially, a weight matrix W is
+ * computed where each entry Wu,v represents the similarity
+ * of vertex u ∈ G1 and vertex v ∈ G2. A priority queue PQ
+ * maintains pairs of vertices according to their weights. For
+ * each vertex in G1, its most similar vertex is found in G2,
+ * and the pair is added to PQ. At each iteration, the best pair
+ * (u, v) of unmatched vertices in the priority queue is chosen
+ * and marked as matched. Then, the neighboring unmatched
+ * pairs of (u, v) are assigned higher weights, thus increasing
+ * their chance of being chosen. The iterations continue until
+ * all vertices in graph G1 have been matched.
+ * </p>
  */
 public class NBM {
     protected AdjList simList;
@@ -48,8 +67,9 @@ public class NBM {
     protected NBM(AdjList simList, EdgeHasSet mappedEdges,double reward) {
         init(simList, mappedEdges,reward);
         // step 1
-//        findBestPairs();
-        // step 2
+        findBestPairs();
+        // step 2,3
+        priMatch();
 
     }
 
@@ -62,7 +82,9 @@ public class NBM {
     protected NBM(AdjList simList,AdjList revSimList, EdgeHasSet mappedEdges,double reward) {
         init(simList,revSimList,mappedEdges,reward);
         // step 1
-//        findBestPairs();
+        findBestPairs();
+        // step 2,3
+        priMatch();
     }
 
     private void init(AdjList simList, AdjList revSimList, EdgeHasSet mappedEdges,double reward) {

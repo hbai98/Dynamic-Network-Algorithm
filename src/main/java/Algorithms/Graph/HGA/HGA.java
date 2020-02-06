@@ -20,14 +20,16 @@ import java.io.IOException;
 public class HGA {
     protected Hungarian hungarian;
     protected AdjList adjList;
-    /**
-     * This is the first step for HGA to initialize the mapping between two graph by HA
-     * @return EdgeHashSet for the mapping result
-     */
+
     public HGA(AdjList adjList){
         this.adjList = adjList;
     }
 
+    
+    /**
+     * This is the first step for HGA to initialize the mapping between two graph by HA
+     * @return EdgeHashSet for the mapping result
+     */
     protected EdgeHasSet getEdgeMapFromHA() throws IOException {
         hungarian = new Hungarian(adjList, Hungarian.ProblemType.maxLoc);
         int[] res = hungarian.getIndexResult();
