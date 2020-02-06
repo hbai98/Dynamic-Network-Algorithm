@@ -1,12 +1,13 @@
 package Algorithms.Graph.Utils;
 
+import Algorithms.Graph.Network.Edge;
+import Algorithms.Graph.Network.EdgeHasSet;
 import Algorithms.Graph.Network.Node;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * This class is meant to make a graph based on adjacent list which
@@ -29,7 +30,12 @@ public class AdjList extends LinkedList<HNodeList> {
     private HashMap<String, Integer> colMap;
     //---------------Reverse the adjList--------------> src <-> tgt
     private AdjList revList;
+    //---------------colMap mat index -> node's name-------------
+    private HashMap<Integer, String> swapOrderedColMap;
 
+    public AdjList(){
+
+    }
     /**
      * <ol>
      *     <li>initialize the matrix.</li>
@@ -132,6 +138,7 @@ public class AdjList extends LinkedList<HNodeList> {
      * @param colMap the map for the matrix's column
      */
     private void mapping(HashMap<String, Integer> colMap) {
+        rowMap = new HashMap<>();
         for (int r = 0; r < this.size(); r++) {
             HNodeList list = this.get(r);
             rowMap.put(list.getSignName(), r);
@@ -193,14 +200,6 @@ public class AdjList extends LinkedList<HNodeList> {
         return this.get(index);
     }
 
-    public double getMatrixVal(String tgtHead, String tgtNode) throws IOException {
-        int index = Collections.binarySearch(this, new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
-        if (index >= 0) {
-            return this.get(index).sortFindByName(tgtNode).getValue();
-        } else {
-            throw new IOException("Can't find the target head");
-        }
-    }
 
     /**
      * remove tgtNode from list(tgtHead).
@@ -369,9 +368,32 @@ public class AdjList extends LinkedList<HNodeList> {
     public Pair<Node, Node> getNodeNameByMatrixIndex(int i, int j) {
         if (mat == null) {
             mat = this.toMatrix();
+        }
+        if (swapOrderedColMap == null) {
+            getIndexColMap();
+        }
+        return new Pair<>(new Node(this.get(i).signName), new Node(swapOrderedColMap.get(j), mat.get(i, j)));
+    }
+
+    private void getIndexColMap() {
+        // switch key and value only because of the bi-direction relationship maintained by the NodeList
+        swapOrderedColMap = new HashMap<>();
+        // sorted by natural order of the key
+        TreeMap<String, Integer> colTree = new TreeMap<>(colMap);
+        // switch
+        colTree.forEach((name, index) -> {
+            swapOrderedColMap.put(index, name);
+        });
+    }
+
+    public double getMatrixVal(String tgtHead, String tgtNode) throws IOException {
+        int index = Collections.binarySearch(this, new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
+        if (index >= 0) {
+            return this.get(index).sortFindByName(tgtNode).getValue();
         } else {
-            // switch key and value only because of the bi-direction relationship maintained by the NodeList
-            HashMap<Integer, String> swapColMap = mapSwitch();
+            throw new IOException("Can't find the target head");
         }
     }
+
+
 }

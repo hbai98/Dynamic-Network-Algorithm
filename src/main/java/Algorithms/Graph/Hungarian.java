@@ -2,8 +2,12 @@ package Algorithms.Graph;
 // Author: Haotian Bai
 // Shanghai University, department of computer science
 
+import Algorithms.Graph.Network.Edge;
+import Algorithms.Graph.Network.EdgeHasSet;
+import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Utils.AdjList;
 import org.jblas.DoubleMatrix;
+import org.jgrapht.alg.util.Pair;
 
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -43,24 +47,24 @@ public class Hungarian {
     protected Direction[][] status;
     // record the mapping result
     private int[] result;
-    enum ProblemType {maxLoc,minLoc}
+    public enum ProblemType {maxLoc,minLoc}
     /**
      * Start the algorithm.
      *
      * @throws IOException read false.
      */
-    protected Hungarian(DoubleMatrix mat, ProblemType type) throws IOException, InvalidAlgorithmParameterException {
+    protected Hungarian(DoubleMatrix mat, ProblemType type) throws IOException {
         init(mat,type);
         hungarian();
     }
 
-    protected Hungarian(AdjList list, ProblemType type) throws IOException, InvalidAlgorithmParameterException {
+    public Hungarian(AdjList list, ProblemType type) throws IOException {
         DoubleMatrix mat = list.toMatrix();
         init(mat,type);
         hungarian();
     }
 
-    private void hungarian() throws InvalidAlgorithmParameterException {
+    private void hungarian() throws IOException {
         //Hungarian algorithm
         subtractRowMinimal(); // step 1
         subtractColMinimal();//step 2
@@ -70,7 +74,7 @@ public class Hungarian {
             greedyCoverZeros(); // step 3
         }
         if(!optimize()){
-            throw new InvalidAlgorithmParameterException("The matrix for allocation is invalid.");
+            throw new IOException("The matrix for allocation is invalid.");
         }; // step 5
     }
 
@@ -306,7 +310,7 @@ public class Hungarian {
 
     }
 
-    public int[] getResult() {
+    public int[] getIndexResult() {
         return result;
     }
 

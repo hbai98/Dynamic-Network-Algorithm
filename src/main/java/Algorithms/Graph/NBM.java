@@ -22,8 +22,6 @@ import java.util.*;
 
 public class NBM {
     protected AdjList simList;
-    protected HashSet<String> graph_1;
-    protected HashSet<String> graph_2;
     // --------------------------------------------> alg variables
     protected HashMap<String, Node> mostSimPairMap;
     protected PriorityQueue<Edge> pqEdge;
@@ -93,7 +91,7 @@ public class NBM {
      * iterate(nodeList) nodes in Graph1 and finds every node it's best pair( with the greatest weight )
      */
     protected void findBestPairs() {
-        assert (simList != null && graph_1 != null && graph_2 != null);
+        assert (simList != null );
         for (int index = 0; index < simList.size(); index++) {
             HNodeList list = simList.get(index);
             String listHeadName = list.getSignName();
@@ -134,6 +132,7 @@ public class NBM {
             // direct neighbors of the head node
             HNodeList neb1 = simList.sortGetNeighborsList(srcNode.getStrName());
             HNodeList neb2 = revSimList.sortGetNeighborsList(tgtNode.getStrName());
+            
         }
     }
 

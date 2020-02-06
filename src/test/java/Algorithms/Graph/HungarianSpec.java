@@ -60,7 +60,7 @@ class HungarianSpec {
     @DisplayName("is a final Test fro minLoc.")
     @Test
     void FinalTest(){
-        int[] result = alg.getResult();
+        int[] result = alg.getIndexResult();
         assertThat(result).containsSequence(2,0,1);
     }
 
@@ -68,7 +68,7 @@ class HungarianSpec {
     @Test
     void FinalTest_2() throws IOException {
         alg = new Hungarian(mat, Hungarian.ProblemType.maxLoc);
-        int[] result = alg.getResult();
+        int[] result = alg.getIndexResult();
         assertThat(result).containsSequence(1,2,0);
     }
 

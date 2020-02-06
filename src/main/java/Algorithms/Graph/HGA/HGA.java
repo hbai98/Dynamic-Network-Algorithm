@@ -1,6 +1,13 @@
 package Algorithms.Graph.HGA;
 
 import Algorithms.Graph.Hungarian;
+import Algorithms.Graph.Network.Edge;
+import Algorithms.Graph.Network.EdgeHasSet;
+import Algorithms.Graph.Network.Node;
+import Algorithms.Graph.Utils.AdjList;
+import org.jgrapht.alg.util.Pair;
+
+import java.io.IOException;
 
 /**
  *  Refer to An Adaptive Hybrid Algorithm for Global Network Alignment
@@ -12,6 +19,25 @@ import Algorithms.Graph.Hungarian;
 
 public class HGA {
     protected Hungarian hungarian;
+    protected AdjList adjList;
+    /**
+     * This is the first step for HGA to initialize the mapping between two graph by HA
+     * @return EdgeHashSet for the mapping result
+     */
+    public HGA(AdjList adjList){
+        this.adjList = adjList;
+    }
 
+    protected EdgeHasSet getEdgeMapFromHA() throws IOException {
+        hungarian = new Hungarian(adjList, Hungarian.ProblemType.maxLoc);
+        int[] res = hungarian.getIndexResult();
+        EdgeHasSet initMap = new EdgeHasSet();
+        for (int i = 0; i < res.length; i++) {
+            int j = res[i];
+            Pair<Node,Node> tp = adjList.getNodeNameByMatrixIndex(i,j);
+            initMap.add(new Edge(tp.getFirst(),tp.getSecond(),tp.getSecond().getValue()));
+        }
+        return initMap;
+    }
 
 }

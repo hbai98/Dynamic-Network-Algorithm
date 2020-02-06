@@ -1,9 +1,11 @@
 package Algorithms.Graph;
 
 import Algorithms.Graph.IO.GraphFileReader;
+import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHasSet;
 import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Utils.AdjList;
+import org.jgrapht.alg.util.Pair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +13,6 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.util.HashMap;
-import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -32,9 +33,14 @@ class NBMSpec {
     void findBestPairTest() throws IOException, InvalidAlgorithmParameterException {
         EdgeHasSet pairInit = new EdgeHasSet();
         Hungarian alg = new Hungarian(list, Hungarian.ProblemType.maxLoc);
-        int[] res = alg.getResult();
-        HashMap<String,Integer> rowMap = list.getRowMap();
-        NBM nbm = new NBM(list,revList,);
+        int[] res = alg.getIndexResult();
+        EdgeHasSet initMap = new EdgeHasSet();
+        for (int i = 0; i < res.length; i++) {
+            int j = res[i];
+            Pair<Node,Node> tp = list.getNodeNameByMatrixIndex(i,j);
+            initMap.add(new Edge(tp.getFirst(),tp.getSecond(),tp.getSecond().getValue()));
+        }
+        NBM nbm = new NBM(list,revList,initMap);
         nbm.findBestPairs();
         HashMap<String,Node> hashMap = nbm.getMostSimPairMap();
         HashMap<String,Node> result = new HashMap<>();
