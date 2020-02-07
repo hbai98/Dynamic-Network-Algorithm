@@ -53,8 +53,9 @@ public class NBM {
     protected HashMap<String, Node> mostSimPairMap;
     protected PriorityQueue<Edge> pqEdge;
     protected EdgeHasSet mappedEdges;
+    protected AdjList graph1;
+    protected AdjList graph2;
 
-    private AdjList revSimList;
     private double reward;
     protected  NBM(){
 
@@ -62,12 +63,14 @@ public class NBM {
     /**
      * NBM
      *
+     * @param graph1  the adjList to represent the graph1
+     * @param graph2  the adjList to represent the graph2
      * @param simList     AdjList to represent the similarity matrix
      * @param mappedEdges the initial mapping result
      * @param reward the reward value for every turn to update the simMat
      */
-    protected NBM(AdjList simList, EdgeHasSet mappedEdges,double reward) {
-        init(simList, mappedEdges,reward);
+    protected NBM(AdjList graph1,AdjList graph2,AdjList simList, EdgeHasSet mappedEdges,double reward) {
+        init(graph1,graph2,simList, mappedEdges,reward);
         // step 1
         findBestPairs();
         // step 2,3
@@ -75,32 +78,11 @@ public class NBM {
 
     }
 
-    /**
-     * NBM
-     * @param simList     AdjList to represent the similarity matrix
-     * @param mappedEdges the initial mapping result
-     * @param reward the reward value for every turn to update the simMat
-     */
-    protected NBM(AdjList simList,AdjList revSimList, EdgeHasSet mappedEdges,double reward) {
-        init(simList,revSimList,mappedEdges,reward);
-        // step 1
-        findBestPairs();
-        // step 2,3
-        priMatch();
-    }
-
-    private void init(AdjList simList, AdjList revSimList, EdgeHasSet mappedEdges,double reward) {
-        assert (revSimList!=null);
-        this.revSimList = revSimList;
-        init(simList,mappedEdges,reward);
-    }
-
-    private void init(AdjList simList, EdgeHasSet mappedEdges,double reward) {
-        assert (simList != null && mappedEdges != null);
+    private void init(AdjList graph1,AdjList graph2,AdjList simList, EdgeHasSet mappedEdges,double reward) {
+        assert (graph1!=null && graph2!=null && simList != null && mappedEdges != null);
+        this.graph1 = graph1;
+        this.graph2 = graph2;
         this.reward = reward;
-        if(this.revSimList == null){
-            this.revSimList = simList.getRevList();
-        }
         this.simList = simList;
         // pq
         pqEdge = new PriorityQueue<>(Comparator.comparingDouble(Edge::getWeight));
@@ -177,8 +159,8 @@ public class NBM {
      */
     private void neighborAdjust(Node srcNode,Node tgtNode) {
         // direct neighbors of the head node
-        HNodeList neb1 = simList.sortGetNeighborsList(srcNode.getStrName());
-        HNodeList neb2 = revSimList.sortGetNeighborsList(tgtNode.getStrName());
+        HNodeList neb1 = graph1.sortGetNeighborsList(srcNode.getStrName());
+        HNodeList neb2 = graph2.sortGetNeighborsList(tgtNode.getStrName());
         // boolean sign for node1 pair update
         boolean sign;
         for (Node node1 : neb1) {
@@ -215,19 +197,19 @@ public class NBM {
     /**
      * Update only once for all neighbors of all the pairs ready.
      */
-    public static void neighborSimAdjust(AdjList simList, AdjList revSimList,EdgeHasSet mappedEdges,double reward){
+    public static void neighborSimAdjust(AdjList graph1,AdjList graph2,AdjList simAdjList,EdgeHasSet mappedEdges,double reward){
         for (Edge edge : mappedEdges) {
             Node srcNode = edge.getSource();
             Node tgtNode = edge.getTarget();
             // direct neighbors of the head node
-            HNodeList neb1 = simList.sortGetNeighborsList(srcNode.getStrName());
-            HNodeList neb2 = revSimList.sortGetNeighborsList(tgtNode.getStrName());
+            HNodeList neb1 = graph1.sortGetNeighborsList(srcNode.getStrName());
+            HNodeList neb2 = graph2.sortGetNeighborsList(tgtNode.getStrName());
             for (Node node1 : neb1) {
                 for (Node node2 : neb2) {
                     double newWeight = node2.getValue()+reward;
-                    simList.sortAddOneNode(node1.getStrName(),node2.getStrName(),newWeight);
+                    simAdjList.sortAddOneNode(node1.getStrName(),node2.getStrName(),newWeight);
                     // synchronize the matrix
-                    simList.updateMat(node1.getStrName(),node2.getStrName(),newWeight);
+                    simAdjList.updateMat(node1.getStrName(),node2.getStrName(),newWeight);
                 }
             }
         }

@@ -10,7 +10,5 @@ class HGASpc {
     HGA hga;
     @BeforeEach
     void init(){
-        GraphFileReader
-        hga = new HGA();
     }
 }
