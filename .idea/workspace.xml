@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/NBMSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/NBMSpec.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +38,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -82,11 +86,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="Algorithms.Graph.HGA" />
       <recent name="Alignment.align" />
       <recent name="Algorithms.Graph.IO" />
       <recent name="Alignment.Blast" />
       <recent name="Alignment.BlAST" />
-      <recent name="Algorithms.Graph" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -244,7 +248,7 @@
       <workItem from="1580641558678" duration="2355000" />
       <workItem from="1580643978602" duration="24846000" />
       <workItem from="1580812685681" duration="10365000" />
-      <workItem from="1580874889316" duration="31934000" />
+      <workItem from="1580874889316" duration="37213000" />
     </task>
     <servers />
   </component>
@@ -333,25 +337,25 @@
     </state>
     <state x="162" y="225" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1579781498938" />
     <state x="203" y="281" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1579173438855" />
-    <state width="1493" height="212" key="GridCell.Tab.0.bottom" timestamp="1580970982366">
+    <state width="1493" height="212" key="GridCell.Tab.0.bottom" timestamp="1581042761318">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1580970982366" />
+    <state width="1493" height="212" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1581042761318" />
     <state width="917" height="326" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="212" key="GridCell.Tab.0.center" timestamp="1580970982366">
+    <state width="1493" height="212" key="GridCell.Tab.0.center" timestamp="1581042761318">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1580970982366" />
+    <state width="1493" height="212" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1581042761318" />
     <state width="917" height="326" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="212" key="GridCell.Tab.0.left" timestamp="1580970982366">
+    <state width="1493" height="212" key="GridCell.Tab.0.left" timestamp="1581042761317">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1580970982366" />
+    <state width="1493" height="212" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1581042761317" />
     <state width="917" height="326" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465822" />
-    <state width="1493" height="212" key="GridCell.Tab.0.right" timestamp="1580970982366">
+    <state width="1493" height="212" key="GridCell.Tab.0.right" timestamp="1581042761318">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="212" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1580970982366" />
+    <state width="1493" height="212" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1581042761318" />
     <state width="917" height="326" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
     <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1580886479433">
       <screen x="0" y="0" width="1536" height="864" />
@@ -395,10 +399,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="449" y="257" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1580874887125" />
-    <state x="196" y="194" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1580730818716">
+    <state x="196" y="194" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1581045104861">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="196" y="194" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.864@0.0.1536.864" timestamp="1580730818716" />
+    <state x="196" y="194" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.864@0.0.1536.864" timestamp="1581045104861" />
     <state x="245" y="243" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1579499692303" />
     <state x="321" y="169" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1579754544336">
       <screen x="0" y="0" width="1536" height="864" />
@@ -408,6 +412,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="248" y="254" key="extract.method.dialog/0.0.1536.864@0.0.1536.864" timestamp="1579750070151" />
+    <state width="716" height="490" key="javadoc.popup.new" timestamp="1581044943011">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="716" height="490" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1581044943011" />
     <state x="178" y="127" key="new project wizard" timestamp="1579781515214">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

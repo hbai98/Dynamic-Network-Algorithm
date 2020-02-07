@@ -56,7 +56,9 @@ public class NBM {
 
     private AdjList revSimList;
     private double reward;
+    protected  NBM(){
 
+    }
     /**
      * NBM
      *
@@ -210,7 +212,27 @@ public class NBM {
         }
     }
 
+    /**
+     * Update only once for all neighbors of all the pairs ready.
+     */
+    public static void neighborSimAdjust(AdjList simList, AdjList revSimList,EdgeHasSet mappedEdges,double reward){
+        for (Edge edge : mappedEdges) {
+            Node srcNode = edge.getSource();
+            Node tgtNode = edge.getTarget();
+            // direct neighbors of the head node
+            HNodeList neb1 = simList.sortGetNeighborsList(srcNode.getStrName());
+            HNodeList neb2 = revSimList.sortGetNeighborsList(tgtNode.getStrName());
+            for (Node node1 : neb1) {
+                for (Node node2 : neb2) {
+                    double newWeight = node2.getValue()+reward;
+                    simList.sortAddOneNode(node1.getStrName(),node2.getStrName(),newWeight);
+                    // synchronize the matrix
+                    simList.updateMat(node1.getStrName(),node2.getStrName(),newWeight);
+                }
+            }
+        }
 
+    }
 
 //    ---------------------------------PUBLIC-------------------------
 
