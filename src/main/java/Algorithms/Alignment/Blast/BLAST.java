@@ -1,14 +1,8 @@
-package Alignment.Blast;
+package Algorithms.Alignment.Blast;
 
-import org.biojava.nbio.alignment.Alignments;
-import org.biojava.nbio.core.alignment.template.SequencePair;
-import org.biojava.nbio.core.search.io.Hsp;
-import org.biojava.nbio.core.sequence.IntronSequence;
-import org.biojava.nbio.core.sequence.compound.AminoAcidCompound;
 import org.biojava.nbio.core.sequence.template.*;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Class BLAST is an abstract base class that implements the original BLAST ungapped

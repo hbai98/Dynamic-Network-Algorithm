@@ -1,4 +1,4 @@
-package Alignment.align;
+package Algorithms.Alignment.align;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

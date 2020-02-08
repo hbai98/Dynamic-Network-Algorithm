@@ -11,7 +11,7 @@ import org.jgrapht.alg.util.Pair;
 import java.io.IOException;
 
 /**
- * Refer to An Adaptive Hybrid Algorithm for Global Network Alignment
+ * Refer to An Adaptive Hybrid Algorithm for Global Network Algorithms.Alignment
  * Article in IEEE/ACM Transactions on Computational Biology and Bioinformatics · January 2015
  * DOI: 10.1109/TCBB.2015.2465957
  *

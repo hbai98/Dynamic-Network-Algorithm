@@ -8,7 +8,7 @@ package Algorithms.Graph.HGA;
  * SS stands for the scoring standard
  * EC stands for the percentage of matched edges
  * PE stands for a criteria considering both edges and points mapping status
- * Please refer to "An Adaptive Hybrid Algorithm for global network Alignment" in
+ * Please refer to "An Adaptive Hybrid Algorithm for global network Algorithms.Alignment" in
  * IEEE/ACM transactions on Computational Biology and Bioinformatics- Jan,2015 for further information
  */
 public class Score {

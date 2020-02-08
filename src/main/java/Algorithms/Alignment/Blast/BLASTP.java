@@ -1,14 +1,12 @@
-package Alignment.Blast;
+package Algorithms.Alignment.Blast;
 
 import org.biojava.nbio.core.alignment.matrices.SimpleSubstitutionMatrix;
 import org.biojava.nbio.core.alignment.template.SubstitutionMatrix;
-import org.biojava.nbio.core.sequence.ProteinSequence;
 import org.biojava.nbio.core.sequence.compound.AminoAcidCompound;
 import org.biojava.nbio.core.sequence.template.AbstractCompound;
 import org.biojava.nbio.core.sequence.template.AbstractSequence;
 
 import java.util.ArrayList;
-import java.util.function.IntFunction;
 
 /**
  * <p>Reference:https://github.com/dstar4138/pjblast</p>

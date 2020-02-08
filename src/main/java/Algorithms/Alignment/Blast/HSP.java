@@ -1,4 +1,4 @@
-package Alignment.Blast;
+package Algorithms.Alignment.Blast;
 
 /**
  * This is a utility class that can represent an integer tuple

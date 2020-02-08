@@ -1,9 +1,8 @@
-package Alignment.Blast;
+package Algorithms.Alignment.Blast;
 
-import Alignment.IO.FastaFileReader;
+import Algorithms.Alignment.IO.FastaFileReader;
 import org.biojava.nbio.alignment.Alignments;
 import org.biojava.nbio.alignment.SimpleGapPenalty;
-import org.biojava.nbio.core.alignment.matrices.SimpleSubstitutionMatrix;
 import org.biojava.nbio.core.alignment.matrices.SubstitutionMatrixHelper;
 import org.biojava.nbio.core.alignment.template.SequencePair;
 import org.biojava.nbio.core.alignment.template.SubstitutionMatrix;
@@ -11,10 +10,6 @@ import org.biojava.nbio.core.exceptions.CompoundNotFoundException;
 import org.biojava.nbio.core.sequence.DNASequence;
 import org.biojava.nbio.core.sequence.ProteinSequence;
 import org.biojava.nbio.core.sequence.compound.AminoAcidCompound;
-import org.biojava.nbio.core.sequence.compound.NucleotideCompound;
-import org.biojava.nbio.core.sequence.template.AbstractCompound;
-import org.biojava.nbio.core.sequence.template.AbstractSequence;
-import org.biojava.nbio.core.sequence.template.SequenceView;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

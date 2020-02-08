@@ -1,9 +1,8 @@
-package Alignment.align;
+package Algorithms.Alignment.align;
 
-import Algorithms.Graph.IO.GraphFileReader;
+import Algorithms.Alignment.IO.FastaFileReader;
 import Algorithms.Graph.IO.GraphFileWriter;
 import Algorithms.Graph.Utils.AdjList;
-import Alignment.IO.FastaFileReader;
 import org.biojava.nbio.alignment.Alignments;
 import org.biojava.nbio.alignment.SimpleGapPenalty;
 import org.biojava.nbio.core.alignment.matrices.SubstitutionMatrixHelper;
