@@ -1,6 +1,6 @@
 package Algorithms.Graph.IO;
 
-import Algorithms.Graph.Utils.AdjList;
+import Algorithms.Graph.Network.AdjList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

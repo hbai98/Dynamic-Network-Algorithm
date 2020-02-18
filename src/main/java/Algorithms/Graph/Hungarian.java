@@ -1,16 +1,11 @@
 package Algorithms.Graph;
-// Author: Haotian Bai
-// Shanghai University, department of computer science
 
-import Algorithms.Graph.Network.Edge;
-import Algorithms.Graph.Network.EdgeHasSet;
-import Algorithms.Graph.Network.Node;
-import Algorithms.Graph.Utils.AdjList;
+import Algorithms.Graph.Network.AdjList;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
 import java.io.IOException;
-import java.security.InvalidAlgorithmParameterException;
+import java.util.Arrays;
 
 /**
  * For the high computation performance, the matrix (DoubleMatrix) is based on
@@ -27,294 +22,359 @@ import java.security.InvalidAlgorithmParameterException;
  * </p>
  * <br>
  * <p>
- * Please refer to https://en.wikipedia.org/wiki/Hungarian_algorithm for the clear description of
+ * Please refer to http://csclab.murraystate.edu/~bob.pilgrim/445/munkres.html for the clear description of
  * the algorithm.
  * </p>
- * <p>
- * thanks for https://github.com/amirbawab/Hungarian-Algorithm/blob/master/HungarianDouble.java
- * </p>
- */
-//TODO implement the maximum mapping.
+ **/
 public class Hungarian {
     protected DoubleMatrix mat;
-    private DoubleMatrix matCp;
     protected int matCol;
     protected int matRow;
-    // record lines to connect zeros
-    private int numLine;
-    // horizontal, vertical, cross lines(2 lines), no lines
-    enum Direction {h, v, c}
-    protected Direction[][] status;
+
+
     // record the mapping result
     private int[] result;
-    public enum ProblemType {maxLoc,minLoc}
-    /**
-     * Start the algorithm.
-     *
-     * @throws IOException read false.
-     */
+    private ZeroMasks[][] maskMat;
+    private boolean[] R_cover;
+    private boolean[] C_cover;
+    // path for augmenting path algorithm
+    private int[][] path;
+    private int pathRow;
+    private int pathCol;
+
+    private enum ZeroMasks {starred, primed}
+    public enum ProblemType {maxLoc, minLoc}
+
     protected Hungarian(DoubleMatrix mat, ProblemType type) throws IOException {
-        init(mat,type);
+        init(mat, type);
         hungarian();
     }
 
     public Hungarian(AdjList list, ProblemType type) throws IOException {
-        DoubleMatrix mat = list.toMatrix();
-        init(mat,type);
+        mat = list.toMatrix();
+        init(mat, type);
         hungarian();
     }
 
     private void hungarian() throws IOException {
-        //Hungarian algorithm
-        subtractRowMinimal(); // step 1
-        subtractColMinimal();//step 2
-        greedyCoverZeros(); // step 3
-        while (numLine < matRow) {
-            shiftZeros(); // step 4
-            greedyCoverZeros(); // step 3
-        }
-        if(!optimize()){
-            throw new IOException("The matrix for allocation is invalid.");
-        }; // step 5
-    }
-
-    private void init(DoubleMatrix mat, ProblemType type) {
-        if(type == ProblemType.maxLoc){
-            this.mat = mat.neg();
-        }
-        else{
-            this.mat = mat;
-        }
-        // Get min to initialize the result size
-        int tpMin = Math.min(mat.columns,mat.rows);
-        //Index of the column selected by every row (The final result)
-        result = new int[tpMin];
-        numLine = 0;
-        // Fill zeros if not the same width and height, it will change the shape of the matrix.
-        fillZeros();
-        status = new Direction[matCol][matRow];
-
-    }
-
-
-    private void fillZeros() {
-        matRow = mat.rows;
-        matCol = mat.columns;
-        if (matRow == matCol) {
-            return;
-        }
-        if (matRow < matCol) {
-            addRow(matCol - matRow);
-        } else {
-            addCol(matRow - matCol);
-        }
-    }
-
-    private void addCol(int dev) {
-        assert (dev > 0);
-        double[][] tpArray = new double[matRow][matCol + dev];
-        copyMatToArray(tpArray);
-    }
-
-    private void addRow(int dev) {
-        assert (dev > 0);
-        double[][] tpArray = new double[matRow + dev][matCol];
-        copyMatToArray(tpArray);
-    }
-
-    private void copyMatToArray(double[][] tpArray) {
-        for (int i = 0; i < matRow; i++) {
-            for (int j = 0; j < matCol; j++) {
-                tpArray[i][j] = mat.get(i, j);
+        boolean done = false;
+        int step = 1;
+        while(!done){
+            switch(step){
+                case 1:
+                    step = subtractRowMinimal();
+                    break;
+                case 2:
+                    step = starZeros();
+                    break;
+                case 3:
+                    step = coverStarredZeros();
+                    break;
+                case 4:
+                    step = primeZeros();
+                    break;
+                case 5:
+                    step = augmentingPath();
+                    break;
+                case 6:
+                    step = adjustMat();
+                    break;
+                case 7:
+                    result = finish();
+                    done = true;
+                    break;
             }
         }
-        mat = new DoubleMatrix(tpArray);
-        matRow = mat.getRows();
-        matCol = mat.getColumns();
+
     }
+
+
+    private void init(DoubleMatrix mat, ProblemType type) {
+        if (type == ProblemType.maxLoc) {
+            this.mat = mat.neg();
+        } else {
+            this.mat = mat;
+        }
+        matCol = mat.columns;
+        matRow = mat.rows;
+        maskMat = new ZeroMasks[matRow][matCol];
+        R_cover = new boolean[matRow];
+        C_cover = new boolean[matCol];
+        path = new int[matCol][2];
+        result = new int[matRow];
+        Arrays.fill(result, -1);
+    }
+
 
     /**
      * STEP 1:
      * subtract from every element the minimum value of its row
      */
-    protected void subtractRowMinimal() {
+    protected int subtractRowMinimal() {
         int rows = mat.getRows();
         for (int r = 0; r < rows; r++) {
             DoubleMatrix curRow = mat.getRow(r);
             double minRowVal = curRow.min();
             mat.putRow(r, curRow.sub(minRowVal));
         }
+        return 2;
     }
 
     /**
-     * Step 2
-     * Subtract from every element the minimum value from its column
+     * STEP 2:
+     * Find zeros in the resulting matrix that is uncovered.
      */
-    protected void subtractColMinimal() {
-        int cols = mat.getColumns();
-        for (int c = 0; c < cols; c++) {
-            DoubleMatrix curCol = mat.getColumn(c);
-            double minColVal = curCol.min();
-            mat.putColumn(c, curCol.sub(minColVal));
+    protected int starZeros() {
+        for (int r = 0; r < matRow; r++) {
+            for (int c = 0; c < matCol; c++) {
+                if (mat.get(r, c) == 0 && !R_cover[r] && !C_cover[c]) {
+                    maskMat[r][c] = ZeroMasks.starred;
+                    R_cover[r] = true;
+                    C_cover[c] = true;
+                }
+            }
+        }
+        initCoverVets();
+        return 3;
+    }
+
+    private void initCoverVets() {
+        Arrays.fill(R_cover, false);
+        Arrays.fill(C_cover, false);
+    }
+
+    /**
+     * STEP 3:
+     * Cover each column containing a starred zero.
+     * If all columns are covered, the starred zeros describe a complete set of unique assignments.
+     */
+    protected int coverStarredZeros() {
+        for (int r = 0; r < matRow; r++) {
+            for (int c = 0; c < matCol; c++) {
+                if (maskMat[r][c] == ZeroMasks.starred) {
+                    C_cover[c] = true;
+                }
+            }
+        }
+        int colCoveredCount = detectC_cover();
+        if(colCoveredCount >= matCol || colCoveredCount >= matRow){
+            return 7;
+        }
+        else{
+            return 4;
         }
     }
 
-    /**
-     * Step 3
-     * Loop through all elements, and run cover when the element visited is equal to zero
-     * <p>
-     * This is a greedy algorithm with time complexity O(n^3)->O{(m*n)*(2*n+m+2)}, which can split into 3 parts:
-     *     <ol>
-     *         <li>coverZeros() iterates over the whole matrix to find the element which is equal to 0 and
-     *         greedily cover zeros as many as possible(cover(i,j,detect(i,j))).</li>
-     *         <li>cover(i,j,detect(i,j)) find the right direction (horizontal or vertical) to cover more zeros
-     *         detect(i,j) will determine the direction.</li>
-     *         <li>detect(i,j) gives the direction.</li>
-     *     </ol>
-     * </p>
-     */
-    protected void greedyCoverZeros() {
-        assert (matRow == matCol);
+    private int detectC_cover() {
+        int res = 0;
+        for (boolean b :
+                C_cover) {
+            if (b) {
+                res++;
+            }
+        }
+        return res;
+    }
 
-        for (int i = 0; i < mat.getRows(); i++) {
-            for (int j = 0; j < mat.getColumns(); j++) {
-                if (mat.get(i, j) == 0) {
-                    cover(i, j, detect(i, j));
+    /**
+     * STEP 4:
+     * Find a noncovered zero and prime it.
+     * If there is no starred zero in the row containing this primed zero,
+     * Go to Step 5.  Otherwise, cover this row and uncover the column containing the starred zero. Continue in this manner until there are no uncovered zeros left.
+     * Save the smallest uncovered value and Go to Step 6
+     *
+     */
+    protected int primeZeros(){
+        int row = 0;
+        int col = 0;
+        while(true){
+            Pair<Integer,Integer> res =findAUncoveredZero(row,col);
+            if(res == null){
+                return 6;
+                // step 6
+            }
+            else{
+                int primedRow = res.getFirst();
+                int primedCol = res.getSecond();
+                // record current location
+                row = primedRow;
+                col = primedCol;
+                maskMat[primedRow][primedCol] = ZeroMasks.primed;
+                int starredCol = findStarredInRow(primedRow);
+                if(starredCol != -1){
+                    R_cover[row] = true;
+                    C_cover[col] = false;
+                }
+                else{
+                    //step 5
+                    pathRow = row;
+                    pathCol = col;
+                    return 5;
                 }
             }
         }
     }
 
-
-    /**
-     * cover(i,j,detect(i,j)) find the right direction (horizontal or vertical) to cover more zeros
-     * detect(i,j) will determine the direction.
-     * <p>
-     * Previously, the fillZeros() has already assure : mat.rows = mat.cols.
-     * </p>
-     *
-     * @param i      index of row
-     * @param j      index of column
-     * @param detect detect(i,j) result
-     */
-    protected void cover(int i, int j, Direction detect) {
-        // if cell is colored twice before (intersection cell), don't color it again
-        if (status[i][j] == Direction.c) {
-            return;
-        }
-        // if cell colored vertically and needs to be recolored vertically, don't color it again (Allowing this step, will color the same line (result won't change)
-        if (status[i][j] == Direction.h && detect == Direction.h) {
-            return;
-        }
-        // if cell colored horizontally and needs to be recolored horizontally, don't color it again (Allowing this step, will color the same line (result won't change)
-        if (status[i][j] == Direction.v && detect == Direction.v) {
-            return;
-        }
-        // cover
-        for (int k = 0; k < matRow; k++) {
-            if (detect == Direction.v) {
-                // if cell was colored before as horizontal (h), and now needs to be colored vertical (v), so this cell is an intersection (c).
-                // Else if this value was not colored before, color it vertically
-                status[k][j] = status[k][j] == Direction.h ? Direction.c : Direction.v;
-            } else {
-                // if cell was colored before as vertical (v), and now needs to be colored horizontal (h), so this cell is an intersection (c).
-                // Else if this value was not colored before, color it horizontally.
-                status[i][k] = status[i][k] == Direction.v ? Direction.c : Direction.h;
+    private Pair<Integer,Integer> findAUncoveredZero(int row,int col) {
+        for(int r = row; r < matRow; r++){
+            for (int c = col; c < matCol; c++) {
+                if(mat.get(r,c) == 0 && !C_cover[c] && !R_cover[r]){
+                    return new Pair<>(r, c);
+                }
             }
         }
-        numLine++;
-
+        return null;
     }
 
-    /**
-     * detect(i,j) gives the chosen direction.
-     * <p>
-     * Previously, the fillZeros() has already assure : mat.rows = mat.cols.
-     * </p>
-     *
-     * @return Direction
-     */
-    protected Direction detect(int i, int j) {
 
-        int result = 0;
-        for (int t = 0; t < matCol; t++) {
-            if (mat.get(i, t) == 0.) {
-                result++;
-            }
-            if (mat.get(t, j) == 0.) {
-                result--;
+    private int findStarredInRow(int row){
+        for (int c = 0; c < matCol; c++) {
+            if(maskMat[row][c] == ZeroMasks.starred){
+                return c;
             }
         }
-        return result > 0 ? Direction.h : Direction.v;
+        return -1;
+    }
+    /**
+     * STEP 5:
+     * Construct a series of alternating primed and starred zeros as follows.
+     * Let Z0 represent the uncovered primed zero found in Step 4.
+     * Let Z1 denote the starred zero in the column of Z0 (if any).
+     * Let Z2 denote the primed zero in the row of Z1 (there will always be one).
+     * Continue until the series terminates at a primed zero that has no starred zero in
+     * its column.  Unstar each starred zero of the series, star each primed zero of the series,
+     * erase all primes and uncover every line in the matrix.  Return to Step 3
+     *<br>
+     * <p>augmenting path algorithm (for solving the maximal matching problem) </p>
+     */
+    protected int augmentingPath(){
+        int pathCount = 1;
+        path[0][0] = pathRow;
+        path[0][1] = pathCol;
+        boolean done = false;
+        while(!done){
+            int rowIndex = findStarredInCol(path[pathCount-1][1]);
+            if(rowIndex > -1){
+                pathCount ++;
+                path[pathCount-1][0] = rowIndex;
+                path[pathCount-1][1] = path[pathCount-2][1];
+            }
+            else{
+                done = true;
+            }
+            if(!done){
+                int colIndex = findPrimeInRow(path[pathCount-1][0]);
+                pathCount ++;
+                path[pathCount-1][0] = path[pathCount-2][0];
+                path[pathCount-1][1] = colIndex;
+            }
+        }
+        augmentPath(pathCount);
+        initCoverVets();
+        erasePrimes();
+        return 3;
     }
 
-    /**
-     * Step 4
-     * This step is not always executed. (Check the algorithm in the constructor)
-     * subtract minimum value k of uncovered cells (cells not colored by any line), and add k to all elements that are covered twice.
-     */
-    protected void shiftZeros() {
-        double min = Double.MAX_VALUE;
-        // Find the min in the uncovered numbers
+    private void erasePrimes() {
         for (int r = 0; r < matRow; r++) {
             for (int c = 0; c < matCol; c++) {
-                if (status[r][c] == null) {
-                    double tpVal = mat.get(r, c);
-                    if (tpVal < min) {
-                        min = tpVal;
+                if(maskMat[r][c] == ZeroMasks.primed){
+                    maskMat[r][c] = null;
+                }
+            }
+        }
+        // step 3
+    }
+
+
+    private void augmentPath(int pathCount) {
+        for (int p = 0; p < pathCount; p++) {
+                if(maskMat[path[p][0]][path[p][1]] == ZeroMasks.starred){
+                    maskMat[path[p][0]][path[p][1]] = null;
+                }
+                else{
+                    maskMat[path[p][0]][path[p][1]] = ZeroMasks.starred;
+                }
+        }
+    }
+
+    private int findPrimeInRow(int row) {
+        for (int c = 0; c < matCol; c++) {
+            if(maskMat[row][c] == ZeroMasks.primed){
+                return c;
+            }
+        }
+        return -1;
+    }
+
+    private int findStarredInCol(int col) {
+        for (int r = 0; r < matRow; r++) {
+            if(maskMat[r][col] == ZeroMasks.starred){
+                return r;
+            }
+        }
+        return -1;
+    }
+    /**
+     * STEP 6:
+     *
+     * Add the value found in Step 4 to every element of each covered row, and subtract it from
+     * every element of each uncovered column.  Return to Step 4 without altering any stars,
+     * primes, or covered lines. Notice that this step uses the smallest uncovered value
+     * in the cost matrix to modify the matrix.  Even though this step refers to the value
+     * being found in Step 4 it is more convenient to wait until you reach Step 6 before
+     * searching for this value.  It may seem that since the values in the cost matrix are
+     * being altered, we would lose sight of the original problem.  However, we are only
+     * changing certain values that have already been tested and found not to be elements
+     * of the minimal assignment.  Also we are only changing the values by an amount equal to
+     * the smallest value in the cost matrix,
+     * so we will not jump over the optimal (i.e. minimal assignment) with this change
+     */
+    protected int adjustMat(){
+        double minVal = findSmallestOfUncovered();
+        for (int r = 0; r < matRow; r++) {
+            for (int c = 0; c < matCol; c++) {
+                double val = mat.get(r,c);
+                if(R_cover[r]){
+                    mat.put(r,c,val+minVal);
+                }
+                if(!C_cover[c]){
+                    mat.put(r,c,val-minVal);
+                }
+            }
+        }
+        return 4;
+    }
+
+    private double findSmallestOfUncovered() {
+        double tpVal = Double.MAX_VALUE;
+        for (int r = 0; r < matRow; r++) {
+            for(int c = 0; c< matCol;c++){
+                if(!R_cover[r] && !C_cover[c]){
+                    double val = mat.get(r,c);
+                    if( val < tpVal){
+                        tpVal = val;
                     }
                 }
             }
         }
-
-        // Subtract min form all uncovered elements, and add it to all elements covered twice
-        for (int r = 0; r < matRow; r++) {
-            for (int c = 0; c < matCol; c++) {
-                if (status[r][c] == null) {
-                    double tmpVal = mat.get(r, c);
-                    mat.put(r, c, tmpVal - min);
-                }
-                if (status[r][c] == Direction.c) {
-                    double tmpVal = mat.get(r, c);
-                    mat.put(r, c, tmpVal + min);
-                }
-            }
-        }
+        return tpVal;
     }
     /**
-     * Step 5 : get the assignment result, one row - > one column.
-     * brute force solution: O(mn)
+     * STEP 7:
+     * star zero is the assignment, output the int[] result for rows
      */
-    //TODO find a better solution!
-    private boolean optimize(){
-        boolean[] colReserved = new boolean[matCol];
-        return recurse(0,colReserved);
-    }
-    private boolean recurse(int row, boolean[] colReserved) {
-
-        if(row == result.length){
-            return true;
+    protected int[] finish(){
+        int[] result = new int[matRow];
+        for (int r = 0; r < matRow; r++) {
+            int indexCol = findStarredInRow(r);
+            result[r] = indexCol;
         }
-        for (int c = 0; c < matCol; c++) {
-            double tpVal = mat.get(row,c);
-            if(tpVal == 0 && !colReserved[c]){
-                result[row] = c;
-                colReserved[c] = true;
-                if(recurse(row+1,colReserved)){
-                    return true;
-                }
-                colReserved[c] = false;
-            }
-        }
-        return false;
-
-    }
-
-    public int[] getIndexResult() {
         return result;
     }
 
-    private DoubleMatrix getCopyOfMatrix(){
-        return mat;
+    public int[] getResult() {
+        assert (result != null);
+        return result;
     }
 }

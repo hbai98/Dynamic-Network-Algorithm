@@ -5,7 +5,8 @@ import Algorithms.Graph.NBM;
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHasSet;
 import Algorithms.Graph.Network.Node;
-import Algorithms.Graph.Utils.AdjList;
+import Algorithms.Graph.Network.AdjList;
+import Algorithms.Graph.Utils.HNodeList;
 import org.jgrapht.alg.util.Pair;
 
 import java.io.IOException;
@@ -21,17 +22,43 @@ import java.io.IOException;
 
 public class HGA {
     protected Hungarian hungarian;
-    protected AdjList adjList;
+    protected AdjList simList;
+    protected AdjList graph1;
+    protected AdjList graph2;
 
+    /**
+     * This is the first step for HGA to initialize the mapping between two graph by HA
+     *
+     * @return EdgeHashSet for the mapping result
+     */
+    protected EdgeHasSet getEdgeMapFromHA() throws IOException {
+        hungarian = new Hungarian(simList, Hungarian.ProblemType.maxLoc);
+        int[] res = hungarian.getResult();
+        EdgeHasSet initMap = new EdgeHasSet();
+        for (int i = 0; i < res.length; i++) {
+            int j = res[i];
+            if(j == -1){
+                continue;
+            }
+            Pair<Node, Node> tp = simList.getNodeNameByMatrixIndex(i, j);
+            initMap.add(new Edge(tp.getFirst(), tp.getSecond(), tp.getSecond().getValue()));
+        }
+        return initMap;
+    }
     /**
      * Step 1:
      * using homologous coefficients of proteins
      * computed by alignment algorithms for PINs
      *
-     * @param adjList similarity matrix, headNode->graph1, listNodes -> graph2
+     * @param graph1 adjacent list of graph1
+     * @param graph2 adjacent list of graph2
+     * @param simList similarity matrix, headNode->graph1, listNodes -> graph2
      */
-    public HGA(AdjList adjList) {
-        this.adjList = adjList;
+    public HGA(AdjList simList, AdjList graph1, AdjList graph2) {
+        this.graph1 = graph1;
+        this.graph2 = graph2;
+        this.simList = simList;
+
     }
 
     /**
@@ -40,35 +67,51 @@ public class HGA {
      * nodes (up, vq) are then rewarded with a positive number
      * ω, leading to an updated similarity matrix
      * <br>
+     *     <p>w is defined as the sim(u,v)/NA(a)</p>
+     *     <p>where u,v  is nodes from graph1,and graph2</p>
+     *     <p>a is one of the neighbors of the node u</p>
+     *     <p>NA(a) represents the degree of the node a</p>
+     * <br>
+     *
      * <p>
-     *     The matrix of the adjList will be synchronized at the same time
+     *     NOTICE:The matrix of the adjList will not be synchronized at the same time
      * </p>
      *
-     * @param simList     similarity matrix, headNode->graph1, listNodes -> graph2
-     * @param revSimList  reversion of the similarity matrix, headNode->graph2, listNodes -> graph1
      * @param mappedEdges current mapping result, and one edge means the srcNode and tgtNode has already mapped, srcNode ->graph1, tgtNode -> graph2
-     * @param reward w a positive number to reward the matrix
      */
-    protected void updatePairNeighbors(AdjList simList, AdjList revSimList, EdgeHasSet mappedEdges, double reward) {
-        NBM.neighborSimAdjust(simList,revSimList,mappedEdges,reward);
+    protected void updatePairNeighbors(EdgeHasSet mappedEdges) throws IOException {
+        NBM.neighborSimAdjust(graph1,graph2,simList,mappedEdges);
     }
 
     /**
-     * This is the first step for HGA to initialize the mapping between two graph by HA
+     * Step 3:
+     * Adding topology information:
+     * Given any two nodes ui, vj in the networks A and B,
+     * respectively, their topological similarities are computed
+     * based on an approach previously used for the topological
+     * similarity of biomolecular networks.which we have
+     * called the topological similarity parameter (TSP). The
+     * TSP includes θij 1 and θij 2 , which are updated according
+     * to the rule that two nodes are similar if they link or do
+     * not link to similar nodes
+     * <br>
+     *     <br>
+     * <p>
+     *     θij 1:represents the average similarity between the neighbors of ui and vj,
+     * </p>
+     * <br>
+     * <p>
+     *     θij 2:represents the average similarity between the non-neighbors of ui and vj.
+     * </p>
      *
-     * @return EdgeHashSet for the mapping result
+     * @param node1 one node from the graph1
+     * @param node2 one node from the graph2
      */
-    protected EdgeHasSet getEdgeMapFromHA() throws IOException {
-        hungarian = new Hungarian(adjList, Hungarian.ProblemType.maxLoc);
-        int[] res = hungarian.getIndexResult();
-        EdgeHasSet initMap = new EdgeHasSet();
-        for (int i = 0; i < res.length; i++) {
-            int j = res[i];
-            Pair<Node, Node> tp = adjList.getNodeNameByMatrixIndex(i, j);
-            initMap.add(new Edge(tp.getFirst(), tp.getSecond(), tp.getSecond().getValue()));
-        }
-        return initMap;
+    protected void addTopologyInfo(String node1,String node2){
+        HNodeList neighbor1 = graph1.getNeighborsList(node1);
+        HNodeList neighbor2 = graph2.getNeighborsList(node2);
     }
+
 
 
 }

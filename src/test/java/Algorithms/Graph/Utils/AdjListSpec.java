@@ -1,5 +1,7 @@
 package Algorithms.Graph.Utils;
 
+import Algorithms.Graph.IO.GraphFileReader;
+import Algorithms.Graph.Network.AdjList;
 import Algorithms.Graph.Network.Node;
 import org.jblas.DoubleMatrix;
 import org.junit.jupiter.api.BeforeEach;
@@ -87,7 +89,7 @@ class AdjListSpec {
         homo_2.addAll(Arrays.asList(new Node("1",0.3),new Node("2",0.1),new Node("3",0.4)));
         graph.add(homo_2);
         graph.add(homo_3);
-        assertNotEquals(0.1,graph.getMatrixVal("0000","1"));
+        assertNotEquals(0.1,graph.getValByName("0000","1"));
     }
     @DisplayName("can find matrix's value if the arrayList has a order.")
     @Test
@@ -97,14 +99,30 @@ class AdjListSpec {
         homo_2 = new HNodeList("0000");
         homo_2.sortAddAll(new Node("1",0.3),new Node("2",0.1),new Node("3",0.4));
         graph.add(homo_2);
-        assertEquals(0.3,graph.getMatrixVal("0000","1"));
+        assertEquals(0.3,graph.getValByName("0000","1"));
     }
     @DisplayName("can find the row's max value.")
     @Test
     void findMaxTest(){
         homo_1.addAll(Arrays.asList(new Node("1",0.2),new Node("2",0.8)));
         graph.add(homo_1);
-        assertEquals(0.8,graph.findMaxOfList("3232"));
+        assertEquals(0.8,graph.findMaxOfList("3232").getSecond().getValue());
+    }
+    @DisplayName("can find all neighbors of a node.")
+    @Test
+    void sortGetNeighborsListSpec() throws IOException {
+        GraphFileReader reader = new GraphFileReader();
+        AdjList graph = reader.readToAdjL("src/test/java/resources/AlgTest/HGA/graph1.txt");
+        HNodeList list = graph.sortGetNeighborsList("B");
+        HNodeList res = new HNodeList("B");
+        res.sortAddAll("F","G","M","Q","A");
+        // check components even the equal() fpr HNodeList has been overloaded
+        assertEquals(res,list);
+
+        // revList test
+        AdjList rev = reader.getRevAdjList();
+        HNodeList list2 = graph.sortGetNeighborsList("B",rev);
+        assertEquals(res,list2);
     }
 
 }

@@ -2,7 +2,7 @@ package Algorithms.Alignment.align;
 
 import Algorithms.Alignment.IO.FastaFileReader;
 import Algorithms.Graph.IO.GraphFileWriter;
-import Algorithms.Graph.Utils.AdjList;
+import Algorithms.Graph.Network.AdjList;
 import org.biojava.nbio.alignment.Alignments;
 import org.biojava.nbio.alignment.SimpleGapPenalty;
 import org.biojava.nbio.core.alignment.matrices.SubstitutionMatrixHelper;

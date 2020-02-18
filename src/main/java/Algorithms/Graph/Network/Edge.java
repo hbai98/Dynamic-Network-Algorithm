@@ -6,6 +6,7 @@ import org.jgrapht.graph.DefaultEdge;
 
 import java.util.Objects;
 
+
 public class Edge extends DefaultEdge {
 
     public enum Type {UNDIRECTED, DIRECTED}

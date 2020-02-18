@@ -11,7 +11,7 @@ import java.util.Objects;
 public class HNodeList extends NodeList {
     // target protein
     //----------keys-----------
-    protected String signName;
+    public String signName;
     protected int ID;
     //---------
     protected int score;
@@ -21,6 +21,11 @@ public class HNodeList extends NodeList {
         this.ID = -1;
         this.score = -1;
     }
+    public HNodeList(){
+        this.ID = -1;
+        this.score = -1;
+    }
+
 
     @Override
     public boolean equals(Object o) {

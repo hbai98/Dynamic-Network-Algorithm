@@ -1,6 +1,6 @@
-package Algorithms.Graph.Utils;
+package Algorithms.Graph.Network;
 
-import Algorithms.Graph.Network.Node;
+import Algorithms.Graph.Utils.HNodeList;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
@@ -65,7 +65,8 @@ public class AdjList extends LinkedList<HNodeList> {
             // step 3 : get the matrix
             mapping(colList);
         }
-        return mat;
+        // return copy, keep mat unchanged
+        return mat.dup();
 
     }
 
@@ -78,7 +79,7 @@ public class AdjList extends LinkedList<HNodeList> {
             // step 3 : get the matrix
             mapping(colList);
         }
-        return mat;
+        return mat.dup();
 
     }
 
@@ -180,7 +181,7 @@ public class AdjList extends LinkedList<HNodeList> {
      */
     public HNodeList getNeighborsList(String tgtNode) {
         for (HNodeList hNodeList : this) {
-            if (hNodeList.signName.equals(tgtNode)) {
+            if (hNodeList.getSignName().equals(tgtNode)) {
                 return hNodeList;
             }
         }
@@ -188,15 +189,61 @@ public class AdjList extends LinkedList<HNodeList> {
     }
 
     /**
-     * find node head's all nodes.
+     * find node'all neighbors which include 2 parts in undirected Graph, or only 1 part in directed one.
+     * This method is for undirected graphs.
+     * <p>
+     *     <ol>
+     *         <li>the head nodeList's all connected nodes</li>
+     *         <li>other lists's connected nodes</li>
+     *     </ol>
+     *     <p>A:->B->C</p>
+     *     <p>B:->C->D</p>
+     *     <p>C:->E</p>
+     *     <p>return C's neighbors as a list: E->A->B</p>
+     *     <p>which consists of headNodeList starting with C plus list containing nodes from other headLists</p>
+     * </p>
      * <br>
      * <p>NOTICE: use it in the condition that the adjList has been sorted.</p>
      *
      * @param tgtNode target node
      */
-    public HNodeList sortGetNeighborsList(String tgtNode) {
+    public HNodeList sortGetNeighborsList(String tgtNode) throws IOException {
         int index = Collections.binarySearch(this, new HNodeList(tgtNode), Comparator.comparing(o -> o.signName));
-        return this.get(index);
+        HNodeList list1;
+        if(index<0){
+            list1 = new HNodeList(tgtNode);
+        }
+        else{
+            list1 = this.get(index);
+        }
+        forEach(hList->{
+            if(!hList.getSignName().equals(list1.getSignName())){
+                hList.forEach(node->{
+                    if(node.getStrName().equals(tgtNode)){
+                        list1.sortAdd(new Node(hList.getSignName(),node.getValue()));
+                    }
+                });
+            }
+        });
+        return list1;
+    }
+
+    public HNodeList sortGetNeighborsList(String tgtNode,AdjList revList){
+        int index = Collections.binarySearch(this, new HNodeList(tgtNode), Comparator.comparing(HNodeList::getSignName));
+        HNodeList list1;
+        if(index<0){
+            list1 = new HNodeList(tgtNode);
+        }
+        else{
+            list1 = this.get(index);
+        }
+        for (HNodeList hList : revList) {
+            if(hList.getSignName().equals(tgtNode)){
+                hList.forEach(list1::sortAdd);
+                break;
+            }
+        }
+        return list1;
     }
 
 
@@ -273,7 +320,7 @@ public class AdjList extends LinkedList<HNodeList> {
      *
      * @param tgtHead headName of the list.
      * @param tgtNode name of the Node to be removed.
-     * @return true for node already exist.
+     * @return true for head already exist.
      */
     public boolean sortAddOneNode(String tgtHead, String tgtNode, double weight) {
         int index = Collections.binarySearch(this, new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
@@ -298,7 +345,10 @@ public class AdjList extends LinkedList<HNodeList> {
         });
         return rev;
     }
-
+    /**
+     * NOTICE:can only be used when the adjList haven't added a new row
+     * or mat will get wrong probably
+     */
     public void updateMat(int i, int j, double value) {
         if (mat == null) {
             mat = this.toMatrix();
@@ -306,6 +356,10 @@ public class AdjList extends LinkedList<HNodeList> {
         mat.put(i,j,value);
     }
 
+    /**
+     * NOTICE:can only be used when the adjList haven't added a new row
+     * or mat will get wrong probably
+     */
     public void updateMat(String srcNode, String tgtNode, double value) {
         if(colMap == null){
             colMap = getColMap();
@@ -382,8 +436,8 @@ public class AdjList extends LinkedList<HNodeList> {
         });
     }
 
-    public double getMatrixVal(String tgtHead, String tgtNode) throws IOException {
-        int index = Collections.binarySearch(this, new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
+    public double getValByName(String tgtHead, String tgtNode) throws IOException {
+        int index = Collections.binarySearch(this, new HNodeList(tgtHead), Comparator.comparing(HNodeList::getSignName));
         if (index >= 0) {
             return this.get(index).sortFindByName(tgtNode).getValue();
         } else {
@@ -391,8 +445,13 @@ public class AdjList extends LinkedList<HNodeList> {
         }
     }
 
+    /**
+     *
+     * @param rowName rowName to search
+     * @return row index plus the result node
+     */
     public Pair<Integer, Node> findMaxOfList(String rowName) {
-        int index = Collections.binarySearch(this, new HNodeList(rowName), Comparator.comparing(o -> o.signName));
+        int index = Collections.binarySearch(this, new HNodeList(rowName), Comparator.comparing(HNodeList::getSignName));
         if (index >= 0) {
             return new Pair<Integer, Node>(index, this.get(index).findMax());
         } else {

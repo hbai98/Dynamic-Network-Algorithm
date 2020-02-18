@@ -3,7 +3,7 @@ package Algorithms.Graph.IO;
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHasSet;
 import Algorithms.Graph.Utils.HNodeList;
-import Algorithms.Graph.Utils.AdjList;
+import Algorithms.Graph.Network.AdjList;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -84,15 +84,15 @@ class GraphFileReaderSpec {
     void ReadMediumGraph() throws IOException {
         GraphFileReader reader = new GraphFileReader();
         AdjList graph = reader.readToAdjL("src/test/java/resources/IOTest/mediumGraph.txt");
-        assertEquals(0.986,graph.getMatrixVal("RPS9A","RPS9"));
-        assertEquals(0.756,graph.getMatrixVal("YRF1-4","EIF4A3"));
+        assertEquals(0.986,graph.getValByName("RPS9A","RPS9"));
+        assertEquals(0.756,graph.getValByName("YRF1-4","EIF4A3"));
     }
     @DisplayName("able to get a HashSet.")
     @Test
     void getHashSet() throws IOException {
         GraphFileReader reader = new GraphFileReader();
         AdjList graph = reader.readToAdjL("src/test/java/resources/IOTest/mediumGraph.txt");
-        HashSet<String> graph1 = reader.getGraph_1();
+        HashSet<String> graph1 = reader.getHeadSet();
     }
 
 }

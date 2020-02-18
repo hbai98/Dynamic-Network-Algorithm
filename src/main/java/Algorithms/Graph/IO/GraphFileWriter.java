@@ -1,7 +1,7 @@
 package Algorithms.Graph.IO;
 
 import Algorithms.Graph.Network.Node;
-import Algorithms.Graph.Utils.AdjList;
+import Algorithms.Graph.Network.AdjList;
 import Algorithms.Graph.Utils.HNodeList;
 
 import java.io.*;

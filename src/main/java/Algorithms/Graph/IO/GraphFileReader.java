@@ -2,7 +2,7 @@ package Algorithms.Graph.IO;
 
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHasSet;
-import Algorithms.Graph.Utils.AdjList;
+import Algorithms.Graph.Network.AdjList;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -30,13 +30,13 @@ import java.util.regex.Pattern;
  * </p>
  */
 public class GraphFileReader {
-    private HashSet<String> graph_1;
-    private HashSet<String> graph_2;
+    private HashSet<String> headSet;
+    private HashSet<String> listSet;
     //-------------------------
     private AdjList revAdjList;
     public GraphFileReader(){
-        graph_1 = new HashSet<>();
-        graph_2 = new HashSet<>();
+        headSet = new HashSet<>();
+        listSet = new HashSet<>();
         //----------------------
         revAdjList = new AdjList();
     }
@@ -62,6 +62,11 @@ public class GraphFileReader {
 
         return readToAdjL(new BufferedReader(new FileReader(inputFilePath)), true);
     }
+
+    public AdjList readToAdjL(String inputFilePath,boolean closeWhenFinished) throws IOException {
+
+        return readToAdjL(new BufferedReader(new FileReader(inputFilePath)), closeWhenFinished);
+    }
     /**
      * Parses a arrayList format file to ArrayList.
      *
@@ -72,6 +77,7 @@ public class GraphFileReader {
      */
     // TODO a bit of duplicated with readToEL()! find a better way to solve!
     private AdjList readToAdjL(BufferedReader input, boolean closeWhenFinished) throws IOException{
+        init();
         AdjList graph = new AdjList();
         // matches sequence of one or more whitespace characters.
         Pattern splitter = Pattern.compile("\\s+");
@@ -80,6 +86,7 @@ public class GraphFileReader {
 
         while ((line = input.readLine()) != null) {
             String[] tokens = splitter.split(line);
+            if(tokens.length == 0) continue;
             //  it will be handled in pareLine()
             // which will throw an IOException if not the right case.
             for (String token : tokens) {
@@ -93,6 +100,14 @@ public class GraphFileReader {
             input.close();
         }
         return graph;
+    }
+
+    private void init() {
+        // clean rev;
+        revAdjList = new AdjList();
+        // clean hashSet
+        headSet = new HashSet<>();
+        listSet = new HashSet<>();
     }
 
     /**
@@ -112,6 +127,7 @@ public class GraphFileReader {
 
         while ((line = input.readLine()) != null) {
             String[] tokens = splitter.split(line);
+            if(tokens.length == 0) continue;
             //  it will be handled in pareLine()
             // which will throw an IOException if not the right case.
             for (String token : tokens) {
@@ -257,8 +273,8 @@ public class GraphFileReader {
 
     private void addToNodeList(String srcName,String tgtName){
         // record to nodeLists
-        graph_1.add(srcName);
-        graph_2.add(tgtName);
+        headSet.add(srcName);
+        listSet.add(tgtName);
     }
     //------------------PUBLIC-----------------------------
 
@@ -266,19 +282,23 @@ public class GraphFileReader {
      * Please execute read instruction before calling this method.
      * @return HashSet of nodes' names in graph_1
      */
-    public HashSet<String> getGraph_1() {
-        assert(graph_1!=null);
-        return graph_1;
+    public HashSet<String> getHeadSet() {
+        assert(headSet !=null);
+        return headSet;
     }
     /**
      * Please execute read instruction before calling this method.
      * @return HashSet of nodes' names in graph_2
      */
-    public HashSet<String>  getGraph_2() {
-        assert(graph_2!=null);
-        return graph_2;
+    public HashSet<String> getListSet() {
+        assert(listSet !=null);
+        return listSet;
     }
 
+    /**
+     * Only used for
+     * NOTICE: revList will not be synchronized.
+     */
     public AdjList getRevAdjList() {
         assert (revAdjList!=null);
         return revAdjList;

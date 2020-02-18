@@ -57,13 +57,13 @@ public class NodeList extends LinkedList<Node> {
      * user should ensure the nodeList has already be in order.
      *
      * @param strNode node to be found
-     * @return node found or null
+     * @return node found or new Node with strNode, but its value equals 0
      */
     public Node sortFindByName(String strNode) {
         int index = Collections.binarySearch(this, new Node(strNode), Comparator.comparing(o -> o.strName));
         if (index >= 0) {
             return this.get(index);
-        } else return null;
+        } else return new Node(strNode);
     }
 
     public void remove(String strNode) {
@@ -140,6 +140,12 @@ public class NodeList extends LinkedList<Node> {
         for (Node node :
                 nodes) {
             sortAdd(node);
+        }
+    }
+    public void sortAddAll(String... nodeStrs) {
+        for (String nodeName :
+                nodeStrs) {
+            sortAdd(nodeName);
         }
     }
 
