@@ -66,6 +66,11 @@ public class NodeList extends LinkedList<Node> {
         } else return new Node(strNode);
     }
 
+    public boolean sortFind(String strNode) {
+        int index = Collections.binarySearch(this, new Node(strNode), Comparator.comparing(o -> o.strName));
+        return index >= 0;
+    }
+
     public void remove(String strNode) {
         this.removeAll(new Node(strNode));
     }

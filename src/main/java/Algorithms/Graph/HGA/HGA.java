@@ -10,6 +10,7 @@ import Algorithms.Graph.Utils.HNodeList;
 import org.jgrapht.alg.util.Pair;
 
 import java.io.IOException;
+import java.util.HashSet;
 
 /**
  * Refer to An Adaptive Hybrid Algorithm for Global Network Algorithms.Alignment
@@ -22,9 +23,12 @@ import java.io.IOException;
 
 public class HGA {
     protected Hungarian hungarian;
+    protected AdjList originalSimList;
     protected AdjList simList;
     protected AdjList graph1;
+    protected AdjList rev1;
     protected AdjList graph2;
+    protected AdjList rev2;
 
     /**
      * This is the first step for HGA to initialize the mapping between two graph by HA
@@ -37,7 +41,7 @@ public class HGA {
         EdgeHasSet initMap = new EdgeHasSet();
         for (int i = 0; i < res.length; i++) {
             int j = res[i];
-            if(j == -1){
+            if (j == -1) {
                 continue;
             }
             Pair<Node, Node> tp = simList.getNodeNameByMatrixIndex(i, j);
@@ -45,20 +49,33 @@ public class HGA {
         }
         return initMap;
     }
+
     /**
      * Step 1:
      * using homologous coefficients of proteins
      * computed by alignment algorithms for PINs
      *
-     * @param graph1 adjacent list of graph1
-     * @param graph2 adjacent list of graph2
+     * @param graph1  adjacent list of graph1
+     * @param graph2  adjacent list of graph2
      * @param simList similarity matrix, headNode->graph1, listNodes -> graph2
      */
     public HGA(AdjList simList, AdjList graph1, AdjList graph2) {
         this.graph1 = graph1;
         this.graph2 = graph2;
+        this.originalSimList = simList;
         this.simList = simList;
+    }
 
+    /**
+     * rev to make it faster
+     */
+    public HGA(AdjList simList, AdjList graph1,AdjList rev1, AdjList graph2,AdjList rev2) {
+        this.graph1 = graph1;
+        this.rev1 = rev1;
+        this.graph2 = graph2;
+        this.rev2 = rev2;
+        this.originalSimList = simList;
+        this.simList = simList;
     }
 
     /**
@@ -67,24 +84,24 @@ public class HGA {
      * nodes (up, vq) are then rewarded with a positive number
      * ω, leading to an updated similarity matrix
      * <br>
-     *     <p>w is defined as the sim(u,v)/NA(a)</p>
-     *     <p>where u,v  is nodes from graph1,and graph2</p>
-     *     <p>a is one of the neighbors of the node u</p>
-     *     <p>NA(a) represents the degree of the node a</p>
+     * <p>w is defined as the sim(u,v)/NA(a)</p>
+     * <p>where u,v  is nodes from graph1,and graph2</p>
+     * <p>a is one of the neighbors of the node u</p>
+     * <p>NA(a) represents the degree of the node a</p>
      * <br>
      *
      * <p>
-     *     NOTICE:The matrix of the adjList will not be synchronized at the same time
+     * NOTICE:The matrix of the adjList will be synchronized at the same time
      * </p>
      *
      * @param mappedEdges current mapping result, and one edge means the srcNode and tgtNode has already mapped, srcNode ->graph1, tgtNode -> graph2
      */
     protected void updatePairNeighbors(EdgeHasSet mappedEdges) throws IOException {
-        NBM.neighborSimAdjust(graph1,graph2,simList,mappedEdges);
+        NBM.neighborSimAdjust(graph1, graph2, simList, mappedEdges);
     }
 
     /**
-     * Step 3:
+     * Step 3.1:
      * Adding topology information:
      * Given any two nodes ui, vj in the networks A and B,
      * respectively, their topological similarities are computed
@@ -95,24 +112,115 @@ public class HGA {
      * to the rule that two nodes are similar if they link or do
      * not link to similar nodes
      * <br>
-     *     <br>
+     * <br>
      * <p>
-     *     θij 1:represents the average similarity between the neighbors of ui and vj,
+     * θij 1:represents the average similarity between the neighbors of ui and vj,
      * </p>
      * <br>
      * <p>
-     *     θij 2:represents the average similarity between the non-neighbors of ui and vj.
+     * θij 2:represents the average similarity between the non-neighbors of ui and vj.
      * </p>
      *
      * @param node1 one node from the graph1
      * @param node2 one node from the graph2
      */
-    protected void addTopologyInfo(String node1,String node2){
-        HNodeList neighbor1 = graph1.getNeighborsList(node1);
-        HNodeList neighbor2 = graph2.getNeighborsList(node2);
+    protected void addTopology(String node1, String node2) throws IOException {
+        HNodeList neighbors_1;
+        HNodeList neighbors_2;
 
+        // init for both neighbors and nonNeighbors, if there're revs, make it faster.
+        if(rev1!=null){
+            neighbors_1 = graph1.sortGetNeighborsList(node1,rev1);
+        }
+        else{
+            neighbors_1 = graph1.sortGetNeighborsList(node1);
+        }
+        if(rev2!=null){
+            neighbors_2 = graph2.sortGetNeighborsList(node1,rev2);
+        }
+        else{
+            neighbors_2 = graph2.sortGetNeighborsList(node2);
+        }
+        // compute topologyInfo
+        double eNeighbors = getNeighborTopologyInfo(neighbors_1, neighbors_2);
+        double eNonNeighbors = getNonNeighborTopologyInfo(neighbors_1, neighbors_2);
+        // update both simList and mat
+        double eTP = (eNeighbors+eNonNeighbors)/2;
+        simList.sortAddOneNode(node1,node2,originalSimList.getValByMatName(node1,node2)+eTP);
+        simList.updateMat(node1,node2,originalSimList.getValByMatName(node1,node2)+eTP);
     }
 
 
+    private double getNonNeighborTopologyInfo(HNodeList nei1, HNodeList nei2) {
+        double res = 0;
+        HashSet<String> nodes1 = graph1.getAllNodes();
+        HashSet<String> nodes2 = graph2.getAllNodes();
 
+        int nonNei1Size = nodes1.size() - nei1.size() - 1;
+        int nonNei2Size = nodes2.size() - nei2.size() - 1;
+
+        if (nonNei1Size != 0 && nonNei2Size != 0) {
+            int size = (nonNei1Size + 1) * (nonNei2Size + 1);
+            for (String node1 : nodes1) {
+                for (String node2 : nodes2) {
+                    if (!nei1.sortFind(node1) && !nei2.sortFind(node2)) {
+                        res += simList.getValByMatName(node1, node2);
+                    }
+                }
+            }
+            return res / size;
+        }
+
+        if (nonNei1Size == 0 && nonNei2Size == 0) {
+            int size = nodes1.size() * nodes2.size();
+            for (String node1 : nodes1) {
+                for (String node2 : nodes2) {
+                    res += simList.getValByMatName(node1, node2);
+                }
+            }
+            return res / size;
+        }
+        return res;
+    }
+
+    private double getNeighborTopologyInfo(HNodeList nei1, HNodeList nei2) {
+        double res = 0;
+        int nei1Size = nei1.size();
+        int nei2Size = nei2.size();
+        if (nei1Size != 0 && nei2Size != 0) {
+            int size = nei1Size * nei2Size;
+            for (Node node1 : nei1) {
+                for (Node node2 : nei2) {
+                    res += simList.getValByMatName(node1.getStrName(), node2.getStrName());
+                }
+            }
+            return res / size;
+        }
+        if (nei1Size == 0 && nei2Size == 0) {
+            HashSet<String> nodes1 = graph1.getAllNodes();
+            HashSet<String> nodes2 = graph2.getAllNodes();
+            int size = nodes1.size() * nodes2.size();
+            for (String node1 : nodes1) {
+                for (String node2 : nodes2) {
+                    res += simList.getValByMatName(node1, node2);
+                }
+            }
+            return res / size;
+        }
+        return res;
+    }
+
+    /**
+     * Step 3.2:
+     * iterate all nodes pairs to add topological information
+     */
+    protected void addAllTopology() throws IOException {
+        HashSet<String> nodes1 = graph1.getAllNodes();
+        HashSet<String> nodes2 = graph2.getAllNodes();
+        for (String node1 : nodes1) {
+            for (String node2 : nodes2) {
+                addTopology(node1,node2);
+            }
+        }
+    }
 }

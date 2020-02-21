@@ -49,6 +49,13 @@ class HGASpc {
     void updateMap() throws IOException {
         NBM.neighborSimAdjust(graph1,rev1,graph2,simList,hga.getEdgeMapFromHA());
         assertEquals(1.4,simList.getValByName("W","A"));
+        assertEquals(1.4,simList.getValByMatName("W","A"));
     }
+    @DisplayName("add topological effect.")
+    @Test
+    void addTopologicalEffect() throws IOException {
+        hga.addAllTopology();
+    }
+
 
 }

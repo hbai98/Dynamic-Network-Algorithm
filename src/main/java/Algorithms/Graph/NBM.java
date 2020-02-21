@@ -211,6 +211,7 @@ public class NBM {
                 for (Node node2 : neb2) {
                     double newWeight = simAdjList.getValByName(node1.getStrName(),node2.getStrName())+reward;
                     simAdjList.sortAddOneNode(node1.getStrName(),node2.getStrName(),newWeight);
+                    simAdjList.updateMat(node1.getStrName(),node2.getStrName(),newWeight);
                 }
             }
         }
@@ -231,6 +232,7 @@ public class NBM {
                 for (Node node2 : neb2) {
                     double newWeight = simAdjList.getValByName(node1.getStrName(),node2.getStrName())+reward;
                     simAdjList.sortAddOneNode(node1.getStrName(),node2.getStrName(),newWeight);
+                    simAdjList.updateMat(node1.getStrName(),node2.getStrName(),newWeight);
                 }
             }
         }

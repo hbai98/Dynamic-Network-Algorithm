@@ -24,6 +24,8 @@ public class AdjList extends LinkedList<HNodeList> {
     //------------------similarity matrix----------
     private HashSet<String> rowSet;
     private HashSet<String> colSet;
+    private HashSet<String> allNodes;
+
     private HashMap<String, Integer> rowMap;
     private HashMap<String, Integer> colMap;
     //---------------Reverse the adjList--------------> src <-> tgt
@@ -179,7 +181,7 @@ public class AdjList extends LinkedList<HNodeList> {
      *
      * @param tgtNode target node
      */
-    public HNodeList getNeighborsList(String tgtNode) {
+    public HNodeList getHeadNodesList(String tgtNode) {
         for (HNodeList hNodeList : this) {
             if (hNodeList.getSignName().equals(tgtNode)) {
                 return hNodeList;
@@ -210,17 +212,16 @@ public class AdjList extends LinkedList<HNodeList> {
     public HNodeList sortGetNeighborsList(String tgtNode) throws IOException {
         int index = Collections.binarySearch(this, new HNodeList(tgtNode), Comparator.comparing(o -> o.signName));
         HNodeList list1;
-        if(index<0){
+        if (index < 0) {
             list1 = new HNodeList(tgtNode);
-        }
-        else{
+        } else {
             list1 = this.get(index);
         }
-        forEach(hList->{
-            if(!hList.getSignName().equals(list1.getSignName())){
-                hList.forEach(node->{
-                    if(node.getStrName().equals(tgtNode)){
-                        list1.sortAdd(new Node(hList.getSignName(),node.getValue()));
+        forEach(hList -> {
+            if (!hList.getSignName().equals(list1.getSignName())) {
+                hList.forEach(node -> {
+                    if (node.getStrName().equals(tgtNode)) {
+                        list1.sortAdd(new Node(hList.getSignName(), node.getValue()));
                     }
                 });
             }
@@ -228,17 +229,16 @@ public class AdjList extends LinkedList<HNodeList> {
         return list1;
     }
 
-    public HNodeList sortGetNeighborsList(String tgtNode,AdjList revList){
+    public HNodeList sortGetNeighborsList(String tgtNode, AdjList revList) {
         int index = Collections.binarySearch(this, new HNodeList(tgtNode), Comparator.comparing(HNodeList::getSignName));
         HNodeList list1;
-        if(index<0){
+        if (index < 0) {
             list1 = new HNodeList(tgtNode);
-        }
-        else{
+        } else {
             list1 = this.get(index);
         }
         for (HNodeList hList : revList) {
-            if(hList.getSignName().equals(tgtNode)){
+            if (hList.getSignName().equals(tgtNode)) {
                 hList.forEach(list1::sortAdd);
                 break;
             }
@@ -345,6 +345,7 @@ public class AdjList extends LinkedList<HNodeList> {
         });
         return rev;
     }
+
     /**
      * NOTICE:can only be used when the adjList haven't added a new row
      * or mat will get wrong probably
@@ -353,7 +354,7 @@ public class AdjList extends LinkedList<HNodeList> {
         if (mat == null) {
             mat = this.toMatrix();
         }
-        mat.put(i,j,value);
+        mat.put(i, j, value);
     }
 
     /**
@@ -361,13 +362,13 @@ public class AdjList extends LinkedList<HNodeList> {
      * or mat will get wrong probably
      */
     public void updateMat(String srcNode, String tgtNode, double value) {
-        if(colMap == null){
+        if (colMap == null) {
             colMap = getColMap();
         }
-        if(rowMap == null){
+        if (rowMap == null) {
             rowMap = getRowMap();
         }
-        updateMat(rowMap.get(srcNode),colMap.get(tgtNode),value);
+        updateMat(rowMap.get(srcNode), colMap.get(tgtNode), value);
     }
 
     //------------------PUBLIC ACCESS -----------------------------
@@ -392,18 +393,14 @@ public class AdjList extends LinkedList<HNodeList> {
     public HashMap<String, Integer> getRowMap() {
 
         if (rowMap == null) {
-            for (int r = 0; r < this.size(); r++) {
-                HNodeList list = this.get(r);
-                rowMap.put(list.getSignName(), r);
-            }
-            return rowMap;
-        } else return rowMap;
+            mat = this.toMatrix();
+        }
+        return rowMap;
     }
 
     public HashMap<String, Integer> getColMap() {
         if (colMap == null) {
             mat = this.toMatrix();
-            return colMap;
         }
         return colMap;
     }
@@ -423,6 +420,21 @@ public class AdjList extends LinkedList<HNodeList> {
             getIndexColMap();
         }
         return new Pair<>(new Node(this.get(i).signName), new Node(swapOrderedColMap.get(j), mat.get(i, j)));
+    }
+
+    /**
+     * mat index of name
+     */
+    public double getValByMatName(String tgtHead, String tgtNode) {
+        if (rowMap == null) {
+            rowMap = getRowMap();
+        }
+        if (colMap == null) {
+            colMap = getColMap();
+        }
+        int row = rowMap.get(tgtHead);
+        int col = colMap.get(tgtNode);
+        return mat.get(row, col);
     }
 
     private void getIndexColMap() {
@@ -445,8 +457,8 @@ public class AdjList extends LinkedList<HNodeList> {
         }
     }
 
+
     /**
-     *
      * @param rowName rowName to search
      * @return row index plus the result node
      */
@@ -464,5 +476,20 @@ public class AdjList extends LinkedList<HNodeList> {
         return this.get(rowIndex).findMax();
     }
 
+    public HashSet<String> getAllNodes() {
+        if (allNodes == null) {
+            if (rowSet == null) {
+                rowSet = getRowSet();
+            }
+            if (colSet == null) {
+                colSet = getColSet();
+            }
+            // merge
+            HashSet<String> tpRow = (HashSet) rowSet.clone();
+            tpRow.addAll(colSet);
+            allNodes = tpRow;
+        }
+        return allNodes;
+    }
 
 }

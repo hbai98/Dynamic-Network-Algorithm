@@ -13,6 +13,7 @@ public class Run {
     AdjList graph2;
     AdjList simList;
     AdjList rev1;
+    AdjList rev2;
     Run(String simPath,String graph_1Path,String graph_2Path) throws IOException {
         GraphFileReader reader = new GraphFileReader();
         simList = reader.readToAdjL(simPath,false);
@@ -20,14 +21,18 @@ public class Run {
         HashSet<String> listSim = reader.getListSet();
 
         graph1 = reader.readToAdjL(graph_1Path,false);
+        rev1 = reader.getRevAdjList();
         HashSet<String> set1 = reader.getHeadSet();
         set1.addAll(reader.getListSet());
 
         graph2 = reader.readToAdjL(graph_2Path,true);
+        rev2 = reader.getRevAdjList();
         HashSet<String> set2 = reader.getHeadSet();
         set2.addAll(reader.getListSet());
         check(headSim,listSim,set1,set2);
-        hga = new HGA(simList,graph1,graph2);
+        hga = new HGA(simList,graph1,rev1,graph2,rev2);
+        //get stable similarity matrix
+
     }
 
     private void check(HashSet<String> headSim,HashSet<String> listSim,HashSet<String> set1,HashSet<String> set2) throws IllegalFormatException, IOException {
