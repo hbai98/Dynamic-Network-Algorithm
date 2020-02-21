@@ -34,10 +34,10 @@ public class GraphFileReader {
     private HashSet<String> listSet;
     //-------------------------
     private AdjList revAdjList;
+
     public GraphFileReader(){
         headSet = new HashSet<>();
         listSet = new HashSet<>();
-        //----------------------
         revAdjList = new AdjList();
     }
 
@@ -103,11 +103,11 @@ public class GraphFileReader {
     }
 
     private void init() {
-        // clean rev;
-        revAdjList = new AdjList();
         // clean hashSet
         headSet = new HashSet<>();
         listSet = new HashSet<>();
+        // clean rev
+        revAdjList = new AdjList();
     }
 
     /**
@@ -250,8 +250,8 @@ public class GraphFileReader {
                 // create edge & add
                 // Contain the lexicographical order to prevent the case of same edges.
                 graph.sortAddOneNode(srcName,tgtName,weight);
-                revAdjList.sortAddOneNode(tgtName,srcName,weight);
                 addToNodeList(srcName,tgtName);
+                revAdjList.sortAddOneNode(tgtName,srcName,weight);
             }
         }
         sifLine.clear();
@@ -303,4 +303,5 @@ public class GraphFileReader {
         assert (revAdjList!=null);
         return revAdjList;
     }
+
 }

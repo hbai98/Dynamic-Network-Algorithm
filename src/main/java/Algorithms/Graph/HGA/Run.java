@@ -22,7 +22,6 @@ public class Run {
         graph1 = reader.readToAdjL(graph_1Path,false);
         HashSet<String> set1 = reader.getHeadSet();
         set1.addAll(reader.getListSet());
-        rev1 = reader.getRevAdjList();
 
         graph2 = reader.readToAdjL(graph_2Path,true);
         HashSet<String> set2 = reader.getHeadSet();

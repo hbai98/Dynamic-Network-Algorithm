@@ -110,6 +110,7 @@ public class HGA {
     protected void addTopologyInfo(String node1,String node2){
         HNodeList neighbor1 = graph1.getNeighborsList(node1);
         HNodeList neighbor2 = graph2.getNeighborsList(node2);
+
     }
 
 

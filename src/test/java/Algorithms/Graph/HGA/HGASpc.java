@@ -47,7 +47,8 @@ class HGASpc {
     @DisplayName("update matrix.")
     @Test
     void updateMap() throws IOException {
-        NBM.neighborSimAdjust(graph1,graph2,simList,hga.getEdgeMapFromHA());
+        NBM.neighborSimAdjust(graph1,rev1,graph2,simList,hga.getEdgeMapFromHA());
+        assertEquals(1.4,simList.getValByName("W","A"));
     }
 
 }

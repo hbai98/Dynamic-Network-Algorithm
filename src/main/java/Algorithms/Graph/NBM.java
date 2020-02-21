@@ -201,14 +201,14 @@ public class NBM {
         for (Edge edge : mappedEdges) {
             Node srcNode = edge.getSource();
             Node tgtNode = edge.getTarget();
+            double simUV = simAdjList.getValByName(srcNode.getStrName(),tgtNode.getStrName());
             // direct neighbors of the head node
             HNodeList neb1 = graph1.sortGetNeighborsList(srcNode.getStrName());
             HNodeList neb2 = graph2.sortGetNeighborsList(tgtNode.getStrName());
             for (Node node1 : neb1) {
+                int nebNumb = graph1.sortGetNeighborsList(node1.getStrName()).size();
+                double reward = simUV/nebNumb;
                 for (Node node2 : neb2) {
-                    int nebNumb = graph1.sortGetNeighborsList(node1.getStrName()).size();
-                    double simUV = simAdjList.getValByName(srcNode.getStrName(),tgtNode.getStrName());
-                    double reward = simUV/nebNumb;
                     double newWeight = simAdjList.getValByName(node1.getStrName(),node2.getStrName())+reward;
                     simAdjList.sortAddOneNode(node1.getStrName(),node2.getStrName(),newWeight);
                 }
@@ -216,19 +216,20 @@ public class NBM {
         }
 
     }
+
     public static void neighborSimAdjust(AdjList graph1,AdjList rev1,AdjList graph2,AdjList simAdjList,EdgeHasSet mappedEdges) throws IOException {
         for (Edge edge : mappedEdges) {
             Node srcNode = edge.getSource();
             Node tgtNode = edge.getTarget();
             // direct neighbors of the head node
+            double simUV = simAdjList.getValByName(srcNode.getStrName(),tgtNode.getStrName());
             HNodeList neb1 = graph1.sortGetNeighborsList(srcNode.getStrName());
             HNodeList neb2 = graph2.sortGetNeighborsList(tgtNode.getStrName());
             for (Node node1 : neb1) {
+                int nebNumb = graph1.sortGetNeighborsList(node1.getStrName(),rev1).size();
+                double reward = simUV/nebNumb;
                 for (Node node2 : neb2) {
-                    int nebNumb = graph1.sortGetNeighborsList(node1.getStrName(),rev1).size();
-                    double simUV = simAdjList.getValByName(srcNode.getStrName(),tgtNode.getStrName());
-                    double reward = simUV/nebNumb;
-                    double newWeight = node2.getValue()+reward;
+                    double newWeight = simAdjList.getValByName(node1.getStrName(),node2.getStrName())+reward;
                     simAdjList.sortAddOneNode(node1.getStrName(),node2.getStrName(),newWeight);
                 }
             }

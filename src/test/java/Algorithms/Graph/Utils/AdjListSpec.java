@@ -119,10 +119,6 @@ class AdjListSpec {
         // check components even the equal() fpr HNodeList has been overloaded
         assertEquals(res,list);
 
-        // revList test
-        AdjList rev = reader.getRevAdjList();
-        HNodeList list2 = graph.sortGetNeighborsList("B",rev);
-        assertEquals(res,list2);
     }
 
 }
