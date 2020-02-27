@@ -7,6 +7,7 @@ import Algorithms.Graph.Network.EdgeHasSet;
 import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Network.AdjList;
 import Algorithms.Graph.Utils.HNodeList;
+import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
 import static Tools.MatrixFunctions.*;
@@ -229,7 +230,7 @@ public class HGA {
     }
 
     /**
-     * Step 4: - iterate to get a stable similarity matrix(globally stable)
+     * Step 4: - check if the condition is passed
      * Continue to step 2 until one of the following conditions
      * is satisfied:
      * | Si - Si-1 | < r
@@ -238,19 +239,13 @@ public class HGA {
      * ------------------------------------------
      * r = 0.01 to allow 1% error
      */
-    protected void getStable(EdgeHasSet mappedEdges,double tolerance) throws IOException {
-        // prepare SimList of the previous iteration
-        AdjList preSimList = (AdjList) originalSimList.clone();
-        double dif;
-        do{
-            // step 2
-            updatePairNeighbors(mappedEdges);
-            // step 3
-            addAllTopology();
-            // get difference of the two matrix using the difference matrix's determinant
-            dif = det(simList.toMatrix().sub(preSimList.toMatrix()));
-            // update previous SimList
-            preSimList = (AdjList) simList.clone();
-        }while(dif > tolerance);
+    protected boolean checkPassed(DoubleMatrix mat,DoubleMatrix preMat,double tolerance) throws IOException {
+           double dif = mat.sub(preMat).normmax();
+           if(dif < tolerance){
+               return true;
+           }
+           else{
+               return false;
+           }
     }
 }

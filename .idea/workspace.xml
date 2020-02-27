@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/16414.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Tools/Functions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Tools/MatrixFunctions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Tools/MatrixFunctionsSpec.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/AlgTest/MatrixFunctions/Bareiss_Mat.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/Score.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/Tools.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/Tools.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -279,7 +269,7 @@
       <workItem from="1582605868052" duration="9779000" />
       <workItem from="1582682066569" duration="595000" />
       <workItem from="1582687512305" duration="6992000" />
-      <workItem from="1582771561363" duration="8912000" />
+      <workItem from="1582771561363" duration="11034000" />
     </task>
     <servers />
   </component>

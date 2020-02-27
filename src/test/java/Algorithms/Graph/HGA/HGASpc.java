@@ -59,7 +59,7 @@ class HGASpc {
     @DisplayName("get stable simList.")
     @Test
     void getStableTest() throws IOException {
-        hga.getStable(hga.getEdgeMapFromHA(),0.01);
+        hga.checkPassed(hga.getEdgeMapFromHA(),0.01);
         int m = 0;
     }
 
