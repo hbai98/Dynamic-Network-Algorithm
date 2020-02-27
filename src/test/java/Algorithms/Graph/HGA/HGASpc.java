@@ -56,6 +56,12 @@ class HGASpc {
     void addTopologicalEffect() throws IOException {
         hga.addAllTopology();
     }
+    @DisplayName("get stable simList.")
+    @Test
+    void getStableTest() throws IOException {
+        hga.getStable(hga.getEdgeMapFromHA(),0.01);
+        int m = 0;
+    }
 
 
 }

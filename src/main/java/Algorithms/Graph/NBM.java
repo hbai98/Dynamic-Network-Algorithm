@@ -197,7 +197,7 @@ public class NBM {
      * Update only once for all neighbors of all the pairs ready.
      * reward is defined in HGA.
      */
-    public static void neighborSimAdjust(AdjList graph1,AdjList graph2,AdjList simAdjList,EdgeHasSet mappedEdges) throws IOException {
+    public static void  neighborSimAdjust(AdjList graph1,AdjList graph2,AdjList simAdjList,EdgeHasSet mappedEdges) throws IOException {
         for (Edge edge : mappedEdges) {
             Node srcNode = edge.getSource();
             Node tgtNode = edge.getTarget();

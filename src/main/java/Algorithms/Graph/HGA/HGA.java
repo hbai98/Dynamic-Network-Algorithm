@@ -9,6 +9,8 @@ import Algorithms.Graph.Network.AdjList;
 import Algorithms.Graph.Utils.HNodeList;
 import org.jgrapht.alg.util.Pair;
 
+import static Tools.MatrixFunctions.*;
+
 import java.io.IOException;
 import java.util.HashSet;
 
@@ -69,7 +71,7 @@ public class HGA {
     /**
      * rev to make it faster
      */
-    public HGA(AdjList simList, AdjList graph1,AdjList rev1, AdjList graph2,AdjList rev2) {
+    public HGA(AdjList simList, AdjList graph1, AdjList rev1, AdjList graph2, AdjList rev2) {
         this.graph1 = graph1;
         this.rev1 = rev1;
         this.graph2 = graph2;
@@ -113,6 +115,9 @@ public class HGA {
      * not link to similar nodes
      * <br>
      * <br>
+     * <p>S(ij)n (one element of the matrix i row j col) in the n time's iteration :</p>
+     * S(ij)t = s(ij)1 + 1/2*(θij 1 + θij 2)
+     * <br>
      * <p>
      * θij 1:represents the average similarity between the neighbors of ui and vj,
      * </p>
@@ -129,25 +134,24 @@ public class HGA {
         HNodeList neighbors_2;
 
         // init for both neighbors and nonNeighbors, if there're revs, make it faster.
-        if(rev1!=null){
-            neighbors_1 = graph1.sortGetNeighborsList(node1,rev1);
-        }
-        else{
+        if (rev1 != null) {
+            neighbors_1 = graph1.sortGetNeighborsList(node1, rev1);
+        } else {
             neighbors_1 = graph1.sortGetNeighborsList(node1);
         }
-        if(rev2!=null){
-            neighbors_2 = graph2.sortGetNeighborsList(node1,rev2);
-        }
-        else{
+        if (rev2 != null) {
+            neighbors_2 = graph2.sortGetNeighborsList(node1, rev2);
+        } else {
             neighbors_2 = graph2.sortGetNeighborsList(node2);
         }
         // compute topologyInfo
         double eNeighbors = getNeighborTopologyInfo(neighbors_1, neighbors_2);
         double eNonNeighbors = getNonNeighborTopologyInfo(neighbors_1, neighbors_2);
         // update both simList and mat
-        double eTP = (eNeighbors+eNonNeighbors)/2;
-        simList.sortAddOneNode(node1,node2,originalSimList.getValByMatName(node1,node2)+eTP);
-        simList.updateMat(node1,node2,originalSimList.getValByMatName(node1,node2)+eTP);
+        double eTP = (eNeighbors + eNonNeighbors) / 2;
+        double valToUpdate = originalSimList.getValByMatName(node1, node2) + eTP;
+        simList.sortAddOneNode(node1, node2, valToUpdate);
+        simList.updateMat(node1, node2, valToUpdate);
     }
 
 
@@ -211,7 +215,7 @@ public class HGA {
     }
 
     /**
-     * Step 3.2:
+     * Step 3 - integrated all steps in process 3(Topology info):
      * iterate all nodes pairs to add topological information
      */
     protected void addAllTopology() throws IOException {
@@ -219,8 +223,34 @@ public class HGA {
         HashSet<String> nodes2 = graph2.getAllNodes();
         for (String node1 : nodes1) {
             for (String node2 : nodes2) {
-                addTopology(node1,node2);
+                addTopology(node1, node2);
             }
         }
+    }
+
+    /**
+     * Step 4: - iterate to get a stable similarity matrix(globally stable)
+     * Continue to step 2 until one of the following conditions
+     * is satisfied:
+     * | Si - Si-1 | < r
+     * | Si - Si-2 | < r
+     * || -> determinant of matrix
+     * ------------------------------------------
+     * r = 0.01 to allow 1% error
+     */
+    protected void getStable(EdgeHasSet mappedEdges,double tolerance) throws IOException {
+        // prepare SimList of the previous iteration
+        AdjList preSimList = (AdjList) originalSimList.clone();
+        double dif;
+        do{
+            // step 2
+            updatePairNeighbors(mappedEdges);
+            // step 3
+            addAllTopology();
+            // get difference of the two matrix using the difference matrix's determinant
+            dif = det(simList.toMatrix().sub(preSimList.toMatrix()));
+            // update previous SimList
+            preSimList = (AdjList) simList.clone();
+        }while(dif > tolerance);
     }
 }
