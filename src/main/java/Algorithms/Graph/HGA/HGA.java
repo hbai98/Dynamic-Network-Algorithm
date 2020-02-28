@@ -164,10 +164,10 @@ public class HGA {
      * @param node1 one node from the graph1
      * @param node2 one node from the graph2
      */
-    protected void addTopology(String node1, String node2) throws IOException {
+    protected void addTopology(String node1, String node2,double factor) throws IOException {
         HNodeList neighbors_1;
         HNodeList neighbors_2;
-
+        assert(factor>=0 && factor<=1);
         // init for both neighbors and nonNeighbors, if there're revs, make it faster.
         if (rev1 != null) {
             neighbors_1 = graph1.sortGetNeighborsList(node1, rev1);
@@ -184,7 +184,7 @@ public class HGA {
         double eNonNeighbors = getNonNeighborTopologyInfo(neighbors_1, neighbors_2);
         // update both simList and mat
         double eTP = (eNeighbors + eNonNeighbors) / 2;
-        double valToUpdate = originalSimList.getValByMatName(node1, node2) + eTP;
+        double valToUpdate = originalSimList.getValByMatName(node1, node2)*factor + eTP*(1-factor);
         simList.sortAddOneNode(node1, node2, valToUpdate);
         simList.updateMat(node1, node2, valToUpdate);
     }
@@ -252,13 +252,14 @@ public class HGA {
     /**
      * Step 3 - integrated all steps in process 3(Topology info):
      * iterate all nodes pairs to add topological information
+     * @param factor weight of sequence information, 0 <= factor <=1
      */
-    protected void addAllTopology() throws IOException {
+    protected void addAllTopology(double factor) throws IOException {
         HashSet<String> nodes1 = graph1.getAllNodes();
         HashSet<String> nodes2 = graph2.getAllNodes();
         for (String node1 : nodes1) {
             for (String node2 : nodes2) {
-                addTopology(node1, node2);
+                addTopology(node1, node2,factor);
             }
         }
     }
@@ -277,13 +278,12 @@ public class HGA {
      *
      * @return score
      */
-    protected double score(EdgeHasSet mapping) {
+    protected double scoreMapping(EdgeHasSet mapping) {
         // edge correctness EC
         double EC = getEC(mapping);
         // point and edge score PE
         double PE = getPE(mapping);
-
-        return 0;
+        return 100*EC+PE;
     }
 
     private double getPE(EdgeHasSet mapping) {
@@ -293,19 +293,34 @@ public class HGA {
         // edgeScore set to 1.0
         double ES = getES(edges1, edges2, mapping, 1.);
         double PS = getPS(mapping);
-        return 0;
+        return ES+PS;
     }
 
     private double getPS(EdgeHasSet mapping) {
-        double PE = 0;
-        if(pairedEdges == null){
-            pairedEdges = getPairedEdges(graph1.getAllEdges(),graph2.getAllEdges(),mapping).getFirst();
+        double PS = 0;
+        if (pairedEdges == null) {
+            pairedEdges = getPairedEdges(graph1.getAllEdges(), graph2.getAllEdges(), mapping).getFirst();
         }
-        mapping.forEach(edge -> {
+        for (Edge edge : mapping) {
+            // ui node's edges
             EdgeHasSet res = graph1.getEdgesHasNode(edge.getSource());
-            
-        });
+            boolean hasPairedEdge = false;
+
+            for (Pair<Edge, Edge> e : pairedEdges) {
+                // if one of the ui node's edges is within pairedEdges
+                if (res.contains(e.getFirst())) {
+                    hasPairedEdge = true;
+                    break;
+                }
+            }
+            if(hasPairedEdge){
+                PS += edge.getWeight();
+            }
+        }
+        return PS;
     }
+
+
 
     private double getES(EdgeHasSet edges1, EdgeHasSet edges2, EdgeHasSet mapping, double edgeScore) {
         double ES = 0;
@@ -348,20 +363,20 @@ public class HGA {
                 }
             }
         }
-        return ES;
+        return ES/2;
     }
 
 
     public double getEC(EdgeHasSet mapping) {
         EdgeHasSet edges1 = graph1.getAllEdges();
         EdgeHasSet edges2 = graph2.getAllEdges();
-        Pair<PairedEdges,Integer> res = getPairedEdges(edges1, edges2, mapping);
+        Pair<PairedEdges, Integer> res = getPairedEdges(edges1, edges2, mapping);
         int count = res.getSecond();
         pairedEdges = res.getFirst();
         return (float) count / edges1.size();
     }
 
-    private Pair<PairedEdges,Integer> getPairedEdges(EdgeHasSet edges1, EdgeHasSet edges2, EdgeHasSet mapping) {
+    private Pair<PairedEdges, Integer> getPairedEdges(EdgeHasSet edges1, EdgeHasSet edges2, EdgeHasSet mapping) {
         int count = 0;
         PairedEdges edges = new PairedEdges();
         // check edge size to find a better algorithm
@@ -378,7 +393,7 @@ public class HGA {
                     if (edges2.contains(edge2)) {
                         // mapped
                         count++;
-                        edges.add(new Pair<>(edge1,edge2));
+                        edges.add(new Pair<>(edge1, edge2));
                     }
                 }
             }
@@ -395,12 +410,12 @@ public class HGA {
                     if (edges1.contains(edge1)) {
                         // mapped
                         count++;
-                        edges.add(new Pair<>(edge1,edge2));
+                        edges.add(new Pair<>(edge1, edge2));
                     }
                 }
             }
         }
-        return new Pair<>(edges,count);
+        return new Pair<>(edges, count);
     }
 
 
@@ -416,14 +431,12 @@ public class HGA {
      */
     protected boolean checkPassed(DoubleMatrix mat, DoubleMatrix preMat, double tolerance) throws IOException {
         double dif = mat.sub(preMat).normmax();
-        if (dif < tolerance) {
-            return true;
-        } else {
-            return false;
-        }
+        return dif < tolerance;
     }
 
-    public void run() {
+    public void run() throws IOException {
+        // get the initial similarity matrix S0
+        getEdgeMapFromHA(simList);
 
     }
 }

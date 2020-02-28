@@ -10,7 +10,7 @@ public class PairedEdges extends HashSet<Pair<Edge,Edge>> {
 
     }
     @Override
-    public boolean add(Pair<Edge, Edge> edgeEdgePair) {
-        return super.add(edgeEdgePair);
+    public boolean add(Pair<Edge, Edge> edgePair) {
+        return super.add(edgePair);
     }
 }
