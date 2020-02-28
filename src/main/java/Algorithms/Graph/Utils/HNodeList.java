@@ -1,8 +1,10 @@
 package Algorithms.Graph.Utils;
 
+import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Network.NodeList;
 
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * This class is aimed to save nodes with a signName as
@@ -26,6 +28,15 @@ public class HNodeList extends NodeList {
         this.score = -1;
     }
 
+    public int getNonZeroNumb(){
+        int sum = 0;
+        for (Node node : this) {
+            if(node.getValue() != 0){
+                sum ++;
+            }
+        }
+        return sum;
+    }
 
     @Override
     public boolean equals(Object o) {

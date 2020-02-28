@@ -25,6 +25,7 @@ public class AdjList extends LinkedList<HNodeList> {
     private HashSet<String> rowSet;
     private HashSet<String> colSet;
     private HashSet<String> allNodes;
+    private EdgeHasSet allEdges;
 
     private HashMap<String, Integer> rowMap;
     private HashMap<String, Integer> colMap;
@@ -492,4 +493,44 @@ public class AdjList extends LinkedList<HNodeList> {
         return allNodes;
     }
 
+    /**
+     * return the split result for adjList in which rows have at least h nonzero elements
+     *
+     * @param h number of nonzero elements
+     * @return matrix for split
+     */
+    public AdjList getSplit(int h) {
+        AdjList res = new AdjList();
+        forEach(
+                list -> {
+                    if (list.getNonZeroNumb() >= h) {
+                        res.add(list);
+                    }
+                }
+        );
+        return res;
+    }
+
+    /**
+     * Return all edges in the adjList
+     *
+     * @return Edge set
+     */
+    public EdgeHasSet getAllEdges() {
+        if(allEdges == null){
+            allEdges = new EdgeHasSet();
+            EdgeHasSet res = new EdgeHasSet();
+            forEach(list->{
+                String hName = list.getSignName();
+                list.forEach(
+                        node -> {
+                            String nodeName = node.getStrName();
+                            allEdges.add(hName,nodeName,node.getValue());
+                        }
+                );
+            });
+            return allEdges;
+        }
+        return allEdges;
+    }
 }

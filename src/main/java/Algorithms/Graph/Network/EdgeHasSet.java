@@ -14,7 +14,7 @@ import java.util.HashSet;
  * Thus, it will allow 'same' edges with different weights.
  * <br>
  * <p>
- *     NOTICE: in order to update the edge with a higher weight, there is a method bellow.
+ * NOTICE: in order to update the edge with a higher weight, there is a method bellow.
  * </p>
  */
 public class EdgeHasSet extends HashSet<Edge> {
@@ -76,6 +76,18 @@ public class EdgeHasSet extends HashSet<Edge> {
     }
 
     /**
+     * @return edge contains node as src, or null if not found
+     */
+    public Edge findSrcEdge(Node node) {
+        for (Edge edge : this) {
+            if (edge.source.equals(node)) {
+                return edge;
+            }
+        }
+        return null;
+    }
+
+    /**
      * check hashSet if there's a edge has {@code}node as its target
      *
      * @return true if being found
@@ -87,6 +99,18 @@ public class EdgeHasSet extends HashSet<Edge> {
             }
         }
         return false;
+    }
+
+    /**
+     * @return edge contains node as src, or null if not found
+     */
+    public Edge findTgtEdge(Node node) {
+        for (Edge edge : this) {
+            if (edge.target.equals(node)) {
+                return edge;
+            }
+        }
+        return null;
     }
 
     protected EdgeHasSet readFromFile(String filename) throws IOException {
@@ -117,17 +141,20 @@ public class EdgeHasSet extends HashSet<Edge> {
             System.out.println(v);
         });
     }
+
     /**
      * Update the edgeSet if there's a edge with the same srcStr and tgtStr
+     *
      * @param edge new edge used to replace the original
      */
-    public void updateEdge(Edge edge){
+    public void updateEdge(Edge edge) {
         for (Edge tpEdge : this) {
-            if (tpEdge.source == edge.source && tpEdge.target == edge.target){
+            if (tpEdge.source == edge.source && tpEdge.target == edge.target) {
                 tpEdge.setWeight(edge.weight);
             }
         }
     }
+
     /**
      * Move all edges with the {@code} node
      *

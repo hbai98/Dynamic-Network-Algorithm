@@ -148,8 +148,7 @@ public class Edge extends DefaultEdge {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Edge edge = (Edge) o;
-        return Double.compare(edge.weight, weight) == 0 &&
-                source.equals(edge.source) &&
+        return  source.equals(edge.source) &&
                 target.equals(edge.target) &&
                 type == edge.type;
     }

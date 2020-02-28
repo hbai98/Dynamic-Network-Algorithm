@@ -31,7 +31,7 @@ class HGASpc {
     @DisplayName("init mapping.")
     @Test
     void initMap() throws IOException {
-        EdgeHasSet initMap = hga.getEdgeMapFromHA();
+        EdgeHasSet initMap = hga.getEdgeMapFromHA(simList);
         EdgeHasSet res = new EdgeHasSet();
         res.add(new Edge("A","C",0.8));
         res.add(new Edge("B","B",0.8));
@@ -47,7 +47,7 @@ class HGASpc {
     @DisplayName("update matrix.")
     @Test
     void updateMap() throws IOException {
-        NBM.neighborSimAdjust(graph1,rev1,graph2,simList,hga.getEdgeMapFromHA());
+        NBM.neighborSimAdjust(graph1,rev1,graph2,simList,hga.getEdgeMapFromHA(simList));
         assertEquals(1.4,simList.getValByName("W","A"));
         assertEquals(1.4,simList.getValByMatName("W","A"));
     }
@@ -59,9 +59,10 @@ class HGASpc {
     @DisplayName("get stable simList.")
     @Test
     void getStableTest() throws IOException {
-        hga.checkPassed(hga.getEdgeMapFromHA(),0.01);
-        int m = 0;
+
     }
+
+
 
 
 }

@@ -34,11 +34,11 @@ public class HGA {
     protected AdjList rev2;
 
     /**
-     * This is the first step for HGA to initialize the mapping between two graph by HA
+     *  HGA to initialize the mapping between two graph by HA
      *
      * @return EdgeHashSet for the mapping result
      */
-    protected EdgeHasSet getEdgeMapFromHA() throws IOException {
+    protected EdgeHasSet getEdgeMapFromHA(AdjList simList) throws IOException {
         hungarian = new Hungarian(simList, Hungarian.ProblemType.maxLoc);
         int[] res = hungarian.getResult();
         EdgeHasSet initMap = new EdgeHasSet();
@@ -54,9 +54,41 @@ public class HGA {
     }
 
     /**
+     * divide S(t)
+     * into two matrixes: the H-matrix, in which each row
+     * has at least h nonzero entries, and the G-matrix, which
+     * collects the remaining entries of S(t)
+     *
+     * @param h row has at least h nonzero entries
+     */
+    protected EdgeHasSet remapping(int h) throws IOException {
+        // check
+        AdjList H = simList.getSplit(h);
+        // Hungarian alg
+        EdgeHasSet mapping = getEdgeMapFromHA(H);
+        // Greedy alg
+        greedyMap(mapping);
+        return mapping;
+    }
+
+    private void greedyMap(EdgeHasSet preMap) {
+        simList.forEach(
+                list->{
+                    // not in mapping result, run Greedy alg
+                    if(!preMap.findNodeEdgeSrc(new Node(list.getSignName()))){
+                        Node toMatch = list.findMax();
+                        // add mapping result
+                        preMap.add(list.getSignName(),toMatch.getStrName(),toMatch.getValue());
+                    }
+                }
+        );
+    }
+
+    /**
      * Step 1:
      * using homologous coefficients of proteins
      * computed by alignment algorithms for PINs
+     * SimList is cloned
      *
      * @param graph1  adjacent list of graph1
      * @param graph2  adjacent list of graph2
@@ -65,8 +97,8 @@ public class HGA {
     public HGA(AdjList simList, AdjList graph1, AdjList graph2) {
         this.graph1 = graph1;
         this.graph2 = graph2;
-        this.originalSimList = simList;
-        this.simList = simList;
+        this.originalSimList = (AdjList) simList.clone();
+        this.simList = (AdjList) simList.clone();
     }
 
     /**
@@ -77,8 +109,8 @@ public class HGA {
         this.rev1 = rev1;
         this.graph2 = graph2;
         this.rev2 = rev2;
-        this.originalSimList = simList;
-        this.simList = simList;
+        this.originalSimList = (AdjList) simList.clone();
+        this.simList = (AdjList) simList.clone();
     }
 
     /**
@@ -230,6 +262,56 @@ public class HGA {
     }
 
     /**
+     * This step is used to score current mapping to indicate whether there's
+     * a need to adjust and map again
+     * <br>
+     *     <p>The following params for evaluate the whole network mapping</p>
+     *     <ol>
+     *         <li>EC : Edge Correctness (EC) is often used to measure
+     * the degree of topological similarity and
+     * can be estimated as the percentage of matched edges</li>
+     *          <li></li>
+     *     </ol>
+     * @return score
+     */
+    protected double score(EdgeHasSet mapping){
+        // edge correctness EC
+        double EC = getEC(mapping);
+
+        return 0;
+    }
+
+    private double getEC(EdgeHasSet mapping) {
+        int count ;
+        EdgeHasSet edges1 = graph1.getAllEdges();
+        EdgeHasSet edges2 = graph2.getAllEdges();
+        // check edge size to find a better algorithm
+        if(edges1.size() <= edges2.size()) {
+            count = countMatchedEdges(mapping, edges2, edges1);
+        }
+        else{
+            count = countMatchedEdges(mapping, edges1, edges2);
+        }
+        return (float)count/edges1.size();
+    }
+
+    private int countMatchedEdges(EdgeHasSet mapping, EdgeHasSet edges1, EdgeHasSet edges2) {
+        int count = 0;
+        for (Edge edge : edges2) {
+            // node in graph1 to map
+            Node src = mapping.findSrcEdge(edge.getSource()).getTarget();
+            Node tgt = mapping.findTgtEdge(edge.getTarget()).getSource();
+            if (src != null && tgt != null) {
+                if (edges1.contains(new Edge(src, tgt))) {
+                    // mapped
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    /**
      * Step 4: - check if the condition is passed
      * Continue to step 2 until one of the following conditions
      * is satisfied:
@@ -239,13 +321,16 @@ public class HGA {
      * ------------------------------------------
      * r = 0.01 to allow 1% error
      */
-    protected boolean checkPassed(DoubleMatrix mat,DoubleMatrix preMat,double tolerance) throws IOException {
-           double dif = mat.sub(preMat).normmax();
-           if(dif < tolerance){
-               return true;
-           }
-           else{
-               return false;
-           }
+    protected boolean checkPassed(DoubleMatrix mat, DoubleMatrix preMat, double tolerance) throws IOException {
+        double dif = mat.sub(preMat).normmax();
+        if (dif < tolerance) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void run(){
+
     }
 }

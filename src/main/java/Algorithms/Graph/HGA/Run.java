@@ -21,11 +21,17 @@ public class Run {
         HashSet<String> listSim = reader.getListSet();
 
         graph1 = reader.readToAdjL(graph_1Path,false);
+        if(graph1.size()==0){
+            throw new IOException("graph1 has not been loaded.");
+        }
         rev1 = reader.getRevAdjList();
         HashSet<String> set1 = reader.getHeadSet();
         set1.addAll(reader.getListSet());
 
         graph2 = reader.readToAdjL(graph_2Path,true);
+        if(graph2.size()==0){
+            throw new IOException("graph2 has not been loaded.");
+        }
         rev2 = reader.getRevAdjList();
         HashSet<String> set2 = reader.getHeadSet();
         set2.addAll(reader.getListSet());
