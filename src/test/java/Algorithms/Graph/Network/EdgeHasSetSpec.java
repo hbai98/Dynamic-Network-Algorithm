@@ -25,7 +25,10 @@ class EdgeHasSetSpec {
         edge_3 = new Edge("2","1",1.0, Edge.Type.UNDIRECTED);
         edge_4 = new Edge("5","3",1.0, Edge.Type.UNDIRECTED);
 
-        edges.addAll(Arrays.asList(edge_1,edge_2,edge_3));
+        edges.add(edge_1);
+        edges.add(edge_2);
+        edges.add(edge_3);
+
     }
     @DisplayName("consist of UNDIRECTED edges")
     @Test

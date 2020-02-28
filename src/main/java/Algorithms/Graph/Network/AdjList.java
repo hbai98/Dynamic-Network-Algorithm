@@ -533,4 +533,18 @@ public class AdjList extends LinkedList<HNodeList> {
         }
         return allEdges;
     }
+
+    public EdgeHasSet getEdgesHasNode(Node source) {
+        EdgeHasSet res = new EdgeHasSet();
+        forEach(list->{
+            String listName = list.signName;
+            list.forEach(node -> {
+                String nodeName = node.strName;
+                if(listName.equals(source.strName)||nodeName.equals(source.strName)){
+                    res.add(listName,nodeName,node.getValue());
+                }
+            });
+        });
+        return res;
+    }
 }

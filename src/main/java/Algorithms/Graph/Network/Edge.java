@@ -148,13 +148,18 @@ public class Edge extends DefaultEdge {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Edge edge = (Edge) o;
-        return  source.equals(edge.source) &&
-                target.equals(edge.target) &&
-                type == edge.type;
+        if (type.equals(Type.UNDIRECTED)&&edge.type.equals(Type.UNDIRECTED)) {
+            return (source.equals(edge.source) && target.equals(edge.target))
+                    || (source.equals(edge.target) && target.equals(edge.source));
+        }
+        if (type.equals(Type.DIRECTED)&&edge.type.equals(Type.DIRECTED)){
+            return source.equals(edge.source) && target.equals(edge.target);
+        }
+        return false;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(source, target, weight, type);
+        return Objects.hash(type);
     }
 }

@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("The HGA is able to ")
@@ -56,10 +57,10 @@ class HGASpc {
     void addTopologicalEffect() throws IOException {
         hga.addAllTopology();
     }
-    @DisplayName("get stable simList.")
+    @DisplayName("get EC.")
     @Test
-    void getStableTest() throws IOException {
-
+    void getEdgeCorrectness() throws IOException {
+        assertEquals((float)4/15,hga.getEC(hga.getEdgeMapFromHA(simList)));
     }
 
 

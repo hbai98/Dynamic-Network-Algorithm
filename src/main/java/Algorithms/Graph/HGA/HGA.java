@@ -7,10 +7,9 @@ import Algorithms.Graph.Network.EdgeHasSet;
 import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Network.AdjList;
 import Algorithms.Graph.Utils.HNodeList;
+import Algorithms.Graph.Utils.PairedEdges;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
-
-import static Tools.MatrixFunctions.*;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -33,8 +32,11 @@ public class HGA {
     protected AdjList graph2;
     protected AdjList rev2;
 
+    //-----------------------store temporary paired edges
+    private PairedEdges pairedEdges;
+
     /**
-     *  HGA to initialize the mapping between two graph by HA
+     * HGA to initialize the mapping between two graph by HA
      *
      * @return EdgeHashSet for the mapping result
      */
@@ -73,12 +75,12 @@ public class HGA {
 
     private void greedyMap(EdgeHasSet preMap) {
         simList.forEach(
-                list->{
+                list -> {
                     // not in mapping result, run Greedy alg
-                    if(!preMap.findNodeEdgeSrc(new Node(list.getSignName()))){
+                    if (!preMap.findNodeEdgeSrc(new Node(list.getSignName()))) {
                         Node toMatch = list.findMax();
                         // add mapping result
-                        preMap.add(list.getSignName(),toMatch.getStrName(),toMatch.getValue());
+                        preMap.add(list.getSignName(), toMatch.getStrName(), toMatch.getValue());
                     }
                 }
         );
@@ -265,51 +267,142 @@ public class HGA {
      * This step is used to score current mapping to indicate whether there's
      * a need to adjust and map again
      * <br>
-     *     <p>The following params for evaluate the whole network mapping</p>
+     * <p>The following params for evaluate the whole network mapping</p>
      *     <ol>
      *         <li>EC : Edge Correctness (EC) is often used to measure
      * the degree of topological similarity and
      * can be estimated as the percentage of matched edges</li>
      *          <li></li>
      *     </ol>
+     *
      * @return score
      */
-    protected double score(EdgeHasSet mapping){
+    protected double score(EdgeHasSet mapping) {
         // edge correctness EC
         double EC = getEC(mapping);
+        // point and edge score PE
+        double PE = getPE(mapping);
 
         return 0;
     }
 
-    private double getEC(EdgeHasSet mapping) {
-        int count ;
+    private double getPE(EdgeHasSet mapping) {
+        // ES
         EdgeHasSet edges1 = graph1.getAllEdges();
         EdgeHasSet edges2 = graph2.getAllEdges();
-        // check edge size to find a better algorithm
-        if(edges1.size() <= edges2.size()) {
-            count = countMatchedEdges(mapping, edges2, edges1);
-        }
-        else{
-            count = countMatchedEdges(mapping, edges1, edges2);
-        }
-        return (float)count/edges1.size();
+        // edgeScore set to 1.0
+        double ES = getES(edges1, edges2, mapping, 1.);
+        double PS = getPS(mapping);
+        return 0;
     }
 
-    private int countMatchedEdges(EdgeHasSet mapping, EdgeHasSet edges1, EdgeHasSet edges2) {
-        int count = 0;
-        for (Edge edge : edges2) {
-            // node in graph1 to map
-            Node src = mapping.findSrcEdge(edge.getSource()).getTarget();
-            Node tgt = mapping.findTgtEdge(edge.getTarget()).getSource();
-            if (src != null && tgt != null) {
-                if (edges1.contains(new Edge(src, tgt))) {
-                    // mapped
-                    count++;
+    private double getPS(EdgeHasSet mapping) {
+        double PE = 0;
+        if(pairedEdges == null){
+            pairedEdges = getPairedEdges(graph1.getAllEdges(),graph2.getAllEdges(),mapping).getFirst();
+        }
+        mapping.forEach(edge -> {
+            EdgeHasSet res = graph1.getEdgesHasNode(edge.getSource());
+            
+        });
+    }
+
+    private double getES(EdgeHasSet edges1, EdgeHasSet edges2, EdgeHasSet mapping, double edgeScore) {
+        double ES = 0;
+        // check edge size to find a better algorithm
+        if (edges1.size() <= edges2.size()) {
+            for (Edge edge : edges1) {
+                // find relevant edge in the mapping
+                Edge srcEdge = mapping.findSrcEdge(edge.getSource());
+                Edge tgtEdge = mapping.findSrcEdge(edge.getTarget());
+
+                if (srcEdge != null && tgtEdge != null) {
+                    // node in graph to map
+                    Node src = srcEdge.getTarget();
+                    Node tgt = tgtEdge.getTarget();
+                    if (edges2.contains(new Edge(src, tgt))) {
+                        // mapped
+                        // and check positive similarity value
+                        if (srcEdge.getWeight() >= 0 && tgtEdge.getWeight() >= 0) {
+                            ES += edgeScore;
+                        }
+                    }
+                }
+            }
+        } else {
+            for (Edge edge : edges2) {
+                // find relevant edge in the mapping
+                Edge srcEdge = mapping.findTgtEdge(edge.getSource());
+                Edge tgtEdge = mapping.findTgtEdge(edge.getTarget());
+                if (srcEdge != null && tgtEdge != null) {
+                    // node in graph to map
+                    Node src = srcEdge.getSource();
+                    Node tgt = tgtEdge.getSource();
+                    if (edges1.contains(new Edge(src, tgt))) {
+                        // mapped
+                        // and check positive similarity value
+                        if (srcEdge.getWeight() >= 0 && tgtEdge.getWeight() >= 0) {
+                            ES += edgeScore;
+                        }
+                    }
                 }
             }
         }
-        return count;
+        return ES;
     }
+
+
+    public double getEC(EdgeHasSet mapping) {
+        EdgeHasSet edges1 = graph1.getAllEdges();
+        EdgeHasSet edges2 = graph2.getAllEdges();
+        Pair<PairedEdges,Integer> res = getPairedEdges(edges1, edges2, mapping);
+        int count = res.getSecond();
+        pairedEdges = res.getFirst();
+        return (float) count / edges1.size();
+    }
+
+    private Pair<PairedEdges,Integer> getPairedEdges(EdgeHasSet edges1, EdgeHasSet edges2, EdgeHasSet mapping) {
+        int count = 0;
+        PairedEdges edges = new PairedEdges();
+        // check edge size to find a better algorithm
+        if (edges1.size() <= edges2.size()) {
+            for (Edge edge1 : edges1) {
+                // find relevant edge in the mapping
+                Edge srcEdge = mapping.findSrcEdge(edge1.getSource());
+                Edge tgtEdge = mapping.findSrcEdge(edge1.getTarget());
+                if (srcEdge != null && tgtEdge != null) {
+                    // node in graph to map
+                    Node src = srcEdge.getTarget();
+                    Node tgt = tgtEdge.getTarget();
+                    Edge edge2 = new Edge(src, tgt);
+                    if (edges2.contains(edge2)) {
+                        // mapped
+                        count++;
+                        edges.add(new Pair<>(edge1,edge2));
+                    }
+                }
+            }
+        } else {
+            for (Edge edge2 : edges2) {
+                // find relevant edge in the mapping
+                Edge srcEdge = mapping.findTgtEdge(edge2.getSource());
+                Edge tgtEdge = mapping.findTgtEdge(edge2.getTarget());
+                if (srcEdge != null && tgtEdge != null) {
+                    // node in graph to map
+                    Node src = srcEdge.getSource();
+                    Node tgt = tgtEdge.getSource();
+                    Edge edge1 = new Edge(src, tgt);
+                    if (edges1.contains(edge1)) {
+                        // mapped
+                        count++;
+                        edges.add(new Pair<>(edge1,edge2));
+                    }
+                }
+            }
+        }
+        return new Pair<>(edges,count);
+    }
+
 
     /**
      * Step 4: - check if the condition is passed
@@ -330,7 +423,7 @@ public class HGA {
         }
     }
 
-    public void run(){
+    public void run() {
 
     }
 }
