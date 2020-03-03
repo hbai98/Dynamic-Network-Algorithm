@@ -77,13 +77,7 @@ class HGASpc {
     @DisplayName("remap.")
     @Test
     void reMappingTest() throws IOException {
-        GraphFileReader reader = new GraphFileReader();
-        AdjList graph1 = reader.readToAdjL("src/test/java/resources/AlgTest/HGA/small/sGraph1.txt");
-        AdjList rev1 = reader.getRevAdjList();
-        AdjList graph2 = reader.readToAdjL("src/test/java/resources/AlgTest/HGA/small/sGraph2.txt");
-        AdjList simList = reader.readToAdjL("src/test/java/resources/AlgTest/HGA/small/simMat2.txt");
-        hga = new HGA(simList,graph1,graph2);
-        hga.remapping(1);
+        hga.remapping(6);
     }
     @DisplayName("pass final Test.")
     @Test

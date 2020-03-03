@@ -12,6 +12,7 @@ import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.HashSet;
 
 /**
@@ -76,16 +77,33 @@ public class HGA {
     }
 
     private void greedyMap(EdgeHasSet preMap) {
-        simList.forEach(
-                list -> {
-                    // not in mapping result, run Greedy alg
-                    if (!preMap.findNodeEdgeSrc(new Node(list.getSignName()))) {
-                        Node toMatch = list.findMax();
-                        // add mapping result
-                        preMap.add(list.getSignName(), toMatch.getStrName(), toMatch.getValue());
-                    }
+        boolean[] assignedGraph2 = new boolean[graph2.getAllNodes().size()];
+        boolean[] assignedGraph1 = new boolean[graph1.getAllNodes().size()];
+        HashMap<String, Integer> colMap = simList.getColMap();
+        HashMap<String, Integer> rowMap = simList.getRowMap();
+
+        // init assigned array by preMap
+        preMap.forEach(edge -> {
+            Node tgtNode = edge.getTarget();
+            Node srcNode = edge.getSource();
+            int indexCol = colMap.get(tgtNode.getStrName());
+            int indexRow = rowMap.get(srcNode.getStrName());
+            assignedGraph1[indexRow] = true;
+            assignedGraph2[indexCol] = true;
+        });
+
+        int i = 0;
+        for (HNodeList list : simList) {
+            // not in mapping result, run Greedy alg
+            if (!assignedGraph1[i++]) {
+                Node toMatch = list.findMax(assignedGraph2);
+                if(toMatch == null) {
+                    break;
                 }
-        );
+                // add mapping result
+                preMap.add(list.getSignName(), toMatch.getStrName(), toMatch.getValue());
+            }
+        }
     }
 
     /**

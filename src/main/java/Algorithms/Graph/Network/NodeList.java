@@ -151,9 +151,8 @@ public class NodeList extends LinkedList<Node> {
 
     public Node findMax() {
         double max = Double.MIN_NORMAL;
-        Node tpNode = this.get(0);
-        for (int i=1;i<this.size();i++) {
-            Node node = this.get(i);
+        Node tpNode = null;
+        for (Node node : this) {
             double val = node.getValue();
             if (val > max) {
                 max = val;
@@ -162,6 +161,25 @@ public class NodeList extends LinkedList<Node> {
         }
         return tpNode;
     }
+    /**
+     * find the max value node with tgt nodes not been assigned,
 
+     * @param assigned previous mapping result
+     * @return the best node for mapping by greedy algorithm, null for all nodes has been assigned
+     */
+    public Node findMax(boolean[] assigned) {
+        double max = -Double.MAX_VALUE;
+        Node tpNode = null;
+        for (int i=0;i<this.size();i++) {
+            Node node = this.get(i);
+            double val = node.getValue();
+            if (!assigned[i] && val > max) {
+                assigned[i] = true;
+                max = val;
+                tpNode = node;
+            }
+        }
+        return tpNode;
+    }
 
 }
