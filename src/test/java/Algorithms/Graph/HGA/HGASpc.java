@@ -10,7 +10,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("The HGA is able to ")
@@ -83,9 +82,15 @@ class HGASpc {
     @Test
     void finalTest() throws IOException {
         long startTime =  System.currentTimeMillis();
-        hga.run(10,0.5,0.01,3);
+        hga.run(0.5,0.01,3);
         long endTime =  System.currentTimeMillis();
-        System.out.println("程序运行时间： "+(endTime-startTime)/1000+"s");
+        System.out.println("程序运行时间： "+(endTime-startTime)+"ms");
+    }
+
+    @DisplayName("pass final Test.")
+    @Test
+    void finalTest_2() throws IOException {
+
     }
 
 

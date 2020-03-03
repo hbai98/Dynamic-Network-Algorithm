@@ -2,19 +2,21 @@ package Algorithms.Graph.HGA;
 
 import Algorithms.Graph.IO.GraphFileReader;
 import Algorithms.Graph.Network.AdjList;
+import Algorithms.Graph.Network.EdgeHasSet;
 
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.IllegalFormatException;
 
-public class IO {
+public class Run {
     HGA hga;
     AdjList graph1;
     AdjList graph2;
     AdjList simList;
     AdjList rev1;
     AdjList rev2;
-    IO(String simPath,String graph_1Path,String graph_2Path) throws IOException {
+    EdgeHasSet mappingRes;
+    Run(String simPath, String graph_1Path, String graph_2Path) throws IOException {
         GraphFileReader reader = new GraphFileReader();
         simList = reader.readToAdjL(simPath,false);
         HashSet<String> headSim = reader.getHeadSet();
@@ -38,7 +40,7 @@ public class IO {
         check(headSim,listSim,set1,set2);
         hga = new HGA(simList,graph1,rev1,graph2,rev2);
         //get stable similarity matrix
-
+        mappingRes = hga.run(0.5,0.01,5);
     }
 
     private void check(HashSet<String> headSim,HashSet<String> listSim,HashSet<String> set1,HashSet<String> set2) throws IllegalFormatException, IOException {
@@ -47,4 +49,8 @@ public class IO {
         }
     }
 
+    public EdgeHasSet getMappingRes() {
+        assert (mappingRes != null);
+        return mappingRes;
+    }
 }
