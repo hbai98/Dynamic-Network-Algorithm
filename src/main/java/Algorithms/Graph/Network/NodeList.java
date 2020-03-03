@@ -151,8 +151,9 @@ public class NodeList extends LinkedList<Node> {
 
     public Node findMax() {
         double max = Double.MIN_NORMAL;
-        Node tpNode = null;
-        for (Node node : this) {
+        Node tpNode = this.get(0);
+        for (int i=1;i<this.size();i++) {
+            Node node = this.get(i);
             double val = node.getValue();
             if (val > max) {
                 max = val;
