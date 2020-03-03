@@ -31,6 +31,8 @@ public class HGA {
     protected AdjList rev1;
     protected AdjList graph2;
     protected AdjList rev2;
+    //-------------------------------
+    private AdjList mappingFinalResult;
 
     //-----------------------store temporary paired edges
     private PairedEdges pairedEdges;
@@ -163,11 +165,12 @@ public class HGA {
      *
      * @param node1 one node from the graph1
      * @param node2 one node from the graph2
+     * @param bioFactor bioInfo's taken (0-1)
      */
-    protected void addTopology(String node1, String node2,double factor) throws IOException {
+    protected void addTopology(String node1, String node2,double bioFactor) throws IOException {
         HNodeList neighbors_1;
         HNodeList neighbors_2;
-        assert(factor>=0 && factor<=1);
+        assert(bioFactor>=0 && bioFactor<=1);
         // init for both neighbors and nonNeighbors, if there're revs, make it faster.
         if (rev1 != null) {
             neighbors_1 = graph1.sortGetNeighborsList(node1, rev1);
@@ -184,7 +187,7 @@ public class HGA {
         double eNonNeighbors = getNonNeighborTopologyInfo(neighbors_1, neighbors_2);
         // update both simList and mat
         double eTP = (eNeighbors + eNonNeighbors) / 2;
-        double valToUpdate = originalSimList.getValByMatName(node1, node2)*factor + eTP*(1-factor);
+        double valToUpdate = originalSimList.getValByMatName(node1, node2)*bioFactor + eTP*(1-bioFactor);
         simList.sortAddOneNode(node1, node2, valToUpdate);
         simList.updateMat(node1, node2, valToUpdate);
     }
@@ -434,9 +437,41 @@ public class HGA {
         return dif < tolerance;
     }
 
-    public void run() throws IOException {
+    public void run(int iterateNumber,double factor,double tolerance,int h) throws IOException {
+        assert(simList!=null);
         // get the initial similarity matrix S0
-        getEdgeMapFromHA(simList);
+        EdgeHasSet mapping = getEdgeMapFromHA(simList);
+        // score the mapping
+        double score = scoreMapping(mapping);
+        // iterate
+        int iter = 0;
+        double maxScore = score;
+        boolean checkPassed;
+        while(iter < iterateNumber){
+            iter ++;
+            // update similarity matrix
+            do{
+                // clone Matrix, matrix is synchronized in every steps below, so it's fast
+                DoubleMatrix preMat = simList.toMatrix();
+                // step 2
+                updatePairNeighbors(mapping);
+                // step 3
+                addAllTopology(factor);
+                // step 4
+                checkPassed = checkPassed(simList.toMatrix(),preMat,tolerance);
+            }while(!checkPassed);
+            // map again
+            mapping = remapping(h);
+            // score mapping
+            score = scoreMapping(mapping);
+            if(score > maxScore){
+                maxScore = score;
+            }
+        }
+    }
 
+    public AdjList getMappingFinalResult() {
+        assert (mappingFinalResult != null);
+        return mappingFinalResult;
     }
 }

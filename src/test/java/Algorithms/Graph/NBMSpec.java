@@ -50,6 +50,19 @@ class NBMSpec {
         result.put("C",new Node("A",0.7));
         assertEquals(result,hashMap);
     }
+    @DisplayName("findBestPair finish.")
+    @Test
+    void NeighborAdjustTest() throws IOException {
+        GraphFileReader reader = new GraphFileReader();
+        AdjList graph1 = reader.readToAdjL("src/test/java/resources/AlgTest/HGA/small/sGraph1.txt");
+        AdjList rev1 = reader.getRevAdjList();
+        AdjList graph2 = reader.readToAdjL("src/test/java/resources/AlgTest/HGA/small/sGraph2.txt");
+        AdjList simList = reader.readToAdjL("src/test/java/resources/AlgTest/HGA/small/simMat2.txt");
+        EdgeHasSet set = new EdgeHasSet();
+        set.add("A","A",10);
+        NBM.neighborSimAdjust(graph1,rev1,graph2,simList,set);
+
+    }
 
 
 

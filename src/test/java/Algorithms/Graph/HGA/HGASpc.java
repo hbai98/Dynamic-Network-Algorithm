@@ -55,13 +55,34 @@ class HGASpc {
     @DisplayName("add topological effect.")
     @Test
     void addTopologicalEffect() throws IOException {
-        hga.addAllTopology();
+        hga.addAllTopology(0.5);
     }
     @DisplayName("get EC.")
     @Test
     void getEdgeCorrectness() throws IOException {
         assertEquals((float)4/15,hga.getEC(hga.getEdgeMapFromHA(simList)));
     }
+    @DisplayName("compute topo info.")
+    @Test
+    void topoTest() throws IOException {
+        GraphFileReader reader = new GraphFileReader();
+        AdjList graph1 = reader.readToAdjL("src/test/java/resources/AlgTest/HGA/small/sGraph1.txt");
+        AdjList rev1 = reader.getRevAdjList();
+        AdjList graph2 = reader.readToAdjL("src/test/java/resources/AlgTest/HGA/small/sGraph2.txt");
+        AdjList simList = reader.readToAdjL("src/test/java/resources/AlgTest/HGA/small/simMat2.txt");
+        hga = new HGA(simList,graph1,graph2);
+        hga.addTopology("A","A",0.5);
+
+    }
+    @DisplayName("pass final Test.")
+    @Test
+    void finalTest() throws IOException {
+        long startTime =  System.currentTimeMillis();
+        hga.run(10,0.5,0.01,3);
+        long endTime =  System.currentTimeMillis();
+        System.out.println("程序运行时间： "+(endTime-startTime)/1000+"s");
+    }
+
 
 
 

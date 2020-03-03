@@ -7,14 +7,14 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.IllegalFormatException;
 
-public class Run {
+public class IO {
     HGA hga;
     AdjList graph1;
     AdjList graph2;
     AdjList simList;
     AdjList rev1;
     AdjList rev2;
-    Run(String simPath,String graph_1Path,String graph_2Path) throws IOException {
+    IO(String simPath,String graph_1Path,String graph_2Path) throws IOException {
         GraphFileReader reader = new GraphFileReader();
         simList = reader.readToAdjL(simPath,false);
         HashSet<String> headSim = reader.getHeadSet();

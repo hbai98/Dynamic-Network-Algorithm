@@ -93,18 +93,13 @@ public class NodeList extends LinkedList<Node> {
 
     /**
      * add a node while not interfere with the sorted sequence
-     * <p>
-     * Only add while the node's weight is greater.
-     * </p>
      *
      * @param node node to be added
      */
     public void sortAdd(Node node) {
         int index = Collections.binarySearch(this, node, Comparator.comparing(o -> o.strName));
         if (index >= 0) {
-            if (node.getValue() > this.get(index).getValue()) {
-                this.get(index).setValue(node.getValue());
-            }
+            this.get(index).setValue(node.getValue());
         } else {
             this.add(-index - 1, node);
         }
