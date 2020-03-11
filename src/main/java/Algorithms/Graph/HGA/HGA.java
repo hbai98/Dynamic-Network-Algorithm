@@ -1,5 +1,10 @@
 package Algorithms.Graph.HGA;
 
+/**
+ * @Author: Haotian Bai
+ * Shanghai University, department of computer science
+ */
+
 import Algorithms.Graph.Hungarian;
 import Algorithms.Graph.NBM;
 import Algorithms.Graph.Network.Edge;
@@ -12,6 +17,8 @@ import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -32,9 +39,13 @@ public class HGA {
     protected AdjList rev1;
     protected AdjList graph2;
     protected AdjList rev2;
-    //-------------------------------
-    private AdjList mappingFinalResult;
-
+    //---------------mapping result-------------
+    private EdgeHasSet mappingFinalResult;
+    private double PE;
+    private double ES;
+    private double PS;
+    private double EC;
+    private double score;
     //-----------------------store temporary paired edges
     private PairedEdges pairedEdges;
 
@@ -196,7 +207,7 @@ public class HGA {
             neighbors_1 = graph1.sortGetNeighborsList(node1);
         }
         if (rev2 != null) {
-            neighbors_2 = graph2.sortGetNeighborsList(node1, rev2);
+            neighbors_2 = graph2.sortGetNeighborsList(node2, rev2);
         } else {
             neighbors_2 = graph2.sortGetNeighborsList(node2);
         }
@@ -298,24 +309,29 @@ public class HGA {
      *          <li></li>
      *     </ol>
      *
-     * @return score
+     * @return score, PE, EC, ES, PS
      */
-    protected double scoreMapping(EdgeHasSet mapping) {
+    protected ArrayList<Double> scoreMapping(EdgeHasSet mapping) {
         // edge correctness EC
         double EC = getEC(mapping);
         // point and edge score PE
-        double PE = getPE(mapping);
-        return 100 * EC + PE;
+        ArrayList<Double> res = getES_PS(mapping);
+        double ES = res.get(0);
+        double PS = res.get(1);
+        double PE = ES + PS;
+        double score = 100 * EC + PE;
+        // result
+        return new ArrayList<>(Arrays.asList(score, PE, EC, ES, PS));
     }
 
-    private double getPE(EdgeHasSet mapping) {
+    private ArrayList<Double> getES_PS(EdgeHasSet mapping) {
         // ES
         EdgeHasSet edges1 = graph1.getAllEdges();
         EdgeHasSet edges2 = graph2.getAllEdges();
         // edgeScore set to 1.0
         double ES = getES(edges1, edges2, mapping, 1.);
         double PS = getPS(mapping);
-        return ES + PS;
+        return new ArrayList<>(Arrays.asList(ES, PS));
     }
 
     private double getPS(EdgeHasSet mapping) {
@@ -455,14 +471,14 @@ public class HGA {
         return dif < tolerance;
     }
 
-    public EdgeHasSet run(double factor, double tolerance, int h) throws IOException {
+    public void run(double factor, double tolerance, int h) throws IOException {
         assert (simList != null);
         // get the initial similarity matrix S0
         EdgeHasSet mapping = getEdgeMapFromHA(simList);
         // final mapping result
         EdgeHasSet finalMapping = null;
         // score the mapping
-        double score = scoreMapping(mapping);
+        double score = scoreMapping(mapping).get(0);
         // check passed
 
         // iterate
@@ -480,19 +496,44 @@ public class HGA {
             // map again
             mapping = remapping(h);
             // score mapping
-            score = scoreMapping(mapping);
+            ArrayList<Double> scoreInfo = scoreMapping(mapping);
+            score = scoreInfo.get(0);
             if (score > maxScore) {
+                // get best result recorded
                 maxScore = score;
+                PE = scoreInfo.get(1);
+                EC = scoreInfo.get(2);
+                ES = scoreInfo.get(3);
+                PS = scoreInfo.get(4);
                 finalMapping = (EdgeHasSet) mapping.clone();
             }
             // step 4
             checkPassed = checkPassed(simList.toMatrix(), preMat, tolerance);
         } while (!checkPassed);
-        return finalMapping;
+        // record mapping result
+        mappingFinalResult = finalMapping;
+        this.score = maxScore;
+
     }
 
-    public AdjList getMappingFinalResult() {
+    public EdgeHasSet getMappingFinalResult() {
         assert (mappingFinalResult != null);
         return mappingFinalResult;
+    }
+
+    public double getEC() {
+        return EC;
+    }
+
+    public double getES() {
+        return ES;
+    }
+
+    public double getES_PS() {
+        return PE;
+    }
+
+    public double getScore() {
+        return score;
     }
 }

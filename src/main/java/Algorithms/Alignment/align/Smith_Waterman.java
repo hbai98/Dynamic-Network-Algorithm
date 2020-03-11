@@ -21,7 +21,7 @@ import java.util.Map;
 public class Smith_Waterman {
     HashSet<String> graph1;
     HashSet<String> graph2;
-    Smith_Waterman(){
+    public Smith_Waterman(){
         graph1 = new HashSet<>();
         graph2 = new HashSet<>();
     }

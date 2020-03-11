@@ -2,11 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/Test/Unified Interactome (1).cys" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/Test/cov_S.fa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/Test/cov_S.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/Test/sars_S.fa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/Test/sars_S.tsv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/Test/sars_S.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/resources/cov2019.faa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Alignment/align/Smith_Waterman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Alignment/align/Smith_Waterman.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/Run.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGARun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/EdgeHasSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/EdgeHasSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/coronavirus2019.faa" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Alignment/align/Smith_Waterman.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Alignment/align/Smith_Waterman.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/Run.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/coronavirus2019.faa" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGASpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGASpc.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,8 +52,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -85,10 +98,14 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Algorithms.Graph.IO" />
+      <recent name="Algorithms.Graph" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="Algorithms.Graph.HGA" />
       <recent name="Tools" />
       <recent name="Algorithms.Graph" />
-      <recent name="Algorithms.Graph.HGA" />
       <recent name="Alignment.align" />
       <recent name="Algorithms.Graph.IO" />
     </key>
@@ -102,11 +119,6 @@
       <recent name="Algorithms.Graph" />
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Development\Algorithms\src\test\java\resources\AlgTest\HGA\small" />
-      <recent name="E:\Development\Algorithms\src\test\java\resources\IOTest" />
-      <recent name="E:\Development\Algorithms\lib" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Development\Algorithms\src\main\java\Alignment\IO\BlAST" />
       <recent name="E:\Development\Algorithms\src\main\resources" />
@@ -115,12 +127,77 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Algorithms.Graph.Utils" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="Algorithms.Graph.IO" />
-      <recent name="Algorithms.Graph" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Development\Algorithms\src\test\java\resources\AlgTest\HGA\small" />
+      <recent name="E:\Development\Algorithms\src\test\java\resources\IOTest" />
+      <recent name="E:\Development\Algorithms\lib" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HGASpc.finalTest">
+  <component name="RunManager" selected="JUnit.HGARunSpec.S_protein_Test">
+    <configuration name="HGARunSpec.S_protein_Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Algorithms.Graph.HGA.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGARunSpec" />
+      <option name="METHOD_NAME" value="S_protein_Test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HGARun.finalTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Algorithms.Graph.HGA.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGARun" />
+      <option name="METHOD_NAME" value="finalTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HGARun.reMappingTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Algorithms.Graph.HGA.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGARun" />
+      <option name="METHOD_NAME" value="reMappingTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HGARun.topoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Algorithms.Graph.HGA.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGARun" />
+      <option name="METHOD_NAME" value="topoTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HGASpc.finalTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
@@ -137,84 +214,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NBMSpec.NeighborAdjustTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.NBMSpec" />
-      <option name="METHOD_NAME" value="NeighborAdjustTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Run.finalTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.HGA.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.Run" />
-      <option name="METHOD_NAME" value="finalTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Run.reMappingTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.HGA.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.Run" />
-      <option name="METHOD_NAME" value="reMappingTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Run.topoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.HGA.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.Run" />
-      <option name="METHOD_NAME" value="topoTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="JUnit.NBMSpec.NeighborAdjustTest" />
-      <item itemvalue="JUnit.Run.finalTest" />
-      <item itemvalue="JUnit.Run.topoTest" />
-      <item itemvalue="JUnit.Run.reMappingTest" />
       <item itemvalue="JUnit.HGASpc.finalTest" />
+      <item itemvalue="JUnit.HGARun.finalTest" />
+      <item itemvalue="JUnit.HGARun.topoTest" />
+      <item itemvalue="JUnit.HGARun.reMappingTest" />
+      <item itemvalue="JUnit.HGARunSpec.S_protein_Test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HGARunSpec.S_protein_Test" />
         <item itemvalue="JUnit.HGASpc.finalTest" />
-        <item itemvalue="JUnit.Run.finalTest" />
-        <item itemvalue="JUnit.Run.reMappingTest" />
-        <item itemvalue="JUnit.Run.topoTest" />
-        <item itemvalue="JUnit.NBMSpec.NeighborAdjustTest" />
+        <item itemvalue="JUnit.HGARun.finalTest" />
+        <item itemvalue="JUnit.HGARun.reMappingTest" />
+        <item itemvalue="JUnit.HGARun.topoTest" />
       </list>
     </recent_temporary>
   </component>
@@ -279,6 +292,13 @@
       <workItem from="1582888310698" duration="9000" />
       <workItem from="1583113206614" duration="553000" />
       <workItem from="1583113784792" duration="20109000" />
+      <workItem from="1583294434159" duration="2636000" />
+      <workItem from="1583327466466" duration="6624000" />
+      <workItem from="1583377624145" duration="14383000" />
+      <workItem from="1583453555597" duration="4347000" />
+      <workItem from="1583472736628" duration="31000" />
+      <workItem from="1583658071309" duration="1706000" />
+      <workItem from="1583895931018" duration="2678000" />
     </task>
     <servers />
   </component>
@@ -314,15 +334,15 @@
     </state>
     <state x="842" y="74" width="619" height="715" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1536.864@0.0.1536.864" timestamp="1582026455891" />
     <state x="1053" y="93" width="773" height="893" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1579268448230" />
-    <state x="159" y="277" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582778168215">
+    <state x="159" y="277" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583387319472">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="159" y="277" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1582778168215" />
+    <state x="159" y="277" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1583387319472" />
     <state x="199" y="346" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1579406110939" />
-    <state x="229" y="200" key="#com.intellij.ide.util.MemberChooser" timestamp="1582251506174">
+    <state x="229" y="200" key="#com.intellij.ide.util.MemberChooser" timestamp="1583392305305">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="229" y="200" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1582251506174" />
+    <state x="229" y="200" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1583392305305" />
     <state x="286" y="250" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1579083988452" />
     <state x="1172" y="316" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1579502127906">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -347,68 +367,68 @@
     </state>
     <state x="595" y="336" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.864@0.0.1536.864" timestamp="1581130445451" />
     <state x="744" y="420" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1920.1080@0.0.1920.1080" timestamp="1579242298871" />
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581475966765">
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1583900662256">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.864@0.0.1536.864" timestamp="1581475966765" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.864@0.0.1536.864" timestamp="1583900662256" />
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1579405057461" />
     <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580894890141">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1580894890141" />
-    <state x="655" y="178" width="488" height="562" key="#xdebugger.evaluate" timestamp="1583201551415">
+    <state x="108" y="182" width="488" height="562" key="#xdebugger.evaluate" timestamp="1583395728960">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="655" y="178" width="488" height="562" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1583201551415" />
+    <state x="108" y="182" width="488" height="562" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1583395728960" />
     <state x="1196" y="247" key="#xdebugger.evaluate/0.0.1920.1080@0.0.1920.1080" timestamp="1579511493737" />
-    <state width="664" height="466" key="DebuggerActiveHint" timestamp="1583243810159">
+    <state width="664" height="466" key="DebuggerActiveHint" timestamp="1583900484603">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="664" height="466" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1583243810159" />
+    <state width="664" height="466" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1583900484603" />
     <state x="162" y="225" key="FileChooserDialogImpl" timestamp="1579781498938">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="162" y="225" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1579781498938" />
     <state x="203" y="281" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1579173438855" />
-    <state width="1493" height="192" key="GridCell.Tab.0.bottom" timestamp="1583245496254">
+    <state width="1493" height="439" key="GridCell.Tab.0.bottom" timestamp="1583901195024">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="192" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1583245496254" />
+    <state width="1493" height="439" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1583901195024" />
     <state width="917" height="326" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="192" key="GridCell.Tab.0.center" timestamp="1583245496253">
+    <state width="1493" height="439" key="GridCell.Tab.0.center" timestamp="1583901195024">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="192" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1583245496253" />
+    <state width="1493" height="439" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1583901195024" />
     <state width="917" height="326" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="192" key="GridCell.Tab.0.left" timestamp="1583245496253">
+    <state width="1493" height="439" key="GridCell.Tab.0.left" timestamp="1583901195024">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="192" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1583245496253" />
+    <state width="1493" height="439" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1583901195024" />
     <state width="917" height="326" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465822" />
-    <state width="1493" height="192" key="GridCell.Tab.0.right" timestamp="1583245496253">
+    <state width="1493" height="439" key="GridCell.Tab.0.right" timestamp="1583901195024">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="192" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1583245496253" />
+    <state width="1493" height="439" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1583901195024" />
     <state width="917" height="326" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="218" key="GridCell.Tab.1.bottom" timestamp="1583245467183">
+    <state width="1493" height="439" key="GridCell.Tab.1.bottom" timestamp="1583901195025">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1583245467183" />
+    <state width="1493" height="439" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1583901195025" />
     <state width="917" height="326" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466610" />
-    <state width="1493" height="218" key="GridCell.Tab.1.center" timestamp="1583245467182">
+    <state width="1493" height="439" key="GridCell.Tab.1.center" timestamp="1583901195024">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1583245467182" />
+    <state width="1493" height="439" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1583901195024" />
     <state width="917" height="326" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
-    <state width="1493" height="218" key="GridCell.Tab.1.left" timestamp="1583245467182">
+    <state width="1493" height="439" key="GridCell.Tab.1.left" timestamp="1583901195024">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1583245467182" />
+    <state width="1493" height="439" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1583901195024" />
     <state width="917" height="326" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
-    <state width="1493" height="218" key="GridCell.Tab.1.right" timestamp="1583245467183">
+    <state width="1493" height="439" key="GridCell.Tab.1.right" timestamp="1583901195025">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="218" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1583245467183" />
+    <state width="1493" height="439" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1583901195025" />
     <state width="917" height="326" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1579511466609" />
     <state x="639" y="216" key="Maven.ArtifactSearchDialog" timestamp="1579071348260">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -428,19 +448,19 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="1242" y="318" key="chooseDestDirectoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1579502121251" />
-    <state x="449" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1583115735540">
+    <state x="449" y="257" key="com.intellij.ide.util.TipDialog" timestamp="1583895928473">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="449" y="257" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1583115735540" />
-    <state x="196" y="194" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1582776076456">
+    <state x="449" y="257" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1583895928473" />
+    <state x="196" y="194" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1583329008381">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="196" y="194" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.864@0.0.1536.864" timestamp="1582776076456" />
+    <state x="196" y="194" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.864@0.0.1536.864" timestamp="1583329008381" />
     <state x="245" y="243" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1579499692303" />
-    <state x="190" y="322" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1582246117025">
+    <state x="190" y="322" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1583393409807">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="190" y="322" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.864@0.0.1536.864" timestamp="1582246117025" />
+    <state x="190" y="322" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.864@0.0.1536.864" timestamp="1583393409807" />
     <state x="248" y="254" key="extract.method.dialog" timestamp="1582861671258">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -472,11 +492,6 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Alignment/Blast/BLAST.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Alignment/Blast/BLASTSpec.java</url>
           <line>57</line>
           <option name="timeStamp" value="21" />
@@ -496,20 +511,25 @@
           <line>73</line>
           <option name="timeStamp" value="85" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/Network/EdgeHasSetSpec.java</url>
           <line>40</line>
           <option name="timeStamp" value="116" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/NBMSpec.java</url>
           <line>62</line>
           <option name="timeStamp" value="124" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java</url>
-          <line>469</line>
-          <option name="timeStamp" value="142" />
+          <line>288</line>
+          <option name="timeStamp" value="127" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="139" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Alignment/Blast/BLASTSpec.java</url>
@@ -521,5 +541,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="run" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

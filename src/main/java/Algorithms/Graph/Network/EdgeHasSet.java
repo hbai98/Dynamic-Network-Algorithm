@@ -167,6 +167,4 @@ public class EdgeHasSet extends HashSet<Edge> {
             }
         });
     }
-
-
 }
