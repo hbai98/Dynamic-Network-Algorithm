@@ -1,8 +1,0 @@
-A A 9 B 0 C 0
-B A 0 B 9 C 0
-C A 0 B 0 C 0
-D A 0 B 0 C 0
-E A 0 B 0 C 0
-F A 0 B 0 C 0
-G A 0 B 0 C 0
-H A 0 B 0 C 0

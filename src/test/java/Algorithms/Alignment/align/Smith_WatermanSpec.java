@@ -24,4 +24,9 @@ class Smith_WatermanSpec {
         assertEquals("sdkfksf kdjfk",test.split("\\u005B")[0]);
     }
 
+    @DisplayName("get protein sequences through IDs")
+    @Test
+    void getSequencesThroughID(){
+
+    }
 }
