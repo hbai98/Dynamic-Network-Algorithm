@@ -1,4 +1,4 @@
-package Algorithms.Graph.IO;
+package IO;
 
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHasSet;

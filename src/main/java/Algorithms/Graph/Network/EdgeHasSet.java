@@ -2,7 +2,7 @@ package Algorithms.Graph.Network;
 // Author: Haotian Bai
 // Shanghai University, department of computer science
 
-import Algorithms.Graph.IO.GraphFileReader;
+import IO.GraphFileReader;
 
 import java.io.IOException;
 import java.util.HashMap;

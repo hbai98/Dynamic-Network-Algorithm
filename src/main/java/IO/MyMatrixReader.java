@@ -1,10 +1,8 @@
-package Algorithms.Graph.IO;
+package IO;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
-import java.util.Vector;
 
 /**
  * Reader class for matrix reading

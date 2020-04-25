@@ -1,69 +1,94 @@
 package Algorithms.Alignment.IO;
 
-import org.biojava.nbio.core.sequence.ProteinSequence;
-import uk.ac.ebi.kraken.interfaces.uniprot.organism.OrganismName;
+import uk.ac.ebi.kraken.interfaces.common.Sequence;
+import uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.dataservice.client.Client;
 import uk.ac.ebi.uniprot.dataservice.client.QueryResult;
 import uk.ac.ebi.uniprot.dataservice.client.ServiceFactory;
 import uk.ac.ebi.uniprot.dataservice.client.exception.ServiceException;
-import uk.ac.ebi.uniprot.dataservice.client.uniprot.UniProtData;
 import uk.ac.ebi.uniprot.dataservice.client.uniprot.UniProtQueryBuilder;
 import uk.ac.ebi.uniprot.dataservice.client.uniprot.UniProtService;
 import uk.ac.ebi.uniprot.dataservice.query.Query;
 
-import java.util.Collection;
-import java.util.HashMap;
+import java.util.*;
 
+/**
+ * https://www.uniprot.org/help/programmatic_access
+ * https://www.ebi.ac.uk/uniprot/japi/javadoc/index.html
+ */
 public class WebServices {
     // record all proteins info
-    static HashMap<String, ProteinSequence> seqMap = new HashMap<>();
-    static HashMap<String,QueryResult<UniProtData>> infoMap = new HashMap<>();
-
-    static class Uniport {
+    static HashMap<String, HashMap<String, String>> infoMap;
+    static HashMap<String, Sequence> seqMap;
+    static boolean isVirus;
+    static int MAX_everyEntry = 5;
+    static class Uniprot {
         // info
-        String orgName;
         UniProtService uniprotService;
-        Uniport(Collection<String> identifiers,String organismName){
+
+        Uniprot(Collection<String> identifiers) {
+            infoMap = new HashMap<>();
+            seqMap = new HashMap<>();
             ServiceFactory serviceFactoryInstance = Client.getServiceFactoryInstance();
             // UniProtService
             uniprotService = serviceFactoryInstance.getUniProtQueryService();
             uniprotService.start();
-            orgName = organismName;
-            // record seqs
+            // record
             record(identifiers);
             uniprotService.stop();
         }
 
+
         private void record(Collection<String> identifiers) {
             // search for gene names, synonyms, Ordered Locus Names or
             // ORFs via the gene(String name) method
-            try{
+            try {
+
                 for (String identifier : identifiers) {
                     accept(identifier);
                 }
-            }
-            catch (ServiceException ex){
+            } catch (ServiceException ex) {
                 ex.printStackTrace();
             }
         }
 
-        private void accept(String i) throws ServiceException {
-            Query query = UniProtQueryBuilder.organismName(orgName).and(UniProtQueryBuilder.proteinName(i));
-            QueryResult<UniProtData> results = uniprotService.getResults(query, UniProtData.ComponentType.COMMENTS, UniProtData.ComponentType.PROTEIN_NAMES);
-            infoMap.put(i,results);
+        private void accept(String s) throws ServiceException {
+            Query query = UniProtQueryBuilder.proteinName(s);
+            QueryResult<UniProtEntry> results = uniprotService.getEntries(query);
+            HashMap<String, String> info = new HashMap<>();
+            int toShow;
+            // limit
+            if(results.getNumberOfHits()> MAX_everyEntry){
+                toShow = MAX_everyEntry;
+            }
+            else{
+                toShow =(int) results.getNumberOfHits();
+            }
+            for (int i = 0; i < toShow; i++) {
+                UniProtEntry data = results.getFirstResult();
+                info.put("UniprotID", data.getUniProtId().toString());
+                info.put("Name", s);
+                if(isVirus){
+                    info.put("Description", "Host:"+data.getOrganismHosts().toString());
+                }
+                else{
+                    info.put("Description", data.getOrganism().toString());
+                }
+                seqMap.put(data.getUniProtId().toString(), data.getSequence());
+                infoMap.put(s, info);
+            }
+
+
         }
-    }
-
-    public static HashMap<String, QueryResult<UniProtData>> getInfoMap() {
-        return infoMap;
-    }
-
-    public static HashMap<String, ProteinSequence> getSeqMap() {
-        return seqMap;
-    }
-
-    public static void main(String[] args) {
 
 
+        public static HashMap<String, HashMap<String, String>> getInfoMap() {
+            return infoMap;
+        }
+
+        public static void main(String[] args) {
+
+
+        }
     }
 }

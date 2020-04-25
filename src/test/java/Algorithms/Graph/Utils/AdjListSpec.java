@@ -1,6 +1,6 @@
 package Algorithms.Graph.Utils;
 
-import Algorithms.Graph.IO.GraphFileReader;
+import IO.GraphFileReader;
 import Algorithms.Graph.Network.AdjList;
 import Algorithms.Graph.Network.Node;
 import org.jblas.DoubleMatrix;

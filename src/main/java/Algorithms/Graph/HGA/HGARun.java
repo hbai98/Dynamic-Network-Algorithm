@@ -1,8 +1,7 @@
 package Algorithms.Graph.HGA;
 
-import Algorithms.Graph.IO.GraphFileReader;
+import IO.GraphFileReader;
 import Algorithms.Graph.Network.AdjList;
-import Algorithms.Graph.Network.EdgeHasSet;
 
 import java.io.IOException;
 import java.util.HashSet;

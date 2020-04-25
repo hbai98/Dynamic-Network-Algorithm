@@ -1,7 +1,7 @@
 package Algorithms.Graph;
 
-import Algorithms.Graph.IO.GraphFileReader;
-import Algorithms.Graph.IO.MyMatrixReader;
+import IO.GraphFileReader;
+import IO.MyMatrixReader;
 import Algorithms.Graph.Network.AdjList;
 import org.jblas.DoubleMatrix;
 import org.junit.jupiter.api.BeforeEach;

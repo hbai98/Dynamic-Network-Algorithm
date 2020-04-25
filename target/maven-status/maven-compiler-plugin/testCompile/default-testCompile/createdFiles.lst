@@ -1,4 +1,3 @@
-Algorithms\Graph\IO\GraphFileReaderSpec.class
 Algorithms\Graph\Network\NodeListSpec$Other.class
 Algorithms\Graph\Network\EdgeHasSetSpec.class
 Algorithms\Alignment\Blast\BLASTSpec.class
@@ -9,12 +8,13 @@ Algorithms\Graph\NBMSpec.class
 Algorithms\Graph\Network\EdgeSpec.class
 Algorithms\Alignment\IO\WebServicesSpec.class
 Algorithms\Graph\Utils\hNodeListSpec.class
-Algorithms\Graph\IO\GraphFileWriterSpec.class
 Algorithms\Graph\Network\NodeSpec.class
 Algorithms\Graph\HungarianSpec.class
+IO\GraphFileWriterSpec.class
 Algorithms\Graph\Network\NodeListSpec$functionTest.class
 Algorithms\Graph\Network\EdgeHasSetSpec$FuncTest.class
 Algorithms\Graph\prev\HungarianSpec.class
 Tools\MatrixFunctionsSpec.class
+IO\GraphFileReaderSpec.class
 Algorithms\Graph\Utils\AdjListSpec.class
 Algorithms\Graph\Network\NodeListSpec.class

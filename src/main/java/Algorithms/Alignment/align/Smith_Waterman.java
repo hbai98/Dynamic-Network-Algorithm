@@ -1,7 +1,7 @@
 package Algorithms.Alignment.align;
 
 import Algorithms.Alignment.IO.FastaFileReader;
-import Algorithms.Graph.IO.GraphFileWriter;
+import IO.GraphFileWriter;
 import Algorithms.Graph.Network.AdjList;
 import org.biojava.nbio.alignment.Alignments;
 import org.biojava.nbio.alignment.SimpleGapPenalty;

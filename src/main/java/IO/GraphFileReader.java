@@ -1,4 +1,4 @@
-package Algorithms.Graph.IO;
+package IO;
 
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHasSet;
@@ -24,10 +24,6 @@ import java.util.regex.Pattern;
  * where the weight means the edge weight between node(i) and source node.
  * </p>
  * <br>
- * <p>
- * refer to http://manual.cytoscape.org/en/stable/Supported_Network_File_Formats.html
- * * && https://github.com/svn2github/cytoscape/blob/master/csplugins/trunk/ucsd/slotia/oiler/src/oiler/io/SIFReader.java
- * </p>
  */
 public class GraphFileReader {
     private HashSet<String> headSet;
@@ -36,6 +32,7 @@ public class GraphFileReader {
     private AdjList revAdjList;
 
     public GraphFileReader(){
+        super();
         headSet = new HashSet<>();
         listSet = new HashSet<>();
         revAdjList = new AdjList();

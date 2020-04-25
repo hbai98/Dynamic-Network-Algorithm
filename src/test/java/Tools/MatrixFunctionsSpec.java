@@ -1,6 +1,6 @@
 package Tools;
 
-import Algorithms.Graph.IO.MyMatrixReader;
+import IO.MyMatrixReader;
 import org.jblas.DoubleMatrix;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,6 @@
 package Algorithms.Graph;
 
-import Algorithms.Graph.IO.GraphFileReader;
+import IO.GraphFileReader;
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHasSet;
 import Algorithms.Graph.Network.Node;

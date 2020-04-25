@@ -1,4 +1,4 @@
-package Algorithms.Graph.IO;
+package IO;
 
 import Algorithms.Graph.Network.AdjList;
 import org.junit.jupiter.api.BeforeEach;

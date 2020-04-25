@@ -1,13 +1,8 @@
 package Algorithms.Graph.HGA;
 
 import Algorithms.Alignment.align.Smith_Waterman;
-import Algorithms.Graph.IO.GraphFileReader;
 import Algorithms.Graph.Network.AdjList;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class HGARunSpec {
     @Test
