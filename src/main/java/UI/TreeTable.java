@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class TreeTable {
@@ -18,6 +19,7 @@ public class TreeTable {
     private DefaultTreeTableModel model;
     private JXTreeTable treeTable;
     private List<String[]> content;
+    private HashMap<String, HashMap<String,String>> selected;
 
     public TreeTable(List<String> columns) {
         content = new ArrayList<>();
@@ -41,6 +43,9 @@ public class TreeTable {
         treeTable.setShowGrid(false);
         treeTable.setColumnControlVisible(true);
         treeTable.packAll();
+        treeTable.expandAll();
+        treeTable.setCellSelectionEnabled(false);
+//        treeTable.setTreeCellRenderer();
         return treeTable;
     }
 
@@ -50,6 +55,10 @@ public class TreeTable {
 
     public void setContent(List<String[]> content) {
         this.content = content;
+    }
+
+    public HashMap<String, HashMap<String, String>> getSelected() {
+        return selected;
     }
 
     public static void main(String[] args) {

@@ -20,96 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Algorithms.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Alignment/IO/OrganismHostName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Alignment/IO/OrganismName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Set/FD.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/IO/AbstractFileReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/IO/AbstractFileWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/Tree/ChildNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/Tree/Node.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/Tree/RootNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/UI/TreeTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Set/FDTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/IOTest/test.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/bioformats_6_3_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/bioformats_6_3_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Alignment/IO/WebServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Alignment/IO/WebServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Alignment/align/Smith_Waterman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Alignment/align/Smith_Waterman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGARun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGARun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/IO/GraphFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/GraphFileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/IO/GraphFileWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/GraphFileWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/IO/MyMatrixReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/MyMatrixReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/EdgeHasSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/EdgeHasSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Alignment/IO/WebServicesSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Alignment/IO/WebServicesSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HungarianSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HungarianSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/IO/GraphFileReaderSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/IO/GraphFileReaderSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/IO/GraphFileWriterSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/IO/GraphFileWriterSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/NBMSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/NBMSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Utils/AdjListSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Utils/AdjListSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/prev/HungarianSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/prev/HungarianSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Tools/MatrixFunctionsSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tools/MatrixFunctionsSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/HGA-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Alignment/Blast/BLAST.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Alignment/Blast/BLAST.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Alignment/Blast/BLASTP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Alignment/Blast/BLASTP.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Alignment/Blast/HSP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Alignment/Blast/HSP.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Alignment/IO/FastaFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Alignment/IO/FastaFileReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Alignment/IO/WebServices$Uniport.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Alignment/IO/WebServices.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Alignment/IO/WebServices.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Alignment/align/Smith_Waterman.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Alignment/align/Smith_Waterman.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGARun.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGARun.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian$ProblemType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian$ProblemType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian$ZeroMasks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian$ZeroMasks.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/IO/GraphFileReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/IO/GraphFileWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/IO/MyMatrixReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/AdjList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/AdjList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/Edge$Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/Edge$Type.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/Edge.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/EdgeHasSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/EdgeHasSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/NodeList$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/NodeList$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/NodeList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/NodeList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/CpEdge$Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/CpEdge$Type.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/CpEdge.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/CpEdge.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/HNodeList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/HNodeList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/PairedEdges.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/PairedEdges.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/prev/Hungarian$Direction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/prev/Hungarian$Direction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/prev/Hungarian$ProblemType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/prev/Hungarian$ProblemType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/prev/Hungarian.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/prev/Hungarian.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tools/Functions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tools/Functions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tools/MatrixFunctions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tools/MatrixFunctions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Alignment/Blast/BLASTSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Alignment/Blast/BLASTSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Alignment/IO/WebServicesSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Alignment/IO/WebServicesSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Alignment/align/Smith_WatermanSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Alignment/align/Smith_WatermanSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGARunSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGARunSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGASpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGASpc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HungarianSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HungarianSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/IO/GraphFileReaderSpec.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/IO/GraphFileWriterSpec.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/NBMSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/NBMSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/EdgeHasSetSpec$FuncTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/EdgeHasSetSpec$FuncTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/EdgeHasSetSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/EdgeHasSetSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/EdgeSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/EdgeSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/NodeListSpec$Other.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/NodeListSpec$Other.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/NodeListSpec$functionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/NodeListSpec$functionTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/NodeListSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/NodeListSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/NodeSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Network/NodeSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Utils/AdjListSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Utils/AdjListSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Utils/hNodeListSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Utils/hNodeListSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/prev/HungarianSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/prev/HungarianSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Tools/MatrixFunctionsSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Tools/MatrixFunctionsSpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UI/TreeTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/TreeTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Utils/AdjListSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Network/AdjListSpec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/TreeTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UI/TreeTable.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,10 +98,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="Algorithms.Graph.IO" />
-      <recent name="Algorithms.Graph" />
-    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="Algorithms.Set" />
       <recent name="IO" />
@@ -199,11 +109,16 @@
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Algorithms.Graph.Network" />
       <recent name="UI" />
       <recent name="" />
       <recent name="tutorial.JavaCoreVolumeI" />
-      <recent name="Algorithms.Graph.Network" />
       <recent name="Algorithms.Graph.prev" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Development\Algorithms\src\test\java\resources\AlgTest\HGA\small" />
+      <recent name="E:\Development\Algorithms\src\test\java\resources\IOTest" />
+      <recent name="E:\Development\Algorithms\lib" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Development\Algorithms\src\main\java\Alignment\IO\BlAST" />
@@ -213,13 +128,25 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Algorithms.Graph.Utils" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Development\Algorithms\src\test\java\resources\AlgTest\HGA\small" />
-      <recent name="E:\Development\Algorithms\src\test\java\resources\IOTest" />
-      <recent name="E:\Development\Algorithms\lib" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Algorithms.Graph.IO" />
+      <recent name="Algorithms.Graph" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TreeTable">
+  <component name="RunManager" selected="Application.Test">
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="UI.Tree.Test" />
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UI.Tree.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TreeTable" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="UI.TreeTable" />
       <module name="Algorithms" />
@@ -281,36 +208,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebServicesSpec.virus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Algorithms.Alignment.IO.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Alignment.IO" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Alignment.IO.WebServicesSpec" />
-      <option name="METHOD_NAME" value="virus" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.TreeTable" />
-      <item itemvalue="JUnit.WebServicesSpec.virus" />
+      <item itemvalue="Application.Test" />
       <item itemvalue="JUnit.WebServicesSpec.IO" />
       <item itemvalue="JUnit.WebServicesSpec.combine" />
       <item itemvalue="JUnit.WebServicesSpec.single" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test" />
         <item itemvalue="Application.TreeTable" />
         <item itemvalue="JUnit.WebServicesSpec.IO" />
         <item itemvalue="JUnit.WebServicesSpec.single" />
         <item itemvalue="JUnit.WebServicesSpec.combine" />
-        <item itemvalue="JUnit.WebServicesSpec.virus" />
       </list>
     </recent_temporary>
   </component>
@@ -408,7 +319,8 @@
       <workItem from="1587770696194" duration="1129000" />
       <workItem from="1587771853720" duration="11898000" />
       <workItem from="1587785540457" duration="1379000" />
-      <workItem from="1587786945484" duration="957000" />
+      <workItem from="1587786945484" duration="5615000" />
+      <workItem from="1587799470271" duration="1813000" />
     </task>
     <servers />
   </component>
@@ -458,10 +370,10 @@
     </state>
     <state x="159" y="277" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1583387319472" />
     <state x="199" y="346" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1579406110939" />
-    <state x="229" y="200" key="#com.intellij.ide.util.MemberChooser" timestamp="1587435732949">
+    <state x="229" y="200" key="#com.intellij.ide.util.MemberChooser" timestamp="1587794578020">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="229" y="200" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1587435732949" />
+    <state x="229" y="200" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1587794578020" />
     <state x="938" y="253" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1587435947693">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -480,10 +392,10 @@
     </state>
     <state x="534" y="373" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.864@0.0.1536.864" timestamp="1586419184385" />
     <state x="668" y="466" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1579242295267" />
-    <state x="216" y="322" width="465" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587435949994">
+    <state x="216" y="322" width="514" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587800669253">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="216" y="322" width="465" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.864@0.0.1536.864" timestamp="1587435949994" />
+    <state x="216" y="322" width="514" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.864@0.0.1536.864" timestamp="1587800669253" />
     <state x="595" y="336" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1586419203739">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -513,29 +425,29 @@
     <state x="162" y="215" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587256669541" />
     <state x="162" y="225" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1587771423236" />
     <state x="203" y="281" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1579173438855" />
-    <state width="1493" height="218" key="GridCell.Tab.0.bottom" timestamp="1587786925304">
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom" timestamp="1587799384262">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="218" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1587786925304" />
+    <state width="1493" height="218" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1587799384262" />
     <state width="917" height="326" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="218" key="GridCell.Tab.0.center" timestamp="1587786925304">
+    <state width="1493" height="218" key="GridCell.Tab.0.center" timestamp="1587799384262">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="218" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1587786925304" />
+    <state width="1493" height="218" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1587799384262" />
     <state width="917" height="326" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
-    <state width="1493" height="218" key="GridCell.Tab.0.left" timestamp="1587786925304">
+    <state width="1493" height="218" key="GridCell.Tab.0.left" timestamp="1587799384262">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="218" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1587786925304" />
+    <state width="1493" height="218" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1587799384262" />
     <state width="917" height="326" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465822" />
-    <state width="1493" height="218" key="GridCell.Tab.0.right" timestamp="1587786925304">
+    <state width="1493" height="218" key="GridCell.Tab.0.right" timestamp="1587799384262">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="218" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1587786925304" />
+    <state width="1493" height="218" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1587799384262" />
     <state width="917" height="326" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1579511465823" />
     <state width="1493" height="271" key="GridCell.Tab.1.bottom" timestamp="1587782889532">
       <screen x="0" y="0" width="1536" height="864" />

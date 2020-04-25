@@ -1,5 +1,6 @@
-package Algorithms.Graph.Utils;
+package Algorithms.Graph.Network;
 
+import Algorithms.Graph.Utils.HNodeList;
 import IO.GraphFileReader;
 import Algorithms.Graph.Network.AdjList;
 import Algorithms.Graph.Network.Node;
