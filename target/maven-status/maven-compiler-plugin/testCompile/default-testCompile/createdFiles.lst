@@ -16,5 +16,5 @@ Algorithms\Graph\Network\EdgeHasSetSpec$FuncTest.class
 Algorithms\Graph\prev\HungarianSpec.class
 Tools\MatrixFunctionsSpec.class
 IO\GraphFileReaderSpec.class
-Algorithms\Graph\Utils\AdjListSpec.class
+Algorithms\Graph\Network\AdjListSpec.class
 Algorithms\Graph\Network\NodeListSpec.class

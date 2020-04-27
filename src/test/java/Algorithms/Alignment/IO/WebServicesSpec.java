@@ -66,7 +66,6 @@ class WebServicesSpec {
                 "spike"
 
         ));
-        WebServices.isVirus = true;
         WebServices.Uniprot res = new WebServices.Uniprot(list);
     }
 
