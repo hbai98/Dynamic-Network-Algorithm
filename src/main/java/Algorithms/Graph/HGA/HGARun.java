@@ -69,7 +69,6 @@ public class HGARun {
 
     HGARun(AdjList simList, AdjList graph1, AdjList graph2) throws IOException {
 
-
         hga = new HGA(simList,graph1,graph2);
         hga.run(0.5,0.01,5);
     }

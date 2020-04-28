@@ -482,7 +482,7 @@ public class HGA {
         // get the initial similarity matrix S0
         EdgeHasSet mapping = getEdgeMapFromHA(simList);
         // final mapping result
-        EdgeHasSet finalMapping = null;
+        EdgeHasSet finalMapping = (EdgeHasSet) mapping.clone();
         // score the mapping
         double score = scoreMapping(mapping).get(0);
         // check passed
@@ -497,7 +497,7 @@ public class HGA {
             DoubleMatrix preMat = simList.toMatrix();
             // step 2
             updatePairNeighbors(mapping);
-            // step 3
+            // step 3 (heavy)
             addAllTopology(factor);
             // map again
             mapping = remapping(h);

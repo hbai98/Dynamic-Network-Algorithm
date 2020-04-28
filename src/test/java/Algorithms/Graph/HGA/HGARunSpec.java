@@ -46,15 +46,16 @@ class HGARunSpec {
         CsvToAdjList c2 = new CsvToAdjList("C:\\Users\\Haotian Bai\\Desktop\\cov19\\B1.csv", "node1", "Node2");
         Stopwatch w1 = new Stopwatch();
 
-        AdjList simList = new Smith_Waterman(c1.getTarget().getAllNodes(),
-                c2.getTarget().getAllNodes()).run("C:\\Users\\Haotian Bai\\Desktop\\cov19\\A1.fa", "C:\\Users\\Haotian Bai\\Desktop\\cov19\\B1.fa");
-        GraphFileWriter writer = new GraphFileWriter();
-        writer.writeToTxt(simList,"C:\\Users\\Haotian Bai\\Desktop\\cov19\\sm_res.txt");
-        System.out.println(simList.getRowSet().size()+"* "+simList.getColSet().size()+"\nSM run time:"
-                +w1.elapsedTime()+" second(s).\n");
-        w1.start();
-//        GraphFileReader reader = new GraphFileReader();
-//        AdjList simList = reader.readToAdjL("C:\\Users\\Haotian Bai\\Desktop\\cov19\\sm_res.txt");
+//        AdjList simList = new Smith_Waterman(c1.getTarget().getAllNodes(),
+//                c2.getTarget().getAllNodes()).run("C:\\Users\\Haotian Bai\\Desktop\\cov19\\A1.fa", "C:\\Users\\Haotian Bai\\Desktop\\cov19\\B1.fa");
+//        GraphFileWriter writer = new GraphFileWriter();
+//        writer.writeToTxt(simList,"C:\\Users\\Haotian Bai\\Desktop\\cov19\\sm_res.txt");
+//        System.out.println(simList.getRowSet().size()+"* "+simList.getColSet().size()+"\nSM run time:"
+//                +w1.elapsedTime()+" second(s).\n");
+//        System.out.println("Write to file C:\\Users\\Haotian Bai\\Desktop\\cov19\\sm_res.txt\n");
+//        w1.start();
+        GraphFileReader reader = new GraphFileReader();
+        AdjList simList = reader.readToAdjL("C:\\Users\\Haotian Bai\\Desktop\\cov19\\sm_res.txt");
         HGARun run = new HGARun(simList, c1.getTarget(), c2.getTarget());
         System.out.println("HGA run time:"+w1.elapsedTime()+" second(s).");
         List<String> s = new ArrayList<>();
@@ -68,7 +69,7 @@ class HGARunSpec {
                 StringColumn.create("source Node",s),
                 StringColumn.create("Target Node",t)
                 );
-        result.write().csv("C:\\Users\\Haotian Bai\\Desktop\\cov19\\result.cvs");
+        result.write().csv("C:\\Users\\Haotian Bai\\Desktop\\cov19\\result.csv");
     }
 
 }

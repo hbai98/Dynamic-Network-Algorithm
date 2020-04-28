@@ -24,7 +24,6 @@ public class Smith_Waterman {
     HashSet<String> graph2Nodes;
     LinkedHashMap<String, ProteinSequence> seqs2;
     LinkedHashMap<String, ProteinSequence> seqs1;
-
     // record missing sequences
     HashSet<String> missing1;
     HashSet<String> missing2;
@@ -53,6 +52,7 @@ public class Smith_Waterman {
                 SequencePair<ProteinSequence, AminoAcidCompound> pair = Alignments.getPairwiseAlignment(seq1, seq2,
                         Alignments.PairwiseSequenceAlignerType.LOCAL, new SimpleGapPenalty(), matrix);
                 simMat.sortAddOneNode(graph1Node,graph2Node, pair.getPercentageOfIdentity(true));
+
             }
         }
         return simMat;
@@ -75,11 +75,11 @@ public class Smith_Waterman {
         //check
         Set<String> keys1 = seqs1.keySet();
         Set<String> keys2= seqs2.keySet();
-        if(keys1.containsAll(graph1Nodes)||!keys2.containsAll(graph2Nodes)){
-            keys1.removeAll(graph1Nodes);
-            missing1.addAll(keys1);
-            keys2.removeAll(graph2Nodes);
-            missing2.addAll(keys2);
+        if(!keys1.containsAll(graph1Nodes)||!keys2.containsAll(graph2Nodes)){
+            graph1Nodes.removeAll(keys1);
+            missing1.addAll(graph1Nodes);
+            graph2Nodes.removeAll(keys2);
+            missing2.addAll(graph2Nodes);
             throw new IOException("similarity matrix can't match with graphs!\n" +
                     "Graph1 miss:"+ Arrays.toString(missing1.toArray())+"\n" +
                     "Graph2 miss:"+ Arrays.toString(missing2.toArray()));
