@@ -95,4 +95,11 @@ class GraphFileReaderSpec {
         HashSet<String> graph1 = reader.getHeadSet();
     }
 
+    @DisplayName("TSV test")
+    @Test
+    void readTSV() throws IOException {
+        GraphFileReader reader = new GraphFileReader();
+        AdjList graph = reader.readToAdjL("C:\\Users\\Haotian Bai\\Desktop\\cov19\\A1.tsv");
+    }
+
 }

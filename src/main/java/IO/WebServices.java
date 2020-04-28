@@ -1,4 +1,4 @@
-package Algorithms.Alignment.IO;
+package IO;
 
 import org.jgrapht.alg.util.Pair;
 import uk.ac.ebi.kraken.interfaces.common.Sequence;

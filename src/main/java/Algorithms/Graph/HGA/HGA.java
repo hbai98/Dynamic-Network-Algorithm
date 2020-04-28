@@ -5,6 +5,7 @@ package Algorithms.Graph.HGA;
  * Shanghai University, department of computer science
  */
 
+import Algorithms.Alignment.align.Smith_Waterman;
 import Algorithms.Graph.Hungarian;
 import Algorithms.Graph.NBM;
 import Algorithms.Graph.Network.Edge;
@@ -13,14 +14,12 @@ import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Network.AdjList;
 import Algorithms.Graph.Utils.HNodeList;
 import Algorithms.Graph.Utils.PairedEdges;
+import IO.GraphFileReader;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 /**
  * Refer to An Adaptive Hybrid Algorithm for Global Network Algorithms.Alignment
@@ -471,6 +470,13 @@ public class HGA {
         return dif < tolerance;
     }
 
+    /**
+     *
+     * @param factor  weight of sequence information, 0 <= factor <=1
+     * @param tolerance error tolerance compared with the last matrix
+     * @param h row has at least h nonzero entries
+     * @throws IOException
+     */
     public void run(double factor, double tolerance, int h) throws IOException {
         assert (simList != null);
         // get the initial similarity matrix S0
@@ -521,6 +527,32 @@ public class HGA {
         return mappingFinalResult;
     }
 
+    /**
+     * Get SimList, Graph1, Graph2
+     * @param filePaths SimList1, Graph1, Graph2, SimList2 paths
+     * @return result : graph1,rev1,graph2,rev2,simList
+     * @throws Exception ioe
+     */
+    public List<AdjList> io(String... filePaths) throws Exception {
+        GraphFileReader reader = new GraphFileReader();
+        String graph_2Path = filePaths[2];
+        AdjList graph2 = reader.readToAdjL(graph_2Path,false);
+        if(graph2.size()==0){
+            throw new IOException("graph2 has not been loaded.");
+        }
+        AdjList rev2 = reader.getRevAdjList();
+        String graph_1Path = filePaths[1];
+        AdjList graph1 = reader.readToAdjL(graph_1Path,false);
+        if(graph1.size()==0){
+            throw new IOException("graph1 has not been loaded.");
+        }
+        AdjList rev1 = reader.getRevAdjList();
+        AdjList simList = new Smith_Waterman(graph1.getAllNodes(),graph2.getAllNodes()).run(filePaths[0],filePaths[3]);
+        // result
+        List<AdjList> result = new ArrayList<>();
+        result.addAll(Arrays.asList(graph1,rev1,graph2,rev2,simList));
+        return result;
+    }
     public double getEC() {
         return EC;
     }

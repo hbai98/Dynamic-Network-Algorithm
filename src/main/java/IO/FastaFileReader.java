@@ -1,4 +1,4 @@
-package Algorithms.Alignment.IO;
+package IO;
 
 import org.biojava.nbio.core.sequence.ProteinSequence;
 import org.biojava.nbio.core.sequence.io.FastaReaderHelper;

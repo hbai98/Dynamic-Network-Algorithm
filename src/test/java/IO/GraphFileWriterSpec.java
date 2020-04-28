@@ -27,7 +27,7 @@ class GraphFileWriterSpec {
     void writeToTxt() throws IOException {
         GraphFileReader reader = new GraphFileReader();
         AdjList list = reader.readToAdjL("src/test/java/resources/IOTest/mediumGraph.txt");
-        writer.writeToTxt(list,"test","src/test/java/resources/IOTest/");
+        writer.writeToTxt(list,"src/test/java/resources/IOTest/mediumGraph.txt");
     }
 
 }

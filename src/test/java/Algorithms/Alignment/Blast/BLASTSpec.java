@@ -1,6 +1,6 @@
 package Algorithms.Alignment.Blast;
 
-import Algorithms.Alignment.IO.FastaFileReader;
+import IO.FastaFileReader;
 import org.biojava.nbio.alignment.Alignments;
 import org.biojava.nbio.alignment.SimpleGapPenalty;
 import org.biojava.nbio.core.alignment.matrices.SubstitutionMatrixHelper;

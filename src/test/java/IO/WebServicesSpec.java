@@ -1,4 +1,4 @@
-package Algorithms.Alignment.IO;
+package IO;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

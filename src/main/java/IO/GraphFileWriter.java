@@ -11,13 +11,13 @@ import java.util.regex.Pattern;
 public class GraphFileWriter {
     BufferedWriter bufWriter;
 
-    public void writeToTxt(AdjList graph, String fileName, String filePath) throws FileNotFoundException, UnsupportedEncodingException {
+    public void writeToTxt(AdjList graph, String filePath) throws FileNotFoundException, UnsupportedEncodingException {
         if (!filePath.endsWith("/")) {
             filePath += "/";
         }
         try {
             OutputStreamWriter writer = new OutputStreamWriter(
-                    new FileOutputStream(filePath + fileName + ".txt"), StandardCharsets.UTF_8);
+                    new FileOutputStream(filePath), StandardCharsets.UTF_8);
             bufWriter = new BufferedWriter(writer);
             for (HNodeList list : graph) {
                 String headName = list.getSignName();

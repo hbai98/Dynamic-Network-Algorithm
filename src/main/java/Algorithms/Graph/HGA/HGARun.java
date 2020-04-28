@@ -36,7 +36,7 @@ public class HGARun {
         rev2 = reader.getRevAdjList();
         HashSet<String> set2 = reader.getHeadSet();
         set2.addAll(reader.getListSet());
-        check(headSim,listSim,set1,set2);
+
         hga = new HGA(simList,graph1,rev1,graph2,rev2);
         //get stable similarity matrix
         hga.run(0.5,0.01,5);
@@ -61,17 +61,27 @@ public class HGARun {
         rev2 = reader.getRevAdjList();
         HashSet<String> set2 = reader.getHeadSet();
         set2.addAll(reader.getListSet());
-        check(headSim,listSim,set1,set2);
+
         hga = new HGA(simList,graph1,rev1,graph2,rev2);
         //get stable similarity matrix
         hga.run(0.5,0.01,5);
     }
 
-    private void check(HashSet<String> headSim,HashSet<String> listSim,HashSet<String> set1,HashSet<String> set2) throws IllegalFormatException, IOException {
-        if(headSim.equals(set1)||listSim.equals(set2)){
-            throw new IOException("similarity matrix can't match with graphs");
-        }
+    HGARun(AdjList simList, AdjList graph1, AdjList graph2) throws IOException {
+
+
+        hga = new HGA(simList,graph1,graph2);
+        hga.run(0.5,0.01,5);
     }
+    HGARun(AdjList simList, AdjList graph1,AdjList rev1, AdjList graph2,AdjList rev2) throws IOException {
+//
+
+        hga = new HGA(simList,graph1,rev1,graph2,rev2);
+        hga.run(0.5,0.01,5);
+    }
+
+
+
 
     public HGA getHga() {
         return hga;
