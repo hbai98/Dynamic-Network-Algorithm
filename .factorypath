@@ -93,7 +93,7 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/swinglabs/swingx/1.6.1/swingx-1.6.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/jhlabs/filters/2.0.235/filters-2.0.235.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/swinglabs/swing-worker/1.1/swing-worker-1.1.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/tech/tablesaw/tablesaw-core/0.38.0/tablesaw-core-0.38.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/tech/tablesaw/tablesaw-core/0.38.1/tablesaw-core-0.38.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/it/unimi/dsi/fastutil/8.3.0/fastutil-8.3.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/roaringbitmap/RoaringBitmap/0.8.12/RoaringBitmap-0.8.12.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/roaringbitmap/shims/0.8.12/shims-0.8.12.jar" enabled="true" runInBatchMode="false"/>

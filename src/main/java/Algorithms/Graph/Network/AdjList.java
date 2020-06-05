@@ -59,7 +59,7 @@ public class AdjList extends LinkedList<HNodeList> {
      *
      * @return Similar matrix
      */
-    public DoubleMatrix toMatrix() {
+    public DoubleMatrix getMatrix() {
         if (mat == null) {
             // step 1: initialize the matrix.
             HashSet<String> colSet = init();
@@ -70,10 +70,24 @@ public class AdjList extends LinkedList<HNodeList> {
         }
         // return copy, keep mat unchanged
         return mat.dup();
-
     }
 
-    protected DoubleMatrix toMatrix(HashSet<String> graph_1, HashSet<String> graph_2) {
+    /**
+     * When the matrix has changed
+     * @return updated matrix
+     */
+    public DoubleMatrix updateMatrix(){
+        // step 1: initialize the matrix.
+        HashSet<String> colSet = init();
+        // step 2：create the dictionary
+        HashMap<String, Integer> colList = dict(colSet);
+        // step 3 : get the matrix
+        mapping(colList);
+        // return copy, keep mat unchanged
+        return mat.dup();
+    }
+
+    protected DoubleMatrix getMatrix(HashSet<String> graph_1, HashSet<String> graph_2) {
         if (mat == null) {
             // step 1: initialize the matrix.
             init(graph_1, graph_2);
@@ -353,7 +367,7 @@ public class AdjList extends LinkedList<HNodeList> {
      */
     public void updateMat(int i, int j, double value) {
         if (mat == null) {
-            mat = this.toMatrix();
+            mat = this.getMatrix();
         }
         mat.put(i, j, value);
     }
@@ -377,7 +391,7 @@ public class AdjList extends LinkedList<HNodeList> {
 
     public HashSet<String> getColSet() {
         if (mat == null) {
-            mat = this.toMatrix();
+            mat = this.getMatrix();
             return colSet;
         }
         return colSet;
@@ -385,7 +399,7 @@ public class AdjList extends LinkedList<HNodeList> {
 
     public HashSet<String> getRowSet() {
         if (mat == null) {
-            mat = this.toMatrix();
+            mat = this.getMatrix();
             return rowSet;
         }
         return rowSet;
@@ -394,14 +408,34 @@ public class AdjList extends LinkedList<HNodeList> {
     public HashMap<String, Integer> getRowMap() {
 
         if (rowMap == null) {
-            mat = this.toMatrix();
+            mat = this.getMatrix();
         }
+        return rowMap;
+    }
+
+    public HashMap<String, Integer> getUpdatedColMap() {
+        updateMatrix();
+        return colMap;
+    }
+
+    public HashSet<String> getUpdatedColSet() {
+        updateMatrix();
+        return colSet;
+    }
+
+    public HashSet<String> getUpdatedRowSet() {
+        updateMatrix();
+        return rowSet;
+    }
+
+    public HashMap<String, Integer> getUpdatedRowMap() {
+        updateMatrix();
         return rowMap;
     }
 
     public HashMap<String, Integer> getColMap() {
         if (colMap == null) {
-            mat = this.toMatrix();
+            mat = this.getMatrix();
         }
         return colMap;
     }
@@ -410,12 +444,12 @@ public class AdjList extends LinkedList<HNodeList> {
         if (mat != null) {
             return mat;
         }
-        return this.toMatrix();
+        return this.getMatrix();
     }
 
     public Pair<Node, Node> getNodeNameByMatrixIndex(int i, int j) {
         if (mat == null) {
-            mat = this.toMatrix();
+            mat = this.getMatrix();
         }
         if (swapOrderedColMap == null) {
             getIndexColMap();

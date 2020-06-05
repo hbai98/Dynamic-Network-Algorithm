@@ -494,7 +494,7 @@ public class HGA {
         // update similarity matrix
         do {
             // clone Matrix, matrix is synchronized in every steps below, so it's fast
-            DoubleMatrix preMat = simList.toMatrix();
+            DoubleMatrix preMat = simList.getMatrix();
             // step 2
             updatePairNeighbors(mapping);
             // step 3 (heavy)
@@ -514,7 +514,7 @@ public class HGA {
                 finalMapping = (EdgeHasSet) mapping.clone();
             }
             // step 4
-            checkPassed = checkPassed(simList.toMatrix(), preMat, tolerance);
+            checkPassed = checkPassed(simList.getMatrix(), preMat, tolerance);
         } while (!checkPassed);
         // record mapping result
         mappingFinalResult = finalMapping;
@@ -561,8 +561,12 @@ public class HGA {
         return ES;
     }
 
-    public double getES_PS() {
+    public double getPE() {
         return PE;
+    }
+
+    public double getPS() {
+        return PS;
     }
 
     public double getScore() {

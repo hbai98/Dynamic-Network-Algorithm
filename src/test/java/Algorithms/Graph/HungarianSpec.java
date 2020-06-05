@@ -37,7 +37,7 @@ class HungarianSpec {
     void speedComparison() throws IOException {
         GraphFileReader reader = new GraphFileReader();
         AdjList simList = reader.readToAdjL("src/test/java/resources/AlgTest/HGA/simMat.txt", false);
-        mat = simList.toMatrix();
+        mat = simList.getMatrix();
         alg = new Hungarian(simList, minLoc);
         int[] result = alg.getResult();
         int r = 0;

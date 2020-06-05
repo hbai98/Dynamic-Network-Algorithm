@@ -51,7 +51,7 @@ public class Hungarian {
     }
 
     public Hungarian(AdjList list, ProblemType type) throws IOException {
-        mat = list.toMatrix();
+        mat = list.getMatrix();
         init(mat, type);
         hungarian();
     }

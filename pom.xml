@@ -13,7 +13,7 @@
         <uniport.japi.version>1.0.30</uniport.japi.version>
         <swingx.version>1.6.1</swingx.version>
         <maven-bundle-plugin.version>4.2.1</maven-bundle-plugin.version>
-        <tablesaw.version>0.38.0</tablesaw.version>
+        <tablesaw.version>LATEST</tablesaw.version>
     </properties>
     <groupId>BHT</groupId>
     <artifactId>Algorithms</artifactId>
@@ -119,6 +119,12 @@
             <groupId>tech.tablesaw</groupId>
             <artifactId>tablesaw-core</artifactId>
             <version>${tablesaw.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.tablesaw</groupId>
+            <artifactId>tablesaw-jsplot</artifactId>
+            <version>${tablesaw.version}</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

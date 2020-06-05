@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\main",
+    "\\src\\main\\java",
+    "\\src\\test",
+    "\\src\\test\\java",
+    "\\src\\test\\java\\Algorithms",
+    "\\src\\test\\java\\IO"
+  ],
+  "SelectedNode": "\\src\\test\\java\\IO\\GraphFileReaderSpec.java",
+  "PreviewInSolutionExplorer": false
+}

@@ -24,6 +24,8 @@ public class HGARun {
     AdjList rev1;
     AdjList rev2;
 
+
+
     HGARun(String simPath, String graph_1Path, String graph_2Path) throws IOException {
         GraphFileReader reader = new GraphFileReader();
         simList = reader.readToAdjL(simPath,false);
@@ -76,8 +78,7 @@ public class HGARun {
         hga.run(0.5,0.01,5);
     }
 
-    HGARun(AdjList simList, AdjList graph1, AdjList graph2) throws IOException {
-
+    public HGARun(AdjList simList, AdjList graph1, AdjList graph2) throws IOException {
         hga = new HGA(simList,graph1,graph2);
         hga.run(0.5,0.01,5);
     }
