@@ -159,6 +159,7 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
         GraphFileWriter writer = new GraphFileWriter();
         writer.writeToTxt(simList,"src/test/java/resources/TestModule/HGATestData/Human-Yeast/fasta/yeastHumanSimList.txt");
     }
+
     @DisplayName("HGA mapping.")
     @Test
     void HGATest() throws IOException {
@@ -168,6 +169,7 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
         yeast = readAdjList(yeastPath);// 9141
         human = readAdjList(humanPath);// 2390
         simList = readAdjList(simPath);// 6612*9574
+
         HGARun hgaRun = new HGARun(yeast,human,simList);
     }
 
@@ -183,7 +185,7 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
                 row -> {
                     String yeast = row.getString(0).split("\\u007C")[2].split("_YEAST")[0];
                     String human = row.getString(1);
-                    double evalue = row.getDouble(2);
+                    double evalue = 1/(1-1/Math.log(row.getDouble(2))) ;
                     simList.sortAddOneNode(yeast,human,evalue);
                 });
         // fill the gap
