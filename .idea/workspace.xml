@@ -19,21 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.history/README_20200604130130.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.history/README_20200608121007.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.history/README_20200608121008.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/guide to wavelets.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/TestModule/HGATestData/.ipynb_checkpoints/functionVisualize-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/TestModule/HGATestData/functionVisualize.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/TestModule/HGATestData/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/TestModule/HGATestData/Human-Yeast/fasta/yeastHumanSimList.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/TestModule/HGATestData/Human-Yeast/fasta/yeastHumanSimList.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/TestModule/HGATestData/Untitled.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/TestModules/humanYeastTest/Human_YeastSub38NTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TestModules/humanYeastTest/Human_YeastSub38NTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -356,7 +342,7 @@
       <workItem from="1591329661996" duration="893000" />
       <workItem from="1591330611701" duration="11927000" />
       <workItem from="1591518146506" duration="2738000" />
-      <workItem from="1591574290250" duration="2229000" />
+      <workItem from="1591574290250" duration="2550000" />
     </task>
     <servers />
   </component>
