@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="0" failures="0" name="TestModules.humanYeastTest.Human_YeastSub38NTest" time="0" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="java.vm.version" value="14+36-1461"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-14\bin"/>
+    <property name="maven.multiModuleProjectDirectory" value="D:\Development\Algorithms"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\Development\Algorithms"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="java.runtime.version" value="14+36-1461"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\HAOTIA~1\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="maven.ext.class.path" value="D:\environment\jetbrains\IntelliJ IDEA 2020.1.2\plugins\maven\lib\maven-event-listener.jar"/>
+    <property name="classworlds.conf" value="D:\environment\jetbrains\IntelliJ IDEA 2020.1.2\plugins\maven\lib\maven3\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-14\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Python38\Scripts\;C:\Python38\;D:\environment\tools\xshell\;D:\environment\tools\xftp\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;D:\environment\git\cmd;D:\environment\cygwin\bin;C:\Users\Haotian Bai\AppData\Local\Microsoft\WindowsApps;D:\environment\tools\Microsoft VS Code\bin;C:\Users\Haotian Bai\AppData\Local\GitHubDesktop\bin;C:\MinGW\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;D:\environment\Anaconda;D:\environment\Anaconda\Libray\bin;D:\environment\Anaconda\Scripts;D:\environment\Anaconda\bin;;D:\environment\nodejs\;C:\ProgramData\chocolatey\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\PowerShell\7-preview\preview;D:\environment\blast-2.10.0+\bin;C:\Users\Haotian Bai\AppData\Local\Microsoft\WindowsApps;D:\environment\apache-maven-3.6.3\bin;C:\Program Files\Java\jdk-14\bin;C:\Users\Haotian Bai\AppData\Local\GitHubDesktop\bin;D:\environment\cygwin\bin;C:\Users\Haotian Bai\AppData\Roaming\npm;C:\Users\Haotian Bai\AppData\Local\Programs\Microsoft Code OSS\bin;C:\Users\Haotian Bai\AppData\Local\Microsoft\WindowsApps;D:\environment\Microsoft VS Code Insiders\bin;D:\environment\jetbrains\IntelliJ IDEA 2020.1.2\bin;;."/>
+    <property name="maven.conf" value="D:\environment\jetbrains\IntelliJ IDEA 2020.1.2\plugins\maven\lib\maven3/conf"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="58.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="maven.repo.local" value="D:\environment\MavenRepository"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\Haotian Bai"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="14"/>
+    <property name="user.name" value="Haotian Bai"/>
+    <property name="java.class.path" value="D:\environment\jetbrains\IntelliJ IDEA 2020.1.2\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar;D:\environment\jetbrains\IntelliJ IDEA 2020.1.2\plugins\maven\lib\maven3\boot\plexus-classworlds.license"/>
+    <property name="java.vm.specification.version" value="14"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version2020.1.2 -s D:\environment\apache-maven-3.6.3\conf\settings.xml -Dmaven.repo.local=D:\environment\MavenRepository install"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-14"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="idea.version2020.1.2" value="true"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="14"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="D:\environment\jetbrains\IntelliJ IDEA 2020.1.2\plugins\maven\lib\maven3"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.version.date" value="2020-03-17"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+</testsuite>
