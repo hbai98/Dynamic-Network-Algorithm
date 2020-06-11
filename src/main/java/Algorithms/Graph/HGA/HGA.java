@@ -5,11 +5,10 @@ package Algorithms.Graph.HGA;
  * Shanghai University, department of computer science
  */
 
-import Algorithms.Alignment.align.Smith_Waterman;
 import Algorithms.Graph.Hungarian;
 import Algorithms.Graph.NBM;
 import Algorithms.Graph.Network.Edge;
-import Algorithms.Graph.Network.EdgeHasSet;
+import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Network.AdjList;
 import Algorithms.Graph.Utils.HNodeList;
@@ -17,6 +16,7 @@ import Algorithms.Graph.Utils.PairedEdges;
 import IO.GraphFileReader;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
+import org.jgrapht.alg.util.Triple;
 
 import java.io.IOException;
 import java.util.*;
@@ -39,7 +39,7 @@ public class HGA {
     protected AdjList graph2;
     protected AdjList rev2;
     //---------------mapping result-------------
-    private EdgeHasSet mappingFinalResult;
+    private EdgeHashSet mappingFinalResult;
     private double PE;
     private double ES;
     private double PS;
@@ -53,10 +53,10 @@ public class HGA {
      *
      * @return EdgeHashSet for the mapping result
      */
-    protected EdgeHasSet getEdgeMapFromHA(AdjList simList) throws IOException {
+    protected EdgeHashSet getEdgeMapFromHA(AdjList simList) throws IOException {
         hungarian = new Hungarian(simList, Hungarian.ProblemType.maxLoc);
         int[] res = hungarian.getResult();
-        EdgeHasSet initMap = new EdgeHasSet();
+        EdgeHashSet initMap = new EdgeHashSet();
         for (int i = 0; i < res.length; i++) {
             int j = res[i];
             if (j == -1) {
@@ -74,23 +74,25 @@ public class HGA {
      * has at least h nonzero entries, and the G-matrix, which
      * collects the remaining entries of S(t)
      *
+     * @param toMap matrix for hga mapping
      * @param h row has at least h nonzero entries
      */
-    protected EdgeHasSet remapping(int h) throws IOException {
+    protected EdgeHashSet remapping(AdjList toMap,int h) throws IOException {
+        assert(toMap!=null);
         // check
-        AdjList H = simList.getSplit(h);
+        AdjList H = toMap.getSplit(h);
         // Hungarian alg
-        EdgeHasSet mapping = getEdgeMapFromHA(H);
+        EdgeHashSet mapping = getEdgeMapFromHA(H);
         // Greedy alg
-        greedyMap(mapping);
+        greedyMap(toMap,mapping);
         return mapping;
     }
 
-    private void greedyMap(EdgeHasSet preMap) {
-        boolean[] assignedGraph2 = new boolean[graph2.getAllNodes().size()];
-        boolean[] assignedGraph1 = new boolean[graph1.getAllNodes().size()];
-        HashMap<String, Integer> colMap = simList.getColMap();
-        HashMap<String, Integer> rowMap = simList.getRowMap();
+    private void greedyMap(AdjList toMap,EdgeHashSet preMap) {
+        HashMap<String, Integer> colMap = toMap.getColMap();
+        HashMap<String, Integer> rowMap = toMap.getRowMap();
+        boolean[] assignedGraph2 = new boolean[toMap.getColSet().size()];
+        boolean[] assignedGraph1 = new boolean[toMap.getRowSet().size()];
 
         // init assigned array by preMap
         preMap.forEach(edge -> {
@@ -103,7 +105,7 @@ public class HGA {
         });
 
         int i = 0;
-        for (HNodeList list : simList) {
+        for (HNodeList list : toMap) {
             // not in mapping result, run Greedy alg
             if (!assignedGraph1[i++]) {
                 Node toMatch = list.findMax(assignedGraph2);
@@ -163,7 +165,7 @@ public class HGA {
      *
      * @param mappedEdges current mapping result, and one edge means the srcNode and tgtNode has already mapped, srcNode ->graph1, tgtNode -> graph2
      */
-    protected void updatePairNeighbors(EdgeHasSet mappedEdges) throws IOException {
+    protected void updatePairNeighbors(EdgeHashSet mappedEdges) throws IOException {
         NBM.neighborSimAdjust(graph1, graph2, simList, mappedEdges);
     }
 
@@ -215,7 +217,8 @@ public class HGA {
         double eNonNeighbors = getNonNeighborTopologyInfo(neighbors_1, neighbors_2);
         // update both simList and mat
         double eTP = (eNeighbors + eNonNeighbors) / 2;
-        double valToUpdate = originalSimList.getValByMatName(node1, node2) * bioFactor + eTP * (1 - bioFactor);
+//        double valToUpdate = originalSimList.getValByMatName(node1, node2) * bioFactor + eTP * (1 - bioFactor);
+        double valToUpdate = simList.getValByMatName(node1, node2) * bioFactor + eTP * (1 - bioFactor);
         simList.sortAddOneNode(node1, node2, valToUpdate);
         simList.updateMat(node1, node2, valToUpdate);
     }
@@ -287,8 +290,8 @@ public class HGA {
      * @param factor weight of sequence information, 0 <= factor <=1
      */
     protected void addAllTopology(double factor) throws IOException {
-        HashSet<String> nodes1 = graph1.getAllNodes();
-        HashSet<String> nodes2 = graph2.getAllNodes();
+        HashSet<String> nodes1 = simList.getRowSet();
+        HashSet<String> nodes2 = simList.getColSet();
         for (String node1 : nodes1) {
             for (String node2 : nodes2) {
                 addTopology(node1, node2, factor);
@@ -305,12 +308,21 @@ public class HGA {
      *         <li>EC : Edge Correctness (EC) is often used to measure
      * the degree of topological similarity and
      * can be estimated as the percentage of matched edges</li>
-     *          <li></li>
+     *
+     *          <li>
+     *              PE: Point and Edge Score(PE) is clearly stricter than EC because it reflects the status
+     *              of both the node and edge matches in the mapping.
+     *          </li>
+     *
+     *          <li>
+     *               The score for an edge (the Edge Score, ES) equals zero if any of its nodes does not match
+     *               with its similar nodes, and the score for a node (the Point Score, PS) equals zero if none of its edges has a score.
+     *          </li>
      *     </ol>
      *
      * @return score, PE, EC, ES, PS
      */
-    protected ArrayList<Double> scoreMapping(EdgeHasSet mapping) {
+    protected ArrayList<Double> scoreMapping(EdgeHashSet mapping) {
         // edge correctness EC
         double EC = getEC(mapping);
         // point and edge score PE
@@ -323,24 +335,24 @@ public class HGA {
         return new ArrayList<>(Arrays.asList(score, PE, EC, ES, PS));
     }
 
-    private ArrayList<Double> getES_PS(EdgeHasSet mapping) {
+    private ArrayList<Double> getES_PS(EdgeHashSet mapping) {
         // ES
-        EdgeHasSet edges1 = graph1.getAllEdges();
-        EdgeHasSet edges2 = graph2.getAllEdges();
+        EdgeHashSet edges1 = graph1.getAllEdges();
+        EdgeHashSet edges2 = graph2.getAllEdges();
         // edgeScore set to 1.0
         double ES = getES(edges1, edges2, mapping, 1.);
         double PS = getPS(mapping);
         return new ArrayList<>(Arrays.asList(ES, PS));
     }
 
-    private double getPS(EdgeHasSet mapping) {
+    private double getPS(EdgeHashSet mapping) {
         double PS = 0;
         if (pairedEdges == null) {
             pairedEdges = getPairedEdges(graph1.getAllEdges(), graph2.getAllEdges(), mapping).getFirst();
         }
         for (Edge edge : mapping) {
             // ui node's edges
-            EdgeHasSet res = graph1.getEdgesHasNode(edge.getSource());
+            EdgeHashSet res = graph1.getEdgesHasNode(edge.getSource());
             boolean hasPairedEdge = false;
 
             for (Pair<Edge, Edge> e : pairedEdges) {
@@ -358,12 +370,13 @@ public class HGA {
     }
 
 
-    private double getES(EdgeHasSet edges1, EdgeHasSet edges2, EdgeHasSet mapping, double edgeScore) {
+    private double getES(EdgeHashSet edges1, EdgeHashSet edges2, EdgeHashSet mapping, double edgeScore) {
         double ES = 0;
         // check edge size to find a better algorithm
         if (edges1.size() <= edges2.size()) {
             for (Edge edge : edges1) {
                 // find relevant edge in the mapping
+                // edge equals graph1Node -> graph2Node
                 Edge srcEdge = mapping.findSrcEdge(edge.getSource());
                 Edge tgtEdge = mapping.findSrcEdge(edge.getTarget());
 
@@ -403,16 +416,16 @@ public class HGA {
     }
 
 
-    public double getEC(EdgeHasSet mapping) {
-        EdgeHasSet edges1 = graph1.getAllEdges();
-        EdgeHasSet edges2 = graph2.getAllEdges();
+    public double getEC(EdgeHashSet mapping) {
+        EdgeHashSet edges1 = graph1.getAllEdges();
+        EdgeHashSet edges2 = graph2.getAllEdges();
         Pair<PairedEdges, Integer> res = getPairedEdges(edges1, edges2, mapping);
         int count = res.getSecond();
         pairedEdges = res.getFirst();
         return (float) count / edges1.size();
     }
 
-    private Pair<PairedEdges, Integer> getPairedEdges(EdgeHasSet edges1, EdgeHasSet edges2, EdgeHasSet mapping) {
+    private Pair<PairedEdges, Integer> getPairedEdges(EdgeHashSet edges1, EdgeHashSet edges2, EdgeHashSet mapping) {
         int count = 0;
         PairedEdges edges = new PairedEdges();
         // check edge size to find a better algorithm
@@ -461,13 +474,27 @@ public class HGA {
      * is satisfied:
      * | Si - Si-1 | < r
      * | Si - Si-2 | < r
+     * A sum score does not change in three continuous iterations.
      * || -> determinant of matrix
      * ------------------------------------------
      * r = 0.01 to allow 1% error
      */
-    protected boolean checkPassed(DoubleMatrix mat, DoubleMatrix preMat, double tolerance) throws IOException {
-        double dif = mat.sub(preMat).normmax();
-        return dif < tolerance;
+    protected boolean checkPassed(Stack<DoubleMatrix> stackMat, double tolerance) {
+        if(stackMat.size() == 3){
+            DoubleMatrix s1 = stackMat.get(1);
+            DoubleMatrix s = stackMat.peek();
+            // remove button which is the oldest +1 every iteration
+            DoubleMatrix s2 = stackMat.remove(0);
+            double dif_1 = s.sub(s1).normmax();
+            double dif_2 = s.sub(s2).normmax();
+            return dif_1 < tolerance || dif_2 < tolerance;
+        }
+        // size = 2
+        else{
+            DoubleMatrix s = stackMat.peek();
+            double dif = s.sub(stackMat.get(0)).normmax();
+            return dif < tolerance;
+        }
     }
 
     /**
@@ -477,33 +504,55 @@ public class HGA {
      * @param h row has at least h nonzero entries
      * @throws IOException
      */
-    public void run(double factor, double tolerance, int h) throws IOException {
+    public void run(double factor, double tolerance, int h, boolean forcedMappingForSame) throws IOException {
         assert (simList != null);
-        // get the initial similarity matrix S0
-        EdgeHasSet mapping = getEdgeMapFromHA(simList);
+        EdgeHashSet mapping;
+        EdgeHashSet forcedPart = null;
+        AdjList restForForced = null;
+        // forced mapping
+        if(forcedMappingForSame){
+            Triple<EdgeHashSet, EdgeHashSet, AdjList> res = forcedMap(simList);
+            // hungarian for the res
+            mapping = res.getFirst();
+            // forced
+            forcedPart = res.getSecond();
+            // rest
+            restForForced = res.getThird();
+        }
+        else{
+            // get the initial similarity matrix S0
+            mapping = getEdgeMapFromHA(simList);
+        }
         // final mapping result
-        EdgeHasSet finalMapping = (EdgeHasSet) mapping.clone();
-        // score the mapping
-        double score = scoreMapping(mapping).get(0);
-        // check passed
+        EdgeHashSet tmp = (EdgeHashSet) mapping.clone();
+        tmp.addAll(forcedPart);
+        EdgeHashSet finalMapping = tmp;
+        score = getScoreInfo(forcedMappingForSame, mapping, forcedPart).get(0);
 
         // iterate
         double maxScore = score;
         boolean checkPassed;
 
+        // deque for simMat converge
+        Stack<DoubleMatrix> stackMat = new Stack<>();
+        // clone Matrix, matrix is synchronized in every steps below, so it's fast
+        DoubleMatrix preMat = simList.getMatrix();
+        // add to top
+        stackMat.push(preMat);
         // update similarity matrix
         do {
-            // clone Matrix, matrix is synchronized in every steps below, so it's fast
-            DoubleMatrix preMat = simList.getMatrix();
             // step 2
             updatePairNeighbors(mapping);
             // step 3 (heavy)
             addAllTopology(factor);
+            // add to top
+            stackMat.push(simList.getMatrix());
             // map again
-            mapping = remapping(h);
+            EdgeHashSet nextMapping = remap(forcedMappingForSame,forcedPart,h);
             // score mapping
-            ArrayList<Double> scoreInfo = scoreMapping(mapping);
+            ArrayList<Double> scoreInfo = getScoreInfo(forcedMappingForSame, nextMapping, forcedPart);
             score = scoreInfo.get(0);
+            // same mapping, the later will get higher score as simList val is larger
             if (score > maxScore) {
                 // get best result recorded
                 maxScore = score;
@@ -511,10 +560,10 @@ public class HGA {
                 EC = scoreInfo.get(2);
                 ES = scoreInfo.get(3);
                 PS = scoreInfo.get(4);
-                finalMapping = (EdgeHasSet) mapping.clone();
+                finalMapping = (EdgeHashSet) nextMapping.clone();
             }
             // step 4
-            checkPassed = checkPassed(simList.getMatrix(), preMat, tolerance);
+            checkPassed = checkPassed(stackMat, tolerance);
         } while (!checkPassed);
         // record mapping result
         mappingFinalResult = finalMapping;
@@ -522,7 +571,67 @@ public class HGA {
 
     }
 
-    public EdgeHasSet getMappingFinalResult() {
+    /**
+     * for forced map
+     */
+    private EdgeHashSet remap(boolean forcedMappingForSame,EdgeHashSet forcedPart, int h) throws IOException {
+        if(forcedMappingForSame){
+            // get restForForced update because the simList has already changed
+            AdjList restForForced = new AdjList();
+            simList.forEach(hNodeList->{
+                if(!forcedPart.contains(new Edge(hNodeList.signName,hNodeList.signName))){
+                    restForForced.add(hNodeList);
+                }
+            });
+            EdgeHashSet tmp = remapping(restForForced,h);
+            tmp.addAll(forcedPart);
+            return tmp;
+        }
+        else{
+            return remapping(simList,h);
+        }
+    }
+
+    private ArrayList<Double> getScoreInfo(boolean forcedMappingForSame, EdgeHashSet mapping, EdgeHashSet forcedPart) {
+        // score the mapping
+        ArrayList<Double>  score;
+        if(forcedMappingForSame){
+            EdgeHashSet tmpMapping = (EdgeHashSet) mapping.clone();
+            tmpMapping.addAll(forcedPart);
+            score = scoreMapping(tmpMapping);
+        }
+        else{
+            score = scoreMapping(mapping);
+        }
+        return score;
+    }
+
+    /**
+     * @return mapping result hungarian ; forced ; updated rest AdjList
+     */
+    private Triple<EdgeHashSet, EdgeHashSet, AdjList> forcedMap(AdjList simList) throws IOException {
+        HashSet<String> graph1Set = simList.getRowSet();
+        HashSet<String> graph2Set = simList.getColSet();
+        AdjList tmpList = (AdjList) simList.clone();
+        EdgeHashSet forcedPart = new EdgeHashSet();
+
+        // remove hNodeLists that have been mapped for the same nodes
+        for (String s1:graph1Set) {
+            for (String s2 : graph2Set) {
+                if (s1.equals(s2)) {
+                    forcedPart.add(s1, s1);
+                    tmpList.remove(simList.sortGetHeadNodesList(s1));
+                    break;
+                }
+            }
+        }
+        // map rest of the matrix by Hungarian
+        // tmpList matrix has to be updated to be synchronized
+        tmpList.updateMatrix();
+        return new Triple<>(getEdgeMapFromHA(tmpList),forcedPart,tmpList);
+    }
+
+    public EdgeHashSet getMappingFinalResult() {
         assert (mappingFinalResult != null);
         return mappingFinalResult;
     }
@@ -547,7 +656,7 @@ public class HGA {
             throw new IOException("graph1 has not been loaded.");
         }
         AdjList rev1 = reader.getRevAdjList();
-        AdjList simList = new Smith_Waterman(graph1.getAllNodes(),graph2.getAllNodes()).run(filePaths[0],filePaths[3]);
+        AdjList simList = reader.readToAdjL(filePaths[0]);
         // result
         List<AdjList> result = new ArrayList<>();
         result.addAll(Arrays.asList(graph1,rev1,graph2,rev2,simList));

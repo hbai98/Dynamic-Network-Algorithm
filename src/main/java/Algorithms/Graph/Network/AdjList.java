@@ -25,7 +25,7 @@ public class AdjList extends LinkedList<HNodeList> {
     private HashSet<String> rowSet;
     private HashSet<String> colSet;
     private HashSet<String> allNodes;
-    private EdgeHasSet allEdges;
+    private EdgeHashSet allEdges;
 
     private HashMap<String, Integer> rowMap;
     private HashMap<String, Integer> colMap;
@@ -203,6 +203,20 @@ public class AdjList extends LinkedList<HNodeList> {
             }
         }
         return null;
+    }
+
+    /**
+     * find node head's all nodes.(Can only be used when the AdjList has been sorted)
+     *
+     * @param tgtNode target node
+     */
+    public HNodeList sortGetHeadNodesList(String tgtNode) {
+        int index = Collections.binarySearch(this, new HNodeList(tgtNode), Comparator.comparing(o -> o.signName));
+        if (index < 0) {
+            return null;
+        } else {
+            return this.get(index);
+        }
     }
 
     /**
@@ -440,12 +454,7 @@ public class AdjList extends LinkedList<HNodeList> {
         return colMap;
     }
 
-    public DoubleMatrix getMat() {
-        if (mat != null) {
-            return mat;
-        }
-        return this.getMatrix();
-    }
+
 
     public Pair<Node, Node> getNodeNameByMatrixIndex(int i, int j) {
         if (mat == null) {
@@ -550,10 +559,9 @@ public class AdjList extends LinkedList<HNodeList> {
      *
      * @return Edge set
      */
-    public EdgeHasSet getAllEdges() {
+    public EdgeHashSet getAllEdges() {
         if(allEdges == null){
-            allEdges = new EdgeHasSet();
-            EdgeHasSet res = new EdgeHasSet();
+            allEdges = new EdgeHashSet();
             forEach(list->{
                 String hName = list.getSignName();
                 list.forEach(
@@ -568,8 +576,8 @@ public class AdjList extends LinkedList<HNodeList> {
         return allEdges;
     }
 
-    public EdgeHasSet getEdgesHasNode(Node source) {
-        EdgeHasSet res = new EdgeHasSet();
+    public EdgeHashSet getEdgesHasNode(Node source) {
+        EdgeHashSet res = new EdgeHashSet();
         forEach(list->{
             String listName = list.signName;
             list.forEach(node -> {

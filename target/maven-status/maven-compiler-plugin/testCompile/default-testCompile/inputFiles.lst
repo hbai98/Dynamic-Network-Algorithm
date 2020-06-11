@@ -1,8 +1,8 @@
 D:\Development\Algorithms\src\test\java\Algorithms\Graph\NBMSpec.java
-D:\Development\Algorithms\src\test\java\Algorithms\Graph\Network\EdgeHasSetSpec.java
 D:\Development\Algorithms\src\test\java\Algorithms\Graph\Network\NodeListSpec.java
 D:\Development\Algorithms\src\test\java\Algorithms\Graph\prev\HungarianSpec.java
 D:\Development\Algorithms\src\test\java\Algorithms\Graph\HGA\HGARunSpec.java
+D:\Development\Algorithms\src\test\java\Algorithms\Graph\Network\EdgeHashSetSpec.java
 D:\Development\Algorithms\src\test\java\Algorithms\Graph\Utils\hNodeListSpec.java
 D:\Development\Algorithms\src\test\java\Algorithms\Graph\Network\NodeSpec.java
 D:\Development\Algorithms\src\test\java\Algorithms\Set\FDTest.java

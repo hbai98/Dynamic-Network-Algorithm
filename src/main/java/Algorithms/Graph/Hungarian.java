@@ -18,7 +18,7 @@ import java.util.Arrays;
  * </p>
  * <br>
  * <p>
- * The result will be a vector used to identify the right allocation strategy.
+ * The result will be a vector used to identify the optimized allocation strategy.
  * </p>
  * <br>
  * <p>

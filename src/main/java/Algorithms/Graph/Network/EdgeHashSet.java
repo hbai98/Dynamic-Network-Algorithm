@@ -17,7 +17,7 @@ import java.util.HashSet;
  * NOTICE: in order to update the edge with a higher weight, there is a method bellow.
  * </p>
  */
-public class EdgeHasSet extends HashSet<Edge> {
+public class EdgeHashSet extends HashSet<Edge> {
     // file to store the edges
     protected String filename;
 
@@ -44,6 +44,9 @@ public class EdgeHasSet extends HashSet<Edge> {
     public boolean add(String src, String tgt, double weight) {
         return add(new Edge(src, tgt, weight));
     }
+    public boolean add(String src, String tgt) {
+        return add(new Edge(src, tgt, 0));
+    }
 
     /**
      * Find edges contains {@code} node
@@ -51,8 +54,8 @@ public class EdgeHasSet extends HashSet<Edge> {
      * @param node node to be found
      * @return hasSet with all edges
      */
-    public EdgeHasSet getVetEdg(Node node) {
-        EdgeHasSet res = new EdgeHasSet();
+    public EdgeHashSet getVetEdg(Node node) {
+        EdgeHashSet res = new EdgeHashSet();
         forEach(edge -> {
             if (edge.source.equals(node) || edge.target.equals(node)) {
                 res.add(edge);
@@ -113,7 +116,7 @@ public class EdgeHasSet extends HashSet<Edge> {
         return null;
     }
 
-    protected EdgeHasSet readFromFile(String filename) throws IOException {
+    protected EdgeHashSet readFromFile(String filename) throws IOException {
         GraphFileReader reader = new GraphFileReader();
         return reader.readToEL(filename);
     }

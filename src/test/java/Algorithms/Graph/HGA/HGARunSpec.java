@@ -1,6 +1,5 @@
 package Algorithms.Graph.HGA;
 
-import Algorithms.Alignment.align.Smith_Waterman;
 import Algorithms.Graph.Network.AdjList;
 import IO.AbstractFileWriter;
 import IO.CsvToAdjList;
@@ -33,31 +32,22 @@ class HGARunSpec {
             throw new IOException("graph1 has not been loaded.");
         }
         AdjList rev1 = reader.getRevAdjList();
-        AdjList simList = new Smith_Waterman(graph1.getAllNodes(),graph2.getAllNodes()).run("src/main/java/resources/Test/cov_S.fa", "src/main/java/resources/Test/sars_S.fa");
-        HGARun run = new HGARun(simList,graph1,rev1,graph2,rev2);
-        run.getHga().getMappingFinalResult().forEach(edge ->
-                System.out.println("Edge:" + edge.getSource().getStrName() + " to " + edge.getTarget().getStrName() + " is matched.")
-        );
+//        AdjList simList = new Smith_Waterman(graph1.getAllNodes(),graph2.getAllNodes()).run("src/main/java/resources/Test/cov_S.fa", "src/main/java/resources/Test/sars_S.fa");
+//        HGARun run = new HGARun(simList,graph1,rev1,graph2,rev2);
+//        run.getHga().getMappingFinalResult().forEach(edge ->
+//                System.out.println("Edge:" + edge.getSource().getStrName() + " to " + edge.getTarget().getStrName() + " is matched.")
+//        );
     }
 
     @Test
     void Test_1() throws Exception {
-        CsvToAdjList c1 = new CsvToAdjList("C:\\Users\\Haotian Bai\\Desktop\\cov19\\A1.csv", "node1", "Node2");
-        CsvToAdjList c2 = new CsvToAdjList("C:\\Users\\Haotian Bai\\Desktop\\cov19\\B1.csv", "node1", "Node2");
         Stopwatch w1 = new Stopwatch();
-
-//        AdjList simList = new Smith_Waterman(c1.getTarget().getAllNodes(),
-//                c2.getTarget().getAllNodes()).run("C:\\Users\\Haotian Bai\\Desktop\\cov19\\A1.fa", "C:\\Users\\Haotian Bai\\Desktop\\cov19\\B1.fa");
-//        GraphFileWriter writer = new GraphFileWriter();
-//        writer.writeToTxt(simList,"C:\\Users\\Haotian Bai\\Desktop\\cov19\\sm_res.txt");
-//        System.out.println(simList.getRowSet().size()+"* "+simList.getColSet().size()+"\nSM run time:"
-//                +w1.elapsedTime()+" second(s).\n");
-//        System.out.println("Write to file C:\\Users\\Haotian Bai\\Desktop\\cov19\\sm_res.txt\n");
-//        w1.start();
         GraphFileReader reader = new GraphFileReader();
-        AdjList simList = reader.readToAdjL("C:\\Users\\Haotian Bai\\Desktop\\cov19\\sm_res.txt");
-        HGARun run = new HGARun(simList, c1.getTarget(), c2.getTarget());
+        HGARun run = new HGARun("src/test/java/resources/AlgTest/HGA/simMat.txt",
+                "src/test/java/resources/AlgTest/HGA/graph1.txt",
+                "src/test/java/resources/AlgTest/HGA/graph2.txt",true,0.5,0.01,5.);
         System.out.println("HGA run time:"+w1.elapsedTime()+" second(s).");
+
         List<String> s = new ArrayList<>();
         List<String> t = new ArrayList<>();
         run.getHga().getMappingFinalResult().forEach(edge -> {
@@ -69,7 +59,7 @@ class HGARunSpec {
                 StringColumn.create("source Node",s),
                 StringColumn.create("Target Node",t)
                 );
-        result.write().csv("C:\\Users\\Haotian Bai\\Desktop\\cov19\\result.csv");
+        result.write().csv("src/test/java/resources/AlgTest/HGA/result.csv");
     }
 
 }

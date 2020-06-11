@@ -1,7 +1,7 @@
 package IO;
 
 import Algorithms.Graph.Network.Edge;
-import Algorithms.Graph.Network.EdgeHasSet;
+import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Utils.HNodeList;
 import Algorithms.Graph.Network.AdjList;
 import org.junit.jupiter.api.DisplayName;
@@ -45,7 +45,7 @@ public class GraphFileReaderSpec {
     void ReadTest(){
         try {
             GraphFileReader reader = new GraphFileReader();
-            EdgeHasSet graph = reader.readToEL("src/test/java/resources/IOTest/simpleGraph_1.txt");
+            EdgeHashSet graph = reader.readToEL("src/test/java/resources/IOTest/simpleGraph_1.txt");
             // the EdgeList graph is not a self-update graph (automatic replace edges with higher values)
             assertThat(graph).contains(new Edge("A","B",0.2),new Edge("A","C",0.6),new Edge("A","C",0.3),
                     new Edge("A","D",0.4),new Edge("C","B",0.7));
@@ -54,7 +54,7 @@ public class GraphFileReaderSpec {
         }
         try {
             GraphFileReader reader = new GraphFileReader();
-            EdgeHasSet graph = reader.readToEL("src/test/java/resources/IOTest/wrongForTest_1.txt");
+            EdgeHashSet graph = reader.readToEL("src/test/java/resources/IOTest/wrongForTest_1.txt");
         } catch (IOException e) {
             assertEquals("The file input format is not correct. Plus: some name-value pairs are incorrect!", e.getMessage());
         }

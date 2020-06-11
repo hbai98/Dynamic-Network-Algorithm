@@ -1,7 +1,7 @@
 package IO;
 
 import Algorithms.Graph.Network.Edge;
-import Algorithms.Graph.Network.EdgeHasSet;
+import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Network.AdjList;
 
 import java.io.BufferedReader;
@@ -42,7 +42,7 @@ public class GraphFileReader {
     /**
      * Parses the file given by <code>inputFilePath</code> to EdgeList.
      */
-    public EdgeHasSet readToEL(String inputFilePath) throws IOException {
+    public EdgeHashSet readToEL(String inputFilePath) throws IOException {
 
         return readToEL(new BufferedReader(new FileReader(inputFilePath)), true);
     }
@@ -51,7 +51,7 @@ public class GraphFileReader {
      * Parses the file given by <code>input</code>to EdgeList. It will
      * close the reader when finished parsing.
      */
-    public EdgeHasSet readToEL(BufferedReader input) throws IOException {
+    public EdgeHashSet readToEL(BufferedReader input) throws IOException {
         return readToEL(input, true);
     }
     //-------------------------AdjNodeList【homoGeneMap】 return type has been added in switch choices------------------------
@@ -116,8 +116,8 @@ public class GraphFileReader {
      *                          the reader when finished reading; otherwise, it will
      *                          not close it.
      */
-    public EdgeHasSet readToEL(BufferedReader input, boolean closeWhenFinished) throws IOException {
-        EdgeHasSet graph = new EdgeHasSet();
+    public EdgeHashSet readToEL(BufferedReader input, boolean closeWhenFinished) throws IOException {
+        EdgeHashSet graph = new EdgeHashSet();
         // matches sequence of one or more whitespace characters.
         Pattern splitter = Pattern.compile("\\s+");
         Vector<String> sifLine = new Vector<>();
@@ -160,7 +160,7 @@ public class GraphFileReader {
      * @param graph   EdgeList to contain result
      * @param sifLine result very line
      */
-    private void parseLine(EdgeHasSet graph, Vector<String> sifLine) throws IOException {
+    private void parseLine(EdgeHashSet graph, Vector<String> sifLine) throws IOException {
         int sifSize = sifLine.size();
         if(sifSize == 0){
             throw new IOException("Nothing has been input!");

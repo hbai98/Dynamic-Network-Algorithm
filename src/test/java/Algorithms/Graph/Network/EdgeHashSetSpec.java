@@ -11,8 +11,8 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("EdgeList is")
-class EdgeHasSetSpec {
-    EdgeHasSet edges = new EdgeHasSet();
+class EdgeHashSetSpec {
+    EdgeHashSet edges = new EdgeHashSet();
     private Edge edge_1;
     private Edge edge_2;
     private Edge edge_3;
@@ -57,7 +57,7 @@ class EdgeHasSetSpec {
         @DisplayName("able to get edges containing the certain node")
         @Test
         void getVetEdg() {
-            EdgeHasSet tpList = edges.getVetEdg(new Node("3"));
+            EdgeHashSet tpList = edges.getVetEdg(new Node("3"));
             assertThat(tpList).contains(edge_2,edge_4);
         }
         @DisplayName("able to print all edges")

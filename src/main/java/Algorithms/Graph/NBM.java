@@ -12,7 +12,7 @@ package Algorithms.Graph;
 
 
 import Algorithms.Graph.Network.Edge;
-import Algorithms.Graph.Network.EdgeHasSet;
+import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Network.AdjList;
 import Algorithms.Graph.Utils.HNodeList;
@@ -53,7 +53,7 @@ public class NBM {
     // --------------------------------------------> alg variables
     protected HashMap<String, Node> mostSimPairMap;
     protected PriorityQueue<Edge> pqEdge;
-    protected EdgeHasSet mappedEdges;
+    protected EdgeHashSet mappedEdges;
     protected AdjList graph1;
     protected AdjList graph2;
 
@@ -70,7 +70,7 @@ public class NBM {
      * @param mappedEdges the initial mapping result
      * @param reward the reward value for every turn to update the simMat
      */
-    protected NBM(AdjList graph1,AdjList graph2,AdjList simList, EdgeHasSet mappedEdges,double reward) throws IOException {
+    protected NBM(AdjList graph1, AdjList graph2, AdjList simList, EdgeHashSet mappedEdges, double reward) throws IOException {
         init(graph1,graph2,simList, mappedEdges,reward);
         // step 1
         findBestPairs();
@@ -79,7 +79,7 @@ public class NBM {
 
     }
 
-    private void init(AdjList graph1,AdjList graph2,AdjList simList, EdgeHasSet mappedEdges,double reward) {
+    private void init(AdjList graph1, AdjList graph2, AdjList simList, EdgeHashSet mappedEdges, double reward) {
         assert (graph1!=null && graph2!=null && simList != null && mappedEdges != null);
         this.graph1 = graph1;
         this.graph2 = graph2;
@@ -98,7 +98,7 @@ public class NBM {
      *
      * @param hasSet the initial alignment for nodes from two graph
      */
-    private void addInitMappedEdge(EdgeHasSet hasSet) {
+    private void addInitMappedEdge(EdgeHashSet hasSet) {
         assert (hasSet != null);
         this.mappedEdges = hasSet;
     }
@@ -197,7 +197,7 @@ public class NBM {
      * Update only once for all neighbors of all the pairs ready.
      * reward is defined in HGA.
      */
-    public static void  neighborSimAdjust(AdjList graph1,AdjList graph2,AdjList simAdjList,EdgeHasSet mappedEdges) throws IOException {
+    public static void  neighborSimAdjust(AdjList graph1, AdjList graph2, AdjList simAdjList, EdgeHashSet mappedEdges) throws IOException {
         for (Edge edge : mappedEdges) {
             Node srcNode = edge.getSource();
             Node tgtNode = edge.getTarget();
@@ -218,7 +218,7 @@ public class NBM {
 
     }
 
-    public static void neighborSimAdjust(AdjList graph1,AdjList rev1,AdjList graph2,AdjList simAdjList,EdgeHasSet mappedEdges) throws IOException {
+    public static void neighborSimAdjust(AdjList graph1, AdjList rev1, AdjList graph2, AdjList simAdjList, EdgeHashSet mappedEdges) throws IOException {
         for (Edge edge : mappedEdges) {
             Node srcNode = edge.getSource();
             Node tgtNode = edge.getTarget();
@@ -244,7 +244,7 @@ public class NBM {
         return mostSimPairMap;
     }
 
-    public EdgeHasSet getMappedEdges() {
+    public EdgeHashSet getMappedEdges() {
         assert (mappedEdges != null);
         return mappedEdges;
     }

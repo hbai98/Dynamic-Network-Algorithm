@@ -1,8 +1,8 @@
 package Algorithms.Graph;
 
+import Algorithms.Graph.Network.EdgeHashSet;
 import IO.GraphFileReader;
 import Algorithms.Graph.Network.Edge;
-import Algorithms.Graph.Network.EdgeHasSet;
 import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Network.AdjList;
 import org.jgrapht.alg.util.Pair;
@@ -33,10 +33,10 @@ class NBMSpec {
     @DisplayName("findBestPair finish.")
     @Test
     void findBestPairTest() throws IOException {
-        EdgeHasSet pairInit = new EdgeHasSet();
+        EdgeHashSet pairInit = new EdgeHashSet();
         Hungarian alg = new Hungarian(list, Hungarian.ProblemType.maxLoc);
         int[] res = alg.getResult();
-        EdgeHasSet initMap = new EdgeHasSet();
+        EdgeHashSet initMap = new EdgeHashSet();
         for (int i = 0; i < res.length; i++) {
             int j = res[i];
             Pair<Node,Node> tp = list.getNodeNameByMatrixIndex(i,j);
@@ -58,7 +58,7 @@ class NBMSpec {
         AdjList rev1 = reader.getRevAdjList();
         AdjList graph2 = reader.readToAdjL("src/test/java/resources/AlgTest/HGA/small/sGraph2.txt");
         AdjList simList = reader.readToAdjL("src/test/java/resources/AlgTest/HGA/small/simMat2.txt");
-        EdgeHasSet set = new EdgeHasSet();
+        EdgeHashSet set = new EdgeHashSet();
         set.add("A","A",10);
         NBM.neighborSimAdjust(graph1,rev1,graph2,simList,set);
 

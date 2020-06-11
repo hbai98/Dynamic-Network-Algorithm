@@ -4,6 +4,7 @@ Algorithms\Alignment\Blast\HSP.class
 Algorithms\Graph\Network\Edge.class
 Algorithms\Graph\Network\NodeList.class
 Algorithms\Graph\Hungarian.class
+Algorithms\Graph\Network\EdgeHashSet.class
 Algorithms\Alignment\Blast\BLASTP.class
 Algorithms\Graph\Utils\CpEdge.class
 IO\AbstractFileReader.class
@@ -20,7 +21,6 @@ Algorithms\Alignment\Blast\BLAST.class
 Algorithms\Graph\prev\Hungarian.class
 Algorithms\Graph\Network\Node.class
 Algorithms\Graph\Utils\HNodeList.class
-Algorithms\Graph\Network\EdgeHasSet.class
 IO\GraphFileWriter.class
 Algorithms\Graph\Network\Edge$Type.class
 IO\MyMatrixReader.class

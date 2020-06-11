@@ -3,7 +3,7 @@ package Algorithms.Graph.HGA;
 import IO.GraphFileReader;
 import Algorithms.Graph.NBM;
 import Algorithms.Graph.Network.Edge;
-import Algorithms.Graph.Network.EdgeHasSet;
+import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Network.AdjList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -31,8 +31,8 @@ class HGASpc {
     @DisplayName("init mapping.")
     @Test
     void initMap() throws IOException {
-        EdgeHasSet initMap = hga.getEdgeMapFromHA(simList);
-        EdgeHasSet res = new EdgeHasSet();
+        EdgeHashSet initMap = hga.getEdgeMapFromHA(simList);
+        EdgeHashSet res = new EdgeHashSet();
         res.add(new Edge("A","C",0.8));
         res.add(new Edge("B","B",0.8));
         res.add(new Edge("C","I",0.7));
@@ -76,13 +76,13 @@ class HGASpc {
     @DisplayName("remap.")
     @Test
     void reMappingTest() throws IOException {
-        hga.remapping(6);
+        hga.remapping(simList,6);
     }
     @DisplayName("pass final Test.")
     @Test
     void finalTest() throws IOException {
         long startTime =  System.currentTimeMillis();
-        hga.run(0.5,0.01,3);
+        hga.run(0.5,0.01,3,true);
         long endTime =  System.currentTimeMillis();
         System.out.println("程序运行时间： "+(endTime-startTime)+"ms");
     }

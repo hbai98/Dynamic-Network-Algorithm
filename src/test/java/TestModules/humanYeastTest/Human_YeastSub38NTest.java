@@ -170,7 +170,7 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
         human = readAdjList(humanPath);// 2390
         simList = readAdjList(simPath);// 6612*9574
 
-        HGARun hgaRun = new HGARun(yeast,human,simList);
+//        HGARun hgaRun = new HGARun(yeast,human,simList);
     }
 
     /**

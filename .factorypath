@@ -1,6 +1,4 @@
 <factorypath>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/jgrapht/jgrapht-core/1.3.1/jgrapht-core-1.3.1.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/jheaps/jheaps/0.10/jheaps-0.10.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/jblas/jblas/1.2.4/jblas-1.2.4.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/biojava/biojava-alignment/5.3.0/biojava-alignment-5.3.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/biojava/biojava-core/5.3.0/biojava-core-5.3.0.jar" enabled="true" runInBatchMode="false"/>
@@ -90,9 +88,6 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/noggit/noggit/0.8/noggit-0.8.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/slf4j/jcl-over-slf4j/1.7.7/jcl-over-slf4j-1.7.7.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/xerial/snappy/snappy-java/1.0.5/snappy-java-1.0.5.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/swinglabs/swingx/1.6.1/swingx-1.6.1.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/com/jhlabs/filters/2.0.235/filters-2.0.235.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/swinglabs/swing-worker/1.1/swing-worker-1.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/tech/tablesaw/tablesaw-core/0.38.1/tablesaw-core-0.38.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/it/unimi/dsi/fastutil/8.3.0/fastutil-8.3.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/roaringbitmap/RoaringBitmap/0.8.12/RoaringBitmap-0.8.12.jar" enabled="true" runInBatchMode="false"/>
@@ -100,4 +95,12 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/com/univocity/univocity-parsers/2.8.4/univocity-parsers-2.8.4.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/ibm/icu/icu4j/65.1/icu4j-65.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/io/github/classgraph/classgraph/4.8.60/classgraph-4.8.60.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/tech/tablesaw/tablesaw-jsplot/0.38.1/tablesaw-jsplot-0.38.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/io/pebbletemplates/pebble/3.1.2/pebble-3.1.2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/jgrapht/jgrapht-core/1.4.0/jgrapht-core-1.4.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/jheaps/jheaps/0.11/jheaps-0.11.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/swinglabs/swingx/1.6.1/swingx-1.6.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/jhlabs/filters/2.0.235/filters-2.0.235.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/swinglabs/swing-worker/1.1/swing-worker-1.1.jar" enabled="true" runInBatchMode="false"/>
 </factorypath>
