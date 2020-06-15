@@ -1,8 +1,8 @@
 package IO;
 
 import Algorithms.Graph.Network.Node;
-import Algorithms.Graph.Network.AdjList;
-import Algorithms.Graph.Utils.HNodeList;
+import Algorithms.Graph.Utils.AdjList.SimList;
+import Algorithms.Graph.Utils.List.HNodeList;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 public class GraphFileWriter {
     BufferedWriter bufWriter;
 
-    public void writeToTxt(AdjList graph, String filePath) throws FileNotFoundException, UnsupportedEncodingException {
+    public void writeToTxt(SimList graph, String filePath) {
         if (!filePath.endsWith("/")) {
             filePath += "/";
         }

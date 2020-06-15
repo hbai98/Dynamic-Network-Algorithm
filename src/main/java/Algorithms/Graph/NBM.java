@@ -1,4 +1,15 @@
 package Algorithms.Graph;
+
+
+
+import Algorithms.Graph.Network.Edge;
+import Algorithms.Graph.Network.EdgeHashSet;
+import Algorithms.Graph.Network.Node;
+import Algorithms.Graph.Utils.AdjList.SimList;
+import Algorithms.Graph.Utils.List.HNodeList;
+
+import java.io.IOException;
+import java.util.*;
 /**
  * H. He and A. K.Singh, “Closure-Tree: An index structure for graph
  * queries,” in ICDE’06: Proceedings of the 22nd International Conference
@@ -8,19 +19,6 @@ package Algorithms.Graph;
  * NBM
  * @author Haotian Bai
  * Shanghai University, department of computer science
- */
-
-
-import Algorithms.Graph.Network.Edge;
-import Algorithms.Graph.Network.EdgeHashSet;
-import Algorithms.Graph.Network.Node;
-import Algorithms.Graph.Network.AdjList;
-import Algorithms.Graph.Utils.HNodeList;
-
-import java.io.IOException;
-import java.util.*;
-
-/**
  * Time complexity:
  * <p>Let n be the number of vertices and d be the
  * maximum degree of vertices. The initial computation of
@@ -49,13 +47,13 @@ import java.util.*;
  * </p>
  */
 public class NBM {
-    protected AdjList simList;
+    protected SimList simList;
     // --------------------------------------------> alg variables
     protected HashMap<String, Node> mostSimPairMap;
     protected PriorityQueue<Edge> pqEdge;
     protected EdgeHashSet mappedEdges;
-    protected AdjList graph1;
-    protected AdjList graph2;
+    protected SimList graph1;
+    protected SimList graph2;
 
     private double reward;
     protected  NBM(){
@@ -70,7 +68,7 @@ public class NBM {
      * @param mappedEdges the initial mapping result
      * @param reward the reward value for every turn to update the simMat
      */
-    protected NBM(AdjList graph1, AdjList graph2, AdjList simList, EdgeHashSet mappedEdges, double reward) throws IOException {
+    protected NBM(SimList graph1, SimList graph2, SimList simList, EdgeHashSet mappedEdges, double reward) throws IOException {
         init(graph1,graph2,simList, mappedEdges,reward);
         // step 1
         findBestPairs();
@@ -79,7 +77,7 @@ public class NBM {
 
     }
 
-    private void init(AdjList graph1, AdjList graph2, AdjList simList, EdgeHashSet mappedEdges, double reward) {
+    private void init(SimList graph1, SimList graph2, SimList simList, EdgeHashSet mappedEdges, double reward) {
         assert (graph1!=null && graph2!=null && simList != null && mappedEdges != null);
         this.graph1 = graph1;
         this.graph2 = graph2;
@@ -114,7 +112,7 @@ public class NBM {
             HNodeList list = simList.get(index);
             String listHeadName = list.getSignName();
             // save the current result
-            Node tgtNode = simList.findMaxOfList(index);
+            Node tgtNode = simList.sortFindMaxOfList(index);
             pqEdge.add(new Edge(new Node(listHeadName), tgtNode, tgtNode.getValue()));
             mostSimPairMap.put(listHeadName, tgtNode);
         }
@@ -158,7 +156,7 @@ public class NBM {
      * @param srcNode node form the query graph
      * @param tgtNode node form the subject graph
      */
-    private void neighborAdjust(Node srcNode,Node tgtNode) throws IOException {
+    private void neighborAdjust(Node srcNode,Node tgtNode) {
         // direct neighbors of the head node
         HNodeList neb1 = graph1.sortGetNeighborsList(srcNode.getStrName());
         HNodeList neb2 = graph2.sortGetNeighborsList(tgtNode.getStrName());
@@ -197,11 +195,11 @@ public class NBM {
      * Update only once for all neighbors of all the pairs ready.
      * reward is defined in HGA.
      */
-    public static void  neighborSimAdjust(AdjList graph1, AdjList graph2, AdjList simAdjList, EdgeHashSet mappedEdges) throws IOException {
+    public static void  neighborSimAdjust(SimList graph1, SimList graph2, SimList simSimList, EdgeHashSet mappedEdges) {
         for (Edge edge : mappedEdges) {
             Node srcNode = edge.getSource();
             Node tgtNode = edge.getTarget();
-            double simUV = simAdjList.getValByName(srcNode.getStrName(),tgtNode.getStrName());
+            double simUV = simSimList.getValByMatName(srcNode.getStrName(),tgtNode.getStrName());
             // direct neighbors of the head node
             HNodeList neb1 = graph1.sortGetNeighborsList(srcNode.getStrName());
             HNodeList neb2 = graph2.sortGetNeighborsList(tgtNode.getStrName());
@@ -209,30 +207,30 @@ public class NBM {
                 int nebNumb = graph1.sortGetNeighborsList(node1.getStrName()).size();
                 double reward = simUV/nebNumb;
                 for (Node node2 : neb2) {
-                    double newWeight = simAdjList.getValByName(node1.getStrName(),node2.getStrName())+reward;
-                    simAdjList.sortAddOneNode(node1.getStrName(),node2.getStrName(),newWeight);
-                    simAdjList.updateMat(node1.getStrName(),node2.getStrName(),newWeight);
+                    double newWeight = simSimList.getValByMatName(node1.getStrName(),node2.getStrName())+reward;
+                    simSimList.sortAddOneNode(node1.getStrName(),node2.getStrName(),newWeight);
+                    simSimList.updateMat(node1.getStrName(),node2.getStrName(),newWeight);
                 }
             }
         }
 
     }
 
-    public static void neighborSimAdjust(AdjList graph1, AdjList rev1, AdjList graph2, AdjList simAdjList, EdgeHashSet mappedEdges) throws IOException {
+    public static void neighborSimAdjust(SimList graph1, SimList rev1, SimList graph2, SimList simSimList, EdgeHashSet mappedEdges) {
         for (Edge edge : mappedEdges) {
             Node srcNode = edge.getSource();
             Node tgtNode = edge.getTarget();
             // direct neighbors of the head node
-            double simUV = simAdjList.getValByName(srcNode.getStrName(),tgtNode.getStrName());
+            double simUV = simSimList.getValByMatName(srcNode.getStrName(),tgtNode.getStrName());
             HNodeList neb1 = graph1.sortGetNeighborsList(srcNode.getStrName());
             HNodeList neb2 = graph2.sortGetNeighborsList(tgtNode.getStrName());
             for (Node node1 : neb1) {
                 int nebNumb = graph1.sortGetNeighborsList(node1.getStrName(),rev1).size();
                 double reward = simUV/nebNumb;
                 for (Node node2 : neb2) {
-                    double newWeight = simAdjList.getValByName(node1.getStrName(),node2.getStrName())+reward;
-                    simAdjList.sortAddOneNode(node1.getStrName(),node2.getStrName(),newWeight);
-                    simAdjList.updateMat(node1.getStrName(),node2.getStrName(),newWeight);
+                    double newWeight = simSimList.getValByMatName(node1.getStrName(),node2.getStrName())+reward;
+                    simSimList.sortAddOneNode(node1.getStrName(),node2.getStrName(),newWeight);
+                    simSimList.updateMat(node1.getStrName(),node2.getStrName(),newWeight);
                 }
             }
         }

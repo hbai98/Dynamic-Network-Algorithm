@@ -1,27 +1,26 @@
 package Algorithms.Graph.HGA;
 
-/**
- * @Author: Haotian Bai
- * Shanghai University, department of computer science
- */
 
 import Algorithms.Graph.Hungarian;
 import Algorithms.Graph.NBM;
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Network.Node;
-import Algorithms.Graph.Network.AdjList;
-import Algorithms.Graph.Utils.HNodeList;
-import Algorithms.Graph.Utils.PairedEdges;
+import Algorithms.Graph.Utils.AdjList.SimList;
+import Algorithms.Graph.Utils.List.HNodeList;
+import Algorithms.Graph.Utils.Edge.PairedEdges;
+import IO.AbstractFileWriter;
 import IO.GraphFileReader;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 import org.jgrapht.alg.util.Triple;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
 /**
+ *
  * Refer to An Adaptive Hybrid Algorithm for Global Network Algorithms.Alignment
  * Article in IEEE/ACM Transactions on Computational Biology and Bioinformatics · January 2015
  * DOI: 10.1109/TCBB.2015.2465957
@@ -32,28 +31,34 @@ import java.util.*;
 
 public class HGA {
     protected Hungarian hungarian;
-    protected AdjList originalSimList;
-    protected AdjList simList;
-    protected AdjList graph1;
-    protected AdjList rev1;
-    protected AdjList graph2;
-    protected AdjList rev2;
+    protected SimList originalSimList;
+    protected SimList simList;
+    protected SimList graph1;
+    protected SimList rev1;
+    protected SimList graph2;
+    protected SimList rev2;
     //---------------mapping result-------------
-    private EdgeHashSet mappingFinalResult;
+    private EdgeHashSet mapping;
     private double PE;
     private double ES;
     private double PS;
     private double EC;
     private double score;
-    //-----------------------store temporary paired edges
+    private ArrayList<Double> scoreInfo;
+    //-----------store temporary paired edges-------------
     private PairedEdges pairedEdges;
+    //-----------temporary neighbor nodes info------------------
+    private HashMap<String, HNodeList> graph1NeighborsMap;
+    private HashMap<String, HNodeList> graph2NeighborsMap;
+    private int iterCount = 0;
 
     /**
-     * HGA to initialize the mapping between two graph by HA
+     * HGA to initialize the mapping between two graph by HA,
+     * Notice before using this method, make sure matrix is updated, because Hungarian use matrix index directly
      *
      * @return EdgeHashSet for the mapping result
      */
-    protected EdgeHashSet getEdgeMapFromHA(AdjList simList) throws IOException {
+    protected EdgeHashSet getEdgeMapFromHA(SimList simList) throws IOException {
         hungarian = new Hungarian(simList, Hungarian.ProblemType.maxLoc);
         int[] res = hungarian.getResult();
         EdgeHashSet initMap = new EdgeHashSet();
@@ -75,46 +80,44 @@ public class HGA {
      * collects the remaining entries of S(t)
      *
      * @param toMap matrix for hga mapping
-     * @param h row has at least h nonzero entries
+     * @param h     row has at least h nonzero entries
      */
-    protected EdgeHashSet remapping(AdjList toMap,int h) throws IOException {
-        assert(toMap!=null);
+    protected EdgeHashSet remapping(SimList toMap, int h) throws IOException {
+        assert (toMap != null);
         // check
-        AdjList H = toMap.getSplit(h);
+        Pair<SimList, SimList> res = toMap.getSplit(h);
+        SimList H = res.getFirst();
+        SimList G = res.getSecond();
         // Hungarian alg
         EdgeHashSet mapping = getEdgeMapFromHA(H);
         // Greedy alg
-        greedyMap(toMap,mapping);
+        greedyMap(G, mapping);
         return mapping;
     }
 
-    private void greedyMap(AdjList toMap,EdgeHashSet preMap) {
-        HashMap<String, Integer> colMap = toMap.getColMap();
-        HashMap<String, Integer> rowMap = toMap.getRowMap();
-        boolean[] assignedGraph2 = new boolean[toMap.getColSet().size()];
-        boolean[] assignedGraph1 = new boolean[toMap.getRowSet().size()];
+    /**
+     * Greedily map the maximum value for each rows in the G matrix.
+     *
+     */
+    private void greedyMap(SimList toMap, EdgeHashSet preMap) {
+        HashMap<String, Integer> colMap = simList.getColMap();
+        boolean[] assignedGraph2 = new boolean[graph2.getAllNodes().size()];
 
         // init assigned array by preMap
         preMap.forEach(edge -> {
             Node tgtNode = edge.getTarget();
-            Node srcNode = edge.getSource();
             int indexCol = colMap.get(tgtNode.getStrName());
-            int indexRow = rowMap.get(srcNode.getStrName());
-            assignedGraph1[indexRow] = true;
             assignedGraph2[indexCol] = true;
         });
 
-        int i = 0;
         for (HNodeList list : toMap) {
-            // not in mapping result, run Greedy alg
-            if (!assignedGraph1[i++]) {
-                Node toMatch = list.findMax(assignedGraph2);
-                if (toMatch == null) {
-                    break;
-                }
-                // add mapping result
-                preMap.add(list.getSignName(), toMatch.getStrName(), toMatch.getValue());
+            Node toMatch = list.findMax(assignedGraph2);
+            // all nodes in graph2 have been allocated
+            if (toMatch == null) {
+                break;
             }
+            // add mapping result
+            preMap.add(list.getSignName(), toMatch.getStrName(), toMatch.getValue());
         }
     }
 
@@ -128,23 +131,27 @@ public class HGA {
      * @param graph2  adjacent list of graph2
      * @param simList similarity matrix, headNode->graph1, listNodes -> graph2
      */
-    public HGA(AdjList simList, AdjList graph1, AdjList graph2) {
+    public HGA(SimList simList, SimList graph1, SimList graph2) {
         this.graph1 = graph1;
         this.graph2 = graph2;
-        this.originalSimList = (AdjList) simList.clone();
-        this.simList = (AdjList) simList.clone();
+        this.originalSimList = (SimList) simList.clone();
+        this.graph1NeighborsMap = new HashMap<>();
+        this.graph2NeighborsMap = new HashMap<>();
+        this.simList = (SimList) simList.clone();
     }
 
     /**
      * rev to make it faster
      */
-    public HGA(AdjList simList, AdjList graph1, AdjList rev1, AdjList graph2, AdjList rev2) {
+    public HGA(SimList simList, SimList graph1, SimList rev1, SimList graph2, SimList rev2) {
         this.graph1 = graph1;
         this.rev1 = rev1;
         this.graph2 = graph2;
         this.rev2 = rev2;
-        this.originalSimList = (AdjList) simList.clone();
-        this.simList = (AdjList) simList.clone();
+        this.originalSimList = (SimList) simList.clone();
+        this.graph1NeighborsMap = new HashMap<>();
+        this.graph2NeighborsMap = new HashMap<>();
+        this.simList = (SimList) simList.clone();
     }
 
     /**
@@ -197,28 +204,44 @@ public class HGA {
      * @param node2     one node from the graph2
      * @param bioFactor bioInfo's taken (0-1)
      */
-    protected void addTopology(String node1, String node2, double bioFactor) throws IOException {
-        HNodeList neighbors_1;
-        HNodeList neighbors_2;
+    protected void addTopology(String node1, String node2, double bioFactor) {
+        HNodeList neighbors_1 = null;
+        HNodeList neighbors_2 = null;
         assert (bioFactor >= 0 && bioFactor <= 1);
-        // init for both neighbors and nonNeighbors, if there're revs, make it faster.
-        if (rev1 != null) {
-            neighbors_1 = graph1.sortGetNeighborsList(node1, rev1);
-        } else {
-            neighbors_1 = graph1.sortGetNeighborsList(node1);
+        // lock up
+        if (graph1NeighborsMap.containsKey(node1)) {
+            neighbors_1 = graph1NeighborsMap.get(node1);
         }
-        if (rev2 != null) {
-            neighbors_2 = graph2.sortGetNeighborsList(node2, rev2);
-        } else {
-            neighbors_2 = graph2.sortGetNeighborsList(node2);
+        if (graph2NeighborsMap.containsKey(node2)) {
+            neighbors_2 = graph2NeighborsMap.get(node2);
         }
+        if (neighbors_1 == null) {
+            // init for both neighbors and nonNeighbors, if there're revs, make it faster.
+            if (rev1 != null) {
+                neighbors_1 = graph1.sortGetNeighborsList(node1, rev1);
+            } else {
+                neighbors_1 = graph1.sortGetNeighborsList(node1);
+            }
+            // save neighbors
+            graph1NeighborsMap.put(node1, neighbors_1);
+        }
+        if (neighbors_2 == null) {
+            if (rev2 != null) {
+                neighbors_2 = graph2.sortGetNeighborsList(node2, rev2);
+            } else {
+                neighbors_2 = graph2.sortGetNeighborsList(node2);
+            }
+            // save neighbors
+            graph2NeighborsMap.put(node2, neighbors_2);
+        }
+
         // compute topologyInfo
         double eNeighbors = getNeighborTopologyInfo(neighbors_1, neighbors_2);
         double eNonNeighbors = getNonNeighborTopologyInfo(neighbors_1, neighbors_2);
         // update both simList and mat
         double eTP = (eNeighbors + eNonNeighbors) / 2;
-//        double valToUpdate = originalSimList.getValByMatName(node1, node2) * bioFactor + eTP * (1 - bioFactor);
-        double valToUpdate = simList.getValByMatName(node1, node2) * bioFactor + eTP * (1 - bioFactor);
+        double valToUpdate = originalSimList.getValByMatName(node1, node2) * bioFactor + eTP * (1 - bioFactor);
+//        double valToUpdate = simList.getValByMatName(node1, node2) * bioFactor + eTP * (1 - bioFactor);
         simList.sortAddOneNode(node1, node2, valToUpdate);
         simList.updateMat(node1, node2, valToUpdate);
     }
@@ -236,9 +259,10 @@ public class HGA {
             int size = (nonNei1Size + 1) * (nonNei2Size + 1);
             for (String node1 : nodes1) {
                 for (String node2 : nodes2) {
-                    if (!nei1.sortFind(node1) && !nei2.sortFind(node2)) {
-                        res += simList.getValByMatName(node1, node2);
-                    }
+                    //TODO
+//                    if (!nei1.findExist(node1) && !nei2.findExist(node2)) {
+//                        res += simList.getValByMatName(node1, node2);
+//                    }
                 }
             }
             return res / size;
@@ -479,62 +503,70 @@ public class HGA {
      * ------------------------------------------
      * r = 0.01 to allow 1% error
      */
-    protected boolean checkPassed(Stack<DoubleMatrix> stackMat, double tolerance) {
-        if(stackMat.size() == 3){
+    protected boolean checkPassed(Stack<DoubleMatrix> stackMat, Stack<Double> stackScore, double tolerance) throws FileNotFoundException {
+
+        if (stackMat.size() == 3) {
             DoubleMatrix s1 = stackMat.get(1);
             DoubleMatrix s = stackMat.peek();
             // remove button which is the oldest +1 every iteration
             DoubleMatrix s2 = stackMat.remove(0);
+
+            double score = stackScore.peek();
+            double score1 = stackScore.get(1);
+            double score2 = stackScore.remove(0);
+
             double dif_1 = s.sub(s1).normmax();
             double dif_2 = s.sub(s2).normmax();
-            return dif_1 < tolerance || dif_2 < tolerance;
+            //debug
+            debug_outPut(stackMat.peek(),dif_1,dif_2);
+            return dif_1 < tolerance || dif_2 < tolerance ||
+                    (score == score1 && score1 == score2);
         }
         // size = 2
-        else{
+        else {
             DoubleMatrix s = stackMat.peek();
             double dif = s.sub(stackMat.get(0)).normmax();
+            //debug
+            debug_outPut(stackMat.peek(),dif);
             return dif < tolerance;
         }
     }
 
     /**
-     *
-     * @param factor  weight of sequence information, 0 <= factor <=1
+     * @param factor    weight of sequence information, 0 <= factor <=1
      * @param tolerance error tolerance compared with the last matrix
-     * @param h row has at least h nonzero entries
-     * @throws IOException
+     * @param h         row has at least h nonzero entries
      */
     public void run(double factor, double tolerance, int h, boolean forcedMappingForSame) throws IOException {
         assert (simList != null);
-        EdgeHashSet mapping;
         EdgeHashSet forcedPart = null;
-        AdjList restForForced = null;
+        // stacks for simMat converge
+        Stack<DoubleMatrix> stackMat = new Stack<>();
+        Stack<Double> stackScore = new Stack<>();
+
         // forced mapping
-        if(forcedMappingForSame){
-            Triple<EdgeHashSet, EdgeHashSet, AdjList> res = forcedMap(simList);
+        if (forcedMappingForSame) {
+            Triple<EdgeHashSet, EdgeHashSet, SimList> res = forcedMap();
             // hungarian for the res
             mapping = res.getFirst();
             // forced
             forcedPart = res.getSecond();
-            // rest
-            restForForced = res.getThird();
-        }
-        else{
+            // mapping
+            mapping.addAll(forcedPart);
+        } else {
             // get the initial similarity matrix S0
             mapping = getEdgeMapFromHA(simList);
         }
-        // final mapping result
-        EdgeHashSet tmp = (EdgeHashSet) mapping.clone();
-        tmp.addAll(forcedPart);
-        EdgeHashSet finalMapping = tmp;
-        score = getScoreInfo(forcedMappingForSame, mapping, forcedPart).get(0);
+        // score mapping
+        scoreInfo = scoreMapping(mapping);
+        // debug
+        debug_outPut(simList.getMatrix());
+        // record score
+        stackScore.push(scoreInfo.get(0));
 
         // iterate
-        double maxScore = score;
+        double maxScore = scoreInfo.get(0);
         boolean checkPassed;
-
-        // deque for simMat converge
-        Stack<DoubleMatrix> stackMat = new Stack<>();
         // clone Matrix, matrix is synchronized in every steps below, so it's fast
         DoubleMatrix preMat = simList.getMatrix();
         // add to top
@@ -548,59 +580,70 @@ public class HGA {
             // add to top
             stackMat.push(simList.getMatrix());
             // map again
-            EdgeHashSet nextMapping = remap(forcedMappingForSame,forcedPart,h);
+            mapping = remap(forcedMappingForSame, forcedPart, h);
+
             // score mapping
-            ArrayList<Double> scoreInfo = getScoreInfo(forcedMappingForSame, nextMapping, forcedPart);
-            score = scoreInfo.get(0);
+            ArrayList<Double> scoreInfo = getScoreInfo(forcedMappingForSame, mapping, forcedPart);
+            this.scoreInfo = scoreInfo;
+            // record score
+            stackScore.push(scoreInfo.get(0));
+
             // same mapping, the later will get higher score as simList val is larger
-            if (score > maxScore) {
+            if (scoreInfo.get(0) > maxScore) {
                 // get best result recorded
-                maxScore = score;
+                maxScore = scoreInfo.get(0);
                 PE = scoreInfo.get(1);
                 EC = scoreInfo.get(2);
                 ES = scoreInfo.get(3);
                 PS = scoreInfo.get(4);
-                finalMapping = (EdgeHashSet) nextMapping.clone();
+                mapping = (EdgeHashSet) mapping.clone();
             }
+            iterCount++;
             // step 4
-            checkPassed = checkPassed(stackMat, tolerance);
+            checkPassed = checkPassed(stackMat, stackScore, tolerance);
         } while (!checkPassed);
-        // record mapping result
-        mappingFinalResult = finalMapping;
-        this.score = maxScore;
 
+        this.score = maxScore;
     }
 
     /**
      * for forced map
+     *
+     * @return full mapping result
      */
-    private EdgeHashSet remap(boolean forcedMappingForSame,EdgeHashSet forcedPart, int h) throws IOException {
-        if(forcedMappingForSame){
-            // get restForForced update because the simList has already changed
-            AdjList restForForced = new AdjList();
-            simList.forEach(hNodeList->{
-                if(!forcedPart.contains(new Edge(hNodeList.signName,hNodeList.signName))){
-                    restForForced.add(hNodeList);
-                }
+    private EdgeHashSet remap(boolean forcedMappingForSame, EdgeHashSet forcedPart, int h) throws IOException {
+        if (forcedMappingForSame) {
+
+            HashSet<String> rowReMap = simList.getRowSet();
+            HashSet<String> tmp = new HashSet<>();
+            // get row to remap
+            forcedPart.forEach(e -> {
+                rowReMap.remove(e.getSource().getStrName());
+                tmp.add(e.getSource().getStrName());
             });
-            EdgeHashSet tmp = remapping(restForForced,h);
-            tmp.addAll(forcedPart);
-            return tmp;
-        }
-        else{
-            return remapping(simList,h);
+            // get col nodes to remap
+            HashSet<String> graph2Nodes = simList.getColSet();
+            graph2Nodes.removeAll(tmp);
+            HashSet<String> colReMap = new HashSet<>(graph2Nodes);
+            // init the new matrix to remap
+            // toRemap is a small part of the matrix that needs to be remap
+            SimList toRemap = simList.getPart(rowReMap, colReMap);
+            EdgeHashSet res = remapping(toRemap, h);
+            res.addAll(forcedPart);
+            return res;
+        } else {
+            return remapping(simList, h);
         }
     }
 
     private ArrayList<Double> getScoreInfo(boolean forcedMappingForSame, EdgeHashSet mapping, EdgeHashSet forcedPart) {
         // score the mapping
-        ArrayList<Double>  score;
-        if(forcedMappingForSame){
+        ArrayList<Double> score;
+        if (forcedMappingForSame) {
             EdgeHashSet tmpMapping = (EdgeHashSet) mapping.clone();
             tmpMapping.addAll(forcedPart);
             score = scoreMapping(tmpMapping);
-        }
-        else{
+        } else {
             score = scoreMapping(mapping);
         }
         return score;
@@ -609,59 +652,104 @@ public class HGA {
     /**
      * @return mapping result hungarian ; forced ; updated rest AdjList
      */
-    private Triple<EdgeHashSet, EdgeHashSet, AdjList> forcedMap(AdjList simList) throws IOException {
-        HashSet<String> graph1Set = simList.getRowSet();
-        HashSet<String> graph2Set = simList.getColSet();
-        AdjList tmpList = (AdjList) simList.clone();
-        EdgeHashSet forcedPart = new EdgeHashSet();
+    private Triple<EdgeHashSet, EdgeHashSet, SimList> forcedMap() throws IOException {
+        HashSet<String> rowToMap = simList.getRowSet();
+        rowToMap.removeAll(simList.getColSet());
+        HashSet<String> colToMap = simList.getColSet();
+        colToMap.removeAll(simList.getRowSet());
+        SimList tmpList = simList.getPart(rowToMap, colToMap);
 
-        // remove hNodeLists that have been mapped for the same nodes
-        for (String s1:graph1Set) {
-            for (String s2 : graph2Set) {
-                if (s1.equals(s2)) {
-                    forcedPart.add(s1, s1);
-                    tmpList.remove(simList.sortGetHeadNodesList(s1));
-                    break;
-                }
-            }
-        }
+        EdgeHashSet forcedPart = new EdgeHashSet();
+        HashSet<String> sameNodes = simList.getRowSet();
+        sameNodes.removeAll(rowToMap);
+        sameNodes.forEach(n -> forcedPart.add(n, n));
         // map rest of the matrix by Hungarian
         // tmpList matrix has to be updated to be synchronized
         tmpList.updateMatrix();
-        return new Triple<>(getEdgeMapFromHA(tmpList),forcedPart,tmpList);
+        return new Triple<>(getEdgeMapFromHA(tmpList), forcedPart, tmpList);
     }
 
-    public EdgeHashSet getMappingFinalResult() {
-        assert (mappingFinalResult != null);
-        return mappingFinalResult;
+    public EdgeHashSet getMapping() {
+        assert (mapping != null);
+        return mapping;
     }
 
-    /**
-     * Get SimList, Graph1, Graph2
-     * @param filePaths SimList1, Graph1, Graph2, SimList2 paths
-     * @return result : graph1,rev1,graph2,rev2,simList
-     * @throws Exception ioe
-     */
-    public List<AdjList> io(String... filePaths) throws Exception {
-        GraphFileReader reader = new GraphFileReader();
-        String graph_2Path = filePaths[2];
-        AdjList graph2 = reader.readToAdjL(graph_2Path,false);
-        if(graph2.size()==0){
-            throw new IOException("graph2 has not been loaded.");
+//    /**
+//     * Get SimList, Graph1, Graph2
+//     *
+//     * @param filePaths SimList1, Graph1, Graph2, SimList2 paths
+//     * @return result : graph1,rev1,graph2,rev2,simList
+//     * @throws Exception ioe
+//     */
+//    public List<SimList> io(String... filePaths) throws Exception {
+//        GraphFileReader reader = new GraphFileReader();
+//        String graph_2Path = filePaths[2];
+//        SimList graph2 = reader.readToSimList(graph_2Path, false);
+//        if (graph2.size() == 0) {
+//            throw new IOException("graph2 has not been loaded.");
+//        }
+//        //TODO
+////        SimList rev2 = reader.getRevAdjList();
+//        String graph_1Path = filePaths[1];
+//        SimList graph1 = reader.readToSimList(graph_1Path, false);
+//        if (graph1.size() == 0) {
+//            throw new IOException("graph1 has not been loaded.");
+//        }
+////        SimList rev1 = reader.getRevAdjList();
+//        SimList simList = reader.readToSimList(filePaths[0]);
+//        // result
+//        List<SimList> result = new ArrayList<>();
+//        result.addAll(Arrays.asList(graph1, rev1, graph2, rev2, simList));
+//        return result;
+//    }
+
+    private void debug_outPut(DoubleMatrix matrix,double... dif) throws FileNotFoundException {
+        String outputPath = "src\\test\\java\\resources\\jupyter\\data\\";
+        Vector<String> matrixVec = new Vector<>();
+        Vector<String> mappingVec = new Vector<>();
+        Vector<String> scoreVec = new Vector<>();
+        AbstractFileWriter writer = new AbstractFileWriter() {
+            @Override
+            public void write(Vector<String> context, boolean closed) {
+                super.write(context, false);
+            }
+        };
+
+        double[][] mat = matrix.toArray2();
+        for (double[] doubles : mat) {
+            for (int j = 0; j < mat[0].length; j++) {
+                matrixVec.add(doubles[j] + " ");
+            }
+            matrixVec.add("\n");
         }
-        AdjList rev2 = reader.getRevAdjList();
-        String graph_1Path = filePaths[1];
-        AdjList graph1 = reader.readToAdjL(graph_1Path,false);
-        if(graph1.size()==0){
-            throw new IOException("graph1 has not been loaded.");
+        writer.setPath(outputPath + "matrix_" + iterCount + ".txt");
+        writer.write(matrixVec, false);
+
+        mapping.forEach(e -> {
+            mappingVec.add(e.getSource().getStrName() + " ");
+            mappingVec.add(e.getTarget().getStrName());
+            mappingVec.add("\n");
+        });
+        writer.setPath(outputPath + "mapping_" + iterCount + ".txt");
+        writer.write(mappingVec, false);
+
+        scoreVec.add("Score:" + scoreInfo.get(0) + "\n");
+        scoreVec.add("PE:" + scoreInfo.get(1) + "\n");
+        scoreVec.add("EC:" + scoreInfo.get(2) + "\n");
+        scoreVec.add("ES:" + scoreInfo.get(3) + "\n");
+        scoreVec.add("PS:" + scoreInfo.get(4) + "\n");
+        for (int i = 0; i < dif.length; i++) {
+            scoreVec.add("dif:"+dif[0]+"\n");
+            // 3 matrix
+            if(dif.length>1){
+                scoreVec.add("dif1:"+dif[0]+"\n");
+                scoreVec.add("dif2:"+dif[1]+"\n");
+            }
         }
-        AdjList rev1 = reader.getRevAdjList();
-        AdjList simList = reader.readToAdjL(filePaths[0]);
-        // result
-        List<AdjList> result = new ArrayList<>();
-        result.addAll(Arrays.asList(graph1,rev1,graph2,rev2,simList));
-        return result;
+        writer.setPath(outputPath + "scoresAndDif_" + iterCount + ".txt");
+        writer.write(scoreVec, true);
     }
+
     public double getEC() {
         return EC;
     }

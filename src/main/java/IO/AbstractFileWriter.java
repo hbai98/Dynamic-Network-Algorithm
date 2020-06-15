@@ -6,15 +6,14 @@ import java.util.Vector;
 
 public abstract class AbstractFileWriter {
     BufferedWriter bufWriter;
+    String path;
 
-    public AbstractFileWriter(String filePath) throws FileNotFoundException {
-        OutputStreamWriter writer = new OutputStreamWriter(
-                new FileOutputStream(filePath), StandardCharsets.UTF_8);
-        bufWriter = new BufferedWriter(writer);
+    public AbstractFileWriter() {
+
     }
 
 
-    public void write(Vector<String> context) {
+    public void write(Vector<String> context,boolean close) {
         assert context != null;
         try {
             for (String s : context) {
@@ -26,6 +25,8 @@ public abstract class AbstractFileWriter {
             try {
                 if (bufWriter != null) {
                     bufWriter.flush();
+                }
+                if(bufWriter != null && close){
                     bufWriter.close();
                 }
             } catch (Exception ex) {
@@ -37,5 +38,16 @@ public abstract class AbstractFileWriter {
 
     public BufferedWriter getBufWriter() {
         return bufWriter;
+    }
+
+    public void setPath(String path) throws FileNotFoundException {
+        this.path = path;
+        OutputStreamWriter writer = new OutputStreamWriter(
+                new FileOutputStream(path), StandardCharsets.UTF_8);
+        bufWriter = new BufferedWriter(writer);
+    }
+
+    public String getPath() {
+        return path;
     }
 }

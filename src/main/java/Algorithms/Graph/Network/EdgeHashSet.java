@@ -116,10 +116,6 @@ public class EdgeHashSet extends HashSet<Edge> {
         return null;
     }
 
-    protected EdgeHashSet readFromFile(String filename) throws IOException {
-        GraphFileReader reader = new GraphFileReader();
-        return reader.readToEL(filename);
-    }
 
     public void printAll() {
         HashMap<String, String> toPrint = new HashMap<>();
@@ -140,9 +136,7 @@ public class EdgeHashSet extends HashSet<Edge> {
             }
         });
         // print
-        toPrint.forEach((k, v) -> {
-            System.out.println(v);
-        });
+        toPrint.forEach((k, v) -> System.out.println(v));
     }
 
     /**

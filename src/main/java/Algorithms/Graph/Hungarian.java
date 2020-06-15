@@ -1,6 +1,6 @@
 package Algorithms.Graph;
 
-import Algorithms.Graph.Network.AdjList;
+import Algorithms.Graph.Utils.AdjList.SimList;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
@@ -45,44 +45,32 @@ public class Hungarian {
     private enum ZeroMasks {starred, primed}
     public enum ProblemType {maxLoc, minLoc}
 
-    protected Hungarian(DoubleMatrix mat, ProblemType type) throws IOException {
+    protected Hungarian(DoubleMatrix mat, ProblemType type) {
         init(mat, type);
         hungarian();
     }
 
-    public Hungarian(AdjList list, ProblemType type) throws IOException {
+    public Hungarian(SimList list, ProblemType type) {
         mat = list.getMatrix();
         init(mat, type);
         hungarian();
     }
 
-    private void hungarian() throws IOException {
+    private void hungarian() {
         boolean done = false;
         int step = 1;
         while(!done){
-            switch(step){
-                case 1:
-                    step = subtractRowMinimal();
-                    break;
-                case 2:
-                    step = starZeros();
-                    break;
-                case 3:
-                    step = coverStarredZeros();
-                    break;
-                case 4:
-                    step = primeZeros();
-                    break;
-                case 5:
-                    step = augmentingPath();
-                    break;
-                case 6:
-                    step = adjustMat();
-                    break;
-                case 7:
+            switch (step) {
+                case 1 -> step = subtractRowMinimal();
+                case 2 -> step = starZeros();
+                case 3 -> step = coverStarredZeros();
+                case 4 -> step = primeZeros();
+                case 5 -> step = augmentingPath();
+                case 6 -> step = adjustMat();
+                case 7 -> {
                     result = finish();
                     done = true;
-                    break;
+                }
             }
         }
 

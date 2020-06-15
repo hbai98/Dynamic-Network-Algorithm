@@ -12,13 +12,11 @@ import java.util.Objects;
 public class Node implements Comparable<Node> {
     protected String strName;
     protected double value;
-    protected String strLayerCode;
 
 
     public Node(String strName, double value, String strLayerCode) {
         this.strName = strName;
         this.value = value;
-        this.strLayerCode = strLayerCode;
     }
 
     public Node(String strName) {
@@ -53,9 +51,6 @@ public class Node implements Comparable<Node> {
         return strName;
     }
 
-    public String getStrLayerCode() {
-        return strLayerCode;
-    }
 
     // ----------------------SET-------------------------------
     public void setValue(double value) {
@@ -66,9 +61,6 @@ public class Node implements Comparable<Node> {
         this.strName = strName;
     }
 
-    public void setStrLayerCode(String strLayerCode) {
-        this.strLayerCode = strLayerCode;
-    }
 
 
 

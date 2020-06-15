@@ -1,6 +1,6 @@
 package IO;
 
-import Algorithms.Graph.Network.AdjList;
+import Algorithms.Graph.Utils.AdjList.SimList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,12 +22,12 @@ class GraphFileWriterSpec {
        String s = writer.replaceSpace_(test);
        assertEquals("AADFSD_dfdfd_lllll",s);
     }
-    @Test
-    @DisplayName("write to txt.")
-    void writeToTxt() throws IOException {
-        GraphFileReader reader = new GraphFileReader();
-        AdjList list = reader.readToAdjL("src/test/java/resources/IOTest/mediumGraph.txt");
-        writer.writeToTxt(list,"src/test/java/resources/IOTest/mediumGraph.txt");
-    }
+//    @Test
+//    @DisplayName("write to txt.")
+//    void writeToTxt() throws IOException {
+//        GraphFileReader reader = new GraphFileReader();
+//        SimList list = reader.readToSimList("src/test/java/resources/IOTest/mediumGraph.txt");
+//        writer.writeToTxt(list,"src/test/java/resources/IOTest/mediumGraph.txt");
+//    }
 
 }

@@ -39,24 +39,24 @@ class NodeListSpec {
             assertEquals(2,nodeList.size());
             assertFalse(nodeList.add(node4));
         }
-        @DisplayName("sorts based on names")
-        @Test
-        void sort(){
-            nodeList.add(node2);
-            nodeList.add(node1);
-
-            nodeList.sort();
-            assertThat(nodeList).containsSequence(Arrays.asList(node1,node2));
-        }
-
-        @DisplayName("removes all nodes with the same name.")
-        @Test
-        void removeAllTest(){
-            nodeList.addAll(Arrays.asList(node1,node2,node3,node4));
-            nodeList.removeAll(new Node("1"));
-            assertEquals(1, nodeList.size());
-        }
-
+//        @DisplayName("sorts based on names")
+//        @Test
+//        void sort(){
+//            nodeList.add(node2);
+//            nodeList.add(node1);
+//
+//            nodeList.sort();
+//            assertThat(nodeList).containsSequence(Arrays.asList(node1,node2));
+//        }
+//
+//        @DisplayName("removes all nodes with the same name.")
+//        @Test
+//        void removeAllTest(){
+//            nodeList.addAll(Arrays.asList(node1,node2,node3,node4));
+//            nodeList.removeAll(new Node("1"));
+//            assertEquals(1, nodeList.size());
+//        }
+//
 
     }
     @Nested

@@ -1,6 +1,6 @@
 package IO;
 
-import Algorithms.Graph.Network.AdjList;
+import Algorithms.Graph.Utils.AdjList.SimList;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.columns.Column;
 
@@ -8,16 +8,16 @@ import java.io.IOException;
 
 public class CsvToAdjList {
     Table tsv;
-    AdjList target;
+    SimList target;
 
     /**
      * @param filePath path to import .tsv or .csv
      * @param columns  columns to select including 2 nodes or edge value
-     * @throws IOException
+     * @throws IOException format incorrect
      */
     public CsvToAdjList(String filePath, String... columns) throws IOException {
         tsv = Table.read().csv(filePath);
-        target = new AdjList();
+        target = new SimList();
         int size = columns.length;
         Column<?> node1s = tsv.column(columns[0]);
         Column<?> node2s = tsv.column(columns[1]);
@@ -35,9 +35,7 @@ public class CsvToAdjList {
                     target.sortAddOneNode(node1s.get(i).toString(), node2s.get(i).toString(), Double.parseDouble(columns[2]));
                 }
             }
-            default -> {
-                throw new IOException("Your input format is not right.");
-            }
+            default -> throw new IOException("Your input format is not right.");
         }
 
     }
@@ -46,7 +44,7 @@ public class CsvToAdjList {
         return tsv;
     }
 
-    public AdjList getTarget() {
+    public SimList getTarget() {
         return target;
     }
 }
