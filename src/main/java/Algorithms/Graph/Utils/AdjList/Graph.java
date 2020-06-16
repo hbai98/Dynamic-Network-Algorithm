@@ -10,10 +10,18 @@ import java.util.LinkedList;
  * Simple graph based on AdjList and a rowMap to make indexing faster
  */
 public class Graph extends AbstractAdjList {
+    //-----------neighbor nodes info------------------
+    private HashMap<String, HNodeList> neighborsMap;
+
     HashMap<String, Integer> rowMap;
     public Graph(){
         super();
         rowMap = new HashMap<>();
+    }
+    public Graph(HashMap<String, HNodeList> neighborsMap){
+        super();
+        rowMap = new HashMap<>();
+        this.neighborsMap = neighborsMap;
     }
 
     /**
@@ -46,4 +54,7 @@ public class Graph extends AbstractAdjList {
         return add(hNodeList);
     }
 
+    public HashMap<String, HNodeList> getNeighborsMap() {
+        return neighborsMap;
+    }
 }

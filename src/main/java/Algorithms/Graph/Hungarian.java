@@ -1,6 +1,7 @@
 package Algorithms.Graph;
 
 import Algorithms.Graph.Utils.AdjList.SimList;
+import Algorithms.Graph.Utils.SimMat;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
@@ -50,9 +51,9 @@ public class Hungarian {
         hungarian();
     }
 
-    public Hungarian(SimList list, ProblemType type) {
-        mat = list.getMatrix();
-        init(mat, type);
+    public Hungarian(SimMat mat, ProblemType type) {
+        this.mat = mat.getMat();
+        init(this.mat, type);
         hungarian();
     }
 

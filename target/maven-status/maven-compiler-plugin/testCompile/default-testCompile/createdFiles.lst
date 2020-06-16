@@ -2,7 +2,6 @@ Algorithms\Graph\Network\EdgeSpec.class
 Algorithms\Graph\Network\EdgeHashSetSpec$FuncTest.class
 IO\GraphFileReaderSpec.class
 Algorithms\Graph\Network\NodeListSpec.class
-Algorithms\Alignment\align\Smith_WatermanSpec.class
 Tools\MatrixFunctionsSpec.class
 Algorithms\Graph\Network\SimListSpec.class
 IO\GraphFileWriterSpec.class

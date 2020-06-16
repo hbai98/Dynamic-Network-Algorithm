@@ -46,6 +46,7 @@ public abstract class AbstractAdjList extends LinkedList<HNodeList> {
     }
 
 
+
     /**
      * add one HNodeList
      */

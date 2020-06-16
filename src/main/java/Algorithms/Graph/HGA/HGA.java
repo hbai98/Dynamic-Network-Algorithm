@@ -6,11 +6,12 @@ import Algorithms.Graph.NBM;
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Network.Node;
+import Algorithms.Graph.Utils.AdjList.Graph;
 import Algorithms.Graph.Utils.AdjList.SimList;
 import Algorithms.Graph.Utils.List.HNodeList;
 import Algorithms.Graph.Utils.Edge.PairedEdges;
+import Algorithms.Graph.Utils.SimMat;
 import IO.AbstractFileWriter;
-import IO.GraphFileReader;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 import org.jgrapht.alg.util.Triple;
@@ -31,44 +32,41 @@ import java.util.*;
 
 public class HGA {
     protected Hungarian hungarian;
-    protected SimList originalSimList;
-    protected SimList simList;
-    protected SimList graph1;
-    protected SimList rev1;
-    protected SimList graph2;
-    protected SimList rev2;
+    protected SimMat originalMat;
+    protected SimMat simMat;
+    protected Graph graph1;
+    protected Graph graph2;
     //---------------mapping result-------------
-    private EdgeHashSet mapping;
+    private HashMap<String,String> mapping;
     private double PE;
     private double ES;
     private double PS;
     private double EC;
     private double score;
     private ArrayList<Double> scoreInfo;
-    //-----------store temporary paired edges-------------
-    private PairedEdges pairedEdges;
-    //-----------temporary neighbor nodes info------------------
-    private HashMap<String, HNodeList> graph1NeighborsMap;
-    private HashMap<String, HNodeList> graph2NeighborsMap;
+
     private int iterCount = 0;
 
     /**
      * HGA to initialize the mapping between two graph by HA,
      * Notice before using this method, make sure matrix is updated, because Hungarian use matrix index directly
      *
-     * @return EdgeHashSet for the mapping result
+     * @return the mapping result
      */
-    protected EdgeHashSet getEdgeMapFromHA(SimList simList) throws IOException {
-        hungarian = new Hungarian(simList, Hungarian.ProblemType.maxLoc);
+    protected HashMap<String, String> getMappingFromHA(SimMat simMat) throws IOException {
+        hungarian = new Hungarian(simMat, Hungarian.ProblemType.maxLoc);
         int[] res = hungarian.getResult();
-        EdgeHashSet initMap = new EdgeHashSet();
+        // map
+        HashMap<Integer,String> rowIndexNameMap = simMat.getRowIndexNameMap();
+        HashMap<Integer,String> colIndexNameMap = simMat.getColIndexNameMap();
+
+        HashMap<String,String> initMap = new HashMap<>();
         for (int i = 0; i < res.length; i++) {
             int j = res[i];
             if (j == -1) {
                 continue;
             }
-            Pair<Node, Node> tp = simList.getNodeNameByMatrixIndex(i, j);
-            initMap.add(new Edge(tp.getFirst(), tp.getSecond(), tp.getSecond().getValue()));
+            initMap.put(rowIndexNameMap.get(i),colIndexNameMap.get(j));
         }
         return initMap;
     }
@@ -82,14 +80,14 @@ public class HGA {
      * @param toMap matrix for hga mapping
      * @param h     row has at least h nonzero entries
      */
-    protected EdgeHashSet remapping(SimList toMap, int h) throws IOException {
+    protected HashMap<String,String> remapping(SimMat toMap, int h) throws IOException {
         assert (toMap != null);
         // check
         Pair<SimList, SimList> res = toMap.getSplit(h);
-        SimList H = res.getFirst();
-        SimList G = res.getSecond();
+        SimMat H = res.getFirst();
+        SimMat G = res.getSecond();
         // Hungarian alg
-        EdgeHashSet mapping = getEdgeMapFromHA(H);
+        HashMap<String,String> mapping = getMappingFromHA(H);
         // Greedy alg
         greedyMap(G, mapping);
         return mapping;
@@ -100,7 +98,7 @@ public class HGA {
      *
      */
     private void greedyMap(SimList toMap, EdgeHashSet preMap) {
-        HashMap<String, Integer> colMap = simList.getColMap();
+        HashMap<String, Integer> colMap = simMat.getColMap();
         boolean[] assignedGraph2 = new boolean[graph2.getAllNodes().size()];
 
         // init assigned array by preMap
@@ -129,29 +127,29 @@ public class HGA {
      *
      * @param graph1  adjacent list of graph1
      * @param graph2  adjacent list of graph2
-     * @param simList similarity matrix, headNode->graph1, listNodes -> graph2
+     * @param simMat similarity matrix, headNode->graph1, listNodes -> graph2
      */
-    public HGA(SimList simList, SimList graph1, SimList graph2) {
+    public HGA(SimList simMat, SimList graph1, SimList graph2) {
         this.graph1 = graph1;
         this.graph2 = graph2;
-        this.originalSimList = (SimList) simList.clone();
+        this.originalMat = (SimList) simMat.clone();
         this.graph1NeighborsMap = new HashMap<>();
         this.graph2NeighborsMap = new HashMap<>();
-        this.simList = (SimList) simList.clone();
+        this.simMat = (SimList) simMat.clone();
     }
 
     /**
      * rev to make it faster
      */
-    public HGA(SimList simList, SimList graph1, SimList rev1, SimList graph2, SimList rev2) {
+    public HGA(SimList simMat, SimList graph1, SimList rev1, SimList graph2, SimList rev2) {
         this.graph1 = graph1;
         this.rev1 = rev1;
         this.graph2 = graph2;
         this.rev2 = rev2;
-        this.originalSimList = (SimList) simList.clone();
+        this.originalMat = (SimList) simMat.clone();
         this.graph1NeighborsMap = new HashMap<>();
         this.graph2NeighborsMap = new HashMap<>();
-        this.simList = (SimList) simList.clone();
+        this.simMat = (SimList) simMat.clone();
     }
 
     /**
@@ -173,7 +171,7 @@ public class HGA {
      * @param mappedEdges current mapping result, and one edge means the srcNode and tgtNode has already mapped, srcNode ->graph1, tgtNode -> graph2
      */
     protected void updatePairNeighbors(EdgeHashSet mappedEdges) throws IOException {
-        NBM.neighborSimAdjust(graph1, graph2, simList, mappedEdges);
+        NBM.neighborSimAdjust(graph1, graph2, simMat, mappedEdges);
     }
 
     /**
@@ -240,10 +238,10 @@ public class HGA {
         double eNonNeighbors = getNonNeighborTopologyInfo(neighbors_1, neighbors_2);
         // update both simList and mat
         double eTP = (eNeighbors + eNonNeighbors) / 2;
-        double valToUpdate = originalSimList.getValByMatName(node1, node2) * bioFactor + eTP * (1 - bioFactor);
+        double valToUpdate = originalMat.getValByMatName(node1, node2) * bioFactor + eTP * (1 - bioFactor);
 //        double valToUpdate = simList.getValByMatName(node1, node2) * bioFactor + eTP * (1 - bioFactor);
-        simList.sortAddOneNode(node1, node2, valToUpdate);
-        simList.updateMat(node1, node2, valToUpdate);
+        simMat.sortAddOneNode(node1, node2, valToUpdate);
+        simMat.updateMat(node1, node2, valToUpdate);
     }
 
 
@@ -272,7 +270,7 @@ public class HGA {
             int size = nodes1.size() * nodes2.size();
             for (String node1 : nodes1) {
                 for (String node2 : nodes2) {
-                    res += simList.getValByMatName(node1, node2);
+                    res += simMat.getValByMatName(node1, node2);
                 }
             }
             return res / size;
@@ -288,7 +286,7 @@ public class HGA {
             int size = nei1Size * nei2Size;
             for (Node node1 : nei1) {
                 for (Node node2 : nei2) {
-                    res += simList.getValByMatName(node1.getStrName(), node2.getStrName());
+                    res += simMat.getValByMatName(node1.getStrName(), node2.getStrName());
                 }
             }
             return res / size;
@@ -299,7 +297,7 @@ public class HGA {
             int size = nodes1.size() * nodes2.size();
             for (String node1 : nodes1) {
                 for (String node2 : nodes2) {
-                    res += simList.getValByMatName(node1, node2);
+                    res += simMat.getValByMatName(node1, node2);
                 }
             }
             return res / size;
@@ -314,8 +312,8 @@ public class HGA {
      * @param factor weight of sequence information, 0 <= factor <=1
      */
     protected void addAllTopology(double factor) throws IOException {
-        HashSet<String> nodes1 = simList.getRowSet();
-        HashSet<String> nodes2 = simList.getColSet();
+        HashSet<String> nodes1 = simMat.getRowSet();
+        HashSet<String> nodes2 = simMat.getColSet();
         for (String node1 : nodes1) {
             for (String node2 : nodes2) {
                 addTopology(node1, node2, factor);
@@ -538,7 +536,7 @@ public class HGA {
      * @param h         row has at least h nonzero entries
      */
     public void run(double factor, double tolerance, int h, boolean forcedMappingForSame) throws IOException {
-        assert (simList != null);
+        assert (simMat != null);
         EdgeHashSet forcedPart = null;
         // stacks for simMat converge
         Stack<DoubleMatrix> stackMat = new Stack<>();
@@ -555,12 +553,12 @@ public class HGA {
             mapping.addAll(forcedPart);
         } else {
             // get the initial similarity matrix S0
-            mapping = getEdgeMapFromHA(simList);
+            mapping = getMappingFromHA(simMat);
         }
         // score mapping
         scoreInfo = scoreMapping(mapping);
         // debug
-        debug_outPut(simList.getMatrix());
+        debug_outPut(simMat.getMatrix());
         // record score
         stackScore.push(scoreInfo.get(0));
 
@@ -568,7 +566,7 @@ public class HGA {
         double maxScore = scoreInfo.get(0);
         boolean checkPassed;
         // clone Matrix, matrix is synchronized in every steps below, so it's fast
-        DoubleMatrix preMat = simList.getMatrix();
+        DoubleMatrix preMat = simMat.getMatrix();
         // add to top
         stackMat.push(preMat);
         // update similarity matrix
@@ -578,7 +576,7 @@ public class HGA {
             // step 3 (heavy)
             addAllTopology(factor);
             // add to top
-            stackMat.push(simList.getMatrix());
+            stackMat.push(simMat.getMatrix());
             // map again
             mapping = remap(forcedMappingForSame, forcedPart, h);
 
@@ -614,7 +612,7 @@ public class HGA {
     private EdgeHashSet remap(boolean forcedMappingForSame, EdgeHashSet forcedPart, int h) throws IOException {
         if (forcedMappingForSame) {
 
-            HashSet<String> rowReMap = simList.getRowSet();
+            HashSet<String> rowReMap = simMat.getRowSet();
             HashSet<String> tmp = new HashSet<>();
             // get row to remap
             forcedPart.forEach(e -> {
@@ -622,17 +620,17 @@ public class HGA {
                 tmp.add(e.getSource().getStrName());
             });
             // get col nodes to remap
-            HashSet<String> graph2Nodes = simList.getColSet();
+            HashSet<String> graph2Nodes = simMat.getColSet();
             graph2Nodes.removeAll(tmp);
             HashSet<String> colReMap = new HashSet<>(graph2Nodes);
             // init the new matrix to remap
             // toRemap is a small part of the matrix that needs to be remap
-            SimList toRemap = simList.getPart(rowReMap, colReMap);
+            SimList toRemap = simMat.getPart(rowReMap, colReMap);
             EdgeHashSet res = remapping(toRemap, h);
             res.addAll(forcedPart);
             return res;
         } else {
-            return remapping(simList, h);
+            return remapping(simMat, h);
         }
     }
 
@@ -650,23 +648,23 @@ public class HGA {
     }
 
     /**
-     * @return mapping result hungarian ; forced ; updated rest AdjList
+     * @return mapping result hungarian ; forced
      */
-    private Triple<EdgeHashSet, EdgeHashSet, SimList> forcedMap() throws IOException {
-        HashSet<String> rowToMap = simList.getRowSet();
-        rowToMap.removeAll(simList.getColSet());
-        HashSet<String> colToMap = simList.getColSet();
-        colToMap.removeAll(simList.getRowSet());
-        SimList tmpList = simList.getPart(rowToMap, colToMap);
+    private Pair<HashMap<String,String>, HashMap<String,String>> forcedMap() throws IOException {
+        HashSet<String> rowToMap = simMat.getRowSet();
+        rowToMap.removeAll(simMat.getColSet());
+        HashSet<String> colToMap = simMat.getColSet();
+        colToMap.removeAll(simMat.getRowSet());
+        SimList tmpList = simMat.getPart(rowToMap, colToMap);
 
-        EdgeHashSet forcedPart = new EdgeHashSet();
-        HashSet<String> sameNodes = simList.getRowSet();
+        HashMap<String,String> forcedPart = new HashMap<>();
+        HashSet<String> sameNodes = simMat.getRowSet();
         sameNodes.removeAll(rowToMap);
-        sameNodes.forEach(n -> forcedPart.add(n, n));
+        sameNodes.forEach(n -> forcedPart.put(n, n));
         // map rest of the matrix by Hungarian
         // tmpList matrix has to be updated to be synchronized
         tmpList.updateMatrix();
-        return new Triple<>(getEdgeMapFromHA(tmpList), forcedPart, tmpList);
+        return new Pair<>(getMappingFromHA(tmpList), forcedPart);
     }
 
     public EdgeHashSet getMapping() {

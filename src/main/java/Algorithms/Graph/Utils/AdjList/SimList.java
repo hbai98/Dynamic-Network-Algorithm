@@ -7,7 +7,6 @@ import Algorithms.Graph.Utils.List.HNodeList;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
-import java.io.IOException;
 import java.util.*;
 
 /**
@@ -27,10 +26,8 @@ public class SimList extends AbstractAdjList {
     private HashMap<String, Integer> rowMap;
     private HashMap<String, Integer> colMap;
     //---------------Neighbors info--------------> src <-> tgt
-    private HashMap<String,HashSet<String>> g1Neighbors;
-    private HashMap<String,HashSet<String>> g2Neighbors;
     //---------------colMap mat index -> node's name-------------
-    private HashMap<Integer, String> swapOrderedColMap;
+    private HashMap<Integer, String> indexNameMap;
 
     public SimList() {
         super();
@@ -59,15 +56,17 @@ public class SimList extends AbstractAdjList {
      *
      * @return Similar matrix
      */
-    public DoubleMatrix getMatrix() {
+    protected DoubleMatrix getMatrix() {
         if (mat == null) {
-            // step 1：create the dictionary
+            // step 1: initialize the matrix.
+            init();
+            // step 2：create the dictionary
             HashMap<String, Integer> colList = dict();
-            // step 2 : get the matrix
+            // step 3 : get the matrix
             mapping(colList);
         }
-        // return copy, keep mat unchanged
         return mat.dup();
+
     }
 
     /**
@@ -83,24 +82,11 @@ public class SimList extends AbstractAdjList {
         reverseTpIndexColMap();
     }
 
-    protected DoubleMatrix getMatrix(HashSet<String> graph_1, HashSet<String> graph_2) {
-        if (mat == null) {
-            // step 1: initialize the matrix.
-            init(graph_1, graph_2);
-            // step 2：create the dictionary
-            HashMap<String, Integer> colList = dict();
-            // step 3 : get the matrix
-            mapping(colList);
-        }
-        return mat.dup();
 
-    }
 
     // step 1: initialize the matrix.
-    private void init(HashSet<String> graph_1, HashSet<String> graph_2) {
-        this.rowSet = graph_1;
-        this.colSet = graph_2;
-        mat = new DoubleMatrix(graph_1.size(), graph_2.size());
+    private void init() {
+        mat = new DoubleMatrix(rowSet.size(), colSet.size());
     }
     // alter: step_1
 
@@ -183,59 +169,18 @@ public class SimList extends AbstractAdjList {
     }
 
     /**
-     * find node'all neighbors which include 2 parts in undirected Graph, or only 1 part in directed one.
-     * This method is for undirected graphs.
-     * <p>
-     *     <ol>
-     *         <li>the head nodeList's all connected nodes</li>
-     *         <li>other lists's connected nodes</li>
-     *     </ol>
-     *     <p>A:->B->C</p>
-     *     <p>B:->C->D</p>
-     *     <p>C:->E</p>
-     *     <p>return C's neighbors as a list: E->A->B</p>
-     *     <p>which consists of headNodeList starting with C plus list containing nodes from other headLists</p>
-     * </p>
-     * <br>
-     * <p>NOTICE: use it in the condition that the adjList has been sorted.</p>
+     * find node head's all nodes.(Can only be used when the AdjList has been sorted)
      *
-     * @param tgtNode target node
+     * @param headNode target node
      */
-    public HNodeList sortGetNeighborsList(String tgtNode) {
-        int index = Collections.binarySearch(this, new HNodeList(tgtNode), Comparator.comparing(o -> o.signName));
-        HNodeList list1;
-        if (index < 0) {
-            list1 = new HNodeList(tgtNode);
-        } else {
-            list1 = this.get(index);
+    public HNodeList mapGetHeadNodesList(String headNode) {
+        if(rowMap == null){
+            updateMatrix();
         }
-        forEach(hList -> {
-            if (!hList.getSignName().equals(list1.getSignName())) {
-                hList.forEach(node -> {
-                    if (node.getStrName().equals(tgtNode)) {
-                        list1.sortAdd(new Node(hList.getSignName(), node.getValue()));
-                    }
-                });
-            }
-        });
-        return list1;
-    }
-
-    public HNodeList sortGetNeighborsList(String tgtNode, SimList revList) {
-        int index = Collections.binarySearch(this, new HNodeList(tgtNode), Comparator.comparing(HNodeList::getSignName));
-        HNodeList list1;
-        if (index < 0) {
-            list1 = new HNodeList(tgtNode);
-        } else {
-            list1 = this.get(index);
+        if(rowMap.containsKey(headNode)){
+            return this.get(rowMap.get(headNode));
         }
-        for (HNodeList hList : revList) {
-            if (hList.getSignName().equals(tgtNode)) {
-                hList.forEach(list1::sortAdd);
-                break;
-            }
-        }
-        return list1;
+        return null;
     }
 
 
@@ -262,7 +207,7 @@ public class SimList extends AbstractAdjList {
      * add tgtHG to list(tgtHead),and keep the target list an ascending order.
      *
      * @param tgtHead headName of the list.
-     * @param tgtNode name of the homoGene to be removed.
+     * @param tgtNode name of the homoGene to add.
      * @return true for already node exist.
      */
     public boolean sortAddOneNode(String tgtHead, String tgtNode) {
@@ -326,12 +271,12 @@ public class SimList extends AbstractAdjList {
      * NOTICE:can only be used when the adjList haven't added a new row
      * or mat will get wrong probably
      */
-    public void updateMat(String srcNode, String tgtNode, double value) {
+    public void updateMat(String srcNode, String headNode, double value) {
         if (colMap == null || rowMap == null) {
             updateMatrix();
         }
 
-        updateMat(rowMap.get(srcNode), colMap.get(tgtNode), value);
+        updateMat(rowMap.get(srcNode), colMap.get(headNode), value);
     }
 
     //------------------PUBLIC ACCESS -----------------------------
@@ -348,12 +293,12 @@ public class SimList extends AbstractAdjList {
     }
 
     @Override
-    protected boolean removeNode(String tgtHead, String tgtNode) {
+    protected boolean removeNode(String tgtHead, String headNode) {
         if(mat == null){
             updateMatrix();
         }
         if(rowMap.containsKey(tgtHead)){
-            return this.get(rowMap.get(tgtHead)).remove(tgtNode);
+            return this.get(rowMap.get(tgtHead)).remove(headNode);
         }
         return false;
     }
@@ -368,33 +313,33 @@ public class SimList extends AbstractAdjList {
 
     public Pair<Node, Node> getNodeNameByMatrixIndex(int i, int j) {
         if (mat == null) {
-            mat = this.getMatrix();
+            updateMatrix();
         }
-        if (swapOrderedColMap == null) {
+        if (indexNameMap == null) {
             reverseTpIndexColMap();
         }
-        return new Pair<>(new Node(this.get(i).signName), new Node(swapOrderedColMap.get(j), mat.get(i, j)));
+        return new Pair<>(new Node(this.get(i).signName), new Node(indexNameMap.get(j), mat.get(i, j)));
     }
 
     /**
      * mat index of name
      */
-    public double getValByMatName(String tgtHead, String tgtNode) {
+    public double getValByMatName(String tgtHead, String headNode) {
         if (colMap == null || rowMap == null) {
             updateMatrix();
         }
         int row = rowMap.get(tgtHead);
-        int col = colMap.get(tgtNode);
+        int col = colMap.get(headNode);
         return mat.get(row, col);
     }
 
     private void reverseTpIndexColMap() {
         // switch key and value only because of the bi-direction relationship maintained by the NodeList
-        swapOrderedColMap = new HashMap<>();
+        indexNameMap = new HashMap<>();
         // sorted by natural order of the key
         TreeMap<String, Integer> colTree = new TreeMap<>(colMap);
         // switch
-        colTree.forEach((name, index) -> swapOrderedColMap.put(index, name));
+        colTree.forEach((name, index) -> indexNameMap.put(index, name));
     }
 
 
@@ -426,14 +371,21 @@ public class SimList extends AbstractAdjList {
      */
     public Pair<SimList, SimList> getSplit(int h) {
         SimList split = new SimList();
+        // synchronize
+        split.getColSet().addAll(colSet);
         SimList left = new SimList();
+        // synchronize
+        left.getColSet().addAll(colSet);
         forEach(
                 list -> {
                     if(list.size() >= h){
                         split.addRowList(list);
+                        // synchronize
+                        split.getRowSet().add(list.signName);
                     }
                     else{
                         left.addRowList(list);
+                        left.getRowSet().add(list.signName);
                     }
                 }
         );
@@ -478,7 +430,11 @@ public class SimList extends AbstractAdjList {
     }
 
     public SimList getPart(HashSet<String> rowSet, HashSet<String> colSet) {
-        return getPart(rowSet,true).getPart(colSet,false);
+        SimList simList = getPart(rowSet,true).getPart(colSet,false);
+        //synchronize
+        simList.colSet = colSet;
+        simList.rowSet = rowSet;
+        return simList;
     }
 
     public SimList getPart(HashSet<String> set, boolean isRow) {

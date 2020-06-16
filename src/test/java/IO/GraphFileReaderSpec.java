@@ -2,6 +2,7 @@ package IO;
 
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHashSet;
+import Algorithms.Graph.Utils.AdjList.Graph;
 import Algorithms.Graph.Utils.AdjList.SimList;
 import Algorithms.Graph.Utils.List.HNodeList;
 import org.junit.jupiter.api.DisplayName;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.regex.Pattern;
 
@@ -45,7 +47,7 @@ public class GraphFileReaderSpec {
     @Test
     void ReadToArrayListTest(){
         try {
-            GraphFileReader reader = new GraphFileReader(true,true,true);
+            GraphFileReader reader = new GraphFileReader(true,false,true);
             SimList simList = reader.readToSimList("src/test/java/resources/IOTest/simpleGraph_1.txt");
             HNodeList forTestA = new HNodeList("A");
             HNodeList forTestB = new HNodeList("C");
@@ -56,7 +58,7 @@ public class GraphFileReaderSpec {
             forTestB.add("B",0.7);
             assertThat(simList).contains(forTestA,forTestB);
             // neighbors, maxVal and src&Target
-
+//            Graph graph = reader.readToGraph("src/test/java/resources/IOTest/simpleGraph_1.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
