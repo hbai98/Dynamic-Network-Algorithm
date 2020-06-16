@@ -5,8 +5,10 @@ package Algorithms.Graph;
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Network.Node;
+import Algorithms.Graph.Utils.AdjList.Graph;
 import Algorithms.Graph.Utils.AdjList.SimList;
 import Algorithms.Graph.Utils.List.HNodeList;
+import Algorithms.Graph.Utils.SimMat;
 
 import java.io.IOException;
 import java.util.*;
@@ -47,13 +49,13 @@ import java.util.*;
  * </p>
  */
 public class NBM {
-    protected SimList simList;
+    protected SimMat simList;
     // --------------------------------------------> alg variables
     protected HashMap<String, Node> mostSimPairMap;
     protected PriorityQueue<Edge> pqEdge;
     protected EdgeHashSet mappedEdges;
-    protected SimList graph1;
-    protected SimList graph2;
+    protected Graph graph1;
+    protected Graph graph2;
 
     private double reward;
     protected  NBM(){

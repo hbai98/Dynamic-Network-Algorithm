@@ -36,27 +36,8 @@ public class HNodeList extends NodeList {
         }
         return sum;
     }
-    /***
-     * Add a {@code}node into list. If it already existed(same name), choose the one with
-     * greater value, and the nodeList keeps it's nodes with the characteristic of
-     * single existence.
-     * @param node node to be added
-     * @return true for the node has already been added.
-     */
     @Override
     public boolean add(Node node) {
-        for (Node tpNode : this) {
-            // find one same node, return;
-            if (tpNode.equals(node)) {
-                if (tpNode.getValue() < node.getValue()) {
-                    tpNode.setValue(node.getValue());
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        }
-        // not found
         return super.add(node);
     }
 

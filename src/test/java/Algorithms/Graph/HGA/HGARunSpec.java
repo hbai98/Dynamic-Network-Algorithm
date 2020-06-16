@@ -1,17 +1,42 @@
 package Algorithms.Graph.HGA;
 
+import Algorithms.Graph.Utils.AdjList.Graph;
 import Algorithms.Graph.Utils.AdjList.SimList;
+import Algorithms.Graph.Utils.SimMat;
 import IO.GraphFileReader;
 import Tools.Stopwatch;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tech.tablesaw.api.StringColumn;
 import tech.tablesaw.api.Table;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 class HGARunSpec {
+    HGA hga;
+    @BeforeEach
+    void init() throws IOException {
+        GraphFileReader reader = new GraphFileReader(true,false,true);
+        Graph graph1 = reader.readToGraph("src/test/java/resources/AlgTest/HGA/graph1.txt",false);
+        Graph graph2 = reader.readToGraph("src/test/java/resources/AlgTest/HGA/graph2.txt",false);
+        reader.setRecordNeighbors(true);
+        SimMat simMat = reader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt",graph1.getAllNodes(),graph2.getAllNodes(),true);
+        hga = new HGA(simMat,graph1,graph2);
+    }
+    @DisplayName("Greedily map")
+    @Test
+    void greedMap(){
+        HashMap<String,String> preMap = new HashMap<>();
+        preMap.put("D","F");
+        preMap.put("F","I");
+        HGA.greedyMap(hga.simMat,preMap);
+    }
+
 //    @Test
 //    void Test() throws Exception {
 //

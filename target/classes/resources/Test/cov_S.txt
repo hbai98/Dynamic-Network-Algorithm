@@ -1,1 +1,0 @@
-S ACE2 0 TMPRSS2 0

@@ -1,11 +1,9 @@
 package Algorithms.Graph;
 
-import Algorithms.Graph.Utils.AdjList.SimList;
 import Algorithms.Graph.Utils.SimMat;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 /**

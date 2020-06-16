@@ -4,6 +4,7 @@ import Algorithms.Graph.Network.AbstractAdjList;
 import Algorithms.Graph.Utils.List.HNodeList;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 
 /**
@@ -11,14 +12,14 @@ import java.util.LinkedList;
  */
 public class Graph extends AbstractAdjList {
     //-----------neighbor nodes info------------------
-    private HashMap<String, HNodeList> neighborsMap;
+    private HashMap<String, HashSet<String>> neighborsMap;
 
     HashMap<String, Integer> rowMap;
     public Graph(){
         super();
         rowMap = new HashMap<>();
     }
-    public Graph(HashMap<String, HNodeList> neighborsMap){
+    public Graph(HashMap<String, HashSet<String>> neighborsMap){
         super();
         rowMap = new HashMap<>();
         this.neighborsMap = neighborsMap;
@@ -50,11 +51,25 @@ public class Graph extends AbstractAdjList {
     @Override
     public boolean addRowList(HNodeList hNodeList) {
         rowSet.add(hNodeList.signName);
-        rowMap.put(hNodeList.signName,this.size()-1);
+        rowMap.put(hNodeList.signName,this.size());
         return add(hNodeList);
     }
 
-    public HashMap<String, HNodeList> getNeighborsMap() {
+    public void addOneNode(String tgtHead,String tgtNode,double weight){
+        if(rowMap.containsKey(tgtHead)){
+            this.get(rowMap.get(tgtHead)).add(tgtNode,weight);
+            colSet.add(tgtNode);
+        }
+        else{
+            HNodeList tmp = new HNodeList(tgtHead);
+            tmp.add(tgtNode,weight);
+            this.add(tmp);
+            rowMap.put(tgtHead,size()-1);
+            rowSet.add(tgtHead);
+            colSet.add(tgtNode);
+        }
+    }
+    public HashMap<String, HashSet<String>> getNeighborsMap() {
         return neighborsMap;
     }
 }

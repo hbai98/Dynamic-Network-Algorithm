@@ -7,7 +7,6 @@ import Algorithms.Graph.Utils.SimMat;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,32 +31,35 @@ public class GraphFileReader extends AbstractFileReader {
     // get neighbors information
     private HashMap<String, HashSet<String>> graphNeighbors;
     // non zeros
-    private ArrayList<Integer> nonZerosMap;
-    // max for Row
-    private ArrayList<Double> maxValForRow;
+    private HashMap<String, HashSet<String>> nonZerosMap;
     //--------------------
-    private boolean recordMaxForRow;
     private boolean recordNeighbors;
     private boolean recordSrcAndTarget;
     private boolean recordNonZeros;
-    //------------max---------------
     // for a row
-    private double maxOfRow = -Double.MAX_VALUE;
-    private String maxNodeName = null;
-    private int rowIndex = 0;
-    private int nonZeroCount;
 
-    public GraphFileReader(boolean recordSrcAndTarget, boolean getNeighbors, boolean getMaxForRow, boolean recordNonZeros) {
+    public GraphFileReader(boolean recordSrcAndTarget, boolean getNeighbors, boolean recordNonZeros) {
         super();
         this.recordSrcAndTarget = recordSrcAndTarget;
-        this.recordMaxForRow = getMaxForRow;
         this.recordNeighbors = getNeighbors;
         this.recordNonZeros = recordNonZeros;
     }
     //-------------------------AdjNodeList【homoGeneMap】 return type has been added in switch choices------------------------
 
-    public Graph readToGraph(String path) {
-        return null;
+    public Graph readToGraph(String inputFilePath) throws IOException {
+        return readToGraph(new BufferedReader(new FileReader(inputFilePath)), true);
+    }
+
+    public Graph readToGraph(String inputFilePath, boolean closeWhenFinished) throws IOException {
+        return readToGraph(new BufferedReader(new FileReader(inputFilePath)), closeWhenFinished);
+    }
+
+    public SimMat readToSimMat(String inputFilePath, HashSet<String> graph1, HashSet<String> graph2) throws IOException {
+        return readToSimMat(new BufferedReader(new FileReader(inputFilePath)), graph1, graph2, true);
+    }
+
+    public SimMat readToSimMat(String inputFilePath, HashSet<String> graph1, HashSet<String> graph2, boolean closeWhenFinished) throws IOException {
+        return readToSimMat(new BufferedReader(new FileReader(inputFilePath)), graph1, graph2, closeWhenFinished);
     }
 
     public SimList readToSimList(String inputFilePath) throws IOException {
@@ -107,9 +109,12 @@ public class GraphFileReader extends AbstractFileReader {
         return simList;
     }
 
-    private SimMat readToSimMat(BufferedReader input,HashSet<String> graph1Nodes,HashSet<String> graph2Nodes, boolean closeWhenFinished) throws IOException {
+    /**
+     * include checking whether simMat contains all nodes
+     */
+    private SimMat readToSimMat(BufferedReader input, HashSet<String> graph1Nodes, HashSet<String> graph2Nodes, boolean closeWhenFinished) throws IOException {
         init();
-        SimMat simMat = new SimMat(graph1Nodes,graph2Nodes);
+        SimMat simMat = new SimMat(graph1Nodes, graph2Nodes);
         // matches sequence of one or more whitespace characters.
         setSplitter("\\s+");
         Vector<String> sifLine = new Vector<>();
@@ -131,9 +136,10 @@ public class GraphFileReader extends AbstractFileReader {
         if (closeWhenFinished) {
             input.close();
         }
+        // set simMat
+        simMat.setNonZerosIndexMap(nonZerosMap);
         return simMat;
     }
-
 
 
     /**
@@ -171,20 +177,90 @@ public class GraphFileReader extends AbstractFileReader {
         return graph;
     }
 
-    private void parseForGraph(Graph graph, Vector<String> sifLine) {
-
+    /**
+     * <ol>
+     *     <li>node1 node2 value12</li>
+     *     <li>node2 node3 value23 node4 value24 node5 value25</>
+     *     <li>node0 value00</li>
+     *     <li>node0 ...</li>
+     *  </ol>
+     * <p>
+     *     The first line identifies two nodes, called node1 and node2, and the weight of the edge between node1 node2. The second line specifies three new nodes, node3, node4, and node5; here “node2” refers to the same node as in the first line.
+     *     The second line also specifies three relationships, all of the individual weight and with node2 as the source, with node3, node4, and node5 as the targets.
+     *     This second form is simply shorthand for specifying multiple relationships of the same type with the same source node.
+     *     The third line indicates how to specify a node that has no relationships with other nodes.
+     *     The forth one represents only nodes without value.
+     * </p>
+     *
+     * <p>NOTICE:add() -> use sortAdd()</p>
+     *
+     * @param graph   result
+     * @param sifLine result very line
+     */
+    private void parseForGraph(Graph graph, Vector<String> sifLine) throws IOException {
+        int sifSize = sifLine.size();
+        if (sifSize == 0) {
+            throw new IOException("Nothing has been input!.");
+        }
+        if (sifSize == 2) {
+            // node1 node1 val1 // a circle
+            String name = sifLine.get(0);
+            if (isNumeric(sifLine.get(1))) {
+                double weight = Double.parseDouble(sifLine.get(1));
+                graph.addOneNode(name, name, weight);
+                // record if required
+                record(name, name, weight);
+            }
+            // node1 node2
+            else {
+                String targetName = sifLine.get(1);
+                if (isIdentifier(targetName)) {
+                    graph.addOneNode(name, name, 0.);
+                    // record if required
+                    record(name, name, 0.);
+                } else {
+                    throw new IOException("nodes' name are not correct.");
+                }
+            }
+        } else if ((sifSize - 1) % 2 != 0 || sifSize == 1) {
+            throw new IOException("The file input format is not correct.");
+        } else {
+            String srcName = sifLine.get(0);
+            // name value ... and it has already checked (sifSize -1) % 2 == 0
+            for (int index = 1; index < sifSize; index += 2) {
+                // name
+                String tgtName = sifLine.get(index);
+                if (!isIdentifier(tgtName)) {
+                    throw new IOException("nodes' name are not correct.");
+                }
+                // value
+                String input = sifLine.get(index + 1);
+                if (!isNumeric(input)) {
+                    // all nodes name
+                    if (isIdentifier(tgtName)) {
+                        graph.addOneNode(srcName, tgtName, 0.);
+                        // record if required
+                        record(srcName, tgtName, 0.);
+                        continue;
+                    } else {
+                        throw new IOException("The file input format is not correct. Plus: some name-value pairs are incorrect!");
+                    }
+                }
+                double weight = Double.parseDouble(input);
+                graph.addOneNode(srcName, tgtName, weight);
+                // record if required
+                record(srcName, tgtName, weight);
+            }
+        }
+        sifLine.clear();
     }
 
 
     private void cleanLine() {
-        maxNodeName = null;
-        maxOfRow = -Double.MAX_VALUE;
-        nonZeroCount = 0;
     }
 
     private void init() {
         // row index
-        rowIndex = 0;
         // clean or init
         if (recordSrcAndTarget) {
             sourceNodesSet = new HashSet<>();
@@ -193,12 +269,10 @@ public class GraphFileReader extends AbstractFileReader {
         if (recordNeighbors) {
             graphNeighbors = new HashMap<>();
         }
-        if(recordNonZeros){
-            nonZerosMap = new ArrayList<>();
+        if (recordNonZeros) {
+            nonZerosMap = new HashMap<>();
         }
-        if(recordMaxForRow){
-            maxValForRow = new ArrayList<>();
-        }
+
     }
 
 
@@ -217,7 +291,7 @@ public class GraphFileReader extends AbstractFileReader {
      *
      * <p>NOTICE:add() -> use sortAdd()</p>
      *
-     * @param simList   EdgeList to contain result
+     * @param simList EdgeList to contain result
      * @param sifLine result very line
      */
     private void parseForSimList(SimList simList, Vector<String> sifLine) throws IOException {
@@ -235,7 +309,7 @@ public class GraphFileReader extends AbstractFileReader {
                 double weight = Double.parseDouble(sifLine.get(1));
                 row = simList.sortAddOneNode(name, name, weight);
                 // record if required
-                record(name,name,weight);
+                record(name, name, weight);
             }
             // node1 node2
             else {
@@ -243,7 +317,7 @@ public class GraphFileReader extends AbstractFileReader {
                 if (isIdentifier(targetName)) {
                     row = simList.sortAddOneNode(name, targetName, 0);
                     // record if required
-                    record(name,name,0.);
+                    record(name, name, 0.);
                 } else {
                     throw new IOException("nodes' name are not correct.");
                 }
@@ -270,13 +344,12 @@ public class GraphFileReader extends AbstractFileReader {
                 // Contain the lexicographical order to prevent the case of same edges.
                 row = simList.sortAddOneNode(srcName, tgtName, weight);
                 // record if required
-                record(srcName,tgtName,weight);
+                record(srcName, tgtName, weight);
             }
         }
         sifLine.clear();
-        // set max
-        simList.get(row).setMax(maxOfRow);
     }
+
     /**
      * <ol>
      *     <li>node1 node2 value12</li>
@@ -292,7 +365,7 @@ public class GraphFileReader extends AbstractFileReader {
      *
      * <p>NOTICE:add() -> use sortAdd()</p>
      *
-     * @param simMat   EdgeList to contain result
+     * @param simMat  EdgeList to contain result
      * @param sifLine result very line
      */
     private void parseForSimMat(SimMat simMat, Vector<String> sifLine) throws IOException {
@@ -306,18 +379,18 @@ public class GraphFileReader extends AbstractFileReader {
             String name = sifLine.get(0);
             if (isNumeric(sifLine.get(1))) {
                 double weight = Double.parseDouble(sifLine.get(1));
-                if(weight!=0){
-                    simMat.put(name,name,weight);
+                if (weight != 0) {
+                    simMat.put(name, name, weight);
                 }
                 // record if required
-                record(name,name,weight);
+                record(name, name, weight);
             }
             // node1 node2
             else {
                 String targetName = sifLine.get(1);
                 if (isIdentifier(targetName)) {
                     // record if required
-                    record(name,name,0.);
+                    record(name, name, 0.);
                 } else {
                     throw new IOException("nodes' name are not correct.");
                 }
@@ -341,29 +414,35 @@ public class GraphFileReader extends AbstractFileReader {
                 double weight = Double.parseDouble(input);
                 // create edge & add
                 // Contain the lexicographical order to prevent the case of same edges.
-                if(weight!=0){
+                if (weight != 0) {
                     simMat.put(srcName, tgtName, weight);
                 }
                 // record if required
-                record(srcName,tgtName,weight);
+                record(srcName, tgtName, weight);
             }
         }
         sifLine.clear();
-        // set max
-        maxValForRow.add(maxOfRow);
     }
 
+
     private void record(String node1, String node2, double val) {
-        recordSourceAndTarget(node1,node2);
+        recordSourceAndTarget(node1, node2);
         recordNeighbors(node1, node2);
-        recordMaxOfRow(node2,val);
         recordNoneZeros(node1, node2, val);
-        rowIndex++;
     }
-    private void recordNoneZeros(String node1,String node2,double val){
-        if(recordNonZeros){
-            if(val!=0){
-                nonZerosMap.set(rowIndex,++nonZeroCount);
+
+    private void recordNoneZeros(String node1, String node2, double val) {
+        if (recordNonZeros) {
+            if (val != 0) {
+                HashSet<String> tgt;
+                if(nonZerosMap.containsKey(node1)){
+                    tgt = nonZerosMap.get(node1);
+                }
+                else{
+                    tgt = new HashSet<>();
+                }
+                tgt.add(node2);
+                nonZerosMap.put(node1,tgt);
             }
         }
     }
@@ -383,25 +462,15 @@ public class GraphFileReader extends AbstractFileReader {
     }
 
     private void recordMapCheck(String node1, String node2) {
-        if(graphNeighbors.containsKey(node2)){
+        if (graphNeighbors.containsKey(node2)) {
             HashSet<String> nodes = graphNeighbors.get(node2);
             nodes.add(node1);
-            graphNeighbors.put(node2,nodes);
-        }
-        else{
-            graphNeighbors.put(node2,new HashSet<>(Collections.singleton(node1)));
+            graphNeighbors.put(node2, nodes);
+        } else {
+            graphNeighbors.put(node2, new HashSet<>(Collections.singleton(node1)));
         }
     }
 
-    /**
-     * record for a row
-     */
-    private void recordMaxOfRow(String node, double val) {
-        if (recordMaxForRow && val > maxOfRow) {
-            maxNodeName = node;
-            maxOfRow = val;
-        }
-    }
 
     private boolean isNumeric(String str) {
         try {
@@ -444,10 +513,6 @@ public class GraphFileReader extends AbstractFileReader {
         return graphNeighbors;
     }
 
-
-    public void setRecordMaxForRow(boolean recordMaxForRow) {
-        this.recordMaxForRow = recordMaxForRow;
-    }
 
     public void setRecordNeighbors(boolean recordNeighbors) {
         this.recordNeighbors = recordNeighbors;
