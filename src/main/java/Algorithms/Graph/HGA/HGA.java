@@ -3,6 +3,7 @@ package Algorithms.Graph.HGA;
 
 import Algorithms.Graph.Hungarian;
 import Algorithms.Graph.NBM;
+import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Utils.AdjList.Graph;
 import Algorithms.Graph.Utils.SimMat;
@@ -14,6 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 /**
@@ -79,7 +81,7 @@ public class HGA {
      * @param toMap matrix for hga mapping
      * @param h     row has at least h nonzero entries
      */
-    protected HashMap<String, String> remapping(SimMat toMap, int h) throws IOException {
+    protected HashMap<String, String> remapping(SimMat toMap, int h) {
         assert (toMap != null);
         // check
         Pair<SimMat, SimMat> res = toMap.getSplit(h);
@@ -287,103 +289,63 @@ public class HGA {
      *          </li>
      *     </ol>
      *
-     * @return score, PE, EC, ES, PS
      */
-//    protected ArrayList<Double> scoreMapping(HashMap<String, String> mapping) {
-//        // edge correctness EC
-//        double EC = getEC(mapping);
-//        // point and edge score PE
-//        ArrayList<Double> res = getES_PS(mapping);
-//        double ES = res.get(0);
-//        double PS = res.get(1);
-//        double PE = ES + PS;
-//        double score = 100 * EC + PE;
-//        // result
-//        return new ArrayList<>(Arrays.asList(score, PE, EC, ES, PS));
-//    }
+    protected void scoreMapping(HashMap<String, String> mapping) {
+        // edge correctness EC
+        Vector<Pair<Edge,Edge>> mappingEdges = setEC(mapping);
+        // point and edge score PE
+        ES = getES(mappingEdges);
+        PS = getPS(mappingEdges);
+        PE = ES/2 + PS;
+        score = 100 * EC + PE;
+    }
 
-//    protected ArrayList<Double> getES_PS(HashMap<String, String> mapping) {
-//        // edgeScore set to 1.0
-//        double ES = getES(mapping, edgeScore);
-//        double PS = getPS(mapping);
-//        return new ArrayList<>(Arrays.asList(ES, PS));
-//    }
-//
-//    protected double getPS(EdgeHashSet mapping) {
-//        double PS = 0;
-//        if (pairedEdges == null) {
-//            pairedEdges = getPairedEdges(graph1.getAllEdges(), graph2.getAllEdges(), mapping).getFirst();
-//        }
-//        for (Edge edge : mapping) {
-//            // ui node's edges
-//            EdgeHashSet res = graph1.getEdgesHasNode(edge.getSource());
-//            boolean hasPairedEdge = false;
-//
-//            for (Pair<Edge, Edge> e : pairedEdges) {
-//                // if one of the ui node's edges is within pairedEdges
-//                if (res.contains(e.getFirst())) {
-//                    hasPairedEdge = true;
-//                    break;
-//                }
-//            }
-//            if (hasPairedEdge) {
-//                PS += edge.getWeight();
-//            }
-//        }
-//        return PS;
-//    }
-//
-//
-//    protected double getES(HashMap<String, String> mapping, double edgeScore) {
-//        double ES = 0;
-//        // check edge size to find a better algorithm
-//        if (edges1.size() <= edges2.size()) {
-//            for (Edge edge : edges1) {
-//                // find relevant edge in the mapping
-//                // edge equals graph1Node -> graph2Node
-//                Edge srcEdge = mapping.findSrcEdge(edge.getSource());
-//                Edge tgtEdge = mapping.findSrcEdge(edge.getTarget());
-//
-//                if (srcEdge != null && tgtEdge != null) {
-//                    // node in graph to map
-//                    Node src = srcEdge.getTarget();
-//                    Node tgt = tgtEdge.getTarget();
-//                    if (edges2.contains(new Edge(src, tgt))) {
-//                        // mapped
-//                        // and check positive similarity value
-//                        if (srcEdge.getWeight() >= 0 && tgtEdge.getWeight() >= 0) {
-//                            ES += edgeScore;
-//                        }
-//                    }
-//                }
-//            }
-//        } else {
-//            for (Edge edge : edges2) {
-//                // find relevant edge in the mapping
-//                Edge srcEdge = mapping.findTgtEdge(edge.getSource());
-//                Edge tgtEdge = mapping.findTgtEdge(edge.getTarget());
-//                if (srcEdge != null && tgtEdge != null) {
-//                    // node in graph to map
-//                    Node src = srcEdge.getSource();
-//                    Node tgt = tgtEdge.getSource();
-//                    if (edges1.contains(new Edge(src, tgt))) {
-//                        // mapped
-//                        // and check positive similarity value
-//                        if (srcEdge.getWeight() >= 0 && tgtEdge.getWeight() >= 0) {
-//                            ES += edgeScore;
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        return ES / 2;
-//    }
-    protected double getEC(HashMap<String, String> mapping) {
+    private double getES(Vector<Pair<Edge, Edge>> mappingEdges) {
+        AtomicReference<Double> ES = new AtomicReference<>((double) 0);
+        for (Iterator<Pair<Edge,Edge>> iterator = mappingEdges.iterator(); iterator.hasNext(); ) {
+            Pair<Edge,Edge> map = iterator.next();
+            Edge edge1 = map.getFirst();
+            Edge edge2 = map.getSecond();
+            if(simMat.getVal(edge1.getSource().getStrName(),edge2.getSource().getStrName())>0 &&
+                    simMat.getVal(edge1.getTarget().getStrName(),edge2.getTarget().getStrName())>0){
+                ES.updateAndGet(v -> v + edgeScore);
+            }
+            else{
+                iterator.remove();
+            }
+        }
+        return ES.get();
+    }
+
+    /**
+     *
+     * @param mappingEdges getES() filters out unqualified edges
+     */
+    protected double getPS(Vector<Pair<Edge,Edge>> mappingEdges) {
+        AtomicReference<Double> PS = new AtomicReference<>((double) 0);
+        mappingEdges.forEach(map->{
+            Edge edge1 = map.getFirst();
+            Edge edge2 = map.getSecond();
+            String n1_1 = edge1.getSource().getStrName();
+            String n1_2 = edge1.getTarget().getStrName();
+            String n2_1 = edge2.getSource().getStrName();
+            String n2_2 = edge2.getTarget().getStrName();
+            PS.updateAndGet(v -> v + simMat.getVal(n1_1, n2_1) + simMat.getVal(n1_2, n2_2));
+        });
+        return PS.get();
+    }
+
+
+    /**
+     * @return set edge correctness and mapping edges[Pair:{graph1Source,graph1Target},{graph2Source,graph2Target}]
+     */
+    protected Vector<Pair<Edge,Edge>> setEC(HashMap<String, String> mapping) {
         HashMap<String, HashSet<String>> neb1Map = graph1.getNeighborsMap();
         HashMap<String, HashSet<String>> neb2Map = graph2.getNeighborsMap();
         // toMap will decrease when nodes have been checked
         HashSet<String> toMap = new HashSet<>(mapping.keySet());
         AtomicInteger count = new AtomicInteger();
+        Vector<Pair<Edge,Edge>> mappingEdges = new Vector<>();
         for (Iterator<String> iterator = toMap.iterator(); iterator.hasNext(); ) {
             String n1 = iterator.next();
             String n1_ = mapping.get(n1);
@@ -399,10 +361,12 @@ public class HGA {
                 String n2_ = mapping.get(n2);
                 if (neb2Map.get(n1_).contains(n2_)) {
                     count.getAndIncrement();
+                    mappingEdges.add(new Pair<>(new Edge(n1,n2),new Edge(n1_,n2_)));
                 }
             });
         }
-        return (double) count.get() / graph1.getEdgeCount();
+        EC = (double) count.get() / graph1.getEdgeCount();
+        return mappingEdges;
     }
 
 
@@ -678,7 +642,7 @@ public class HGA {
 
     }
 
-    public double getEC() {
+    public double setEC() {
         return EC;
     }
 
@@ -710,5 +674,9 @@ public class HGA {
 
     public void setEdgeScore(double edgeScore) {
         this.edgeScore = edgeScore;
+    }
+
+    public double getEC() {
+        return EC;
     }
 }

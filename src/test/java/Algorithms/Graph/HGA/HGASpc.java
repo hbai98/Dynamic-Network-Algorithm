@@ -1,12 +1,8 @@
 package Algorithms.Graph.HGA;
 
 import Algorithms.Graph.Utils.AdjList.Graph;
-import Algorithms.Graph.Utils.AdjList.SimList;
 import Algorithms.Graph.Utils.SimMat;
 import IO.GraphFileReader;
-import Algorithms.Graph.NBM;
-import Algorithms.Graph.Network.Edge;
-import Algorithms.Graph.Network.EdgeHashSet;
 import IO.GraphFileReaderSpec;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -27,7 +23,7 @@ class HGASpc extends GraphFileReaderSpec {
         reader.setRecordNonZeros(true);
         reader.setRecordNeighbors(false);
         SimMat simMat = reader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt",graph1.getAllNodes(),graph2.getAllNodes(),true);
-        hga = new HGA(simMat,graph1,graph2);
+        hga = new HGA(simMat,graph1,graph2,0.5);
     }
     @DisplayName("Greedily map")
     @Test
@@ -45,13 +41,28 @@ class HGASpc extends GraphFileReaderSpec {
         mapping.put("Q","W");
         mapping.put("I","H");
         mapping.put("G","M");
-        assertEquals((double)2/15,hga.getEC(mapping));
+        hga.setEC(mapping);
+        assertEquals((double)2/15,hga.getEC());
     }
     @DisplayName("topo")
     @Test
     void topo(){
-       hga.addTopology("A","I",0.5);
-       assertEquals((double)(5.7/28+1.3/3)/2/2,hga.simMat.getVal("A","I"));
+       hga.addTopology("A","I");
+       assertEquals((5.7/28+1.3/3) /2/2,hga.simMat.getVal("A","I"));
+    }
+    @DisplayName("score mapping")
+    @Test
+    void score(){
+        HashMap<String,String> mapping = new HashMap<>();
+        mapping.put("W","A");
+        mapping.put("Q","W");
+        mapping.put("I","H");
+        mapping.put("G","M");
+        hga.scoreMapping(mapping);
+        assertEquals(hga.getScore(),(double)40/3+1.1);
+        assertEquals(hga.getES(), 1.);
+        assertEquals(hga.getPS(), 0.6);
+        assertEquals(hga.getPE(), 1.1);
     }
 //    @BeforeEach
 //    void init() throws IOException {

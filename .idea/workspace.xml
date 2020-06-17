@@ -22,20 +22,7 @@
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/SimMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/SimMat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Utils/SimMatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Utils/SimMatTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Tools/Stopwatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tools/Stopwatch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/AlgTest/HGA/graph1.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/AlgTest/HGA/graph1.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/AlgTest/HGA/graph2.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/AlgTest/HGA/graph2.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/AdjList/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/AdjList/Graph.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/SimMat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/SimMat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/IO/GraphFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/IO/GraphFileReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGARunSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGARunSpec.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +178,7 @@
       <recent name="Algorithms.Graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HGASpc.topo">
+  <component name="RunManager" selected="JUnit.HGASpc.score">
     <configuration name="HGARunSpec" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
@@ -223,7 +210,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HGARunSpec.greedMap" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HGASpc.score" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
@@ -232,8 +219,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGARunSpec" />
-      <option name="METHOD_NAME" value="greedMap" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGASpc" />
+      <option name="METHOD_NAME" value="score" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -272,19 +259,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.HGARunSpec.greedMap" />
       <item itemvalue="JUnit.HGARunSpec.getEC" />
       <item itemvalue="JUnit.HGARunSpec" />
       <item itemvalue="JUnit.HGASpc.topo" />
       <item itemvalue="JUnit.SimMatTest.sum" />
+      <item itemvalue="JUnit.HGASpc.score" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HGASpc.score" />
         <item itemvalue="JUnit.HGASpc.topo" />
         <item itemvalue="JUnit.SimMatTest.sum" />
         <item itemvalue="JUnit.HGARunSpec.getEC" />
         <item itemvalue="JUnit.HGARunSpec" />
-        <item itemvalue="JUnit.HGARunSpec.greedMap" />
       </list>
     </recent_temporary>
   </component>
@@ -418,7 +405,7 @@
       <workItem from="1592181861291" duration="18909000" />
       <workItem from="1592264654359" duration="12607000" />
       <workItem from="1592353255836" duration="1555000" />
-      <workItem from="1592354903136" duration="20055000" />
+      <workItem from="1592354903136" duration="24090000" />
     </task>
     <task id="LOCAL-00001" summary="Undergo optimization">
       <created>1592205562105</created>
@@ -509,10 +496,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="595" y="336" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.864@0.0.1536.864" timestamp="1586419203739" />
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592311458348">
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592396412716">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.864@0.0.1536.864" timestamp="1592311458348" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.864@0.0.1536.864" timestamp="1592396412716" />
     <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592266563516">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -614,11 +601,11 @@
     <state width="600" height="428" key="javadoc.popup" timestamp="1591343024870">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="537" height="264" key="javadoc.popup.new" timestamp="1592391052830">
+    <state width="537" height="264" key="javadoc.popup.new" timestamp="1592396694603">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="632" height="298" key="javadoc.popup.new/0.0.1536.824@0.0.1536.824" timestamp="1587205062000" />
-    <state width="537" height="264" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1592391052830" />
+    <state width="537" height="264" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1592396694603" />
     <state width="600" height="428" key="javadoc.popup/0.0.1536.864@0.0.1536.864" timestamp="1591343024870" />
     <state x="413" y="71" key="new project wizard" timestamp="1592290042028">
       <screen x="0" y="0" width="1536" height="864" />
