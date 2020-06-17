@@ -17,14 +17,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class HGARunSpec {
     HGA hga;
     @BeforeEach
     void init() throws IOException {
-        GraphFileReader reader = new GraphFileReader(true,false,true);
+        GraphFileReader reader = new GraphFileReader(true,true,false);
         Graph graph1 = reader.readToGraph("src/test/java/resources/AlgTest/HGA/graph1.txt",false);
         Graph graph2 = reader.readToGraph("src/test/java/resources/AlgTest/HGA/graph2.txt",false);
-        reader.setRecordNeighbors(true);
+        reader.setRecordNonZeros(true);
+        reader.setRecordNeighbors(false);
         SimMat simMat = reader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt",graph1.getAllNodes(),graph2.getAllNodes(),true);
         hga = new HGA(simMat,graph1,graph2);
     }
@@ -36,7 +39,16 @@ class HGARunSpec {
         preMap.put("F","I");
         HGA.greedyMap(hga.simMat,preMap);
     }
-
+    @DisplayName("Edge correctness")
+    @Test
+    void getEC(){
+        HashMap<String,String> mapping = new HashMap<>();
+        mapping.put("W","A");
+        mapping.put("Q","W");
+        mapping.put("I","H");
+        mapping.put("G","M");
+        assertEquals((double)2/15,hga.getEC(mapping));
+    }
 //    @Test
 //    void Test() throws Exception {
 //

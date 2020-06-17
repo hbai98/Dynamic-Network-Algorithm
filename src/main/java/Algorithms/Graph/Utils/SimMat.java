@@ -14,7 +14,8 @@ public class SimMat implements Cloneable {
     private HashMap<Integer, String> rowIndexNameMap;
     private HashMap<Integer, String> colIndexNameMap;
     private HashMap<String,HashSet<String>> nonZerosIndexMap;
-
+    //----------------preferences---------------------
+    public boolean updateNonZerosForRow;
 
     public SimMat(HashSet<String> graph1Nodes,HashSet<String> graph2Nodes){
         mat = new DoubleMatrix(graph1Nodes.size(),graph2Nodes.size());
@@ -42,6 +43,7 @@ public class SimMat implements Cloneable {
         mat = matrix;
         rowIndexNameMap = new HashMap<>(rowMap.size());
         colIndexNameMap = new HashMap<>(colMap.size());
+
         // init row,col Map
         this.rowMap = rowMap;
         this.colMap = colMap;
@@ -67,14 +69,22 @@ public class SimMat implements Cloneable {
         this.nonZerosIndexMap = nonZerosIndexMap;
     }
 
-
-    protected void put(int i,int j,double val){
-        mat.put(i,j,val);
-    }
     public void put(String node1, String node2, double val){
+        updateNonZerosForRow(node1,node2,val);
         int i = rowMap.get(node1);
         int j = colMap.get(node2);
         mat.put(i,j,val);
+    }
+
+    private void updateNonZerosForRow(String node1, String node2, double val){
+        if(updateNonZerosForRow){
+            // update nonZeros
+            HashSet<String> nonZeros = nonZerosIndexMap.get(node1);
+            if(val!=0 && !nonZeros.contains(node2)){
+                nonZeros.add(node2);
+                nonZerosIndexMap.put(node1,nonZeros);
+            }
+        }
     }
     private void getIndexNameMap() {
 
@@ -86,7 +96,7 @@ public class SimMat implements Cloneable {
         colTree.forEach((name, index) -> colIndexNameMap.put(index, name));
         rowTree.forEach((name, index) -> rowIndexNameMap.put(index, name));
     }
-    protected double getVal(String node1,String node2){
+    public double getVal(String node1, String node2){
         int i = rowMap.get(node1);
         int j = colMap.get(node2);
         return mat.get(i,j);
@@ -181,9 +191,7 @@ public class SimMat implements Cloneable {
         return mat;
     }
 
-    public void setNonZerosIndexMap(HashMap<String,HashSet<String>>  nonZerosIndexMap) {
-        this.nonZerosIndexMap = nonZerosIndexMap;
-    }
+
 
 
     public HashMap<Integer, String> getRowIndexNameMap() {
@@ -202,10 +210,12 @@ public class SimMat implements Cloneable {
         return rowMap;
     }
 
-
-
     public HashMap<String,HashSet<String>>  getNonZerosIndexMap() {
         return nonZerosIndexMap;
+    }
+
+    public void setNonZerosIndexMap(HashMap<String,HashSet<String>>  nonZerosIndexMap) {
+        this.nonZerosIndexMap = nonZerosIndexMap;
     }
 
 

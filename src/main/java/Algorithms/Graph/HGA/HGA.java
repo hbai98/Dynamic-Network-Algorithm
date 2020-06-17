@@ -2,22 +2,19 @@ package Algorithms.Graph.HGA;
 
 
 import Algorithms.Graph.Hungarian;
-import Algorithms.Graph.Network.Edge;
+import Algorithms.Graph.NBM;
 import Algorithms.Graph.Network.EdgeHashSet;
-import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Utils.AdjList.Graph;
-import Algorithms.Graph.Utils.AdjList.SimList;
-import Algorithms.Graph.Utils.List.HNodeList;
-import Algorithms.Graph.Utils.Edge.PairedEdges;
 import Algorithms.Graph.Utils.SimMat;
 import IO.AbstractFileWriter;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
-import org.jgrapht.alg.util.Triple;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 /**
  * Refer to An Adaptive Hybrid Algorithm for Global Network Algorithms.Alignment
@@ -42,7 +39,9 @@ public class HGA {
     private double EC;
     private double score;
     private ArrayList<Double> scoreInfo;
-
+    private double edgeScore;
+    //--------------debug---------------
+    public String debugOutputPath = "src\\test\\java\\resources\\jupyter\\data\\";
     private int iterCount = 0;
 
     /**
@@ -51,7 +50,7 @@ public class HGA {
      *
      * @return the mapping result
      */
-    protected HashMap<String, String> getMappingFromHA(SimMat simMat) throws IOException {
+    protected HashMap<String, String> getMappingFromHA(SimMat simMat) {
         hungarian = new Hungarian(simMat, Hungarian.ProblemType.maxLoc);
         int[] res = hungarian.getResult();
         // map
@@ -125,7 +124,11 @@ public class HGA {
         this.graph2 = graph2;
         this.originalMat = (SimMat) simMat.clone();
         this.simMat = simMat;
+        this.edgeScore = 1.;
+        // set up preferences
+        simMat.updateNonZerosForRow = true;
     }
+
     /**
      * Step 2:
      * The similarities of neighbors for each pair of matching
@@ -142,183 +145,145 @@ public class HGA {
      * NOTICE:The matrix of the adjList will be synchronized at the same time
      * </p>
      *
-     * @param mappedEdges current mapping result, and one edge means the srcNode and tgtNode has already mapped, srcNode ->graph1, tgtNode -> graph2
+     * @param mapping current mapping result, and one edge means the srcNode and tgtNode has already mapped, srcNode ->graph1, tgtNode -> graph2
      */
-    protected void updatePairNeighbors(EdgeHashSet mappedEdges) throws IOException {
-//        NBM.neighborSimAdjust(graph1, graph2, simMat, mappedEdges);
+    protected void updatePairNeighbors(HashMap<String, String> mapping) {
+        NBM.neighborSimAdjust(graph1, graph2, simMat, mapping);
     }
-//
-//    /**
-//     * Step 3.1:
-//     * Adding topology information:
-//     * Given any two nodes ui, vj in the networks A and B,
-//     * respectively, their topological similarities are computed
-//     * based on an approach previously used for the topological
-//     * similarity of biomolecular networks.which we have
-//     * called the topological similarity parameter (TSP). The
-//     * TSP includes θij 1 and θij 2 , which are updated according
-//     * to the rule that two nodes are similar if they link or do
-//     * not link to similar nodes
-//     * <br>
-//     * <br>
-//     * <p>S(ij)n (one element of the matrix i row j col) in the n time's iteration :</p>
-//     * S(ij)t = s(ij)1 + 1/2*(θij 1 + θij 2)
-//     * <br>
-//     * <p>
-//     * θij 1:represents the average similarity between the neighbors of ui and vj,
-//     * </p>
-//     * <br>
-//     * <p>
-//     * θij 2:represents the average similarity between the non-neighbors of ui and vj.
-//     * </p>
-//     *
-//     * @param node1     one node from the graph1
-//     * @param node2     one node from the graph2
-//     * @param bioFactor bioInfo's taken (0-1)
-//     */
-//    protected void addTopology(String node1, String node2, double bioFactor) {
-//        HNodeList neighbors_1 = null;
-//        HNodeList neighbors_2 = null;
-//        assert (bioFactor >= 0 && bioFactor <= 1);
-//        // lock up
-//        if (graph1NeighborsMap.containsKey(node1)) {
-//            neighbors_1 = graph1NeighborsMap.get(node1);
-//        }
-//        if (graph2NeighborsMap.containsKey(node2)) {
-//            neighbors_2 = graph2NeighborsMap.get(node2);
-//        }
-//        if (neighbors_1 == null) {
-//            // init for both neighbors and nonNeighbors, if there're revs, make it faster.
-//            if (rev1 != null) {
-//                neighbors_1 = graph1.sortGetNeighborsList(node1, rev1);
-//            } else {
-//                neighbors_1 = graph1.sortGetNeighborsList(node1);
-//            }
-//            // save neighbors
-//            graph1NeighborsMap.put(node1, neighbors_1);
-//        }
-//        if (neighbors_2 == null) {
-//            if (rev2 != null) {
-//                neighbors_2 = graph2.sortGetNeighborsList(node2, rev2);
-//            } else {
-//                neighbors_2 = graph2.sortGetNeighborsList(node2);
-//            }
-//            // save neighbors
-//            graph2NeighborsMap.put(node2, neighbors_2);
-//        }
-//
-//        // compute topologyInfo
-//        double eNeighbors = getNeighborTopologyInfo(neighbors_1, neighbors_2);
-//        double eNonNeighbors = getNonNeighborTopologyInfo(neighbors_1, neighbors_2);
-//        // update both simList and mat
-//        double eTP = (eNeighbors + eNonNeighbors) / 2;
-//        double valToUpdate = originalMat.getValByMatName(node1, node2) * bioFactor + eTP * (1 - bioFactor);
-////        double valToUpdate = simList.getValByMatName(node1, node2) * bioFactor + eTP * (1 - bioFactor);
-//        simMat.sortAddOneNode(node1, node2, valToUpdate);
-//        simMat.updateMat(node1, node2, valToUpdate);
-//    }
-//
-//
-//    private double getNonNeighborTopologyInfo(HNodeList nei1, HNodeList nei2) {
-//        double res = 0;
-//        HashSet<String> nodes1 = graph1.getAllNodes();
-//        HashSet<String> nodes2 = graph2.getAllNodes();
-//
-//        int nonNei1Size = nodes1.size() - nei1.size() - 1;
-//        int nonNei2Size = nodes2.size() - nei2.size() - 1;
-//
-//        if (nonNei1Size != 0 && nonNei2Size != 0) {
-//            int size = (nonNei1Size + 1) * (nonNei2Size + 1);
-//            for (String node1 : nodes1) {
-//                for (String node2 : nodes2) {
-//                    //TODO
-////                    if (!nei1.findExist(node1) && !nei2.findExist(node2)) {
-////                        res += simList.getValByMatName(node1, node2);
-////                    }
-//                }
-//            }
-//            return res / size;
-//        }
-//
-//        if (nonNei1Size == 0 && nonNei2Size == 0) {
-//            int size = nodes1.size() * nodes2.size();
-//            for (String node1 : nodes1) {
-//                for (String node2 : nodes2) {
-//                    res += simMat.getValByMatName(node1, node2);
-//                }
-//            }
-//            return res / size;
-//        }
-//        return res;
-//    }
-//
-//    private double getNeighborTopologyInfo(HNodeList nei1, HNodeList nei2) {
-//        double res = 0;
-//        int nei1Size = nei1.size();
-//        int nei2Size = nei2.size();
-//        if (nei1Size != 0 && nei2Size != 0) {
-//            int size = nei1Size * nei2Size;
-//            for (Node node1 : nei1) {
-//                for (Node node2 : nei2) {
-//                    res += simMat.getValByMatName(node1.getStrName(), node2.getStrName());
-//                }
-//            }
-//            return res / size;
-//        }
-//        if (nei1Size == 0 && nei2Size == 0) {
-//            HashSet<String> nodes1 = graph1.getAllNodes();
-//            HashSet<String> nodes2 = graph2.getAllNodes();
-//            int size = nodes1.size() * nodes2.size();
-//            for (String node1 : nodes1) {
-//                for (String node2 : nodes2) {
-//                    res += simMat.getValByMatName(node1, node2);
-//                }
-//            }
-//            return res / size;
-//        }
-//        return res;
-//    }
-//
-//    /**
-//     * Step 3 - integrated all steps in process 3(Topology info):
-//     * iterate all nodes pairs to add topological information
-//     *
-//     * @param factor weight of sequence information, 0 <= factor <=1
-//     */
-//    protected void addAllTopology(double factor) throws IOException {
-//        HashSet<String> nodes1 = simMat.getRowSet();
-//        HashSet<String> nodes2 = simMat.getColSet();
-//        for (String node1 : nodes1) {
-//            for (String node2 : nodes2) {
-//                addTopology(node1, node2, factor);
-//            }
-//        }
-//    }
-//
-//    /**
-//     * This step is used to score current mapping to indicate whether there's
-//     * a need to adjust and map again
-//     * <br>
-//     * <p>The following params for evaluate the whole network mapping</p>
-//     *     <ol>
-//     *         <li>EC : Edge Correctness (EC) is often used to measure
-//     * the degree of topological similarity and
-//     * can be estimated as the percentage of matched edges</li>
-//     *
-//     *          <li>
-//     *              PE: Point and Edge Score(PE) is clearly stricter than EC because it reflects the status
-//     *              of both the node and edge matches in the mapping.
-//     *          </li>
-//     *
-//     *          <li>
-//     *               The score for an edge (the Edge Score, ES) equals zero if any of its nodes does not match
-//     *               with its similar nodes, and the score for a node (the Point Score, PS) equals zero if none of its edges has a score.
-//     *          </li>
-//     *     </ol>
-//     *
-//     * @return score, PE, EC, ES, PS
-//     */
-//    protected ArrayList<Double> scoreMapping(EdgeHashSet mapping) {
+
+    /**
+     * Step 3.1:
+     * Adding topology information:
+     * Given any two nodes ui, vj in the networks A and B,
+     * respectively, their topological similarities are computed
+     * based on an approach previously used for the topological
+     * similarity of biomolecular networks.which we have
+     * called the topological similarity parameter (TSP). The
+     * TSP includes θij 1 and θij 2 , which are updated according
+     * to the rule that two nodes are similar if they link or do
+     * not link to similar nodes
+     * <br>
+     * <br>
+     * <p>S(ij)n (one element of the matrix i row j col) in the n time's iteration :</p>
+     * S(ij)t = s(ij)1 + 1/2*(θij 1 + θij 2)
+     * <br>
+     * <p>
+     * θij 1:represents the average similarity between the neighbors of ui and vj,
+     * </p>
+     * <br>
+     * <p>
+     * θij 2:represents the average similarity between the non-neighbors of ui and vj.
+     * </p>
+     *
+     * @param node1     one node from the graph1
+     * @param node2     one node from the graph2
+     * @param bioFactor bioInfo's taken (0-1)
+     */
+    protected void addTopology(String node1, String node2, double bioFactor) {
+        assert (bioFactor >= 0 && bioFactor <= 1);
+        HashMap<String, HashSet<String>> neb1Map = graph1.getNeighborsMap();
+        HashMap<String, HashSet<String>> neb2Map = graph2.getNeighborsMap();
+        HashSet<String> neighbors_1 = neb1Map.get(node1);
+        HashSet<String> neighbors_2 = neb2Map.get(node2);
+        // compute topologyInfo
+        double eNeighbors = getNeighborTopologyInfo(neighbors_1, neighbors_2);
+        double eNonNeighbors = getNonNeighborTopologyInfo(neighbors_1, neighbors_2);
+        // update both simList and mat
+        double eTP = (eNeighbors + eNonNeighbors) / 2;
+        double valToUpdate = originalMat.getVal(node1, node2) * bioFactor + eTP * (1 - bioFactor);
+        simMat.put(node1, node2, valToUpdate);
+    }
+
+
+    protected double getNonNeighborTopologyInfo(HashSet<String> nei1, HashSet<String> nei2) {
+        double res = 0;
+        HashSet<String> nodes1 = graph1.getAllNodes();
+        HashSet<String> nodes2 = graph2.getAllNodes();
+
+        int nonNei1Size = nodes1.size() - nei1.size() - 1;
+        int nonNei2Size = nodes2.size() - nei2.size() - 1;
+
+        if (nonNei1Size != 0 && nonNei2Size != 0) {
+            int size = (nonNei1Size + 1) * (nonNei2Size + 1);
+            for (String node1 : nodes1) {
+                for (String node2 : nodes2) {
+                    if (!nei1.contains(node1) && !nei2.contains(node2)) {
+                        res += simMat.getVal(node1, node2);
+                    }
+                }
+            }
+            return res / size;
+        }
+
+        if (nonNei1Size == 0 && nonNei2Size == 0) {
+            int size = nodes1.size() * nodes2.size();
+            return simMat.getMat().sum() / size;
+        }
+        return res;
+    }
+
+    protected double getNeighborTopologyInfo(HashSet<String> nei1, HashSet<String> nei2) {
+        double res = 0;
+        HashSet<String> nodes1 = graph1.getAllNodes();
+        HashSet<String> nodes2 = graph2.getAllNodes();
+        int nei1Size = nei1.size();
+        int nei2Size = nei2.size();
+        if (nei1Size != 0 && nei2Size != 0) {
+            int size = nei1Size * nei2Size;
+            for (String node1 : nei1) {
+                for (String node2 : nei2) {
+                    res += simMat.getVal(node1, node2);
+                }
+            }
+            return res / size;
+        }
+        if (nei1Size == 0 && nei2Size == 0) {
+            int size = nodes1.size() * nodes2.size();
+            return simMat.getMat().sum() / size;
+        }
+        return res;
+    }
+
+    /**
+     * Step 3 - integrated all steps in process 3(Topology info):
+     * iterate all nodes pairs to add topological information
+     *
+     * @param factor weight of sequence information, 0 <= factor <=1
+     */
+    protected void addAllTopology(double factor) {
+        HashSet<String> nodes1 = (HashSet<String>) simMat.getRowMap().keySet();
+        HashSet<String> nodes2 = (HashSet<String>) simMat.getColMap().keySet();
+        for (String node1 : nodes1) {
+            for (String node2 : nodes2) {
+                addTopology(node1, node2, factor);
+            }
+        }
+    }
+
+    /**
+     * This step is used to score current mapping to indicate whether there's
+     * a need to adjust and map again
+     * <br>
+     * <p>The following params for evaluate the whole network mapping</p>
+     *     <ol>
+     *         <li>EC : Edge Correctness (EC) is often used to measure
+     * the degree of topological similarity and
+     * can be estimated as the percentage of matched edges</li>
+     *
+     *          <li>
+     *              PE: Point and Edge Score(PE) is clearly stricter than EC because it reflects the status
+     *              of both the node and edge matches in the mapping.
+     *          </li>
+     *
+     *          <li>
+     *               The score for an edge (the Edge Score, ES) equals zero if any of its nodes does not match
+     *               with its similar nodes, and the score for a node (the Point Score, PS) equals zero if none of its edges has a score.
+     *          </li>
+     *     </ol>
+     *
+     * @return score, PE, EC, ES, PS
+     */
+//    protected ArrayList<Double> scoreMapping(HashMap<String, String> mapping) {
 //        // edge correctness EC
 //        double EC = getEC(mapping);
 //        // point and edge score PE
@@ -330,18 +295,15 @@ public class HGA {
 //        // result
 //        return new ArrayList<>(Arrays.asList(score, PE, EC, ES, PS));
 //    }
-//
-//    private ArrayList<Double> getES_PS(EdgeHashSet mapping) {
-//        // ES
-//        EdgeHashSet edges1 = graph1.getAllEdges();
-//        EdgeHashSet edges2 = graph2.getAllEdges();
+
+//    protected ArrayList<Double> getES_PS(HashMap<String, String> mapping) {
 //        // edgeScore set to 1.0
-//        double ES = getES(edges1, edges2, mapping, 1.);
+//        double ES = getES(mapping, edgeScore);
 //        double PS = getPS(mapping);
 //        return new ArrayList<>(Arrays.asList(ES, PS));
 //    }
 //
-//    private double getPS(EdgeHashSet mapping) {
+//    protected double getPS(EdgeHashSet mapping) {
 //        double PS = 0;
 //        if (pairedEdges == null) {
 //            pairedEdges = getPairedEdges(graph1.getAllEdges(), graph2.getAllEdges(), mapping).getFirst();
@@ -366,7 +328,7 @@ public class HGA {
 //    }
 //
 //
-//    private double getES(EdgeHashSet edges1, EdgeHashSet edges2, EdgeHashSet mapping, double edgeScore) {
+//    protected double getES(HashMap<String, String> mapping, double edgeScore) {
 //        double ES = 0;
 //        // check edge size to find a better algorithm
 //        if (edges1.size() <= edges2.size()) {
@@ -410,60 +372,34 @@ public class HGA {
 //        }
 //        return ES / 2;
 //    }
-//
-//
-//    public double getEC(EdgeHashSet mapping) {
-//        EdgeHashSet edges1 = graph1.getAllEdges();
-//        EdgeHashSet edges2 = graph2.getAllEdges();
-//        Pair<PairedEdges, Integer> res = getPairedEdges(edges1, edges2, mapping);
-//        int count = res.getSecond();
-//        pairedEdges = res.getFirst();
-//        return (float) count / edges1.size();
-//    }
-//
-//    private Pair<PairedEdges, Integer> getPairedEdges(EdgeHashSet edges1, EdgeHashSet edges2, EdgeHashSet mapping) {
-//        int count = 0;
-//        PairedEdges edges = new PairedEdges();
-//        // check edge size to find a better algorithm
-//        if (edges1.size() <= edges2.size()) {
-//            for (Edge edge1 : edges1) {
-//                // find relevant edge in the mapping
-//                Edge srcEdge = mapping.findSrcEdge(edge1.getSource());
-//                Edge tgtEdge = mapping.findSrcEdge(edge1.getTarget());
-//                if (srcEdge != null && tgtEdge != null) {
-//                    // node in graph to map
-//                    Node src = srcEdge.getTarget();
-//                    Node tgt = tgtEdge.getTarget();
-//                    Edge edge2 = new Edge(src, tgt);
-//                    if (edges2.contains(edge2)) {
-//                        // mapped
-//                        count++;
-//                        edges.add(new Pair<>(edge1, edge2));
-//                    }
-//                }
-//            }
-//        } else {
-//            for (Edge edge2 : edges2) {
-//                // find relevant edge in the mapping
-//                Edge srcEdge = mapping.findTgtEdge(edge2.getSource());
-//                Edge tgtEdge = mapping.findTgtEdge(edge2.getTarget());
-//                if (srcEdge != null && tgtEdge != null) {
-//                    // node in graph to map
-//                    Node src = srcEdge.getSource();
-//                    Node tgt = tgtEdge.getSource();
-//                    Edge edge1 = new Edge(src, tgt);
-//                    if (edges1.contains(edge1)) {
-//                        // mapped
-//                        count++;
-//                        edges.add(new Pair<>(edge1, edge2));
-//                    }
-//                }
-//            }
-//        }
-//        return new Pair<>(edges, count);
-//    }
-//
-//
+    protected double getEC(HashMap<String, String> mapping) {
+        HashMap<String, HashSet<String>> neb1Map = graph1.getNeighborsMap();
+        HashMap<String, HashSet<String>> neb2Map = graph2.getNeighborsMap();
+        // toMap will decrease when nodes have been checked
+        HashSet<String> toMap = new HashSet<>(mapping.keySet());
+        AtomicInteger count = new AtomicInteger();
+        for (Iterator<String> iterator = toMap.iterator(); iterator.hasNext(); ) {
+            String n1 = iterator.next();
+            String n1_ = mapping.get(n1);
+            iterator.remove();
+            HashSet<String> nebs = neb1Map.get(n1);
+            // overlap -> one edge in graph1(contains n1 as one node)
+            Collection<String> edge1s = nebs.stream().filter(toMap::contains).collect(Collectors.toList());
+            if (edge1s.size() == 0) {
+                continue;
+            }
+            // check graph2 -> have the corresponding "edge"
+            edge1s.forEach(n2 -> {
+                String n2_ = mapping.get(n2);
+                if (neb2Map.get(n1_).contains(n2_)) {
+                    count.getAndIncrement();
+                }
+            });
+        }
+        return (double) count.get() / graph1.getEdgeCount();
+    }
+
+
 //    /**
 //     * Step 4: - check if the condition is passed
 //     * Continue to step 2 until one of the following conditions
@@ -509,7 +445,7 @@ public class HGA {
      * @param tolerance error tolerance compared with the last matrix
      * @param h         row has at least h nonzero entries
      */
-    public void run(double factor, double tolerance, int h, boolean forcedMappingForSame) throws IOException {
+    public void run(double factor, double tolerance, int h, boolean forcedMappingForSame) {
         assert (simMat != null);
         EdgeHashSet forcedPart = null;
         // stacks for simMat converge
@@ -674,28 +610,21 @@ public class HGA {
 //        return result;
 //    }
 
-//    private void debug_outPut(DoubleMatrix matrix,double... dif) throws FileNotFoundException {
-//        String outputPath = "src\\test\\java\\resources\\jupyter\\data\\";
-//        Vector<String> matrixVec = new Vector<>();
-//        Vector<String> mappingVec = new Vector<>();
+//    public static void debug_outPut(boolean scoring) throws FileNotFoundException {
+
 //        Vector<String> scoreVec = new Vector<>();
+//        Vector<String> matrixVec = new Vector<>();
+////        Vector<String> mappingVec = new Vector<>();
 //        AbstractFileWriter writer = new AbstractFileWriter() {
 //            @Override
 //            public void write(Vector<String> context, boolean closed) {
 //                super.write(context, false);
 //            }
 //        };
+//        if(scoring){
 //
-//        double[][] mat = matrix.toArray2();
-//        for (double[] doubles : mat) {
-//            for (int j = 0; j < mat[0].length; j++) {
-//                matrixVec.add(doubles[j] + " ");
-//            }
-//            matrixVec.add("\n");
 //        }
-//        writer.setPath(outputPath + "matrix_" + iterCount + ".txt");
-//        writer.write(matrixVec, false);
-//
+
 //        mapping.forEach(e -> {
 //            mappingVec.add(e.getSource().getStrName() + " ");
 //            mappingVec.add(e.getTarget().getStrName());
@@ -721,6 +650,28 @@ public class HGA {
 //        writer.write(scoreVec, true);
 //    }
 
+    public void outPutMatrix(SimMat simMat) throws FileNotFoundException {
+        AbstractFileWriter writer = new AbstractFileWriter() {
+            @Override
+            public void write(Vector<String> context, boolean closed) {
+                super.write(context, true);
+            }
+        };
+        String path = debugOutputPath + "small//";
+        Vector<String> matrixVec = new Vector<>();
+        DoubleMatrix matrix = simMat.getMat();
+        double[][] mat = matrix.toArray2();
+        for (double[] doubles : mat) {
+            for (int j = 0; j < mat[0].length; j++) {
+                matrixVec.add(doubles[j] + " ");
+            }
+            matrixVec.add("\n");
+        }
+        writer.setPath(debugOutputPath + "matrix_" + iterCount + ".txt");
+        writer.write(matrixVec, false);
+
+    }
+
     public double getEC() {
         return EC;
     }
@@ -739,5 +690,13 @@ public class HGA {
 
     public double getScore() {
         return score;
+    }
+
+    public double getEdgeScore() {
+        return edgeScore;
+    }
+
+    public void setEdgeScore(double edgeScore) {
+        this.edgeScore = edgeScore;
     }
 }

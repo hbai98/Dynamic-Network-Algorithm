@@ -15,6 +15,8 @@ public class Graph extends AbstractAdjList {
     private HashMap<String, HashSet<String>> neighborsMap;
 
     HashMap<String, Integer> rowMap;
+    private int edgeCount = -1;
+
     public Graph(){
         super();
         rowMap = new HashMap<>();
@@ -71,5 +73,20 @@ public class Graph extends AbstractAdjList {
     }
     public HashMap<String, HashSet<String>> getNeighborsMap() {
         return neighborsMap;
+    }
+    public int getEdgeCount(){
+        if(edgeCount == -1){
+            int c = 0;
+            for (int i = 0; i < size(); i++) {
+                c+=get(i).size();
+            }
+            edgeCount = c;
+            return c;
+        }
+        return edgeCount;
+    }
+
+    public void setNeighborMap(HashMap<String, HashSet<String>> graphNeighbors) {
+        this.neighborsMap = graphNeighbors;
     }
 }

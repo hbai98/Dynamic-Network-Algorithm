@@ -114,7 +114,7 @@ public class GraphFileReader extends AbstractFileReader {
      */
     private SimMat readToSimMat(BufferedReader input, HashSet<String> graph1Nodes, HashSet<String> graph2Nodes, boolean closeWhenFinished) throws IOException {
         init();
-        SimMat simMat = new SimMat(graph1Nodes, graph2Nodes);
+        SimMat simMat = new SimMat(graph1Nodes, graph2Nodes,nonZerosMap);
         // matches sequence of one or more whitespace characters.
         setSplitter("\\s+");
         Vector<String> sifLine = new Vector<>();
@@ -136,7 +136,7 @@ public class GraphFileReader extends AbstractFileReader {
         if (closeWhenFinished) {
             input.close();
         }
-        // set simMat
+        // set up simMat
         simMat.setNonZerosIndexMap(nonZerosMap);
         return simMat;
     }
@@ -174,6 +174,8 @@ public class GraphFileReader extends AbstractFileReader {
         if (closeWhenFinished) {
             input.close();
         }
+        // set up graph
+        graph.setNeighborMap(graphNeighbors);
         return graph;
     }
 
@@ -260,6 +262,10 @@ public class GraphFileReader extends AbstractFileReader {
     }
 
     private void init() {
+        sourceNodesSet = null;
+        targetNodesSet = null;
+        graphNeighbors = null;
+        nonZerosMap = null;
         // row index
         // clean or init
         if (recordSrcAndTarget) {
@@ -272,7 +278,6 @@ public class GraphFileReader extends AbstractFileReader {
         if (recordNonZeros) {
             nonZerosMap = new HashMap<>();
         }
-
     }
 
 
@@ -307,7 +312,7 @@ public class GraphFileReader extends AbstractFileReader {
             String name = sifLine.get(0);
             if (isNumeric(sifLine.get(1))) {
                 double weight = Double.parseDouble(sifLine.get(1));
-                row = simList.sortAddOneNode(name, name, weight);
+                simList.sortAddOneNode(name, name, weight);
                 // record if required
                 record(name, name, weight);
             }
@@ -315,7 +320,7 @@ public class GraphFileReader extends AbstractFileReader {
             else {
                 String targetName = sifLine.get(1);
                 if (isIdentifier(targetName)) {
-                    row = simList.sortAddOneNode(name, targetName, 0);
+                    simList.sortAddOneNode(name, targetName, 0);
                     // record if required
                     record(name, name, 0.);
                 } else {
@@ -342,7 +347,7 @@ public class GraphFileReader extends AbstractFileReader {
                 double weight = Double.parseDouble(input);
                 // create edge & add
                 // Contain the lexicographical order to prevent the case of same edges.
-                row = simList.sortAddOneNode(srcName, tgtName, weight);
+                simList.sortAddOneNode(srcName, tgtName, weight);
                 // record if required
                 record(srcName, tgtName, weight);
             }
