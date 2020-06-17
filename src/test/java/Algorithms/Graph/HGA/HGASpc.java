@@ -1,6 +1,8 @@
 package Algorithms.Graph.HGA;
 
+import Algorithms.Graph.Utils.AdjList.Graph;
 import Algorithms.Graph.Utils.AdjList.SimList;
+import Algorithms.Graph.Utils.SimMat;
 import IO.GraphFileReader;
 import Algorithms.Graph.NBM;
 import Algorithms.Graph.Network.Edge;
@@ -11,15 +13,46 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("The HGA is able to ")
 class HGASpc extends GraphFileReaderSpec {
     HGA hga;
-    SimList graph1;
-    SimList graph2;
-    SimList simList;
-    SimList rev1;
+    @BeforeEach
+    void init() throws IOException {
+        GraphFileReader reader = new GraphFileReader(true,true,false);
+        Graph graph1 = reader.readToGraph("src/test/java/resources/AlgTest/HGA/graph1.txt",false);
+        Graph graph2 = reader.readToGraph("src/test/java/resources/AlgTest/HGA/graph2.txt",false);
+        reader.setRecordNonZeros(true);
+        reader.setRecordNeighbors(false);
+        SimMat simMat = reader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt",graph1.getAllNodes(),graph2.getAllNodes(),true);
+        hga = new HGA(simMat,graph1,graph2);
+    }
+    @DisplayName("Greedily map")
+    @Test
+    void greedMap(){
+        HashMap<String,String> preMap = new HashMap<>();
+        preMap.put("D","F");
+        preMap.put("F","I");
+        HGA.greedyMap(hga.simMat,preMap);
+    }
+    @DisplayName("Edge correctness")
+    @Test
+    void getEC(){
+        HashMap<String,String> mapping = new HashMap<>();
+        mapping.put("W","A");
+        mapping.put("Q","W");
+        mapping.put("I","H");
+        mapping.put("G","M");
+        assertEquals((double)2/15,hga.getEC(mapping));
+    }
+    @DisplayName("topo")
+    @Test
+    void topo(){
+       hga.addTopology("A","I",0.5);
+       assertEquals((double)(5.7/28+1.3/3)/2/2,hga.simMat.getVal("A","I"));
+    }
 //    @BeforeEach
 //    void init() throws IOException {
 //        GraphFileReader reader = new GraphFileReader();

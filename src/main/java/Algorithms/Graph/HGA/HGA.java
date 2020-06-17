@@ -31,6 +31,8 @@ public class HGA {
     protected SimMat simMat;
     protected Graph graph1;
     protected Graph graph2;
+    //bioInfo's taken (0-1)
+    protected double bioFactor;
     //---------------mapping result-------------
     private HashMap<String, String> mapping;
     private double PE;
@@ -119,7 +121,7 @@ public class HGA {
      * @param graph2 adjacent list of graph2
      * @param simMat similarity matrix, headNode->graph1, listNodes -> graph2
      */
-    public HGA(SimMat simMat, Graph graph1, Graph graph2) {
+    public HGA(SimMat simMat, Graph graph1, Graph graph2,double bioFactor) {
         this.graph1 = graph1;
         this.graph2 = graph2;
         this.originalMat = (SimMat) simMat.clone();
@@ -127,6 +129,7 @@ public class HGA {
         this.edgeScore = 1.;
         // set up preferences
         simMat.updateNonZerosForRow = true;
+        setBioFactor(bioFactor);
     }
 
     /**
@@ -177,16 +180,17 @@ public class HGA {
      *
      * @param node1     one node from the graph1
      * @param node2     one node from the graph2
-     * @param bioFactor bioInfo's taken (0-1)
      */
-    protected void addTopology(String node1, String node2, double bioFactor) {
-        assert (bioFactor >= 0 && bioFactor <= 1);
+    protected void addTopology(String node1, String node2) {
         HashMap<String, HashSet<String>> neb1Map = graph1.getNeighborsMap();
         HashMap<String, HashSet<String>> neb2Map = graph2.getNeighborsMap();
         HashSet<String> neighbors_1 = neb1Map.get(node1);
         HashSet<String> neighbors_2 = neb2Map.get(node2);
         // compute topologyInfo
         double eNeighbors = getNeighborTopologyInfo(neighbors_1, neighbors_2);
+        // add node1,node2
+        neighbors_1.add(node1);
+        neighbors_2.add(node2);
         double eNonNeighbors = getNonNeighborTopologyInfo(neighbors_1, neighbors_2);
         // update both simList and mat
         double eTP = (eNeighbors + eNonNeighbors) / 2;
@@ -200,9 +204,12 @@ public class HGA {
         HashSet<String> nodes1 = graph1.getAllNodes();
         HashSet<String> nodes2 = graph2.getAllNodes();
 
-        int nonNei1Size = nodes1.size() - nei1.size() - 1;
-        int nonNei2Size = nodes2.size() - nei2.size() - 1;
+        int nonNei1Size = nodes1.size() - nei1.size();
+        int nonNei2Size = nodes2.size() - nei2.size();
 
+        // get the rest nodes
+        nodes1.removeAll(nei1);
+        nodes2.removeAll(nei2);
         if (nonNei1Size != 0 && nonNei2Size != 0) {
             int size = (nonNei1Size + 1) * (nonNei2Size + 1);
             for (String node1 : nodes1) {
@@ -217,7 +224,7 @@ public class HGA {
 
         if (nonNei1Size == 0 && nonNei2Size == 0) {
             int size = nodes1.size() * nodes2.size();
-            return simMat.getMat().sum() / size;
+            return simMat.sum() / size;
         }
         return res;
     }
@@ -239,7 +246,7 @@ public class HGA {
         }
         if (nei1Size == 0 && nei2Size == 0) {
             int size = nodes1.size() * nodes2.size();
-            return simMat.getMat().sum() / size;
+            return simMat.sum() / size;
         }
         return res;
     }
@@ -248,14 +255,13 @@ public class HGA {
      * Step 3 - integrated all steps in process 3(Topology info):
      * iterate all nodes pairs to add topological information
      *
-     * @param factor weight of sequence information, 0 <= factor <=1
      */
-    protected void addAllTopology(double factor) {
+    protected void addAllTopology() {
         HashSet<String> nodes1 = (HashSet<String>) simMat.getRowMap().keySet();
         HashSet<String> nodes2 = (HashSet<String>) simMat.getColMap().keySet();
         for (String node1 : nodes1) {
             for (String node2 : nodes2) {
-                addTopology(node1, node2, factor);
+                addTopology(node1, node2);
             }
         }
     }
@@ -694,6 +700,12 @@ public class HGA {
 
     public double getEdgeScore() {
         return edgeScore;
+    }
+
+
+    public void setBioFactor(double bioFactor) {
+        assert (bioFactor >= 0 && bioFactor <= 1);
+        this.bioFactor = bioFactor;
     }
 
     public void setEdgeScore(double edgeScore) {

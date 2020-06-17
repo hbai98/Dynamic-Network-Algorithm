@@ -4,6 +4,7 @@ import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class SimMat implements Cloneable {
     private DoubleMatrix mat;
@@ -175,6 +176,18 @@ public class SimMat implements Cloneable {
             }
         }
         return res;
+    }
+
+    /**
+     * sum up the matrix non-zero entries
+     * @return sum val
+     */
+    public double sum(){
+        AtomicReference<Double> sum = new AtomicReference<>((double) 0);
+        nonZerosIndexMap.forEach((k,v)->{
+            v.forEach(n-> sum.updateAndGet(v1 -> v1 + getVal(k, n)));
+        });
+        return sum.get();
     }
 
     @Override
