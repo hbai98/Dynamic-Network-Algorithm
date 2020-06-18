@@ -248,14 +248,22 @@ public class SimMat implements Cloneable {
         return this;
     }
 
-    @Override
-    public Object clone() {
-        try {
-            return super.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-        return null;
+    /**
+     * Deep copy
+     * @return
+     */
+    public Object dup() {
+        DoubleMatrix mat = this.mat.dup();
+        //------------------similarity matrix----------
+        HashMap<String, Integer> rowMap = new HashMap<>(this.rowMap);
+        HashMap<String, Integer> colMap = new HashMap<>(this.colMap);
+        //-----------------index name map---------------------
+        HashMap<Integer, String> rowIndexNameMap = new HashMap<>(this.rowIndexNameMap);
+        HashMap<Integer, String> colIndexNameMap = new HashMap<>(this.colIndexNameMap);
+        HashMap<String, HashSet<String>> nonZerosIndexMap = new HashMap<>(this.nonZerosIndexMap);
+        SimMat res = new SimMat(rowMap,rowIndexNameMap,colMap,colIndexNameMap,nonZerosIndexMap,mat);
+        res.updateNonZerosForRow = this.updateNonZerosForRow;
+        return res;
     }
 
     public DoubleMatrix getMat() {

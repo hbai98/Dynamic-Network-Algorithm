@@ -4,7 +4,6 @@ package Algorithms.Graph.HGA;
 import Algorithms.Graph.Hungarian;
 import Algorithms.Graph.NBM;
 import Algorithms.Graph.Network.Edge;
-import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Utils.AdjList.Graph;
 import Algorithms.Graph.Utils.SimMat;
 import IO.AbstractFileWriter;
@@ -12,7 +11,6 @@ import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
@@ -42,7 +40,6 @@ public class HGA {
     private double PS;
     private double EC;
     private double score;
-    private ArrayList<Double> scoreInfo;
     private double edgeScore;
     //--------------debug---------------
     public String debugOutputPath = "src\\test\\java\\resources\\jupyter\\data\\";
@@ -123,10 +120,10 @@ public class HGA {
      * @param graph2 adjacent list of graph2
      * @param simMat similarity matrix, headNode->graph1, listNodes -> graph2
      */
-    public HGA(SimMat simMat, Graph graph1, Graph graph2,double bioFactor) {
+    public HGA(SimMat simMat, Graph graph1, Graph graph2, double bioFactor) {
         this.graph1 = graph1;
         this.graph2 = graph2;
-        this.originalMat = (SimMat) simMat.clone();
+        this.originalMat = (SimMat) simMat.dup();
         this.simMat = simMat;
         this.edgeScore = 1.;
         // set up preferences
@@ -179,8 +176,8 @@ public class HGA {
      * θij 2:represents the average similarity between the non-neighbors of ui and vj.
      * </p>
      *
-     * @param node1     one node from the graph1
-     * @param node2     one node from the graph2
+     * @param node1 one node from the graph1
+     * @param node2 one node from the graph2
      */
     protected void addTopology(String node1, String node2) {
         HashMap<String, HashSet<String>> neb1Map = graph1.getNeighborsMap();
@@ -255,7 +252,6 @@ public class HGA {
     /**
      * Step 3 - integrated all steps in process 3(Topology info):
      * iterate all nodes pairs to add topological information
-     *
      */
     protected void addAllTopology() {
         HashSet<String> nodes1 = (HashSet<String>) simMat.getRowMap().keySet();
@@ -287,29 +283,27 @@ public class HGA {
      *               with its similar nodes, and the score for a node (the Point Score, PS) equals zero if none of its edges has a score.
      *          </li>
      *     </ol>
-     *
      */
     protected void scoreMapping(HashMap<String, String> mapping) {
         // edge correctness EC
-        Vector<Pair<Edge,Edge>> mappingEdges = setEC(mapping);
+        Vector<Pair<Edge, Edge>> mappingEdges = setEC(mapping);
         // point and edge score PE
         ES = getES(mappingEdges);
         PS = getPS(mappingEdges);
-        PE = ES/2 + PS;
+        PE = ES / 2 + PS;
         score = 100 * EC + PE;
     }
 
     private double getES(Vector<Pair<Edge, Edge>> mappingEdges) {
         AtomicReference<Double> ES = new AtomicReference<>((double) 0);
-        for (Iterator<Pair<Edge,Edge>> iterator = mappingEdges.iterator(); iterator.hasNext(); ) {
-            Pair<Edge,Edge> map = iterator.next();
+        for (Iterator<Pair<Edge, Edge>> iterator = mappingEdges.iterator(); iterator.hasNext(); ) {
+            Pair<Edge, Edge> map = iterator.next();
             Edge edge1 = map.getFirst();
             Edge edge2 = map.getSecond();
-            if(simMat.getVal(edge1.getSource().getStrName(),edge2.getSource().getStrName())>0 &&
-                    simMat.getVal(edge1.getTarget().getStrName(),edge2.getTarget().getStrName())>0){
+            if (simMat.getVal(edge1.getSource().getStrName(), edge2.getSource().getStrName()) > 0 &&
+                    simMat.getVal(edge1.getTarget().getStrName(), edge2.getTarget().getStrName()) > 0) {
                 ES.updateAndGet(v -> v + edgeScore);
-            }
-            else{
+            } else {
                 iterator.remove();
             }
         }
@@ -317,12 +311,11 @@ public class HGA {
     }
 
     /**
-     *
      * @param mappingEdges getES() filters out unqualified edges
      */
-    protected double getPS(Vector<Pair<Edge,Edge>> mappingEdges) {
+    protected double getPS(Vector<Pair<Edge, Edge>> mappingEdges) {
         AtomicReference<Double> PS = new AtomicReference<>((double) 0);
-        mappingEdges.forEach(map->{
+        mappingEdges.forEach(map -> {
             Edge edge1 = map.getFirst();
             Edge edge2 = map.getSecond();
             String n1_1 = edge1.getSource().getStrName();
@@ -338,13 +331,13 @@ public class HGA {
     /**
      * @return set edge correctness and mapping edges[Pair:{graph1Source,graph1Target},{graph2Source,graph2Target}]
      */
-    protected Vector<Pair<Edge,Edge>> setEC(HashMap<String, String> mapping) {
+    protected Vector<Pair<Edge, Edge>> setEC(HashMap<String, String> mapping) {
         HashMap<String, HashSet<String>> neb1Map = graph1.getNeighborsMap();
         HashMap<String, HashSet<String>> neb2Map = graph2.getNeighborsMap();
         // toMap will decrease when nodes have been checked
         HashSet<String> toMap = new HashSet<>(mapping.keySet());
         AtomicInteger count = new AtomicInteger();
-        Vector<Pair<Edge,Edge>> mappingEdges = new Vector<>();
+        Vector<Pair<Edge, Edge>> mappingEdges = new Vector<>();
         for (Iterator<String> iterator = toMap.iterator(); iterator.hasNext(); ) {
             String n1 = iterator.next();
             String n1_ = mapping.get(n1);
@@ -360,7 +353,7 @@ public class HGA {
                 String n2_ = mapping.get(n2);
                 if (neb2Map.get(n1_).contains(n2_)) {
                     count.getAndIncrement();
-                    mappingEdges.add(new Pair<>(new Edge(n1,n2),new Edge(n1_,n2_)));
+                    mappingEdges.add(new Pair<>(new Edge(n1, n2), new Edge(n1_, n2_)));
                 }
             });
         }
@@ -415,42 +408,37 @@ public class HGA {
      * @param h         row has at least h nonzero entries
      */
     public void run(double factor, double tolerance, int h, boolean forcedMappingForSame) {
-        EdgeHashSet forcedPart = null;
+        HashMap<String, String> forcedPart;
         // stacks for simMat converge
         Stack<DoubleMatrix> stackMat = new Stack<>();
         Stack<Double> stackScore = new Stack<>();
+        boolean checkPassed;
 
-//        // orced mapping
-//        if (forcedMappingForSame) {
-//            Triple<EdgeHashSet, EdgeHashSet, SimList> res = forcedMap();
-//            // hungarian for the res
-//            mapping = res.getFirst();
-//            // forced
-//            forcedPart = res.getSecond();
-//            // mapping
-//            mapping.addAll(forcedPart);
-//        } else {
-//            // get the initial similarity matrix S0
-//            mapping = getMappingFromHA(simMat);
-//        }
-//        // score mapping
-//        scoreInfo = scoreMapping(mapping);
-//        // debug
-//        debug_outPut(simMat.getMatrix());
-//        // record score
-//        stackScore.push(scoreInfo.get(0));
-//
-//        // iterate
-//        double maxScore = scoreInfo.get(0);
-//        boolean checkPassed;
-//        // clone Matrix, matrix is synchronized in every steps below, so it's fast
-//        DoubleMatrix preMat = simMat.getMatrix();
-//        // add to top
-//        stackMat.push(preMat);
-//        // update similarity matrix
-//        do {
-//            // step 2
-//            updatePairNeighbors(mapping);
+        // forced mapping
+        if (forcedMappingForSame) {
+            Pair<HashMap<String, String>, HashMap<String, String>> res = forcedMap();
+            // hungarian for the res
+            mapping = res.getFirst();
+            // forced
+            forcedPart = res.getSecond();
+            // mapping
+            mapping.putAll(forcedPart);
+        } else {
+            // get the initial similarity matrix S0
+            mapping = getMappingFromHA(simMat);
+        }
+        // score mapping
+        scoreMapping(mapping);
+        // record score
+        stackScore.push(score);
+        // iterating begin---------------------------------------------------------
+        double maxScore = score;
+        DoubleMatrix preMat = simMat.getMat();
+        // add to stack top
+        stackMat.push(preMat);
+        do {
+            // step 2
+            updatePairNeighbors(mapping);
 //            // step 3 (heavy)
 //            addAllTopology(factor);
 //            // add to top
@@ -475,11 +463,11 @@ public class HGA {
 //                mapping = (EdgeHashSet) mapping.clone();
 //            }
 //            iterCount++;
-//            // step 4
-//            checkPassed = checkPassed(stackMat, stackScore, tolerance);
-//        } while (!checkPassed);
-//
-//        this.score = maxScore;
+            // step 4
+            checkPassed = checkPassed(stackMat, stackScore, tolerance);
+        } while (!checkPassed);
+
+        this.score = maxScore;
     }
 //
 //    /**
@@ -517,7 +505,7 @@ public class HGA {
     /**
      * @return mapping result hungarian ; forced
      */
-    private Pair<HashMap<String,String>, HashMap<String,String>> forcedMap() {
+    private Pair<HashMap<String, String>, HashMap<String, String>> forcedMap() {
         // row to map
         Set<String> rowToMap = simMat.getRowSet();
         rowToMap.removeAll(simMat.getColSet());
@@ -525,13 +513,13 @@ public class HGA {
         Set<String> colToMap = simMat.getColSet();
         colToMap.removeAll(simMat.getRowSet());
         // set up force mapping
-        HashMap<String,String> forceMap = new HashMap<>();
+        HashMap<String, String> forceMap = new HashMap<>();
         Set<String> sameNodes = simMat.getRowSet();
         sameNodes.retainAll(simMat.getColSet());
         sameNodes.forEach(n -> forceMap.put(n, n));
         // map rest of the matrix by Hungarian
         // tmpList matrix has to be updated to be synchronized
-        return new Pair<>(getMappingFromHA(simMat.getPart(rowToMap,colToMap)), forceMap);
+        return new Pair<>(getMappingFromHA(simMat.getPart(rowToMap, colToMap)), forceMap);
     }
 
     public HashMap<String, String> getMapping() {
@@ -607,7 +595,7 @@ public class HGA {
 //        writer.write(scoreVec, true);
 //    }
 
-    public void outPutMatrix(SimMat simMat) throws FileNotFoundException {
+    public void outPutMatrix() throws FileNotFoundException {
         AbstractFileWriter writer = new AbstractFileWriter() {
             @Override
             public void write(Vector<String> context, boolean closed) {
@@ -626,7 +614,6 @@ public class HGA {
         }
         writer.setPath(debugOutputPath + "matrix_" + iterCount + ".txt");
         writer.write(matrixVec, false);
-
     }
 
     public double setEC() {

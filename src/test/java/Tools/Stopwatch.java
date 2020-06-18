@@ -13,5 +13,11 @@ public class Stopwatch {
         long now = System.currentTimeMillis();
         return (now - start)/1000.0;
     }
+    public void outElapsedBySecond(){
+        System.out.println("Time:"+elapsedTime()+"second");
+    }
+    public void outElapsedByMiniSecond(){
+        System.out.println("Time:"+elapsedTime()*1000+"ms");
+    }
 
 }

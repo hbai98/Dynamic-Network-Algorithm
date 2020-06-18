@@ -5,7 +5,6 @@ import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Utils.AdjList.Graph;
-import Algorithms.Graph.Utils.List.HNodeList;
 import Algorithms.Graph.Utils.SimMat;
 
 import java.util.*;
@@ -198,6 +197,7 @@ public class NBM {
      * reward is defined in HGA.
      */
     public static void neighborSimAdjust(Graph graph1, Graph graph2, SimMat simMat, HashMap<String, String> mapping) {
+        // distinguish the result simMat from the indexing one
         HashMap<String, HashSet<String>> neb1Map = graph1.getNeighborsMap();
         HashMap<String, HashSet<String>> neb2Map = graph2.getNeighborsMap();
         for (Map.Entry<String, String> entry : mapping.entrySet()) {
@@ -207,15 +207,14 @@ public class NBM {
             // direct neighbors of the head node
             HashSet<String> neb1 = neb1Map.get(node1);
             HashSet<String> neb2 = neb2Map.get(node2);
-            for (String s1 : neb1) {
+            neb1.parallelStream().forEach(s1 -> {
                 int nebNumbNode1 = neb1Map.get(s1).size();
                 double reward = simUV / nebNumbNode1;
-                for (String s2 : neb2) {
-                    double newWeight = simMat.getVal(s1, s2) + reward;
-                    simMat.put(s1, s2, newWeight);
-
-                }
-            }
+                neb2.parallelStream().forEach(s2->{
+                        double newWeight = simMat.getVal(s1, s2) + reward;
+                        simMat.put(s1, s2, newWeight);
+                });
+            });
         }
     }
 

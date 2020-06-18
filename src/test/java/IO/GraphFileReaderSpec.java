@@ -5,6 +5,7 @@ import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Utils.AdjList.Graph;
 import Algorithms.Graph.Utils.AdjList.SimList;
 import Algorithms.Graph.Utils.List.HNodeList;
+import Algorithms.Graph.Utils.SimMat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("SIFFileReader is")
 public class GraphFileReaderSpec {
-    SimList graph;
+    SimMat graph;
     GraphFileReader reader;
     @DisplayName("able to use pattern to split. ")
     @Test
@@ -84,20 +85,14 @@ public class GraphFileReaderSpec {
 //        GraphFileReader reader = new GraphFileReader();
 //        SimList graph = reader.readToSimList("C:\\Users\\Haotian Bai\\Desktop\\cov19\\A1.tsv");
 //    }
-//    // ---------------------------
-//    // below are some base test class utility methods to validate if the outcome is consistent with your expectation.
+    // ---------------------------
+    // below are some base test class utility methods to validate if the outcome is consistent with your expectation.
 //    protected SimList readAndAssertNodeNumber(int expected, String filePath) throws IOException {
 //        if(reader == null) reader = new GraphFileReader();
-//        if(graph == null) graph = reader.readToSimList(filePath);
+//        if(graph == null) graph = reader.readToGraph(filePath);
 //        assertEquals(expected,graph.getAllNodes().size(), "nodes' number is not right.");
 //        return graph;
 //    }
-//
-//    protected SimList readAdjList(String filePath)throws IOException{
-//        if(reader == null) reader = new GraphFileReader();
-//        return reader.readToSimList(filePath);
-//    }
-//
 //    protected SimList readAndAssertEdgeNumber(int expected, String filePath) throws IOException {
 //        if(reader == null) reader = new GraphFileReader();
 //        if(graph == null) graph = reader.readToSimList(filePath);
