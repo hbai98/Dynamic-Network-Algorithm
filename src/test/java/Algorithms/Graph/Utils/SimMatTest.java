@@ -10,6 +10,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,6 +35,16 @@ class SimMatTest {
     @DisplayName("sum mat")
     @Test
     void sum(){
-       assertEquals(simMat.getMat().sum(),simMat.sum());
+       //assertEquals(simMat.getMat().sum(),simMat.sum());
+    }
+    @DisplayName("getPart")
+    @Test
+    void getPart(){
+        HashSet<String> cols = new HashSet<>(Arrays.asList("H", "F", "I", "Q"));
+        HashSet<String> rows = new HashSet<>(Arrays.asList("A", "B"));
+        SimMat res = simMat.getPart(rows,cols);
+        assertEquals(rows,res.getRowSet());
+        assertEquals(cols,res.getColSet());
+
     }
 }

@@ -130,7 +130,6 @@ public class HGA {
         this.simMat = simMat;
         this.edgeScore = 1.;
         // set up preferences
-        simMat.updateNonZerosForRow = true;
         setBioFactor(bioFactor);
     }
 
@@ -370,45 +369,45 @@ public class HGA {
     }
 
 
-//    /**
-//     * Step 4: - check if the condition is passed
-//     * Continue to step 2 until one of the following conditions
-//     * is satisfied:
-//     * | Si - Si-1 | < r
-//     * | Si - Si-2 | < r
-//     * A sum score does not change in three continuous iterations.
-//     * || -> determinant of matrix
-//     * ------------------------------------------
-//     * r = 0.01 to allow 1% error
-//     */
-//    protected boolean checkPassed(Stack<DoubleMatrix> stackMat, Stack<Double> stackScore, double tolerance) throws FileNotFoundException {
-//
-//        if (stackMat.size() == 3) {
-//            DoubleMatrix s1 = stackMat.get(1);
-//            DoubleMatrix s = stackMat.peek();
-//            // remove button which is the oldest +1 every iteration
-//            DoubleMatrix s2 = stackMat.remove(0);
-//
-//            double score = stackScore.peek();
-//            double score1 = stackScore.get(1);
-//            double score2 = stackScore.remove(0);
-//
-//            double dif_1 = s.sub(s1).normmax();
-//            double dif_2 = s.sub(s2).normmax();
-//            //debug
+    /**
+     * Step 4: - check if the condition is passed
+     * Continue to step 2 until one of the following conditions
+     * is satisfied:
+     * | Si - Si-1 | < r
+     * | Si - Si-2 | < r
+     * A sum score does not change in three continuous iterations.
+     * || -> determinant of matrix
+     * ------------------------------------------
+     * r = 0.01 to allow 1% error
+     */
+    protected boolean checkPassed(Stack<DoubleMatrix> stackMat, Stack<Double> stackScore, double tolerance) {
+
+        if (stackMat.size() == 3) {
+            DoubleMatrix s1 = stackMat.get(1);
+            DoubleMatrix s = stackMat.peek();
+            // remove bottom which is the oldest for every iteration
+            DoubleMatrix s2 = stackMat.remove(0);
+
+            double score = stackScore.peek();
+            double score1 = stackScore.get(1);
+            double score2 = stackScore.remove(0);
+
+            double dif_1 = s.sub(s1).normmax();
+            double dif_2 = s.sub(s2).normmax();
+            //debug
 //            debug_outPut(stackMat.peek(),dif_1,dif_2);
-//            return dif_1 < tolerance || dif_2 < tolerance ||
-//                    (score == score1 && score1 == score2);
-//        }
-//        // size = 2
-//        else {
-//            DoubleMatrix s = stackMat.peek();
-//            double dif = s.sub(stackMat.get(0)).normmax();
-//            //debug
+            return dif_1 < tolerance || dif_2 < tolerance ||
+                    (score == score1 && score1 == score2);
+        }
+        // size = 2
+        else {
+            DoubleMatrix s = stackMat.peek();
+            double dif = s.sub(stackMat.get(0)).normmax();
+            //debug
 //            debug_outPut(stackMat.peek(),dif);
-//            return dif < tolerance;
-//        }
-//    }
+            return dif < tolerance;
+        }
+    }
 
     /**
      * @param factor    weight of sequence information, 0 <= factor <=1
@@ -416,11 +415,11 @@ public class HGA {
      * @param h         row has at least h nonzero entries
      */
     public void run(double factor, double tolerance, int h, boolean forcedMappingForSame) {
-        assert (simMat != null);
         EdgeHashSet forcedPart = null;
         // stacks for simMat converge
         Stack<DoubleMatrix> stackMat = new Stack<>();
         Stack<Double> stackScore = new Stack<>();
+
 //        // orced mapping
 //        if (forcedMappingForSame) {
 //            Triple<EdgeHashSet, EdgeHashSet, SimList> res = forcedMap();
@@ -513,43 +512,31 @@ public class HGA {
 //        }
 //    }
 ////
-//    private ArrayList<Double> getScoreInfo(boolean forcedMappingForSame, EdgeHashSet mapping, EdgeHashSet forcedPart) {
-//        // score the mapping
-//        ArrayList<Double> score;
-//        if (forcedMappingForSame) {
-//            EdgeHashSet tmpMapping = (EdgeHashSet) mapping.clone();
-//            tmpMapping.addAll(forcedPart);
-//            score = scoreMapping(tmpMapping);
-//        } else {
-//            score = scoreMapping(mapping);
-//        }
-//        return score;
-//    }
-//
-//    /**
-//     * @return mapping result hungarian ; forced
-//     */
-//    private Pair<HashMap<String,String>, HashMap<String,String>> forcedMap() throws IOException {
-//        HashSet<String> rowToMap = simMat.getRowSet();
-//        rowToMap.removeAll(simMat.getColSet());
-//        HashSet<String> colToMap = simMat.getColSet();
-//        colToMap.removeAll(simMat.getRowSet());
-//        SimList tmpList = simMat.getPart(rowToMap, colToMap);
-//
-//        HashMap<String,String> forcedPart = new HashMap<>();
-//        HashSet<String> sameNodes = simMat.getRowSet();
-//        sameNodes.removeAll(rowToMap);
-//        sameNodes.forEach(n -> forcedPart.put(n, n));
-//        // map rest of the matrix by Hungarian
-//        // tmpList matrix has to be updated to be synchronized
-//        tmpList.updateMatrix();
-//        return new Pair<>(getMappingFromHA(tmpList), forcedPart);
-//    }
-//
-//    public EdgeHashSet getMapping() {
-//        assert (mapping != null);
-//        return mapping;
-//    }
+
+
+    /**
+     * @return mapping result hungarian ; forced
+     */
+    private Pair<HashMap<String,String>, HashMap<String,String>> forcedMap() {
+        // row to map
+        Set<String> rowToMap = simMat.getRowSet();
+        rowToMap.removeAll(simMat.getColSet());
+        // col to map
+        Set<String> colToMap = simMat.getColSet();
+        colToMap.removeAll(simMat.getRowSet());
+        // set up force mapping
+        HashMap<String,String> forceMap = new HashMap<>();
+        Set<String> sameNodes = simMat.getRowSet();
+        sameNodes.retainAll(simMat.getColSet());
+        sameNodes.forEach(n -> forceMap.put(n, n));
+        // map rest of the matrix by Hungarian
+        // tmpList matrix has to be updated to be synchronized
+        return new Pair<>(getMappingFromHA(simMat.getPart(rowToMap,colToMap)), forceMap);
+    }
+
+    public HashMap<String, String> getMapping() {
+        return mapping;
+    }
 
 //    /**
 //     * Get SimList, Graph1, Graph2
@@ -580,8 +567,8 @@ public class HGA {
 //        return result;
 //    }
 
-//    public static void debug_outPut(boolean scoring) throws FileNotFoundException {
-
+//    public static void debug_outPut(Object... objects) throws FileNotFoundException {
+//
 //        Vector<String> scoreVec = new Vector<>();
 //        Vector<String> matrixVec = new Vector<>();
 ////        Vector<String> mappingVec = new Vector<>();
@@ -594,7 +581,7 @@ public class HGA {
 //        if(scoring){
 //
 //        }
-
+//
 //        mapping.forEach(e -> {
 //            mappingVec.add(e.getSource().getStrName() + " ");
 //            mappingVec.add(e.getTarget().getStrName());

@@ -36,6 +36,7 @@ public class GraphFileReader extends AbstractFileReader {
     private boolean recordNeighbors;
     private boolean recordSrcAndTarget;
     private boolean recordNonZeros;
+    private boolean updateNonZerosForRow;
     // for a row
 
     public GraphFileReader(boolean recordSrcAndTarget, boolean getNeighbors, boolean recordNonZeros) {
@@ -114,7 +115,9 @@ public class GraphFileReader extends AbstractFileReader {
      */
     private SimMat readToSimMat(BufferedReader input, HashSet<String> graph1Nodes, HashSet<String> graph2Nodes, boolean closeWhenFinished) throws IOException {
         init();
-        SimMat simMat = new SimMat(graph1Nodes, graph2Nodes,nonZerosMap);
+        SimMat simMat = new SimMat(graph1Nodes, graph2Nodes);
+
+        simMat.setNonZerosIndexMap(nonZerosMap);
         // matches sequence of one or more whitespace characters.
         setSplitter("\\s+");
         Vector<String> sifLine = new Vector<>();
@@ -137,7 +140,10 @@ public class GraphFileReader extends AbstractFileReader {
             input.close();
         }
         // set up simMat
-        simMat.setNonZerosIndexMap(nonZerosMap);
+        if(recordNonZeros){
+            simMat.updateNonZerosForRow = true;
+            simMat.setNonZerosIndexMap(nonZerosMap);
+        }
         return simMat;
     }
 
@@ -277,6 +283,7 @@ public class GraphFileReader extends AbstractFileReader {
         }
         if (recordNonZeros) {
             nonZerosMap = new HashMap<>();
+            updateNonZerosForRow = true;
         }
     }
 
