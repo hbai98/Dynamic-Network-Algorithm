@@ -116,7 +116,6 @@ public class GraphFileReader extends AbstractFileReader {
     private SimMat readToSimMat(BufferedReader input, HashSet<String> graph1Nodes, HashSet<String> graph2Nodes, boolean closeWhenFinished) throws IOException {
         init();
         SimMat simMat = new SimMat(graph1Nodes, graph2Nodes);
-
         simMat.setNonZerosIndexMap(nonZerosMap);
         // matches sequence of one or more whitespace characters.
         setSplitter("\\s+");
@@ -424,9 +423,8 @@ public class GraphFileReader extends AbstractFileReader {
                     throw new IOException("The file input format is not correct. Plus: some name-value pairs are incorrect!");
                 }
                 double weight = Double.parseDouble(input);
-                // create edge & add
-                // Contain the lexicographical order to prevent the case of same edges.
-                if (weight != 0) {
+                // make sure only nodes in selection will be put into the simMat
+                if (weight != 0 && simMat.getRowMap().containsKey(srcName)&&simMat.getColMap().containsKey(tgtName)) {
                     simMat.put(srcName, tgtName, weight);
                 }
                 // record if required
@@ -455,6 +453,10 @@ public class GraphFileReader extends AbstractFileReader {
                 }
                 tgt.add(node2);
                 nonZerosMap.put(node1,tgt);
+            }
+            // all zeros
+            else if(!nonZerosMap.containsKey(node1)){
+                nonZerosMap.put(node1,new HashSet<>());
             }
         }
     }

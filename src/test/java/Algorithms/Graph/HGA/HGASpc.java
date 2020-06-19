@@ -62,6 +62,11 @@ class HGASpc extends GraphFileReaderSpec {
         assertEquals((5.7 / 28 + 1.3 / 3) / 2 / 2, hga.simMat.getVal("A", "I"));
     }
 
+    @Test
+    void addAllTopo(){
+        hga.addAllTopology();
+    }
+
     @DisplayName("score mapping")
     @Test
     void score() {

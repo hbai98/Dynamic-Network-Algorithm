@@ -98,7 +98,10 @@ public class HGA {
         HashMap<Integer, String> rowMap = toMap.getRowIndexNameMap();
         HashMap<String, Integer> colMap = toMap.getColMap();
         HashSet<String> assign = new HashSet<>(preMap.values());
-        for (int i = 0; i < toMap.getMat().rows; i++) {
+        // parallel here there is no interference and no stateful lambda
+        //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
+        int n = toMap.getMat().rows;
+        rowMap.keySet().parallelStream().forEach(i->{
             String tgt = rowMap.get(i);
             if (!preMap.containsKey(tgt)) {
                 String mapStr = toMap.getMax(i, assign);
@@ -108,7 +111,7 @@ public class HGA {
                     assign.add(mapStr);
                 }
             }
-        }
+        });
     }
 
     /**
@@ -198,7 +201,7 @@ public class HGA {
 
 
     protected double getNonNeighborTopologyInfo(HashSet<String> nei1, HashSet<String> nei2) {
-        double res = 0;
+        AtomicReference<Double> res = new AtomicReference<>((double) 0);
         HashSet<String> nodes1 = graph1.getAllNodes();
         HashSet<String> nodes2 = graph2.getAllNodes();
 
@@ -210,43 +213,41 @@ public class HGA {
         nodes2.removeAll(nei2);
         if (nonNei1Size != 0 && nonNei2Size != 0) {
             int size = (nonNei1Size + 1) * (nonNei2Size + 1);
-            for (String node1 : nodes1) {
-                for (String node2 : nodes2) {
-                    if (!nei1.contains(node1) && !nei2.contains(node2)) {
-                        res += simMat.getVal(node1, node2);
-                    }
+            // parallel here there is no interference
+            //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
+            nodes1.parallelStream().forEach(node1-> nodes2.parallelStream().forEach(node2->{
+                if (!nei1.contains(node1) && !nei2.contains(node2)) {
+                    res.updateAndGet(v -> v + simMat.getVal(node1, node2));
                 }
-            }
-            return res / size;
+            }));
+            return res.get() / size;
         }
 
         if (nonNei1Size == 0 && nonNei2Size == 0) {
             int size = nodes1.size() * nodes2.size();
             return simMat.sum() / size;
         }
-        return res;
+        return res.get();
     }
 
     protected double getNeighborTopologyInfo(HashSet<String> nei1, HashSet<String> nei2) {
-        double res = 0;
+        AtomicReference<Double> res = new AtomicReference<>((double) 0);
         HashSet<String> nodes1 = graph1.getAllNodes();
         HashSet<String> nodes2 = graph2.getAllNodes();
         int nei1Size = nei1.size();
         int nei2Size = nei2.size();
         if (nei1Size != 0 && nei2Size != 0) {
             int size = nei1Size * nei2Size;
-            for (String node1 : nei1) {
-                for (String node2 : nei2) {
-                    res += simMat.getVal(node1, node2);
-                }
-            }
-            return res / size;
+            // parallel here there is no interference
+            //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
+           nei1.parallelStream().forEach(node1-> nei2.parallelStream().forEach(node2-> res.updateAndGet(v -> v + simMat.getVal(node1, node2))));
+            return res.get() / size;
         }
         if (nei1Size == 0 && nei2Size == 0) {
             int size = nodes1.size() * nodes2.size();
             return simMat.sum() / size;
         }
-        return res;
+        return res.get();
     }
 
     /**
@@ -254,12 +255,14 @@ public class HGA {
      * iterate all nodes pairs to add topological information
      */
     protected void addAllTopology() {
-        HashSet<String> nodes1 = (HashSet<String>) simMat.getRowMap().keySet();
-        HashSet<String> nodes2 = (HashSet<String>) simMat.getColMap().keySet();
+        Set<String> nodes1 =  simMat.getRowMap().keySet();
+        Set<String> nodes2 = simMat.getColMap().keySet();
+        int i = 0;
         for (String node1 : nodes1) {
             for (String node2 : nodes2) {
                 addTopology(node1, node2);
             }
+            System.out.println(i++);
         }
     }
 
@@ -295,6 +298,7 @@ public class HGA {
     }
 
     private double getES(Vector<Pair<Edge, Edge>> mappingEdges) {
+
         AtomicReference<Double> ES = new AtomicReference<>((double) 0);
         for (Iterator<Pair<Edge, Edge>> iterator = mappingEdges.iterator(); iterator.hasNext(); ) {
             Pair<Edge, Edge> map = iterator.next();
@@ -314,8 +318,10 @@ public class HGA {
      * @param mappingEdges getES() filters out unqualified edges
      */
     protected double getPS(Vector<Pair<Edge, Edge>> mappingEdges) {
+        // parallel here there is no interference and no stateful map
+        //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
         AtomicReference<Double> PS = new AtomicReference<>((double) 0);
-        mappingEdges.forEach(map -> {
+        mappingEdges.parallelStream().forEach(map -> {
             Edge edge1 = map.getFirst();
             Edge edge2 = map.getSecond();
             String n1_1 = edge1.getSource().getStrName();
@@ -343,13 +349,17 @@ public class HGA {
             String n1_ = mapping.get(n1);
             iterator.remove();
             HashSet<String> nebs = neb1Map.get(n1);
+            // parallel here there is no interference and no stateful lambda
+            //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
             // overlap -> one edge in graph1(contains n1 as one node)
-            Collection<String> edge1s = nebs.stream().filter(toMap::contains).collect(Collectors.toList());
+            Collection<String> edge1s = nebs.parallelStream().filter(toMap::contains).collect(Collectors.toList());
             if (edge1s.size() == 0) {
                 continue;
             }
+            // parallel here there is no interference and no stateful lambda
+            //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
             // check graph2 -> have the corresponding "edge"
-            edge1s.forEach(n2 -> {
+            edge1s.parallelStream().forEach(n2 -> {
                 String n2_ = mapping.get(n2);
                 if (neb2Map.get(n1_).contains(n2_)) {
                     count.getAndIncrement();

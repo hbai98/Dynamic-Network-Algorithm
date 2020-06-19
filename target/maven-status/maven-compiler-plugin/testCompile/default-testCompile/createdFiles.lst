@@ -5,6 +5,8 @@ Algorithms\Graph\Utils\hNodeListSpec.class
 Algorithms\Set\FDTest.class
 Algorithms\Graph\Network\EdgeHashSetSpec$FuncTest.class
 Algorithms\Graph\Utils\SimMatTest.class
+Algorithms\Graph\HGA\Human_YeastSub38NTest$1.class
+Algorithms\Graph\HGA\Human_YeastSub38NTest.class
 Algorithms\Graph\Network\NodeListSpec$functionTest.class
 IO\GraphFileReaderSpec.class
 Algorithms\Graph\Network\NodeListSpec.class

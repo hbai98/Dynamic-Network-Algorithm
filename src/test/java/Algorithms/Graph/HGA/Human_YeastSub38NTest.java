@@ -7,16 +7,14 @@
  * @FilePath: \Algorithms\src\test\java\TestModules\humanYeastTest\Human_YeastSub38NTest.java
  * @Description:
  */
-package TestModules.humanYeastTest;
+package Algorithms.Graph.HGA;
 
 import Algorithms.Graph.HGA.HGA;
 import Algorithms.Graph.Utils.AdjList.Graph;
-import Algorithms.Graph.Utils.AdjList.SimList;
 import Algorithms.Graph.Utils.SimMat;
 import IO.AbstractFileWriter;
 import IO.GraphFileReader;
 import IO.GraphFileReaderSpec;
-import IO.GraphFileWriter;
 import Tools.Stopwatch;
 import org.jblas.DoubleMatrix;
 import tech.tablesaw.api.*;
@@ -26,7 +24,6 @@ import tech.tablesaw.plotly.components.Figure;
 import tech.tablesaw.plotly.components.Layout;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -54,13 +51,19 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
         stopwatch = new Stopwatch();
         GraphFileReader reader = new GraphFileReader(true, true, false);
         yeast = reader.readToGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/net-38n.txt", false);
-        human = reader.readToGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/", false);
+        human = reader.readToGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/HumanNet.txt", false);
         reader.setRecordNonZeros(true);
         reader.setRecordNeighbors(false);
-        simMat = reader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt", yeast.getAllNodes(), human.getAllNodes(), true);
+        simMat = reader.readToSimMat("src/test/java/resources/TestModule/HGATestData/Human-Yeast/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt", yeast.getAllNodes(), human.getAllNodes(), true);
         hga = new HGA(simMat, yeast, human, 0.4);
     }
 
+
+    @DisplayName("Topo")
+    @Test
+    void topo(){
+        hga.addAllTopology();
+    }
 
     @DisplayName("read simList from local blast result.")
     @Test
@@ -199,7 +202,7 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
         // distinguish the result simMat from the indexing one
         HashMap<String, HashSet<String>> neb1Map = yeast.getNeighborsMap();
         HashMap<String, HashSet<String>> neb2Map = human.getNeighborsMap();
-        mapping.entrySet().forEach(entry -> {
+        mapping.entrySet().parallelStream().forEach(entry -> {
             String node1 = entry.getKey();
             String node2 = entry.getValue();
             double simUV = simMat.getVal(node1, node2);
@@ -218,8 +221,7 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
     }
 
     @Test
-    void smallTest(){
-
+    void smallTest() {
+        hga.addAllTopology();
     }
-
 }

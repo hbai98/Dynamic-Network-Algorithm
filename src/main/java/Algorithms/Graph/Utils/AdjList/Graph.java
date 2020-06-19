@@ -60,7 +60,6 @@ public class Graph extends AbstractAdjList {
     public void addOneNode(String tgtHead,String tgtNode,double weight){
         if(rowMap.containsKey(tgtHead)){
             this.get(rowMap.get(tgtHead)).add(tgtNode,weight);
-            colSet.add(tgtNode);
         }
         else{
             HNodeList tmp = new HNodeList(tgtHead);
@@ -68,8 +67,8 @@ public class Graph extends AbstractAdjList {
             this.add(tmp);
             rowMap.put(tgtHead,size()-1);
             rowSet.add(tgtHead);
-            colSet.add(tgtNode);
         }
+        colSet.add(tgtNode);
     }
     public HashMap<String, HashSet<String>> getNeighborsMap() {
         return neighborsMap;

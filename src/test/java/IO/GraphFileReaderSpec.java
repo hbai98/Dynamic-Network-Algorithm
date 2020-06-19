@@ -1,7 +1,5 @@
 package IO;
 
-import Algorithms.Graph.Network.Edge;
-import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Utils.AdjList.Graph;
 import Algorithms.Graph.Utils.AdjList.SimList;
 import Algorithms.Graph.Utils.List.HNodeList;
@@ -12,12 +10,11 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @DisplayName("SIFFileReader is")
 public class GraphFileReaderSpec {
@@ -63,6 +60,17 @@ public class GraphFileReaderSpec {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    void readSimMatAndGraph() throws IOException {
+        GraphFileReader reader = new GraphFileReader(true, true, false);
+        Graph graph1 = reader.readToGraph("src/test/java/resources/AlgTest/HGA/graph1.txt", false);
+        Graph graph2 = reader.readToGraph("src/test/java/resources/AlgTest/HGA/graph2.txt", false);
+        reader.setRecordNonZeros(true);
+        reader.setRecordNeighbors(false);
+        SimMat simMat = reader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt", graph1.getAllNodes(), graph2.getAllNodes(), true);
+
     }
 
 //    @DisplayName("able to read a medium-level graph")
