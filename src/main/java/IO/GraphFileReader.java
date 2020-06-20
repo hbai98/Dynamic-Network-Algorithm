@@ -140,7 +140,6 @@ public class GraphFileReader extends AbstractFileReader {
         }
         // set up simMat
         if(recordNonZeros){
-            simMat.updateNonZerosForRow = true;
             simMat.setNonZerosIndexMap(nonZerosMap);
         }
         return simMat;

@@ -85,13 +85,6 @@
             <artifactId>jblas</artifactId>
             <version>${jblas.version}</version>
         </dependency>
-        <!--uniprot service-->
-        <dependency>
-            <groupId>uk.ac.ebi.uniprot</groupId>
-            <artifactId>japi</artifactId>
-            <version>${uniport.japi.version}</version>
-            <optional>true</optional>
-        </dependency>
         <!--java data science and visualize package-->
         <dependency>
             <groupId>tech.tablesaw</groupId>

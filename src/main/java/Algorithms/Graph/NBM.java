@@ -195,6 +195,7 @@ public class NBM {
     /**
      * Update only once for all neighbors of all the pairs ready.
      * reward is defined in HGA.
+     * Notice : this method return the result associated with the order mapping is iterated.
      */
     public static void neighborSimAdjust(Graph graph1, Graph graph2, SimMat simMat, HashMap<String, String> mapping) {
         // distinguish the result simMat from the indexing one
@@ -207,10 +208,11 @@ public class NBM {
             // direct neighbors of the head node
             HashSet<String> neb1 = neb1Map.get(node1);
             HashSet<String> neb2 = neb2Map.get(node2);
-            neb1.parallelStream().forEach(s1 -> {
+            // no parallel here! stateful lambda
+            neb1.forEach(s1 -> {
                 int nebNumbNode1 = neb1Map.get(s1).size();
                 double reward = simUV / nebNumbNode1;
-                neb2.parallelStream().forEach(s2->{
+                neb2.forEach(s2->{
                         double newWeight = simMat.getVal(s1, s2) + reward;
                         simMat.put(s1, s2, newWeight);
                 });

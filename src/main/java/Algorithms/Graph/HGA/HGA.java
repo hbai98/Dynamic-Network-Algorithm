@@ -9,12 +9,14 @@ import Algorithms.Graph.Utils.SimMat;
 import IO.AbstractFileWriter;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
+import org.jgrapht.alg.util.Triple;
 
 import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Refer to An Adaptive Hybrid Algorithm for Global Network Algorithms.Alignment
@@ -34,7 +36,7 @@ public class HGA {
     //bioInfo's taken (0-1)
     protected double bioFactor;
     //---------------mapping result-------------
-    private HashMap<String, String> mapping;
+    private HashMap<String, String> mappingResult;
     private double PE;
     private double ES;
     private double PS;
@@ -44,6 +46,7 @@ public class HGA {
     //--------------debug---------------
     public String debugOutputPath = "src\\test\\java\\resources\\jupyter\\data\\";
     private int iterCount = 0;
+    private boolean forcedMappingForSame;
 
     /**
      * HGA to initialize the mapping between two graph by HA,
@@ -101,7 +104,7 @@ public class HGA {
         // parallel here there is no interference and no stateful lambda
         //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
         int n = toMap.getMat().rows;
-        rowMap.keySet().parallelStream().forEach(i->{
+        rowMap.keySet().parallelStream().forEach(i -> {
             String tgt = rowMap.get(i);
             if (!preMap.containsKey(tgt)) {
                 String mapStr = toMap.getMax(i, assign);
@@ -119,16 +122,19 @@ public class HGA {
      * using homologous coefficients of proteins
      * computed by alignment algorithms for PINs
      *
-     * @param graph1 adjacent list of graph1
-     * @param graph2 adjacent list of graph2
-     * @param simMat similarity matrix, headNode->graph1, listNodes -> graph2
+     * @param graph1               adjacent list of graph1
+     * @param graph2               adjacent list of graph2
+     * @param simMat               similarity matrix, headNode->graph1, listNodes -> graph2
+     * @param bioFactor            sequence similarity account compared with topological effect
+     * @param forcedMappingForSame whether force mapping
      */
-    public HGA(SimMat simMat, Graph graph1, Graph graph2, double bioFactor) {
+    public HGA(SimMat simMat, Graph graph1, Graph graph2, double bioFactor, boolean forcedMappingForSame) {
         this.graph1 = graph1;
         this.graph2 = graph2;
         this.originalMat = (SimMat) simMat.dup();
         this.simMat = simMat;
         this.edgeScore = 1.;
+        this.forcedMappingForSame = forcedMappingForSame;
         // set up preferences
         setBioFactor(bioFactor);
     }
@@ -215,7 +221,7 @@ public class HGA {
             int size = (nonNei1Size + 1) * (nonNei2Size + 1);
             // parallel here there is no interference
             //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
-            nodes1.parallelStream().forEach(node1-> nodes2.parallelStream().forEach(node2->{
+            nodes1.parallelStream().forEach(node1 -> nodes2.parallelStream().forEach(node2 -> {
                 if (!nei1.contains(node1) && !nei2.contains(node2)) {
                     res.updateAndGet(v -> v + simMat.getVal(node1, node2));
                 }
@@ -225,7 +231,7 @@ public class HGA {
 
         if (nonNei1Size == 0 && nonNei2Size == 0) {
             int size = nodes1.size() * nodes2.size();
-            return simMat.sum() / size;
+            return simMat.getMat().sum() / size;
         }
         return res.get();
     }
@@ -240,12 +246,12 @@ public class HGA {
             int size = nei1Size * nei2Size;
             // parallel here there is no interference
             //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
-           nei1.parallelStream().forEach(node1-> nei2.parallelStream().forEach(node2-> res.updateAndGet(v -> v + simMat.getVal(node1, node2))));
+            nei1.parallelStream().forEach(node1 -> nei2.parallelStream().forEach(node2 -> res.updateAndGet(v -> v + simMat.getVal(node1, node2))));
             return res.get() / size;
         }
         if (nei1Size == 0 && nei2Size == 0) {
             int size = nodes1.size() * nodes2.size();
-            return simMat.sum() / size;
+            return simMat.getMat().sum() / size;
         }
         return res.get();
     }
@@ -253,17 +259,34 @@ public class HGA {
     /**
      * Step 3 - integrated all steps in process 3(Topology info):
      * iterate all nodes pairs to add topological information
+     * Notice: the result would be different when
      */
     protected void addAllTopology() {
-        Set<String> nodes1 =  simMat.getRowMap().keySet();
+        Set<String> nodes1 = simMat.getRowMap().keySet();
         Set<String> nodes2 = simMat.getColMap().keySet();
-        int i = 0;
-        for (String node1 : nodes1) {
-            for (String node2 : nodes2) {
-                addTopology(node1, node2);
-            }
-            System.out.println(i++);
+        int iterSum = nodes1.size()*nodes2.size();
+        // sort the matrix pairs to add topological effect for the pair with higher similarity first,
+        // and it will alleviate the impact brought by update similarity matrix in various orders.
+        List<Triple<String, String, Double>> toAdd = sortToPair(nodes1, nodes2);
+        // no parallel
+        for (int i = 0; i < toAdd.size(); i++) {
+            Triple<String, String, Double> item = toAdd.get(i);
+            String node1 = item.getFirst();
+            String node2 = item.getSecond();
+            addTopology(node1, node2);
+            System.out.println("Iteration: "+ iterCount+";\taddAllTopology:" + i++ + "/"+iterSum);
         }
+    }
+
+    private List<Triple<String, String, Double>> sortToPair(Set<String> nodes1, Set<String> nodes2) {
+        Vector<Triple<String,String,Double>> sortPairForTopo = new Vector<>();
+        // parallel here there is no interference and no stateful lambda
+        // https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
+        nodes1.parallelStream().forEach(node1->nodes2.parallelStream().forEach(node2->
+                sortPairForTopo.add(new Triple<>(node1,node2,simMat.getVal(node1,node2)))));
+        List<Triple<String, String, Double>> res = sortPairForTopo.stream().sorted(Comparator.comparingDouble(Triple::getThird)).collect(Collectors.toList());
+        Collections.reverse(res);
+        return res;
     }
 
     /**
@@ -295,6 +318,9 @@ public class HGA {
         PS = getPS(mappingEdges);
         PE = ES / 2 + PS;
         score = 100 * EC + PE;
+        // print
+        System.out.println("Iteration " + iterCount + ":Scoring");
+        System.out.println("ES:" + ES + "\tPS" + PS + "\tPE" + PE + "\tScore:" + score);
     }
 
     private double getES(Vector<Pair<Edge, Edge>> mappingEdges) {
@@ -318,7 +344,7 @@ public class HGA {
      * @param mappingEdges getES() filters out unqualified edges
      */
     protected double getPS(Vector<Pair<Edge, Edge>> mappingEdges) {
-        // parallel here there is no interference and no stateful map
+        // parallel here there is no interference and no stateful lambda
         //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
         AtomicReference<Double> PS = new AtomicReference<>((double) 0);
         mappingEdges.parallelStream().forEach(map -> {
@@ -417,40 +443,42 @@ public class HGA {
      * @param tolerance error tolerance compared with the last matrix
      * @param h         row has at least h nonzero entries
      */
-    public void run(double factor, double tolerance, int h, boolean forcedMappingForSame) {
+    public void run(double factor, double tolerance, int h) {
         HashMap<String, String> forcedPart;
+        HashMap<String, String> remapPart;
         // stacks for simMat converge
         Stack<DoubleMatrix> stackMat = new Stack<>();
         Stack<Double> stackScore = new Stack<>();
         boolean checkPassed;
-
         // forced mapping
         if (forcedMappingForSame) {
             Pair<HashMap<String, String>, HashMap<String, String>> res = forcedMap();
             // hungarian for the res
-            mapping = res.getFirst();
+            remapPart = res.getFirst();
             // forced
             forcedPart = res.getSecond();
             // mapping
-            mapping.putAll(forcedPart);
+            mappingResult = new HashMap<>(remapPart);
+            mappingResult.putAll(forcedPart);
         } else {
             // get the initial similarity matrix S0
-            mapping = getMappingFromHA(simMat);
+            remapPart = getMappingFromHA(simMat);
+            mappingResult = new HashMap<>(remapPart);
         }
         // score mapping
-        scoreMapping(mapping);
+        scoreMapping(mappingResult);
         // record score
         stackScore.push(score);
-        // iterating begin---------------------------------------------------------
-        double maxScore = score;
         DoubleMatrix preMat = simMat.getMat();
         // add to stack top
+        // iterating begin---------------------------------------------------------
+        double maxScore = score;
         stackMat.push(preMat);
         do {
             // step 2
-            updatePairNeighbors(mapping);
-//            // step 3 (heavy)
-//            addAllTopology(factor);
+            updatePairNeighbors(mappingResult);
+            // step 3 (heavy)
+            addAllTopology();
 //            // add to top
 //            stackMat.push(simMat.getMatrix());
 //            // map again
@@ -479,15 +507,14 @@ public class HGA {
 
         this.score = maxScore;
     }
-//
+
 //    /**
 //     * for forced map
 //     *
 //     * @return full mapping result
 //     */
-//    private EdgeHashSet remap(boolean forcedMappingForSame, EdgeHashSet forcedPart, int h) throws IOException {
+//    private HashMap<String, String> remap(boolean forcedMappingForSame, HashMap<String,String> forcedPart, int h){
 //        if (forcedMappingForSame) {
-//
 //            HashSet<String> rowReMap = simMat.getRowSet();
 //            HashSet<String> tmp = new HashSet<>();
 //            // get row to remap
@@ -502,14 +529,13 @@ public class HGA {
 //            // init the new matrix to remap
 //            // toRemap is a small part of the matrix that needs to be remap
 //            SimList toRemap = simMat.getPart(rowReMap, colReMap);
-//            EdgeHashSet res = remapping(toRemap, h);
+//            HashMap<String,String> res = remapping(toRemap, h);
 //            res.addAll(forcedPart);
 //            return res;
 //        } else {
 //            return remapping(simMat, h);
 //        }
 //    }
-////
 
 
     /**
@@ -526,14 +552,16 @@ public class HGA {
         HashMap<String, String> forceMap = new HashMap<>();
         Set<String> sameNodes = simMat.getRowSet();
         sameNodes.retainAll(simMat.getColSet());
-        sameNodes.forEach(n -> forceMap.put(n, n));
+        // parallel here there is no interference and no stateful lambda
+        //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
+        sameNodes.parallelStream().forEach(n -> forceMap.put(n, n));
         // map rest of the matrix by Hungarian
         // tmpList matrix has to be updated to be synchronized
         return new Pair<>(getMappingFromHA(simMat.getPart(rowToMap, colToMap)), forceMap);
     }
 
-    public HashMap<String, String> getMapping() {
-        return mapping;
+    public HashMap<String, String> getMappingResult() {
+        return mappingResult;
     }
 
 //    /**
@@ -654,6 +682,10 @@ public class HGA {
     public void setBioFactor(double bioFactor) {
         assert (bioFactor >= 0 && bioFactor <= 1);
         this.bioFactor = bioFactor;
+    }
+
+    public void setForcedMappingForSame(boolean forcedMappingForSame) {
+        this.forcedMappingForSame = forcedMappingForSame;
     }
 
     public void setEdgeScore(double edgeScore) {

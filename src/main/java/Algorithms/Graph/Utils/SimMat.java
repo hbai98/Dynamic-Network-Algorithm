@@ -177,7 +177,7 @@ public class SimMat implements Cloneable {
     }
 
     /**
-     * sum up the matrix non-zero entries
+     * sum up the matrix non-zero entries, and only with non-zero
      *
      * @return sum val
      */
@@ -250,7 +250,7 @@ public class SimMat implements Cloneable {
 
     /**
      * Deep copy
-     * @return
+     * @return deep copy result
      */
     public Object dup() {
         DoubleMatrix mat = this.mat.dup();
