@@ -6,8 +6,10 @@ import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Utils.AdjList.Graph;
 import Algorithms.Graph.Utils.SimMat;
+import org.jgrapht.alg.util.Triple;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * H. He and A. K.Singh, “Closure-Tree: An index structure for graph
@@ -201,7 +203,12 @@ public class NBM {
         // distinguish the result simMat from the indexing one
         HashMap<String, HashSet<String>> neb1Map = graph1.getNeighborsMap();
         HashMap<String, HashSet<String>> neb2Map = graph2.getNeighborsMap();
-        for (Map.Entry<String, String> entry : mapping.entrySet()) {
+        // sort the mapping pairs to add topological effect for the pair with higher similarity first,
+        // and it will alleviate the impact brought by update similarity matrix in various orders.
+        List<Map.Entry<String, String>> toAdjust = mapping.entrySet().stream().sorted(Comparator.comparing(entry -> simMat.getVal(entry.getKey(), entry.getValue()))).collect(Collectors.toList());
+        Collections.reverse(toAdjust);
+        // no parallel here
+        for (Map.Entry<String, String> entry : toAdjust) {
             String node1 = entry.getKey();
             String node2 = entry.getValue();
             double simUV = simMat.getVal(node1, node2);
