@@ -7,8 +7,9 @@ import org.jgrapht.alg.util.Pair;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
-public class SimMat implements Cloneable {
+public class SimMat {
     private DoubleMatrix mat;
     //------------------similarity matrix----------
     private HashMap<String, Integer> rowMap;
@@ -113,6 +114,7 @@ public class SimMat implements Cloneable {
     public Pair<SimMat, SimMat> getSplit(int h) {
         HashMap<String, Integer> rowMap_split = new HashMap<>();
         HashMap<String, Integer> rowMap_left = new HashMap<>();
+        // record i index for nonZerosMap
         for (int i = 0; i < mat.rows; i++) {
             if (nonZerosIndexMap.get(rowIndexNameMap.get(i)).size() >= h) {
                 rowMap_split.put(this.rowIndexNameMap.get(i), i);
@@ -125,6 +127,8 @@ public class SimMat implements Cloneable {
 
         return new Pair<>(split_, left_);
     }
+
+
 
     private SimMat setUpSimMat(HashMap<String, Integer> map) {
         DoubleMatrix res = new DoubleMatrix(map.size(), colMap.size());
@@ -182,8 +186,10 @@ public class SimMat implements Cloneable {
      * @return sum val
      */
     public double sum() {
+        // parallel here there is no interference or stateful lambda
+        //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
         AtomicReference<Double> sum = new AtomicReference<>((double) 0);
-        nonZerosIndexMap.forEach((k, v) -> v.forEach(n -> sum.updateAndGet(v1 -> v1 + getVal(k, n))));
+        nonZerosIndexMap.forEach((k, v) -> v.parallelStream().forEach(n -> sum.updateAndGet(v1 -> v1 + getVal(k, n))));
         return sum.get();
     }
 
@@ -191,12 +197,15 @@ public class SimMat implements Cloneable {
      * Split the matrix which contains only rows in rowSet and cols in colSet
      * @return split result
      */
-    public SimMat getPart(Set<String> rowSet, Set<String> colSet) {
+    public SimMat getPart(Collection<String> rowSet, Collection<String> colSet) {
         assert(getRowSet().containsAll(rowSet)&&getColSet().containsAll(colSet));
+        if(rowSet.equals(this.getRowSet())&&colSet.equals(this.getColSet())){
+            return this;
+        }
         return getPart(rowSet, true).getPart(colSet, false);
     }
 
-    public SimMat getPart(Set<String> set, boolean isRow) {
+    public SimMat getPart(Collection<String> set, boolean isRow) {
         DoubleMatrix mat;
         HashMap<String,Integer> rowMap =new HashMap<>();
         HashMap<Integer,String> rowIndexNameMap = new HashMap<>();

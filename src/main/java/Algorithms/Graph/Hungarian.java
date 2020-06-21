@@ -1,10 +1,12 @@
 package Algorithms.Graph;
 
+import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Utils.SimMat;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
 import java.util.Arrays;
+import java.util.Vector;
 
 /**
  * For the high computation performance, the matrix (DoubleMatrix) is based on
@@ -40,6 +42,8 @@ public class Hungarian {
     private int[][] path;
     private int pathRow;
     private int pathCol;
+    private Vector<Integer> rowIndexes;
+    private Vector<Integer> colIndexes;
 
     private enum ZeroMasks {starred, primed}
     public enum ProblemType {maxLoc, minLoc}
@@ -89,6 +93,14 @@ public class Hungarian {
         C_cover = new boolean[matCol];
         path = new int[matCol][2];
         result = new int[matRow];
+        rowIndexes = new Vector<>(mat.rows);
+        colIndexes = new Vector<>(mat.columns);
+        for (int r = 0; r < mat.rows; r++) {
+            rowIndexes.add(r);
+        }
+        for (int c = 0; c < mat.columns; c++) {
+            colIndexes.add(c);
+        }
         Arrays.fill(result, -1);
     }
 
@@ -98,12 +110,13 @@ public class Hungarian {
      * subtract from every element the minimum value of its row
      */
     protected int subtractRowMinimal() {
-        int rows = mat.getRows();
-        for (int r = 0; r < rows; r++) {
+        // parallel here there is no interference and no stateful lambda
+        //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
+        rowIndexes.parallelStream().forEach(r->{
             DoubleMatrix curRow = mat.getRow(r);
             double minRowVal = curRow.min();
             mat.putRow(r, curRow.sub(minRowVal));
-        }
+        });
         return 2;
     }
 
@@ -112,15 +125,15 @@ public class Hungarian {
      * Find zeros in the resulting matrix that is uncovered.
      */
     protected int starZeros() {
-        for (int r = 0; r < matRow; r++) {
-            for (int c = 0; c < matCol; c++) {
-                if (mat.get(r, c) == 0 && !R_cover[r] && !C_cover[c]) {
-                    maskMat[r][c] = ZeroMasks.starred;
-                    R_cover[r] = true;
-                    C_cover[c] = true;
-                }
+        // parallel here there is no interference and no stateful lambda
+        //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
+        rowIndexes.parallelStream().forEach(r-> colIndexes.parallelStream().forEach(c->{
+            if (mat.get(r, c) == 0 && !R_cover[r] && !C_cover[c]) {
+                maskMat[r][c] = ZeroMasks.starred;
+                R_cover[r] = true;
+                C_cover[c] = true;
             }
-        }
+        }));
         initCoverVets();
         return 3;
     }
@@ -136,13 +149,13 @@ public class Hungarian {
      * If all columns are covered, the starred zeros describe a complete set of unique assignments.
      */
     protected int coverStarredZeros() {
-        for (int r = 0; r < matRow; r++) {
-            for (int c = 0; c < matCol; c++) {
-                if (maskMat[r][c] == ZeroMasks.starred) {
-                    C_cover[c] = true;
-                }
+        // parallel here there is no interference and no stateful lambda
+        //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
+        rowIndexes.parallelStream().forEach(r-> colIndexes.parallelStream().forEach(c-> {
+            if (maskMat[r][c] == ZeroMasks.starred) {
+                C_cover[c] = true;
             }
-        }
+        }));
         int colCoveredCount = detectC_cover();
         if(colCoveredCount >= matCol || colCoveredCount >= matRow){
             return 7;
@@ -263,13 +276,13 @@ public class Hungarian {
     }
 
     private void erasePrimes() {
-        for (int r = 0; r < matRow; r++) {
-            for (int c = 0; c < matCol; c++) {
+        // parallel here there is no interference and no stateful lambda
+        //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
+        rowIndexes.parallelStream().forEach(r-> colIndexes.parallelStream().forEach(c->{
                 if(maskMat[r][c] == ZeroMasks.primed){
                     maskMat[r][c] = null;
                 }
-            }
-        }
+            }));
         // step 3
     }
 
@@ -319,8 +332,9 @@ public class Hungarian {
      */
     protected int adjustMat(){
         double minVal = findSmallestOfUncovered();
-        for (int r = 0; r < matRow; r++) {
-            for (int c = 0; c < matCol; c++) {
+        // parallel here there is no interference and no stateful lambda
+        //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
+        rowIndexes.parallelStream().forEach(r-> colIndexes.parallelStream().forEach(c->{
                 double val = mat.get(r,c);
                 if(R_cover[r]){
                     mat.put(r,c,val+minVal);
@@ -328,8 +342,7 @@ public class Hungarian {
                 if(!C_cover[c]){
                     mat.put(r,c,val-minVal);
                 }
-            }
-        }
+            }));
         return 4;
     }
 

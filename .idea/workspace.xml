@@ -130,9 +130,24 @@
       <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605101931.java" beforeDir="false" afterPath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605101931.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605101938.java" beforeDir="false" afterPath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605101938.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Hungarian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Hungarian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/SimMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/SimMat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/Human_YeastSub38NTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/Human_YeastSub38NTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/cytoFileForGraph12.cys" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/AlgTest/HGA/cytoFileForGraph12.cys" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HungarianSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HungarianSpec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Utils/SimMatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Utils/SimMatTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian$ProblemType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian$ProblemType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian$ZeroMasks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian$ZeroMasks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/SimMat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/SimMat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGASpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGASpc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HungarianSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HungarianSpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Utils/SimMatTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Utils/SimMatTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,10 +264,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="Algorithms.Graph.IO" />
-      <recent name="Algorithms.Graph" />
-    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="Algorithms.Graph.Utils" />
       <recent name="IO" />
@@ -270,6 +281,13 @@
       <recent name="Algorithms.Graph.Network" />
       <recent name="UI" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Development\Algorithms\src\test\java\resources\AlgTest\HGA" />
+      <recent name="D:\Development\Algorithms\src\test\java\resources" />
+      <recent name="D:\Development\Algorithms\src\main\resources\IO" />
+      <recent name="D:\Development\Algorithms\src\main\resources" />
+      <recent name="E:\Development\Algorithms\src\test\java\resources\AlgTest\HGA\small" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Development\Algorithms\src\test\java\resources\TestModule\HGATestData\Human-Yeast" />
       <recent name="E:\Development\Algorithms\src\main\java\Alignment\IO\BlAST" />
@@ -280,46 +298,12 @@
       <recent name="Algorithms.Graph.Network" />
       <recent name="Algorithms.Graph.Utils" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Development\Algorithms\src\test\java\resources" />
-      <recent name="D:\Development\Algorithms\src\main\resources\IO" />
-      <recent name="D:\Development\Algorithms\src\main\resources" />
-      <recent name="E:\Development\Algorithms\src\test\java\resources\AlgTest\HGA\small" />
-      <recent name="E:\Development\Algorithms\src\test\java\resources\IOTest" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Algorithms.Graph.IO" />
+      <recent name="Algorithms.Graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HGASpc.updateNeighbors">
-    <configuration name="EdgeSpec" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.Network.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.Network" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Network.EdgeSpec" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EdgeSpec.constructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.Network.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.Network" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Network.EdgeSpec" />
-      <option name="METHOD_NAME" value="constructorTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.HGASpc.small">
     <configuration name="HGASpc.addAllTopo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
@@ -336,7 +320,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HGASpc.updateNeighbors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HGASpc.getHByAccount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
@@ -346,7 +330,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
       <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGASpc" />
-      <option name="METHOD_NAME" value="updateNeighbors" />
+      <option name="METHOD_NAME" value="getHByAccount" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HGASpc.small" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Algorithms.Graph.HGA.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGASpc" />
+      <option name="METHOD_NAME" value="small" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -368,20 +368,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SimMatTest.getSplit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Algorithms.Graph.Utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.Utils" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Utils.SimMatTest" />
+      <option name="METHOD_NAME" value="getSplit" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="JUnit.Human_YeastSub38NTest.topo" />
-      <item itemvalue="JUnit.HGASpc.updateNeighbors" />
-      <item itemvalue="JUnit.EdgeSpec" />
-      <item itemvalue="JUnit.EdgeSpec.constructorTest" />
       <item itemvalue="JUnit.HGASpc.addAllTopo" />
+      <item itemvalue="JUnit.SimMatTest.getSplit" />
+      <item itemvalue="JUnit.HGASpc.getHByAccount" />
+      <item itemvalue="JUnit.HGASpc.small" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.HGASpc.updateNeighbors" />
-        <item itemvalue="JUnit.HGASpc.addAllTopo" />
-        <item itemvalue="JUnit.EdgeSpec.constructorTest" />
-        <item itemvalue="JUnit.EdgeSpec" />
+        <item itemvalue="JUnit.HGASpc.small" />
+        <item itemvalue="JUnit.HGASpc.getHByAccount" />
+        <item itemvalue="JUnit.SimMatTest.getSplit" />
         <item itemvalue="JUnit.Human_YeastSub38NTest.topo" />
+        <item itemvalue="JUnit.HGASpc.addAllTopo" />
       </list>
     </recent_temporary>
   </component>
@@ -525,6 +541,7 @@
       <workItem from="1592574675203" duration="2716000" />
       <workItem from="1592609534001" duration="829000" />
       <workItem from="1592646430371" duration="12157000" />
+      <workItem from="1592696538115" duration="17327000" />
     </task>
     <task id="LOCAL-00001" summary="Undergo optimization">
       <created>1592205562105</created>
@@ -615,10 +632,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="442" y="14" key="#Project_Structure/0.0.1536.864@0.0.1536.864" timestamp="1587026909437" />
-    <state x="314" y="187" key="#com.intellij.debugger.streams.ui.EvaluationAwareTraceWindow" timestamp="1592467115905">
+    <state x="314" y="187" key="#com.intellij.debugger.streams.ui.EvaluationAwareTraceWindow" timestamp="1592705980626">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="314" y="187" key="#com.intellij.debugger.streams.ui.EvaluationAwareTraceWindow/0.0.1536.864@0.0.1536.864" timestamp="1592467115905" />
+    <state x="314" y="187" key="#com.intellij.debugger.streams.ui.EvaluationAwareTraceWindow/0.0.1536.864@0.0.1536.864" timestamp="1592705980626" />
     <state x="333" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591752963333">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -663,55 +680,55 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="430" y="366" width="642" height="498" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1592545696581" />
-    <state width="966" height="608" key="DebuggerActiveHint" timestamp="1592662049223">
+    <state width="966" height="608" key="DebuggerActiveHint" timestamp="1592721264606">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="966" height="608" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1592662049223" />
+    <state width="966" height="608" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1592721264606" />
     <state x="549" y="130" key="FileChooserDialogImpl" timestamp="1592521687053">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="162" y="215" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587256669541" />
     <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1592521687053" />
-    <state width="1493" height="269" key="GridCell.Tab.0.bottom" timestamp="1592662028980">
+    <state width="1493" height="269" key="GridCell.Tab.0.bottom" timestamp="1592721997995">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="269" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1592662028980" />
-    <state width="1493" height="269" key="GridCell.Tab.0.center" timestamp="1592662028980">
+    <state width="1493" height="269" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1592721997995" />
+    <state width="1493" height="269" key="GridCell.Tab.0.center" timestamp="1592721997995">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="269" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1592662028980" />
-    <state width="1493" height="269" key="GridCell.Tab.0.left" timestamp="1592662028980">
+    <state width="1493" height="269" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1592721997995" />
+    <state width="1493" height="269" key="GridCell.Tab.0.left" timestamp="1592721997995">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="269" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1592662028980" />
-    <state width="1493" height="269" key="GridCell.Tab.0.right" timestamp="1592662028980">
+    <state width="1493" height="269" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1592721997995" />
+    <state width="1493" height="269" key="GridCell.Tab.0.right" timestamp="1592721997995">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="269" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1592662028980" />
-    <state width="1493" height="269" key="GridCell.Tab.1.bottom" timestamp="1592662029637">
+    <state width="1493" height="269" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1592721997995" />
+    <state width="1493" height="269" key="GridCell.Tab.1.bottom" timestamp="1592721997995">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587256556414" />
-    <state width="1493" height="269" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1592662029637" />
-    <state width="1493" height="269" key="GridCell.Tab.1.center" timestamp="1592662029637">
+    <state width="1493" height="269" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1592721997995" />
+    <state width="1493" height="269" key="GridCell.Tab.1.center" timestamp="1592721997995">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587256556414" />
-    <state width="1493" height="269" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1592662029637" />
-    <state width="1493" height="269" key="GridCell.Tab.1.left" timestamp="1592662029637">
+    <state width="1493" height="269" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1592721997995" />
+    <state width="1493" height="269" key="GridCell.Tab.1.left" timestamp="1592721997995">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="269" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1592662029637" />
-    <state width="1493" height="269" key="GridCell.Tab.1.right" timestamp="1592662029637">
+    <state width="1493" height="269" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1592721997995" />
+    <state width="1493" height="269" key="GridCell.Tab.1.right" timestamp="1592721997995">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587256556414" />
-    <state width="1493" height="269" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1592662029637" />
+    <state width="1493" height="269" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1592721997995" />
     <state x="349" y="175" key="IDE.errors.dialog" timestamp="1592532045552">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -745,6 +762,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="449" y="257" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1584411342539" />
+    <state x="578" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592700241231">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="578" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864" timestamp="1592700241231" />
     <state x="196" y="194" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1592293292604">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -760,11 +781,11 @@
     <state width="600" height="428" key="javadoc.popup" timestamp="1591343024870">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="537" height="264" key="javadoc.popup.new" timestamp="1592660702482">
+    <state width="537" height="264" key="javadoc.popup.new" timestamp="1592721898799">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="632" height="298" key="javadoc.popup.new/0.0.1536.824@0.0.1536.824" timestamp="1587205062000" />
-    <state width="537" height="264" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1592660702482" />
+    <state width="537" height="264" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1592721898799" />
     <state width="600" height="428" key="javadoc.popup/0.0.1536.864@0.0.1536.864" timestamp="1591343024870" />
     <state x="413" y="71" key="new project wizard" timestamp="1592290042028">
       <screen x="0" y="0" width="1536" height="864" />
@@ -774,14 +795,14 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="859" y="193" key="refactoring.ChangeSignatureDialog/0.0.1536.864@0.0.1536.864" timestamp="1592296474966" />
-    <state x="425" y="197" key="run.anything.popup" timestamp="1592299215595">
+    <state x="425" y="197" key="run.anything.popup" timestamp="1592704061289">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1592299215595" />
-    <state x="116" y="194" width="672" height="543" key="search.everywhere.popup" timestamp="1592574789751">
+    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1592704061289" />
+    <state x="116" y="194" width="672" height="543" key="search.everywhere.popup" timestamp="1592696735293">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="116" y="194" width="672" height="543" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1592574789751" />
+    <state x="116" y="194" width="672" height="543" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1592696735293" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -827,9 +848,14 @@
           <option name="timeStamp" value="156" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java</url>
-          <line>210</line>
-          <option name="timeStamp" value="163" />
+          <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/Utils/SimMatTest.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="168" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java</url>
+          <line>105</line>
+          <option name="timeStamp" value="170" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/resources/Alignment/Blast/BLASTSpec.java</url>
@@ -863,6 +889,9 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Algorithms$Human_YeastSub38NTest_topo.ic" NAME="Human_YeastSub38NTest.topo Coverage Results" MODIFIED="1592536351513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Algorithms.Graph.HGA.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Algorithms$HGASpc_addAllTopo.ic" NAME="HGASpc.addAllTopo Coverage Results" MODIFIED="1592705881610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Algorithms.Graph.HGA.*</FILTER>
     </SUITE>
   </component>

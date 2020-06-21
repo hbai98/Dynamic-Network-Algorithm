@@ -31,6 +31,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Vector;
+import java.util.concurrent.atomic.AtomicReference;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -45,7 +46,8 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
     SimMat simMat;
     HGA hga;
     Stopwatch stopwatch;
-
+    private Vector<Integer> colIndexes;
+    private Vector<Integer> rowIndexes;
     @BeforeEach
     void init() throws IOException {
         stopwatch = new Stopwatch();
@@ -55,7 +57,15 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
         reader.setRecordNonZeros(true);
         reader.setRecordNeighbors(false);
         simMat = reader.readToSimMat("src/test/java/resources/TestModule/HGATestData/Human-Yeast/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt", yeast.getAllNodes(), human.getAllNodes(), true);
-        hga = new HGA(simMat, yeast, human, 0.4,true);
+        hga = new HGA(simMat, yeast, human, 0.4,true,0.5);
+        rowIndexes = new Vector<>();
+        colIndexes = new Vector<>();
+        for (int i = 0; i < simMat.getRowSet().size(); i++) {
+            rowIndexes.add(i);
+        }
+        for (int i = 0; i < simMat.getColSet().size(); i++) {
+            colIndexes.add(i);
+        }
     }
 
 
@@ -193,32 +203,41 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
 
     }
 
-    void parallel() {
-        HashMap<String, String> mapping = new HashMap<>();
-        mapping.put("TIF34", "SMAD7");
-        mapping.put("RVB2", "SOCS2");
-        mapping.put("ARP4", "SLIT1");
-        mapping.put("INO80", "UBE2D2");
-        // distinguish the result simMat from the indexing one
-        HashMap<String, HashSet<String>> neb1Map = yeast.getNeighborsMap();
-        HashMap<String, HashSet<String>> neb2Map = human.getNeighborsMap();
-        mapping.entrySet().parallelStream().forEach(entry -> {
-            String node1 = entry.getKey();
-            String node2 = entry.getValue();
-            double simUV = simMat.getVal(node1, node2);
-            // direct neighbors of the head node
-            HashSet<String> neb1 = neb1Map.get(node1);
-            HashSet<String> neb2 = neb2Map.get(node2);
-            neb1.forEach(s1 -> {
-                int nebNumbNode1 = neb1Map.get(s1).size();
-                double reward = simUV / nebNumbNode1;
-                neb2.forEach(s2 -> {
-                    double newWeight = simMat.getVal(s1, s2) + reward;
-                    simMat.put(s1, s2, newWeight);
-                });
-            });
-        });
+    @Test
+    void parallel_1() {
+        Stopwatch stopwatch = new Stopwatch();
+        AtomicReference<Double> sum = new AtomicReference<>((double) 0);
+        rowIndexes.parallelStream().forEach(r->colIndexes.parallelStream().forEach(c->{
+            sum.updateAndGet(v -> v + simMat.getMat().get(r, c));
+        }));
+        stopwatch.outElapsedByMiniSecond();
+        System.out.println(sum);
     }
+    @Test
+    void parallel_2() {
+        Stopwatch stopwatch = new Stopwatch();
+        AtomicReference<Double> sum = new AtomicReference<>((double) 0);
+        rowIndexes.parallelStream().forEach(r->{
+            colIndexes.forEach(j-> sum.updateAndGet(v->v+simMat.getMat().get(r,j)));
+    });
+        stopwatch.outElapsedByMiniSecond();
+        System.out.println(sum);
+    }
+
+
+    @Test
+    void noParallel(){
+        Stopwatch stopwatch = new Stopwatch();
+        double sum = 0;
+        for (int i = 0; i < rowIndexes.size(); i++) {
+            for (int j = 0; j < colIndexes.size(); j++) {
+                sum += simMat.getMat().get(i,j);
+            }
+        }
+        stopwatch.outElapsedByMiniSecond();
+        System.out.println(sum);
+    }
+
 
     @Test
     void smallTest() {

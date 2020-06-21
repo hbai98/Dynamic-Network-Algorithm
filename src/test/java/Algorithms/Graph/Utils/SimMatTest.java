@@ -30,6 +30,7 @@ class SimMatTest {
     @DisplayName("split")
     @Test
     void getSplit() {
+
         Pair<SimMat,SimMat> res = simMat.getSplit(5);
     }
     @DisplayName("sum mat")

@@ -1,37 +1,37 @@
 package Algorithms.Graph;
 
+import Algorithms.Graph.Utils.SimMat;
 import IO.GraphFileReader;
-import IO.MyMatrixReader;
-import Algorithms.Graph.Utils.AdjList.SimList;
+import Tools.Stopwatch;
 import org.jblas.DoubleMatrix;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
+import java.util.Vector;
+import java.util.concurrent.atomic.AtomicReference;
 
-import static Algorithms.Graph.Hungarian.ProblemType.minLoc;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class HungarianSpec {
     Hungarian alg;
     DoubleMatrix mat;
 
+
     @BeforeEach
     void init() {
-        try {
-            MyMatrixReader reader = new MyMatrixReader("src/test/java/resources/AlgTest/Hungarian/coverZerosTest.txt");
-            mat = new DoubleMatrix(reader.out());
-            alg = new Hungarian(mat, Hungarian.ProblemType.maxLoc);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        GraphFileReader reader = new GraphFileReader(true, false, true);
+
+//        try {
+//            MyMatrixReader reader = new MyMatrixReader("src/test/java/resources/AlgTest/Hungarian/coverZerosTest.txt");
+//            mat = new DoubleMatrix(reader.out());
+//            alg = new Hungarian(mat, Hungarian.ProblemType.maxLoc);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
     }
 
-    @Test
-    void maxLoc() {
-        int[] result = alg.getResult();
-        assertThat(result).containsSequence(1, 2, 0);
-    }
+
 
 //    @Test
 //    void speedComparison() throws IOException {
