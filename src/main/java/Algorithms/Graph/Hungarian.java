@@ -7,6 +7,7 @@ import org.jgrapht.alg.util.Pair;
 
 import java.util.Arrays;
 import java.util.Vector;
+import java.util.logging.Logger;
 
 /**
  * For the high computation performance, the matrix (DoubleMatrix) is based on
@@ -44,18 +45,20 @@ public class Hungarian {
     private int pathCol;
     private Vector<Integer> rowIndexes;
     private Vector<Integer> colIndexes;
-
     private enum ZeroMasks {starred, primed}
     public enum ProblemType {maxLoc, minLoc}
-
+    // debug
+    public Logger logger;
     protected Hungarian(DoubleMatrix mat, ProblemType type) {
         init(mat, type);
-        hungarian();
     }
 
     public Hungarian(SimMat mat, ProblemType type) {
         this.mat = mat.getMat();
         init(this.mat, type);
+    }
+
+    public void run(){
         hungarian();
     }
 
@@ -112,6 +115,7 @@ public class Hungarian {
     protected int subtractRowMinimal() {
         // parallel here there is no interference and no stateful lambda
         //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
+//        logInfo("Hungarian step 1-subtract minimum from rows...");
         rowIndexes.parallelStream().forEach(r->{
             DoubleMatrix curRow = mat.getRow(r);
             double minRowVal = curRow.min();
@@ -127,6 +131,7 @@ public class Hungarian {
     protected int starZeros() {
         // parallel here there is no interference and no stateful lambda
         //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
+//        logInfo("Hungarian step 2-Find zeros in the resulting matrix that is uncovered...");
         rowIndexes.parallelStream().forEach(r-> colIndexes.parallelStream().forEach(c->{
             if (mat.get(r, c) == 0 && !R_cover[r] && !C_cover[c]) {
                 maskMat[r][c] = ZeroMasks.starred;
@@ -151,6 +156,7 @@ public class Hungarian {
     protected int coverStarredZeros() {
         // parallel here there is no interference and no stateful lambda
         //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
+//        logInfo("Hungarian step 3-Cover each column containing a starred zero...");
         rowIndexes.parallelStream().forEach(r-> colIndexes.parallelStream().forEach(c-> {
             if (maskMat[r][c] == ZeroMasks.starred) {
                 C_cover[c] = true;
@@ -178,13 +184,14 @@ public class Hungarian {
 
     /**
      * STEP 4:
-     * Find a noncovered zero and prime it.
+     * Find a uncovered zero and prime it.
      * If there is no starred zero in the row containing this primed zero,
      * Go to Step 5.  Otherwise, cover this row and uncover the column containing the starred zero. Continue in this manner until there are no uncovered zeros left.
      * Save the smallest uncovered value and Go to Step 6
      *
      */
     protected int primeZeros(){
+//        logInfo("Hungarian step 4 - Find a uncovered zero and prime it...");
         int row = 0;
         int col = 0;
         while(true){
@@ -248,6 +255,7 @@ public class Hungarian {
      * <p>augmenting path algorithm (for solving the maximal matching problem) </p>
      */
     protected int augmentingPath(){
+//        logInfo("Hungarian step 5 - Construct a series of alternating primed and starred zeros...");
         int pathCount = 1;
         path[0][0] = pathRow;
         path[0][1] = pathCol;
@@ -331,6 +339,7 @@ public class Hungarian {
      * so we will not jump over the optimal (i.e. minimal assignment) with this change
      */
     protected int adjustMat(){
+//        logInfo("Hungarian step 6-Modify the matrix...");
         double minVal = findSmallestOfUncovered();
         // parallel here there is no interference and no stateful lambda
         //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
@@ -365,6 +374,7 @@ public class Hungarian {
      * star zero is the assignment, output the int[] result for rows
      */
     protected int[] finish(){
+//        logInfo("Hungarian step 7-Finish");
         int[] result = new int[matRow];
         for (int r = 0; r < matRow; r++) {
             int indexCol = findStarredInRow(r);
@@ -376,5 +386,16 @@ public class Hungarian {
     public int[] getResult() {
         assert (result != null);
         return result;
+    }
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
+
+
+    private void logInfo(String message){
+        if(logger!=null){
+            logger.info(message);
+        }
     }
 }

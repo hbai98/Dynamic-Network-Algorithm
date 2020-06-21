@@ -9,7 +9,6 @@
  */
 package Algorithms.Graph.HGA;
 
-import Algorithms.Graph.HGA.HGA;
 import Algorithms.Graph.Utils.AdjList.Graph;
 import Algorithms.Graph.Utils.SimMat;
 import IO.AbstractFileWriter;

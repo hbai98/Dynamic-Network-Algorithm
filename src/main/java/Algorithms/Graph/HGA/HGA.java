@@ -11,6 +11,7 @@ import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 import org.jgrapht.alg.util.Triple;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
@@ -20,7 +21,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
-
+import org.apache.commons.io.FileUtils;
 /**
  * Refer to An Adaptive Hybrid Algorithm for Global Network Algorithms.Alignment
  * Article in IEEE/ACM Transactions on Computational Biology and Bioinformatics · January 2015
@@ -37,7 +38,6 @@ public class HGA {
     protected Graph graph1;
     protected Graph graph2;
     // parameters
-    private int iterCount = 0;
     private boolean forcedMappingForSame;
     private double hAccount;
     protected double bioFactor;
@@ -51,6 +51,9 @@ public class HGA {
     private double EC;
     private double score;
     private double edgeScore;
+    //----------limit-----
+    private int iterCount = 0;
+    private int iterMax = 1000;
     //--------------debug---------------
     public String debugOutputPath = "src\\test\\java\\resources\\jupyter\\data\\";
     //--------------Logging-------------
@@ -99,6 +102,8 @@ public class HGA {
     protected HashMap<String, String> getMappingFromHA(SimMat simMat) {
         logInfo("Hungarian mapping...");
         hungarian = new Hungarian(simMat, Hungarian.ProblemType.maxLoc);
+        hungarian.setLogger(logger);
+        hungarian.run();
         int[] res = hungarian.getResult();
         // map
         HashMap<Integer, String> rowIndexNameMap = simMat.getRowIndexNameMap();
@@ -439,6 +444,9 @@ public class HGA {
     protected boolean checkPassed(Stack<DoubleMatrix> stackMat, Stack<Double> stackScore, double tolerance) {
 
         if (stackMat.size() == 3) {
+            if(iterCount>1000){
+                return true;
+            }
             DoubleMatrix s1 = stackMat.get(1);
             DoubleMatrix s = stackMat.peek();
             // remove bottom which is the oldest for every iteration
@@ -469,6 +477,9 @@ public class HGA {
         // stacks for simMat converge
         Stack<DoubleMatrix> stackMat = new Stack<>();
         Stack<Double> stackScore = new Stack<>();
+        if(debugOut){
+            cleanDebugResult();
+        }
         boolean checkPassed;
         logInfo("Init mapping...");
         // forced mapping
@@ -522,7 +533,7 @@ public class HGA {
                 maxScore = score;
             }
             checkPassed = checkPassed(stackMat, stackScore, tolerance);
-        } while (!checkPassed||iterCount<1000);
+        } while (!checkPassed);
 
         this.score = maxScore;
     }
@@ -651,6 +662,22 @@ public class HGA {
         writer.write(mappingVec, false);
     }
 
+    void cleanDebugResult(){
+        String mapping = debugOutputPath + "mapping";
+        String scoring = debugOutputPath + "scoring";
+        String matrix = debugOutputPath + "matrix";
+        deleteAllFiles(mapping);
+        deleteAllFiles(scoring);
+        deleteAllFiles(matrix);
+
+    }
+    private void deleteAllFiles(String directory){
+        try {
+            FileUtils.cleanDirectory(new File(directory));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public double setEC() {
         return EC;
     }
@@ -712,6 +739,9 @@ public class HGA {
         };
     }
 
+    public void setIterMax(int iterMax) {
+        this.iterMax = iterMax;
+    }
 
     public double getEC() {
         return EC;

@@ -207,6 +207,7 @@ public class SimMat {
 
     public SimMat getPart(Collection<String> set, boolean isRow) {
         DoubleMatrix mat;
+        SimMat simMat = new SimMat();
         HashMap<String,Integer> rowMap =new HashMap<>();
         HashMap<Integer,String> rowIndexNameMap = new HashMap<>();
         HashMap<String,Integer> colMap =new HashMap<>();
@@ -247,14 +248,14 @@ public class SimMat {
                 }
             }
         }
-        this.setMat(mat);
-        this.setNonZerosIndexMap(nonZerosIndexMap);
-        this.setRowIndexNameMap(rowIndexNameMap);
-        this.setColIndexNameMap(colIndexNameMap);
-        this.setRowMap(rowMap);
-        this.setColMap(colMap);
+        simMat.setMat(mat);
+        simMat.setNonZerosIndexMap(nonZerosIndexMap);
+        simMat.setRowIndexNameMap(rowIndexNameMap);
+        simMat.setColIndexNameMap(colIndexNameMap);
+        simMat.setRowMap(rowMap);
+        simMat.setColMap(colMap);
         // set up matrix
-        return this;
+        return simMat;
     }
 
     /**

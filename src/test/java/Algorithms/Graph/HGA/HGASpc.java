@@ -99,13 +99,15 @@ class HGASpc extends GraphFileReaderSpec {
         assertEquals(8,hga.getHByAccount());
     }
 
+
     @Test
-    void small(){
-        HashMap<String,String> tes = new HashMap<>();
-        tes.put("A","B");
+    void clean(){
+        hga.cleanDebugResult();
     }
-
-
+    @Test
+    void run(){
+        hga.run();
+    }
 
 }
 

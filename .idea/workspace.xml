@@ -20,128 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.lck" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605085732.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605085751.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605085752.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605085759.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605085823.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605085825.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605085827.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605085835.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605085840.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605085849.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605085850.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605085855.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605085858.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605085859.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605092535.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605092548.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605092603.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605092606.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605092611.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605092614.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605092624.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605092631.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605092636.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605092639.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605092646.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605092656.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605092715.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093028.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093030.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093032.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093043.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093045.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093047.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093049.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093050.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093052.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093058.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093618.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093622.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093632.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093635.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093636.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093639.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093643.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093644.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093648.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093649.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093654.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093656.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093701.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093702.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093727.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093728.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605093731.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095141.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095142.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095144.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095154.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095156.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095205.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095409.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095418.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095420.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095453.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095455.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095500.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095707.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095708.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095709.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095712.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095728.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095731.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095755.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095812.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095813.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095842.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095848.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095855.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095856.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095859.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095901.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095905.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095910.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095915.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095919.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095922.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095928.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095935.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605095936.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605100043.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605100146.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605100222.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605100236.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605100241.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605100334.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605100336.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605100339.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605100526.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605100528.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605101853.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605101857.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605101900.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605101904.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605101906.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605101922.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605101923.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605101926.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605101931.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.history/src/test/java/TestModules/humanYeastTest/Human_YeastSub38NTest_20200605101938.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Tools/Logger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log.txt.perf" beforeDir="false" afterPath="$PROJECT_DIR$/HGALogFile.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IO/AbstractFileWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/AbstractFileWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Hungarian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Hungarian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/SimMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/SimMat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Tools/Multithread/AQ.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/Human_YeastSub38NTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/Human_YeastSub38NTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian$ProblemType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian$ProblemType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/IO/AbstractFileWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/IO/AbstractFileWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/SimMat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/SimMat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGASpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGASpc.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -170,8 +62,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -256,7 +148,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -299,6 +191,22 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.Human_YeastSub38NTest.run">
+    <configuration name="HGASpc.clean" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Algorithms.Graph.HGA.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGASpc" />
+      <option name="METHOD_NAME" value="clean" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HGASpc.getHByAccount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
@@ -310,6 +218,22 @@
       <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
       <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGASpc" />
       <option name="METHOD_NAME" value="getHByAccount" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HGASpc.run" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Algorithms.Graph.HGA.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGASpc" />
+      <option name="METHOD_NAME" value="run" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -347,52 +271,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Human_YeastSub38NTest.topo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.HGA.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.Human_YeastSub38NTest" />
-      <option name="METHOD_NAME" value="topo" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SimMatTest.getSplit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.Utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.Utils" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Utils.SimMatTest" />
-      <option name="METHOD_NAME" value="getSplit" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="JUnit.Human_YeastSub38NTest.topo" />
-      <item itemvalue="JUnit.SimMatTest.getSplit" />
       <item itemvalue="JUnit.HGASpc.getHByAccount" />
       <item itemvalue="JUnit.HGASpc.small" />
       <item itemvalue="JUnit.Human_YeastSub38NTest.run" />
+      <item itemvalue="JUnit.HGASpc.run" />
+      <item itemvalue="JUnit.HGASpc.clean" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.Human_YeastSub38NTest.run" />
+        <item itemvalue="JUnit.HGASpc.clean" />
+        <item itemvalue="JUnit.HGASpc.run" />
         <item itemvalue="JUnit.HGASpc.small" />
         <item itemvalue="JUnit.HGASpc.getHByAccount" />
-        <item itemvalue="JUnit.SimMatTest.getSplit" />
-        <item itemvalue="JUnit.Human_YeastSub38NTest.topo" />
       </list>
     </recent_temporary>
   </component>
@@ -536,7 +428,8 @@
       <workItem from="1592574675203" duration="2716000" />
       <workItem from="1592609534001" duration="829000" />
       <workItem from="1592646430371" duration="12157000" />
-      <workItem from="1592696538115" duration="23999000" />
+      <workItem from="1592696538115" duration="28859000" />
+      <workItem from="1592749955075" duration="2209000" />
     </task>
     <task id="LOCAL-00001" summary="Undergo optimization">
       <created>1592205562105</created>
@@ -594,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592723467228</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="logging --- performance improves">
+      <created>1592742577956</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1592742577956</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -624,7 +524,8 @@
     <MESSAGE value="Undergo optimization -- parallel for CPU" />
     <MESSAGE value="BUG fix -- addAllTopology sort to alleviate ordering effect" />
     <MESSAGE value="waiting for logging --- performance improves" />
-    <option name="LAST_COMMIT_MESSAGE" value="waiting for logging --- performance improves" />
+    <MESSAGE value="logging --- performance improves" />
+    <option name="LAST_COMMIT_MESSAGE" value="logging --- performance improves" />
   </component>
   <component name="WindowStateProjectService">
     <state x="626" y="269" key="#Notifications" timestamp="1588050211644">
@@ -643,10 +544,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="333" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1591752963333" />
-    <state x="502" y="230" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1592740320824">
+    <state x="502" y="230" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1592750955219">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="502" y="230" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1592740320824" />
+    <state x="502" y="230" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1592750955219" />
     <state x="229" y="200" key="#com.intellij.ide.util.MemberChooser" timestamp="1592184627767">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -687,72 +588,72 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="430" y="366" width="642" height="498" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1592545696581" />
-    <state width="966" height="608" key="DebuggerActiveHint" timestamp="1592721264606">
+    <state width="966" height="608" key="DebuggerActiveHint" timestamp="1592750900794">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="966" height="608" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1592721264606" />
+    <state width="966" height="608" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1592750900794" />
     <state x="549" y="130" key="FileChooserDialogImpl" timestamp="1592521687053">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="162" y="215" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587256669541" />
     <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1592521687053" />
-    <state width="1493" height="216" key="GridCell.Tab.0.bottom" timestamp="1592740312837">
+    <state width="1493" height="561" key="GridCell.Tab.0.bottom" timestamp="1592752186254">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="216" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1592740312837" />
-    <state width="1493" height="216" key="GridCell.Tab.0.center" timestamp="1592740312837">
+    <state width="1493" height="561" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1592752186254" />
+    <state width="1493" height="561" key="GridCell.Tab.0.center" timestamp="1592752186254">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="216" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1592740312837" />
-    <state width="1493" height="216" key="GridCell.Tab.0.left" timestamp="1592740312837">
+    <state width="1493" height="561" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1592752186254" />
+    <state width="1493" height="561" key="GridCell.Tab.0.left" timestamp="1592752186254">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="216" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1592740312837" />
-    <state width="1493" height="216" key="GridCell.Tab.0.right" timestamp="1592740312837">
+    <state width="1493" height="561" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1592752186254" />
+    <state width="1493" height="561" key="GridCell.Tab.0.right" timestamp="1592752186254">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="216" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1592740312837" />
-    <state width="1493" height="216" key="GridCell.Tab.1.bottom" timestamp="1592740312838">
+    <state width="1493" height="561" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1592752186254" />
+    <state width="1493" height="226" key="GridCell.Tab.1.bottom" timestamp="1592750913817">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587256556414" />
-    <state width="1493" height="216" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1592740312838" />
-    <state width="1493" height="216" key="GridCell.Tab.1.center" timestamp="1592740312837">
+    <state width="1493" height="226" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1592750913817" />
+    <state width="1493" height="226" key="GridCell.Tab.1.center" timestamp="1592750913817">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587256556414" />
-    <state width="1493" height="216" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1592740312837" />
-    <state width="1493" height="216" key="GridCell.Tab.1.left" timestamp="1592740312837">
+    <state width="1493" height="226" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1592750913817" />
+    <state width="1493" height="226" key="GridCell.Tab.1.left" timestamp="1592750913817">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="216" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1592740312837" />
-    <state width="1493" height="216" key="GridCell.Tab.1.right" timestamp="1592740312838">
+    <state width="1493" height="226" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1592750913817" />
+    <state width="1493" height="226" key="GridCell.Tab.1.right" timestamp="1592750913817">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587256556414" />
-    <state width="1493" height="216" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1592740312838" />
+    <state width="1493" height="226" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1592750913817" />
     <state x="349" y="175" key="IDE.errors.dialog" timestamp="1592532045552">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="349" y="175" key="IDE.errors.dialog/0.0.1536.864@0.0.1536.864" timestamp="1592532045552" />
-    <state x="299" y="87" key="Maven.ArtifactSearchDialog" timestamp="1591327235096">
+    <state x="299" y="87" key="Maven.ArtifactSearchDialog" timestamp="1592751847083">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="299" y="87" key="Maven.ArtifactSearchDialog/0.0.1536.864@0.0.1536.864" timestamp="1591327235096" />
+    <state x="299" y="87" key="Maven.ArtifactSearchDialog/0.0.1536.864@0.0.1536.864" timestamp="1592751847083" />
     <state x="584" y="366" key="ReplaceDuplicatesPrompt" timestamp="1591753658274">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="584" y="366" key="ReplaceDuplicatesPrompt/0.0.1536.864@0.0.1536.864" timestamp="1591753658274" />
-    <state x="397" y="157" width="981" height="707" key="SettingsEditor" timestamp="1592661212514">
+    <state x="376" y="98" width="981" height="707" key="SettingsEditor" timestamp="1592742641841">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="0" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1587210233245" />
-    <state x="397" y="157" width="981" height="707" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1592661212514" />
+    <state x="376" y="98" width="981" height="707" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1592742641841" />
     <state width="389" height="437" key="XDebugger.FullValuePopup" timestamp="1592535064963">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -769,10 +670,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="449" y="257" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1584411342539" />
-    <state x="578" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592700241231">
+    <state x="578" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592742658098">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="578" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864" timestamp="1592700241231" />
+    <state x="578" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864" timestamp="1592742658098" />
     <state x="196" y="194" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1592293292604">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -802,10 +703,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="859" y="193" key="refactoring.ChangeSignatureDialog/0.0.1536.864@0.0.1536.864" timestamp="1592296474966" />
-    <state x="425" y="197" key="run.anything.popup" timestamp="1592704061289">
+    <state x="425" y="197" key="run.anything.popup" timestamp="1592751787316">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1592704061289" />
+    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1592751787316" />
     <state x="116" y="194" width="672" height="543" key="search.everywhere.popup" timestamp="1592696735293">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -860,9 +761,19 @@
           <option name="timeStamp" value="168" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java</url>
-          <line>105</line>
+          <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java</url>
+          <line>252</line>
+          <option name="timeStamp" value="169" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/SimMat.java</url>
+          <line>98</line>
           <option name="timeStamp" value="170" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java</url>
+          <line>364</line>
+          <option name="timeStamp" value="171" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/resources/Alignment/Blast/BLASTSpec.java</url>
