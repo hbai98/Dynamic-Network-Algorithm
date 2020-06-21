@@ -50,4 +50,12 @@ public abstract class AbstractFileWriter {
     public String getPath() {
         return path;
     }
+
+    public void setClose(){
+        try {
+            bufWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

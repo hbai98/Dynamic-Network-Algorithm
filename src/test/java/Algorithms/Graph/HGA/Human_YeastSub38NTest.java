@@ -57,7 +57,7 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
         reader.setRecordNonZeros(true);
         reader.setRecordNeighbors(false);
         simMat = reader.readToSimMat("src/test/java/resources/TestModule/HGATestData/Human-Yeast/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt", yeast.getAllNodes(), human.getAllNodes(), true);
-        hga = new HGA(simMat, yeast, human, 0.4,true,0.5);
+        hga = new HGA(simMat, yeast, human, 0.4,true,0.5,0.01);
         rowIndexes = new Vector<>();
         colIndexes = new Vector<>();
         for (int i = 0; i < simMat.getRowSet().size(); i++) {
@@ -238,6 +238,10 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
         System.out.println(sum);
     }
 
+    @Test
+    void run(){
+        hga.run();
+    }
 
     @Test
     void smallTest() {

@@ -12,9 +12,13 @@ import org.jgrapht.alg.util.Pair;
 import org.jgrapht.alg.util.Triple;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 
 /**
@@ -39,6 +43,8 @@ public class HGA {
     protected double bioFactor;
     //---------------mapping result-------------
     private HashMap<String, String> mappingResult;
+    //---------------mapping for iteration---------
+    private HashMap<String, String> mapping;
     private double PE;
     private double ES;
     private double PS;
@@ -47,8 +53,42 @@ public class HGA {
     private double edgeScore;
     //--------------debug---------------
     public String debugOutputPath = "src\\test\\java\\resources\\jupyter\\data\\";
+    //--------------Logging-------------
+    public Logger logger;
+    private AbstractFileWriter writer;
+    public boolean debugOut;
+    private double tolerance;
 
 
+    /**
+     * Step 1:
+     * using homologous coefficients of proteins
+     * computed by alignment algorithms for PINs
+     *
+     * @param graph1               adjacent list of graph1
+     * @param graph2               adjacent list of graph2
+     * @param simMat               similarity matrix, headNode->graph1, listNodes -> graph2
+     * @param bioFactor            sequence similarity account compared with topological effect
+     * @param forcedMappingForSame whether force mapping
+     * @param hAccount             hungarian matrix account
+     */
+    public HGA(SimMat simMat, Graph graph1, Graph graph2, double bioFactor, boolean forcedMappingForSame,double hAccount,double tolerance) throws IOException {
+
+        this.graph1 = graph1;
+        this.graph2 = graph2;
+        this.originalMat = (SimMat) simMat.dup();
+        this.simMat = simMat;
+        this.edgeScore = 1.;
+        this.forcedMappingForSame = forcedMappingForSame;
+        this.tolerance = tolerance;
+        // set up preferences
+        setBioFactor(bioFactor);
+        sethAccount(hAccount);
+        simMat.updateNonZerosForRow = true;
+        // set up logging
+        setupLogger();
+        debugOut = true;
+    }
 
     /**
      * HGA to initialize the mapping between two graph by HA,
@@ -57,6 +97,7 @@ public class HGA {
      * @return the mapping result
      */
     protected HashMap<String, String> getMappingFromHA(SimMat simMat) {
+        logInfo("Hungarian mapping...");
         hungarian = new Hungarian(simMat, Hungarian.ProblemType.maxLoc);
         int[] res = hungarian.getResult();
         // map
@@ -120,31 +161,6 @@ public class HGA {
         });
     }
 
-    /**
-     * Step 1:
-     * using homologous coefficients of proteins
-     * computed by alignment algorithms for PINs
-     *
-     * @param graph1               adjacent list of graph1
-     * @param graph2               adjacent list of graph2
-     * @param simMat               similarity matrix, headNode->graph1, listNodes -> graph2
-     * @param bioFactor            sequence similarity account compared with topological effect
-     * @param forcedMappingForSame whether force mapping
-     * @param hAccount             hungarian matrix account
-     */
-    public HGA(SimMat simMat, Graph graph1, Graph graph2, double bioFactor, boolean forcedMappingForSame, double hAccount) {
-
-        this.graph1 = graph1;
-        this.graph2 = graph2;
-        this.originalMat = (SimMat) simMat.dup();
-        this.simMat = simMat;
-        this.edgeScore = 1.;
-        this.forcedMappingForSame = forcedMappingForSame;
-        // set up preferences
-        setBioFactor(bioFactor);
-        sethAccount(hAccount);
-        simMat.updateNonZerosForRow = true;
-    }
 
     /**
      * Step 2:
@@ -165,6 +181,7 @@ public class HGA {
      * @param mapping current mapping result, and one edge means the srcNode and tgtNode has already mapped, srcNode ->graph1, tgtNode -> graph2
      */
     protected void updatePairNeighbors(HashMap<String, String> mapping) {
+        logInfo("adjust neighborhood similarity based on mapping result...");
         NBM.neighborSimAdjust(graph1, graph2, simMat, mapping);
     }
 
@@ -277,11 +294,14 @@ public class HGA {
         // https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
         // similarity matrix after the neighborhood adjustment
         SimMat preSimMat = (SimMat) simMat.dup();
+        logInfo("AddTopology for all nodes pairs in two graphs:");
         nodes1.forEach(n1 -> {
             nodes2.forEach(n2 -> {
                 addTopology(n1, n2, preSimMat);
-                System.out.println("Iteration: " + iterCount + ";\taddAllTopology:" + i.getAndIncrement() + "/" + iterSum);
-
+                if(i.get()%(iterSum/10)==0){
+                    logInfo(i.get()/(iterSum/10)*10+"%\t");
+                }
+                i.getAndIncrement();
             });
         });
     }
@@ -326,9 +346,8 @@ public class HGA {
         PS = getPS(mappingEdges);
         PE = ES / 2 + PS;
         score = 100 * EC + PE;
-        // print
-        System.out.println("Iteration " + iterCount + ":Scoring");
-        System.out.println("ES:" + ES + "\tPS" + PS + "\tPE" + PE + "\tScore:" + score);
+        // log
+        logInfo("Scoring for mapping ...");
     }
 
     private double getES(Vector<Pair<Edge, Edge>> mappingEdges) {
@@ -441,21 +460,17 @@ public class HGA {
             double dif = s.sub(stackMat.get(0)).normmax();
             return dif < tolerance;
         }
+
     }
 
-    /**
-     * @param factor    weight of sequence information, 0 <= factor <=1
-     * @param tolerance error tolerance compared with the last matrix
-     */
-    public void run(double factor, double tolerance) {
+    public void run() {
         HashMap<String, String> forcedPart;
         HashMap<String, String> remapPart;
         // stacks for simMat converge
         Stack<DoubleMatrix> stackMat = new Stack<>();
         Stack<Double> stackScore = new Stack<>();
         boolean checkPassed;
-        // variables ->local
-        HashMap<String,String> mapping;
+        logInfo("Init mapping...");
         // forced mapping
         if (forcedMappingForSame) {
             Pair<HashMap<String, String>, HashMap<String, String>> res = forcedMap();
@@ -479,18 +494,26 @@ public class HGA {
         // iterating begin---------------------------------------------------------
         double maxScore = score;
         do {
-            // step 2 score mapping
+            // log if needed
+            logInfo("------------Iteration "+iterCount+"/1000------------");
+            // step 1 score mapping
             scoreMapping(mapping);
+            // debug
+            outDebug();
             // record score
             stackScore.push(score);
-            // step 3 update based on mapped nodes
+            iterCount++;
+
+            // step 2 update based on mapped nodes
             updatePairNeighbors(mapping);
-            // step 4 topo adjustment to similarity matrix
+            // step 3 topo adjustment to similarity matrix
             addAllTopology();
             stackMat.push(simMat.getMat());
             // map again
             mapping = remap(toRemap, forcedPart);
             scoreMapping(mapping);
+            // debug
+            outDebug();
             // record score
             stackScore.push(score);
             // record best
@@ -498,9 +521,8 @@ public class HGA {
                 mappingResult = mapping;
                 maxScore = score;
             }
-            iterCount++;
             checkPassed = checkPassed(stackMat, stackScore, tolerance);
-        } while (!checkPassed);
+        } while (!checkPassed||iterCount<1000);
 
         this.score = maxScore;
     }
@@ -557,98 +579,76 @@ public class HGA {
         return new Pair<>(getMappingFromHA(simMat.getPart(rowToMap, colToMap)), forceMap);
     }
 
+    private void logInfo(String message){
+        if(logger!=null){
+            logger.info(message);
+        }
+    }
+
     public HashMap<String, String> getMappingResult() {
         return mappingResult;
     }
 
-//    /**
-//     * Get SimList, Graph1, Graph2
-//     *
-//     * @param filePaths SimList1, Graph1, Graph2, SimList2 paths
-//     * @return result : graph1,rev1,graph2,rev2,simList
-//     * @throws Exception ioe
-//     */
-//    public List<SimList> io(String... filePaths) throws Exception {
-//        GraphFileReader reader = new GraphFileReader();
-//        String graph_2Path = filePaths[2];
-//        SimList graph2 = reader.readToSimList(graph_2Path, false);
-//        if (graph2.size() == 0) {
-//            throw new IOException("graph2 has not been loaded.");
-//        }
-//        //TODO
-////        SimList rev2 = reader.getRevAdjList();
-//        String graph_1Path = filePaths[1];
-//        SimList graph1 = reader.readToSimList(graph_1Path, false);
-//        if (graph1.size() == 0) {
-//            throw new IOException("graph1 has not been loaded.");
-//        }
-////        SimList rev1 = reader.getRevAdjList();
-//        SimList simList = reader.readToSimList(filePaths[0]);
-//        // result
-//        List<SimList> result = new ArrayList<>();
-//        result.addAll(Arrays.asList(graph1, rev1, graph2, rev2, simList));
-//        return result;
-//    }
-
-//    public static void debug_outPut(Object... objects) throws FileNotFoundException {
-//
-//        Vector<String> scoreVec = new Vector<>();
-//        Vector<String> matrixVec = new Vector<>();
-////        Vector<String> mappingVec = new Vector<>();
-//        AbstractFileWriter writer = new AbstractFileWriter() {
-//            @Override
-//            public void write(Vector<String> context, boolean closed) {
-//                super.write(context, false);
-//            }
-//        };
-//        if(scoring){
-//
-//        }
-//
-//        mapping.forEach(e -> {
-//            mappingVec.add(e.getSource().getStrName() + " ");
-//            mappingVec.add(e.getTarget().getStrName());
-//            mappingVec.add("\n");
-//        });
-//        writer.setPath(outputPath + "mapping_" + iterCount + ".txt");
-//        writer.write(mappingVec, false);
-//
-//        scoreVec.add("Score:" + scoreInfo.get(0) + "\n");
-//        scoreVec.add("PE:" + scoreInfo.get(1) + "\n");
-//        scoreVec.add("EC:" + scoreInfo.get(2) + "\n");
-//        scoreVec.add("ES:" + scoreInfo.get(3) + "\n");
-//        scoreVec.add("PS:" + scoreInfo.get(4) + "\n");
-//        for (int i = 0; i < dif.length; i++) {
-//            scoreVec.add("dif:"+dif[0]+"\n");
-//            // 3 matrix
-//            if(dif.length>1){
-//                scoreVec.add("dif1:"+dif[0]+"\n");
-//                scoreVec.add("dif2:"+dif[1]+"\n");
-//            }
-//        }
-//        writer.setPath(outputPath + "scoresAndDif_" + iterCount + ".txt");
-//        writer.write(scoreVec, true);
-//    }
-
-    public void outPutMatrix() throws FileNotFoundException {
-        AbstractFileWriter writer = new AbstractFileWriter() {
-            @Override
-            public void write(Vector<String> context, boolean closed) {
-                super.write(context, true);
-            }
-        };
-        String path = debugOutputPath + "small//";
+    public void outDebug() {
+        if(debugOut){
+            outPutMatrix();
+            outPutScoring();
+            outPutMapping();
+        }
+    }
+    public void outPutMatrix()  {
+        logInfo("output matrix");
+        String path = debugOutputPath + "matrix//";
         Vector<String> matrixVec = new Vector<>();
-        DoubleMatrix matrix = simMat.getMat();
-        double[][] mat = matrix.toArray2();
+        double[][] mat = simMat.getMat().toArray2();
         for (double[] doubles : mat) {
             for (int j = 0; j < mat[0].length; j++) {
                 matrixVec.add(doubles[j] + " ");
             }
             matrixVec.add("\n");
         }
-        writer.setPath(debugOutputPath + "matrix_" + iterCount + ".txt");
+        try {
+            writer.setPath(path + "matrix_" + iterCount + ".txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         writer.write(matrixVec, false);
+    }
+
+    public void outPutScoring(){
+        logInfo("output scores");
+        String path = debugOutputPath + "scoring//";
+        Vector<String> scoreVec = new Vector<>();
+
+        scoreVec.add("Iteration "+iterCount+":\n");
+        scoreVec.add("Score:" + score + "\n");
+        scoreVec.add("PE:" + PE + "\n");
+        scoreVec.add("EC:" + EC + "\n");
+        scoreVec.add("ES:" + ES + "\n");
+        scoreVec.add("PS:" + PS + "\n");
+        try {
+            writer.setPath(path + "scoring_" + iterCount + ".txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        writer.write(scoreVec, false);
+    }
+
+    public void outPutMapping()  {
+        logInfo("output mapping");
+        String path = debugOutputPath + "mapping//";
+        Vector<String> mappingVec = new Vector<>();
+
+        mappingVec.add("Iteration "+iterCount+":\n");
+        mapping.forEach((k,v)->{
+            mappingVec.add(k+"->"+v+"\n");
+        });
+        try {
+            writer.setPath(path + "scoring_" + iterCount + ".txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        writer.write(mappingVec, false);
     }
 
     public double setEC() {
@@ -693,6 +693,25 @@ public class HGA {
         assert (hAccount >= 0 && hAccount <= 1);
         this.hAccount = hAccount;
     }
+
+    public void setTolerance(double tolerance) {
+        this.tolerance = tolerance;
+    }
+
+    public void setupLogger() throws IOException {
+        logger = Logger.getLogger("MyLog");
+        FileHandler fh;
+        fh = new FileHandler("HGALogFile.log");
+        fh.setFormatter(new SimpleFormatter());
+        // output matrix, scoring and mapping result
+        writer = new AbstractFileWriter() {
+            @Override
+            public void write(Vector<String> context, boolean closed) {
+                super.write(context, true);
+            }
+        };
+    }
+
 
     public double getEC() {
         return EC;

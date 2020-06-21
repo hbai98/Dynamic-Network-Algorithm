@@ -31,7 +31,7 @@ class HGASpc extends GraphFileReaderSpec {
         reader.setRecordNonZeros(true);
         reader.setRecordNeighbors(false);
         simMat = reader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt", graph1.getAllNodes(), graph2.getAllNodes(), true);
-        hga = new HGA(simMat, graph1, graph2, 0.5,true,0.5);
+        hga = new HGA(simMat, graph1, graph2, 0.5,true,0.5,0.01);
     }
 
     @DisplayName("Greedily map")
