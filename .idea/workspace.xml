@@ -19,23 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/IO/DoubleMatrixReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HGALogFile.log" beforeDir="false" afterPath="$PROJECT_DIR$/HGALogFile.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/SimMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/SimMat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IO/MyMatrixReader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Tools/MatrixFunctionsSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tools/MatrixFunctionsSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/Algorithms.Graph.HGA.Human_YeastSub38NTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/Algorithms.Graph.HGA.Human_YeastSub38NTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGASpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGASpc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/Human_YeastSub38NTest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/Human_YeastSub38NTest$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/Human_YeastSub38NTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/Human_YeastSub38NTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -430,7 +414,7 @@
       <workItem from="1592609534001" duration="829000" />
       <workItem from="1592646430371" duration="12157000" />
       <workItem from="1592696538115" duration="28859000" />
-      <workItem from="1592749955075" duration="18728000" />
+      <workItem from="1592749955075" duration="19515000" />
     </task>
     <task id="LOCAL-00001" summary="Undergo optimization">
       <created>1592205562105</created>
@@ -495,7 +479,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592742577956</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Logging finish -- wait for retaining">
+      <created>1592797034424</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1592797034424</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,7 +517,8 @@
     <MESSAGE value="BUG fix -- addAllTopology sort to alleviate ordering effect" />
     <MESSAGE value="waiting for logging --- performance improves" />
     <MESSAGE value="logging --- performance improves" />
-    <option name="LAST_COMMIT_MESSAGE" value="logging --- performance improves" />
+    <MESSAGE value="Logging finish -- wait for retaining" />
+    <option name="LAST_COMMIT_MESSAGE" value="Logging finish -- wait for retaining" />
   </component>
   <component name="WindowStateProjectService">
     <state x="626" y="269" key="#Notifications" timestamp="1588050211644">
@@ -763,7 +755,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java</url>
-          <line>764</line>
+          <line>760</line>
           <option name="timeStamp" value="205" />
         </line-breakpoint>
         <line-breakpoint type="java-method">

@@ -129,10 +129,8 @@ public class Hungarian {
      * Find zeros in the resulting matrix that is uncovered.
      */
     protected int starZeros() {
-        // parallel here there is no interference and no stateful lambda
-        //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
-//        logInfo("Hungarian step 2-Find zeros in the resulting matrix that is uncovered...");
-        rowIndexes.parallelStream().forEach(r-> colIndexes.parallelStream().forEach(c->{
+        // no parallel here stateful R_cover and C_cover
+        rowIndexes.forEach(r-> colIndexes.parallelStream().forEach(c->{
             if (mat.get(r, c) == 0 && !R_cover[r] && !C_cover[c]) {
                 maskMat[r][c] = ZeroMasks.starred;
                 R_cover[r] = true;
@@ -341,9 +339,8 @@ public class Hungarian {
     protected int adjustMat(){
 //        logInfo("Hungarian step 6-Modify the matrix...");
         double minVal = findSmallestOfUncovered();
-        // parallel here there is no interference and no stateful lambda
-        //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
-        rowIndexes.parallelStream().forEach(r-> colIndexes.parallelStream().forEach(c->{
+        // no parallel here stateful R_cover and C_cover
+        rowIndexes.forEach(r-> colIndexes.forEach(c->{
                 double val = mat.get(r,c);
                 if(R_cover[r]){
                     mat.put(r,c,val+minVal);

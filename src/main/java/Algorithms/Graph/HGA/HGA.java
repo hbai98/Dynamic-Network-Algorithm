@@ -486,7 +486,6 @@ public class HGA {
     public void run() {
         HashMap<String, String> forcedPart;
         HashMap<String, String> remapPart;
-
         if (debugOut) {
             cleanDebugResult();
         }
@@ -606,10 +605,8 @@ public class HGA {
      */
     private Pair<HashMap<String, String>, HashMap<String, String>> forcedMap() {
         Triple<HashMap<String, String>, SimMat, Set<String>> res = getRemapForForced();
-        Set<String> sameNodes = res.getThird();
         HashMap<String, String> forceMap = res.getFirst();
         SimMat remap = res.getSecond();
-
         // map rest of the matrix by Hungarian
         // tmpList matrix has to be updated to be synchronized
         return new Pair<>(getMappingFromHA(remap), forceMap);
