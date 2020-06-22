@@ -7,8 +7,8 @@ import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Utils.AdjList.Graph;
 import Algorithms.Graph.Utils.SimMat;
 import IO.AbstractFileWriter;
-import IO.DoubleMatrixReader;
 import IO.GraphFileReader;
+import org.apache.commons.io.FileUtils;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 import org.jgrapht.alg.util.Triple;
@@ -23,8 +23,6 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
-
-import org.apache.commons.io.FileUtils;
 
 /**
  * Refer to An Adaptive Hybrid Algorithm for Global Network Algorithms.Alignment
