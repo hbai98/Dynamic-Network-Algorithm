@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <properties>
-        <!--dependencies version-->
+        <!--dependencies versions-->
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
         <assertj.core.version>3.15.0</assertj.core.version>
         <jgrapht.core.version>1.4.0</jgrapht.core.version>
@@ -16,6 +16,8 @@
         <Apache-Commons-Collections.version>3.2.2</Apache-Commons-Collections.version>
         <commons-io.version>2.5</commons-io.version>
         <tablesaw.version>LATEST</tablesaw.version>
+        <!--plugins versions-->
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     </properties>
     <groupId>BHT</groupId>
     <artifactId>Algorithms</artifactId>
@@ -46,6 +48,12 @@
 
     <build>
         <plugins>
+            <!--Maven test runner-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>

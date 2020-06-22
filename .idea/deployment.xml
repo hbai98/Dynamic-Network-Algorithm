@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="SHU-lab">
+  <component name="PublishConfigData" serverName="SHU-lab" createEmptyFolders="true" filePermissions="420" folderPermissions="493">
     <serverData>
       <paths name="SHU-lab">
         <serverdata>
           <mappings>
-            <mapping deploy="/hga" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/hga/MyAlgorithms" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
     </serverData>
-    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
