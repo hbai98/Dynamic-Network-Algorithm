@@ -859,5 +859,15 @@ public class HGA {
         this.iterMax = iterMax;
     }
 
+    public static void main(String[] args) throws IOException {
+        GraphFileReader reader = new GraphFileReader(true, true, false);
+        Graph yeast = reader.readToGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/net-38n.txt", false);
+        Graph human = reader.readToGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/HumanNet.txt", false);
+        reader.setRecordNonZeros(true);
+        reader.setRecordNeighbors(false);
+        SimMat simMat = reader.readToSimMat("src/test/java/resources/TestModule/HGATestData/Human-Yeast/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt", yeast.getAllNodes(), human.getAllNodes(), true);
+        HGA hga = new HGA(simMat, yeast, human, 0.4,true,0.5,0.01);
+        hga.run();
+    }
 
 }
