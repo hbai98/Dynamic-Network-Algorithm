@@ -159,12 +159,9 @@ public class HGA {
      */
     public static void greedyMap(SimMat toMap, HashMap<String, String> preMap) {
         HashMap<Integer, String> rowMap = toMap.getRowIndexNameMap();
-        HashMap<String, Integer> colMap = toMap.getColMap();
         HashSet<String> assign = new HashSet<>(preMap.values());
-        // parallel here there is no interference and no stateful lambda
-        //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
-        int n = toMap.getMat().rows;
-        rowMap.keySet().parallelStream().forEach(i -> {
+        // no parallel here, assign is stateful
+        rowMap.keySet().forEach(i -> {
             String tgt = rowMap.get(i);
             if (!preMap.containsKey(tgt)) {
                 String mapStr = toMap.getMax(i, assign);
@@ -306,7 +303,7 @@ public class HGA {
         Set<String> nodes2 = simMat.getColMap().keySet();
         int iterSum = nodes1.size() * nodes2.size();
         AtomicInteger i = new AtomicInteger(1);
-        // parallel here there is no interference and no stateful lambda
+        // parallel here will cause concurrent problem
         // https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
         // similarity matrix after the neighborhood adjustment
         SimMat preSimMat = (SimMat) simMat.dup();
