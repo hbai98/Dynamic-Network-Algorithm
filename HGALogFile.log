@@ -1,2 +1,42 @@
-Jun 22, 2020 12:22:11 PM Algorithms.Graph.HGA.HGA logInfo
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: Init mapping...
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: Hungarian mapping...
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: Scoring for mapping ...
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: output matrix
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: output scores
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: output mapping
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: ------------Iteration 0/1000------------
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: adjust neighborhood similarity based on mapping result...
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: 10%	
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: 10%	
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: 10%	
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: 10%	
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: 10%	
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: 10%	
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: 60%	
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: 70%	
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: 80%	
+Jun 22, 2020 3:13:35 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: 90%	
+Jun 22, 2020 3:22:14 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: Remapping : select rows have at least 9 non-zero items based on your input account 50.0%
+Jun 22, 2020 3:22:14 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: Hungarian mapping...

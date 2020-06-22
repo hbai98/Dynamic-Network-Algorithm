@@ -13,7 +13,6 @@ import java.util.LinkedList;
 public class Graph extends AbstractAdjList {
     //-----------neighbor nodes info------------------
     private HashMap<String, HashSet<String>> neighborsMap;
-
     HashMap<String, Integer> rowMap;
     private int edgeCount = -1;
 
@@ -71,7 +70,7 @@ public class Graph extends AbstractAdjList {
         colSet.add(tgtNode);
     }
     public HashMap<String, HashSet<String>> getNeighborsMap() {
-        return neighborsMap;
+        return new HashMap<>(neighborsMap);
     }
     public int getEdgeCount(){
         if(edgeCount == -1){

@@ -306,19 +306,19 @@ public class SimMat {
     }
 
     public HashMap<Integer, String> getRowIndexNameMap() {
-        return rowIndexNameMap;
+        return new HashMap<>(rowIndexNameMap);
     }
 
     public HashMap<Integer, String> getColIndexNameMap() {
-        return colIndexNameMap;
+        return new HashMap<>(colIndexNameMap);
     }
 
     public HashMap<String, Integer> getColMap() {
-        return colMap;
+        return new HashMap<>(colMap);
     }
 
     public HashMap<String, Integer> getRowMap() {
-        return rowMap;
+        return new HashMap<>(rowMap);
     }
 
     public HashMap<String, HashSet<String>> getNonZerosIndexMap() {

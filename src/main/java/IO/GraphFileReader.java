@@ -221,9 +221,9 @@ public class GraphFileReader extends AbstractFileReader {
             else {
                 String targetName = sifLine.get(1);
                 if (isIdentifier(targetName)) {
-                    graph.addOneNode(name, name, 0.);
+                    graph.addOneNode(name, targetName, 0.);
                     // record if required
-                    record(name, name, 0.);
+                    record(name, targetName, 0.);
                 } else {
                     throw new IOException("nodes' name are not correct.");
                 }
@@ -327,7 +327,7 @@ public class GraphFileReader extends AbstractFileReader {
                 if (isIdentifier(targetName)) {
                     simList.sortAddOneNode(name, targetName, 0);
                     // record if required
-                    record(name, name, 0.);
+                    record(name, targetName, 0.);
                 } else {
                     throw new IOException("nodes' name are not correct.");
                 }
@@ -400,7 +400,7 @@ public class GraphFileReader extends AbstractFileReader {
                 String targetName = sifLine.get(1);
                 if (isIdentifier(targetName)) {
                     // record if required
-                    record(name, name, 0.);
+                    record(name, targetName, 0.);
                 } else {
                     throw new IOException("nodes' name are not correct.");
                 }

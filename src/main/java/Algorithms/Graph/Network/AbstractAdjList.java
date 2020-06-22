@@ -29,8 +29,7 @@ public abstract class AbstractAdjList extends LinkedList<HNodeList> {
 
     public HashSet<String> getAllNodes() {
         // merge
-        @SuppressWarnings("unchecked")
-        HashSet<String> tpRow = (HashSet<String>) rowSet.clone();
+        HashSet<String> tpRow = new HashSet<>(rowSet);
         tpRow.addAll(colSet);
         return tpRow;
     }

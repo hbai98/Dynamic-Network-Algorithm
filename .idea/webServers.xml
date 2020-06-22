@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7703aab2-3df9-419d-a4f4-a720eeb48d53" name="SHU-lab" url="http://202.120.121.211">
+        <fileTransfer rootFolder="/home/t640/userEnvironment/tom" accessType="SFTP" host="202.120.121.211" port="22" sshConfigId="365d6fd0-fba9-416d-ba0a-8fe4d9ecdea8" sshConfig="tom@202.120.121.211:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

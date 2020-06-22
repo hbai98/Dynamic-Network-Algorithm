@@ -228,6 +228,7 @@ public class HGA {
     protected void addTopology(String node1, String node2, SimMat preMat) {
         HashMap<String, HashSet<String>> neb1Map = graph1.getNeighborsMap();
         HashMap<String, HashSet<String>> neb2Map = graph2.getNeighborsMap();
+        // there should be new objects!
         HashSet<String> neighbors_1 = neb1Map.get(node1);
         HashSet<String> neighbors_2 = neb2Map.get(node2);
         // compute topologyInfo
@@ -255,9 +256,8 @@ public class HGA {
         nodes2.removeAll(nei2);
         if (nonNei1Size != 0 && nonNei2Size != 0) {
             int size = (nonNei1Size + 1) * (nonNei2Size + 1);
-            // parallel here there is no interference
-            //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
-            nodes1.parallelStream().forEach(node1 -> nodes2.parallelStream().forEach(node2 -> {
+            // shift parallel to the front
+            nodes1.forEach(node1 -> nodes2.forEach(node2 -> {
                 if (!nei1.contains(node1) && !nei2.contains(node2)) {
                     res.updateAndGet(v -> v + preMat.getVal(node1, node2));
                 }
@@ -280,9 +280,8 @@ public class HGA {
         int nei2Size = nei2.size();
         if (nei1Size != 0 && nei2Size != 0) {
             int size = nei1Size * nei2Size;
-            // parallel here there is no interference
-            //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
-            nei1.parallelStream().forEach(node1 -> nei2.parallelStream().forEach(node2 ->
+            // shift parallel to the front
+            nei1.forEach(node1 -> nei2.forEach(node2 ->
                     res.updateAndGet(v -> v + preMat.getVal(node1, node2))));
             return res.get() / size;
         }
@@ -301,27 +300,26 @@ public class HGA {
     protected void addAllTopology() {
         Set<String> nodes1 = simMat.getRowMap().keySet();
         Set<String> nodes2 = simMat.getColMap().keySet();
-        int iterSum = nodes1.size() * nodes2.size();
         AtomicInteger i = new AtomicInteger(1);
-        // parallel here will cause concurrent problem
+        // parallel the row
         // https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
         // similarity matrix after the neighborhood adjustment
         SimMat preSimMat = (SimMat) simMat.dup();
         logInfo("AddTopology for all nodes pairs in two graphs:");
-        nodes1.forEach(n1 -> nodes2.forEach(n2 -> {
-            addTopology(n1, n2, preSimMat);
-            if (i.get() % (iterSum / 10) == 0) {
-                logInfo(i.get() / (iterSum / 10) * 10 + "%\t");
+        nodes1.parallelStream().forEach(n1 -> {
+            nodes2.forEach(n2 -> addTopology(n1, n2, preSimMat));
+            if (i.get() % (nodes1.size() / 10) == 0) {
+                logInfo(i.get() / (nodes1.size() / 10) * 10 + "%\t");
             }
             i.getAndIncrement();
-        }));
+        });
     }
 
     private List<Triple<String, String, Double>> sortToPair(Set<String> nodes1, Set<String> nodes2) {
         Vector<Triple<String, String, Double>> sortPairForTopo = new Vector<>();
         // parallel here there is no interference and no stateful lambda
         // https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
-        nodes1.parallelStream().forEach(node1 -> nodes2.parallelStream().forEach(node2 ->
+        nodes1.parallelStream().forEach(node1 -> nodes2.forEach(node2 ->
                 sortPairForTopo.add(new Triple<>(node1, node2, simMat.getVal(node1, node2)))));
         List<Triple<String, String, Double>> res = sortPairForTopo.stream().sorted(Comparator.comparingDouble(Triple::getThird)).collect(Collectors.toList());
         Collections.reverse(res);
@@ -591,7 +589,6 @@ public class HGA {
         Vector<Integer> nonZeros = new Vector<>();
         simMat.getNonZerosIndexMap().values().parallelStream().forEach(set -> nonZeros.add(set.size()));
         List<Integer> nonZerosNumbs = nonZeros.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
-
         int limit = (int) (nonZerosNumbs.size() * (1 - hAccount));
         return nonZerosNumbs.get(limit);
     }
