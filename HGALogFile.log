@@ -1,2 +1,20 @@
-Jun 22, 2020 9:57:02 PM Algorithms.Graph.HGA.HGA logInfo
+Jun 22, 2020 10:13:25 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: AddTopology for all nodes pairs in two graphs:
+Jun 22, 2020 10:14:11 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: Init mapping...
+Jun 22, 2020 10:14:11 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: Hungarian mapping...
+Jun 22, 2020 10:14:11 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: Scoring for mapping ...
+Jun 22, 2020 10:14:11 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: output matrix
+Jun 22, 2020 10:14:12 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: output scores
+Jun 22, 2020 10:14:12 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: output mapping
+Jun 22, 2020 10:14:12 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: ------------Iteration 0/1000------------
+Jun 22, 2020 10:14:12 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: adjust neighborhood similarity based on mapping result...
+Jun 22, 2020 10:14:12 PM Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:

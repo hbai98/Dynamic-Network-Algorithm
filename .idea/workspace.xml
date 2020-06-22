@@ -19,21 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.1.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.2.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.3.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.4.lck" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.lck" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HGALogFile.log" beforeDir="false" afterPath="$PROJECT_DIR$/HGALogFile.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HGALogFile.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/HGALogFile.log.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/AdjList/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/AdjList/Graph.class" afterDir="false" />
-    </list>
+    <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -117,7 +103,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
