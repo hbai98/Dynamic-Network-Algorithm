@@ -22,7 +22,6 @@
     <groupId>BHT</groupId>
     <artifactId>Algorithms</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <repositories>
         <repository>
             <id>oss.sonatype.org-snapshot</id>
@@ -47,6 +46,7 @@
     </repositories>
 
     <build>
+        <defaultGoal>compile</defaultGoal>
         <plugins>
             <!--Maven test runner-->
             <plugin>
