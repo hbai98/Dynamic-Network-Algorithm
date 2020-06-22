@@ -107,6 +107,14 @@ class HGASpc extends GraphFileReaderSpec {
     @Test
     void run(){
         hga.run();
+
+    }
+    @Test
+    void test(){
+        double a = 1;
+        double b = a;
+        a  = 6;
+        System.out.println(a+" "+b);
     }
 
 }

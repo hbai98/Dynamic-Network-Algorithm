@@ -7,6 +7,8 @@ import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Utils.AdjList.Graph;
 import Algorithms.Graph.Utils.SimMat;
 import IO.AbstractFileWriter;
+import IO.DoubleMatrixReader;
+import IO.GraphFileReader;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 import org.jgrapht.alg.util.Triple;
@@ -21,7 +23,9 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
+
 import org.apache.commons.io.FileUtils;
+
 /**
  * Refer to An Adaptive Hybrid Algorithm for Global Network Algorithms.Alignment
  * Article in IEEE/ACM Transactions on Computational Biology and Bioinformatics · January 2015
@@ -32,7 +36,6 @@ import org.apache.commons.io.FileUtils;
  */
 
 public class HGA {
-    protected Hungarian hungarian;
     protected SimMat originalMat;
     protected SimMat simMat;
     protected Graph graph1;
@@ -41,8 +44,15 @@ public class HGA {
     private boolean forcedMappingForSame;
     private double hAccount;
     protected double bioFactor;
-    //---------------mapping result-------------
+    private double edgeScore = 1.;
+    //---------------mapping result(best mapping)-------------
     private HashMap<String, String> mappingResult;
+    private double PE_res;
+    private double ES_res;
+    private double PS_res;
+    private double EC_res;
+    private double score_res;
+    private DoubleMatrix matrix_res;
     //---------------mapping for iteration---------
     private HashMap<String, String> mapping;
     private double PE;
@@ -50,7 +60,9 @@ public class HGA {
     private double PS;
     private double EC;
     private double score;
-    private double edgeScore;
+    private Stack<DoubleMatrix> stackMat;
+    private Stack<Double> stackScore;
+
     //----------limit-----
     private int iterCount = 0;
     private int iterMax = 1000;
@@ -75,13 +87,12 @@ public class HGA {
      * @param forcedMappingForSame whether force mapping
      * @param hAccount             hungarian matrix account
      */
-    public HGA(SimMat simMat, Graph graph1, Graph graph2, double bioFactor, boolean forcedMappingForSame,double hAccount,double tolerance) throws IOException {
+    public HGA(SimMat simMat, Graph graph1, Graph graph2, double bioFactor, boolean forcedMappingForSame, double hAccount, double tolerance) throws IOException {
 
         this.graph1 = graph1;
         this.graph2 = graph2;
         this.originalMat = (SimMat) simMat.dup();
         this.simMat = simMat;
-        this.edgeScore = 1.;
         this.forcedMappingForSame = forcedMappingForSame;
         this.tolerance = tolerance;
         // set up preferences
@@ -101,7 +112,7 @@ public class HGA {
      */
     protected HashMap<String, String> getMappingFromHA(SimMat simMat) {
         logInfo("Hungarian mapping...");
-        hungarian = new Hungarian(simMat, Hungarian.ProblemType.maxLoc);
+        Hungarian hungarian = new Hungarian(simMat, Hungarian.ProblemType.maxLoc);
         hungarian.setLogger(logger);
         hungarian.run();
         int[] res = hungarian.getResult();
@@ -300,15 +311,13 @@ public class HGA {
         // similarity matrix after the neighborhood adjustment
         SimMat preSimMat = (SimMat) simMat.dup();
         logInfo("AddTopology for all nodes pairs in two graphs:");
-        nodes1.forEach(n1 -> {
-            nodes2.forEach(n2 -> {
-                addTopology(n1, n2, preSimMat);
-                if(i.get()%(iterSum/10)==0){
-                    logInfo(i.get()/(iterSum/10)*10+"%\t");
-                }
-                i.getAndIncrement();
-            });
-        });
+        nodes1.forEach(n1 -> nodes2.forEach(n2 -> {
+            addTopology(n1, n2, preSimMat);
+            if (i.get() % (iterSum / 10) == 0) {
+                logInfo(i.get() / (iterSum / 10) * 10 + "%\t");
+            }
+            i.getAndIncrement();
+        }));
     }
 
     private List<Triple<String, String, Double>> sortToPair(Set<String> nodes1, Set<String> nodes2) {
@@ -344,6 +353,8 @@ public class HGA {
      *     </ol>
      */
     protected void scoreMapping(HashMap<String, String> mapping) {
+        logInfo("Scoring for mapping ...");
+
         // edge correctness EC
         Vector<Pair<Edge, Edge>> mappingEdges = setEC(mapping);
         // point and edge score PE
@@ -351,8 +362,6 @@ public class HGA {
         PS = getPS(mappingEdges);
         PE = ES / 2 + PS;
         score = 100 * EC + PE;
-        // log
-        logInfo("Scoring for mapping ...");
     }
 
     private double getES(Vector<Pair<Edge, Edge>> mappingEdges) {
@@ -441,10 +450,10 @@ public class HGA {
      * ------------------------------------------
      * r = 0.01 to allow 1% error
      */
-    protected boolean checkPassed(Stack<DoubleMatrix> stackMat, Stack<Double> stackScore, double tolerance) {
+    protected boolean checkPassed(double tolerance) {
 
         if (stackMat.size() == 3) {
-            if(iterCount>1000){
+            if (iterCount > iterMax) {
                 return true;
             }
             DoubleMatrix s1 = stackMat.get(1);
@@ -458,14 +467,17 @@ public class HGA {
 
             double dif_1 = s.sub(s1).normmax();
             double dif_2 = s.sub(s2).normmax();
-
+            logInfo("Iteration:" + iterCount + "\tdif_1 " + dif_1 + "\t" + "dif_2 " + dif_2 + "\nScore:" + "score1 " + score1
+                    + "\t" + "score2 " + score2);
             return dif_1 < tolerance || dif_2 < tolerance ||
                     (score == score1 && score1 == score2);
+
         }
         // size = 2
         else {
             DoubleMatrix s = stackMat.peek();
             double dif = s.sub(stackMat.get(0)).normmax();
+            logInfo("Iteration:" + iterCount + "\tdif " + dif);
             return dif < tolerance;
         }
 
@@ -474,15 +486,24 @@ public class HGA {
     public void run() {
         HashMap<String, String> forcedPart;
         HashMap<String, String> remapPart;
-        // stacks for simMat converge
-        Stack<DoubleMatrix> stackMat = new Stack<>();
-        Stack<Double> stackScore = new Stack<>();
-        if(debugOut){
+
+        if (debugOut) {
             cleanDebugResult();
         }
-        boolean checkPassed;
         logInfo("Init mapping...");
-        // forced mapping
+        Pair<SimMat, HashMap<String, String>> init = initMap();
+        // iterate
+        hgaIterate(this.mapping, this.simMat, init.getFirst(), init.getSecond()
+                , iterCount, score, PE, EC, PS, ES);
+
+    }
+
+    private Pair<SimMat, HashMap<String, String>> initMap() {
+        // stacks for simMat converge
+        stackMat = new Stack<>();
+        stackScore = new Stack<>();
+        HashMap<String, String> remapPart;
+        HashMap<String, String> forcedPart;// forced mapping
         if (forcedMappingForSame) {
             Pair<HashMap<String, String>, HashMap<String, String>> res = forcedMap();
             // hungarian for the res
@@ -499,53 +520,65 @@ public class HGA {
             mapping = new HashMap<>(remapPart);
         }
         SimMat toRemap = simMat.getPart(remapPart.keySet(), remapPart.values());
-        DoubleMatrix preMat = simMat.getMat();
-        stackMat.push(preMat);
+        // getMatrix return the quoted mat from simMat, should be copied
+        stackMat.push(simMat.getMat().dup());
         // add to stack top
-        // iterating begin---------------------------------------------------------
-        double maxScore = score;
+        scoreMapping(mapping);
+        // record score
+        stackScore.push(score);
+        // debug
+        outDebug();
+        return new Pair<>(toRemap, forcedPart);
+    }
+
+    private void hgaIterate(HashMap<String, String> mapping, SimMat simMat,
+                            SimMat toRemap, HashMap<String, String> forcedPart, int iterCount, double... scores) {
+        initScores(scores);
+        score_res = score;
+        this.mapping = mapping;
+        this.simMat = simMat;
+        this.iterCount = iterCount;
+        boolean checkPassed;
         do {
             // log if needed
-            logInfo("------------Iteration "+iterCount+"/1000------------");
-            // step 1 score mapping
-            scoreMapping(mapping);
-            // debug
-            outDebug();
-            // record score
-            stackScore.push(score);
-            iterCount++;
-
+            logInfo("------------Iteration " + this.iterCount + "/1000------------");
+            this.iterCount++;
             // step 2 update based on mapped nodes
-            updatePairNeighbors(mapping);
+            updatePairNeighbors(this.mapping);
             // step 3 topo adjustment to similarity matrix
             addAllTopology();
-            stackMat.push(simMat.getMat());
+            stackMat.push(simMat.getMat().dup());
             // map again
-            mapping = remap(toRemap, forcedPart);
-            scoreMapping(mapping);
-            // debug
-            outDebug();
+            this.mapping = remap(toRemap, forcedPart);
+            scoreMapping(this.mapping);
             // record score
             stackScore.push(score);
+            // debug
+            outDebug();
             // record best
-            if(score > maxScore){
-                mappingResult = mapping;
-                maxScore = score;
+            if (score > score_res) {
+                setUpResult();
             }
-            checkPassed = checkPassed(stackMat, stackScore, tolerance);
+            checkPassed = checkPassed(tolerance);
         } while (!checkPassed);
-
-        this.score = maxScore;
+        // output result
+        outPutResult();
     }
 
     /**
      * @return full mapping result
      */
     private HashMap<String, String> remap(SimMat toRemap, HashMap<String, String> forced) {
+        int h = getHByAccount();
+        logInfo("Remapping : select rows have at least " + h + " non-zero items based on your input account " + hAccount * 100 + "%");
+        // regain from file, and there is no remap part, retain.
+        if (toRemap == null) {
+            toRemap = this.simMat;
+        }
         // hungarian account
-        HashMap<String, String> res = remapping(toRemap, getHByAccount());
+        HashMap<String, String> res = remapping(toRemap, h);
         // not forced
-        if(forced == null){
+        if (forced == null) {
             return res;
         }
         res.putAll(forced);
@@ -563,7 +596,7 @@ public class HGA {
         simMat.getNonZerosIndexMap().values().parallelStream().forEach(set -> nonZeros.add(set.size()));
         List<Integer> nonZerosNumbs = nonZeros.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
 
-        int limit = (int) (nonZerosNumbs.size()*(1-hAccount));
+        int limit = (int) (nonZerosNumbs.size() * (1 - hAccount));
         return nonZerosNumbs.get(limit);
     }
 
@@ -572,97 +605,122 @@ public class HGA {
      * @return mapping result hungarian ; forced
      */
     private Pair<HashMap<String, String>, HashMap<String, String>> forcedMap() {
+        Triple<HashMap<String, String>, SimMat, Set<String>> res = getRemapForForced();
+        Set<String> sameNodes = res.getThird();
+        HashMap<String, String> forceMap = res.getFirst();
+        SimMat remap = res.getSecond();
+
+        // map rest of the matrix by Hungarian
+        // tmpList matrix has to be updated to be synchronized
+        return new Pair<>(getMappingFromHA(remap), forceMap);
+    }
+
+    /**
+     * @return forceMap, remap, sameNodes
+     */
+    private Triple<HashMap<String, String>, SimMat, Set<String>> getRemapForForced() {
         // row to map
         Set<String> rowToMap = simMat.getRowSet();
         rowToMap.removeAll(simMat.getColSet());
         // col to map
         Set<String> colToMap = simMat.getColSet();
         colToMap.removeAll(simMat.getRowSet());
+        HashMap<String, String> forceMap;
+        SimMat remap;
+        Set<String> sameNodes;
         // set up force mapping
-        HashMap<String, String> forceMap = new HashMap<>();
-        Set<String> sameNodes = simMat.getRowSet();
+        forceMap = new HashMap<>();
+        sameNodes = simMat.getRowSet();
         sameNodes.retainAll(simMat.getColSet());
         // parallel here there is no interference and no stateful lambda
         //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
-        sameNodes.parallelStream().forEach(n -> forceMap.put(n, n));
-        // map rest of the matrix by Hungarian
-        // tmpList matrix has to be updated to be synchronized
-        return new Pair<>(getMappingFromHA(simMat.getPart(rowToMap, colToMap)), forceMap);
+        HashMap<String, String> finalForceMap = forceMap;
+        sameNodes.parallelStream().forEach(n -> finalForceMap.put(n, n));
+        remap = simMat.getPart(rowToMap, colToMap);
+        return new Triple<>(forceMap, remap, sameNodes);
     }
 
-    private void logInfo(String message){
-        if(logger!=null){
+    private void logInfo(String message) {
+        if (logger != null) {
             logger.info(message);
         }
     }
 
-    public HashMap<String, String> getMappingResult() {
-        return mappingResult;
-    }
 
     public void outDebug() {
-        if(debugOut){
-            outPutMatrix();
-            outPutScoring();
-            outPutMapping();
+        if (debugOut) {
+            outPutMatrix(simMat.getMat(), false);
+            outPutScoring(false, score, PE, EC, ES, PS);
+            outPutMapping(mapping, false);
         }
     }
-    public void outPutMatrix()  {
+
+    public void outPutMatrix(DoubleMatrix mat, boolean isResult) {
         logInfo("output matrix");
         String path = debugOutputPath + "matrix//";
         Vector<String> matrixVec = new Vector<>();
-        double[][] mat = simMat.getMat().toArray2();
-        for (double[] doubles : mat) {
-            for (int j = 0; j < mat[0].length; j++) {
+        double[][] mat_ = simMat.getMat().toArray2();
+        for (double[] doubles : mat_) {
+            for (int j = 0; j < mat_[0].length; j++) {
                 matrixVec.add(doubles[j] + " ");
             }
             matrixVec.add("\n");
         }
         try {
-            writer.setPath(path + "matrix_" + iterCount + ".txt");
+            if (isResult) {
+                writer.setPath(path + "matrixResult_" + iterCount + ".txt");
+            } else {
+                writer.setPath(path + "matrix_" + iterCount + ".txt");
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         writer.write(matrixVec, false);
     }
 
-    public void outPutScoring(){
+    public void outPutScoring(boolean isResult, double... scores) {
         logInfo("output scores");
         String path = debugOutputPath + "scoring//";
         Vector<String> scoreVec = new Vector<>();
 
-        scoreVec.add("Iteration "+iterCount+":\n");
-        scoreVec.add("Score:" + score + "\n");
-        scoreVec.add("PE:" + PE + "\n");
-        scoreVec.add("EC:" + EC + "\n");
-        scoreVec.add("ES:" + ES + "\n");
-        scoreVec.add("PS:" + PS + "\n");
+        scoreVec.add("Iteration " + iterCount + ":\n");
+        scoreVec.add("Score:" + scores[0] + "\n");
+        scoreVec.add("PE:" + scores[1] + "\n");
+        scoreVec.add("EC:" + scores[2] + "\n");
+        scoreVec.add("ES:" + scores[3] + "\n");
+        scoreVec.add("PS:" + scores[4] + "\n");
         try {
-            writer.setPath(path + "scoring_" + iterCount + ".txt");
+            if (isResult) {
+                writer.setPath(path + "scoringResult_" + iterCount + ".txt");
+            } else {
+                writer.setPath(path + "scoring_" + iterCount + ".txt");
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         writer.write(scoreVec, false);
     }
 
-    public void outPutMapping()  {
+    public void outPutMapping(HashMap<String, String> mapping, boolean isResult) {
         logInfo("output mapping");
         String path = debugOutputPath + "mapping//";
         Vector<String> mappingVec = new Vector<>();
 
-        mappingVec.add("Iteration "+iterCount+":\n");
-        mapping.forEach((k,v)->{
-            mappingVec.add(k+"->"+v+"\n");
-        });
+        mappingVec.add("Iteration " + iterCount + ":\n");
+        mapping.forEach((k, v) -> mappingVec.add(k + "->" + v + "\n"));
         try {
-            writer.setPath(path + "scoring_" + iterCount + ".txt");
+            if (isResult) {
+                writer.setPath(path + "mappingResult_" + iterCount + ".txt");
+            } else {
+                writer.setPath(path + "mapping_" + iterCount + ".txt");
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         writer.write(mappingVec, false);
     }
 
-    void cleanDebugResult(){
+    void cleanDebugResult() {
         String mapping = debugOutputPath + "mapping";
         String scoring = debugOutputPath + "scoring";
         String matrix = debugOutputPath + "matrix";
@@ -671,35 +729,101 @@ public class HGA {
         deleteAllFiles(matrix);
 
     }
-    private void deleteAllFiles(String directory){
+
+    private void deleteAllFiles(String directory) {
         try {
             FileUtils.cleanDirectory(new File(directory));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public double setEC() {
-        return EC;
+
+    private void setUpResult() {
+        ES_res = ES;
+        PE_res = PE;
+        PS_res = PS;
+        EC_res = EC;
+        score_res = score;
+        mappingResult = (HashMap<String, String>) mapping.clone();
+        matrix_res = simMat.getMat().dup();
+    }
+
+    private void initScores(double... scores) {
+        score = scores[0];
+        PE = scores[1];
+        EC = scores[2];
+        ES = scores[3];
+        PS = scores[4];
+    }
+
+    public void outPutResult() {
+        outPutMapping(mappingResult, true);
+        outPutMatrix(matrix_res, true);
+        outPutScoring(true, score_res, PE_res, EC_res, ES_res, PS_res);
+    }
+//TODO retain
+//    /**
+//     * If data has been lost for some reasons, user can
+//     * retain the process they have been on going.
+//     */
+//    public void retain(String matrixPath,String scorePath,String mappingPath) throws IOException {
+//        DoubleMatrixReader matrixReader = new DoubleMatrixReader(matrixPath);
+//        DoubleMatrix mat = matrixReader.getMat();
+//        SimMat simMat = new SimMat(,,mat);
+//        hgaIterate();
+//    }
+
+    public double getES_res() {
+        return ES_res;
+    }
+
+    public double getPE_res() {
+        return PE_res;
+    }
+
+    public double getPS_res() {
+        return PS_res;
+    }
+
+    public double getScore_res() {
+        return score_res;
+    }
+
+    public DoubleMatrix getMatrix_res() {
+        return matrix_res;
+    }
+
+
+    public double getEC_res() {
+        return EC_res;
     }
 
     public double getES() {
         return ES;
     }
 
+    public double getPS() {
+        return PS;
+    }
+
     public double getPE() {
         return PE;
     }
 
-    public double getPS() {
-        return PS;
+    public double getEC() {
+        return EC;
     }
 
     public double getScore() {
         return score;
     }
 
-    public double getEdgeScore() {
-        return edgeScore;
+    public HashMap<String, String> getMapping() {
+        return mapping;
+    }
+
+    public HashMap<String, String> getMappingResult() {
+        return mappingResult;
     }
 
 
@@ -730,6 +854,7 @@ public class HGA {
         FileHandler fh;
         fh = new FileHandler("HGALogFile.log");
         fh.setFormatter(new SimpleFormatter());
+        logger.addHandler(fh);
         // output matrix, scoring and mapping result
         writer = new AbstractFileWriter() {
             @Override
@@ -743,7 +868,5 @@ public class HGA {
         this.iterMax = iterMax;
     }
 
-    public double getEC() {
-        return EC;
-    }
+
 }

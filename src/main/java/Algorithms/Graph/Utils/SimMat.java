@@ -29,6 +29,11 @@ public class SimMat {
         colIndexNameMap = new HashMap<>(graph2Nodes.size());
 
         // init row,col Map
+        initRowColMap(graph1Nodes,graph2Nodes);
+        getIndexNameMap();
+    }
+
+    private void initRowColMap(HashSet<String> graph1Nodes, HashSet<String> graph2Nodes) {
         int i = 0;
         for (String node : graph1Nodes) {
             rowMap.put(node, i++);
@@ -37,7 +42,6 @@ public class SimMat {
         for (String node : graph2Nodes) {
             colMap.put(node, i++);
         }
-        getIndexNameMap();
     }
 
     /**
@@ -51,6 +55,8 @@ public class SimMat {
         this.colMap = colMap;
         getIndexNameMap();
     }
+
+
 
     public SimMat(HashMap<String, Integer> rowMap, HashMap<Integer, String> rowIndexNameMap, HashMap<String, Integer> colMap,
                   HashMap<Integer, String> colIndexNameMap, HashMap<String, HashSet<String>> nonZerosMap, DoubleMatrix matrix) {
@@ -278,6 +284,25 @@ public class SimMat {
 
     public DoubleMatrix getMat() {
         return mat;
+    }
+    HashMap<String, HashSet<String>> computeNonZeros(){
+        if(nonZerosIndexMap!=null){
+            return nonZerosIndexMap;
+        }
+        HashMap<String, HashSet<String>> nonZeros = new HashMap<>();
+        getRowSet().parallelStream().forEach(
+                r->getColSet().parallelStream().forEach(c->{
+                    if(nonZeros.containsKey(r)){
+                        HashSet<String> tmp = nonZeros.get(r);
+                        tmp.add(c);
+                        nonZeros.put(r,tmp);
+                    }
+                    else{
+                        nonZeros.put(r,new HashSet<>());
+                    }
+                })
+        );
+        return nonZeros;
     }
 
     public HashMap<Integer, String> getRowIndexNameMap() {
