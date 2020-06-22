@@ -227,8 +227,8 @@ public class HGA {
         HashMap<String, HashSet<String>> neb1Map = graph1.getNeighborsMap();
         HashMap<String, HashSet<String>> neb2Map = graph2.getNeighborsMap();
         // there should be new objects!
-        HashSet<String> neighbors_1 = neb1Map.get(node1);
-        HashSet<String> neighbors_2 = neb2Map.get(node2);
+        HashSet<String> neighbors_1 = new HashSet<>(neb1Map.get(node1));
+        HashSet<String> neighbors_2 = new HashSet<>(neb2Map.get(node2));
         // compute topologyInfo
         double eNeighbors = getNeighborTopologyInfo(neighbors_1, neighbors_2, preMat);
         // add node1,node2
@@ -479,9 +479,9 @@ public class HGA {
     public void run() {
         HashMap<String, String> forcedPart;
         HashMap<String, String> remapPart;
-        if (debugOut) {
-            cleanDebugResult();
-        }
+//        if (debugOut) {
+//            cleanDebugResult();
+//        }
         logInfo("Init mapping...");
         Pair<SimMat, HashMap<String, String>> init = initMap();
         // iterate
@@ -733,7 +733,7 @@ public class HGA {
         PS_res = PS;
         EC_res = EC;
         score_res = score;
-        mappingResult = (HashMap<String, String>) mapping.clone();
+        mappingResult = new HashMap<>(mapping);
         matrix_res = simMat.getMat().dup();
     }
 
@@ -857,6 +857,7 @@ public class HGA {
         this.iterMax = iterMax;
     }
 
+    // for linux server
     public static void main(String[] args) throws IOException {
         GraphFileReader reader = new GraphFileReader(true, true, false);
         Graph yeast = reader.readToGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/net-38n.txt", false);
