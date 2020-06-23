@@ -44,7 +44,7 @@
     <property name="java.class.path" value="D:\environment\jetbrains\IntelliJ IDEA 2020.1.2\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar;D:\environment\jetbrains\IntelliJ IDEA 2020.1.2\plugins\maven\lib\maven3\boot\plexus-classworlds.license"/>
     <property name="java.vm.specification.version" value="14"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version2020.1.2 -s D:\environment\apache-maven-3.6.3\conf\settings.xml -Dmaven.repo.local=D:\environment\MavenRepository install"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version2020.1.2 -s D:\environment\apache-maven-3.6.3\conf\settings.xml -Dmaven.repo.local=D:\environment\MavenRepository package"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-14"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>

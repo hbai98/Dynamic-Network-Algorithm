@@ -12,7 +12,10 @@ public abstract class AbstractFileWriter {
 
     }
 
-
+    /**
+     * set path before using it
+     *
+     */
     public void write(Vector<String> context,boolean close) {
         assert context != null;
         try {

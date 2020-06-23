@@ -1,0 +1,27 @@
+<assembly>
+    <id>HGA_distribution</id>
+    <formats>
+        <format>jar</format>
+    </formats>
+    <fileSets>
+        <fileSet>
+            <directory>${basedir}</directory>
+            <excludes>
+                <exclude>README.md</exclude>
+                <exclude>doc</exclude>
+                <exclude>README.assets</exclude>
+            </excludes>
+        </fileSet>
+        <fileSet>
+            <directory>${basedir}\src\test\java\resources\TestModule\HGATestData\Human-YeastSub38N</directory>
+            <includes>
+                <include>*.txt</include>
+            </includes>
+            <excludes>
+                <exclude>*.fasta</exclude>
+                <exclude>*.csv</exclude>
+                <exclude>Readme.txt</exclude>
+            </excludes>
+        </fileSet>
+    </fileSets>
+</assembly>

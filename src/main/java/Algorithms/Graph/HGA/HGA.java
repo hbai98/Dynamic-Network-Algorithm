@@ -479,9 +479,9 @@ public class HGA {
     public void run() {
         HashMap<String, String> forcedPart;
         HashMap<String, String> remapPart;
-//        if (debugOut) {
-//            cleanDebugResult();
-//        }
+        if (debugOut) {
+            cleanDebugResult();
+        }
         logInfo("Init mapping...");
         Pair<SimMat, HashMap<String, String>> init = initMap();
         // iterate
@@ -646,9 +646,9 @@ public class HGA {
 
     public void outPutMatrix(DoubleMatrix mat, boolean isResult) {
         logInfo("output matrix");
-        String path = debugOutputPath + "matrix//";
+        String path = debugOutputPath + "matrix/";
         Vector<String> matrixVec = new Vector<>();
-        double[][] mat_ = simMat.getMat().toArray2();
+        double[][] mat_ = mat.toArray2();
         for (double[] doubles : mat_) {
             for (int j = 0; j < mat_[0].length; j++) {
                 matrixVec.add(doubles[j] + " ");
@@ -669,7 +669,7 @@ public class HGA {
 
     public void outPutScoring(boolean isResult, double... scores) {
         logInfo("output scores");
-        String path = debugOutputPath + "scoring//";
+        String path = debugOutputPath + "scoring/";
         Vector<String> scoreVec = new Vector<>();
 
         scoreVec.add("Iteration " + iterCount + ":\n");
@@ -692,7 +692,7 @@ public class HGA {
 
     public void outPutMapping(HashMap<String, String> mapping, boolean isResult) {
         logInfo("output mapping");
-        String path = debugOutputPath + "mapping//";
+        String path = debugOutputPath + "mapping/";
         Vector<String> mappingVec = new Vector<>();
 
         mappingVec.add("Iteration " + iterCount + ":\n");
@@ -710,13 +710,15 @@ public class HGA {
     }
 
     void cleanDebugResult() {
+        debugOutputPath = System.getProperty("user.dir").replace('/','\\')+"\\"+debugOutputPath;
+        // use '\' to fit with linux
+        debugOutputPath=debugOutputPath.replace('\\','/');
         String mapping = debugOutputPath + "mapping";
         String scoring = debugOutputPath + "scoring";
         String matrix = debugOutputPath + "matrix";
         deleteAllFiles(mapping);
         deleteAllFiles(scoring);
         deleteAllFiles(matrix);
-
     }
 
     private void deleteAllFiles(String directory) {
@@ -848,9 +850,10 @@ public class HGA {
         writer = new AbstractFileWriter() {
             @Override
             public void write(Vector<String> context, boolean closed) {
-                super.write(context, true);
+                super.write(context, false);
             }
         };
+
     }
 
     public void setIterMax(int iterMax) {
@@ -864,7 +867,7 @@ public class HGA {
         Graph human = reader.readToGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/HumanNet.txt", false);
         reader.setRecordNonZeros(true);
         reader.setRecordNeighbors(false);
-        SimMat simMat = reader.readToSimMat("src/test/java/resources/TestModule/HGATestData/Human-Yeast/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt", yeast.getAllNodes(), human.getAllNodes(), true);
+        SimMat simMat = reader.readToSimMat("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt", yeast.getAllNodes(), human.getAllNodes(), true);
         HGA hga = new HGA(simMat, yeast, human, 0.4,true,0.5,0.01);
         hga.run();
     }

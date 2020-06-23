@@ -5,7 +5,7 @@
       <paths name="SHU-lab">
         <serverdata>
           <mappings>
-            <mapping deploy="/hga/MyAlgorithms" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/hga" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
