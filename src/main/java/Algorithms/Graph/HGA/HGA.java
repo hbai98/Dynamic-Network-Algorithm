@@ -43,6 +43,7 @@ public class HGA {
     private double hAccount;
     protected double bioFactor;
     private double edgeScore = 1.;
+    private int h = 5;
     //---------------mapping result(best mapping)-------------
     private HashMap<String, String> mappingResult;
     private double PE_res;
@@ -96,7 +97,8 @@ public class HGA {
         // set up preferences
         setBioFactor(bioFactor);
         sethAccount(hAccount);
-        simMat.updateNonZerosForRow = true;
+        // if noneZerosMap isn't updated, sum() should not be used
+//        simMat.updateNonZerosForRow = true;
         // set up logging
         setupLogger();
         debugOut = true;
@@ -117,7 +119,6 @@ public class HGA {
         // map
         HashMap<Integer, String> rowIndexNameMap = simMat.getRowIndexNameMap();
         HashMap<Integer, String> colIndexNameMap = simMat.getColIndexNameMap();
-
         HashMap<String, String> initMap = new HashMap<>();
         for (int i = 0; i < res.length; i++) {
             int j = res[i];
@@ -265,7 +266,7 @@ public class HGA {
 
         if (nonNei1Size == 0 && nonNei2Size == 0) {
             int size = nodes1.size() * nodes2.size();
-            return preMat.sum() / size;
+            return preMat.getMat().sum() / size;
         }
         return res.get();
     }
@@ -285,7 +286,7 @@ public class HGA {
         }
         if (nei1Size == 0 && nei2Size == 0) {
             int size = nodes1.size() * nodes2.size();
-            return preMat.sum() / size;
+            return preMat.getMat().sum() / size;
         }
         return res.get();
     }
@@ -307,7 +308,7 @@ public class HGA {
         nodes1.parallelStream().forEach(n1 -> {
             nodes2.forEach(n2 -> addTopology(n1, n2, preSimMat));
             if (i.get() % (nodes1.size() / 10) == 0) {
-                logInfo(i.get() / (nodes1.size() / 10) * 10 + "%\t");
+                logInfo(i.get() / nodes1.size() * 100 + "%\t");
             }
             i.getAndIncrement();
         });
@@ -477,8 +478,6 @@ public class HGA {
     }
 
     public void run() {
-        HashMap<String, String> forcedPart;
-        HashMap<String, String> remapPart;
         if (debugOut) {
             cleanDebugResult();
         }
@@ -497,11 +496,11 @@ public class HGA {
         HashMap<String, String> remapPart;
         HashMap<String, String> forcedPart;// forced mapping
         if (forcedMappingForSame) {
-            Pair<HashMap<String, String>, HashMap<String, String>> res = forcedMap();
+            Triple<HashMap<String, String>, SimMat, Set<String>> res = getRemapForForced();
             // hungarian for the res
-            remapPart = res.getFirst();
+            remapPart = getMappingFromHA(res.getSecond());
             // forced
-            forcedPart = res.getSecond();
+            forcedPart = res.getFirst();
             // mapping
             mapping = new HashMap<>(remapPart);
             mapping.putAll(forcedPart);
@@ -541,7 +540,7 @@ public class HGA {
             addAllTopology();
             stackMat.push(simMat.getMat().dup());
             // map again
-            this.mapping = remap(toRemap, forcedPart);
+            this.mapping = remap(toRemap, forcedPart,h);
             scoreMapping(this.mapping);
             // record score
             stackScore.push(score);
@@ -554,15 +553,16 @@ public class HGA {
             checkPassed = checkPassed(tolerance);
         } while (!checkPassed);
         // output result
+        logInfo("HGA mapping finish!With iteration "+iterCount+"times.");
         outPutResult();
     }
 
     /**
      * @return full mapping result
      */
-    private HashMap<String, String> remap(SimMat toRemap, HashMap<String, String> forced) {
-        int h = getHByAccount();
-        logInfo("Remapping : select rows have at least " + h + " non-zero items based on your input account " + hAccount * 100 + "%");
+    private HashMap<String, String> remap(SimMat toRemap, HashMap<String, String> forced, int h) {
+//        int h = getHByAccount();
+        logInfo("Remapping : select rows have at least " + h + " non-zero items;");
         // regain from file, and there is no remap part, retain.
         if (toRemap == null) {
             toRemap = this.simMat;
@@ -592,17 +592,6 @@ public class HGA {
     }
 
 
-    /**
-     * @return mapping result hungarian ; forced
-     */
-    private Pair<HashMap<String, String>, HashMap<String, String>> forcedMap() {
-        Triple<HashMap<String, String>, SimMat, Set<String>> res = getRemapForForced();
-        HashMap<String, String> forceMap = res.getFirst();
-        SimMat remap = res.getSecond();
-        // map rest of the matrix by Hungarian
-        // tmpList matrix has to be updated to be synchronized
-        return new Pair<>(getMappingFromHA(remap), forceMap);
-    }
 
     /**
      * @return forceMap, remap, sameNodes
@@ -829,6 +818,14 @@ public class HGA {
 
     public void setEdgeScore(double edgeScore) {
         this.edgeScore = edgeScore;
+    }
+
+    public int getH() {
+        return h;
+    }
+
+    public void setH(int h) {
+        this.h = h;
     }
 
     public void sethAccount(double hAccount) {

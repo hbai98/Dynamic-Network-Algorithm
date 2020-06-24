@@ -187,7 +187,7 @@ public class SimMat {
     }
 
     /**
-     * sum up the matrix non-zero entries, and only with non-zero
+     * sum up the matrix non-zero entries, and only with non-zero map
      *
      * @return sum val
      */

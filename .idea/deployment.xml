@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="SHU-lab" createEmptyFolders="true" filePermissions="420" folderPermissions="493">
+  <component name="PublishConfigData" serverName="SHU-lab" createEmptyFolders="true" filePermissions="420" folderPermissions="493" showNewOnTargetInSync="false">
     <serverData>
       <paths name="SHU-lab">
         <serverdata>
