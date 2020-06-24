@@ -405,7 +405,7 @@ public class GraphFileReader extends AbstractFileReader {
                     throw new IOException("nodes' name are not correct.");
                 }
             }
-        } else if ((sifSize - 1) % 2 != 0 || sifSize == 1) {
+        } else if ((sifSize - 1) % 2 != 0) {
             throw new IOException("The file input format is not correct.");
         } else {
             String srcName = sifLine.get(0);

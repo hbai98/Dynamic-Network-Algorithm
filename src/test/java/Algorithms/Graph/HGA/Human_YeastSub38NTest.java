@@ -14,6 +14,7 @@ import Algorithms.Graph.Utils.SimMat;
 import IO.AbstractFileWriter;
 import IO.GraphFileReader;
 import IO.GraphFileReaderSpec;
+import IO.GraphFileWriter;
 import Tools.Stopwatch;
 import org.jblas.DoubleMatrix;
 import tech.tablesaw.api.*;
@@ -57,7 +58,6 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
         reader.setRecordNeighbors(false);
         simMat = reader.readToSimMat("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt", yeast.getAllNodes(), human.getAllNodes(), true);
         hga = new HGA(simMat, yeast, human, 0.4,true,0.5,0.01);
-
     }
 
 
@@ -173,35 +173,22 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
                 });
         return simMat;
     }
-    public void outPutMatrix() throws FileNotFoundException {
-        String debugOutputPath = "src\\test\\java\\TestModules\\humanYeastTest\\";
-        AbstractFileWriter writer = new AbstractFileWriter() {
-            @Override
-            public void write(Vector<String> context, boolean closed) {
-                super.write(context, true);
-            }
-        };
-        Vector<String> matrixVec = new Vector<>();
-        DoubleMatrix matrix = simMat.getMat();
-        double[][] mat = matrix.toArray2();
-        for (double[] doubles : mat) {
-            for (int j = 0; j < mat[0].length; j++) {
-                matrixVec.add(doubles[j] + " ");
-            }
-            matrixVec.add("\n");
-        }
-        writer.setPath(debugOutputPath + "matrix" + ".txt");
-        writer.write(matrixVec, false);
-
+    @Test
+    void out() throws IOException {
+        GraphFileReader reader = new GraphFileReader(true, false, false);
+        yeast = reader.readToGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/net-38n.txt", false);
+        human = reader.readToGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/HumanNet.txt", false);
+        simMat = getReadySimMat("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.csv");
+        GraphFileWriter writer = new GraphFileWriter();
+        writer.writeToTxt(simMat,"src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt");
     }
+
 
     @Test
     void parallel_1() {
         Stopwatch stopwatch = new Stopwatch();
         AtomicReference<Double> sum = new AtomicReference<>((double) 0);
-        rowIndexes.parallelStream().forEach(r->colIndexes.parallelStream().forEach(c->{
-            sum.updateAndGet(v -> v + simMat.getMat().get(r, c));
-        }));
+        rowIndexes.parallelStream().forEach(r->colIndexes.parallelStream().forEach(c-> sum.updateAndGet(v -> v + simMat.getMat().get(r, c))));
         stopwatch.outElapsedByMiniSecond();
         System.out.println(sum);
     }
@@ -209,9 +196,7 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
     void parallel_2() {
         Stopwatch stopwatch = new Stopwatch();
         AtomicReference<Double> sum = new AtomicReference<>((double) 0);
-        rowIndexes.parallelStream().forEach(r->{
-            colIndexes.forEach(j-> sum.updateAndGet(v->v+simMat.getMat().get(r,j)));
-    });
+        rowIndexes.parallelStream().forEach(r-> colIndexes.forEach(j-> sum.updateAndGet(v->v+simMat.getMat().get(r,j))));
         stopwatch.outElapsedByMiniSecond();
         System.out.println(sum);
     }
@@ -234,7 +219,10 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
     void run(){
         hga.run();
     }
-
+    @Test
+    void clean(){
+        hga.cleanDebugResult();
+    }
     @Test
     void smallTest() {
         hga.addAllTopology();

@@ -1,6 +1,0 @@
-Iteration 14:
-Score:0.0
-PE:0.0
-EC:0.0
-ES:0.0
-PS:0.0

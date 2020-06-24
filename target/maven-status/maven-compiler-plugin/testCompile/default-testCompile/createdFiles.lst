@@ -16,5 +16,4 @@ Algorithms\Graph\HGA\Human_YeastSub38NTest.class
 Algorithms\Graph\Utils\SimMatTest.class
 IO\GraphFileReaderSpec.class
 IO\CsvToSimListTest.class
-Algorithms\Graph\HGA\Human_YeastSub38NTest$1.class
 Algorithms\Graph\Network\NodeListSpec.class

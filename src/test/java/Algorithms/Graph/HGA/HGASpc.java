@@ -25,7 +25,6 @@ class HGASpc extends GraphFileReaderSpec {
         GraphFileReader reader = new GraphFileReader(true, true, false);
         graph1 = reader.readToGraph("src/test/java/resources/AlgTest/HGA/graph1.txt", false);
         graph2 = reader.readToGraph("src/test/java/resources/AlgTest/HGA/graph2.txt", false);
-        reader.setRecordNonZeros(true);
         reader.setRecordNeighbors(false);
         simMat = reader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt", graph1.getAllNodes(), graph2.getAllNodes(), true);
         hga = new HGA(simMat, graph1, graph2, 0.5,true,0.5,0.01);

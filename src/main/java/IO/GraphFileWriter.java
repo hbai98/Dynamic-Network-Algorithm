@@ -3,46 +3,38 @@ package IO;
 import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Utils.AdjList.SimList;
 import Algorithms.Graph.Utils.List.HNodeList;
+import Algorithms.Graph.Utils.SimMat;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public class GraphFileWriter {
     BufferedWriter bufWriter;
 
-    public void writeToTxt(SimList graph, String filePath) {
-        if (!filePath.endsWith("/")) {
-            filePath += "/";
-        }
-        try {
+    public void writeToTxt(SimMat simMat, String toWhere) throws IOException {
             OutputStreamWriter writer = new OutputStreamWriter(
-                    new FileOutputStream(filePath), StandardCharsets.UTF_8);
+                    new FileOutputStream(toWhere), StandardCharsets.UTF_8);
             bufWriter = new BufferedWriter(writer);
-            for (HNodeList list : graph) {
-                String headName = list.getSignName();
-                String result = replaceSpace_(headName);
-                bufWriter.write(result + " ");
-                for (Node node : list) {
-                    String nodeName = replaceSpace_(node.getStrName());
-                    bufWriter.write(nodeName + " " + node.getValue() + " ");
+            HashMap<String, Integer> rowMap = simMat.getRowMap();
+            HashMap<String, Integer> colMap = simMat.getColMap();
+            for (String row : rowMap.keySet()) {
+                    bufWriter.write(row + " ");
+                for (String col : colMap.keySet()) {
+                    double val = simMat.getVal(row, col);
+                    if (val != 0) {
+                        bufWriter.write( col+ " "+val+" ");
+                    }
                 }
                 bufWriter.write("\n");
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (bufWriter != null) {
-                    bufWriter.flush();
-                    bufWriter.close();
-                }
-            } catch (Exception ex) {
-                System.out.println("Error in closing the BufferedWriter" + ex);
+            if (bufWriter != null) {
+                bufWriter.flush();
+                bufWriter.close();
             }
-        }
-
     }
+
 
     public String replaceSpace_(String headName) {
         StringBuilder result = new StringBuilder();

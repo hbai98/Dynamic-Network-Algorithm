@@ -1,6 +1,7 @@
 package Algorithms.Graph.Utils;
 
 import Algorithms.Graph.Utils.AdjList.SimList;
+import IO.DoubleMatrixReader;
 import com.mitchellbosecke.pebble.extension.escaper.SafeString;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
@@ -27,9 +28,8 @@ public class SimMat {
         colMap = new HashMap<>(graph2Nodes.size());
         rowIndexNameMap = new HashMap<>(graph1Nodes.size());
         colIndexNameMap = new HashMap<>(graph2Nodes.size());
-
         // init row,col Map
-        initRowColMap(graph1Nodes,graph2Nodes);
+        initRowColMap(graph1Nodes, graph2Nodes);
         getIndexNameMap();
     }
 
@@ -55,7 +55,6 @@ public class SimMat {
         this.colMap = colMap;
         getIndexNameMap();
     }
-
 
 
     public SimMat(HashMap<String, Integer> rowMap, HashMap<Integer, String> rowIndexNameMap, HashMap<String, Integer> colMap,
@@ -135,7 +134,6 @@ public class SimMat {
     }
 
 
-
     private SimMat setUpSimMat(HashMap<String, Integer> map) {
         DoubleMatrix res = new DoubleMatrix(map.size(), colMap.size());
         // copy other info
@@ -162,10 +160,31 @@ public class SimMat {
     public String getMax(int row, HashSet<String> assign) {
         double max = -Double.MAX_VALUE;
         String res = null;
-        HashSet<String> nonZeros = nonZerosIndexMap.get(rowIndexNameMap.get(row));
-        // graph2 has not been allocated completely
-        if (!assign.equals(nonZeros)) {
-            for (String s : nonZeros) {
+        if (updateNonZerosForRow) {
+            HashSet<String> nonZeros = nonZerosIndexMap.get(rowIndexNameMap.get(row));
+            // graph2 has not been allocated completely
+            if (!assign.equals(nonZeros)) {
+                for (String s : nonZeros) {
+                    int j = colMap.get(s);
+                    double val = mat.get(row, j);
+                    if (!assign.contains(s) && val > max) {
+                        max = val;
+                        res = colIndexNameMap.get(j);
+                    }
+                }
+                assign.add(res);
+            } else {
+                // start zeros allocation
+                Set<String> zeros = colMap.keySet();
+                zeros.removeAll(nonZeros);
+                for (String s : zeros) {
+                    res = s;
+                    assign.add(s);
+                    break;
+                }
+            }
+        } else {
+            for (String s : getColSet()) {
                 int j = colMap.get(s);
                 double val = mat.get(row, j);
                 if (!assign.contains(s) && val > max) {
@@ -173,15 +192,7 @@ public class SimMat {
                     res = colIndexNameMap.get(j);
                 }
             }
-        } else {
-            // start zeros allocation
-            Set<String> zeros = colMap.keySet();
-            zeros.removeAll(nonZeros);
-            for (String s : zeros) {
-                res = s;
-                assign.add(s);
-                break;
-            }
+            assign.add(res);
         }
         return res;
     }
@@ -201,71 +212,35 @@ public class SimMat {
 
     /**
      * Split the matrix which contains only rows in rowSet and cols in colSet
+     *
      * @return split result
      */
     public SimMat getPart(Collection<String> rowSet, Collection<String> colSet) {
-        assert(getRowSet().containsAll(rowSet)&&getColSet().containsAll(colSet));
-        if(rowSet.equals(this.getRowSet())&&colSet.equals(this.getColSet())){
+        assert (getRowSet().containsAll(rowSet) && getColSet().containsAll(colSet));
+        if (rowSet.equals(this.getRowSet()) && colSet.equals(this.getColSet())) {
             return this;
         }
-        return getPart(rowSet, true).getPart(colSet, false);
-    }
-
-    public SimMat getPart(Collection<String> set, boolean isRow) {
-        DoubleMatrix mat;
-        SimMat simMat = new SimMat();
-        HashMap<String,Integer> rowMap =new HashMap<>();
-        HashMap<Integer,String> rowIndexNameMap = new HashMap<>();
-        HashMap<String,Integer> colMap =new HashMap<>();
-        HashMap<Integer,String> colIndexNameMap = new HashMap<>();
-        HashMap<String,HashSet<String>> nonZerosIndexMap = new HashMap<>();
-        if (isRow) {
-            Set<String> rowSet = getRowSet();
-            colMap = this.colMap;
-            colIndexNameMap = this.colIndexNameMap;
-            mat = new DoubleMatrix(set.size(),getColSet().size());
-            int i = 0;
-            for (String s : rowSet) {
-                // need
-                if (set.contains(s)) {
-                    int index = this.rowMap.get(s);
-                    rowMap.put(s,i);
-                    rowIndexNameMap.put(i,s);
-                    nonZerosIndexMap.put(s,this.nonZerosIndexMap.get(s));
-                    mat.putRow(i++, this.mat.getRow(index));
-                }
-            }
-        } else {
-            Set<String> colSet = getColSet();
-            rowMap = this.rowMap;
-            rowIndexNameMap = this.rowIndexNameMap;
-            nonZerosIndexMap = this.nonZerosIndexMap;
-            mat = new DoubleMatrix(getRowSet().size(),set.size());
-            int j = 0;
-            for (String s : colSet) {
-                if(set.contains(s)){
-                    int index = this.colMap.get(s);
-                    colMap.put(s,j);
-                    colIndexNameMap.put(j,s);
-                    mat.putColumn(j++,this.mat.getColumn(index));
-                }
-                else{
-                    nonZerosIndexMap.values().forEach(nonZeros-> nonZeros.remove(s));
-                }
-            }
+        int i = 0;
+        int j = 0;
+        int[] rowIndexes = new int[rowSet.size()];
+        int[] colIndexes = new int[colSet.size()];
+        HashMap<String, Integer> rowMap = new HashMap<>();
+        HashMap<String, Integer> colMap = new HashMap<>();
+        for (String s : rowSet) {
+            rowIndexes[i] = this.rowMap.get(s);
+            rowMap.put(s, i++);
         }
-        simMat.setMat(mat);
-        simMat.setNonZerosIndexMap(nonZerosIndexMap);
-        simMat.setRowIndexNameMap(rowIndexNameMap);
-        simMat.setColIndexNameMap(colIndexNameMap);
-        simMat.setRowMap(rowMap);
-        simMat.setColMap(colMap);
-        // set up matrix
-        return simMat;
+        for (String s : colSet) {
+            colIndexes[j] = this.colMap.get(s);
+            colMap.put(s, j++);
+        }
+        DoubleMatrix res = mat.get(rowIndexes, colIndexes);
+        return new SimMat(rowMap, colMap, res);
     }
 
     /**
      * Deep copy
+     *
      * @return deep copy result
      */
     public Object dup() {
@@ -276,8 +251,11 @@ public class SimMat {
         //-----------------index name map---------------------
         HashMap<Integer, String> rowIndexNameMap = new HashMap<>(this.rowIndexNameMap);
         HashMap<Integer, String> colIndexNameMap = new HashMap<>(this.colIndexNameMap);
-        HashMap<String, HashSet<String>> nonZerosIndexMap = new HashMap<>(this.nonZerosIndexMap);
-        SimMat res = new SimMat(rowMap,rowIndexNameMap,colMap,colIndexNameMap,nonZerosIndexMap,mat);
+        HashMap<String, HashSet<String>> nonZerosIndexMap_ = null;
+        if (this.nonZerosIndexMap != null) {
+            nonZerosIndexMap_ = new HashMap<>(this.nonZerosIndexMap);
+        }
+        SimMat res = new SimMat(rowMap, rowIndexNameMap, colMap, colIndexNameMap, nonZerosIndexMap_, mat);
         res.updateNonZerosForRow = this.updateNonZerosForRow;
         return res;
     }
@@ -285,20 +263,20 @@ public class SimMat {
     public DoubleMatrix getMat() {
         return mat;
     }
-    HashMap<String, HashSet<String>> computeNonZeros(){
-        if(nonZerosIndexMap!=null){
+
+    HashMap<String, HashSet<String>> computeNonZeros() {
+        if (nonZerosIndexMap != null) {
             return nonZerosIndexMap;
         }
         HashMap<String, HashSet<String>> nonZeros = new HashMap<>();
         getRowSet().parallelStream().forEach(
-                r->getColSet().parallelStream().forEach(c->{
-                    if(nonZeros.containsKey(r)){
+                r -> getColSet().parallelStream().forEach(c -> {
+                    if (nonZeros.containsKey(r)) {
                         HashSet<String> tmp = nonZeros.get(r);
                         tmp.add(c);
-                        nonZeros.put(r,tmp);
-                    }
-                    else{
-                        nonZeros.put(r,new HashSet<>());
+                        nonZeros.put(r, tmp);
+                    } else {
+                        nonZeros.put(r, new HashSet<>());
                     }
                 })
         );
@@ -356,5 +334,30 @@ public class SimMat {
 
     public void setMat(DoubleMatrix mat) {
         this.mat = mat;
+    }
+
+    /**
+     * @param account Hungarian account
+     * @return simMat with rows' average similarity which meet the account[Hungarian mat], Greedy mat
+     */
+    public Pair<SimMat, SimMat> splitByPercentage(double account) {
+        Vector<Pair<String, Double>> rowAves = new Vector<>();
+        rowMap.keySet().parallelStream().forEach(r -> {
+            int row = rowMap.get(r);
+            double ave = mat.getRow(row).sum() / colMap.size();
+            rowAves.add(new Pair<>(r, ave));
+        });
+        // sort
+        List<Pair<String, Double>> res = rowAves.stream().sorted(Comparator.comparingDouble(Pair::getSecond)).collect(Collectors.toList());
+        int num = (int) (account * rowMap.size());
+        HashSet<String> rows = new HashSet<>();
+        for (int i = num; i < res.size(); i++) {
+            rows.add(res.get(i).getFirst());
+        }
+        HashSet<String> left = getRowSet();
+        left.removeAll(rows);
+        SimMat H = getPart(rows, getColSet());
+        SimMat G = getPart(left, getColSet());
+        return new Pair<>(H, G);
     }
 }

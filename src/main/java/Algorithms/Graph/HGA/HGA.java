@@ -63,6 +63,7 @@ public class HGA {
     private Stack<Double> stackScore;
 
     //----------limit-----
+    private int splitLimit = 20;
     private int iterCount = 0;
     private int iterMax = 1000;
     //--------------debug---------------
@@ -132,25 +133,27 @@ public class HGA {
 
     /**
      * divide S(t)
-     * into two matrixes: the H-matrix, in which each row
-     * has at least h nonzero entries, and the G-matrix, which
+     * into two matrixes: the H-matrix, and the G-matrix, which
      * collects the remaining entries of S(t)
      *
-     * @param toMap matrix for hga mapping
-     * @param h     row has at least h nonzero entries
+     * @param toMap      matrix for hga mapping
+     * @param splitLimit if index graph nodes is less than this limit, use the hungarian directly
      */
-    protected HashMap<String, String> remapping(SimMat toMap, int h) {
+    protected HashMap<String, String> remapping(SimMat toMap, int splitLimit) {
         assert (toMap != null);
+        logInfo("Selecting "+hAccount*100+"% of rows for Hungarian allocation, and the left "+(100-hAccount*100)+"% for Greedy mapping.");
+        if (graph1.getAllNodes().size() < splitLimit) {
+            return getMappingFromHA(toMap);
+        } else {
+            Pair<SimMat,SimMat> res = toMap.splitByPercentage(hAccount);
+            // check
+            SimMat H = res.getFirst();
+            SimMat G = res.getSecond();
+            HashMap<String, String> mapping = getMappingFromHA(H);
+            greedyMap(G, mapping);
+            return mapping;
+        }
 
-        // check
-        Pair<SimMat, SimMat> res = toMap.getSplit(h);
-        SimMat H = res.getFirst();
-        SimMat G = res.getSecond();
-        // Hungarian alg
-        HashMap<String, String> mapping = getMappingFromHA(H);
-        // Greedy alg
-        greedyMap(G, mapping);
-        return mapping;
     }
 
     /**
@@ -165,10 +168,6 @@ public class HGA {
             if (!preMap.containsKey(tgt)) {
                 String mapStr = toMap.getMax(i, assign);
                 preMap.put(tgt, mapStr);
-                // graph mapping finished
-                if (mapStr != null) {
-                    assign.add(mapStr);
-                }
             }
         });
     }
@@ -299,19 +298,12 @@ public class HGA {
     protected void addAllTopology() {
         Set<String> nodes1 = simMat.getRowMap().keySet();
         Set<String> nodes2 = simMat.getColMap().keySet();
-        AtomicInteger i = new AtomicInteger(1);
-        // parallel the row
+        // parallel the rows
         // https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
         // similarity matrix after the neighborhood adjustment
         SimMat preSimMat = (SimMat) simMat.dup();
         logInfo("AddTopology for all nodes pairs in two graphs:");
-        nodes1.parallelStream().forEach(n1 -> {
-            nodes2.forEach(n2 -> addTopology(n1, n2, preSimMat));
-            if (i.get() % (nodes1.size() / 10) == 0) {
-                logInfo(i.get() / nodes1.size() * 100 + "%\t");
-            }
-            i.getAndIncrement();
-        });
+        nodes1.parallelStream().forEach(n1 -> nodes2.forEach(n2 -> addTopology(n1, n2, preSimMat)));
     }
 
     private List<Triple<String, String, Double>> sortToPair(Set<String> nodes1, Set<String> nodes2) {
@@ -468,12 +460,14 @@ public class HGA {
 
         }
         // size = 2
-        else {
+        else if(stackMat.size() == 2){
             DoubleMatrix s = stackMat.peek();
             double dif = s.sub(stackMat.get(0)).normmax();
             logInfo("Iteration:" + iterCount + "\tdif " + dif);
             return dif < tolerance;
         }
+        // size = 1
+       return false;
 
     }
 
@@ -482,9 +476,10 @@ public class HGA {
             cleanDebugResult();
         }
         logInfo("Init mapping...");
-        Pair<SimMat, HashMap<String, String>> init = initMap();
+//        Pair<SimMat, HashMap<String, String>> init = initMap();
+        Pair<HashMap<String, String>, SimMat> init = getRemapForForced();
         // iterate
-        hgaIterate(this.mapping, this.simMat, init.getFirst(), init.getSecond()
+        hgaIterate(this.mapping, this.simMat, init.getSecond(), init.getFirst()
                 , iterCount, score, PE, EC, PS, ES);
 
     }
@@ -496,7 +491,7 @@ public class HGA {
         HashMap<String, String> remapPart;
         HashMap<String, String> forcedPart;// forced mapping
         if (forcedMappingForSame) {
-            Triple<HashMap<String, String>, SimMat, Set<String>> res = getRemapForForced();
+            Pair<HashMap<String, String>, SimMat> res = getRemapForForced();
             // hungarian for the res
             remapPart = getMappingFromHA(res.getSecond());
             // forced
@@ -529,23 +524,27 @@ public class HGA {
         this.mapping = mapping;
         this.simMat = simMat;
         this.iterCount = iterCount;
+
+        stackMat = new Stack<>();
+        stackScore = new Stack<>();
         boolean checkPassed;
         do {
             // log if needed
             logInfo("------------Iteration " + this.iterCount + "/1000------------");
-            this.iterCount++;
-            // step 2 update based on mapped nodes
-            updatePairNeighbors(this.mapping);
-            // step 3 topo adjustment to similarity matrix
-            addAllTopology();
-            stackMat.push(simMat.getMat().dup());
-            // map again
-            this.mapping = remap(toRemap, forcedPart,h);
+            // step 1 map again
+            this.mapping = remap(toRemap, forcedPart);
+            // step 2 score the mapping
             scoreMapping(this.mapping);
-            // record score
+            // record
+            stackMat.push(simMat.getMat().dup());
             stackScore.push(score);
-            // debug
+            // output
             outDebug();
+            // step 3 update based on mapped nodes
+            updatePairNeighbors(this.mapping);
+            // step 4 topo adjustment to similarity matrix
+            addAllTopology();
+            this.iterCount++;
             // record best
             if (score > score_res) {
                 setUpResult();
@@ -553,22 +552,22 @@ public class HGA {
             checkPassed = checkPassed(tolerance);
         } while (!checkPassed);
         // output result
-        logInfo("HGA mapping finish!With iteration "+iterCount+"times.");
+        logInfo("HGA mapping finish!With iteration " + iterCount + "times.");
         outPutResult();
     }
 
     /**
      * @return full mapping result
      */
-    private HashMap<String, String> remap(SimMat toRemap, HashMap<String, String> forced, int h) {
+    private HashMap<String, String> remap(SimMat toRemap, HashMap<String, String> forced) {
 //        int h = getHByAccount();
-        logInfo("Remapping : select rows have at least " + h + " non-zero items;");
+        logInfo("Remapping...");
         // regain from file, and there is no remap part, retain.
         if (toRemap == null) {
             toRemap = this.simMat;
         }
         // hungarian account
-        HashMap<String, String> res = remapping(toRemap, h);
+        HashMap<String, String> res = remapping(toRemap, splitLimit);
         // not forced
         if (forced == null) {
             return res;
@@ -592,30 +591,27 @@ public class HGA {
     }
 
 
-
     /**
-     * @return forceMap, remap, sameNodes
+     * @return forceMap, remap
      */
-    private Triple<HashMap<String, String>, SimMat, Set<String>> getRemapForForced() {
+    private Pair<HashMap<String, String>, SimMat> getRemapForForced() {
         // row to map
         Set<String> rowToMap = simMat.getRowSet();
         rowToMap.removeAll(simMat.getColSet());
         // col to map
         Set<String> colToMap = simMat.getColSet();
         colToMap.removeAll(simMat.getRowSet());
-        HashMap<String, String> forceMap;
-        SimMat remap;
-        Set<String> sameNodes;
-        // set up force mapping
-        forceMap = new HashMap<>();
-        sameNodes = simMat.getRowSet();
-        sameNodes.retainAll(simMat.getColSet());
-        // parallel here there is no interference and no stateful lambda
-        //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
-        HashMap<String, String> finalForceMap = forceMap;
-        sameNodes.parallelStream().forEach(n -> finalForceMap.put(n, n));
-        remap = simMat.getPart(rowToMap, colToMap);
-        return new Triple<>(forceMap, remap, sameNodes);
+        SimMat remap = simMat.getPart(rowToMap, colToMap);
+        HashMap<String, String> forceMap = null;
+        if (forcedMappingForSame) {
+            // set up force mapping
+            HashSet<String> sameNodes = simMat.getRowSet();
+            sameNodes.retainAll(simMat.getColSet());
+            forceMap = new HashMap<>();
+            HashMap<String, String> finalForceMap1 = forceMap;
+            sameNodes.parallelStream().forEach(n-> finalForceMap1.put(n,n));
+        }
+        return new Pair<>(forceMap, remap);
     }
 
     private void logInfo(String message) {
@@ -699,9 +695,9 @@ public class HGA {
     }
 
     void cleanDebugResult() {
-        debugOutputPath = System.getProperty("user.dir").replace('/','\\')+"\\"+debugOutputPath;
+        debugOutputPath = System.getProperty("user.dir").replace('/', '\\') + "\\" + debugOutputPath;
         // use '\' to fit with linux
-        debugOutputPath=debugOutputPath.replace('\\','/');
+        debugOutputPath = debugOutputPath.replace('\\', '/');
         String mapping = debugOutputPath + "mapping";
         String scoring = debugOutputPath + "scoring";
         String matrix = debugOutputPath + "matrix";
@@ -865,7 +861,7 @@ public class HGA {
         reader.setRecordNonZeros(true);
         reader.setRecordNeighbors(false);
         SimMat simMat = reader.readToSimMat("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt", yeast.getAllNodes(), human.getAllNodes(), true);
-        HGA hga = new HGA(simMat, yeast, human, 0.4,true,0.5,0.01);
+        HGA hga = new HGA(simMat, yeast, human, 0.4, true, 0.5, 0.01);
         hga.run();
     }
 
