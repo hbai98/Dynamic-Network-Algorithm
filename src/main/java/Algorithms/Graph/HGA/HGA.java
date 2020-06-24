@@ -255,7 +255,7 @@ public class HGA {
         if (nonNei1Size != 0 && nonNei2Size != 0) {
             int size = (nonNei1Size + 1) * (nonNei2Size + 1);
             // shift parallel to the front
-            nodes1.forEach(node1 -> nodes2.forEach(node2 -> {
+            nodes1.parallelStream().forEach(node1 -> nodes2.forEach(node2 -> {
                 if (!nei1.contains(node1) && !nei2.contains(node2)) {
                     res.updateAndGet(v -> v + preMat.getVal(node1, node2));
                 }
@@ -279,7 +279,7 @@ public class HGA {
         if (nei1Size != 0 && nei2Size != 0) {
             int size = nei1Size * nei2Size;
             // shift parallel to the front
-            nei1.forEach(node1 -> nei2.forEach(node2 ->
+            nei1.parallelStream().forEach(node1 -> nei2.forEach(node2 ->
                     res.updateAndGet(v -> v + preMat.getVal(node1, node2))));
             return res.get() / size;
         }
@@ -552,7 +552,7 @@ public class HGA {
             checkPassed = checkPassed(tolerance);
         } while (!checkPassed);
         // output result
-        logInfo("HGA mapping finish!With iteration " + iterCount + "times.");
+        logInfo("HGA mapping finish!With iteration " + this.iterCount + " times.");
         outPutResult();
     }
 
