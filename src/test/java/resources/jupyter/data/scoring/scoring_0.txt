@@ -1,6 +1,0 @@
-Iteration 0:
-Score:45.9
-PE:5.9
-EC:0.4
-ES:4.0
-PS:3.9

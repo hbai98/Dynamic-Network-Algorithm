@@ -1,7 +1,9 @@
 package IO;
 
-import Algorithms.Graph.Utils.AdjList.Graph;
+import Algorithms.Graph.Network.AbstractAdjList;
+import Algorithms.Graph.Utils.AdjList.DirtedGraph;
 import Algorithms.Graph.Utils.AdjList.SimList;
+import Algorithms.Graph.Utils.AdjList.UndirectedGraph;
 import Algorithms.Graph.Utils.SimMat;
 
 import java.io.BufferedReader;
@@ -47,12 +49,16 @@ public class GraphFileReader extends AbstractFileReader {
     }
     //-------------------------AdjNodeList【homoGeneMap】 return type has been added in switch choices------------------------
 
-    public Graph readToGraph(String inputFilePath) throws IOException {
-        return readToGraph(new BufferedReader(new FileReader(inputFilePath)), true);
+    public DirtedGraph readToDirectedGraph(String inputFilePath) throws IOException {
+        return readToDirectedGraph(new BufferedReader(new FileReader(inputFilePath)), true);
     }
 
-    public Graph readToGraph(String inputFilePath, boolean closeWhenFinished) throws IOException {
-        return readToGraph(new BufferedReader(new FileReader(inputFilePath)), closeWhenFinished);
+    public DirtedGraph readToDirectedGraph(String inputFilePath, boolean closeWhenFinished) throws IOException {
+        return readToDirectedGraph(new BufferedReader(new FileReader(inputFilePath)), closeWhenFinished);
+    }
+
+    public UndirectedGraph readToUndirectedGraph(String inputFilePath, boolean closeWhenFinished) throws IOException {
+        return readToUndirectedGraph(new BufferedReader(new FileReader(inputFilePath)), closeWhenFinished);
     }
 
     public SimMat readToSimMat(String inputFilePath, HashSet<String> graph1, HashSet<String> graph2) throws IOException {
@@ -154,9 +160,9 @@ public class GraphFileReader extends AbstractFileReader {
      *                          the reader when finished reading; otherwise, it will
      *                          not close it.
      */
-    private Graph readToGraph(BufferedReader input, boolean closeWhenFinished) throws IOException {
+    private DirtedGraph readToDirectedGraph(BufferedReader input, boolean closeWhenFinished) throws IOException {
         init();
-        Graph graph = new Graph();
+        DirtedGraph dirtedGraph = new DirtedGraph();
         // matches sequence of one or more whitespace characters.
         setSplitter("\\s+");
         Vector<String> sifLine = new Vector<>();
@@ -171,7 +177,7 @@ public class GraphFileReader extends AbstractFileReader {
                     sifLine.add(token);
                 }
             }
-            parseForGraph(graph, sifLine);
+            parseForGraph(dirtedGraph, sifLine);
             // clean for each line
             cleanLine();
         }
@@ -179,8 +185,42 @@ public class GraphFileReader extends AbstractFileReader {
             input.close();
         }
         // set up graph
-        graph.setNeighborMap(graphNeighbors);
-        return graph;
+        dirtedGraph.setNeighborMap(graphNeighbors);
+        return dirtedGraph;
+    }
+    /**
+     * Parses a arrayList format file to ArrayList.
+     *
+     * @param input             the reader to read the SIF file from
+     * @param closeWhenFinished if true, this method will close
+     *                          the reader when finished reading; otherwise, it will
+     *                          not close it.
+     */
+    private UndirectedGraph readToUndirectedGraph(BufferedReader input, boolean closeWhenFinished) throws IOException {
+        init();
+        UndirectedGraph undGraph = new UndirectedGraph();
+        // matches sequence of one or more whitespace characters.
+        setSplitter("\\s+");
+        Vector<String> sifLine = new Vector<>();
+        String line;
+        while ((line = input.readLine()) != null) {
+            String[] tokens = splitter.split(line);
+            if (tokens.length == 0) continue;
+            //  it will be handled in pareLine()
+            // which will throw an IOException if not the right case.
+            for (String token : tokens) {
+                if (token.length() != 0) {
+                    sifLine.add(token);
+                }
+            }
+            parseForGraph(undGraph, sifLine);
+            // clean for each line
+            cleanLine();
+        }
+        if (closeWhenFinished) {
+            input.close();
+        }
+        return undGraph;
     }
 
     /**
@@ -203,7 +243,7 @@ public class GraphFileReader extends AbstractFileReader {
      * @param graph   result
      * @param sifLine result very line
      */
-    private void parseForGraph(Graph graph, Vector<String> sifLine) throws IOException {
+    private void parseForGraph(AbstractAdjList graph, Vector<String> sifLine) throws IOException {
         int sifSize = sifLine.size();
         if (sifSize == 0) {
             throw new IOException("Nothing has been input!.");

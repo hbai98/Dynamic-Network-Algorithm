@@ -4,9 +4,9 @@ package Algorithms.Graph;
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Network.Node;
-import Algorithms.Graph.Utils.AdjList.Graph;
+import Algorithms.Graph.Utils.AdjList.DirtedGraph;
+import Algorithms.Graph.Utils.AdjList.UndirectedGraph;
 import Algorithms.Graph.Utils.SimMat;
-import org.jgrapht.alg.util.Triple;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -54,8 +54,8 @@ public class NBM {
     protected HashMap<String, Node> mostSimPairMap;
     protected PriorityQueue<Edge> pqEdge;
     protected EdgeHashSet preMap;
-    protected Graph graph1;
-    protected Graph graph2;
+    protected DirtedGraph dirtedGraph1;
+    protected DirtedGraph dirtedGraph2;
 
     private double reward;
 
@@ -199,10 +199,7 @@ public class NBM {
      * reward is defined in HGA.
      * Notice : this method return the result associated with the order mapping is iterated.
      */
-    public static void neighborSimAdjust(Graph graph1, Graph graph2, SimMat simMat, HashMap<String, String> mapping) {
-        // distinguish the result simMat from the indexing one
-        HashMap<String, HashSet<String>> neb1Map = graph1.getNeighborsMap();
-        HashMap<String, HashSet<String>> neb2Map = graph2.getNeighborsMap();
+    public static void neighborSimAdjust(UndirectedGraph undG1, UndirectedGraph undG2, SimMat simMat, HashMap<String, String> mapping) {
         // sort the mapping pairs to add topological effect for the pair with higher similarity first,
         // and it will alleviate the impact brought by update similarity matrix in various orders.
         List<Map.Entry<String, String>> toAdjust = mapping.entrySet().stream().sorted(Comparator.comparing(entry -> simMat.getVal(entry.getKey(), entry.getValue()))).collect(Collectors.toList());
@@ -213,11 +210,11 @@ public class NBM {
             String node2 = entry.getValue();
             double simUV = simMat.getVal(node1, node2);
             // direct neighbors of the head node
-            HashSet<String> neb1 = neb1Map.get(node1);
-            HashSet<String> neb2 = neb2Map.get(node2);
+            Set<String> neb1 = undG1.getNebs(node1);
+            Set<String> neb2 = undG2.getNebs(node2);
             // no parallel here! stateful lambda
             neb1.forEach(s1 -> {
-                int nebNumbNode1 = neb1Map.get(s1).size();
+                int nebNumbNode1 = undG1.getNebs(s1).size();
                 double reward = simUV / nebNumbNode1;
                 neb2.forEach(s2->{
                         double newWeight = simMat.getVal(s1, s2) + reward;

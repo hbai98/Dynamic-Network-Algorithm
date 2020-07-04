@@ -9,6 +9,7 @@ import java.util.LinkedList;
 public abstract class AbstractAdjList extends LinkedList<HNodeList> {
     protected HashSet<String> rowSet;
     protected HashSet<String> colSet;
+    private int edgeCount = -1;
     //---------------
 
     public AbstractAdjList(){
@@ -21,6 +22,7 @@ public abstract class AbstractAdjList extends LinkedList<HNodeList> {
      * @param headNodeName target node
      */
     protected abstract HNodeList getHeadNodesList(String headNodeName);
+    public abstract void addOneNode(String tgtHead, String tgtNode, double weight);
 
     /**
      * move one node from adjlist
@@ -44,7 +46,14 @@ public abstract class AbstractAdjList extends LinkedList<HNodeList> {
         );
     }
 
-
+    public int getEdgeCount(){
+        if(edgeCount == -1){
+            int c = this.parallelStream().mapToInt(LinkedList::size).sum();
+            edgeCount = c;
+            return c;
+        }
+        return edgeCount;
+    }
 
     /**
      * add one HNodeList

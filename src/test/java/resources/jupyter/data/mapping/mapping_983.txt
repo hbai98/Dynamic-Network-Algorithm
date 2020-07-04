@@ -1,0 +1,10 @@
+Iteration 983:
+A->A
+Q->Q
+B->B
+C->H
+D->D
+F->F
+W->W
+I->I
+M->M

@@ -226,8 +226,6 @@ public class SimList extends AbstractAdjList {
             return false;
         }
     }
-
-
     /**
      * add tgtNode to list(tgtHead) with <code>weight</code>,and
      * keep the target list an ascending order.
@@ -252,6 +250,9 @@ public class SimList extends AbstractAdjList {
             return -index-1;
         }
     }
+
+
+
 
 
 
@@ -290,6 +291,30 @@ public class SimList extends AbstractAdjList {
             return this.get(rowMap.get(headNodeName));
         }
         return null;
+    }
+
+     /**
+     * add tgtNode to list(tgtHead) with <code>weight</code>,and
+     * keep the target list an ascending order.
+     *
+     * @param tgtHead headName of the list.
+     * @param tgtNode name of the Node to be removed.
+     * @return index of the row
+     */
+    @Override
+    public void addOneNode(String tgtHead, String tgtNode, double weight) {
+        int index = Collections.binarySearch(this, new HNodeList(tgtHead), Comparator.comparing(o -> o.signName));
+        if (index >= 0) {
+            this.get(index).sortAdd(tgtNode, weight);
+            // synchronize colSet
+            colSet.add(tgtNode);
+        } else {
+            // synchronize set
+            rowSet.add(tgtHead);
+            colSet.add(tgtNode);
+            add(-index - 1, new HNodeList(tgtHead));
+            this.get(-index - 1).sortAdd(tgtNode, weight);
+        }
     }
 
     @Override

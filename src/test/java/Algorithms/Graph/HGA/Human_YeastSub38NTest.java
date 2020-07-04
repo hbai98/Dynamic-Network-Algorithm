@@ -9,14 +9,13 @@
  */
 package Algorithms.Graph.HGA;
 
-import Algorithms.Graph.Utils.AdjList.Graph;
+import Algorithms.Graph.Utils.AdjList.DirtedGraph;
+import Algorithms.Graph.Utils.AdjList.UndirectedGraph;
 import Algorithms.Graph.Utils.SimMat;
-import IO.AbstractFileWriter;
 import IO.GraphFileReader;
-import IO.GraphFileReaderSpec;
+import IO.DirtedGraphFileReaderSpec;
 import IO.GraphFileWriter;
 import Tools.Stopwatch;
-import org.jblas.DoubleMatrix;
 import tech.tablesaw.api.*;
 import tech.tablesaw.plotly.Plot;
 import tech.tablesaw.plotly.components.Axis;
@@ -25,10 +24,8 @@ import tech.tablesaw.plotly.components.Layout;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Vector;
 import java.util.concurrent.atomic.AtomicReference;
@@ -40,9 +37,9 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.plotly.traces.ScatterTrace;
 
 @DisplayName("Reader is able to ")
-public class Human_YeastSub38NTest extends GraphFileReaderSpec {
-    Graph yeast;
-    Graph human;
+public class Human_YeastSub38NTest extends DirtedGraphFileReaderSpec {
+    UndirectedGraph yeast;
+    UndirectedGraph human;
     SimMat simMat;
     HGA hga;
     Stopwatch stopwatch;
@@ -52,12 +49,12 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
     void init() throws IOException {
         stopwatch = new Stopwatch();
         GraphFileReader reader = new GraphFileReader(true, true, false);
-        yeast = reader.readToGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/net-38n.txt", false);
-        human = reader.readToGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/HumanNet.txt", false);
-        reader.setRecordNonZeros(true);
+        yeast = reader.readToUndirectedGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/net-38n.txt", false);
+        human = reader.readToUndirectedGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/HumanNet.txt", false);
+//        reader.setRecordNonZeros(true);
         reader.setRecordNeighbors(false);
         simMat = reader.readToSimMat("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt", yeast.getAllNodes(), human.getAllNodes(), true);
-        hga = new HGA(simMat, yeast, human, 0.4,true,0.5,0.01);
+        hga = new HGA(simMat, yeast, human, 0.4,true,0.7,0.01);
     }
 
 
@@ -176,8 +173,8 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
     @Test
     void out() throws IOException {
         GraphFileReader reader = new GraphFileReader(true, false, false);
-        yeast = reader.readToGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/net-38n.txt", false);
-        human = reader.readToGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/HumanNet.txt", false);
+        yeast = reader.readToUndirectedGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/net-38n.txt", false);
+        human = reader.readToUndirectedGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/HumanNet.txt", false);
         simMat = getReadySimMat("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.csv");
         GraphFileWriter writer = new GraphFileWriter();
         writer.writeToTxt(simMat,"src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt");
