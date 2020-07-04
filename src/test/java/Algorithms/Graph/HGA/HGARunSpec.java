@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 class HGARunSpec {
     UndirectedGraph undG1;
     UndirectedGraph undG2;
@@ -37,10 +35,12 @@ class HGARunSpec {
         undG2 = reader.readToUndirectedGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/HumanNet.txt", false);
         reader.setRecordNeighbors(false);
         simMat = reader.readToSimMat("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt", undG1.getAllNodes(), undG2.getAllNodes(), true);
-        hga = new HGA(simMat, undG1, undG2, 0.4,true,0.1,0.01);
+        hga = new HGA(simMat, undG1, undG2, 0.4,true,0.5,0.01);
+        HGA.debugOutputPath = "src\\test\\java\\resources\\jupyter\\data\\";
         hga.run();
     }
-
+// data 2: 0.7
+    // data 1 : 0.5
 
 
 

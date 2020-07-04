@@ -20,242 +20,213 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.10" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.11" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.12" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.6" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.7" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.8" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HGALogFile.log.9" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/AdjList/UndirectedGraph.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Utils/AdjList/UndirectedGraphTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mappingResult_1001.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_1000.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_952.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_953.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_954.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_955.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_956.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_957.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_958.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_959.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_960.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_961.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_962.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_963.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_964.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_965.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_966.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_967.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_968.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_969.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_970.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_971.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_972.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_973.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_974.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_975.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_976.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_977.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_978.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_979.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_980.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_981.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_982.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_983.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_984.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_985.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_986.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_987.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_988.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_989.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_990.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_991.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_992.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_993.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_994.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_995.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_996.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_997.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_998.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_999.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrixResult_1001.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_1000.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_953.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_954.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_955.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_956.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_957.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_958.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_959.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_960.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_961.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_962.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_963.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_964.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_965.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_966.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_967.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_968.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_969.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_970.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_971.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_972.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_973.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_974.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_975.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_976.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_977.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_978.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_979.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_980.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_981.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_982.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_983.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_984.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_985.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_986.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_987.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_988.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_989.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_990.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_991.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_992.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_993.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_994.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_995.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_996.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_997.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_998.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_999.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoringResult_1001.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_1000.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_952.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_953.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_954.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_955.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_956.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_957.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_958.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_959.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_960.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_961.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_962.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_963.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_964.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_965.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_966.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_967.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_968.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_969.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_970.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_971.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_972.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_973.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_974.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_975.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_976.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_977.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_978.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_979.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_980.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_981.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_982.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_983.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_984.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_985.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_986.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_987.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_988.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_989.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_990.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_991.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_992.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_993.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_994.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_995.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_996.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_997.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_998.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_999.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mappingResult_14.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_0.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_10.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_11.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_12.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_13.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_4.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_5.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_6.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_7.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_8.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_9.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrixResult_14.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_0.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_10.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_11.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_12.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_13.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_4.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_5.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_6.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_7.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_8.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_9.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoringResult_14.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_0.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_10.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_11.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_12.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_13.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_3.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_4.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_5.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_6.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_7.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_8.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_9.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HGALogFile.log" beforeDir="false" afterPath="$PROJECT_DIR$/HGALogFile.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HGALogFile.log.2" beforeDir="false" afterPath="$PROJECT_DIR$/HGALogFile.log.2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HGALogFile.log.2.lck" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HGALogFile.log.3" beforeDir="false" afterPath="$PROJECT_DIR$/HGALogFile.log.3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HGALogFile.log.3.lck" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/AbstractAdjList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Network/AbstractAdjList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/AdjList/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/AdjList/DirtedGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/AdjList/SimList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Utils/AdjList/SimList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/IO/GraphFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/GraphFileReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/Human_YeastSub38NTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/Human_YeastSub38NTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Utils/SimMatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Utils/SimMatTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/IO/GraphFileReaderSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/IO/DirtedGraphFileReaderSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/IO/GraphFileWriterSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/IO/DirtedGraphFileWriterSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mappingResult_7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrixResult_7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoringResult_7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mappingResult_1001.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_1000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_952.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_953.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_954.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_955.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_956.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_957.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_958.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_959.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_960.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_961.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_962.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_963.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_964.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_965.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_966.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_967.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_968.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_969.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_970.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_971.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_972.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_973.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_974.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_975.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_976.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_977.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_978.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_979.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_980.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_981.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_982.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_983.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_984.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_985.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_986.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_987.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_988.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_989.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_990.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_991.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_992.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_993.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_994.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_995.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_996.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_997.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_998.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_999.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrixResult_1001.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_1000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_953.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_954.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_955.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_956.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_957.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_958.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_959.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_960.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_961.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_962.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_963.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_964.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_965.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_966.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_967.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_968.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_969.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_970.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_971.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_972.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_973.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_974.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_975.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_976.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_977.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_978.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_979.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_980.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_981.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_982.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_983.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_984.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_985.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_986.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_987.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_988.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_989.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_990.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_991.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_992.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_993.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_994.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_995.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_996.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_997.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_998.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_999.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoringResult_1001.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_1000.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_952.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_953.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_954.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_955.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_956.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_957.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_958.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_959.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_960.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_961.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_962.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_963.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_964.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_965.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_966.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_967.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_968.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_969.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_970.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_971.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_972.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_973.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_974.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_975.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_976.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_977.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_978.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_979.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_980.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_981.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_982.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_983.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_984.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_985.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_986.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_987.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_988.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_989.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_990.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_991.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_992.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_993.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_994.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_995.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_996.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_997.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_998.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_999.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/AbstractAdjList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Network/AbstractAdjList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/AdjList/Graph.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/AdjList/SimList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Utils/AdjList/SimList.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/IO/GraphFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/IO/GraphFileReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Test/Unified Interactome (1).cys" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Test/cov_S.fa" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Test/cov_S.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Test/sars_S.fa" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Test/sars_S.tsv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Test/sars_S.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cov2019.faa" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sars2003.faa" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/smith_watermanRes.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2020-06-23T10-57-35_902.dumpstream" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2020-06-23T12-35-11_171.dumpstream" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/Algorithms.Graph.HGA.Human_YeastSub38NTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-Algorithms.Graph.HGA.Human_YeastSub38NTest.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGARunSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGARunSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGASpc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/Human_YeastSub38NTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/Human_YeastSub38NTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Utils/SimMatTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Utils/SimMatTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/IO/GraphFileReaderSpec.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/IO/GraphFileWriterSpec.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -363,7 +334,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="sshConfigs" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -406,7 +377,7 @@
       <recent name="D:\Development\Algorithms\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HGASpec.topo">
+  <component name="RunManager" selected="JUnit.HGARunSpec.run_test">
     <configuration name="HGA" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGA" />
       <module name="Algorithms" />
@@ -517,19 +488,19 @@
     <list>
       <item itemvalue="Application.HGA" />
       <item itemvalue="JUnit.HGARunSpec.run_test" />
-      <item itemvalue="Remote.SHU-lab" />
       <item itemvalue="JUnit.UndirectedGraphTest.check" />
       <item itemvalue="JUnit.HGASpec.getEC" />
       <item itemvalue="JUnit.HGASpec" />
       <item itemvalue="JUnit.HGASpec.topo" />
+      <item itemvalue="Remote.SHU-lab" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HGARunSpec.run_test" />
         <item itemvalue="JUnit.HGASpec.topo" />
         <item itemvalue="JUnit.HGASpec" />
         <item itemvalue="JUnit.HGASpec.getEC" />
         <item itemvalue="JUnit.UndirectedGraphTest.check" />
-        <item itemvalue="JUnit.HGARunSpec.run_test" />
       </list>
     </recent_temporary>
   </component>
@@ -693,7 +664,8 @@
       <workItem from="1593238889118" duration="40000" />
       <workItem from="1593302601492" duration="842000" />
       <workItem from="1593764933906" duration="2358000" />
-      <workItem from="1593827273716" duration="8884000" />
+      <workItem from="1593827273716" duration="11156000" />
+      <workItem from="1593849406080" duration="3645000" />
     </task>
     <task id="LOCAL-00001" summary="Undergo optimization">
       <created>1592205562105</created>
@@ -943,46 +915,46 @@
     </state>
     <state x="162" y="215" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587256669541" />
     <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593769071816" />
-    <state width="1492" height="258" key="GridCell.Tab.0.bottom" timestamp="1593842398103">
+    <state width="1492" height="225" key="GridCell.Tab.0.bottom" timestamp="1593852782947">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1492" height="258" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593842398103" />
-    <state width="1492" height="258" key="GridCell.Tab.0.center" timestamp="1593842398103">
+    <state width="1492" height="225" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593852782947" />
+    <state width="1492" height="225" key="GridCell.Tab.0.center" timestamp="1593852782947">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1492" height="258" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593842398103" />
-    <state width="1492" height="258" key="GridCell.Tab.0.left" timestamp="1593842398102">
+    <state width="1492" height="225" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593852782947" />
+    <state width="1492" height="225" key="GridCell.Tab.0.left" timestamp="1593852782947">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1492" height="258" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593842398102" />
-    <state width="1492" height="258" key="GridCell.Tab.0.right" timestamp="1593842398103">
+    <state width="1492" height="225" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593852782947" />
+    <state width="1492" height="225" key="GridCell.Tab.0.right" timestamp="1593852782947">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1492" height="258" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593842398103" />
-    <state width="1492" height="258" key="GridCell.Tab.1.bottom" timestamp="1593842398734">
+    <state width="1492" height="225" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593852782947" />
+    <state width="1492" height="258" key="GridCell.Tab.1.bottom" timestamp="1593849353580">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587256556414" />
-    <state width="1492" height="258" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593842398734" />
-    <state width="1492" height="258" key="GridCell.Tab.1.center" timestamp="1593842398733">
+    <state width="1492" height="258" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593849353580" />
+    <state width="1492" height="258" key="GridCell.Tab.1.center" timestamp="1593849353580">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587256556414" />
-    <state width="1492" height="258" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593842398733" />
-    <state width="1492" height="258" key="GridCell.Tab.1.left" timestamp="1593842398733">
+    <state width="1492" height="258" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1593849353580" />
+    <state width="1492" height="258" key="GridCell.Tab.1.left" timestamp="1593849353580">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1492" height="258" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593842398733" />
-    <state width="1492" height="258" key="GridCell.Tab.1.right" timestamp="1593842398733">
+    <state width="1492" height="258" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1593849353580" />
+    <state width="1492" height="258" key="GridCell.Tab.1.right" timestamp="1593849353580">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587256556414" />
-    <state width="1492" height="258" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593842398733" />
+    <state width="1492" height="258" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1593849353580" />
     <state x="349" y="175" key="IDE.errors.dialog" timestamp="1592532045552">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -995,11 +967,11 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="584" y="366" key="ReplaceDuplicatesPrompt/0.0.1536.864@0.0.1536.864" timestamp="1591753658274" />
-    <state x="73" y="77" width="981" height="707" key="SettingsEditor" timestamp="1593073465499">
+    <state x="73" y="77" width="981" height="707" key="SettingsEditor" timestamp="1593851870816">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="0" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1587210233245" />
-    <state x="73" y="77" width="981" height="707" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1593073465499" />
+    <state x="73" y="77" width="981" height="707" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1593851870816" />
     <state width="389" height="437" key="XDebugger.FullValuePopup" timestamp="1592898721835">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -1035,11 +1007,11 @@
     <state width="600" height="428" key="javadoc.popup" timestamp="1591343024870">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="537" height="264" key="javadoc.popup.new" timestamp="1593833431392">
+    <state width="537" height="264" key="javadoc.popup.new" timestamp="1593850507806">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="632" height="298" key="javadoc.popup.new/0.0.1536.824@0.0.1536.824" timestamp="1587205062000" />
-    <state width="537" height="264" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1593833431392" />
+    <state width="537" height="264" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1593850507806" />
     <state width="600" height="428" key="javadoc.popup/0.0.1536.864@0.0.1536.864" timestamp="1591343024870" />
     <state x="413" y="71" key="new project wizard" timestamp="1592290042028">
       <screen x="0" y="0" width="1536" height="864" />
@@ -1057,10 +1029,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="425" y="197" width="672" height="677" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1593828498477" />
-    <state x="116" y="194" width="672" height="543" key="search.everywhere.popup" timestamp="1592878868343">
+    <state x="116" y="194" width="672" height="543" key="search.everywhere.popup" timestamp="1593848908995">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="116" y="194" width="672" height="543" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1592878868343" />
+    <state x="116" y="194" width="672" height="543" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1593848908995" />
     <state x="587" y="302" key="webDeployment.PermissionsDialog" timestamp="1592831970627">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -1106,7 +1078,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java</url>
-          <line>729</line>
+          <line>730</line>
           <option name="timeStamp" value="205" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -1118,11 +1090,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java</url>
           <line>105</line>
           <option name="timeStamp" value="232" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java</url>
-          <line>251</line>
-          <option name="timeStamp" value="237" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/resources/Alignment/Blast/BLASTSpec.java</url>

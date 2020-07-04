@@ -7,6 +7,7 @@ import Algorithms.Graph.Utils.AdjList.UndirectedGraph;
 import Algorithms.Graph.Utils.SimMat;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
@@ -68,7 +69,9 @@ public class GraphFileReader extends AbstractFileReader {
     public SimMat readToSimMat(String inputFilePath, HashSet<String> graph1, HashSet<String> graph2, boolean closeWhenFinished) throws IOException {
         return readToSimMat(new BufferedReader(new FileReader(inputFilePath)), graph1, graph2, closeWhenFinished);
     }
-
+    public SimMat readToSimMat(File file, HashSet<String> graph1, HashSet<String> graph2, boolean closeWhenFinished) throws IOException {
+        return readToSimMat(new BufferedReader(new FileReader(file)), graph1, graph2, closeWhenFinished);
+    }
     public SimList readToSimList(String inputFilePath) throws IOException {
 
         return readToSimList(new BufferedReader(new FileReader(inputFilePath)), true);

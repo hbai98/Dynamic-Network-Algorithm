@@ -1,5 +1,4 @@
 D:\Development\Algorithms\src\main\java\IO\AbstractFileReader.java
-D:\Development\Algorithms\src\main\java\Algorithms\Graph\Utils\AdjList\Graph.java
 D:\Development\Algorithms\src\main\java\Algorithms\Graph\Utils\Edge\PairedEdges.java
 D:\Development\Algorithms\src\main\java\Algorithms\Graph\Network\EdgeHashSet.java
 D:\Development\Algorithms\src\main\java\Tools\Functions.java
@@ -17,7 +16,9 @@ D:\Development\Algorithms\src\main\java\Algorithms\Set\FD.java
 D:\Development\Algorithms\src\main\java\UI\Tree\ChildNode.java
 D:\Development\Algorithms\src\main\java\Algorithms\Graph\Network\Node.java
 D:\Development\Algorithms\src\main\java\IO\AbstractFileWriter.java
+D:\Development\Algorithms\src\main\java\Algorithms\Graph\Utils\AdjList\UndirectedGraph.java
 D:\Development\Algorithms\src\main\java\Algorithms\Graph\Network\Edge.java
+D:\Development\Algorithms\src\main\java\Algorithms\Graph\Utils\AdjList\DirtedGraph.java
 D:\Development\Algorithms\src\main\java\IO\DoubleMatrixReader.java
 D:\Development\Algorithms\src\main\java\UI\TreeTable.java
 D:\Development\Algorithms\src\main\java\Algorithms\Graph\Hungarian.java

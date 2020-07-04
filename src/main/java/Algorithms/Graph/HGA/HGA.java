@@ -68,12 +68,14 @@ public class HGA {
     private int iterCount = 0;
     private int iterMax = 1000;
     //--------------debug---------------
-    public String debugOutputPath = "src\\test\\java\\resources\\jupyter\\data\\";
+    public static String debugOutputPath = "src\\test\\java\\resources\\jupyter\\data\\";
     //--------------Logging-------------
     public Logger logger;
     private AbstractFileWriter writer;
     public boolean debugOut;
+    public boolean log = true;
     private double tolerance;
+    private int iter_res;
 
 
     /**
@@ -102,7 +104,7 @@ public class HGA {
         // if noneZerosMap isn't updated, sum() should not be used
 //        simMat.updateNonZerosForRow = true;
         // set up logging
-        setupLogger();
+        if(log) setupLogger();
         debugOut = true;
     }
 
@@ -633,7 +635,7 @@ public class HGA {
         }
         try {
             if (isResult) {
-                writer.setPath(path + "matrixResult_" + iterCount + ".txt");
+                writer.setPath(path + "matrixResult_" + iter_res + ".txt");
             } else {
                 writer.setPath(path + "matrix_" + iterCount + ".txt");
             }
@@ -711,6 +713,7 @@ public class HGA {
         PS_res = PS;
         EC_res = EC;
         score_res = score;
+        iter_res = iterCount;
         mappingResult = new HashMap<>(mapping);
         matrix_res = simMat.getMat().dup();
     }
@@ -827,7 +830,7 @@ public class HGA {
     public void setupLogger() throws IOException {
         logger = Logger.getLogger("MyLog");
         FileHandler fh;
-        fh = new FileHandler("HGALogFile.log");
+        fh = new FileHandler("HGALogFile.log"+debugOutputPath.split("data")[1]);
         fh.setFormatter(new SimpleFormatter());
         logger.addHandler(fh);
         // output matrix, scoring and mapping result
