@@ -9,11 +9,10 @@
  */
 package Algorithms.Graph.HGA;
 
-import Algorithms.Graph.Utils.AdjList.DirtedGraph;
 import Algorithms.Graph.Utils.AdjList.UndirectedGraph;
 import Algorithms.Graph.Utils.SimMat;
 import IO.GraphFileReader;
-import IO.DirtedGraphFileReaderSpec;
+import IO.DirectedGraphFileReaderSpec;
 import IO.GraphFileWriter;
 import Tools.Stopwatch;
 import tech.tablesaw.api.*;
@@ -37,7 +36,7 @@ import org.junit.jupiter.api.Test;
 import tech.tablesaw.plotly.traces.ScatterTrace;
 
 @DisplayName("Reader is able to ")
-public class Human_YeastSub38NTest extends DirtedGraphFileReaderSpec {
+public class Human_YeastSub38NTest extends DirectedGraphFileReaderSpec {
     UndirectedGraph yeast;
     UndirectedGraph human;
     SimMat simMat;

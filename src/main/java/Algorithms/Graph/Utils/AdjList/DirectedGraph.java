@@ -6,20 +6,21 @@ import Algorithms.Graph.Utils.List.HNodeList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Objects;
 
 /**
  * Simple graph based on AdjList and a rowMap to make indexing faster
  */
-public class DirtedGraph extends AbstractAdjList {
+public class DirectedGraph extends AbstractAdjList {
     //-----------neighbor nodes info------------------
     private HashMap<String, HashSet<String>> neighborsMap;
     HashMap<String, Integer> rowMap;
 
-    public DirtedGraph(){
+    public DirectedGraph(){
         super();
         rowMap = new HashMap<>();
     }
-    public DirtedGraph(HashMap<String, HashSet<String>> neighborsMap){
+    public DirectedGraph(HashMap<String, HashSet<String>> neighborsMap){
         super();
         rowMap = new HashMap<>();
         this.neighborsMap = neighborsMap;
@@ -72,8 +73,9 @@ public class DirtedGraph extends AbstractAdjList {
         return new HashMap<>(neighborsMap);
     }
 
-
     public void setNeighborMap(HashMap<String, HashSet<String>> graphNeighbors) {
         this.neighborsMap = graphNeighbors;
     }
+
+
 }

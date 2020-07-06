@@ -6,14 +6,14 @@ Algorithms\Graph\Network\EdgeSpec.class
 Algorithms\Graph\Utils\hNodeListSpec.class
 Algorithms\Graph\Network\NodeSpec.class
 Algorithms\Graph\HungarianSpec.class
-IO\DirtedGraphFileReaderSpec.class
 Algorithms\Graph\Network\NodeListSpec$functionTest.class
-IO\DirtedGraphFileWriterSpec.class
 Algorithms\Graph\HGA\HGASpec.class
 Algorithms\Graph\Network\EdgeHashSetSpec$FuncTest.class
+IO\DirectedGraphFileReaderSpec.class
 Algorithms\Set\FDTest.class
 Tools\MatrixFunctionsSpec.class
 Algorithms\Graph\HGA\Human_YeastSub38NTest.class
+IO\DirectedGraphFileWriterSpec.class
 Algorithms\Graph\Utils\SimMatTest.class
 IO\CsvToSimListTest.class
 Algorithms\Graph\Utils\AdjList\UndirectedGraphTest.class

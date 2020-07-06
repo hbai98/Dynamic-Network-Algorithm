@@ -4,11 +4,9 @@ package Algorithms.Graph.HGA;
 import Algorithms.Graph.Hungarian;
 import Algorithms.Graph.NBM;
 import Algorithms.Graph.Network.Edge;
-import Algorithms.Graph.Utils.AdjList.DirtedGraph;
 import Algorithms.Graph.Utils.AdjList.UndirectedGraph;
 import Algorithms.Graph.Utils.SimMat;
 import IO.AbstractFileWriter;
-import IO.GraphFileReader;
 import org.apache.commons.io.FileUtils;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
@@ -39,6 +37,7 @@ public class HGA {
     protected SimMat simMat;
     protected UndirectedGraph udG1;
     protected UndirectedGraph udG2;
+    private UndirectedGraph tgtGraph;
     // parameters
     private boolean forcedMappingForSame;
     private double hAccount;
@@ -53,6 +52,8 @@ public class HGA {
     private double EC_res;
     private double score_res;
     private DoubleMatrix matrix_res;
+    private UndirectedGraph tgtGraph_res;
+
     //---------------mapping for iteration---------
     private HashMap<String, String> mapping;
     private double PE;
@@ -386,6 +387,8 @@ public class HGA {
      * @return set edge correctness and mapping edges[Pair:{graph1Source,graph1Target},{graph2Source,graph2Target}]
      */
     protected Vector<Pair<Edge, Edge>> setEC(HashMap<String, String> mapping) {
+        // the corresponding tgtNetwork
+        tgtGraph = new UndirectedGraph();
         // toMap will decrease when nodes have been checked
         HashSet<String> toMap = new HashSet<>(mapping.keySet());
         AtomicInteger count = new AtomicInteger();
@@ -409,6 +412,7 @@ public class HGA {
                 String n2_ = mapping.get(n2);
                 if (udG2.getNebs(n1_).contains(n2_)) {
                     count.getAndIncrement();
+                    tgtGraph.addOneNode(n1_,n2_,0);
                     mappingEdges.add(new Pair<>(new Edge(n1, n2), new Edge(n1_, n2_)));
                 }
             });
@@ -715,6 +719,7 @@ public class HGA {
         score_res = score;
         iter_res = iterCount;
         mappingResult = new HashMap<>(mapping);
+        tgtGraph_res = (UndirectedGraph)tgtGraph.dup();
         matrix_res = simMat.getMat().dup();
     }
 
@@ -847,5 +852,7 @@ public class HGA {
         this.iterMax = iterMax;
     }
 
-
+    public UndirectedGraph getTgtGraph_res() {
+        return tgtGraph_res;
+    }
 }

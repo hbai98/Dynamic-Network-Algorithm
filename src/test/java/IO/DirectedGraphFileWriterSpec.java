@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("The writer is able to ")
-class DirtedGraphFileWriterSpec {
+class DirectedGraphFileWriterSpec {
     private GraphFileWriter writer;
     @BeforeEach
     void init(){

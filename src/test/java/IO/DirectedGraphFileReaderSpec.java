@@ -1,6 +1,6 @@
 package IO;
 
-import Algorithms.Graph.Utils.AdjList.DirtedGraph;
+import Algorithms.Graph.Utils.AdjList.DirectedGraph;
 import Algorithms.Graph.Utils.AdjList.SimList;
 import Algorithms.Graph.Utils.List.HNodeList;
 import Algorithms.Graph.Utils.SimMat;
@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @DisplayName("SIFFileReader is")
-public class DirtedGraphFileReaderSpec {
+public class DirectedGraphFileReaderSpec {
     SimMat graph;
     GraphFileReader reader;
     @DisplayName("able to use pattern to split. ")
@@ -65,9 +65,9 @@ public class DirtedGraphFileReaderSpec {
     @Test
     void readSimMatAndGraph() throws IOException {
         GraphFileReader reader = new GraphFileReader(true, false, false);
-        DirtedGraph dirtedGraph1 = reader.readToDirectedGraph("src/test/java/resources/AlgTest/HGA/graph1.txt", false);
-        DirtedGraph dirtedGraph2 = reader.readToDirectedGraph("src/test/java/resources/AlgTest/HGA/graph2.txt", false);
-        SimMat simMat = reader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt", dirtedGraph1.getAllNodes(), dirtedGraph2.getAllNodes(), true);
+        DirectedGraph directedGraph1 = reader.readToDirectedGraph("src/test/java/resources/AlgTest/HGA/graph1.txt", false);
+        DirectedGraph directedGraph2 = reader.readToDirectedGraph("src/test/java/resources/AlgTest/HGA/graph2.txt", false);
+        SimMat simMat = reader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt", directedGraph1.getAllNodes(), directedGraph2.getAllNodes(), true);
 
     }
 

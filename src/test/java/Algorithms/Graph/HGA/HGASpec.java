@@ -1,9 +1,8 @@
 package Algorithms.Graph.HGA;
 
-import Algorithms.Graph.Utils.AdjList.DirtedGraph;
 import Algorithms.Graph.Utils.AdjList.UndirectedGraph;
 import Algorithms.Graph.Utils.SimMat;
-import IO.DirtedGraphFileReaderSpec;
+import IO.DirectedGraphFileReaderSpec;
 import IO.GraphFileReader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +14,7 @@ import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("The HGA is able to ")
-class HGASpec extends DirtedGraphFileReaderSpec {
+class HGASpec extends DirectedGraphFileReaderSpec {
     HGA hga;
     private UndirectedGraph udG1;
     private UndirectedGraph udG2;

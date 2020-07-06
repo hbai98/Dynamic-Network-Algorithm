@@ -15,8 +15,8 @@ Algorithms\Graph\Utils\Edge\CpEdge.class
 Algorithms\Graph\Network\Node.class
 Algorithms\Graph\Utils\Edge\PairedEdges.class
 Algorithms\Graph\Hungarian.class
+Algorithms\Graph\Utils\AdjList\DirectedGraph.class
 Algorithms\Graph\Network\EdgeHashSet.class
-Algorithms\Graph\Utils\AdjList\DirtedGraph.class
 IO\GraphFileWriter.class
 Algorithms\Graph\Network\Edge$Type.class
 IO\CsvToAdjList.class
@@ -28,6 +28,7 @@ Algorithms\Graph\HGA\HGA$1.class
 Tools\Logger.class
 UI\Tree\RootNode.class
 IO\DoubleMatrixReader.class
+Algorithms\Graph\Utils\AdjList\Graph.class
 Algorithms\Graph\Utils\AdjList\SimList.class
 Algorithms\Graph\Utils\Edge\CpEdge$Type.class
 Tools\Functions.class

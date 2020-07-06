@@ -4,7 +4,7 @@ package Algorithms.Graph;
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Network.Node;
-import Algorithms.Graph.Utils.AdjList.DirtedGraph;
+import Algorithms.Graph.Utils.AdjList.DirectedGraph;
 import Algorithms.Graph.Utils.AdjList.UndirectedGraph;
 import Algorithms.Graph.Utils.SimMat;
 
@@ -54,8 +54,8 @@ public class NBM {
     protected HashMap<String, Node> mostSimPairMap;
     protected PriorityQueue<Edge> pqEdge;
     protected EdgeHashSet preMap;
-    protected DirtedGraph dirtedGraph1;
-    protected DirtedGraph dirtedGraph2;
+    protected DirectedGraph directedGraph1;
+    protected DirectedGraph directedGraph2;
 
     private double reward;
 

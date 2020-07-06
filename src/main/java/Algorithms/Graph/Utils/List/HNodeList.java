@@ -15,16 +15,10 @@ public class HNodeList extends NodeList {
     // target protein
     //----------keys-----------
     public String signName;
-    //---------record the max value in the list
-    private double max;
     private String maxNodeName;
 
     public HNodeList(String signName){
         this.signName = signName;
-        this.max = -1;
-    }
-    public HNodeList(){
-        this.max = -1;
     }
 
     public int computeNonZeroNumb(){
@@ -145,9 +139,6 @@ public class HNodeList extends NodeList {
     }
 
 
-    public double getMax() {
-        return max;
-    }
 
     public String getMaxNodeName() {
         return maxNodeName;
@@ -160,9 +151,6 @@ public class HNodeList extends NodeList {
     }
 
 
-    public void setMax(double max) {
-        this.max = max;
-    }
 
     public void setMaxNodeName(String maxNodeName) {
         this.maxNodeName = maxNodeName;

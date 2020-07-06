@@ -1,6 +1,6 @@
 package Algorithms.Graph.Utils;
 
-import Algorithms.Graph.Utils.AdjList.DirtedGraph;
+import Algorithms.Graph.Utils.AdjList.DirectedGraph;
 import IO.GraphFileReader;
 import org.jgrapht.alg.util.Pair;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,11 +19,11 @@ class SimMatTest {
     @BeforeEach
     void init() throws IOException {
         GraphFileReader reader = new GraphFileReader(true,true,false);
-        DirtedGraph dirtedGraph1 = reader.readToDirectedGraph("src/test/java/resources/AlgTest/HGA/graph1.txt",false);
-        DirtedGraph dirtedGraph2 = reader.readToDirectedGraph("src/test/java/resources/AlgTest/HGA/graph2.txt",false);
+        DirectedGraph directedGraph1 = reader.readToDirectedGraph("src/test/java/resources/AlgTest/HGA/graph1.txt",false);
+        DirectedGraph directedGraph2 = reader.readToDirectedGraph("src/test/java/resources/AlgTest/HGA/graph2.txt",false);
         reader.setRecordNonZeros(true);
         reader.setRecordNeighbors(false);
-        simMat = reader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt", dirtedGraph1.getAllNodes(), dirtedGraph2.getAllNodes(),true);
+        simMat = reader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt", directedGraph1.getAllNodes(), directedGraph2.getAllNodes(),true);
     }
     @DisplayName("split")
     @Test

@@ -16,6 +16,7 @@ public abstract class AbstractAdjList extends LinkedList<HNodeList> {
         rowSet = new HashSet<>();
         colSet = new HashSet<>();
     }
+
     /**
      * find node head's all nodes.
      *

@@ -1,7 +1,7 @@
 package IO;
 
 import Algorithms.Graph.Network.AbstractAdjList;
-import Algorithms.Graph.Utils.AdjList.DirtedGraph;
+import Algorithms.Graph.Utils.AdjList.DirectedGraph;
 import Algorithms.Graph.Utils.AdjList.SimList;
 import Algorithms.Graph.Utils.AdjList.UndirectedGraph;
 import Algorithms.Graph.Utils.SimMat;
@@ -50,11 +50,11 @@ public class GraphFileReader extends AbstractFileReader {
     }
     //-------------------------AdjNodeList【homoGeneMap】 return type has been added in switch choices------------------------
 
-    public DirtedGraph readToDirectedGraph(String inputFilePath) throws IOException {
+    public DirectedGraph readToDirectedGraph(String inputFilePath) throws IOException {
         return readToDirectedGraph(new BufferedReader(new FileReader(inputFilePath)), true);
     }
 
-    public DirtedGraph readToDirectedGraph(String inputFilePath, boolean closeWhenFinished) throws IOException {
+    public DirectedGraph readToDirectedGraph(String inputFilePath, boolean closeWhenFinished) throws IOException {
         return readToDirectedGraph(new BufferedReader(new FileReader(inputFilePath)), closeWhenFinished);
     }
 
@@ -163,9 +163,9 @@ public class GraphFileReader extends AbstractFileReader {
      *                          the reader when finished reading; otherwise, it will
      *                          not close it.
      */
-    private DirtedGraph readToDirectedGraph(BufferedReader input, boolean closeWhenFinished) throws IOException {
+    private DirectedGraph readToDirectedGraph(BufferedReader input, boolean closeWhenFinished) throws IOException {
         init();
-        DirtedGraph dirtedGraph = new DirtedGraph();
+        DirectedGraph directedGraph = new DirectedGraph();
         // matches sequence of one or more whitespace characters.
         setSplitter("\\s+");
         Vector<String> sifLine = new Vector<>();
@@ -180,7 +180,7 @@ public class GraphFileReader extends AbstractFileReader {
                     sifLine.add(token);
                 }
             }
-            parseForGraph(dirtedGraph, sifLine);
+            parseForGraph(directedGraph, sifLine);
             // clean for each line
             cleanLine();
         }
@@ -188,8 +188,8 @@ public class GraphFileReader extends AbstractFileReader {
             input.close();
         }
         // set up graph
-        dirtedGraph.setNeighborMap(graphNeighbors);
-        return dirtedGraph;
+        directedGraph.setNeighborMap(graphNeighbors);
+        return directedGraph;
     }
     /**
      * Parses a arrayList format file to ArrayList.
