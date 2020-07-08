@@ -5,8 +5,18 @@ import Internal.Algorithms.Graph.Utils.AdjList.DirectedGraph;
 import Internal.Algorithms.Graph.Utils.AdjList.SimList;
 import Internal.Algorithms.Graph.Utils.AdjList.UndirectedGraph;
 import Internal.Algorithms.Graph.Utils.SimMat;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -59,14 +69,6 @@ public class GraphFileReader extends AbstractFileReader {
         return readToUndirectedGraph(new BufferedReader(new FileReader(inputFilePath)), closeWhenFinished);
     }
 
-    public SimMat readToSimMat(String inputFilePath, HashSet<String> graph1, HashSet<String> graph2) throws IOException {
-        return readToSimMat(new BufferedReader(new FileReader(inputFilePath)), graph1, graph2, true);
-    }
-
-    private SimMat readToSimMatCSV(String inputFilePath, HashSet<String> graph1, HashSet<String> graph2, boolean closeWhenFinished) throws FileNotFoundException {
-        return readToSimMatCSV(new BufferedReader(new FileReader(inputFilePath)), graph1, graph2, closeWhenFinished);
-    }
-
     public SimMat readToSimMat(String inputFilePath, HashSet<String> graph1, HashSet<String> graph2, boolean closeWhenFinished) throws IOException {
         return readToSimMat(new BufferedReader(new FileReader(inputFilePath)), graph1, graph2, closeWhenFinished);
     }
@@ -84,29 +86,44 @@ public class GraphFileReader extends AbstractFileReader {
 
         return readToSimList(new BufferedReader(new FileReader(inputFilePath)), closeWhenFinished);
     }
-
-    private SimMat readToSimMatCSV(BufferedReader input, HashSet<String> graph1, HashSet<String> graph2, boolean closeWhenFinished) throws IOException {
-        init();
-        SimMat simMat = new SimMat(graph1, graph2);
-        Vector<String> sifLine = new Vector<>();
-        String line;
-        while ((line = input.readLine()) != null) {
-            String[] tokens = line.split(",");
-            for (String token : tokens) {
-                if (token.length() != 0) {
-                    sifLine.add(token);
-                }
-                cleanLine();
-            }
-            parseForSimMatCSV(simMat,sifLine);
-            if (closeWhenFinished) {
-                input.close();
-            }
-        }
+    public SimMat readToSimMatExcel(File file, HashSet<String> graph1, HashSet<String> graph2) throws IOException {
+        return readToSimMatExcel(new FileInputStream(file),graph1,graph2);
     }
-
-    private void parseForSimMatCSV(SimMat simMat, Vector<String> sifLine) {
-
+    public SimMat readToSimMatExcel(String filePath, HashSet<String> graph1, HashSet<String> graph2) throws IOException {
+        return readToSimMatExcel(new FileInputStream(new File(filePath)),graph1,graph2);
+    }
+    private SimMat readToSimMatExcel(FileInputStream fis, HashSet<String> graph1, HashSet<String> graph2) throws IOException {
+        XSSFWorkbook wb = new XSSFWorkbook(fis);
+        SimMat simMat = new SimMat(graph1,graph2);
+        XSSFSheet sheet = wb.getSheetAt(0);
+        for (Row row : sheet) {   //iteration over row using for each loop
+            Vector<String> sifLine = new Vector<>();
+            for (Cell cell : row)    //iteration over cell using for each loop
+            {
+                sifLine.add(cell.getStringCellValue());
+                sifLine.add(cell.getStringCellValue());
+                sifLine.add(cell.getStringCellValue());
+            }
+            parseForSimMatExcel(simMat,sifLine);
+            cleanLine();
+        }
+        return simMat;
+    }
+    /**
+     * Only for name1 name2 and blastp value
+     *
+     * @param simMat  result
+     * @param sifLine line data
+     */
+    private void parseForSimMatExcel(SimMat simMat, Vector<String> sifLine) throws IOException {
+        init();
+        int sifSize = sifLine.size();
+        if (sifSize != 3) {
+            throw new IOException("The file input format is not correct.");
+        }
+        double val = Double.parseDouble(sifLine.get(2));
+        double eValue = 1 / (1 - 1 / Math.log(val));
+        simMat.put(sifLine.get(0), sifLine.get(1), eValue);
     }
 
     /**
@@ -377,7 +394,6 @@ public class GraphFileReader extends AbstractFileReader {
      */
     private void parseForSimList(SimList simList, Vector<String> sifLine) throws IOException {
         // row index
-        int row = -1;
 
         int sifSize = sifLine.size();
         if (sifSize == 0) {

@@ -20,10 +20,12 @@
         <Apache-Commons-Collections.version>3.2.2</Apache-Commons-Collections.version>
         <commons-io.version>2.5</commons-io.version>
         <tablesaw.version>LATEST</tablesaw.version>
+        <commons-csv.version>1.8</commons-csv.version>
         <!--plugins versions-->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
         <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
+        <MS>4.1.2</MS>
     </properties>
     <groupId>BHT</groupId>
     <artifactId>Algorithms</artifactId>
@@ -155,7 +157,16 @@
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${MS}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${MS}</version>
+        </dependency>
 
     </dependencies>
 

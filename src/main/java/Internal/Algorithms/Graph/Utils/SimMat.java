@@ -71,6 +71,9 @@ public class SimMat {
 
     public void put(String node1, String node2, double val) {
         updateNonZerosForRow(node1, node2, val);
+        if(!rowMap.containsKey(node1)||!colMap.containsKey(node2)){
+            throw new IllegalArgumentException("The similarity matrix doesn't contain all nodes in graphs.");
+        }
         int i = rowMap.get(node1);
         int j = colMap.get(node2);
         mat.put(i, j, val);

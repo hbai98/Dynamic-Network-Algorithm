@@ -2,6 +2,7 @@ package Internal.Algorithms.IO;
 
 import Internal.Algorithms.Graph.Utils.AdjList.DirectedGraph;
 import Internal.Algorithms.Graph.Utils.AdjList.SimList;
+import Internal.Algorithms.Graph.Utils.AdjList.UndirectedGraph;
 import Internal.Algorithms.Graph.Utils.List.HNodeList;
 import Internal.Algorithms.Graph.Utils.SimMat;
 import org.junit.jupiter.api.DisplayName;
@@ -70,6 +71,14 @@ public class DirectedGraphFileReaderSpec {
         SimMat simMat = reader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt", directedGraph1.getAllNodes(), directedGraph2.getAllNodes(), true);
 
     }
+    @Test
+    void readCVS() throws IOException {
+        GraphFileReader reader = new GraphFileReader(true, false, false);
+        UndirectedGraph g1 = reader.readToUndirectedGraph("src/test/java/resources/AlgTest/HGA/graph1.txt", false);
+        UndirectedGraph g2 = reader.readToUndirectedGraph("src/test/java/resources/AlgTest/HGA/graph2.txt", false);
+        SimMat simMat = reader.readToSimMatExcel("C:\\Users\\Haotian Bai\\Desktop\\test\\simMat.xlsx", g1.getAllNodes(), g2.getAllNodes());
+    }
+
 
 //    @DisplayName("able to read a medium-level graph")
 //    @Test
