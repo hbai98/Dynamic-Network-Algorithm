@@ -1,4 +1,4 @@
-//package Algorithms.Alignment.align;
+//package Internal.Algorithms.Alignment.align;
 //
 //import org.junit.jupiter.api.DisplayName;
 //import org.junit.jupiter.api.Test;

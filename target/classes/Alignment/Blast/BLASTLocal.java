@@ -4,10 +4,10 @@
 // * @Date: 2020-06-04 07:50:51
 // * @LastEditors: Haotian Bai
 // * @LastEditTime: 2020-06-05 08:53:59
-// * @FilePath: \Algorithms\src\main\java\Algorithms\Alignment\Blast\BLASTLocal.java
+// * @FilePath: \Internal.Algorithms\src\main\java\Internal.Algorithms\Alignment\Blast\BLASTLocal.java
 // * @Description:
 // */
-//package Algorithms.Alignment.Blast;
+//package Internal.Algorithms.Alignment.Blast;
 //
 //import java.io.IOException;
 //

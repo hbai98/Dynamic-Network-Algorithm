@@ -4,7 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <properties>
+        <!--properties-->
+        <bundle.symbolicName>BHT.Algorithm</bundle.symbolicName>
+        <bundle.namespace>Internal.Algorithms</bundle.namespace>
         <!--dependencies versions-->
+        <junit.platform.version>1.6.2</junit.platform.version>
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
         <assertj.core.version>3.15.0</assertj.core.version>
         <jgrapht.core.version>1.4.0</jgrapht.core.version>
@@ -51,49 +55,12 @@
     <build>
         <defaultGoal>install</defaultGoal>
         <plugins>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-assembly-plugin</artifactId>-->
-<!--                <version>3.3.0</version>-->
-<!--                <configuration>-->
-<!--                    <compilerArgs>&#45;&#45;enable-preview</compilerArgs>-->
-<!--                    <archive>-->
-<!--                        <manifest>-->
-<!--                            <mainClass>-->
-<!--                                Algorithms.Graph.HGA.HGA-->
-<!--                            </mainClass>-->
-<!--                        </manifest>-->
-<!--                    </archive>-->
-<!--                    <descriptorRefs>-->
-<!--                        <descriptorRef>jar-with-dependencies</descriptorRef>-->
-<!--                        <descriptorRef>bin</descriptorRef>-->
-<!--                        <descriptorRef>src</descriptorRef>-->
-<!--                        <descriptorRef>project</descriptorRef>-->
-<!--                    </descriptorRefs>-->
-<!--                    <descriptors>-->
-<!--                        <descriptor>src/assembly/HGAAssembly.xml</descriptor>-->
-<!--                    </descriptors>-->
-<!--                    <filters>-->
-<!--                        <filter>src/assembly/filter.properties</filter>-->
-<!--                    </filters>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>trigger-assembly</id>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>single</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <release>14</release>
-                    <compilerArgs>--enable-preview</compilerArgs>
+                    <release>11</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -101,20 +68,36 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
-                    <argLine>--enable-preview</argLine>
                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>${maven-bundle-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
+                        <Bundle-Version>${project.version}</Bundle-Version>
+                        <Export-Package>!${bundle.namespace}.*</Export-Package>
+                        <Private-Package>${bundle.namespace}.*</Private-Package>
+                        <Bundle-Activator>${bundle.namespace}.CyActivator</Bundle-Activator>
+                        <Import-Package>!tech.tablesaw.*,!org.swinglabs.*,*;resolution:=optional</Import-Package>
+                        <Embed-Dependency>*;</Embed-Dependency>
+                        <Embed-Transitive>true</Embed-Transitive>
+                    </instructions>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
     <dependencies>
         <!--        JUNIT5 for unit testing-->
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.jupiter.version}</version>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -159,6 +142,7 @@
             <groupId>org.swinglabs</groupId>
             <artifactId>swingx</artifactId>
             <version>${swingx.version}</version>
+            <optional>true</optional>
         </dependency>
         <!--some tools-->
         <dependency>
@@ -171,6 +155,8 @@
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
+
+
     </dependencies>
 
 </project>

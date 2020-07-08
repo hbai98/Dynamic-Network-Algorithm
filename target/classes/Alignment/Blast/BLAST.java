@@ -1,4 +1,4 @@
-//package Algorithms.Alignment.Blast;
+//package Internal.Algorithms.Alignment.Blast;
 //
 //import org.biojava.nbio.core.sequence.template.*;
 //
