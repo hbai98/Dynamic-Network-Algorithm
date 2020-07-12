@@ -60,6 +60,14 @@ public abstract class AbstractAdjList extends LinkedList<HNodeList> {
      */
     protected abstract boolean addRowList(HNodeList hNodeList);
 
+    public void setRowSet(HashSet<String> rowSet) {
+        this.rowSet = rowSet;
+    }
+
+    public void setColSet(HashSet<String> colSet) {
+        this.colSet = colSet;
+    }
+
     public HashSet<String> getColSet() {
         return colSet;
     }

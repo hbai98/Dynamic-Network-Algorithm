@@ -2,9 +2,9 @@ Internal\Algorithms\Graph\Utils\hNodeListSpec.class
 Internal\Algorithms\Graph\Network\NodeListSpec$functionTest.class
 Internal\Algorithms\tools\MatrixFunctionsSpec.class
 Internal\Algorithms\Set\FDTest.class
-Internal\Algorithms\IO\DirectedGraphFileWriterSpec.class
 Internal\Algorithms\Graph\Utils\SimMatTest.class
 Internal\Algorithms\Graph\Utils\AdjList\UndirectedGraphTest.class
+Internal\Algorithms\IO\GraphFileWriterSpec.class
 Internal\Algorithms\Graph\Network\EdgeHashSetSpec.class
 Internal\Algorithms\Graph\HGA\HGASpec.class
 Internal\Algorithms\Graph\HGA\HGARunSpec.class
@@ -12,7 +12,7 @@ Internal\Algorithms\Graph\Network\NodeListSpec$Other.class
 Internal\Algorithms\Graph\HungarianSpec.class
 Internal\Algorithms\Graph\HGA\Human_YeastSub38NTest.class
 Internal\Algorithms\Graph\Network\NodeSpec.class
+Internal\Algorithms\IO\GraphFileReaderSpec.class
 Internal\Algorithms\Graph\Network\EdgeSpec.class
-Internal\Algorithms\IO\DirectedGraphFileReaderSpec.class
 Internal\Algorithms\Graph\Network\EdgeHashSetSpec$FuncTest.class
 Internal\Algorithms\Graph\Network\NodeListSpec.class

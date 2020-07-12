@@ -11,7 +11,7 @@
         <junit.platform.version>1.6.2</junit.platform.version>
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
         <assertj.core.version>3.15.0</assertj.core.version>
-        <jgrapht.core.version>1.4.0</jgrapht.core.version>
+        <jgrapht.core.version>1.5.0</jgrapht.core.version>
         <jblas.version>1.2.4</jblas.version>
         <biojava.alignment.version>5.3.0</biojava.alignment.version>
         <uniport.japi.version>1.0.30</uniport.japi.version>

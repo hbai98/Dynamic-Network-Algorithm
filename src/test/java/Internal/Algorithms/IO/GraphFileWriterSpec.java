@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("The writer is able to ")
-class DirectedGraphFileWriterSpec {
+class GraphFileWriterSpec {
     private GraphFileWriter writer;
     @BeforeEach
     void init(){

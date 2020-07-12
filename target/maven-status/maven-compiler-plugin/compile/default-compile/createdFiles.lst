@@ -28,6 +28,7 @@ Internal\Algorithms\Set\FD.class
 Internal\Algorithms\IO\GraphFileReader.class
 Internal\Algorithms\Graph\Utils\SimMat.class
 Internal\Algorithms\Graph\Utils\AdjList\DirectedGraph.class
+Internal\Algorithms\IO\MappingResultReader.class
 Internal\Algorithms\Graph\Utils\AdjList\UndirectedGraph.class
 UI\Tree\RootNode.class
 Internal\Algorithms\Graph\Network\Edge$Type.class

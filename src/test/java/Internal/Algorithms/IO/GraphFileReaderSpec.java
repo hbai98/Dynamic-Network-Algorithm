@@ -8,6 +8,7 @@ import Internal.Algorithms.Graph.Utils.SimMat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @DisplayName("SIFFileReader is")
-public class DirectedGraphFileReaderSpec {
+public class GraphFileReaderSpec {
     SimMat graph;
     GraphFileReader reader;
     @DisplayName("able to use pattern to split. ")
@@ -72,11 +73,11 @@ public class DirectedGraphFileReaderSpec {
 
     }
     @Test
-    void readCVS() throws IOException {
+    void readExcel() throws IOException {
         GraphFileReader reader = new GraphFileReader(true, false, false);
         UndirectedGraph g1 = reader.readToUndirectedGraph("src/test/java/resources/AlgTest/HGA/graph1.txt", false);
         UndirectedGraph g2 = reader.readToUndirectedGraph("src/test/java/resources/AlgTest/HGA/graph2.txt", false);
-        SimMat simMat = reader.readToSimMatExcel("C:\\Users\\Haotian Bai\\Desktop\\test\\simMat.xlsx", g1.getAllNodes(), g2.getAllNodes());
+        SimMat simMat = reader.readToSimMatExcel(new File("C:\\Users\\Haotian Bai\\Desktop\\test\\simMat.xlsx"), g1.getAllNodes(), g2.getAllNodes());
     }
 
 

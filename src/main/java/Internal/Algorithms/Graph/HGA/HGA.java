@@ -33,33 +33,32 @@ import java.util.stream.Collectors;
  */
 
 public class HGA {
-    protected SimMat originalMat;
-    protected SimMat simMat;
-    protected UndirectedGraph udG1;
-    protected UndirectedGraph udG2;
+    protected static SimMat originalMat;
+    protected static SimMat simMat;
+    protected static UndirectedGraph udG1;
+    protected static UndirectedGraph udG2;
     // parameters
-    private boolean forcedMappingForSame;
-    private double hAccount;
-    protected double bioFactor;
-    private double edgeScore = 1.;
-    private int h = 5;
+    private static boolean forcedMappingForSame;
+    private static double hAccount;
+    protected static double bioFactor;
+    private static double edgeScore = 1.;
+    private static int h = 5;
     //---------------mapping result(best mapping)-------------
-    private HashMap<String, String> mappingResult;
-    private double PE_res;
-    private double ES_res;
-    private double PS_res;
-    private double EC_res;
-    private double score_res;
-    private DoubleMatrix matrix_res;
-    private UndirectedGraph tgtGraph_res;
+    public static HashMap<String, String> mappingResult;
+    public static double PE_res;
+    public static double ES_res;
+    public static double PS_res;
+    public static double EC_res;
+    public static double score_res;
+    public static DoubleMatrix matrix_res;
 
     //---------------mapping for iteration---------
-    private HashMap<String, String> mapping;
-    private double PE;
-    private double ES;
-    private double PS;
-    private double EC;
-    private double score;
+    public static HashMap<String, String> mapping;
+    public static double PE;
+    public static double ES;
+    public static double PS;
+    public static double EC;
+    public static double score;
     private Stack<DoubleMatrix> stackMat;
     private Stack<Double> stackScore;
 
@@ -70,12 +69,13 @@ public class HGA {
     //--------------debug---------------
     public static String debugOutputPath = "src\\test\\java\\resources\\jupyter\\data\\";
     //--------------Logging-------------
-    public Logger logger;
-    private AbstractFileWriter writer;
+    public static Logger logger;
+    private static AbstractFileWriter writer;
     public static boolean debugOut = true;
     public static boolean log = true;
     private double tolerance;
-    private int iter_res;
+    public int iter_res;
+    public static Vector<Pair<Edge, Edge>> mappingEdges;
 
 
     /**
@@ -332,11 +332,11 @@ public class HGA {
      *          </li>
      *     </ol>
      */
-    protected void scoreMapping(HashMap<String, String> mapping) {
+    public static void scoreMapping(HashMap<String, String> mapping) {
         logInfo("Scoring for mapping ...");
 
         // edge correctness EC
-        Vector<Pair<Edge, Edge>> mappingEdges = setEC(mapping);
+        mappingEdges = setEC(mapping);
         // point and edge score PE
         ES = getES(mappingEdges);
         PS = getPS(mappingEdges);
@@ -344,7 +344,7 @@ public class HGA {
         score = 100 * EC + PE;
     }
 
-    private double getES(Vector<Pair<Edge, Edge>> mappingEdges) {
+    private static double getES(Vector<Pair<Edge, Edge>> mappingEdges) {
 
         AtomicReference<Double> ES = new AtomicReference<>((double) 0);
         for (Iterator<Pair<Edge, Edge>> iterator = mappingEdges.iterator(); iterator.hasNext(); ) {
@@ -364,7 +364,7 @@ public class HGA {
     /**
      * @param mappingEdges getES() filters out unqualified edges
      */
-    protected double getPS(Vector<Pair<Edge, Edge>> mappingEdges) {
+    protected static double getPS(Vector<Pair<Edge, Edge>> mappingEdges) {
         // parallel here there is no interference and no stateful lambda
         //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
         AtomicReference<Double> PS = new AtomicReference<>((double) 0);
@@ -384,12 +384,11 @@ public class HGA {
     /**
      * @return set edge correctness and mapping edges[Pair:{graph1Source,graph1Target},{graph2Source,graph2Target}]
      */
-    protected Vector<Pair<Edge, Edge>> setEC(HashMap<String, String> mapping) {
-
+    public static Vector<Pair<Edge, Edge>> setEC(HashMap<String, String> mapping) {
+        mappingEdges = new Vector<>();
         // toMap will decrease when nodes have been checked
         HashSet<String> toMap = new HashSet<>(mapping.keySet());
         AtomicInteger count = new AtomicInteger();
-        Vector<Pair<Edge, Edge>> mappingEdges = new Vector<>();
         for (Iterator<String> iterator = toMap.iterator(); iterator.hasNext(); ) {
             String n1 = iterator.next();
             String n1_ = mapping.get(n1);
@@ -514,8 +513,8 @@ public class HGA {
                             SimMat toRemap, HashMap<String, String> forcedPart, int iterCount, double... scores) {
         initScores(scores);
         score_res = score;
-        this.mapping = mapping;
-        this.simMat = simMat;
+        HGA.mapping = mapping;
+        HGA.simMat = simMat;
         this.iterCount = iterCount;
 
         stackMat = new Stack<>();
@@ -525,16 +524,16 @@ public class HGA {
             // log if needed
             logInfo("------------Iteration " + this.iterCount + "/1000------------");
             // step 1 map again
-            this.mapping = remap(toRemap, forcedPart);
+            HGA.mapping = remap(toRemap, forcedPart);
             // step 2 score the mapping
-            scoreMapping(this.mapping);
+            scoreMapping(HGA.mapping);
             // record
             stackMat.push(simMat.getMat().dup());
             stackScore.push(score);
             // output
             outDebug();
             // step 3 update based on mapped nodes
-            updatePairNeighbors(this.mapping);
+            updatePairNeighbors(HGA.mapping);
             // step 4 topo adjustment to similarity matrix
             addAllTopology();
             this.iterCount++;
@@ -557,7 +556,7 @@ public class HGA {
         logInfo("Remapping...");
         // regain from file, and there is no remap part, retain.
         if (toRemap == null) {
-            toRemap = this.simMat;
+            toRemap = simMat;
         }
         // hungarian account
         HashMap<String, String> res = remapping(toRemap, splitLimit);
@@ -607,7 +606,7 @@ public class HGA {
         return new Pair<>(forceMap, remap);
     }
 
-    private void logInfo(String message) {
+    private static void logInfo(String message) {
         if (logger != null) {
             logger.info(message);
         }
@@ -672,9 +671,7 @@ public class HGA {
         logInfo("output mapping");
         String path = debugOutputPath + "mapping/";
         Vector<String> mappingVec = new Vector<>();
-
-        mappingVec.add("Iteration " + iterCount + ":\n");
-        mapping.forEach((k, v) -> mappingVec.add(k + "->" + v + "\n"));
+        mapping.forEach((k, v) -> mappingVec.add(k + " " + v + "\n"));
         try {
             if (isResult) {
                 writer.setPath(path + "mappingResult_" + iterCount + ".txt");
@@ -791,6 +788,10 @@ public class HGA {
         return score;
     }
 
+    public int getIter_res() {
+        return iter_res;
+    }
+
     public HashMap<String, String> getMapping() {
         return mapping;
     }
@@ -802,15 +803,15 @@ public class HGA {
 
     public void setBioFactor(double bioFactor) {
         assert (bioFactor >= 0 && bioFactor <= 1);
-        this.bioFactor = bioFactor;
+        HGA.bioFactor = bioFactor;
     }
 
     public void setForcedMappingForSame(boolean forcedMappingForSame) {
-        this.forcedMappingForSame = forcedMappingForSame;
+        HGA.forcedMappingForSame = forcedMappingForSame;
     }
 
     public void setEdgeScore(double edgeScore) {
-        this.edgeScore = edgeScore;
+        HGA.edgeScore = edgeScore;
     }
 
     public int getH() {
@@ -818,12 +819,12 @@ public class HGA {
     }
 
     public void setH(int h) {
-        this.h = h;
+        HGA.h = h;
     }
 
     public void sethAccount(double hAccount) {
         assert (hAccount >= 0 && hAccount <= 1);
-        this.hAccount = hAccount;
+        HGA.hAccount = hAccount;
     }
 
     public void setTolerance(double tolerance) {
@@ -846,11 +847,19 @@ public class HGA {
 
     }
 
+    public static void setUdG1(UndirectedGraph udG1) {
+        HGA.udG1 = udG1;
+    }
+
+    public static void setUdG2(UndirectedGraph udG2) {
+        HGA.udG2 = udG2;
+    }
+
     public void setIterMax(int iterMax) {
         this.iterMax = iterMax;
     }
 
-    public UndirectedGraph getTgtGraph_res() {
-        return tgtGraph_res;
+    public Vector<Pair<Edge, Edge>> getMappingEdges() {
+        return mappingEdges;
     }
 }
