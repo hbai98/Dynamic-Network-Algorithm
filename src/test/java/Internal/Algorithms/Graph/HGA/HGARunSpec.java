@@ -30,13 +30,20 @@ class HGARunSpec {
     }
     @Test
     void run_yeast() throws IOException {
+        // reader for reading undirected graphs and the similarity matrix
         GraphFileReader reader = new GraphFileReader(true, false, false);
+        // read graphs with the file path
         undG1 = reader.readToUndirectedGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/net-38n.txt", false);
         undG2 = reader.readToUndirectedGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/HumanNet.txt", false);
+        // undirected graphs don't have to record neighbors
         reader.setRecordNeighbors(false);
-        simMat = reader.readToSimMat("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt", undG1.getAllNodes(), undG2.getAllNodes(), true);
+        // read the simMat
+        simMat = reader.readToSimMat("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt",
+                undG1.getAllNodes(), undG2.getAllNodes(), true);
+        // hga init
         hga = new HGA(simMat, undG1, undG2, 0.4,true,0.5,0.01);
-        HGA.debugOutputPath = "src\\test\\java\\resources\\jupyter\\data\\";
+        // specify where you want the log matrix, score, and mapping result.
+        HGA.debugOutputPath = "src\\test\\java\\resources\\Jupiter\\data\\";
         hga.run();
     }
 // data 2: 0.7

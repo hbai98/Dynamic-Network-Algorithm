@@ -20,57 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/IO/MappingResultReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.assets/panel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.assets/test2-1594604673886.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.assets/test2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HGALogFile.log" beforeDir="false" afterPath="$PROJECT_DIR$/HGALogFile.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HGALogFile.log.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HGALogFile.log.1.lck" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/Network/AbstractAdjList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/Network/AbstractAdjList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/IO/GraphFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/IO/GraphFileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/Graph/HGA/HGASpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/Graph/HGA/HGASpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/Graph/HGA/Human_YeastSub38NTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/Graph/HGA/Human_YeastSub38NTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/IO/DirectedGraphFileReaderSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/IO/GraphFileReaderSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/IO/DirectedGraphFileWriterSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/IO/GraphFileWriterSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mappingResult_14.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mappingResult_14.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_10.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_11.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_12.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_12.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_13.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_5.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_6.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_6.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_7.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_8.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_8.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_9.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoringResult_14.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoringResult_14.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_11.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_13.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_5.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_6.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_6.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_8.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_8.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_9.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Network/AbstractAdjList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Network/AbstractAdjList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/GraphFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/GraphFileReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HGA/HGASpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HGA/HGASpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HGA/Human_YeastSub38NTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HGA/Human_YeastSub38NTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/IO/DirectedGraphFileReaderSpec.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/IO/DirectedGraphFileWriterSpec.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.assets/image-20200608121805358.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.assets/image-20200608122736345.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.assets/image-20200608122828935.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/Graph/HGA/HGARunSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/Graph/HGA/HGARunSpec.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -521,7 +479,7 @@
       <workItem from="1594365031216" duration="644000" />
       <workItem from="1594365719025" duration="1232000" />
       <workItem from="1594375257568" duration="580000" />
-      <workItem from="1594514277170" duration="5138000" />
+      <workItem from="1594514277170" duration="8152000" />
     </task>
     <task id="LOCAL-00001" summary="Undergo optimization">
       <created>1592205562105</created>
@@ -775,26 +733,26 @@
     </state>
     <state x="162" y="215" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587256669541" />
     <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1594365223918" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1594522255814">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1594522780648">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1594522255814" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1594522255813">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1594522780648" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1594522780648">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1594522255813" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1594522255813">
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1594522780648" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1594522780647">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1594522255813" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1594522255814">
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1594522780647" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1594522780648">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1594522255814" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1594522780648" />
     <state width="1492" height="258" key="GridCell.Tab.1.bottom" timestamp="1594364400912">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -938,7 +896,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/HGA.java</url>
-          <line>727</line>
+          <line>728</line>
           <option name="timeStamp" value="205" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
