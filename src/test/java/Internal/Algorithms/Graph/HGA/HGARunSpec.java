@@ -46,9 +46,5 @@ class HGARunSpec {
         HGA.debugOutputPath = "src\\test\\java\\resources\\Jupiter\\data\\";
         hga.run();
     }
-// data 2: 0.7
-    // data 1 : 0.5
-
-
 
 }

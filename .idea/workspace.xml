@@ -20,14 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/README.assets/panel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.assets/test2-1594604673886.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.assets/test2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.assets/image-20200608121805358.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.assets/image-20200608122736345.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.assets/image-20200608122828935.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/Graph/HGA/HGARunSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/Graph/HGA/HGARunSpec.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +109,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
@@ -479,7 +473,7 @@
       <workItem from="1594365031216" duration="644000" />
       <workItem from="1594365719025" duration="1232000" />
       <workItem from="1594375257568" duration="580000" />
-      <workItem from="1594514277170" duration="8152000" />
+      <workItem from="1594514277170" duration="12749000" />
     </task>
     <task id="LOCAL-00001" summary="Undergo optimization">
       <created>1592205562105</created>
@@ -628,10 +622,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="performance for CPU on linux server" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="654" y="71" key="#Deployment" timestamp="1592982542623">
+    <state x="654" y="71" key="#Deployment" timestamp="1594624696998">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="654" y="71" key="#Deployment/0.0.1536.864@0.0.1536.864" timestamp="1592982542623" />
+    <state x="654" y="71" key="#Deployment/0.0.1536.864@0.0.1536.864" timestamp="1594624696998" />
     <state x="467" y="0" width="634" height="864" key="#HGA" timestamp="1592874257400">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -648,10 +642,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="442" y="14" key="#Project_Structure/0.0.1536.864@0.0.1536.864" timestamp="1594107844902" />
-    <state x="638" y="58" key="#SSH_Configurations" timestamp="1592832848580">
+    <state x="638" y="58" key="#SSH_Configurations" timestamp="1594624694995">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="638" y="58" key="#SSH_Configurations/0.0.1536.864@0.0.1536.864" timestamp="1592832848580" />
+    <state x="638" y="58" key="#SSH_Configurations/0.0.1536.864@0.0.1536.864" timestamp="1594624694995" />
     <state x="314" y="187" key="#com.intellij.debugger.streams.ui.EvaluationAwareTraceWindow" timestamp="1592705980626">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
