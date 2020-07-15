@@ -22,16 +22,36 @@ Get the mapping subgraph across species.
 
 ### How to run 
 
-First you have to build by maven, and in your server command line, input the follow command
+First you have to build by maven
+
+```
+mvn build
+```
+
+Then, please navigate to the pom.xml file from the root, and comment the skip_test line in the plugin, then you test could work.
+
+```
+ <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                      <!-- <skipTests>true</skipTests> -->
+                </configuration>
+ </plugin>
+
+```
+
+In your server command line, input the follow command
 
 ```
 nohup mvn clean test -Dtest=Algorithms.Graph.HGA.HGARunSpec#<test> &
 ```
 
-'<test>' can be any junit test class method, for example:
+< test > can be any junit test class method, for example:
 
 ```java
-  @Test
+ @Test
     void run_yeast() throws IOException {
          // reader for reading undirected graphs and the similarity matrix
         GraphFileReader reader = new GraphFileReader(true, false, false);
@@ -57,6 +77,10 @@ The matrix's size should be equal to or more than m*n as it has to cover all pai
 
 
 
+It's flexible for you to write a new test method for your customized design and purpose.
+
+You could contact me by bht98@i.shu.edu.cn  if there is some thorny problems you encounter.
+
 ### Applications
 
 * BNMatch
@@ -65,5 +89,5 @@ The matrix's size should be equal to or more than m*n as it has to cover all pai
 
   ![panel](README.assets/panel.png)
 
-  
+  Please visit https://apps.cytoscape.org/apps/bnmatch2 for more information.
 
