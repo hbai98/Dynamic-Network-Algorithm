@@ -79,6 +79,49 @@ The matrix's size should be equal to or more than m*n as it has to cover all pai
 
 It's flexible for you to write a new test method for your customized design and purpose.
 
+
+
+If you would like to check the status of the current mapping, there is a HGALogFile.log in the root path.
+
+```
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+INFO: Init mapping...
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+INFO: ------------Iteration 0/1000------------
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+INFO: Remapping...
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+INFO: Hungarian mapping...
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+INFO: Scoring for mapping ...
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+INFO: output matrix
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+INFO: output scores
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+INFO: output mapping
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+INFO: adjust neighborhood similarity based on mapping result...
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+INFO: AddTopology for all nodes pairs in two graphs:
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+```
+
+When the matrix has converged, it will be an output information to denote that all iterations needed have been finished.
+
+```
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+INFO: HGA mapping finish!With iteration 14 times.
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+INFO: output mapping
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+INFO: output matrix
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+INFO: output scores
+```
+
 You could contact me by bht98@i.shu.edu.cn  if there is some thorny problems you encounter.
 
 ### Applications
