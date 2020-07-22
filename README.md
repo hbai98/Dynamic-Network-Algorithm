@@ -25,7 +25,7 @@ Get the mapping subgraph across species.
 First you have to build by maven
 
 ```
-mvn build
+mvn compile
 ```
 
 Then, please navigate to the pom.xml file from the root, and comment the < skipTests > line in the plugin, then your tests could work.
