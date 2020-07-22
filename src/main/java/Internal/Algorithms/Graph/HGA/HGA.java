@@ -67,7 +67,7 @@ public class HGA {
     private int iterCount = 0;
     private int iterMax = 1000;
     //--------------debug---------------
-    public static String debugOutputPath = "src\\test\\java\\resources\\jupyter\\data\\";
+    public static String debugOutputPath = "src\\test\\java\\resources\\Jupiter\\data\\";
     //--------------Logging-------------
     public static Logger logger;
     private static AbstractFileWriter writer;

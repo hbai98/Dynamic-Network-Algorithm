@@ -84,8 +84,7 @@
                         <Bundle-Version>${project.version}</Bundle-Version>
                         <Export-Package>!${bundle.namespace}.*</Export-Package>
                         <Private-Package>${bundle.namespace}.*</Private-Package>
-                        <Bundle-Activator>${bundle.namespace}.CyActivator</Bundle-Activator>
-                        <Import-Package>!tech.tablesaw.*,!org.swinglabs.*,*;resolution:=optional</Import-Package>
+                        <Import-Package>*;resolution:=optional</Import-Package>
                         <Embed-Dependency>*;</Embed-Dependency>
                         <Embed-Transitive>true</Embed-Transitive>
                     </instructions>
@@ -119,19 +118,18 @@
             <groupId>org.jblas</groupId>
             <artifactId>jblas</artifactId>
             <version>${jblas.version}</version>
+            <optional>true</optional>
         </dependency>
         <!--java data science and visualize package-->
         <dependency>
             <groupId>tech.tablesaw</groupId>
             <artifactId>tablesaw-core</artifactId>
             <version>${tablesaw.version}</version>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>tech.tablesaw</groupId>
             <artifactId>tablesaw-jsplot</artifactId>
             <version>${tablesaw.version}</version>
-            <optional>true</optional>
         </dependency>
         <!--network data structure base-->
         <dependency>
@@ -144,28 +142,31 @@
             <groupId>org.swinglabs</groupId>
             <artifactId>swingx</artifactId>
             <version>${swingx.version}</version>
-            <optional>true</optional>
         </dependency>
         <!--some tools-->
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
             <version>${Apache-Commons-Collections.version}</version>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>${MS}</version>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>${MS}</version>
+            <optional>true</optional>
         </dependency>
 
     </dependencies>

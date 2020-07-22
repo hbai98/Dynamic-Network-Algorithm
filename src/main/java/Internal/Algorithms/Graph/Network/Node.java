@@ -13,7 +13,6 @@ public class Node implements Comparable<Node> {
     protected String strName;
     protected double value;
 
-
     public Node(String strName, double value, String strLayerCode) {
         this.strName = strName;
         this.value = value;

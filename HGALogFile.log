@@ -1,328 +1,328 @@
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Init mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: ------------Iteration 0/1000------------
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Remapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: ------------Iteration 1/1000------------
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Remapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Iteration:2	dif 0.3549867724867725
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: ------------Iteration 2/1000------------
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Remapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Iteration:3	dif_1 0.1242148273055469	dif_2 0.4588296890562179
 Score:score1 48.943565917107584	score2 45.9
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: ------------Iteration 3/1000------------
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Remapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Iteration:4	dif_1 0.07288204399206366	dif_2 0.18473809735342211
 Score:score1 49.956201175379114	score2 48.943565917107584
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: ------------Iteration 4/1000------------
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Remapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Iteration:5	dif_1 0.064041050213692	dif_2 0.12524499202532458
 Score:score1 50.70598857113907	score2 49.956201175379114
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: ------------Iteration 5/1000------------
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Remapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Iteration:6	dif_1 0.04415519434380144	dif_2 0.09546692130723144
 Score:score1 51.25001741870998	score2 50.70598857113907
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: ------------Iteration 6/1000------------
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Remapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Iteration:7	dif_1 0.04285314581557431	dif_2 0.07142041188643744
 Score:score1 51.676337117853	score2 51.25001741870998
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: ------------Iteration 7/1000------------
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Remapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Iteration:8	dif_1 0.02916463205498676	dif_2 0.05382906591299408
 Score:score1 51.9788703447177	score2 51.676337117853
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: ------------Iteration 8/1000------------
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Remapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Iteration:9	dif_1 0.03149305513441003	dif_2 0.040498342286548694
 Score:score1 52.2265444255454	score2 51.9788703447177
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: ------------Iteration 9/1000------------
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Remapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Iteration:10	dif_1 0.021575977071429775	dif_2 0.030551629668250424
 Score:score1 52.39252803164227	score2 52.2265444255454
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: ------------Iteration 10/1000------------
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Remapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Iteration:11	dif_1 0.02517827548382834	dif_2 0.02298737390338823
 Score:score1 52.53883703365098	score2 52.39252803164227
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: ------------Iteration 11/1000------------
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Remapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Iteration:12	dif_1 0.01726552374489332	dif_2 0.017343120209725393
 Score:score1 52.62734860435967	score2 52.53883703365098
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: ------------Iteration 12/1000------------
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Remapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Iteration:13	dif_1 0.022036186046463513	dif_2 0.013049322749794534
 Score:score1 52.716116627260476	score2 52.62734860435967
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: ------------Iteration 13/1000------------
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Remapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Iteration:14	dif_1 0.014818459004311446	dif_2 0.009845294338784005
 Score:score1 52.76065087318706	score2 52.716116627260476
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: HGA mapping finish!With iteration 14 times.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 22, 2020 3:27:47 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
