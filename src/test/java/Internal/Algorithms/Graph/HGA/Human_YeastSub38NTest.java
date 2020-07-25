@@ -60,7 +60,7 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
     @DisplayName("Topo")
     @Test
     void topo(){
-        hga.addAllTopology();
+//        hga.addAllTopology();
     }
 
     @DisplayName("read simList from local blast result.")
@@ -221,6 +221,6 @@ public class Human_YeastSub38NTest extends GraphFileReaderSpec {
     }
     @Test
     void smallTest() {
-        hga.addAllTopology();
+//        hga.addAllTopology();
     }
 }

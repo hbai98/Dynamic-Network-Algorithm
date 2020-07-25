@@ -106,7 +106,7 @@ public class SimMat {
         return mat.get(i, j);
     }
 
-    protected double getVal(int i, int j) {
+    public double getVal(int i, int j) {
         return mat.get(i, j);
     }
 

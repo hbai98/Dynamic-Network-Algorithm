@@ -29,6 +29,18 @@ class HGARunSpec {
         hga.run();
     }
     @Test
+    void run_test_GPU() throws IOException {
+        GraphFileReader reader = new GraphFileReader(true, false, false);
+        undG1 = reader.readToUndirectedGraph("src/test/java/resources/AlgTest/HGA/graph1.txt", false);
+        undG2 = reader.readToUndirectedGraph("src/test/java/resources/AlgTest/HGA/graph2.txt", false);
+        reader.setRecordNeighbors(false);
+        simMat = reader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt", undG1.getAllNodes(), undG2.getAllNodes(), true);
+        hga = new HGA(simMat, undG1, undG2, 0.5,true,0.5,0.01);
+        HGA.GPU = true;
+        hga.run();
+    }
+
+    @Test
     void run_yeast() throws IOException {
         // reader for reading undirected graphs and the similarity matrix
         GraphFileReader reader = new GraphFileReader(true, false, false);
@@ -44,6 +56,7 @@ class HGARunSpec {
         hga = new HGA(simMat, undG1, undG2, 0.4,true,0.5,0.01);
         // specify where you want the log matrix, score, and mapping result.
         HGA.debugOutputPath = "src\\test\\java\\resources\\Jupiter\\data\\";
+        HGA.GPU = true;
         hga.run();
     }
 
