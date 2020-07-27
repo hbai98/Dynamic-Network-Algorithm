@@ -20,73 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Tools/GPUKernelForHGA.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/tools/GPUKernelForHGATest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/GPUKernelForHGA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Tools/CudaUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HGALogFile.log" beforeDir="false" afterPath="$PROJECT_DIR$/HGALogFile.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/HGARun.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/Utils/SimMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/Utils/SimMat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/Graph/HGA/HGARunSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/Graph/HGA/HGARunSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/Graph/HGA/HGASpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/Graph/HGA/HGASpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/Graph/HGA/Human_YeastSub38NTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/Graph/HGA/Human_YeastSub38NTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mappingResult_14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Tools/GPUKernelForHGA.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_10.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_11.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_12.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_13.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrixResult_14.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_10.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_11.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_12.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_13.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoringResult_14.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_10.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_11.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_12.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_13.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_9.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/SimMat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/SimMat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Tools/GPUKernelForHGA.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HGA/HGARunSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HGA/HGARunSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HGA/HGASpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HGA/HGASpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HGA/Human_YeastSub38NTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HGA/Human_YeastSub38NTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,8 +50,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -173,7 +123,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
@@ -197,11 +147,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="Internal.Algorithms.Tools" />
-      <recent name="Algorithms.Graph.IO" />
-      <recent name="Algorithms.Graph" />
-    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="Internal.Algorithms.Tools" />
       <recent name="Algorithms.Graph.Utils.AdjList" />
@@ -219,6 +164,13 @@
       <recent name="Algorithms.Graph.HGA" />
       <recent name="Algorithms.Graph.Utils" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Development\Algorithms\src\test\java\Internal\Algorithms\IO" />
+      <recent name="D:\Development\Algorithms\src" />
+      <recent name="D:\Development\Algorithms\src\test\java\resources\AlgTest\HGA" />
+      <recent name="D:\Development\Algorithms\src\test\java\resources" />
+      <recent name="D:\Development\Algorithms\src\main\resources\IO" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Development\Algorithms\src\test\java\resources\TestModule\HGATestData\Human-YeastSub38N\fasta" />
       <recent name="D:\Development\Algorithms\src\test\java\resources\TestModule\HGATestData\Human-Yeast" />
@@ -230,15 +182,14 @@
       <recent name="Algorithms.Graph.Network" />
       <recent name="Algorithms.Graph.Utils" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Development\Algorithms\src\test\java\Internal\Algorithms\IO" />
-      <recent name="D:\Development\Algorithms\src" />
-      <recent name="D:\Development\Algorithms\src\test\java\resources\AlgTest\HGA" />
-      <recent name="D:\Development\Algorithms\src\test\java\resources" />
-      <recent name="D:\Development\Algorithms\src\main\resources\IO" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Internal.Algorithms.Graph.HGA" />
+      <recent name="Internal.Algorithms.Tools" />
+      <recent name="Algorithms.Graph.IO" />
+      <recent name="Algorithms.Graph" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HGARunSpec.run_yeast">
+  <component name="RunManager" selected="JUnit.HGARunSpec.run_test_GPU">
     <configuration name="HGA" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGA" />
       <module name="Algorithms" />
@@ -321,7 +272,7 @@
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Internal.Algorithms.Graph.HGA.*" />
+          <option name="PATTERN" value="Internal.Algorithms.Tools.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -353,13 +304,13 @@
       <item itemvalue="JUnit.GraphFileReaderSpec.readExcel" />
       <item itemvalue="JUnit.HGARunSpec.run_test_GPU" />
       <item itemvalue="JUnit.GPUKernelForHGATest.test1" />
-      <item itemvalue="Remote.SHU-lab" />
       <item itemvalue="JUnit.HGARunSpec.run_yeast" />
+      <item itemvalue="Remote.SHU-lab" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.HGARunSpec.run_yeast" />
         <item itemvalue="JUnit.HGARunSpec.run_test_GPU" />
+        <item itemvalue="JUnit.HGARunSpec.run_yeast" />
         <item itemvalue="JUnit.HGARunSpec.run_test" />
         <item itemvalue="JUnit.GPUKernelForHGATest.test1" />
         <item itemvalue="JUnit.GraphFileReaderSpec.readExcel" />
@@ -729,18 +680,18 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="333" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1592881666293" />
-    <state x="502" y="230" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594220622683">
+    <state x="502" y="230" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595831330530">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="502" y="230" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1594220622683" />
+    <state x="502" y="230" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1595831330530" />
     <state x="229" y="200" key="#com.intellij.ide.util.MemberChooser" timestamp="1595567271935">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="229" y="200" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1595567271935" />
-    <state x="938" y="253" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1595493520870">
+    <state x="938" y="253" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1595825959922">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="938" y="253" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.864@0.0.1536.864" timestamp="1595493520870" />
+    <state x="938" y="253" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.864@0.0.1536.864" timestamp="1595825959922" />
     <state x="505" y="222" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1592875221136">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -785,10 +736,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="516" y="303" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.864@0.0.1536.864" timestamp="1594257173593" />
-    <state width="966" height="608" key="DebuggerActiveHint" timestamp="1595647278902">
+    <state width="966" height="608" key="DebuggerActiveHint" timestamp="1595817759018">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="966" height="608" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1595647278902" />
+    <state width="966" height="608" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1595817759018" />
     <state x="93" y="93" width="1350" height="678" key="DiffContextDialog" timestamp="1592985206773">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -802,46 +753,46 @@
     </state>
     <state x="162" y="215" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587256669541" />
     <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1594365223918" />
-    <state width="1493" height="276" key="GridCell.Tab.0.bottom" timestamp="1595647799793">
+    <state width="1493" height="657" key="GridCell.Tab.0.bottom" timestamp="1595831153600">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="276" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595647799793" />
-    <state width="1493" height="276" key="GridCell.Tab.0.center" timestamp="1595647799793">
+    <state width="1493" height="657" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595831153600" />
+    <state width="1493" height="657" key="GridCell.Tab.0.center" timestamp="1595831153599">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="276" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1595647799793" />
-    <state width="1493" height="276" key="GridCell.Tab.0.left" timestamp="1595647799793">
+    <state width="1493" height="657" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1595831153599" />
+    <state width="1493" height="657" key="GridCell.Tab.0.left" timestamp="1595831153599">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="276" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1595647799793" />
-    <state width="1493" height="276" key="GridCell.Tab.0.right" timestamp="1595647799793">
+    <state width="1493" height="657" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1595831153599" />
+    <state width="1493" height="657" key="GridCell.Tab.0.right" timestamp="1595831153599">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="276" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1595647799793" />
-    <state width="1493" height="224" key="GridCell.Tab.1.bottom" timestamp="1595647235912">
+    <state width="1493" height="657" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1595831153599" />
+    <state width="1493" height="657" key="GridCell.Tab.1.bottom" timestamp="1595831153600">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587256556414" />
-    <state width="1493" height="224" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595647235912" />
-    <state width="1493" height="224" key="GridCell.Tab.1.center" timestamp="1595647235912">
+    <state width="1493" height="657" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595831153600" />
+    <state width="1493" height="657" key="GridCell.Tab.1.center" timestamp="1595831153600">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587256556414" />
-    <state width="1493" height="224" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1595647235912" />
-    <state width="1493" height="224" key="GridCell.Tab.1.left" timestamp="1595647235912">
+    <state width="1493" height="657" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1595831153600" />
+    <state width="1493" height="657" key="GridCell.Tab.1.left" timestamp="1595831153600">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="224" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1595647235912" />
-    <state width="1493" height="224" key="GridCell.Tab.1.right" timestamp="1595647235912">
+    <state width="1493" height="657" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1595831153600" />
+    <state width="1493" height="657" key="GridCell.Tab.1.right" timestamp="1595831153600">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587256556414" />
-    <state width="1493" height="224" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1595647235912" />
+    <state width="1493" height="657" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1595831153600" />
     <state x="349" y="175" key="IDE.errors.dialog" timestamp="1592532045552">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -894,11 +845,11 @@
     <state width="600" height="428" key="javadoc.popup" timestamp="1591343024870">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="537" height="264" key="javadoc.popup.new" timestamp="1595641465194">
+    <state width="537" height="264" key="javadoc.popup.new" timestamp="1595826262636">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="632" height="298" key="javadoc.popup.new/0.0.1536.824@0.0.1536.824" timestamp="1587205062000" />
-    <state width="537" height="264" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1595641465194" />
+    <state width="537" height="264" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1595826262636" />
     <state width="600" height="428" key="javadoc.popup/0.0.1536.864@0.0.1536.864" timestamp="1591343024870" />
     <state x="413" y="71" key="new project wizard" timestamp="1592290042028">
       <screen x="0" y="0" width="1536" height="864" />
@@ -912,10 +863,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="859" y="193" key="refactoring.ChangeSignatureDialog/0.0.1536.864@0.0.1536.864" timestamp="1595575929597" />
-    <state x="425" y="197" width="672" height="677" key="run.anything.popup" timestamp="1595487954944">
+    <state x="425" y="197" width="672" height="677" key="run.anything.popup" timestamp="1595814570356">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="425" y="197" width="672" height="677" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1595487954944" />
+    <state x="425" y="197" width="672" height="677" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1595814570356" />
     <state x="116" y="194" width="672" height="543" key="search.everywhere.popup" timestamp="1594200841552">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -963,11 +914,6 @@
           <line>32</line>
           <option name="timeStamp" value="168" />
         </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/HGA.java</url>
-          <line>896</line>
-          <option name="timeStamp" value="205" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/NBM.java</url>
           <line>105</line>
@@ -982,11 +928,6 @@
           <url>file://$PROJECT_DIR$/src/test/java/Internal/Algorithms/IO/GraphFileReaderSpec.java</url>
           <line>80</line>
           <option name="timeStamp" value="238" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Internal/Algorithms/Tools/GPUKernelForHGA.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="251" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/resources/Alignment/Blast/BLASTSpec.java</url>

@@ -1,6 +1,10 @@
-package Internal.Algorithms.Tools;
+package Internal.Algorithms.Graph.HGA;
 
 import com.aparapi.Kernel;
+import org.apache.commons.lang3.ArrayUtils;
+
+import java.util.Arrays;
+import java.util.Vector;
 
 
 public class GPUKernelForHGA extends Kernel {
@@ -14,13 +18,16 @@ public class GPUKernelForHGA extends Kernel {
     private final int[] start_nei;
     private final int[] start_nonNei;
 
-    public GPUKernelForHGA(float[] inForNei, float[] inForNonNei,
+    public GPUKernelForHGA(Vector<Float> inForNei, Vector<Float> inForNonNei,
                            int[]start_nei,int[]start_nonNei,
                            int[] neiSize, int[] nonNeiSize,
                            float[] out,
                            float bioFactor){
-        this.inForNei = inForNei;
-        this.inForNonNei = inForNonNei;
+
+        Object[] a1 = inForNei.toArray();
+        Object[] a2 = inForNonNei.toArray();
+        this.inForNei =ArrayUtils.toPrimitive( Arrays.copyOf(a1,a1.length,Float[].class));
+        this.inForNonNei = ArrayUtils.toPrimitive(Arrays.copyOf(a2,a2.length,Float[].class));
         this.start_nei = start_nei;
         this.start_nonNei = start_nonNei;
         this.neiSize = neiSize;
@@ -28,6 +35,7 @@ public class GPUKernelForHGA extends Kernel {
         this.out = out;
         this.bioFactor = bioFactor;
     }
+
 
     @Override
     public void run() {
@@ -47,7 +55,5 @@ public class GPUKernelForHGA extends Kernel {
         double eTP = (eNeighbors + eNonNeighbors) / 2;
         out[i] = (float) (out[i]*bioFactor+eTP * (1 - bioFactor));
     }
-
-
 
 }

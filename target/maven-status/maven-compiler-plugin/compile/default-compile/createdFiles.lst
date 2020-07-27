@@ -11,7 +11,6 @@ Internal\Algorithms\Tools\Stopwatch.class
 Internal\Algorithms\Graph\Utils\AdjList\SimList.class
 Internal\Algorithms\Graph\Utils\List\HNodeList.class
 Internal\Algorithms\Graph\Hungarian$ProblemType.class
-Internal\Algorithms\Tools\GPUKernelForHGA.class
 Internal\Algorithms\IO\AbstractFileWriter.class
 Internal\Algorithms\Tools\Functions.class
 Internal\Algorithms\Graph\HGA\HGA.class
@@ -37,3 +36,4 @@ Internal\Algorithms\Graph\Network\EdgeHashSet.class
 Internal\Algorithms\Tools\MatrixFunctions.class
 Internal\Algorithms\Graph\Network\Node.class
 Internal\Algorithms\Graph\Utils\Edge\CpEdge.class
+Internal\Algorithms\Graph\HGA\GPUKernelForHGA.class
