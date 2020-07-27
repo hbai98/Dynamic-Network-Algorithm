@@ -9,7 +9,10 @@ import Internal.Algorithms.Graph.Utils.SimMat;
 import Internal.Algorithms.IO.AbstractFileWriter;
 import com.aparapi.Range;
 import com.aparapi.device.Device;
+import com.google.common.primitives.Doubles;
+import com.google.common.primitives.Floats;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 import org.jgrapht.alg.util.Triple;
@@ -306,108 +309,61 @@ public class HGA {
         // && nodes1.size() > LimitOfIndexGraph
         if (GPU) {
             logInfo("AddTopology for all nodes pairs in two graphs with the GPU programming:");
-            gpuforhga(nodes1,nodes2,preSimMat);
+            gpuforhga(preSimMat);
         } else {
             logInfo("AddTopology for all nodes pairs in two graphs with the CPU parallel programming:");
             nodes1.parallelStream().forEach(n1 -> nodes2.forEach(n2 -> addTopology(n1, n2, preSimMat, originalMat)));
         }
     }
 
-    private static void gpuforhga(Set<String> nodes1, Set<String> nodes2, SimMat preMat) {
+    private static void gpuforhga(SimMat preMat) {
+        Set<String> nodes1 = preMat.getRowSet();
+        Set<String> nodes2 = preMat.getColSet();
         // prepare the input indexes for all neighbors and all non neighbors
-        int size = nodes1.size() * nodes2.size();
-        Vector<Float> neighbors = new Vector<>();
-        Vector<Float> nonNeighbors = new Vector<>();
-        int[] neiSize = new int[size];
-        int[] nonNeiSize = new int[size];
-        // start point
-        int[] start_nei = new int[size];
-        int[] start_nonNei = new int[size];
-        float[] out = new float[size];
+        // map
+        HashMap<String, Integer> rowMap = preMat.getRowMap();
+        HashMap<String, Integer> colMap = preMat.getColMap();
+        // positions for neighbors, non neighbors make a complement
+        Vector<Integer> nei_x = new Vector<>();
+        Vector<Integer> nei_y = new Vector<>();
+        // every node possibly share various number of neighbors, record the start
+        final int[] start_x = new int[nodes1.size()+1];
+        final int[] start_y = new int[nodes2.size()+1];
+        // so (i,j) in simMat -> int[] neighbors = nei_x[start_x[i],start_x[i+1]) and nei_y[start_y[j],start_y[j+1])
+        // int[] non-neighbors = [0,n-1]-nei_x[start_x[i],start_x[i+1]) and [0,m-1]-nei_y[start_y[j],start_y[j+1])
+        // tolerance = 0.01, there is no need to use double
+        // result to be polished
+        float[] out =  Floats.toArray(Doubles.asList(simMat.getMat().data));
+        // preMat data
+        final float[] pre = Floats.toArray(Doubles.asList(preMat.getMat().data));
+        // original data
+        final float[] ori = Floats.toArray(Doubles.asList(originalMat.getMat().data));
+        // initialize nei_x
+        initNeighborToArray(nodes1, udG1, rowMap, nei_x, start_x);
+        // initialize nei_y
+        initNeighborToArray(nodes2, udG2, colMap, nei_y, start_y);
 
-        // p1 for every item in the matrix
-        AtomicInteger c = new AtomicInteger();
-        // p2 for every item in the float[]
-//        AtomicInteger p_nei = new AtomicInteger();
-//        AtomicInteger p_nonNei = new AtomicInteger();
-        nodes1.forEach(n1 -> nodes2.forEach(n2 -> {
-            int p1 = c.get();
-            HashSet<String> nodesG1 = new HashSet<>(nodes1);
-            HashSet<String> nodesG2 = new HashSet<>(nodes2);
-            // neighbors
-            Set<String> nei1 = udG1.getNebs(n1);
-            Set<String> nei2 = udG2.getNebs(n2);
-            int nei1Size = nei1.size();
-            int nei2Size = nei2.size();
-            if (nei1Size != 0 && nei2Size != 0) {
-                int norm = nei1.size() * nei2.size();
-                nei1.forEach(node1 -> nei2.forEach(node2 -> {
-                    neighbors.add((float) preMat.getVal(node1, node2));
-                }));
-                neiSize[p1] = norm;
-            }
-            else if (nei1Size == 0 && nei2Size == 0) {
-                neighbors.add((float) sumPreSimMat/size);
-                neiSize[p1] = 1 ;
-            }
-            // one side is isolated point
-            else {
-                neighbors.add((float)0.);
-                neiSize[p1] = 1;
-            }
-            // non-neighbors
-            nei1.add(n1);
-            nei2.add(n2);
-            int nonNei1Size = nodes1.size() - nei1.size();
-            int nonNei2Size = nodes2.size() - nei2.size();
-            if (nonNei1Size == 0 && nonNei2Size == 0) {
-//                nonNeighbors[p_nonNei.get()] = (float) (sumPreSimMat / size);
-                nonNeighbors.add((float) (sumPreSimMat / size));
-//                p_nonNei.getAndIncrement();
-                nonNeiSize[p1] = 1;
-            }
-            // get the rest nodes
-            nodesG1.removeAll(nei1);
-            nodesG2.removeAll(nei2);
-            if (nonNei1Size != 0 && nonNei2Size != 0) {
-                int norm = nodesG1.size() * nodesG2.size();
-                nodesG1.forEach(node1 -> nodesG2.forEach(node2 -> {
-                    nonNeighbors.add((float) preMat.getVal(node1, node2));
-                }));
-                nonNeiSize[p1] = norm;
-            }
-            // one side all connected
-            else {
-                neighbors.add((float)0.);
-                nonNeiSize[p1] = 1;
-            }
-            // out
-            out[p1] = (float) originalMat.getVal(n1, n2);
-            // start
-            if (p1 == 0) {
-                start_nei[0] = 0;
-                start_nonNei[0] = 0;
-            } else {
-                start_nei[p1] = start_nei[p1 - 1] + neiSize[p1 - 1];
-                start_nonNei[p1] = start_nonNei[p1 - 1] + nonNeiSize[p1 - 1];
-            }
-            c.getAndIncrement();
-        }));
-        GPUKernelForHGA kernel = new GPUKernelForHGA(neighbors, nonNeighbors,
-                start_nei, start_nonNei,
-                neiSize, nonNeiSize,
-                out,
+        GPUKernelForHGA kernel = new GPUKernelForHGA(
+                pre,ori,out, // 3 matrixes
+                nei_x,start_x, // graph1 neighbors
+                nei_y,start_y, // graph2 neighbors
+                sumPreSimMat, // sum of mat
                 (float) bioFactor);
         Device device = Device.bestGPU();
-        Range range = device.createRange(nodes1.size() * nodes2.size());
+        Range range = device.createRange(nodes1.size()*nodes2.size());
         kernel.execute(range);
         kernel.dispose();
-        // turn out into simMat
-        AtomicInteger c2 = new AtomicInteger();
-        nodes1.forEach(n1 -> nodes2.forEach(n2 -> {
-            simMat.put(n1, n2, out[c2.get()]);
-            c2.getAndIncrement();
-        }));
+    }
+
+    private static void initNeighborToArray(Set<String> nodes, UndirectedGraph g, HashMap<String, Integer> map, Vector<Integer> neis, int[] starts) {
+        starts[0] = 0;
+        AtomicInteger c = new AtomicInteger(1);
+        nodes.forEach(n1 -> {
+            Set<String> nei = g.getNebs(n1);
+            nei.forEach(n -> neis.add(map.get(n)));
+            starts[c.get()] = nei.size() + starts[c.get()-1];
+            c.getAndIncrement();
+        });
     }
 
 
@@ -757,7 +713,7 @@ public class HGA {
         scoreVec.add("PS:" + scores[4] + "\n");
         try {
             if (isResult) {
-                writer.setPath(path + "scoringResult_" +  iter_res + ".txt");
+                writer.setPath(path + "scoringResult_" + iter_res + ".txt");
             } else {
                 writer.setPath(path + "scoring_" + iterCount + ".txt");
             }
@@ -774,7 +730,7 @@ public class HGA {
         mapping.forEach((k, v) -> mappingVec.add(k + " " + v + "\n"));
         try {
             if (isResult) {
-                writer.setPath(path + "mappingResult_" +  iter_res + ".txt");
+                writer.setPath(path + "mappingResult_" + iter_res + ".txt");
             } else {
                 writer.setPath(path + "mapping_" + iterCount + ".txt");
             }

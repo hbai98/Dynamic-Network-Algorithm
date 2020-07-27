@@ -1,22 +1,22 @@
-Jul 27, 2020 2:24:42 PM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 27, 2020 6:18:35 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Init mapping...
-Jul 27, 2020 2:24:42 PM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 27, 2020 6:18:35 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: ------------Iteration 0/1000------------
-Jul 27, 2020 2:24:42 PM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 27, 2020 6:18:35 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Remapping...
-Jul 27, 2020 2:24:42 PM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 27, 2020 6:18:35 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Jul 27, 2020 2:24:42 PM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 27, 2020 6:18:35 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Jul 27, 2020 2:24:42 PM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 27, 2020 6:18:35 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Jul 27, 2020 2:24:42 PM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 27, 2020 6:18:35 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output matrix
-Jul 27, 2020 2:24:42 PM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 27, 2020 6:18:35 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
-Jul 27, 2020 2:24:42 PM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 27, 2020 6:18:35 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
-Jul 27, 2020 2:24:42 PM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 27, 2020 6:18:35 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Jul 27, 2020 2:24:42 PM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 27, 2020 6:18:35 PM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs with the GPU programming:

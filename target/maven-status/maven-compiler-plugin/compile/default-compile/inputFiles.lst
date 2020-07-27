@@ -1,6 +1,7 @@
 D:\Development\Algorithms\src\main\java\Internal\Algorithms\Graph\HGA\GPUKernelForHGA.java
 D:\Development\Algorithms\src\main\java\Internal\Algorithms\Graph\Utils\List\HNodeList.java
 D:\Development\Algorithms\src\main\java\Internal\Algorithms\Tools\Stopwatch.java
+D:\Development\Algorithms\src\main\java\Internal\Algorithms\Tools\CudaUtils.java
 D:\Development\Algorithms\src\main\java\Internal\Algorithms\Graph\Network\AbstractAdjList.java
 D:\Development\Algorithms\src\main\java\Internal\Algorithms\Tools\MatrixFunctions.java
 D:\Development\Algorithms\src\main\java\UI\Tree\RootNode.java

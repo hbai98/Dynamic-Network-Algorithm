@@ -33,6 +33,7 @@ Internal\Algorithms\Graph\Utils\AdjList\UndirectedGraph.class
 UI\Tree\RootNode.class
 Internal\Algorithms\Graph\Network\Edge$Type.class
 Internal\Algorithms\Graph\Network\EdgeHashSet.class
+Internal\Algorithms\Tools\CudaUtils.class
 Internal\Algorithms\Tools\MatrixFunctions.class
 Internal\Algorithms\Graph\Network\Node.class
 Internal\Algorithms\Graph\Utils\Edge\CpEdge.class

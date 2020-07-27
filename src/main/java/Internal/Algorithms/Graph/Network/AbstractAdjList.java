@@ -8,6 +8,7 @@ import java.util.LinkedList;
 public abstract class AbstractAdjList extends LinkedList<HNodeList> {
     protected HashSet<String> rowSet;
     protected HashSet<String> colSet;
+    private HashSet<String> allNodes;
     private int edgeCount = -1;
     //---------------
 
@@ -30,10 +31,16 @@ public abstract class AbstractAdjList extends LinkedList<HNodeList> {
     protected abstract boolean removeNode(String tgtHead, String tgtNode);
 
     public HashSet<String> getAllNodes() {
-        // merge
-        HashSet<String> tpRow = new HashSet<>(rowSet);
-        tpRow.addAll(colSet);
-        return tpRow;
+        if(allNodes==null){
+            // merge
+            HashSet<String> tpRow = new HashSet<>(rowSet);
+            tpRow.addAll(colSet);
+            allNodes = tpRow;
+            return new HashSet<>(tpRow);
+        }
+       else{
+           return new HashSet<>(allNodes);
+        }
     }
 
 

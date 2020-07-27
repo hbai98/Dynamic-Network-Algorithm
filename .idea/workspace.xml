@@ -20,23 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/GPUKernelForHGA.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Tools/CudaUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HGALogFile.log" beforeDir="false" afterPath="$PROJECT_DIR$/HGALogFile.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/GPUKernelForHGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/GPUKernelForHGA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Tools/GPUKernelForHGA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/matrix/matrix_0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/scoring/scoring_0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/Network/AbstractAdjList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/Network/AbstractAdjList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/Utils/AdjList/UndirectedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/Utils/AdjList/UndirectedGraph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/GPUKernelForHGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/GPUKernelForHGA.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Tools/GPUKernelForHGA.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Network/AbstractAdjList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Network/AbstractAdjList.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -676,10 +672,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="314" y="187" key="#com.intellij.debugger.streams.ui.EvaluationAwareTraceWindow/0.0.1536.864@0.0.1536.864" timestamp="1592705980626" />
-    <state x="333" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592881666293">
+    <state x="333" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595836646352">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="333" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1592881666293" />
+    <state x="333" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1595836646352" />
     <state x="502" y="230" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595831330530">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -704,10 +700,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="449" y="159" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.864@0.0.1536.864" timestamp="1595571691721" />
-    <state x="534" y="373" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1594114698395">
+    <state x="534" y="373" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1595843566546">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="534" y="373" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.864@0.0.1536.864" timestamp="1594114698395" />
+    <state x="534" y="373" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.864@0.0.1536.864" timestamp="1595843566546" />
     <state x="216" y="322" width="514" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1594118024272">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -728,18 +724,18 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="499" y="179" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.864@0.0.1536.864" timestamp="1595643314086" />
-    <state x="529" y="366" width="642" height="498" key="#xdebugger.evaluate" timestamp="1595569991388">
+    <state x="590" y="366" width="642" height="498" key="#xdebugger.evaluate" timestamp="1595845538852">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="529" y="366" width="642" height="498" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1595569991388" />
+    <state x="590" y="366" width="642" height="498" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1595845538852" />
     <state x="516" y="303" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1594257173593">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="516" y="303" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.864@0.0.1536.864" timestamp="1594257173593" />
-    <state width="966" height="608" key="DebuggerActiveHint" timestamp="1595817759018">
+    <state width="966" height="608" key="DebuggerActiveHint" timestamp="1595844929756">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="966" height="608" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1595817759018" />
+    <state width="966" height="608" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1595844929756" />
     <state x="93" y="93" width="1350" height="678" key="DiffContextDialog" timestamp="1592985206773">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -753,46 +749,46 @@
     </state>
     <state x="162" y="215" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587256669541" />
     <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1594365223918" />
-    <state width="1493" height="657" key="GridCell.Tab.0.bottom" timestamp="1595831153600">
+    <state width="1493" height="231" key="GridCell.Tab.0.bottom" timestamp="1595845669589">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="657" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595831153600" />
-    <state width="1493" height="657" key="GridCell.Tab.0.center" timestamp="1595831153599">
+    <state width="1493" height="231" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595845669589" />
+    <state width="1493" height="231" key="GridCell.Tab.0.center" timestamp="1595845669589">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="657" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1595831153599" />
-    <state width="1493" height="657" key="GridCell.Tab.0.left" timestamp="1595831153599">
+    <state width="1493" height="231" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1595845669589" />
+    <state width="1493" height="231" key="GridCell.Tab.0.left" timestamp="1595845669589">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="657" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1595831153599" />
-    <state width="1493" height="657" key="GridCell.Tab.0.right" timestamp="1595831153599">
+    <state width="1493" height="231" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1595845669589" />
+    <state width="1493" height="231" key="GridCell.Tab.0.right" timestamp="1595845669589">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="657" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1595831153599" />
-    <state width="1493" height="657" key="GridCell.Tab.1.bottom" timestamp="1595831153600">
+    <state width="1493" height="231" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1595845669589" />
+    <state width="1493" height="231" key="GridCell.Tab.1.bottom" timestamp="1595845669590">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587256556414" />
-    <state width="1493" height="657" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595831153600" />
-    <state width="1493" height="657" key="GridCell.Tab.1.center" timestamp="1595831153600">
+    <state width="1493" height="231" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595845669590" />
+    <state width="1493" height="231" key="GridCell.Tab.1.center" timestamp="1595845669590">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1587256556414" />
-    <state width="1493" height="657" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1595831153600" />
-    <state width="1493" height="657" key="GridCell.Tab.1.left" timestamp="1595831153600">
+    <state width="1493" height="231" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1595845669590" />
+    <state width="1493" height="231" key="GridCell.Tab.1.left" timestamp="1595845669589">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
-    <state width="1493" height="657" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1595831153600" />
-    <state width="1493" height="657" key="GridCell.Tab.1.right" timestamp="1595831153600">
+    <state width="1493" height="231" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1595845669589" />
+    <state width="1493" height="231" key="GridCell.Tab.1.right" timestamp="1595845669590">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="249" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1587256556414" />
-    <state width="1493" height="657" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1595831153600" />
+    <state width="1493" height="231" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1595845669590" />
     <state x="349" y="175" key="IDE.errors.dialog" timestamp="1592532045552">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -810,10 +806,10 @@
     </state>
     <state x="0" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1587210233245" />
     <state x="73" y="77" width="981" height="707" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1594366010562" />
-    <state width="389" height="437" key="XDebugger.FullValuePopup" timestamp="1592898721835">
+    <state width="389" height="437" key="XDebugger.FullValuePopup" timestamp="1595843819253">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="389" height="437" key="XDebugger.FullValuePopup/0.0.1536.864@0.0.1536.864" timestamp="1592898721835" />
+    <state width="389" height="437" key="XDebugger.FullValuePopup/0.0.1536.864@0.0.1536.864" timestamp="1595843819253" />
     <state x="548" y="277" key="cloudConfig.PluginsDialog" timestamp="1591327939937">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -834,10 +830,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="472" y="159" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.864@0.0.1536.864" timestamp="1594110524873" />
-    <state x="427" y="346" width="538" height="494" key="extract.method.dialog" timestamp="1592790491778">
+    <state x="427" y="346" width="538" height="494" key="extract.method.dialog" timestamp="1595838392484">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="427" y="346" width="538" height="494" key="extract.method.dialog/0.0.1536.864@0.0.1536.864" timestamp="1592790491778" />
+    <state x="427" y="346" width="538" height="494" key="extract.method.dialog/0.0.1536.864@0.0.1536.864" timestamp="1595838392484" />
     <state x="425" y="70" key="ftp.server.browser" timestamp="1592829078170">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -929,6 +925,16 @@
           <line>80</line>
           <option name="timeStamp" value="238" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/GPUKernelForHGA.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="257" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/HGA.java</url>
+          <line>345</line>
+          <option name="timeStamp" value="258" />
+        </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/resources/Alignment/Blast/BLASTSpec.java</url>
           <line>61</line>
@@ -936,6 +942,12 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>jar://$MAVEN_REPOSITORY$/org/jblas/jblas/1.2.4/jblas-1.2.4-sources.jar!/org/jblas/DoubleMatrix.java</url>
+          <line>296</line>
+          <properties field="length" class="org.jblas.DoubleMatrix" />
+          <option name="timeStamp" value="259" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
