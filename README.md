@@ -48,7 +48,7 @@ In your server command line, input the follow command
 nohup mvn clean test -Dtest=Algorithms.Graph.HGA.HGARunSpec#<test> &
 ```
 
-< test > can be any junit test class method, for example:
+< test > can be any junit test class method, for example, < test > can be run_yeast like example below:
 
 ```java
  @Test
@@ -121,6 +121,28 @@ INFO: output matrix
 Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
 ```
+
+### GPU acceleration 
+
+The algorithm is still complicated as updating the matrix with topological information will be tedious. The time complexity will be (n*m)^2, for more information on how to implement this method, please visit my blog [here](http://www.haotian.life/2020/07/28/new-feature-gpu-for-hga/).
+
+```
+@Test
+void run_test_GPU() throws IOException {
+        GraphFileReader reader = new GraphFileReader(true, false, false);
+        undG1 = reader.readToUndirectedGraph("src/test/java/resources/AlgTest/HGA/graph1.txt", false);
+        undG2 = reader.readToUndirectedGraph("src/test/java/resources/AlgTest/HGA/graph2.txt", false);
+        reader.setRecordNeighbors(false);
+        simMat = reader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt", undG1.getAllNodes(), undG2.getAllNodes(), true);
+        hga = new HGA(simMat, undG1, undG2, 0.5,true,0.5,0.01);
+        HGA.GPU = true;
+        hga.run();
+}
+```
+
+To enable GPU, just set HGA.GPU to true, but you should firstly make sure both drivers and environments have been properly set up. There are ample resources on the topic of how to make GPU work, and I will not explain it further.
+
+ 
 
 You could contact me by bht98@i.shu.edu.cn  if there is some thorny problems you encounter.
 

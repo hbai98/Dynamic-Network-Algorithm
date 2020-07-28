@@ -21,23 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HGALogFile.log" beforeDir="false" afterPath="$PROJECT_DIR$/HGALogFile.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HGALogFile.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/HGALogFile.log.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HGALogFile.log.lck" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/Utils/SimMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/Utils/SimMat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/IO/GraphFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/IO/GraphFileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_56.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_57.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/Jupiter/data/mapping/mapping_58.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/SimMat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/SimMat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/GraphFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/GraphFileReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -504,7 +488,8 @@
       <workItem from="1595636981396" duration="11819000" />
       <workItem from="1595852015257" duration="8864000" />
       <workItem from="1595895001199" duration="13189000" />
-      <workItem from="1595913606966" duration="4746000" />
+      <workItem from="1595913606966" duration="5440000" />
+      <workItem from="1595940722894" duration="799000" />
     </task>
     <task id="LOCAL-00001" summary="Undergo optimization">
       <created>1592205562105</created>
@@ -753,22 +738,22 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1594365223918" />
-    <state width="1493" height="386" key="GridCell.Tab.0.bottom" timestamp="1595919154182">
+    <state width="1493" height="374" key="GridCell.Tab.0.bottom" timestamp="1595919696493">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="386" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595919154182" />
-    <state width="1493" height="386" key="GridCell.Tab.0.center" timestamp="1595919154182">
+    <state width="1493" height="374" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1595919696493" />
+    <state width="1493" height="374" key="GridCell.Tab.0.center" timestamp="1595919696493">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="386" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1595919154182" />
-    <state width="1493" height="386" key="GridCell.Tab.0.left" timestamp="1595919154182">
+    <state width="1493" height="374" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1595919696493" />
+    <state width="1493" height="374" key="GridCell.Tab.0.left" timestamp="1595919696493">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="386" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1595919154182" />
-    <state width="1493" height="386" key="GridCell.Tab.0.right" timestamp="1595919154182">
+    <state width="1493" height="374" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1595919696493" />
+    <state width="1493" height="374" key="GridCell.Tab.0.right" timestamp="1595919696493">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="386" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1595919154182" />
+    <state width="1493" height="374" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1595919696493" />
     <state width="1493" height="271" key="GridCell.Tab.1.bottom" timestamp="1595910252891">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
