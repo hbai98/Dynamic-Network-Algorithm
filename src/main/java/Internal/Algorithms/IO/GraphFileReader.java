@@ -6,11 +6,13 @@ import Internal.Algorithms.Graph.Utils.AdjList.SimList;
 import Internal.Algorithms.Graph.Utils.AdjList.UndirectedGraph;
 import Internal.Algorithms.Graph.Utils.SimMat;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import javax.print.DocFlavor;
 import java.io.*;
 import java.util.Collections;
 import java.util.HashMap;
@@ -102,6 +104,7 @@ public class GraphFileReader extends AbstractFileReader {
             throw new IOException("Your excel file should be in format of .xlsx or .xls");
         }
         Sheet sheet = wb.getSheetAt(0);
+        DataFormatter formatter = new DataFormatter();
         SimMat simMat = new SimMat(graph1,graph2);
         for (Row row : sheet) {   //iteration over row using for each loop
             init();
@@ -110,8 +113,8 @@ public class GraphFileReader extends AbstractFileReader {
             }
             double val = row.getCell(2).getNumericCellValue();
             double eValue = 1 / (1 - 1 / Math.log(val));
-            simMat.put(row.getCell(0).getStringCellValue(),
-                    row.getCell(1).getStringCellValue(),
+            simMat.put(formatter.formatCellValue(row.getCell(0)),
+                    formatter.formatCellValue(row.getCell(1)),
                     eValue);
         }
         return simMat;

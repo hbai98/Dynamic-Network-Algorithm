@@ -318,8 +318,8 @@ public class HGA {
 
     private static void gpuforhga(SimMat preMat) {
         // get nodes in order that double[] out can be visit by out[i,j]
-        Set<String> nodes1 = preMat.getOrderedNodesIndex_row();
-        Set<String> nodes2 = preMat.getOrderedNodesIndex_col();
+        Set<String> nodes1 = preMat.getRowMap().keySet();
+        Set<String> nodes2 = preMat.getColMap().keySet();
         // prepare the input indexes for all neighbors and all non neighbors
         // map
         HashMap<String, Integer> rowMap = preMat.getRowMap();

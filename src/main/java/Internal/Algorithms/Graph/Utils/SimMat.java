@@ -30,6 +30,7 @@ public class SimMat {
         getIndexNameMap();
     }
 
+
     private void initRowColMap(HashSet<String> graph1Nodes, HashSet<String> graph2Nodes) {
         int i = 0;
         for (String node : graph1Nodes) {
@@ -68,15 +69,15 @@ public class SimMat {
 
     }
 
-
     public void put(String node1, String node2, double val) {
         updateNonZerosForRow(node1, node2, val);
-        if(!rowMap.containsKey(node1)||!colMap.containsKey(node2)){
-            throw new IllegalArgumentException("The similarity matrix doesn't contain all nodes in graphs.");
+        // only input the nodes in need
+        if(rowMap.containsKey(node1)&&colMap.containsKey(node2)){
+            int i = rowMap.get(node1);
+            int j = colMap.get(node2);
+            mat.put(i, j, val);
         }
-        int i = rowMap.get(node1);
-        int j = colMap.get(node2);
-        mat.put(i, j, val);
+
     }
 
     private void updateNonZerosForRow(String node1, String node2, double val) {
@@ -359,25 +360,5 @@ public class SimMat {
         SimMat H = getPart(rows, getColSet());
         SimMat G = getPart(left, getColSet());
         return new Pair<>(H, G);
-    }
-
-    /**
-     * get nodes index ordered -> 0,1,2,3...n-1 -> n1,n2,n3...
-     * @param map map to handle
-     * @return nodes in order
-     */
-    private Set<String> getOrderedNodesIndex(HashMap<Integer,String> map){
-        HashSet<String> res = new HashSet<>();
-        for (int i = 0; i < map.size(); i++) {
-            res.add(map.get(i));
-        }
-        return res;
-    }
-    public Set<String> getOrderedNodesIndex_row(){
-        return getOrderedNodesIndex(rowIndexNameMap);
-    }
-
-    public Set<String> getOrderedNodesIndex_col(){
-        return getOrderedNodesIndex(colIndexNameMap);
     }
 }

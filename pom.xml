@@ -21,7 +21,8 @@
         <commons-io.version>2.5</commons-io.version>
         <tablesaw.version>LATEST</tablesaw.version>
         <commons-csv.version>1.8</commons-csv.version>
-        <tornado.version>0.7</tornado.version>
+        <aparapi.version>2.0.0</aparapi.version>
+        <commons-lang3.version>3.11</commons-lang3.version>
         <!--plugins versions-->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
@@ -162,12 +163,12 @@
         <dependency>
             <groupId>com.aparapi</groupId>
             <artifactId>aparapi</artifactId>
-            <version>2.0.0</version>
+            <version>${aparapi.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.11</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
     </dependencies>
 
