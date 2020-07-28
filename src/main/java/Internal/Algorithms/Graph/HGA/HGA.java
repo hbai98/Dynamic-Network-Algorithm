@@ -69,7 +69,7 @@ public class HGA {
     private Stack<Double> stackScore;
     private static double sumPreSimMat;
     //----------limit-----
-    private final int splitLimit = 20;
+    private static final int splitLimit = 20;
     private int iterCount = 0;
     private int iterMax = 1000;
     //--------------debug---------------
@@ -120,7 +120,7 @@ public class HGA {
      *
      * @return the mapping result
      */
-    protected HashMap<String, String> getMappingFromHA(SimMat simMat) {
+    protected static HashMap<String, String> getMappingFromHA(SimMat simMat) {
         logInfo("Hungarian mapping...");
         Hungarian hungarian = new Hungarian(simMat, Hungarian.ProblemType.maxLoc);
         hungarian.run();
@@ -147,7 +147,7 @@ public class HGA {
      * @param toMap      matrix for hga mapping
      * @param splitLimit if index graph nodes is less than this limit, use the hungarian directly
      */
-    protected HashMap<String, String> remapping(SimMat toMap, int splitLimit) {
+    protected static HashMap<String, String> remapping(SimMat toMap, int splitLimit) {
         assert (toMap != null);
         logInfo("Selecting " + hAccount * 100 + "% of rows for Hungarian allocation, and the left " + (100 - hAccount * 100) + "% for Greedy mapping.");
         if (udG1.getAllNodes().size() < splitLimit && udG2.getAllNodes().size() < splitLimit) {
@@ -199,7 +199,7 @@ public class HGA {
      *
      * @param mapping current mapping result, and one edge means the srcNode and tgtNode has already mapped, srcNode ->graph1, tgtNode -> graph2
      */
-    protected void updatePairNeighbors(HashMap<String, String> mapping) {
+    protected static void updatePairNeighbors(HashMap<String, String> mapping) {
         logInfo("adjust neighborhood similarity based on mapping result...");
         NBM.neighborSimAdjust(udG1, udG2, simMat, mapping);
     }
@@ -231,7 +231,7 @@ public class HGA {
      * @param node1 one node from the graph1
      * @param node2 one node from the graph2
      */
-    public static void addTopology(String node1, String node2, SimMat preMat, SimMat originalMat) {
+    public static void addTopology(String node1, String node2, SimMat preMat) {
         Set<String> neighbors_1 = udG1.getNebs(node1);
         Set<String> neighbors_2 = udG2.getNebs(node2);
         // compute topologyInfo
@@ -312,13 +312,14 @@ public class HGA {
             gpuforhga(preSimMat);
         } else {
             logInfo("AddTopology for all nodes pairs in two graphs with the CPU parallel programming:");
-            nodes1.parallelStream().forEach(n1 -> nodes2.forEach(n2 -> addTopology(n1, n2, preSimMat, originalMat)));
+            nodes1.parallelStream().forEach(n1 -> nodes2.forEach(n2 -> addTopology(n1, n2, preSimMat)));
         }
     }
 
     private static void gpuforhga(SimMat preMat) {
-        Set<String> nodes1 = preMat.getRowSet();
-        Set<String> nodes2 = preMat.getColSet();
+        // get nodes in order that double[] out can be visit by out[i,j]
+        Set<String> nodes1 = preMat.getOrderedNodesIndex_row();
+        Set<String> nodes2 = preMat.getOrderedNodesIndex_col();
         // prepare the input indexes for all neighbors and all non neighbors
         // map
         HashMap<String, Integer> rowMap = preMat.getRowMap();
@@ -327,32 +328,45 @@ public class HGA {
         Vector<Integer> nei_x = new Vector<>();
         Vector<Integer> nei_y = new Vector<>();
         // every node possibly share various number of neighbors, record the start
-        final int[] start_x = new int[nodes1.size()+1];
-        final int[] start_y = new int[nodes2.size()+1];
+        final int[] start_x = new int[nodes1.size() + 1];
+        final int[] start_y = new int[nodes2.size() + 1];
         // so (i,j) in simMat -> int[] neighbors = nei_x[start_x[i],start_x[i+1]) and nei_y[start_y[j],start_y[j+1])
         // int[] non-neighbors = [0,n-1]-nei_x[start_x[i],start_x[i+1]) and [0,m-1]-nei_y[start_y[j],start_y[j+1])
-        // tolerance = 0.01, there is no need to use double
         // result to be polished
         float[] out =  Floats.toArray(Doubles.asList(simMat.getMat().data));
         // preMat data
-        final float[] pre = Floats.toArray(Doubles.asList(preMat.getMat().data));
+        final float[] pre =  Floats.toArray(Doubles.asList(preMat.getMat().data));
         // original data
-        final float[] ori = Floats.toArray(Doubles.asList(originalMat.getMat().data));
+        final float[] ori =  Floats.toArray(Doubles.asList(originalMat.getMat().data));
         // initialize nei_x
         initNeighborToArray(nodes1, udG1, rowMap, nei_x, start_x);
         // initialize nei_y
         initNeighborToArray(nodes2, udG2, colMap, nei_y, start_y);
 
         GPUKernelForHGA kernel = new GPUKernelForHGA(
-                pre,ori,out, // 3 matrixes
+                pre,ori,out, // 3 matrixs
                 nei_x,start_x, // graph1 neighbors
                 nei_y,start_y, // graph2 neighbors
                 sumPreSimMat, // sum of mat
                 (float) bioFactor);
-        Device device = Device.bestGPU();
-        Range range = device.createRange(nodes1.size()*nodes2.size());
-        kernel.execute(range);
+        Range range = Range.create(nodes1.size()*nodes2.size(),1);
+        kernel.execute(range).get(out);
+        simMat.getMat().data = Doubles.toArray(Floats.asList(out));
         kernel.dispose();
+    }
+
+
+
+    private static boolean isIn(int i, int[] s,int[] nei,int l) {
+        if(i==l){
+            return true;
+        }
+        for (int j = s[l]; j < s[l + 1]; j++) {
+            if (i == nei[j]) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static void initNeighborToArray(Set<String> nodes, UndirectedGraph g, HashMap<String, Integer> map, Vector<Integer> neis, int[] starts) {
@@ -361,7 +375,7 @@ public class HGA {
         nodes.forEach(n1 -> {
             Set<String> nei = g.getNebs(n1);
             nei.forEach(n -> neis.add(map.get(n)));
-            starts[c.get()] = nei.size() + starts[c.get()-1];
+            starts[c.get()] = nei.size() + starts[c.get() - 1];
             c.getAndIncrement();
         });
     }
@@ -607,7 +621,7 @@ public class HGA {
     /**
      * @return full mapping result
      */
-    private HashMap<String, String> remap(SimMat toRemap, HashMap<String, String> forced) {
+    protected static HashMap<String, String> remap(SimMat toRemap, HashMap<String, String> forced) {
 //        int h = getHByAccount();
         logInfo("Remapping...");
         // regain from file, and there is no remap part, retain.
@@ -642,7 +656,7 @@ public class HGA {
     /**
      * @return forceMap, remap
      */
-    private Pair<HashMap<String, String>, SimMat> getRemapForForced() {
+    protected static Pair<HashMap<String, String>, SimMat> getRemapForForced() {
         // row to map
         Set<String> rowToMap = simMat.getRowSet();
         rowToMap.removeAll(simMat.getColSet());

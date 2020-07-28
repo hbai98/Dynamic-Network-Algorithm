@@ -360,4 +360,24 @@ public class SimMat {
         SimMat G = getPart(left, getColSet());
         return new Pair<>(H, G);
     }
+
+    /**
+     * get nodes index ordered -> 0,1,2,3...n-1 -> n1,n2,n3...
+     * @param map map to handle
+     * @return nodes in order
+     */
+    private Set<String> getOrderedNodesIndex(HashMap<Integer,String> map){
+        HashSet<String> res = new HashSet<>();
+        for (int i = 0; i < map.size(); i++) {
+            res.add(map.get(i));
+        }
+        return res;
+    }
+    public Set<String> getOrderedNodesIndex_row(){
+        return getOrderedNodesIndex(rowIndexNameMap);
+    }
+
+    public Set<String> getOrderedNodesIndex_col(){
+        return getOrderedNodesIndex(colIndexNameMap);
+    }
 }

@@ -4,6 +4,7 @@ import Internal.Algorithms.Graph.Utils.AdjList.UndirectedGraph;
 import Internal.Algorithms.Graph.Utils.SimMat;
 import Internal.Algorithms.IO.GraphFileReaderSpec;
 import Internal.Algorithms.IO.GraphFileReader;
+import org.jgrapht.alg.util.Pair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.HashMap;
 
+import static Internal.Algorithms.Graph.HGA.HGA.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("The HGA is able to ")
@@ -54,7 +56,10 @@ class HGASpec extends GraphFileReaderSpec {
     @DisplayName("topo")
     @Test
     void topo() {
-//        hga.addTopology("A", "I",simMat);
+        Pair<HashMap<String, String>, SimMat> init = getRemapForForced();
+        HGA.mapping = remap(init.getSecond(), init.getFirst());
+        updatePairNeighbors(HGA.mapping);
+        hga.addTopology("A", "Q",HGA.simMat);
 //        assertEquals((5.2 / 12 + 5.7 / 18) / 2 / 2, hga.simMat.getVal("A", "I"));
     }
 
@@ -86,7 +91,7 @@ class HGASpec extends GraphFileReaderSpec {
         mapping.put("Q", "W");
         mapping.put("I", "H");
         mapping.put("G", "M");
-        hga.updatePairNeighbors(mapping);
+        updatePairNeighbors(mapping);
     }
 
 //    @DisplayName("get h by account")

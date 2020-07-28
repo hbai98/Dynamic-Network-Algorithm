@@ -81,7 +81,8 @@ public class UndirectedGraph extends AbstractAdjList implements Graph {
     }
 
     public Set<String> getNebs(String node) {
-        return this.get(rowMap.get(node)).stream().map(Node::getStrName).collect(Collectors.toSet());
+        Set<String> nei =  this.get(rowMap.get(node)).stream().map(Node::getStrName).collect(Collectors.toSet());
+        return nei;
     }
 
     @Override
