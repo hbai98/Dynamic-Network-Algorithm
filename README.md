@@ -6,7 +6,7 @@ This is a repository written in my experiments for several algorithms.
 
 Obtain reliable and optimal mapping between networks concerning about protein sequences and topological similarity  
 
-![test](README.assets/test2-1594604673886.png)
+
 
 <img src="README.assets/image-20200608122144302.png" alt="image-20200608122144302" style="zoom: 67%;" />
 
@@ -142,7 +142,7 @@ void run_test_GPU() throws IOException {
 
 To enable GPU, just set HGA.GPU to true, but you should firstly make sure both drivers and environments have been properly set up. There are ample resources on the topic of how to make GPU work, and I will not explain it further.
 
- 
+
 
 You could contact me by bht98@i.shu.edu.cn  if there is some thorny problems you encounter.
 
