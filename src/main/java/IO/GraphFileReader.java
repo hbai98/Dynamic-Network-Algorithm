@@ -2,15 +2,11 @@ package IO;
 
 import DS.Network.UndirectedGraph;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Vector;
 
 import static org.apache.commons.lang3.StringUtils.isNumeric;
-
 
 
 /**
@@ -29,7 +25,7 @@ import static org.apache.commons.lang3.StringUtils.isNumeric;
  */
 @SuppressWarnings("unchecked")
 public class GraphFileReader<V, E> extends AbstractFileReader {
-    private UndirectedGraph<V, E> udG;
+    private final UndirectedGraph<V, E> udG;
     Class<V> vertexClass;
     Class<E> edgeClass;
 
@@ -79,12 +75,10 @@ public class GraphFileReader<V, E> extends AbstractFileReader {
      *     The third line indicates how to specify a node that has no relationships with other nodes.
      * </p>
      *
-     * <p>NOTICE:add() -> use sortAdd()</p>
-     *
-     * @param simMat  EdgeList to contain result
+     * @param graph   graph
      * @param sifLine result very line
      */
-    private void parseForSimMat(SimMat simMat, Vector<String> sifLine) throws IOException {
+    private void parseForGraph(UndirectedGraph<V, E> graph, Vector<V> sifLine) throws IOException {
 
         int sifSize = sifLine.size();
         if (sifSize == 0) {
@@ -92,25 +86,11 @@ public class GraphFileReader<V, E> extends AbstractFileReader {
         }
         if (sifSize == 2) {
             // node1 node1 val1 // a circle
-            String name = sifLine.get(0);
-            if (isNumeric(sifLine.get(1))) {
-                double weight = Double.parseDouble(sifLine.get(1));
-                if (weight != 0) {
-                    simMat.put(name, name, weight);
-                }
-                // record if required
-                record(name, name, weight);
-            }
-            // node1 node2
-            else {
-                String targetName = sifLine.get(1);
-                if (isIdentifier(targetName)) {
-                    // record if required
-                    record(name, targetName, 0.);
-                } else {
-                    throw new IOException("nodes' name are not correct.");
-                }
-            }
+            V src = sifLine.get(0);
+            V tgt = sifLine.get(1);
+            graph.addVertex(src);
+            graph.addVertex(tgt);
+            graph.addEdge(src, tgt);
         } else if ((sifSize - 1) % 2 != 0 || sifSize == 1) {
             throw new IOException("The file reader format is not correct.");
         } else {

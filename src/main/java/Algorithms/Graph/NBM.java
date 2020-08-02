@@ -50,7 +50,7 @@ public class NBM<V, E> {
     private final UndirectedGraph<V, E> udG1;
     private final UndirectedGraph<V, E> udG2;
     private final HashMap<V, V> mapping;
-    private SimMat<V> simMat;
+    private final SimMat<V> simMat;
 
     public NBM(UndirectedGraph<V, E> udG1,
                UndirectedGraph<V, E> udG2,

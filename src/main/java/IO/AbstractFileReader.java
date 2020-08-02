@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public abstract class AbstractFileReader {
     protected BufferedReader reader;
-    String inputFilePath;
+    protected String inputFilePath;
     protected Pattern splitter;
 
     public AbstractFileReader() {

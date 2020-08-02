@@ -1,6 +1,6 @@
-package Internal.Algorithms.IO;
+package IO;
 
-import Internal.Algorithms.DS.Network.SimMat;
+import DS.Network.SimMat;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
@@ -20,7 +20,7 @@ import static org.apache.commons.lang3.StringUtils.isNumeric;
  * Mainly for test.
  */
 @SuppressWarnings("unchecked")
-public class SimMatReader<V> extends AbstractFileReader{
+public class SimMatReader<V> extends AbstractFileReader {
     public final Class<V> typeParameterClass;
     private final SimMat<V> simMat;
 
