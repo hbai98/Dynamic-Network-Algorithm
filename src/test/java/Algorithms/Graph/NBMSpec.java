@@ -1,10 +1,18 @@
 //package Algorithms.Graph;
 //
+<<<<<<< Updated upstream:src/test/java/Algorithms/Graph/NBMSpec.java
 //import Algorithms.Graph.Network.EdgeHashSet;
 //import Algorithms.Graph.Utils.AdjList.SimList;
 //import IO.GraphFileReader;
 //import Algorithms.Graph.Network.Edge;
 //import Algorithms.Graph.Network.Node;
+=======
+//import Internal.Algorithms.DS.Network.EdgeHashSet;
+//import Internal.Algorithms.DS.Network.AdjList.SimList;
+//import Internal.Algorithms.IO.GraphFileReader;
+//import Internal.Algorithms.DS.Network.Edge;
+//import Internal.Algorithms.DS.Network.Node;
+>>>>>>> Stashed changes:src/test/java/Internal/Algorithms/Graph/NBMSpec.java
 //import org.jgrapht.alg.util.Pair;
 //import org.junit.jupiter.api.BeforeEach;
 //import org.junit.jupiter.api.DisplayName;
