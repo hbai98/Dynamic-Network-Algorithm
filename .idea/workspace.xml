@@ -19,10 +19,17 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:v0.1" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0eab06f4-eb41-439b-ad1f-848e9bceb466" name="Default Changelist" comment="">
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
       <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_0.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_1.txt" afterDir="false" />
@@ -139,6 +146,72 @@
       <change beforePath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/Graph/Utils/hNodeListSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/Graph/Utils/hNodeListSpec.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/IO/GraphFileReaderSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/IO/GraphFileReaderSpec.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/tools/MatrixFunctionsSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Internal/Algorithms/tools/MatrixFunctionsSpec.java" afterDir="false" />
+>>>>>>> Stashed changes
+=======
+      <change afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/GPUKernelForHGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/GPUKernelForHGA.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Hungarian$ProblemType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Hungarian$ProblemType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Hungarian$ZeroMasks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Hungarian$ZeroMasks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Hungarian.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Hungarian.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/NBM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/NBM.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Network/AbstractAdjList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Network/AbstractAdjList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Network/Edge$Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Network/Edge$Type.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Network/Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Network/Edge.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Network/EdgeHashSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Network/EdgeHashSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Network/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Network/Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Network/NodeList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Network/NodeList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/AdjList/DirectedGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/AdjList/DirectedGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/AdjList/SimList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/AdjList/SimList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/AdjList/UndirectedGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/AdjList/UndirectedGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/Edge/CpEdge$Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/Edge/CpEdge$Type.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/Edge/CpEdge.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/Edge/CpEdge.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/Edge/PairedEdges.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/Edge/PairedEdges.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/List/HNodeList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/List/HNodeList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/SimMat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Graph/Utils/SimMat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/AbstractFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/AbstractFileReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/AbstractFileWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/AbstractFileWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/CsvToAdjList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/CsvToAdjList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/CsvToSimListTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/CsvToSimListTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/DoubleMatrixReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/DoubleMatrixReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/GraphFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/GraphFileReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/GraphFileWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/GraphFileWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/MappingResultReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/IO/MappingResultReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Set/FD.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Set/FD.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Tools/CudaUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Tools/CudaUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Tools/Functions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Tools/Functions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Tools/Logger.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Tools/Logger.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Tools/MatrixFunctions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Tools/MatrixFunctions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Tools/Stopwatch.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Internal/Algorithms/Tools/Stopwatch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/Tree/ChildNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UI/Tree/ChildNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/Tree/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UI/Tree/Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/Tree/RootNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UI/Tree/RootNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/TreeTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UI/TreeTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HGA/HGARunSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HGA/HGARunSpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HGA/HGASpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HGA/HGASpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HGA/Human_YeastSub38NTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HGA/Human_YeastSub38NTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HungarianSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/HungarianSpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Network/EdgeHashSetSpec$FuncTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Network/EdgeHashSetSpec$FuncTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Network/EdgeHashSetSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Network/EdgeHashSetSpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Network/EdgeSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Network/EdgeSpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Network/NodeListSpec$Other.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Network/NodeListSpec$Other.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Network/NodeListSpec$functionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Network/NodeListSpec$functionTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Network/NodeListSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Network/NodeListSpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Network/NodeSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Network/NodeSpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Utils/AdjList/UndirectedGraphTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Utils/AdjList/UndirectedGraphTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Utils/SimMatTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Utils/SimMatTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Utils/hNodeListSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Graph/Utils/hNodeListSpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/IO/GraphFileReaderSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/IO/GraphFileReaderSpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/IO/GraphFileWriterSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/IO/GraphFileWriterSpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Set/FDTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/Set/FDTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/tools/GPUKernelForHGATest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/tools/GPUKernelForHGATest$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/tools/GPUKernelForHGATest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/tools/GPUKernelForHGATest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/tools/MatrixFunctionsSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Internal/Algorithms/tools/MatrixFunctionsSpec.class" afterDir="false" />
 >>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -266,6 +339,13 @@
       <recent name="Algorithms.Alignment.IO" />
       <recent name="tutorial" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Development\Algorithms\src\test\java\Internal\Algorithms\IO" />
+      <recent name="D:\Development\Algorithms\src" />
+      <recent name="D:\Development\Algorithms\src\test\java\resources\AlgTest\HGA" />
+      <recent name="D:\Development\Algorithms\src\test\java\resources" />
+      <recent name="D:\Development\Algorithms\src\main\resources\IO" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
@@ -282,6 +362,11 @@
       <recent name="Internal.Algorithms.IO" />
       <recent name="Internal.Algorithms.Graph" />
       <recent name="Internal.Algorithms" />
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+      <recent name="Algorithms.Graph.HGA" />
+      <recent name="Algorithms.Graph.Utils" />
 >>>>>>> Stashed changes
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -324,7 +409,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< Updated upstream
     <configuration name="HGASpc.clean" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+=======
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GPUKernelForHGATest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+>>>>>>> Stashed changes
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
@@ -688,7 +790,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="v0.1" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -842,6 +956,7 @@
     <state x="549" y="130" key="FileChooserDialogImpl" timestamp="1592824810025">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
+<<<<<<< Updated upstream
     <state x="162" y="215" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587256669541" />
     <state x="549" y="130" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1592824810025" />
     <state width="1493" height="349" key="GridCell.Tab.0.bottom" timestamp="1592919687681">
@@ -850,6 +965,14 @@
     <state width="1493" height="249" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587256556413" />
     <state width="1493" height="349" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1592919687681" />
     <state width="1493" height="349" key="GridCell.Tab.0.center" timestamp="1592919687681">
+=======
+    <state width="966" height="699" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1595907184099" />
+    <state x="93" y="93" width="1350" height="678" key="DiffContextDialog" timestamp="1596369641617">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="93" y="93" width="1350" height="678" key="DiffContextDialog/0.0.1536.864@0.0.1536.864" timestamp="1596369641617" />
+    <state x="93" y="93" width="1350" height="678" key="DirDiffDialog" timestamp="1592986405910">
+>>>>>>> Stashed changes
       <screen x="0" y="0" width="1536" height="864" />
     </state>
 <<<<<<< Updated upstream
@@ -1113,6 +1236,7 @@
           <option name="timeStamp" value="219" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+<<<<<<< Updated upstream
           <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java</url>
           <line>241</line>
           <option name="timeStamp" value="220" />
@@ -1121,6 +1245,11 @@
           <url>file://$PROJECT_DIR$/src/test/java/Internal/Algorithms/DS/Network/Extend/Network/EdgeHashSetSpec.java</url>
           <line>40</line>
           <option name="timeStamp" value="116" />
+=======
+          <url>file://$PROJECT_DIR$/src/main/java/Internal/Algorithms/Graph/HGA/HGA.java</url>
+          <line>318</line>
+          <option name="timeStamp" value="325" />
+>>>>>>> Stashed changes
         </line-breakpoint>
 >>>>>>> Stashed changes
         <line-breakpoint type="java-method">
@@ -1141,7 +1270,11 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <SUITE FILE_PATH="coverage/Algorithms$Human_YeastSub38NTest_topo.ic" NAME="Human_YeastSub38NTest.topo Coverage Results" MODIFIED="1592536351513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+=======
+    <SUITE FILE_PATH="coverage/Algorithms$HGASpc_run.ic" NAME="HGASpc.run Coverage Results" MODIFIED="1592809996988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+>>>>>>> Stashed changes
 =======
     <SUITE FILE_PATH="coverage/Algorithms$HGASpc_run.ic" NAME="HGASpc.run Coverage Results" MODIFIED="1592809996988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
 >>>>>>> Stashed changes
