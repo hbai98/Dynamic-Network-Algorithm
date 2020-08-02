@@ -1,4 +1,4 @@
-package Internal.Algorithms.DS.Network;
+package DS.Network;
 
 import java.util.Set;
 

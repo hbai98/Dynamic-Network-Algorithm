@@ -1,22 +1,12 @@
 package Algorithms.Graph;
 
 
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/NBM.java
-import Algorithms.Graph.Network.Edge;
-import Algorithms.Graph.Network.EdgeHashSet;
-import Algorithms.Graph.Network.Node;
-import Algorithms.Graph.Utils.AdjList.Graph;
-import Algorithms.Graph.Utils.SimMat;
-import org.jgrapht.alg.util.Triple;
-=======
-import Internal.Algorithms.DS.Network.SimMat;
-import Internal.Algorithms.DS.Network.UndirectedGraph;
-import org.jgrapht.graph.DefaultEdge;
-import org.jgrapht.graph.SimpleGraph;
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/NBM.java
+import DS.Network.SimMat;
+import DS.Network.UndirectedGraph;
 
 import java.util.*;
 import java.util.stream.Collectors;
+
 
 /**
  * H. He and A. K.Singh, “Closure-Tree: An index structure for graph
@@ -55,18 +45,7 @@ import java.util.stream.Collectors;
  * all vertices in graph G1 have been matched.
  * </p>
  */
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/NBM.java
-public class NBM {
-    protected SimMat simList;
-    // --------------------------------------------> alg variables
-    protected HashMap<String, Node> mostSimPairMap;
-    protected PriorityQueue<Edge> pqEdge;
-    protected EdgeHashSet preMap;
-    protected Graph graph1;
-    protected Graph graph2;
-=======
 public class NBM<V, E> {
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/NBM.java
 
     private final UndirectedGraph<V, E> udG1;
     private final UndirectedGraph<V, E> udG2;
@@ -89,14 +68,7 @@ public class NBM<V, E> {
      * reward is defined in HGA.
      * Notice : this method return the result associated with the order mapping is iterated.
      */
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/NBM.java
-    public static void neighborSimAdjust(Graph graph1, Graph graph2, SimMat simMat, HashMap<String, String> mapping) {
-        // distinguish the result simMat from the indexing one
-        HashMap<String, HashSet<String>> neb1Map = graph1.getNeighborsMap();
-        HashMap<String, HashSet<String>> neb2Map = graph2.getNeighborsMap();
-=======
     public void neighborSimAdjust() {
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/NBM.java
         // sort the mapping pairs to add topological effect for the pair with higher similarity first,
         // and it will alleviate the impact brought by update similarity matrix in various orders.
         List<Map.Entry<V, V>> toAdjust = mapping.entrySet().stream()
@@ -109,19 +81,11 @@ public class NBM<V, E> {
             V node2 = entry.getValue();
             double simUV = simMat.getVal(node1, node2);
             // direct neighbors of the head node
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/NBM.java
-            HashSet<String> neb1 = neb1Map.get(node1);
-            HashSet<String> neb2 = neb2Map.get(node2);
-            // no parallel here! stateful lambda
-            neb1.forEach(s1 -> {
-                int nebNumbNode1 = neb1Map.get(s1).size();
-=======
             Set<V> neb1 = udG1.getNeb(node1);
             Set<V> neb2 = udG2.getNeb(node2);
             // no parallel here! stateful lambda
             neb1.forEach(n1 -> {
                 int nebNumbNode1 = udG1.getNebNum(n1);
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/NBM.java
                 double reward = simUV / nebNumbNode1;
                 neb2.forEach(n2 -> {
                     double newWeight = simMat.getVal(n1, n2) + reward;
@@ -131,17 +95,5 @@ public class NBM<V, E> {
         }
     }
 
-
-//    ---------------------------------PUBLIC-------------------------
-//
-//    public HashMap<V, Node> getMostSimPairMap() {
-//        assert (mostSimPairMap != null);
-//        return mostSimPairMap;
-//    }
-//
-//    public EdgeHashSet getMappedEdges() {
-//        assert (mappedEdges != null);
-//        return mappedEdges;
-//    }
 }
 

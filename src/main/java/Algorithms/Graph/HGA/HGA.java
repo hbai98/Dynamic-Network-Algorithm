@@ -1,31 +1,19 @@
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
 package Algorithms.Graph.HGA;
 
 
 import Algorithms.Graph.Hungarian;
 import Algorithms.Graph.NBM;
-import Algorithms.Graph.Network.Edge;
-import Algorithms.Graph.Utils.AdjList.Graph;
-import Algorithms.Graph.Utils.SimMat;
+import DS.Network.SimMat;
+import DS.Network.UndirectedGraph;
 import IO.AbstractFileWriter;
-import IO.GraphFileReader;
-=======
-package Internal.Algorithms.Graph.HGA;
 
 
-import Internal.Algorithms.DS.Network.UndirectedGraph;
-import Internal.Algorithms.Graph.Hungarian;
-import Internal.Algorithms.Graph.NBM;
-import Internal.Algorithms.DS.Network.SimMat;
-import Internal.Algorithms.IO.AbstractFileWriter;
 import com.aparapi.Range;
 import com.google.common.primitives.Doubles;
 import com.google.common.primitives.Floats;
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
 import org.apache.commons.io.FileUtils;
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
-import org.jgrapht.graph.DefaultEdge;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -47,20 +35,13 @@ import java.util.stream.Collectors;
  * Shanghai University, department of computer science
  */
 
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-public class HGA {
-    protected SimMat originalMat;
-    protected SimMat simMat;
-    protected Graph graph1;
-    protected Graph graph2;
-=======
 public class HGA<V,E> {
+    private static boolean GPU = false;
     private final int LimitOfIndexGraph = 60;
 
     protected SimMat<V> simMat;
     protected UndirectedGraph<V,E> udG1;
     protected UndirectedGraph<V,E> udG2;
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
     // parameters
     private boolean forcedMappingForSame;
     private double hAccount;
@@ -68,8 +49,7 @@ public class HGA<V,E> {
     private double edgeScore = 1.;
     private int h = 5;
     //---------------mapping result(best mapping)-------------
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-    private HashMap<String, String> mappingResult;
+    public HashMap<V,V> mappingResult;
     private double PE_res;
     private double ES_res;
     private double PS_res;
@@ -77,37 +57,19 @@ public class HGA<V,E> {
     private double score_res;
     private DoubleMatrix matrix_res;
     //---------------mapping for iteration---------
-    private HashMap<String, String> mapping;
+    public HashMap<V,V> mapping;
     private double PE;
     private double ES;
     private double PS;
     private double EC;
     private double score;
-=======
-    public HashMap<V,V> mappingResult;
-    public double PE_res;
-    public double ES_res;
-    public double PS_res;
-    public double EC_res;
-    public double score_res;
-    public DoubleMatrix matrix_res;
     //---------------mapping for iteration---------
-    public HashMap<V,V> mapping;
-    public double PE;
-    public double ES;
-    public double PS;
-    public double EC;
-    public double score;
     private final SimMat<V> originalMat;
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
     private Stack<DoubleMatrix> stackMat;
     private Stack<Double> stackScore;
 
     //----------limit-----
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-=======
     private final int splitLimit = 20;
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
     private int iterCount = 0;
     private int iterMax = 1000;
     //--------------debug---------------
@@ -117,11 +79,9 @@ public class HGA<V,E> {
     private AbstractFileWriter writer;
     public boolean debugOut;
     private double tolerance;
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-=======
     public int iter_res;
     public Vector<Pair<E,E>> mappingEdges;
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
+    private double sumPreSimMat;
 
 
     /**
@@ -129,20 +89,6 @@ public class HGA<V,E> {
      * using homologous coefficients of proteins
      * computed by alignment algorithms for PINs
      *
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-     * @param graph1               adjacent list of graph1
-     * @param graph2               adjacent list of graph2
-     * @param simMat               similarity matrix, headNode->graph1, listNodes -> graph2
-     * @param bioFactor            sequence similarity account compared with topological effect
-     * @param forcedMappingForSame whether force mapping
-     * @param hAccount             hungarian matrix account
-     */
-    public HGA(SimMat simMat, Graph graph1, Graph graph2, double bioFactor, boolean forcedMappingForSame, double hAccount, double tolerance) throws IOException {
-
-        this.graph1 = graph1;
-        this.graph2 = graph2;
-        this.originalMat = (SimMat) simMat.dup();
-=======
      * @param udG1                 graph1
      * @param udG2                 graph2
      * @param simMat               similarity matrix
@@ -158,7 +104,6 @@ public class HGA<V,E> {
         this.udG1 = udG1;
         this.udG2 = udG2;
         this.originalMat = simMat.dup();
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
         this.simMat = simMat;
         this.forcedMappingForSame = forcedMappingForSame;
         this.tolerance = tolerance;
@@ -176,13 +121,9 @@ public class HGA<V,E> {
      *
      * @return the mapping result
      */
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-    protected HashMap<String, String> getMappingFromHA(SimMat simMat) {
-=======
     protected HashMap<V,V> getMappingFromHA(SimMat<V> simMat) {
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
         logInfo("Hungarian mapping...");
-        Hungarian hungarian = new Hungarian(simMat, Hungarian.ProblemType.maxLoc);
+        Hungarian<V> hungarian = new Hungarian<>(simMat, Hungarian.ProblemType.maxLoc);
         hungarian.setLogger(logger);
         hungarian.run();
         int[] res = hungarian.getResult();
@@ -206,19 +147,13 @@ public class HGA<V,E> {
      * has at least h nonzero entries, and the G-matrix, which
      * collects the remaining entries of S(t)
      *
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-     * @param toMap matrix for hga mapping
-     * @param h     row has at least h nonzero entries
-     */
-    protected HashMap<String, String> remapping(SimMat toMap, int h) {
-        assert (toMap != null);
-=======
      * @param toMap      matrix for hga mapping
      * @param hLimit if index graph nodes is less than this limit, use the hungarian directly
      */
     protected HashMap<V,V> remapping(SimMat<V> toMap, int hLimit) {
         assert (toMap != null);
-        logInfo("Selecting " + this.hAccount * 100 + "% of rows for Hungarian allocation, and the left " + (100 - hAccount * 100) + "% for Greedy mapping.");
+        logInfo("Selecting " + this.hAccount * 100 + "% of rows for Hungarian allocation, " +
+                "and the left " + (100 - hAccount * 100) + "% for Greedy mapping.");
         if (udG1.vertexSet().size() < hLimit && udG2.vertexSet().size() < hLimit) {
             return getMappingFromHA(toMap);
         } else {
@@ -230,17 +165,6 @@ public class HGA<V,E> {
             greedyMap(G, mapping);
             return mapping;
         }
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
-
-        // check
-        Pair<SimMat, SimMat> res = toMap.getSplit(h);
-        SimMat H = res.getFirst();
-        SimMat G = res.getSecond();
-        // Hungarian alg
-        HashMap<String, String> mapping = getMappingFromHA(H);
-        // Greedy alg
-        greedyMap(G, mapping);
-        return mapping;
     }
 
     /**
@@ -282,16 +206,10 @@ public class HGA<V,E> {
      *
      * @param mapping current mapping result, and one edge means the srcNode and tgtNode has already mapped, srcNode ->graph1, tgtNode -> graph2
      */
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-    protected void updatePairNeighbors(HashMap<String, String> mapping) {
-        logInfo("adjust neighborhood similarity based on mapping result...");
-        NBM.neighborSimAdjust(graph1, graph2, simMat, mapping);
-=======
     protected void updatePairNeighbors(HashMap<V, V> mapping) {
         logInfo("adjust neighborhood similarity based on mapping result...");
         NBM<V,E> nbm = new NBM<>(udG1,udG2,simMat,mapping);
         nbm.neighborSimAdjust();
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
     }
 
     /**
@@ -321,18 +239,9 @@ public class HGA<V,E> {
      * @param node1 one node from the graph1
      * @param node2 one node from the graph2
      */
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-    protected void addTopology(String node1, String node2, SimMat preMat) {
-        HashMap<String, HashSet<String>> neb1Map = graph1.getNeighborsMap();
-        HashMap<String, HashSet<String>> neb2Map = graph2.getNeighborsMap();
-        // there should be new objects!
-        HashSet<String> neighbors_1 = new HashSet<>(neb1Map.get(node1));
-        HashSet<String> neighbors_2 = new HashSet<>(neb2Map.get(node2));
-=======
-    protected void addTopology(V node1, V node2, SimMat<V> preMat) {
+protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         Set<V> neighbors_1 = udG1.getNeb(node1);
         Set<V> neighbors_2 = udG2.getNeb(node2);
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
         // compute topologyInfo
         double eNeighbors = getNeighborTopologyInfo(neighbors_1, neighbors_2, preMat);
         // add node1,node2
@@ -344,19 +253,10 @@ public class HGA<V,E> {
         simMat.put(node1, node2, valToUpdate);
     }
 
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-
-    protected double getNonNeighborTopologyInfo(HashSet<String> nei1, HashSet<String> nei2, SimMat preMat) {
-        AtomicReference<Double> res = new AtomicReference<>((double) 0);
-        HashSet<String> nodes1 = graph1.getAllNodes();
-        HashSet<String> nodes2 = graph2.getAllNodes();
-
-=======
     protected double getNonNeighborTopologyInfo(Set<V> nei1, Set<V> nei2, SimMat<V> preMat) {
         AtomicReference<Double> res = new AtomicReference<>((double) 0);
         Set<V> nodes1 = udG1.vertexSet();
         Set<V> nodes2 = udG2.vertexSet();
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
         int nonNei1Size = nodes1.size() - nei1.size();
         int nonNei2Size = nodes2.size() - nei2.size();
 
@@ -364,55 +264,38 @@ public class HGA<V,E> {
         nodes1.removeAll(nei1);
         nodes2.removeAll(nei2);
         if (nonNei1Size != 0 && nonNei2Size != 0) {
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-            int size = (nonNei1Size + 1) * (nonNei2Size + 1);
-            // shift parallel to the front
-            nodes1.forEach(node1 -> nodes2.forEach(node2 -> {
-                if (!nei1.contains(node1) && !nei2.contains(node2)) {
-                    res.updateAndGet(v -> v + preMat.getVal(node1, node2));
-                }
-            }));
-=======
             int size = nonNei1Size * nonNei2Size;
             nodes1.forEach(node1 ->
                     nodes2.forEach(node2 -> res.updateAndGet(v -> v + preMat.getVal(node1, node2))));
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
             return res.get() / size;
         }
 
         if (nonNei1Size == 0 && nonNei2Size == 0) {
             int size = nodes1.size() * nodes2.size();
-            return preMat.getMat().sum() / size;
+            return sumPreSimMat / size;
         }
         return res.get();
     }
 
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-    protected double getNeighborTopologyInfo(HashSet<String> nei1, HashSet<String> nei2, SimMat preMat) {
-        AtomicReference<Double> res = new AtomicReference<>((double) 0);
-        HashSet<String> nodes1 = graph1.getAllNodes();
-        HashSet<String> nodes2 = graph2.getAllNodes();
-=======
     // return score and sum of neighbors
     protected double getNeighborTopologyInfo(Set<V> nei1, Set<V> nei2, SimMat<V> preMat) {
         AtomicReference<Double> score = new AtomicReference<>((double) 0);
         Set<V> nodes1 = udG1.vertexSet();
         Set<V> nodes2 = udG2.vertexSet();
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
         int nei1Size = nei1.size();
         int nei2Size = nei2.size();
         if (nei1Size != 0 && nei2Size != 0) {
             int size = nei1Size * nei2Size;
             // shift parallel to the front
             nei1.forEach(node1 -> nei2.forEach(node2 ->
-                    res.updateAndGet(v -> v + preMat.getVal(node1, node2))));
-            return res.get() / size;
+                    score.updateAndGet(v -> v + preMat.getVal(node1, node2))));
+            return score.get() / size;
         }
         if (nei1Size == 0 && nei2Size == 0) {
             int size = nodes1.size() * nodes2.size();
-            return preMat.getMat().sum() / size;
+            return sumPreSimMat / size;
         }
-        return res.get();
+        return score.get();
     }
 
     /**
@@ -421,22 +304,6 @@ public class HGA<V,E> {
      * Notice: the result would be different when
      */
     protected void addAllTopology() {
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-        Set<String> nodes1 = simMat.getRowMap().keySet();
-        Set<String> nodes2 = simMat.getColMap().keySet();
-        AtomicInteger i = new AtomicInteger(1);
-        // parallel the row
-        // https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
-        // similarity matrix after the neighborhood adjustment
-        SimMat preSimMat = (SimMat) simMat.dup();
-        logInfo("AddTopology for all nodes pairs in two graphs:");
-        nodes1.parallelStream().forEach(n1 -> {
-            nodes2.forEach(n2 -> addTopology(n1, n2, preSimMat));
-            if (i.get() % (nodes1.size() / 10) == 0) {
-                logInfo(i.get() / nodes1.size() * 100 + "%\t");
-            }
-            i.getAndIncrement();
-=======
         Set<V> nodes1 = simMat.getRowMap().keySet();
         Set<V> nodes2 = simMat.getColMap().keySet();
         // parallel the rows
@@ -453,6 +320,7 @@ public class HGA<V,E> {
             logInfo("AddTopology for all nodes pairs in two graphs with the CPU parallel programming:");
             nodes1.parallelStream().forEach(n1 -> nodes2.forEach(n2 -> addTopology(n1, n2, preSimMat)));
         }
+
     }
 
     private void gpuForHGA(SimMat<V> preMat) {
@@ -504,20 +372,9 @@ public class HGA<V,E> {
             nei.forEach(n -> neighbors.add(map.get(n)));
             starts[c.get()] = nei.size() + starts[c.get() - 1];
             c.getAndIncrement();
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
         });
     }
 
-    private List<Triple<String, String, Double>> sortToPair(Set<String> nodes1, Set<String> nodes2) {
-        Vector<Triple<String, String, Double>> sortPairForTopo = new Vector<>();
-        // parallel here there is no interference and no stateful lambda
-        // https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
-        nodes1.parallelStream().forEach(node1 -> nodes2.forEach(node2 ->
-                sortPairForTopo.add(new Triple<>(node1, node2, simMat.getVal(node1, node2)))));
-        List<Triple<String, String, Double>> res = sortPairForTopo.stream().sorted(Comparator.comparingDouble(Triple::getThird)).collect(Collectors.toList());
-        Collections.reverse(res);
-        return res;
-    }
 
     /**
      * This step is used to score current mapping to indicate whether there's
@@ -540,14 +397,11 @@ public class HGA<V,E> {
      *          </li>
      *     </ol>
      */
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-    protected void scoreMapping(HashMap<String, String> mapping) {
-=======
+
     protected void scoreMapping(HashMap<V, V> mapping) {
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
         logInfo("Scoring for mapping ...");
         // edge correctness EC
-        Vector<Pair<Edge, Edge>> mappingEdges = setEC(mapping);
+        Vector<Pair<E, E>> mappingEdges = setEC(mapping);
         // point and edge score PE
         ES = getES(mappingEdges);
         PS = getPS(mappingEdges);
@@ -555,12 +409,7 @@ public class HGA<V,E> {
         score = 100 * EC + PE;
     }
 
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-    private double getES(Vector<Pair<Edge, Edge>> mappingEdges) {
-=======
     private double getES(Vector<Pair<E, E>> mappingEdges) {
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
-
         AtomicReference<Double> ES = new AtomicReference<>((double) 0);
         for (Iterator<Pair<E, E>> iterator = mappingEdges.iterator(); iterator.hasNext(); ) {
             Pair<E, E> map = iterator.next();
@@ -579,11 +428,7 @@ public class HGA<V,E> {
     /**
      * @param mappingEdges getES() filters out unqualified edges
      */
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-    protected double getPS(Vector<Pair<Edge, Edge>> mappingEdges) {
-=======
     protected double getPS(Vector<Pair<E, E>> mappingEdges) {
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
         // parallel here there is no interference and no stateful lambda
         //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
         AtomicReference<Double> PS = new AtomicReference<>((double) 0);
@@ -603,31 +448,16 @@ public class HGA<V,E> {
     /**
      * @return set edge correctness and mapping edges[Pair:{graph1Source,graph1Target},{graph2Source,graph2Target}]
      */
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-    protected Vector<Pair<Edge, Edge>> setEC(HashMap<String, String> mapping) {
-        HashMap<String, HashSet<String>> neb1Map = graph1.getNeighborsMap();
-        HashMap<String, HashSet<String>> neb2Map = graph2.getNeighborsMap();
-=======
     public Vector<Pair<E, E>> setEC(HashMap<V, V> mapping) {
         mappingEdges = new Vector<>();
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
         // toMap will decrease when nodes have been checked
         HashSet<V> toMap = new HashSet<>(mapping.keySet());
         AtomicInteger count = new AtomicInteger();
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-        Vector<Pair<Edge, Edge>> mappingEdges = new Vector<>();
-        for (Iterator<String> iterator = toMap.iterator(); iterator.hasNext(); ) {
-            String n1 = iterator.next();
-            String n1_ = mapping.get(n1);
-            iterator.remove();
-            HashSet<String> nebs = neb1Map.get(n1);
-=======
         for (Iterator<V> iterator = toMap.iterator(); iterator.hasNext(); ) {
             V n1 = iterator.next();
             V n1_ = mapping.get(n1);
             iterator.remove();
             Set<V> neighbors = udG1.getNeb(n1);
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
             // parallel here there is no interference and no stateful lambda
             //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
             // overlap -> one edge in graph1(contains n1 as one node)
@@ -639,23 +469,14 @@ public class HGA<V,E> {
             //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
             // check graph2 -> have the corresponding "edge"
             edge1s.parallelStream().forEach(n2 -> {
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-                String n2_ = mapping.get(n2);
-                if (neb2Map.get(n1_).contains(n2_)) {
-=======
                 V n2_ = mapping.get(n2);
                 if (udG2.getNeb(n1_).contains(n2_)) {
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
                     count.getAndIncrement();
                     mappingEdges.add(new Pair<>(udG1.getEdge(n1,n2), udG2.getEdge(n1_, n2_)));
                 }
             });
         }
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-        EC = (double) count.get() / graph1.getEdgeCount();
-=======
         EC = (double) count.get() / udG1.edgeSet().size();
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
         return mappingEdges;
     }
 
@@ -709,100 +530,37 @@ public class HGA<V,E> {
             cleanDebugResult();
         }
         logInfo("Init mapping...");
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-        Pair<SimMat, HashMap<String, String>> init = initMap();
-=======
         Pair<HashMap<V, V>, SimMat<V>> init = getRemapForForced();
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
         // iterate
-        hgaIterate(this.mapping, this.simMat, init.getFirst(), init.getSecond()
+        hgaIterate(this.mapping, this.simMat, init.getSecond(), init.getFirst()
                 , iterCount, score, PE, EC, PS, ES);
 
     }
 
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-    private Pair<SimMat, HashMap<String, String>> initMap() {
-        // stacks for simMat converge
-        stackMat = new Stack<>();
-        stackScore = new Stack<>();
-        HashMap<String, String> remapPart;
-        HashMap<String, String> forcedPart;// forced mapping
-        if (forcedMappingForSame) {
-            Triple<HashMap<String, String>, SimMat, Set<String>> res = getRemapForForced();
-            // hungarian for the res
-            remapPart = getMappingFromHA(res.getSecond());
-            // forced
-            forcedPart = res.getFirst();
-            // mapping
-            mapping = new HashMap<>(remapPart);
-            mapping.putAll(forcedPart);
-        } else {
-            // get the initial similarity matrix S0
-            remapPart = getMappingFromHA(simMat);
-            forcedPart = null;
-            mapping = new HashMap<>(remapPart);
-        }
-        SimMat toRemap = simMat.getPart(remapPart.keySet(), remapPart.values());
-        // getMatrix return the quoted mat from simMat, should be copied
-        stackMat.push(simMat.getMat().dup());
-        // add to stack top
-        scoreMapping(mapping);
-        // record score
-        stackScore.push(score);
-        // debug
-        outDebug();
-        return new Pair<>(toRemap, forcedPart);
-    }
 
-    private void hgaIterate(HashMap<String, String> mapping, SimMat simMat,
-                            SimMat toRemap, HashMap<String, String> forcedPart, int iterCount, double... scores) {
-=======
+
     private void hgaIterate(HashMap<V, V> mapping, SimMat<V> simMat,
                             SimMat<V> toRemap, HashMap<V, V> forcedPart, int iterCount, double... scores) {
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
         initScores(scores);
         score_res = score;
         this.mapping = mapping;
         this.simMat = simMat;
         this.iterCount = iterCount;
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-=======
+
         stackMat = new Stack<>();
         stackScore = new Stack<>();
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
         boolean checkPassed;
         do {
             // log if needed
             logInfo("------------Iteration " + this.iterCount + "/1000------------");
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-            this.iterCount++;
-            // step 2 update based on mapped nodes
-            updatePairNeighbors(this.mapping);
-            // step 3 topo adjustment to similarity matrix
-            addAllTopology();
-=======
             // step 1 map again
             this.mapping = remap(toRemap, forcedPart);
             // step 2 score the mapping
             scoreMapping(mapping);
             // record
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
             stackMat.push(simMat.getMat().dup());
-            // map again
-            this.mapping = remap(toRemap, forcedPart,h);
-            scoreMapping(this.mapping);
-            // record score
             stackScore.push(score);
-            // debug
             outDebug();
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-=======
-            // step 3 update based on mapped nodes
-            updatePairNeighbors(mapping);
-            // step 4 topo adjustment to similarity matrix
-            addAllTopology();
-            this.iterCount++;
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
             // record best
             if (score > score_res) {
                 setUpResult();
@@ -812,16 +570,13 @@ public class HGA<V,E> {
         // output result
         logInfo("HGA mapping finish!With iteration "+iterCount+"times.");
         outPutResult();
+
     }
 
     /**
      * @return full mapping result
      */
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-    private HashMap<String, String> remap(SimMat toRemap, HashMap<String, String> forced, int h) {
-=======
     protected HashMap<V, V> remap(SimMat<V> toRemap, HashMap<V, V> forced) {
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
 //        int h = getHByAccount();
         logInfo("Remapping : select rows have at least " + h + " non-zero items;");
         // regain from file, and there is no remap part, retain.
@@ -829,11 +584,7 @@ public class HGA<V,E> {
             toRemap = this.simMat;
         }
         // hungarian account
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-        HashMap<String, String> res = remapping(toRemap, h);
-=======
         HashMap<V, V> res = remapping(toRemap, splitLimit);
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
         // not forced
         if (forced == null) {
             return res;
@@ -842,53 +593,17 @@ public class HGA<V,E> {
         return res;
     }
 
-    /**
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-     * get h standard based on the account for hungarian user has input
-     *
-     * @return non-zeros selection standard h
-     */
-    int getHByAccount() {
-        // get non-zeros number by rows and sort it
-        Vector<Integer> nonZeros = new Vector<>();
-        simMat.getNonZerosIndexMap().values().parallelStream().forEach(set -> nonZeros.add(set.size()));
-        List<Integer> nonZerosNumbs = nonZeros.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
-        int limit = (int) (nonZerosNumbs.size() * (1 - hAccount));
-        return nonZerosNumbs.get(limit);
-    }
 
 
 
-    /**
-     * @return forceMap, remap, sameNodes
-     */
-    private Triple<HashMap<String, String>, SimMat, Set<String>> getRemapForForced() {
-=======
-     * @return forceMap, remap
-     */
+
     protected Pair<HashMap<V, V>, SimMat<V>> getRemapForForced() {
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
         // row to map
         Set<V> rowToMap = simMat.getRowSet();
         rowToMap.removeAll(simMat.getColSet());
         // col to map
         Set<V> colToMap = simMat.getColSet();
         colToMap.removeAll(simMat.getRowSet());
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-        HashMap<String, String> forceMap;
-        SimMat remap;
-        Set<String> sameNodes;
-        // set up force mapping
-        forceMap = new HashMap<>();
-        sameNodes = simMat.getRowSet();
-        sameNodes.retainAll(simMat.getColSet());
-        // parallel here there is no interference and no stateful lambda
-        //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
-        HashMap<String, String> finalForceMap = forceMap;
-        sameNodes.parallelStream().forEach(n -> finalForceMap.put(n, n));
-        remap = simMat.getPart(rowToMap, colToMap);
-        return new Triple<>(forceMap, remap, sameNodes);
-=======
         SimMat<V> remap = simMat.getPart(rowToMap, colToMap);
         HashMap<V, V> forceMap = null;
         if (forcedMappingForSame) {
@@ -900,7 +615,6 @@ public class HGA<V,E> {
             sameNodes.parallelStream().forEach(n -> finalForceMap1.put(n, n));
         }
         return new Pair<>(forceMap, remap);
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
     }
 
     private void logInfo(String message) {
@@ -1083,15 +797,11 @@ public class HGA<V,E> {
         return score;
     }
 
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-    public HashMap<String, String> getMapping() {
-=======
     public int getIter_res() {
         return iter_res;
     }
 
     public HashMap<V, V> getMapping() {
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
         return mapping;
     }
 
@@ -1150,19 +860,4 @@ public class HGA<V,E> {
         this.iterMax = iterMax;
     }
 
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/HGA/HGA.java
-    // for linux server
-    public static void main(String[] args) throws IOException {
-        GraphFileReader reader = new GraphFileReader(true, true, false);
-        Graph yeast = reader.readToGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/net-38n.txt", false);
-        Graph human = reader.readToGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/HumanNet.txt", false);
-        reader.setRecordNonZeros(true);
-        reader.setRecordNeighbors(false);
-        SimMat simMat = reader.readToSimMat("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt", yeast.getAllNodes(), human.getAllNodes(), true);
-        HGA hga = new HGA(simMat, yeast, human, 0.4,true,0.5,0.01);
-        hga.run();
-    }
-
-=======
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/HGA/HGA.java
 }

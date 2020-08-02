@@ -1,4 +1,4 @@
-package Internal.Algorithms.DS.Network;
+package DS.Network;
 
 import org.jgrapht.graph.DefaultUndirectedWeightedGraph;
 import org.jgrapht.graph.SimpleGraph;

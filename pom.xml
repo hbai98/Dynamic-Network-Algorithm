@@ -16,10 +16,12 @@
         <Apache-Commons-Collections.version>3.2.2</Apache-Commons-Collections.version>
         <commons-io.version>2.5</commons-io.version>
         <tablesaw.version>LATEST</tablesaw.version>
+        <aparapi.version>2.0.0</aparapi.version>
+        <commons-lang3.version>3.11</commons-lang3.version>
+        <MS>4.1.2</MS>
         <!--plugins versions-->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-        <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
     </properties>
     <groupId>BHT</groupId>
     <artifactId>Algorithms</artifactId>
@@ -51,48 +53,13 @@
     <build>
         <defaultGoal>install</defaultGoal>
         <plugins>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-assembly-plugin</artifactId>-->
-<!--                <version>3.3.0</version>-->
-<!--                <configuration>-->
-<!--                    <compilerArgs>&#45;&#45;enable-preview</compilerArgs>-->
-<!--                    <archive>-->
-<!--                        <manifest>-->
-<!--                            <mainClass>-->
-<!--                                Algorithms.Graph.HGA.HGA-->
-<!--                            </mainClass>-->
-<!--                        </manifest>-->
-<!--                    </archive>-->
-<!--                    <descriptorRefs>-->
-<!--                        <descriptorRef>jar-with-dependencies</descriptorRef>-->
-<!--                        <descriptorRef>bin</descriptorRef>-->
-<!--                        <descriptorRef>src</descriptorRef>-->
-<!--                        <descriptorRef>project</descriptorRef>-->
-<!--                    </descriptorRefs>-->
-<!--                    <descriptors>-->
-<!--                        <descriptor>src/assembly/HGAAssembly.xml</descriptor>-->
-<!--                    </descriptors>-->
-<!--                    <filters>-->
-<!--                        <filter>src/assembly/filter.properties</filter>-->
-<!--                    </filters>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>trigger-assembly</id>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>single</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <release>14</release>
+                    <source>14</source>
+                    <target>14</target>
                     <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
@@ -155,15 +122,12 @@
             <version>${swingx.version}</version>
             <optional>true</optional>
         </dependency>
-<<<<<<< Updated upstream
-=======
         <!--java GPU programming-->
         <dependency>
             <groupId>com.aparapi</groupId>
             <artifactId>aparapi</artifactId>
             <version>${aparapi.version}</version>
         </dependency>
->>>>>>> Stashed changes
         <!--some tools-->
         <dependency>
             <groupId>commons-collections</groupId>
@@ -174,8 +138,6 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
-<<<<<<< Updated upstream
-=======
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -195,7 +157,7 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
->>>>>>> Stashed changes
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

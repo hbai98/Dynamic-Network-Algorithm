@@ -1,4 +1,4 @@
-package Internal.Algorithms.DS.Network;
+package DS.Network;
 
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
@@ -22,7 +22,7 @@ public class SimMat<T> {
     public Class<T> typeParameterClass;
 
 
-    public SimMat(Set<T> graph1Nodes, Set<T> graph2Nodes,Class<T> typeParameterClass) {
+    public SimMat(Set<T> graph1Nodes, Set<T> graph2Nodes, Class<T> typeParameterClass) {
         this.mat = new DoubleMatrix(graph1Nodes.size(), graph2Nodes.size());
         this.rowMap = new HashMap<>(graph1Nodes.size());
         this.colMap = new HashMap<>(graph2Nodes.size());
@@ -77,7 +77,7 @@ public class SimMat<T> {
 
     public void put(T node1, T node2, double val) {
         // only input the nodes in need
-        if(rowMap.containsKey(node1)&&colMap.containsKey(node2)){
+        if (rowMap.containsKey(node1) && colMap.containsKey(node2)) {
             int i = rowMap.get(node1);
             int j = colMap.get(node2);
             mat.put(i, j, val);
@@ -117,7 +117,7 @@ public class SimMat<T> {
         HashMap<T, Integer> rowMap_left = new HashMap<>();
         // record i index for nonZerosMap
         for (int i = 0; i < mat.rows; i++) {
-                rowMap_left.put(this.rowIndexNameMap.get(i), i);
+            rowMap_left.put(this.rowIndexNameMap.get(i), i);
         }
         SimMat<T> split_ = setUpSimMat(rowMap_split);
         SimMat<T> left_ = setUpSimMat(rowMap_left);
@@ -137,11 +137,9 @@ public class SimMat<T> {
             j++;
         }
 
-        SimMat<T> res_ = new SimMat<>(map, colMap, res,typeParameterClass);
+        SimMat<T> res_ = new SimMat<>(map, colMap, res, typeParameterClass);
         return res_;
     }
-
-
 
 
     /**
@@ -169,7 +167,7 @@ public class SimMat<T> {
             colMap.put(s, j++);
         }
         DoubleMatrix res = mat.get(rowIndexes, colIndexes);
-        return new SimMat<>(rowMap, colMap, res,typeParameterClass);
+        return new SimMat<>(rowMap, colMap, res, typeParameterClass);
     }
 
     /**
@@ -185,7 +183,7 @@ public class SimMat<T> {
         //-----------------index name map---------------------
         HashMap<Integer, T> rowIndexNameMap = new HashMap<>(this.rowIndexNameMap);
         HashMap<Integer, T> colIndexNameMap = new HashMap<>(this.colIndexNameMap);
-        SimMat<T> res = new SimMat<>(rowMap, rowIndexNameMap, colMap, colIndexNameMap, mat,typeParameterClass);
+        SimMat<T> res = new SimMat<>(rowMap, rowIndexNameMap, colMap, colIndexNameMap, mat, typeParameterClass);
         res.updateNonZerosForRow = this.updateNonZerosForRow;
         return res;
     }
@@ -228,7 +226,6 @@ public class SimMat<T> {
     }
 
 
-
     public HashSet<T> getRowSet() {
         return new HashSet<>(this.rowMap.keySet());
     }
@@ -237,7 +234,6 @@ public class SimMat<T> {
     public Set<T> getColSet() {
         return new HashSet<>(this.colMap.keySet());
     }
-
 
 
     public void setColIndexNameMap(HashMap<Integer, T> colIndexNameMap) {
@@ -285,6 +281,25 @@ public class SimMat<T> {
         return new Pair<>(H, G);
     }
 
-
+    /**
+     * find the max value node with tgt nodes not been assigned,
+     *
+     * @param assign previous mapping result
+     * @return the best node for mapping by greedy algorithm, null for all nodes has been assigned
+     */
+    public T getMax(int row, HashSet<T> assign) {
+        double max = -Double.MAX_VALUE;
+        T res = null;
+        for (T s : getColSet()) {
+            int j = colMap.get(s);
+            double val = mat.get(row, j);
+            if (!assign.contains(s) && val > max) {
+                max = val;
+                res = colIndexNameMap.get(j);
+            }
+        }
+        assign.add(res);
+        return res;
+    }
 
 }
