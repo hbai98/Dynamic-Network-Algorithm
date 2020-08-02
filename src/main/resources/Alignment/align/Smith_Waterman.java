@@ -1,8 +1,14 @@
 //package Algorithms.Alignment.align;
 //
+<<<<<<< Updated upstream
 //import IO.FastaFileReader;
 //import IO.GraphFileWriter;
 //import Algorithms.Graph.Utils.AdjList.SimList;
+=======
+//import Internal.Algorithms.IO.FastaFileReader;
+//import Internal.Algorithms.IO.GraphFileWriter;
+//import Internal.Algorithms.DS.Network.AdjList.SimList;
+>>>>>>> Stashed changes
 //import org.biojava.nbio.alignment.Alignments;
 //import org.biojava.nbio.alignment.SimpleGapPenalty;
 //import org.biojava.nbio.core.alignment.matrices.SubstitutionMatrixHelper;

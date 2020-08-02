@@ -1,12 +1,15 @@
 package Algorithms.Graph.Utils;
 
+<<<<<<< Updated upstream:src/test/java/Algorithms/Graph/Utils/hNodeListSpec.java
 import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Utils.List.HNodeList;
+=======
+import Internal.Algorithms.DS.Network.List.HNodeList;
+>>>>>>> Stashed changes:src/test/java/Internal/Algorithms/Graph/Utils/hNodeListSpec.java
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("The homeGene list is")
 class hNodeListSpec {
     private Node node1;

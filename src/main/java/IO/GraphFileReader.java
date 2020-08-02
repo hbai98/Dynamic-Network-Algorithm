@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:src/main/java/IO/GraphFileReader.java
 package IO;
 
 import Algorithms.Graph.Utils.AdjList.Graph;
@@ -10,6 +11,20 @@ import java.io.IOException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+=======
+package Internal.Algorithms.IO;
+
+import Internal.Algorithms.DS.Network.UndirectedGraph;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Vector;
+
+import static org.apache.commons.lang3.StringUtils.isNumeric;
+>>>>>>> Stashed changes:src/main/java/Internal/Algorithms/IO/GraphFileReader.java
 
 /**
  * <p>This class is mean to create a FileReader aimed to read file with the format like the adjacent list
@@ -25,28 +40,21 @@ import java.util.regex.Pattern;
  * </p>
  * <br>
  */
-public class GraphFileReader extends AbstractFileReader {
-    private HashSet<String> sourceNodesSet;
-    private HashSet<String> targetNodesSet;
-    // get neighbors information
-    private HashMap<String, HashSet<String>> graphNeighbors;
-    // non zeros
-    private HashMap<String, HashSet<String>> nonZerosMap;
-    //--------------------
-    private boolean recordNeighbors;
-    private boolean recordSrcAndTarget;
-    private boolean recordNonZeros;
-    private boolean updateNonZerosForRow;
-    // for a row
+@SuppressWarnings("unchecked")
+public class GraphFileReader<V, E> extends AbstractFileReader {
+    private UndirectedGraph<V, E> udG;
+    Class<V> vertexClass;
+    Class<E> edgeClass;
 
-    public GraphFileReader(boolean recordSrcAndTarget, boolean getNeighbors, boolean recordNonZeros) {
-        super();
-        this.recordSrcAndTarget = recordSrcAndTarget;
-        this.recordNeighbors = getNeighbors;
-        this.recordNonZeros = recordNonZeros;
+    public GraphFileReader(String inputFilePath, Class<V> vertexClass, Class<E> edgeClass) throws FileNotFoundException {
+        this.vertexClass = vertexClass;
+        this.edgeClass = edgeClass;
+        udG = new UndirectedGraph<>(edgeClass);
+        setInputFilePath(inputFilePath);
     }
     //-------------------------AdjNodeList【homoGeneMap】 return type has been added in switch choices------------------------
 
+<<<<<<< Updated upstream:src/main/java/IO/GraphFileReader.java
     public Graph readToGraph(String inputFilePath) throws IOException {
         return readToGraph(new BufferedReader(new FileReader(inputFilePath)), true);
     }
@@ -146,41 +154,54 @@ public class GraphFileReader extends AbstractFileReader {
     }
 
 
+=======
+>>>>>>> Stashed changes:src/main/java/Internal/Algorithms/IO/GraphFileReader.java
     /**
      * Parses a arrayList format file to ArrayList.
      *
-     * @param input             the reader to read the SIF file from
      * @param closeWhenFinished if true, this method will close
      *                          the reader when finished reading; otherwise, it will
      *                          not close it.
      */
+<<<<<<< Updated upstream:src/main/java/IO/GraphFileReader.java
     private Graph readToGraph(BufferedReader input, boolean closeWhenFinished) throws IOException {
         init();
         Graph graph = new Graph();
+=======
+    private UndirectedGraph<V, E> readToUndirectedGraph(boolean closeWhenFinished) throws IOException {
+>>>>>>> Stashed changes:src/main/java/Internal/Algorithms/IO/GraphFileReader.java
         // matches sequence of one or more whitespace characters.
         setSplitter("\\s+");
-        Vector<String> sifLine = new Vector<>();
+        Vector<V> sifLine = new Vector<>();
         String line;
-        while ((line = input.readLine()) != null) {
+        while ((line = reader.readLine()) != null) {
             String[] tokens = splitter.split(line);
             if (tokens.length == 0) continue;
             //  it will be handled in pareLine()
             // which will throw an IOException if not the right case.
             for (String token : tokens) {
                 if (token.length() != 0) {
-                    sifLine.add(token);
+                    sifLine.add((V) token);
                 }
             }
+<<<<<<< Updated upstream:src/main/java/IO/GraphFileReader.java
             parseForGraph(graph, sifLine);
+=======
+            parseForGraph(udG, sifLine);
+>>>>>>> Stashed changes:src/main/java/Internal/Algorithms/IO/GraphFileReader.java
             // clean for each line
-            cleanLine();
+            sifLine.clear();
         }
         if (closeWhenFinished) {
-            input.close();
+            reader.close();
         }
+<<<<<<< Updated upstream:src/main/java/IO/GraphFileReader.java
         // set up graph
         graph.setNeighborMap(graphNeighbors);
         return graph;
+=======
+        return udG;
+>>>>>>> Stashed changes:src/main/java/Internal/Algorithms/IO/GraphFileReader.java
     }
 
     /**
@@ -191,7 +212,8 @@ public class GraphFileReader extends AbstractFileReader {
      *     <li>node0 ...</li>
      *  </ol>
      * <p>
-     *     The first line identifies two nodes, called node1 and node2, and the weight of the edge between node1 node2. The second line specifies three new nodes, node3, node4, and node5; here “node2” refers to the same node as in the first line.
+     *     The first line identifies two nodes, called node1 and node2, and the weight of the edge between node1 node2.
+     *     The second line specifies three new nodes, node3, node4, and node5; here “node2” refers to the same node as in the first line.
      *     The second line also specifies three relationships, all of the individual weight and with node2 as the source, with node3, node4, and node5 as the targets.
      *     This second form is simply shorthand for specifying multiple relationships of the same type with the same source node.
      *     The third line indicates how to specify a node that has no relationships with other nodes.
@@ -203,6 +225,7 @@ public class GraphFileReader extends AbstractFileReader {
      * @param graph   result
      * @param sifLine result very line
      */
+<<<<<<< Updated upstream:src/main/java/IO/GraphFileReader.java
     private void parseForGraph(Graph graph, Vector<String> sifLine) throws IOException {
         int sifSize = sifLine.size();
         if (sifSize == 0) {
@@ -308,31 +331,22 @@ public class GraphFileReader extends AbstractFileReader {
         // row index
         int row = -1;
 
+=======
+    private void parseForGraph(UndirectedGraph<V, E> graph, Vector<V> sifLine) throws IOException {
+>>>>>>> Stashed changes:src/main/java/Internal/Algorithms/IO/GraphFileReader.java
         int sifSize = sifLine.size();
         if (sifSize == 0) {
-            throw new IOException("Nothing has been input!.");
+            throw new IOException("Nothing has been loaded.");
         }
         if (sifSize == 2) {
-            // node1 node1 val1 // a circle
-            String name = sifLine.get(0);
-            if (isNumeric(sifLine.get(1))) {
-                double weight = Double.parseDouble(sifLine.get(1));
-                simList.sortAddOneNode(name, name, weight);
-                // record if required
-                record(name, name, weight);
-            }
             // node1 node2
-            else {
-                String targetName = sifLine.get(1);
-                if (isIdentifier(targetName)) {
-                    simList.sortAddOneNode(name, targetName, 0);
-                    // record if required
-                    record(name, targetName, 0.);
-                } else {
-                    throw new IOException("nodes' name are not correct.");
-                }
-            }
+            V src = sifLine.get(0);
+            V tgt = sifLine.get(1);
+            graph.addVertex(src);
+            graph.addVertex(tgt);
+            graph.addEdge(src, tgt);
         } else if ((sifSize - 1) % 2 != 0 || sifSize == 1) {
+<<<<<<< Updated upstream:src/main/java/IO/GraphFileReader.java
             throw new IOException("The file input format is not correct.");
         } else {
             String srcName = sifLine.get(0);
@@ -407,11 +421,14 @@ public class GraphFileReader extends AbstractFileReader {
             }
         } else if ((sifSize - 1) % 2 != 0 || sifSize == 1) {
             throw new IOException("The file input format is not correct.");
+=======
+            throw new IOException("The file reader format is not correct.");
+>>>>>>> Stashed changes:src/main/java/Internal/Algorithms/IO/GraphFileReader.java
         } else {
-            String srcName = sifLine.get(0);
-            // name value ... and it has already checked (sifSize -1) % 2 == 0
+            V src = sifLine.get(0);
             for (int index = 1; index < sifSize; index += 2) {
                 // name
+<<<<<<< Updated upstream:src/main/java/IO/GraphFileReader.java
                 String tgtName = sifLine.get(index);
                 if (!isIdentifier(tgtName)) {
                     throw new IOException("nodes' name are not correct.");
@@ -456,86 +473,20 @@ public class GraphFileReader extends AbstractFileReader {
             // all zeros
             else if(!nonZerosMap.containsKey(node1)){
                 nonZerosMap.put(node1,new HashSet<>());
+=======
+                V tgt = sifLine.get(1);
+                V val = sifLine.get(index + 1);
+                graph.addVertex(src);
+                graph.addVertex(tgt);
+                graph.addEdge(src, tgt);
+                if (!isNumeric((String) val)) {
+                    graph.setEdgeWeight(src, tgt, Double.parseDouble((String) val));
+                } else {
+                    throw new IOException("The file reader format is not correct. Plus: some name-value pairs are incorrect!");
+                }
+>>>>>>> Stashed changes:src/main/java/Internal/Algorithms/IO/GraphFileReader.java
             }
         }
     }
 
-    private void recordSourceAndTarget(String node1, String node2) {
-        if (recordSrcAndTarget) {
-            sourceNodesSet.add(node1);
-            targetNodesSet.add(node2);
-        }
-    }
-
-    private void recordNeighbors(String node1, String node2) {
-        if (recordNeighbors) {
-            recordMapCheck(node2, node1);
-            recordMapCheck(node1, node2);
-        }
-    }
-
-    private void recordMapCheck(String node1, String node2) {
-        if (graphNeighbors.containsKey(node2)) {
-            HashSet<String> nodes = graphNeighbors.get(node2);
-            nodes.add(node1);
-            graphNeighbors.put(node2, nodes);
-        } else {
-            graphNeighbors.put(node2, new HashSet<>(Collections.singleton(node1)));
-        }
-    }
-
-
-    private boolean isNumeric(String str) {
-        try {
-            Double.parseDouble(str);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
-    private boolean isIdentifier(String str) {
-        Pattern p = Pattern.compile("[a-zA-Z][[0-9]|[a-zA-Z]]*");
-        Matcher m = p.matcher(str);
-        return m.find();
-    }
-
-    //------------------PUBLIC-----------------------------
-
-    /**
-     * Please execute read instruction before calling this method.
-     *
-     * @return HashSet of nodes' names in graph_1
-     */
-    public HashSet<String> getSourceNodesSet() {
-        assert (sourceNodesSet != null);
-        return sourceNodesSet;
-    }
-
-    /**
-     * Please execute read instruction before calling this method.
-     *
-     * @return HashSet of nodes' names in graph_2
-     */
-    public HashSet<String> getTargetNodesSet() {
-        assert (targetNodesSet != null);
-        return targetNodesSet;
-    }
-
-    public HashMap<String, HashSet<String>> getGraphNeighbors() {
-        return graphNeighbors;
-    }
-
-
-    public void setRecordNeighbors(boolean recordNeighbors) {
-        this.recordNeighbors = recordNeighbors;
-    }
-
-    public void setRecordSrcAndTarget(boolean recordSrcAndTarget) {
-        this.recordSrcAndTarget = recordSrcAndTarget;
-    }
-
-    public void setRecordNonZeros(boolean recordNonZeros) {
-        this.recordNonZeros = recordNonZeros;
-    }
 }
