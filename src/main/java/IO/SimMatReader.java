@@ -24,14 +24,12 @@ public class SimMatReader<V> extends AbstractFileReader {
     public final Class<V> typeParameterClass;
     private final SimMat<V> simMat;
 
-    public SimMatReader(String sourcePath,Set<V> g1,Set<V> g2,
-                        Class<V> typeParameterClass
-    ) throws IOException {
-        setInputFilePath(sourcePath);
+    public SimMatReader(Set<V> g1,Set<V> g2, Class<V> typeParameterClass) {
         this.simMat =new SimMat<>(g1, g2, typeParameterClass);
         this.typeParameterClass = typeParameterClass;
     }
-    public SimMat<V> readToSimMatExcel() throws IOException {
+    public SimMat<V> readToSimMatExcel(String sourcePath) throws IOException {
+        setInputFilePath(sourcePath);
         String extString = inputFilePath.substring(inputFilePath.lastIndexOf("."));
         FileInputStream is = new FileInputStream(inputFilePath);
         Workbook wb;
@@ -64,7 +62,8 @@ public class SimMatReader<V> extends AbstractFileReader {
     /**
      * include checking whether simMat contains all nodes
      */
-    private SimMat<V> readToSimMat(boolean closeWhenFinished) throws IOException {
+    public SimMat<V> readToSimMat(String sourcePath,boolean closeWhenFinished) throws IOException {
+        setInputFilePath(sourcePath);
         // matches sequence of one or more whitespace characters.
         setSplitter("\\s+");
         Vector<String> sifLine = new Vector<>();

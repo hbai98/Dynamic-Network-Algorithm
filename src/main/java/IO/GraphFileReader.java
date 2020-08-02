@@ -29,15 +29,15 @@ public class GraphFileReader<V, E> extends AbstractFileReader {
     Class<V> vertexClass;
     Class<E> edgeClass;
 
-    public GraphFileReader(String inputFilePath, Class<V> vertexClass, Class<E> edgeClass) throws FileNotFoundException {
+    public GraphFileReader(Class<V> vertexClass, Class<E> edgeClass) {
         this.vertexClass = vertexClass;
         this.edgeClass = edgeClass;
         udG = new UndirectedGraph<>(edgeClass);
-        setInputFilePath(inputFilePath);
     }
 
-    private UndirectedGraph<V, E> readToUndirectedGraph(boolean closeWhenFinished) throws IOException {
+    public UndirectedGraph<V, E> readToUndirectedGraph(String inputFilePath,boolean closeWhenFinished) throws IOException {
         // matches sequence of one or more whitespace characters.
+        setInputFilePath(inputFilePath);
         setSplitter("\\s+");
         Vector<V> sifLine = new Vector<>();
         String line;

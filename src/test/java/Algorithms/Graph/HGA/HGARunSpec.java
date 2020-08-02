@@ -1,70 +1,66 @@
+
 package Algorithms.Graph.HGA;
 
-import Algorithms.Graph.Utils.AdjList.Graph;
-import Algorithms.Graph.Utils.AdjList.SimList;
-import Algorithms.Graph.Utils.SimMat;
+import DS.Network.SimMat;
+import DS.Network.UndirectedGraph;
 import IO.GraphFileReader;
-import Tools.Stopwatch;
+import IO.SimMatReader;
+import org.jgrapht.graph.DefaultEdge;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import tech.tablesaw.api.StringColumn;
-import tech.tablesaw.api.Table;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HGARunSpec {
+    UndirectedGraph<String, DefaultEdge> udG1;
+    UndirectedGraph<String, DefaultEdge> udG2;
+    SimMat<String> simMat;
+    HGA<String,DefaultEdge> hga;
 
-//    @Test
-//    void Test() throws Exception {
-//
-//        GraphFileReader reader = new GraphFileReader();
-//        String graph_2Path = "src/main/java/resources/Test/sars_S.txt";
-//        SimList graph2 = reader.readToSimList(graph_2Path,false);
-//        if(graph2.size()==0){
-//            throw new IOException("graph2 has not been loaded.");
-//        }
-//        SimList rev2 = reader.getRevAdjList();
-//        String graph_1Path = "src/main/java/resources/Test/cov_S.txt";
-//        SimList graph1 = reader.readToSimList(graph_1Path,false);
-//        if(graph1.size()==0){
-//            throw new IOException("graph1 has not been loaded.");
-//        }
-//        SimList rev1 = reader.getRevAdjList();
-////        AdjList simList = new Smith_Waterman(graph1.getAllNodes(),graph2.getAllNodes()).run("src/main/java/resources/Test/cov_S.fa", "src/main/java/resources/Test/sars_S.fa");
-////        HGARun run = new HGARun(simList,graph1,rev1,graph2,rev2);
-////        run.getHga().getMappingFinalResult().forEach(edge ->
-////                System.out.println("Edge:" + edge.getSource().getStrName() + " to " + edge.getTarget().getStrName() + " is matched.")
-////        );
-//    }
-//
-//    @Test
-//    void Test_1() throws Exception {
-//        Stopwatch w1 = new Stopwatch();
-//        GraphFileReader reader = new GraphFileReader();
-//        HGARun run = new HGARun("src/test/java/resources/AlgTest/HGA/simMat.txt",
-//                "src/test/java/resources/AlgTest/HGA/graph1.txt",
-//                "src/test/java/resources/AlgTest/HGA/graph2.txt",true,0.5,0.01,5.);
-//        System.out.println("HGA run time:"+w1.elapsedTime()+" second(s).");
-//
-//        List<String> s = new ArrayList<>();
-//        List<String> t = new ArrayList<>();
-//        run.getHga().getMapping().forEach(edge -> {
-//            s.add(edge.getSource().getStrName());
-//            t.add(edge.getTarget().getStrName());
-//                }
-//        );
-//        Table result = Table.create("HGA Match").addColumns(
-//                StringColumn.create("source Node",s),
-//                StringColumn.create("Target Node",t)
-//                );
-//        result.write().csv("src/test/java/resources/AlgTest/HGA/result.csv");
-//    }
+    @BeforeEach
+    void init() {
+
+    }
+
+    @Test
+    void run_test() throws IOException {
+        GraphFileReader<String,DefaultEdge> reader = new GraphFileReader<>(String.class,DefaultEdge.class);
+        udG1 = reader.readToUndirectedGraph( "src/test/java/resources/AlgTest/HGA/graph1.txt",false);
+        udG2 = reader.readToUndirectedGraph( "src/test/java/resources/AlgTest/HGA/graph2.txt",false);
+        SimMatReader<String> simMatReader = new SimMatReader<>(udG1.vertexSet(),udG2.vertexSet(),String.class);
+        simMat = simMatReader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt",true);
+        hga = new HGA<>(simMat, udG1, udG2, 0.5, true, 0.5, 0.01);
+        hga.run();
+    }
+
+    @Test
+    void run_test_GPU() throws IOException {
+        GraphFileReader<String,DefaultEdge> reader = new GraphFileReader<>(String.class,DefaultEdge.class);
+        udG1 = reader.readToUndirectedGraph( "src/test/java/resources/AlgTest/HGA/graph1.txt",false);
+        udG2 = reader.readToUndirectedGraph( "src/test/java/resources/AlgTest/HGA/graph2.txt",false);
+        SimMatReader<String> simMatReader = new SimMatReader<>(udG1.vertexSet(),udG2.vertexSet(),String.class);
+        simMat = simMatReader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt",true);
+        hga = new HGA<>(simMat, udG1, udG2, 0.5, true, 0.5, 0.01);
+        hga.run();
+        HGA.GPU = true;
+    }
+
+    @Test
+    void run_yeast() throws IOException {
+        GraphFileReader<String,DefaultEdge> reader = new GraphFileReader<>(String.class,DefaultEdge.class);
+        udG1 = reader.readToUndirectedGraph(
+                "src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/net-38n.txt",false);
+        udG2 = reader.readToUndirectedGraph(
+                "src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/HumanNet.txt",false);
+        SimMatReader<String> simMatReader = new SimMatReader<>(udG1.vertexSet(),udG2.vertexSet(),String.class);
+        simMat = simMatReader.readToSimMat(
+                "src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt",true);
+        hga = new HGA<>(simMat, udG1, udG2, 0.4, true, 0.5, 0.01);
+        hga.run();
+        HGA.debugOutputPath = "src\\test\\java\\resources\\Jupiter\\data\\";
+        HGA.GPU = true;
+        hga.run();
+    }
 
 }
+

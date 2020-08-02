@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
  */
 
 public class HGA<V,E> {
-    private static boolean GPU = false;
+    public static boolean GPU = false;
     private final int LimitOfIndexGraph = 60;
 
     protected SimMat<V> simMat;
@@ -73,7 +73,7 @@ public class HGA<V,E> {
     private int iterCount = 0;
     private int iterMax = 1000;
     //--------------debug---------------
-    public String debugOutputPath = "src\\test\\java\\resources\\jupyter\\data\\";
+    public static String debugOutputPath = "src\\test\\java\\resources\\jupyter\\data\\";
     //--------------Logging-------------
     public Logger logger;
     private AbstractFileWriter writer;
@@ -448,7 +448,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
     /**
      * @return set edge correctness and mapping edges[Pair:{graph1Source,graph1Target},{graph2Source,graph2Target}]
      */
-    public Vector<Pair<E, E>> setEC(HashMap<V, V> mapping) {
+    protected Vector<Pair<E, E>> setEC(HashMap<V, V> mapping) {
         mappingEdges = new Vector<>();
         // toMap will decrease when nodes have been checked
         HashSet<V> toMap = new HashSet<>(mapping.keySet());
