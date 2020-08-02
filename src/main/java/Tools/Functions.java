@@ -1,8 +1,6 @@
 package Tools;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Functions {
@@ -70,12 +68,6 @@ public class Functions {
      */
     static public int[] ListToIntArray(List<Integer> list) {
         return list.stream().mapToInt(Integer::valueOf).toArray();
-    }
-
-    static public boolean isIdentifier(String str) {
-        Pattern p = Pattern.compile("[a-zA-Z][[0-9]|[a-zA-Z]]*");
-        Matcher m = p.matcher(str);
-        return m.find();
     }
 
 

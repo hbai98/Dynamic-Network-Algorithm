@@ -1,11 +1,7 @@
 package Algorithms.Graph;
 
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/Hungarian.java
 import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Utils.SimMat;
-=======
-import Internal.Algorithms.DS.Network.SimMat;
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/Hungarian.java
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 

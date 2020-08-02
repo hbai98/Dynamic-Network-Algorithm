@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream:src/test/java/Algorithms/Graph/Network/NodeSpec.java
 package Algorithms.Graph.Network;
-=======
-package Internal.Algorithms.DS.Network.Extend.Network;
->>>>>>> Stashed changes:src/test/java/DS/Network/Extend/Network/NodeSpec.java
 // Author: Haotian Bai
 // Shanghai University, department of computer science
 import org.junit.jupiter.api.DisplayName;

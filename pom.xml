@@ -146,24 +146,13 @@
             <groupId>org.jgrapht</groupId>
             <artifactId>jgrapht-core</artifactId>
             <version>${jgrapht.core.version}</version>
-            <optional>true</optional>
         </dependency>
         <!--tree UI-->
         <dependency>
             <groupId>org.swinglabs</groupId>
             <artifactId>swingx</artifactId>
             <version>${swingx.version}</version>
-            <optional>true</optional>
         </dependency>
-<<<<<<< Updated upstream
-=======
-        <!--java GPU programming-->
-        <dependency>
-            <groupId>com.aparapi</groupId>
-            <artifactId>aparapi</artifactId>
-            <version>${aparapi.version}</version>
-        </dependency>
->>>>>>> Stashed changes
         <!--some tools-->
         <dependency>
             <groupId>commons-collections</groupId>
@@ -174,28 +163,6 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
-<<<<<<< Updated upstream
-=======
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>${MS}</version>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>${MS}</version>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
->>>>>>> Stashed changes
         </dependency>
     </dependencies>
 

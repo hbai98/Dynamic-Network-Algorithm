@@ -1,19 +1,12 @@
 package Algorithms.Graph;
 
 
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/NBM.java
 import Algorithms.Graph.Network.Edge;
 import Algorithms.Graph.Network.EdgeHashSet;
 import Algorithms.Graph.Network.Node;
 import Algorithms.Graph.Utils.AdjList.Graph;
 import Algorithms.Graph.Utils.SimMat;
 import org.jgrapht.alg.util.Triple;
-=======
-import Internal.Algorithms.DS.Network.SimMat;
-import Internal.Algorithms.DS.Network.UndirectedGraph;
-import org.jgrapht.graph.DefaultEdge;
-import org.jgrapht.graph.SimpleGraph;
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/NBM.java
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -55,7 +48,6 @@ import java.util.stream.Collectors;
  * all vertices in graph G1 have been matched.
  * </p>
  */
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/NBM.java
 public class NBM {
     protected SimMat simList;
     // --------------------------------------------> alg variables
@@ -64,68 +56,172 @@ public class NBM {
     protected EdgeHashSet preMap;
     protected Graph graph1;
     protected Graph graph2;
-=======
-public class NBM<V, E> {
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/NBM.java
 
-    private final UndirectedGraph<V, E> udG1;
-    private final UndirectedGraph<V, E> udG2;
-    private final HashMap<V, V> mapping;
-    private SimMat<V> simMat;
+    private double reward;
 
-    public NBM(UndirectedGraph<V, E> udG1,
-               UndirectedGraph<V, E> udG2,
-               SimMat<V> simMat,
-               HashMap<V, V> mapping
-    ) {
-        this.udG1 = udG1;
-        this.udG2 = udG2;
-        this.simMat = simMat;
-        this.mapping = mapping;
+    protected NBM() {
     }
+//    }
+//    /**
+//     * NBM
+//     *
+//     * @param graph1  the adjList to represent the graph1
+//     * @param graph2  the adjList to represent the graph2
+//     * @param simList     AdjList to represent the similarity matrix
+//     * @param mappedEdges the initial mapping result
+//     * @param reward the reward value for every turn to update the simMat
+//     */
+//    protected NBM(SimList graph1, SimList graph2, SimList simList, EdgeHashSet mappedEdges, double reward) throws IOException {
+//        init(graph1,graph2,simList, mappedEdges,reward);
+//        // step 1
+//        findBestPairs();
+//        // step 2,3
+//        priMatch();
+//
+//    }
+//
+//    private void init(SimList graph1, SimList graph2, SimList simList, EdgeHashSet mappedEdges, double reward) {
+//        assert (graph1!=null && graph2!=null && simList != null && mappedEdges != null);
+//        this.graph1 = graph1;
+//        this.graph2 = graph2;
+//        this.reward = reward;
+//        this.simList = simList;
+//        // pq
+//        pqEdge = new PriorityQueue<>(Comparator.comparingDouble(Edge::getWeight));
+//        // bestPairNodes -> for indexing the best pair
+//        mostSimPairMap = new HashMap<>();
+//        // mapped edges
+//        this.mappedEdges = mappedEdges;
+//    }
+//
+//    /**
+//     * Add the initial mapping
+//     *
+//     * @param hasSet the initial alignment for nodes from two graph
+//     */
+//    private void addInitMappedEdge(EdgeHashSet hasSet) {
+//        assert (hasSet != null);
+//        this.mappedEdges = hasSet;
+//    }
+//
+//    /**
+//     * Step 1:
+//     * O(mn+mn*log(mn))
+//     * iterate(nodeList) nodes in Graph1 and finds every node it's best pair( with the greatest weight )
+//     */
+//    protected void findBestPairs() {
+//        assert (simList != null );
+//        for (int index = 0; index < simList.size(); index++) {
+//            HNodeList list = simList.get(index);
+//            String listHeadName = list.getSignName();
+//            // save the current result
+//            Node tgtNode = simList.sortFindMaxOfList(index);
+//            pqEdge.add(new Edge(new Node(listHeadName), tgtNode, tgtNode.getValue()));
+//            mostSimPairMap.put(listHeadName, tgtNode);
+//        }
+//    }
+//
+//    /**
+//     * Step 2:
+//     * consider higher-value edges of unmatched nodes to align first with it's best pair.
+//     */
+//    protected void priMatch() throws IOException {
+//        while(!pqEdge.isEmpty()){
+//            Edge edge = pqEdge.poll();
+//            Node srcNode = edge.getSource();
+//            Node tgtNode = edge.getTarget();
+//            // u is matched
+//            if(mappedEdges.findNodeEdgeSrc(srcNode)){
+//                continue;
+//            }
+//            // v is matched
+//            if(mappedEdges.findNodeEdgeTgt(tgtNode)){
+//                // find the best pair for unmatched u
+//                Node pairNodeSrc = mostSimPairMap.get(srcNode.getStrName());
+//                // if this tgt is not matched go on
+//                if(mappedEdges.findNodeEdgeTgt(pairNodeSrc)){
+//                    continue;
+//                }
+//                // add new pair
+//                pqEdge.add(new Edge(srcNode,pairNodeSrc,pairNodeSrc.getValue()));
+//                mappedEdges.add(new Edge(srcNode,pairNodeSrc,pairNodeSrc.getValue()));
+//                mostSimPairMap.put(srcNode.getStrName(),tgtNode);
+//                continue;
+//            }
+//            neighborAdjust(srcNode,tgtNode);
+//        }
+//    }
+//
+//    /**
+//     * Step 3:
+//     * the neighboring unmatched pairs of (u, v) are assigned higher weights,
+//     * thus increasing their chance of being chosen.
+//     * @param srcNode node form the query graph
+//     * @param tgtNode node form the subject graph
+//     */
+//    private void neighborAdjust(Node srcNode,Node tgtNode) {
+//        // direct neighbors of the head node
+//        HNodeList neb1 = graph1.sortGetNeighborsList(srcNode.getStrName());
+//        HNodeList neb2 = graph2.sortGetNeighborsList(tgtNode.getStrName());
+//        // boolean sign for node1 pair update
+//        boolean sign;
+//        for (Node node1 : neb1) {
+//            // after iterate all nodes in neb2, set the sign again
+//            sign = false;
+//            // Edge used to copy the new pair
+//            Edge edge = null;
+//            for (Node node2 : neb2) {
+//                if(!mappedEdges.findNodeEdgeSrc(node1)&&!mappedEdges.findNodeEdgeTgt(node2)){
+//                    double newWeight = node2.getValue()+reward;
+//                    double preBestWeight = mostSimPairMap.get(node1.getStrName()).getValue();
+//                    simList.sortAddOneNode(node1.getStrName(),node2.getStrName(),newWeight);
+//                    // when the neighbor's weight is larger than the best pair's, change the best pair record.
+//                    if(newWeight > preBestWeight){
+//                        mostSimPairMap.put(node1.getStrName(),new Node(node2.getStrName(),newWeight));
+//                        // new Edge used to update
+//                        Edge tpEdge = new Edge(node1,node2,newWeight);
+//                        mappedEdges.updateEdge(tpEdge);
+//                        // set the sign and copy it to outside
+//                        sign = true;
+//                        edge = tpEdge;
+//                    }
+//                }
+//            }
+//            // the best pair has changed, add the new pair into priority queue
+//            if(sign){
+//                pqEdge.add(edge);
+//            }
+//        }
+//    }
 
     /**
      * Update only once for all neighbors of all the pairs ready.
      * reward is defined in HGA.
      * Notice : this method return the result associated with the order mapping is iterated.
      */
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/NBM.java
     public static void neighborSimAdjust(Graph graph1, Graph graph2, SimMat simMat, HashMap<String, String> mapping) {
         // distinguish the result simMat from the indexing one
         HashMap<String, HashSet<String>> neb1Map = graph1.getNeighborsMap();
         HashMap<String, HashSet<String>> neb2Map = graph2.getNeighborsMap();
-=======
-    public void neighborSimAdjust() {
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/NBM.java
         // sort the mapping pairs to add topological effect for the pair with higher similarity first,
         // and it will alleviate the impact brought by update similarity matrix in various orders.
-        List<Map.Entry<V, V>> toAdjust = mapping.entrySet().stream()
-                .sorted(Comparator.comparing(entry ->
-                        simMat.getVal(entry.getKey(), entry.getValue()))).collect(Collectors.toList());
+        List<Map.Entry<String, String>> toAdjust = mapping.entrySet().stream().sorted(Comparator.comparing(entry -> simMat.getVal(entry.getKey(), entry.getValue()))).collect(Collectors.toList());
         Collections.reverse(toAdjust);
         // no parallel here
-        for (Map.Entry<V, V> entry : toAdjust) {
-            V node1 = entry.getKey();
-            V node2 = entry.getValue();
+        for (Map.Entry<String, String> entry : toAdjust) {
+            String node1 = entry.getKey();
+            String node2 = entry.getValue();
             double simUV = simMat.getVal(node1, node2);
             // direct neighbors of the head node
-<<<<<<< Updated upstream:src/main/java/Algorithms/Graph/NBM.java
             HashSet<String> neb1 = neb1Map.get(node1);
             HashSet<String> neb2 = neb2Map.get(node2);
             // no parallel here! stateful lambda
             neb1.forEach(s1 -> {
                 int nebNumbNode1 = neb1Map.get(s1).size();
-=======
-            Set<V> neb1 = udG1.getNeb(node1);
-            Set<V> neb2 = udG2.getNeb(node2);
-            // no parallel here! stateful lambda
-            neb1.forEach(n1 -> {
-                int nebNumbNode1 = udG1.getNebNum(n1);
->>>>>>> Stashed changes:src/main/java/Internal/Algorithms/Graph/NBM.java
                 double reward = simUV / nebNumbNode1;
-                neb2.forEach(n2 -> {
-                    double newWeight = simMat.getVal(n1, n2) + reward;
-                    simMat.put(n1, n2, newWeight);
+                neb2.forEach(s2->{
+                        double newWeight = simMat.getVal(s1, s2) + reward;
+                        simMat.put(s1, s2, newWeight);
                 });
             });
         }
@@ -134,7 +230,7 @@ public class NBM<V, E> {
 
 //    ---------------------------------PUBLIC-------------------------
 //
-//    public HashMap<V, Node> getMostSimPairMap() {
+//    public HashMap<String, Node> getMostSimPairMap() {
 //        assert (mostSimPairMap != null);
 //        return mostSimPairMap;
 //    }

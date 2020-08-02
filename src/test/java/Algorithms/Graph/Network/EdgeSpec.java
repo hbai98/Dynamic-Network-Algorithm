@@ -1,14 +1,11 @@
-<<<<<<< Updated upstream:src/test/java/Algorithms/Graph/Network/EdgeSpec.java
 package Algorithms.Graph.Network;
-=======
-package Internal.Algorithms.DS.Network.Extend.Network;
->>>>>>> Stashed changes:src/test/java/DS/Network/Extend/Network/EdgeSpec.java
 // Author: Haotian Bai
 // Shanghai University, department of computer science
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("This edge is")
 class EdgeSpec {
     Edge edge_1;

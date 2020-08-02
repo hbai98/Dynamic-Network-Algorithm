@@ -1,18 +1,9 @@
 package Algorithms.Graph.HGA;
 
-<<<<<<< Updated upstream:src/test/java/Algorithms/Graph/HGA/HGASpc.java
 import Algorithms.Graph.Utils.AdjList.Graph;
 import Algorithms.Graph.Utils.SimMat;
 import IO.GraphFileReader;
 import IO.GraphFileReaderSpec;
-=======
-import Internal.Algorithms.DS.Network.SimMat;
-import Internal.Algorithms.DS.Network.UndirectedGraph;
-import Internal.Algorithms.IO.GraphFileReaderSpec;
-import Internal.Algorithms.IO.GraphFileReader;
-import org.jgrapht.alg.util.Pair;
-import org.jgrapht.graph.DefaultEdge;
->>>>>>> Stashed changes:src/test/java/Internal/Algorithms/Graph/HGA/HGASpec.java
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,13 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisplayName("The HGA is able to ")
 class HGASpc extends GraphFileReaderSpec {
     HGA hga;
-<<<<<<< Updated upstream:src/test/java/Algorithms/Graph/HGA/HGASpc.java
     private Graph graph1;
     private Graph graph2;
-=======
-    private UndirectedGraph<String, DefaultEdge> udG1;
-    private UndirectedGraph<String, DefaultEdge> udG2;
->>>>>>> Stashed changes:src/test/java/Internal/Algorithms/Graph/HGA/HGASpec.java
     private SimMat simMat;
 
     @BeforeEach
