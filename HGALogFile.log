@@ -1,0 +1,28 @@
+Aug 02, 2020 10:24:52 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: Init mapping...
+Aug 02, 2020 10:24:52 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: ------------Iteration 0/1000------------
+Aug 02, 2020 10:24:52 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: Remapping : select rows have at least 5 non-zero items;
+Aug 02, 2020 10:24:52 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
+Aug 02, 2020 10:24:52 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: Hungarian mapping...
+Aug 02, 2020 10:24:52 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: Scoring for mapping ...
+Aug 02, 2020 10:24:52 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: output matrix
+Aug 02, 2020 10:24:52 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: output scores
+Aug 02, 2020 10:24:52 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: output mapping
+Aug 02, 2020 10:24:52 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: Iteration:0	dif 0.0
+Aug 02, 2020 10:24:52 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: HGA mapping finish!With iteration 0times.
+Aug 02, 2020 10:24:52 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: output mapping
+Aug 02, 2020 10:24:52 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: output matrix
+Aug 02, 2020 10:24:52 PM Algorithms.Graph.HGA.HGA logInfo
+INFO: output scores

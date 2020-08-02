@@ -13,8 +13,6 @@ import java.io.IOException;
 import java.util.Set;
 import java.util.Vector;
 
-import static org.apache.commons.lang3.StringUtils.isNumeric;
-
 /**
  * Reader class for matrix reading
  * Mainly for test.
@@ -135,6 +133,13 @@ public class SimMatReader<V> extends AbstractFileReader {
         sifLine.clear();
     }
 
-
+    private boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 
 }

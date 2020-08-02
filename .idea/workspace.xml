@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:v0.1" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:\environment\jetbrains\IntelliJ IDEA 2020.1.3\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../environment/Java" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HGARunSpec.run_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Algorithms.Graph.HGA.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGARunSpec" />
+      <option name="METHOD_NAME" value="run_test" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.HGARunSpec.run_test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="Update">
+      <created>1596377047507</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1596377047507</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="v0.1" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596377833729">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1596377833729" />
+    <state x="524" y="134" key="#xdebugger.evaluate" timestamp="1596377975202">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="524" y="134" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1596377975202" />
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1596377045879">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1596377045879" />
+    <state x="577" y="195" key="FileChooserDialogImpl" timestamp="1596377290246">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="577" y="195" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1596377290246" />
+    <state width="1493" height="271" key="GridCell.Tab.0.bottom" timestamp="1596377999437">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="271" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596377999437" />
+    <state width="1493" height="271" key="GridCell.Tab.0.center" timestamp="1596377999437">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="271" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1596377999437" />
+    <state width="1493" height="271" key="GridCell.Tab.0.left" timestamp="1596377999437">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="271" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1596377999437" />
+    <state width="1493" height="271" key="GridCell.Tab.0.right" timestamp="1596377999437">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="271" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1596377999437" />
+    <state width="1493" height="271" key="GridCell.Tab.1.bottom" timestamp="1596377999438">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="271" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596377999438" />
+    <state width="1493" height="271" key="GridCell.Tab.1.center" timestamp="1596377999437">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="271" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1596377999437" />
+    <state width="1493" height="271" key="GridCell.Tab.1.left" timestamp="1596377999437">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="271" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1596377999437" />
+    <state width="1493" height="271" key="GridCell.Tab.1.right" timestamp="1596377999437">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="271" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1596377999437" />
+    <state x="277" y="14" key="SettingsEditor" timestamp="1596377885896">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="277" y="14" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1596377885896" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1596377050486">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1596377050486" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/IO/SimMatReader.java</url>
+          <line>125</line>
+          <option name="timeStamp" value="326" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Algorithms$HGASpc_run.ic" NAME="HGASpc.run Coverage Results" MODIFIED="1592809996988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Algorithms.Graph.HGA.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Algorithms$HGASpc_addAllTopo.ic" NAME="HGASpc.addAllTopo Coverage Results" MODIFIED="1592705881610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Algorithms.Graph.HGA.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Algorithms$Human_YeastSub38NTest_topo.ic" NAME="Human_YeastSub38NTest.topo Coverage Results" MODIFIED="1592536351513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Algorithms.Graph.HGA.*</FILTER>
+    </SUITE>
+  </component>
+</project>

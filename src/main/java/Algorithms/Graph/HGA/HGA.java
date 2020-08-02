@@ -556,9 +556,9 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
             // step 1 map again
             this.mapping = remap(toRemap, forcedPart);
             // step 2 score the mapping
-            scoreMapping(mapping);
+            scoreMapping(this.mapping);
             // record
-            stackMat.push(simMat.getMat().dup());
+            stackMat.push(this.simMat.getMat().dup());
             stackScore.push(score);
             outDebug();
             // record best
