@@ -2,12 +2,10 @@ package IO;
 
 import DS.Network.UndirectedGraph;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Vector;
 
 import static Tools.Functions.isDouble;
-import static org.apache.commons.lang3.StringUtils.isNumeric;
 
 
 /**
@@ -28,6 +26,7 @@ import static org.apache.commons.lang3.StringUtils.isNumeric;
 public class GraphFileReader<V, E> extends AbstractFileReader {
     Class<V> vertexClass;
     Class<E> edgeClass;
+    private UndirectedGraph<V, E> udG;
 
     public GraphFileReader(Class<V> vertexClass, Class<E> edgeClass) {
         this.vertexClass = vertexClass;
@@ -37,7 +36,7 @@ public class GraphFileReader<V, E> extends AbstractFileReader {
     public UndirectedGraph<V, E> readToUndirectedGraph(String inputFilePath,boolean closeWhenFinished) throws IOException {
         // matches sequence of one or more whitespace characters.
         setInputFilePath(inputFilePath);
-        UndirectedGraph<V, E> udG = new UndirectedGraph<>(edgeClass);
+        udG = new UndirectedGraph<>(edgeClass);
         setSplitter("\\s+");
         Vector<V> sifLine = new Vector<>();
         String line;

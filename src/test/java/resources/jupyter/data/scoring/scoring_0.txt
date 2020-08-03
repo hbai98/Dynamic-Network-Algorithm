@@ -1,6 +1,6 @@
-Iteration 0:
-Score:105.7
-PE:5.7
-EC:1.0
-ES:4.0
-PS:3.7
+Iteration: 0
+Score: 45.9
+PE: 5.9
+EC: 0.4
+ES: 4.0
+PS: 3.9

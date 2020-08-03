@@ -1,9 +1,9 @@
-Iteration 0:
 A->A
 Q->Q
 B->B
-C->C
+C->H
+D->D
+F->F
 W->W
-H->H
 I->I
 M->M
