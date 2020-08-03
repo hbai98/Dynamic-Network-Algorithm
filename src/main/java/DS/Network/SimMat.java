@@ -18,7 +18,6 @@ public class SimMat<T> {
     private HashMap<Integer, T> rowIndexNameMap;
     private HashMap<Integer, T> colIndexNameMap;
     //----------------preferences---------------------
-    public boolean updateNonZerosForRow;
     public Class<T> typeParameterClass;
 
 
@@ -184,7 +183,6 @@ public class SimMat<T> {
         HashMap<Integer, T> rowIndexNameMap = new HashMap<>(this.rowIndexNameMap);
         HashMap<Integer, T> colIndexNameMap = new HashMap<>(this.colIndexNameMap);
         SimMat<T> res = new SimMat<>(rowMap, rowIndexNameMap, colMap, colIndexNameMap, mat, typeParameterClass);
-        res.updateNonZerosForRow = this.updateNonZerosForRow;
         return res;
     }
 
@@ -227,6 +225,7 @@ public class SimMat<T> {
 
 
     public HashSet<T> getRowSet() {
+
         return new HashSet<>(this.rowMap.keySet());
     }
 

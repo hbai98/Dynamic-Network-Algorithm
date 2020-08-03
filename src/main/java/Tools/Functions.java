@@ -78,5 +78,14 @@ public class Functions {
         return m.find();
     }
 
+    static public boolean isDouble(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 
 }

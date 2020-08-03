@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.util.Set;
 import java.util.Vector;
 
+import static Tools.Functions.isDouble;
+
 /**
  * Reader class for matrix reading
  * Mainly for test.
@@ -120,7 +122,7 @@ public class SimMatReader<V> extends AbstractFileReader {
             for (int index = 1; index < sifSize; index += 2) {
                 V tgt = sifLine.get(index);
                 V val = sifLine.get(index + 1);
-                if (!isNumeric((String)val)) {
+                if (!isDouble((String)val)) {
                     throw new IOException("The file reader format is not correct. Plus: some name-value pairs are incorrect!");
                 }
                 double weight = Double.parseDouble((String)val);
@@ -133,13 +135,5 @@ public class SimMatReader<V> extends AbstractFileReader {
         sifLine.clear();
     }
 
-    private boolean isNumeric(String str) {
-        try {
-            Double.parseDouble(str);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
 
 }

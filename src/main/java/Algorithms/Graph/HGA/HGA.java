@@ -244,10 +244,13 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         Set<V> neighbors_2 = udG2.getNeb(node2);
         // compute topologyInfo
         double eNeighbors = getNeighborTopologyInfo(neighbors_1, neighbors_2, preMat);
+        // tmp Set
+        Set<V> tmp1 = new HashSet<>(neighbors_1);
+        Set<V> tmp2 = new HashSet<>(neighbors_2);
         // add node1,node2
-        neighbors_1.add(node1);
-        neighbors_2.add(node2);
-        double eNonNeighbors = getNonNeighborTopologyInfo(neighbors_1, neighbors_2, preMat);
+        tmp1.add(node1);
+        tmp2.add(node2);
+        double eNonNeighbors = getNonNeighborTopologyInfo(tmp1, tmp2, preMat);
         double eTP = (eNeighbors + eNonNeighbors) / 2;
         double valToUpdate = originalMat.getVal(node1, node2) * bioFactor + eTP * (1 - bioFactor);
         simMat.put(node1, node2, valToUpdate);
@@ -255,11 +258,10 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
 
     protected double getNonNeighborTopologyInfo(Set<V> nei1, Set<V> nei2, SimMat<V> preMat) {
         AtomicReference<Double> res = new AtomicReference<>((double) 0);
-        Set<V> nodes1 = udG1.vertexSet();
-        Set<V> nodes2 = udG2.vertexSet();
+        Set<V> nodes1 = new HashSet<>(udG1.vertexSet());
+        Set<V> nodes2 = new HashSet<>(udG2.vertexSet());
         int nonNei1Size = nodes1.size() - nei1.size();
         int nonNei2Size = nodes2.size() - nei2.size();
-
         // get the rest nodes
         nodes1.removeAll(nei1);
         nodes2.removeAll(nei2);
@@ -516,13 +518,14 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
 
         }
         // size = 2
-        else {
+        else if(stackMat.size() == 2){
             DoubleMatrix s = stackMat.peek();
             double dif = s.sub(stackMat.get(0)).normmax();
             logInfo("Iteration:" + iterCount + "\tdif " + dif);
             return dif < tolerance;
         }
-
+        //size = 1
+        return false;
     }
 
     public void run() {
@@ -561,6 +564,11 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
             stackMat.push(this.simMat.getMat().dup());
             stackScore.push(score);
             outDebug();
+            // step 3 update based on mapped nodes
+            updatePairNeighbors(this.mapping);
+            // step 4 topo adjustment to similarity matrix
+            addAllTopology();
+            this.iterCount++;
             // record best
             if (score > score_res) {
                 setUpResult();
@@ -568,7 +576,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
             checkPassed = checkPassed(tolerance);
         } while (!checkPassed);
         // output result
-        logInfo("HGA mapping finish!With iteration "+iterCount+"times.");
+        logInfo("HGA mapping finish!With iteration "+iterCount+" times.");
         outPutResult();
 
     }
@@ -645,7 +653,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         }
         try {
             if (isResult) {
-                writer.setPath(path + "matrixResult_" + iterCount + ".txt");
+                writer.setPath(path + "matrixResult_" + iter_res + ".txt");
             } else {
                 writer.setPath(path + "matrix_" + iterCount + ".txt");
             }
@@ -660,15 +668,15 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         String path = debugOutputPath + "scoring/";
         Vector<String> scoreVec = new Vector<>();
 
-        scoreVec.add("Iteration " + iterCount + ":\n");
-        scoreVec.add("Score:" + scores[0] + "\n");
-        scoreVec.add("PE:" + scores[1] + "\n");
-        scoreVec.add("EC:" + scores[2] + "\n");
-        scoreVec.add("ES:" + scores[3] + "\n");
-        scoreVec.add("PS:" + scores[4] + "\n");
+        scoreVec.add("Iteration: " + iterCount + "\n");
+        scoreVec.add("Score: " + scores[0] + "\n");
+        scoreVec.add("PE: " + scores[1] + "\n");
+        scoreVec.add("EC: " + scores[2] + "\n");
+        scoreVec.add("ES: " + scores[3] + "\n");
+        scoreVec.add("PS: " + scores[4] + "\n");
         try {
             if (isResult) {
-                writer.setPath(path + "scoringResult_" + iterCount + ".txt");
+                writer.setPath(path + "scoringResult_" + iter_res + ".txt");
             } else {
                 writer.setPath(path + "scoring_" + iterCount + ".txt");
             }
@@ -682,12 +690,10 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         logInfo("output mapping");
         String path = debugOutputPath + "mapping/";
         Vector<String> mappingVec = new Vector<>();
-
-        mappingVec.add("Iteration " + iterCount + ":\n");
         mapping.forEach((k, v) -> mappingVec.add(k + "->" + v + "\n"));
         try {
             if (isResult) {
-                writer.setPath(path + "mappingResult_" + iterCount + ".txt");
+                writer.setPath(path + "mappingResult_" + iter_res + ".txt");
             } else {
                 writer.setPath(path + "mapping_" + iterCount + ".txt");
             }
@@ -722,6 +728,8 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         PE_res = PE;
         PS_res = PS;
         EC_res = EC;
+        iter_res = iterCount;
+
         score_res = score;
         mappingResult = new HashMap<>(mapping);
         matrix_res = simMat.getMat().dup();
@@ -843,7 +851,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
     public void setupLogger() throws IOException {
         logger = Logger.getLogger("MyLog");
         FileHandler fh;
-        fh = new FileHandler("HGALogFile.log");
+        fh = new FileHandler("HGALog.txt");
         fh.setFormatter(new SimpleFormatter());
         logger.addHandler(fh);
         // output matrix, scoring and mapping result

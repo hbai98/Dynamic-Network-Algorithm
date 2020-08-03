@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Vector;
 
+import static Tools.Functions.isDouble;
 import static org.apache.commons.lang3.StringUtils.isNumeric;
 
 
@@ -25,19 +26,18 @@ import static org.apache.commons.lang3.StringUtils.isNumeric;
  */
 @SuppressWarnings("unchecked")
 public class GraphFileReader<V, E> extends AbstractFileReader {
-    private final UndirectedGraph<V, E> udG;
     Class<V> vertexClass;
     Class<E> edgeClass;
 
     public GraphFileReader(Class<V> vertexClass, Class<E> edgeClass) {
         this.vertexClass = vertexClass;
         this.edgeClass = edgeClass;
-        udG = new UndirectedGraph<>(edgeClass);
     }
 
     public UndirectedGraph<V, E> readToUndirectedGraph(String inputFilePath,boolean closeWhenFinished) throws IOException {
         // matches sequence of one or more whitespace characters.
         setInputFilePath(inputFilePath);
+        UndirectedGraph<V, E> udG = new UndirectedGraph<>(edgeClass);
         setSplitter("\\s+");
         Vector<V> sifLine = new Vector<>();
         String line;
@@ -95,14 +95,14 @@ public class GraphFileReader<V, E> extends AbstractFileReader {
             throw new IOException("The file reader format is not correct.");
         } else {
             V src = sifLine.get(0);
+            graph.addVertex(src);
             for (int index = 1; index < sifSize; index += 2) {
                 // name
-                V tgt = sifLine.get(1);
+                V tgt = sifLine.get(index);
                 V val = sifLine.get(index + 1);
-                graph.addVertex(src);
                 graph.addVertex(tgt);
                 graph.addEdge(src, tgt);
-                if (!isNumeric((String) val)) {
+                if (isDouble((String) val)) {
                     graph.setEdgeWeight(src, tgt, Double.parseDouble((String) val));
                 } else {
                     throw new IOException("The file reader format is not correct. Plus: some name-value pairs are incorrect!");

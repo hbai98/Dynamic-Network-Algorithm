@@ -41,8 +41,8 @@ class HGARunSpec {
         SimMatReader<String> simMatReader = new SimMatReader<>(udG1.vertexSet(),udG2.vertexSet(),String.class);
         simMat = simMatReader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt",true);
         hga = new HGA<>(simMat, udG1, udG2, 0.5, true, 0.5, 0.01);
-        hga.run();
         HGA.GPU = true;
+        hga.run();
     }
 
     @Test
