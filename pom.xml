@@ -4,11 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <properties>
-        <!--properties-->
-        <bundle.symbolicName>BHT.Algorithm</bundle.symbolicName>
-        <bundle.namespace>Internal.Algorithms</bundle.namespace>
         <!--dependencies versions-->
-        <junit.platform.version>1.6.2</junit.platform.version>
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
         <assertj.core.version>3.15.0</assertj.core.version>
         <jgrapht.core.version>1.5.0</jgrapht.core.version>
@@ -20,14 +16,12 @@
         <Apache-Commons-Collections.version>3.2.2</Apache-Commons-Collections.version>
         <commons-io.version>2.5</commons-io.version>
         <tablesaw.version>LATEST</tablesaw.version>
-        <commons-csv.version>1.8</commons-csv.version>
         <aparapi.version>2.0.0</aparapi.version>
         <commons-lang3.version>3.11</commons-lang3.version>
+        <MS>4.1.2</MS>
         <!--plugins versions-->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
-        <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
-        <MS>4.1.2</MS>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     </properties>
     <groupId>BHT</groupId>
     <artifactId>Algorithms</artifactId>
@@ -35,11 +29,25 @@
     <version>1.0-SNAPSHOT</version>
     <repositories>
         <repository>
+            <id>oss.sonatype.org-snapshot</id>
+            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
             <id>nexus-aliyun</id>
             <name>Nexus aliyun</name>
             <url>http://maven.aliyun.com/nexus/content/groups/public</url>
         </repository>
-
+        <repository>
+            <id>ebi-repo</id>
+            <name>ebi-repo</name>
+            <url>http://www.ebi.ac.uk/~maven/m2repo</url>
+        </repository>
     </repositories>
 
     <build>
@@ -50,7 +58,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <release>11</release>
+                    <source>14</source>
+                    <target>14</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -58,26 +67,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+                    <argLine>--enable-preview</argLine>
                     <skipTests>true</skipTests>
-                    <forkCount>1</forkCount>
-                    <reuseForks>true</reuseForks>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <version>${maven-bundle-plugin.version}</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <instructions>
-                        <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
-                        <Bundle-Version>${project.version}</Bundle-Version>
-                        <Export-Package>!${bundle.namespace}.*</Export-Package>
-                        <Private-Package>${bundle.namespace}.*</Private-Package>
-                        <Import-Package>*;resolution:=optional</Import-Package>
-                        <Embed-Dependency>*;</Embed-Dependency>
-                        <Embed-Transitive>true</Embed-Transitive>
-                    </instructions>
                 </configuration>
             </plugin>
         </plugins>
@@ -86,14 +77,8 @@
     <dependencies>
         <!--        JUNIT5 for unit testing-->
         <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-runner</artifactId>
-            <version>${junit.platform.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
+            <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
@@ -108,39 +93,45 @@
             <groupId>org.jblas</groupId>
             <artifactId>jblas</artifactId>
             <version>${jblas.version}</version>
-            <optional>true</optional>
         </dependency>
         <!--java data science and visualize package-->
         <dependency>
             <groupId>tech.tablesaw</groupId>
             <artifactId>tablesaw-core</artifactId>
             <version>${tablesaw.version}</version>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>tech.tablesaw</groupId>
             <artifactId>tablesaw-jsplot</artifactId>
             <version>${tablesaw.version}</version>
+            <optional>true</optional>
         </dependency>
         <!--network data structure base-->
         <dependency>
             <groupId>org.jgrapht</groupId>
             <artifactId>jgrapht-core</artifactId>
             <version>${jgrapht.core.version}</version>
+            <optional>true</optional>
         </dependency>
         <!--tree UI-->
         <dependency>
             <groupId>org.swinglabs</groupId>
             <artifactId>swingx</artifactId>
             <version>${swingx.version}</version>
+            <optional>true</optional>
         </dependency>
         <!--java GPU programming-->
-
+        <dependency>
+            <groupId>com.aparapi</groupId>
+            <artifactId>aparapi</artifactId>
+            <version>${aparapi.version}</version>
+        </dependency>
         <!--some tools-->
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
             <version>${Apache-Commons-Collections.version}</version>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -160,15 +151,12 @@
             <version>${MS}</version>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>com.aparapi</groupId>
-            <artifactId>aparapi</artifactId>
-            <version>${aparapi.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
