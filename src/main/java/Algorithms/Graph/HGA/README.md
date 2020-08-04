@@ -2,9 +2,9 @@
 
 ### How to run 
 
-First you have to build by maven
+First you have to build by maven, please make sure your workplace is currently located at the root of the whole project.
 
-```
+```, 
 mvn compile
 ```
 
