@@ -28,11 +28,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assembly/HGAAssembly.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale.java" afterDir="false" />
-    </list>
+    <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,10 +47,19 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProjectId" id="1fabHF89SB0BNKed9sgwfA9h1RK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../environment/Java" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -128,6 +133,14 @@
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
       <updated>1596377047507</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht" />
+      <created>1596459069577</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1596459069577</updated>
+      <workItem from="1596459100275" duration="11000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
