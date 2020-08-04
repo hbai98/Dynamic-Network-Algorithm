@@ -20,7 +20,7 @@ Get the mapping subgraph across species.
 
 <img src="README.assets/image-20200608122510098.png" alt="image-20200608122510098" style="zoom: 50%;" />
 
-
+You could navigate [here](https://github.com/164140757/MyAlgorithms/tree/master/src/main/java/Algorithms/Graph/HGA#gpu-acceleration) to see how to build HGA and run it.
 
 ### Applications
 
