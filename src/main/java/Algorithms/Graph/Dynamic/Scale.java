@@ -3,14 +3,14 @@ package Algorithms.Graph.Dynamic;
 import DS.Network.Graph;
 
 /**
- * This class is for dynamic changes, especially the morphological characteristics
+ * This abstract class is written for the analysis of dynamic changes, especially the morphological characteristics
  * such as size, shape and etc.
  *
  * @Author Haotian Bai
  * @Email bht98@i.shu.edu.cn
- * @Blog haotian.life
+ * @Blog www.haotian.life
  */
-public class Scale<V, E> {
+public abstract class Scale<V, E> {
     protected final Graph<V, E> srcG;
     protected final Graph<V, E> tgtG;
     protected Graph<V,E> periphery;
@@ -45,6 +45,7 @@ public class Scale<V, E> {
      * @param step an integer to denote the distance to propagate the network
      * @return a bool value to indicate whether the process should continue
      */
+    //TODO
     private boolean propagate(int step) {
         boolean change = false;
 

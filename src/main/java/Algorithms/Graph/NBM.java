@@ -86,7 +86,7 @@ public class NBM<V, E> {
             Set<V> neb2 = udG2.getNeb(node2);
             // no parallel here! stateful lambda
             neb1.forEach(n1 -> {
-                int nebNumbNode1 = udG1.getNebNum(n1);
+                int nebNumbNode1 = udG1.getNeb(n1).size();
                 double reward = simUV / nebNumbNode1;
                 neb2.forEach(n2 -> {
                     double newWeight = simMat.getVal(n1, n2) + reward;

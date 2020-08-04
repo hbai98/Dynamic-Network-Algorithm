@@ -5,10 +5,12 @@ import org.jgrapht.graph.SimpleGraph;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class UndirectedGraph<V,E> extends DefaultUndirectedWeightedGraph<V,E> implements Graph<V,E> {
+@SuppressWarnings("unchecked")
+public class UndirectedGraph<V, E> extends DefaultUndirectedWeightedGraph<V, E> implements Graph<V, E> {
 
     public UndirectedGraph(Class<? extends E> edgeClass) {
         super(edgeClass);
@@ -21,14 +23,25 @@ public class UndirectedGraph<V,E> extends DefaultUndirectedWeightedGraph<V,E> im
     }
 
     @Override
-    public int getNebNum(V vertex) {
-        return this.edgesOf(vertex).size();
+    public boolean[] getAdjMat() {
+        V[] nodes = (V[]) vertexSet().toArray();
+        int s = nodes.length;
+        boolean[] adjMat = new boolean[s * s];
+
+        for (int i = 0; i < s; i++) {
+            for (int j = 0; j < s; j++) {
+                if (containsEdge(nodes[i], nodes[j])) {
+                    adjMat[j * s + i] = true;
+                }
+            }
+        }
+        return adjMat;
     }
 
-    private V neb(V v,E e){
+    private V neb(V v, E e) {
         V source = this.getEdgeSource(e);
         V target = this.getEdgeTarget(e);
-        return source.equals(v)?target:source;
+        return source.equals(v) ? target : source;
     }
 
 }

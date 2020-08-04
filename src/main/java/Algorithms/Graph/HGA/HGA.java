@@ -32,8 +32,9 @@ import java.util.stream.Collectors;
  * Article in IEEE/ACM Transactions on Computational Biology and Bioinformatics · January 2015
  * DOI: 10.1109/TCBB.2015.2465957
  *
- * @author: Haotian Bai
- * Shanghai University, department of computer science
+ * @Author Haotian Bai
+ * @Email bht98@i.shu.edu.cn
+ * @Blog www.haotian.life
  */
 
 public class HGA<V,E> {
@@ -46,7 +47,7 @@ public class HGA<V,E> {
     // parameters
     private boolean forcedMappingForSame;
     private double hAccount;
-    protected double bioFactor;
+    protected float bioFactor;
     private double edgeScore = 1.;
     private int h = 5;
     //---------------mapping result(best mapping)-------------
@@ -100,7 +101,7 @@ public class HGA<V,E> {
     public HGA(SimMat<V> simMat,
                UndirectedGraph<V,E> udG1,
                UndirectedGraph<V,E> udG2,
-               double nodalFactor, boolean forcedMappingForSame, double hAccount, double tolerance) throws IOException {
+               float nodalFactor, boolean forcedMappingForSame, double hAccount, double tolerance) throws IOException {
 
         this.udG1 = udG1;
         this.udG2 = udG2;
@@ -358,7 +359,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
                 nei_x,start_x, // graph1 neighbors
                 nei_y,start_y, // graph2 neighbors
                 sumPreSimMat, // sum of mat
-                (float) bioFactor);
+                bioFactor);
         Range range = Range.create(nodes1.size()*nodes2.size(),1);
         kernel.execute(range).get(out);
         simMat.getMat().data = Doubles.toArray(Floats.asList(out));
@@ -819,7 +820,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
     }
 
 
-    public void setBioFactor(double bioFactor) {
+    public void setBioFactor(float bioFactor) {
         assert (bioFactor >= 0 && bioFactor <= 1);
         this.bioFactor = bioFactor;
     }
