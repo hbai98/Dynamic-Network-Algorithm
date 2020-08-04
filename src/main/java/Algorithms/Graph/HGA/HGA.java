@@ -3,6 +3,7 @@ package Algorithms.Graph.HGA;
 
 import Algorithms.Graph.Hungarian;
 import Algorithms.Graph.NBM;
+import DS.Network.Graph;
 import DS.Network.SimMat;
 import DS.Network.UndirectedGraph;
 import IO.AbstractFileWriter;
@@ -40,8 +41,8 @@ public class HGA<V,E> {
     private final int LimitOfIndexGraph = 60;
 
     protected SimMat<V> simMat;
-    protected UndirectedGraph<V,E> udG1;
-    protected UndirectedGraph<V,E> udG2;
+    protected Graph<V,E> udG1;
+    protected Graph<V,E> udG2;
     // parameters
     private boolean forcedMappingForSame;
     private double hAccount;
@@ -143,7 +144,7 @@ public class HGA<V,E> {
 
     /**
      * divide S(t)
-     * into two matrixes: the H-matrix, in which each row
+     * into two matrices: the H-matrix, in which each row
      * has at least h nonzero entries, and the G-matrix, which
      * collects the remaining entries of S(t)
      *
@@ -364,7 +365,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         kernel.dispose();
     }
 
-    private void initNeighborToArray(Set<V> nodes, UndirectedGraph<V,E> g,
+    private void initNeighborToArray(Set<V> nodes, Graph<V,E> g,
                                      HashMap<V, Integer> map, Vector<Integer> neighbors,
                                      int[] starts) {
         starts[0] = 0;
