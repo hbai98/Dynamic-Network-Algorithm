@@ -117,7 +117,7 @@ public class DK<V,E> extends Scale<V,E>{
     private FloatMatrix getG() {
         // compute self-item G0
         FloatMatrix G0 = getSelfItem();
-        return;
+        return null;
     }
 
     /**

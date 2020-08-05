@@ -2,8 +2,7 @@ package Algorithms.Graph;
 
 
 import DS.Network.Graph;
-import DS.Network.SimMat;
-import DS.Network.UndirectedGraph;
+import DS.Matrix.SimMat;
 
 import java.util.*;
 import java.util.stream.Collectors;

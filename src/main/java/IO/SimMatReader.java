@@ -1,6 +1,6 @@
 package IO;
 
-import DS.Network.SimMat;
+import DS.Matrix.SimMat;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;

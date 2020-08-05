@@ -1,6 +1,6 @@
 package Algorithms.Graph;
 
-import DS.Network.SimMat;
+import DS.Matrix.SimMat;
 
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;

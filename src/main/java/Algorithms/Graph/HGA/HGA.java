@@ -4,7 +4,7 @@ package Algorithms.Graph.HGA;
 import Algorithms.Graph.Hungarian;
 import Algorithms.Graph.NBM;
 import DS.Network.Graph;
-import DS.Network.SimMat;
+import DS.Matrix.SimMat;
 import DS.Network.UndirectedGraph;
 import IO.AbstractFileWriter;
 

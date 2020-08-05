@@ -1,12 +1,9 @@
-package DS.Network;
+package DS.Matrix;
 
 import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 public class SimMat<T> {
