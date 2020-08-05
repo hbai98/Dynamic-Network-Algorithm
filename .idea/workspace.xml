@@ -29,21 +29,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/DK.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/DS/Network/UndirectedGraphTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Haotian_Bai.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Haotian_Bai.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Network/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Network/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Network/UndirectedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Network/UndirectedGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IO/GraphFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/GraphFileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/AlgTest/HGA/small/sGraph1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/AlgTest/HGA/small/sGraph1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/AlgTest/HGA/small/simMat2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Dynamic/Scale.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Dynamic/Scale.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DS/Network/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DS/Network/Graph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/DK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/DK.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,17 +97,6 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.UndirectedGraphTest.getAdjMat">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="HGARunSpec.run_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <useClassPathOnly />
@@ -200,6 +177,8 @@
       <updated>1596459069577</updated>
       <workItem from="1596459100275" duration="11000" />
       <workItem from="1596518673337" duration="13581000" />
+      <workItem from="1596538830187" duration="1408000" />
+      <workItem from="1596587812768" duration="2198000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -309,10 +288,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="816" y="104" key="extract.method.dialog/0.0.1536.864@0.0.1536.864" timestamp="1596520855275" />
-    <state width="546" height="311" key="javadoc.popup.new" timestamp="1596533900782">
+    <state width="546" height="311" key="javadoc.popup.new" timestamp="1596618775424">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="546" height="311" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1596533900782" />
+    <state width="546" height="311" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1596618775424" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

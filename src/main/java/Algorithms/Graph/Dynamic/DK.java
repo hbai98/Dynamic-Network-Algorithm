@@ -2,13 +2,12 @@ package Algorithms.Graph.Dynamic;
 
 import DS.Network.Graph;
 import com.google.common.primitives.Booleans;
-import com.google.common.primitives.Floats;
+import org.apache.commons.lang3.ArrayUtils;
+import org.jblas.FloatMatrix;
 
-import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * DK stands for Graph Diffusion Kernel, which is an algorithm aimed to
@@ -25,10 +24,10 @@ import java.util.stream.Collectors;
  */
 public class DK<V,E> extends Scale<V,E>{
     // algorithm's params
-    private float[] adjMat; // adjacent matrix of the Graph tgtG
-    private float[] query; // a boolean vector to indicate query nodes(introducing the flow)
+    private FloatMatrix adjMat; // adjacent matrix of the Graph tgtG
+    private FloatMatrix query; // a boolean vector to indicate query nodes(introducing the flow)
     private final float loss; // loss fluid within each node
-    private float[] dia; //a diagonal matrix with Sii which is the degree of node i ∈ V
+    private FloatMatrix dia; //a diagonal matrix with Sii which is the degree of node i ∈ V
 
     // internal
 
@@ -59,7 +58,16 @@ public class DK<V,E> extends Scale<V,E>{
     }
 
     private void initDia() {
-        this.dia = new short[];
+        Set<V> tgtN = tgtG.vertexSet();
+        int s = tgtN.size();
+        float[] diaArray = new float[s*s];
+        AtomicInteger i = new AtomicInteger();
+        tgtN.forEach(t->{
+            int i_ = i.get();
+            diaArray[i_*s+i_] = tgtG.degreeOf(t);
+            i.incrementAndGet();
+        });
+        dia = new FloatMatrix(diaArray);
     }
 
     /**
@@ -69,14 +77,15 @@ public class DK<V,E> extends Scale<V,E>{
     private void initQry() {
         Set<V> srcN = srcG.vertexSet();
         Set<V> tgtN = tgtG.vertexSet();
-        this.query = new float[srcN.size()];
+        float[] queryArray = new float[srcN.size()];
         AtomicInteger i = new AtomicInteger();
         srcN.forEach(s->{
             if(tgtN.contains(s)){
-                query[i.get()] = 1;
+                queryArray[i.get()] = 1;
             }
             i.incrementAndGet();
         });
+        query = new FloatMatrix(queryArray);
     }
 
     /**
@@ -91,9 +100,44 @@ public class DK<V,E> extends Scale<V,E>{
      */
     private void initAdj() {
         Function<? super Boolean, ?> boolToFloat = (Function<Boolean, Object>) aBoolean -> aBoolean ? 1. : 0.;
-        this.adjMat = Booleans.asList(tgtG.getAdjMat())
-                .stream()
-                .map(boolToFloat).toArray();
+        float[] adjArray = ArrayUtils.toPrimitive(Booleans.asList(tgtG.getAdjMat()).stream()
+                .map(boolToFloat).toArray(Float[]::new));
+        this.adjMat = new FloatMatrix(adjArray);
     }
+
+    /**
+     * Public interface for users to run Diffusion Kernel
+     *
+     */
+    public void run(){
+       // G is defined
+       FloatMatrix G = getG();
+    }
+
+    private FloatMatrix getG() {
+        // compute self-item G0
+        FloatMatrix G0 = getSelfItem();
+        return;
+    }
+
+    /**
+     * as defined in the paper a linear expression of the self-item to compute the equilibrium status of the diffusion
+     * by (dia + loss*I)^(-1)
+     *
+     * G0 is the inverse of a diagonal matrix and hence trivial to calculate.
+     * @return self-item
+     */
+    private FloatMatrix getSelfItem() {
+        return getIdMat().div(dia.add(getIdMat().mul(loss)));
+    }
+
+    /**
+     * Get a identity matrix I based on the target graph
+     * @return a new allocated identity matrix
+     */
+    private FloatMatrix getIdMat() {
+        return FloatMatrix.eye(tgtG.vertexSet().size());
+    }
+
 
 }

@@ -28,9 +28,9 @@ Propagate the biological network for predicting novel genetic interactions and c
 
 <div style="text-align:center"><img src="README.assets/image-20200804134839541.png" alt="image-20200804134839541" style="zoom: 80%;" /> </div>
 
-Diffusion with source and sink. Fluid is pumped from the source into a selected set of query nodes and is allowed to leak out from each node into a sink at first-order rate. For clarity, an undirected network is shown.
+Diffusion with source and sink. Fluid is pumped from the source into a selected set of query nodes and is allowed to leak out from each node into a sink at first-order rate. For clarity, an undirected network is shown
 
-
+Code is available [here](https://github.com/164140757/MyAlgorithms/tree/master/src/main/java/Algorithms/Graph/Dynamic).
 
 Please refer to [Finding friends and enemies in an enemies-only network: A graph diffusion kernel for predicting
 novel genetic interactions and co-complex membership from yeast genetic interactions](10.1101/gr.077693.108) for the design of the algorithm.
