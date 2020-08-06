@@ -1,9 +1,10 @@
 package Algorithms.Graph.Dynamic;
 
+import DS.Matrix.StatisticsMatrix;
 import DS.Network.Graph;
 import com.google.common.primitives.Booleans;
 import org.apache.commons.lang3.ArrayUtils;
-import org.jblas.FloatMatrix;
+import org.ejml.simple.SimpleMatrix;
 
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -24,10 +25,10 @@ import java.util.function.Function;
  */
 public class DK<V,E> extends Scale<V,E>{
     // algorithm's params
-    private FloatMatrix adjMat; // adjacent matrix of the Graph tgtG
-    private FloatMatrix query; // a boolean vector to indicate query nodes(introducing the flow)
-    private final float loss; // loss fluid within each node
-    private FloatMatrix dia; //a diagonal matrix with Sii which is the degree of node i ∈ V
+    private StatisticsMatrix adjMat; // sparse adjacent matrix of the Graph tgtG
+    private StatisticsMatrix query; // a boolean vector to indicate query nodes(introducing the flow)
+    private final double loss; // loss fluid within each node
+    private StatisticsMatrix dia; //a diagonal matrix with Sii which is the degree of node i ∈ V
 
     // internal
 
@@ -38,10 +39,11 @@ public class DK<V,E> extends Scale<V,E>{
      *             larger loss leads to faster loss, hence short diffusive paths
      *
      */
-    public DK(Graph<V, E> srcG, Graph<V, E> tgtG,float loss) {
+    public DK(Graph<V, E> srcG, Graph<V, E> tgtG,double loss) {
         super(srcG, tgtG);
         // initialize loss
         this.loss = loss;
+
         init();
     }
 
@@ -60,24 +62,24 @@ public class DK<V,E> extends Scale<V,E>{
     private void initDia() {
         Set<V> tgtN = tgtG.vertexSet();
         int s = tgtN.size();
-        float[] diaArray = new float[s*s];
+        double[] diaArray = new double[s];
         AtomicInteger i = new AtomicInteger();
         tgtN.forEach(t->{
-            int i_ = i.get();
-            diaArray[i_*s+i_] = tgtG.degreeOf(t);
+            diaArray[i.get()] = tgtG.degreeOf(t);
             i.incrementAndGet();
         });
-        dia = new FloatMatrix(diaArray);
+        dia = new StatisticsMatrix(diaArray).diag();
+        dia.convertToSparse();
     }
 
     /**
-     * Set up a boolean vector to indicate query nodes(introducing the flow) and assign
+     * Set up a vector to indicate query nodes(introducing the flow) and assign
      * true for them.
      */
     private void initQry() {
         Set<V> srcN = srcG.vertexSet();
         Set<V> tgtN = tgtG.vertexSet();
-        float[] queryArray = new float[srcN.size()];
+        double[] queryArray = new double[srcN.size()];
         AtomicInteger i = new AtomicInteger();
         srcN.forEach(s->{
             if(tgtN.contains(s)){
@@ -85,7 +87,7 @@ public class DK<V,E> extends Scale<V,E>{
             }
             i.incrementAndGet();
         });
-        query = new FloatMatrix(queryArray);
+        query = new StatisticsMatrix(queryArray);
     }
 
     /**
@@ -100,9 +102,9 @@ public class DK<V,E> extends Scale<V,E>{
      */
     private void initAdj() {
         Function<? super Boolean, ?> boolToFloat = (Function<Boolean, Object>) aBoolean -> aBoolean ? 1. : 0.;
-        float[] adjArray = ArrayUtils.toPrimitive(Booleans.asList(tgtG.getAdjMat()).stream()
-                .map(boolToFloat).toArray(Float[]::new));
-        this.adjMat = new FloatMatrix(adjArray);
+        double[] adjArray = ArrayUtils.toPrimitive(Booleans.asList(tgtG.getAdjMat()).stream()
+                .map(boolToFloat).toArray(Double[]::new));
+        this.adjMat = new StatisticsMatrix(adjArray);
     }
 
     /**
@@ -111,12 +113,13 @@ public class DK<V,E> extends Scale<V,E>{
      */
     public void run(){
        // G is defined
-       FloatMatrix G = getG();
+       StatisticsMatrix G = getG();
     }
 
-    private FloatMatrix getG() {
+    private StatisticsMatrix getG() {
         // compute self-item G0
-        FloatMatrix G0 = getSelfItem();
+        StatisticsMatrix G0 = getSelfItem();
+
         return null;
     }
 
@@ -127,16 +130,8 @@ public class DK<V,E> extends Scale<V,E>{
      * G0 is the inverse of a diagonal matrix and hence trivial to calculate.
      * @return self-item
      */
-    private FloatMatrix getSelfItem() {
-        return getIdMat().div(dia.add(getIdMat().mul(loss)));
-    }
-
-    /**
-     * Get a identity matrix I based on the target graph
-     * @return a new allocated identity matrix
-     */
-    private FloatMatrix getIdMat() {
-        return FloatMatrix.eye(tgtG.vertexSet().size());
+    private StatisticsMatrix getSelfItem() {
+        return dia.plus(StatisticsMatrix.createIdentity(tgtSize).scale(loss)).inverseDig();
     }
 
 

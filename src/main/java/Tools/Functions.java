@@ -1,5 +1,6 @@
 package Tools;
 
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -85,6 +86,16 @@ public class Functions {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    /**
+     * construct a generic array
+     * @param <E> Array data type
+     * @return array
+     */
+    @SuppressWarnings("unchecked")
+    static public <E extends Number> E[] genArray(Class<E> c,int length){
+        return (E[]) Array.newInstance(c, length);
     }
 
 

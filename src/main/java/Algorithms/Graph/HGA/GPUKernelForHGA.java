@@ -11,10 +11,10 @@ import java.util.Vector;
 
 public class GPUKernelForHGA extends Kernel {
 
-    private final float[] pre;
-    private final float[] ori;
-    private final float[] out;
-    private final float bio;
+    private final double[] pre;
+    private final double[] ori;
+    private final double[] out;
+    private final double bio;
     private final int[] nei_x;
     private final int[] nei_y;
     private final int[] sx;
@@ -23,11 +23,11 @@ public class GPUKernelForHGA extends Kernel {
     private final int n2;
     private final double preSum;
 
-    public GPUKernelForHGA(float[] pre, float[] ori, float[] out,
+    public GPUKernelForHGA(double[] pre, double[] ori, double[] out,
                            Vector<Integer> nei_x, int[] start_x,
                            Vector<Integer> nei_y, int[] start_y,
                            double preSum,
-                           float bioFactor) {
+                           double bioFactor) {
         this.pre = pre;
         this.ori = ori;
         this.out = out;
@@ -74,9 +74,9 @@ public class GPUKernelForHGA extends Kernel {
         // non-neighbors
         if (non1Size != 0 && non2Size != 0) {
             for (int i = 0; i < n1; i++) {
-                if (!isIn(i, sx, nei_x, r)) {
+                if (isIn(i, sx, nei_x, r)) {
                     for (int j = 0; j < n2; j++) {
-                        if (!isIn(j, sy, nei_y, c)) {
+                        if (isIn(j, sy, nei_y, c)) {
                             int index = i + j * n1;
                             eNonNeighbors = eNonNeighbors + pre[index];
                         }
@@ -91,20 +91,20 @@ public class GPUKernelForHGA extends Kernel {
         }
 
         double eTP = (eNeighbors + eNonNeighbors) / 2;
-        out[r + n1 * c] = (float) (ori[r + n1 * c] * bio + eTP * (1 - bio));
+        out[r + n1 * c] = (double) (ori[r + n1 * c] * bio + eTP * (1 - bio));
     }
 
 
     private static boolean isIn(int i, int[] s, int[] nei, int l) {
         if (i == l) {
-            return true;
+            return false;
         }
         for (int j = s[l]; j < s[l + 1]; j++) {
             if (i == nei[j]) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
 }

@@ -29,17 +29,101 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DS/Matrix/Matrix.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DS/Matrix/Alg/CommonOps_DDRM_extend.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DS/Matrix/StatisticsMatrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HGALog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/HGALog.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/DK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/DK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/GPUKernelForHGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/GPUKernelForHGA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Hungarian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Hungarian.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Network/SimMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Matrix/SimMat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Matrix/Matrix.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Matrix/SimMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Matrix/SimMat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Tools/Functions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tools/Functions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Tools/MatrixFunctions.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mappingResult_19.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_16.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_17.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_18.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrixResult_19.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_10.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_11.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_12.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_12.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_13.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_16.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_17.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_18.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_4.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_5.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_6.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_6.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_7.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_8.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_8.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_9.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoringResult_19.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_10.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_11.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_12.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_12.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_13.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_16.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_17.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_18.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_4.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_5.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_6.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_6.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_7.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_8.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_8.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_9.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Dynamic/DK.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Dynamic/DK.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Dynamic/Scale.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Dynamic/Scale.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/GPUKernelForHGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/GPUKernelForHGA.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian$ProblemType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian$ProblemType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian$ZeroMasks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian$ZeroMasks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/NBM.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Set/FD.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Set/FD.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DS/Network/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DS/Network/Graph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DS/Network/SimMat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DS/Network/UndirectedGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DS/Network/UndirectedGraph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/IO/AbstractFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/IO/AbstractFileReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/IO/AbstractFileWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/IO/AbstractFileWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/IO/DoubleMatrixReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/IO/DoubleMatrixReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/IO/GraphFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/IO/GraphFileReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/IO/SimMatReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/IO/SimMatReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Tools/Functions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tools/Functions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Tools/Logger.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tools/Logger.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Tools/MatrixFunctions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tools/MatrixFunctions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/Tree/ChildNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UI/Tree/ChildNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/Tree/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UI/Tree/Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/Tree/RootNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UI/Tree/RootNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UI/TreeTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UI/TreeTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGARunSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGARunSpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGASpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGASpc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Set/FDTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Set/FDTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/DS/Network/UndirectedGraphTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/DS/Network/UndirectedGraphTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Tools/Stopwatch.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Tools/Stopwatch.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,9 +136,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -91,7 +175,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -105,7 +189,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UndirectedGraphTest.getAdjMat">
+  <component name="RunManager" selected="JUnit.HGARunSpec.run_test_GPU">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -174,9 +258,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UndirectedGraphTest.getAdjMat" />
         <item itemvalue="JUnit.HGARunSpec.run_test_GPU" />
         <item itemvalue="JUnit.HGARunSpec.run_test" />
+        <item itemvalue="JUnit.UndirectedGraphTest.getAdjMat" />
       </list>
     </recent_temporary>
   </component>
@@ -200,6 +284,7 @@
       <workItem from="1596538830187" duration="1408000" />
       <workItem from="1596587812768" duration="2459000" />
       <workItem from="1596621676544" duration="1307000" />
+      <workItem from="1596673305620" duration="28975000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -241,91 +326,120 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1596424836997" />
-    <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser" timestamp="1596524336784">
+    <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser" timestamp="1596698334259">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1596524336784" />
-    <state x="71" y="268" key="#xdebugger.evaluate" timestamp="1596528726531">
+    <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1596698334259" />
+    <state x="499" y="211" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1596679967201">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="71" y="268" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1596528726531" />
+    <state x="499" y="211" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.864@0.0.1536.864" timestamp="1596679967201" />
+    <state x="551" y="301" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1596679971019">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="551" y="301" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.864@0.0.1536.864" timestamp="1596679971019" />
+    <state x="26" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596683448674">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="26" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.864@0.0.1536.864" timestamp="1596683448674" />
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1596691006091">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1596691006091" />
+    <state x="71" y="268" key="#xdebugger.evaluate" timestamp="1596701641093">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="71" y="268" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1596701641093" />
     <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1596425190502">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1596425190502" />
-    <state width="395" height="438" key="DebuggerActiveHint" timestamp="1596528631193">
+    <state width="420" height="438" key="DebuggerActiveHint" timestamp="1596701667217">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="395" height="438" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1596528631193" />
-    <state x="577" y="195" key="FileChooserDialogImpl" timestamp="1596377290246">
+    <state width="420" height="438" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1596701667217" />
+    <state x="577" y="195" key="FileChooserDialogImpl" timestamp="1596674903890">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="577" y="195" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1596377290246" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1596528732283">
+    <state x="577" y="195" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1596674903890" />
+    <state width="1493" height="669" key="GridCell.Tab.0.bottom" timestamp="1596701903391">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596528732283" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1596528732283">
+    <state width="1493" height="669" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596701903391" />
+    <state width="1493" height="669" key="GridCell.Tab.0.center" timestamp="1596701903389">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1596528732283" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1596528732283">
+    <state width="1493" height="669" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1596701903389" />
+    <state width="1493" height="669" key="GridCell.Tab.0.left" timestamp="1596701903389">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1596528732283" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1596528732283">
+    <state width="1493" height="669" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1596701903389" />
+    <state width="1493" height="669" key="GridCell.Tab.0.right" timestamp="1596701903389">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1596528732283" />
-    <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1596528732283">
+    <state width="1493" height="669" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1596701903389" />
+    <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1596701699512">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596528732283" />
-    <state width="1493" height="223" key="GridCell.Tab.1.center" timestamp="1596528732283">
+    <state width="1493" height="223" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596701699512" />
+    <state width="1493" height="223" key="GridCell.Tab.1.center" timestamp="1596701699511">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1596528732283" />
-    <state width="1493" height="223" key="GridCell.Tab.1.left" timestamp="1596528732283">
+    <state width="1493" height="223" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1596701699511" />
+    <state width="1493" height="223" key="GridCell.Tab.1.left" timestamp="1596701699511">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1596528732283" />
-    <state width="1493" height="223" key="GridCell.Tab.1.right" timestamp="1596528732283">
+    <state width="1493" height="223" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1596701699511" />
+    <state width="1493" height="223" key="GridCell.Tab.1.right" timestamp="1596701699511">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1596528732283" />
-    <state x="277" y="14" key="SettingsEditor" timestamp="1596377885896">
+    <state width="1493" height="223" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1596701699511" />
+    <state x="277" y="14" key="SettingsEditor" timestamp="1596674915317">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="277" y="14" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1596377885896" />
+    <state x="277" y="14" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1596674915317" />
     <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1596425379944">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1596425379944" />
-    <state x="540" y="242" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1596525894644">
+    <state x="540" y="242" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1596678511827">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="540" y="242" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.864@0.0.1536.864" timestamp="1596525894644" />
-    <state x="816" y="104" key="extract.method.dialog" timestamp="1596520855275">
+    <state x="540" y="242" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.864@0.0.1536.864" timestamp="1596678511827" />
+    <state x="815" y="165" key="extract.method.dialog" timestamp="1596704574162">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="816" y="104" key="extract.method.dialog/0.0.1536.864@0.0.1536.864" timestamp="1596520855275" />
-    <state width="546" height="311" key="javadoc.popup.new" timestamp="1596619147798">
+    <state x="815" y="165" key="extract.method.dialog/0.0.1536.864@0.0.1536.864" timestamp="1596704574162" />
+    <state width="546" height="311" key="javadoc.popup.new" timestamp="1596706308418">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="546" height="311" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1596619147798" />
+    <state width="546" height="311" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1596706308418" />
+    <state x="562" y="180" key="refactoring.ChangeSignatureDialog" timestamp="1596698337803">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="562" y="180" key="refactoring.ChangeSignatureDialog/0.0.1536.864@0.0.1536.864" timestamp="1596698337803" />
+    <state x="425" y="197" key="run.anything.popup" timestamp="1596703918653">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1596703918653" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/IO/SimMatReader.java</url>
-          <line>125</line>
+          <line>126</line>
           <option name="timeStamp" value="326" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="344" />
+          <url>file://$PROJECT_DIR$/src/main/java/DS/Matrix/SimMat.java</url>
+          <line>229</line>
+          <option name="timeStamp" value="354" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java</url>
+          <line>368</line>
+          <option name="timeStamp" value="357" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

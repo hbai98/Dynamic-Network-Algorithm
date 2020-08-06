@@ -2,7 +2,7 @@ package Algorithms.Graph;
 
 import DS.Matrix.SimMat;
 
-import org.jblas.DoubleMatrix;
+import DS.Matrix.StatisticsMatrix;
 import org.jgrapht.alg.util.Pair;
 
 import java.util.Arrays;
@@ -29,9 +29,9 @@ import java.util.logging.Logger;
  * </p>
  **/
 public class Hungarian<T> {
-    protected DoubleMatrix mat;
-    protected int matCol;
-    protected int matRow;
+    protected StatisticsMatrix mat;
+    protected int cols;
+    protected int rows;
 
 
     // record the mapping result
@@ -53,7 +53,7 @@ public class Hungarian<T> {
     // debug
     public Logger logger;
 
-    protected Hungarian(DoubleMatrix mat, ProblemType type) {
+    protected Hungarian(StatisticsMatrix mat, ProblemType type) {
         init(mat, type);
     }
 
@@ -87,25 +87,25 @@ public class Hungarian<T> {
     }
 
 
-    private void init(DoubleMatrix mat, ProblemType type) {
+    private void init(StatisticsMatrix mat, ProblemType type) {
         if (type == ProblemType.maxLoc) {
-            this.mat = mat.neg();
+            this.mat = mat.negative();
         } else {
             this.mat = mat;
         }
-        matCol = mat.columns;
-        matRow = mat.rows;
-        maskMat = new ZeroMasks[matRow][matCol];
-        R_cover = new boolean[matRow];
-        C_cover = new boolean[matCol];
-        path = new int[matCol][2];
-        result = new int[matRow];
-        rowIndexes = new Vector<>(mat.rows);
-        colIndexes = new Vector<>(mat.columns);
-        for (int r = 0; r < mat.rows; r++) {
+        cols = mat.numCols();
+        rows = mat.numRows();
+        maskMat = new ZeroMasks[rows][cols];
+        R_cover = new boolean[rows];
+        C_cover = new boolean[cols];
+        path = new int[cols][2];
+        result = new int[rows];
+        rowIndexes = new Vector<>(rows);
+        colIndexes = new Vector<>(cols);
+        for (int r = 0; r < rows; r++) {
             rowIndexes.add(r);
         }
-        for (int c = 0; c < mat.columns; c++) {
+        for (int c = 0; c < cols; c++) {
             colIndexes.add(c);
         }
         Arrays.fill(result, -1);
@@ -119,11 +119,10 @@ public class Hungarian<T> {
     protected int subtractRowMinimal() {
         // parallel here there is no interference and no stateful lambda
         //https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
-//        logInfo("Hungarian step 1-subtract minimum from rows...");
         rowIndexes.parallelStream().forEach(r -> {
-            DoubleMatrix curRow = mat.getRow(r);
-            double minRowVal = curRow.min();
-            mat.putRow(r, curRow.sub(minRowVal));
+            StatisticsMatrix curRow = mat.getRow(r);
+            double minRowVal = curRow.getMinDouble();
+            mat.rRow(r,curRow.minus(minRowVal));
         });
         return 2;
     }
@@ -165,7 +164,7 @@ public class Hungarian<T> {
             }
         }));
         int colCoveredCount = detectC_cover();
-        if (colCoveredCount >= matCol || colCoveredCount >= matRow) {
+        if (colCoveredCount >= cols || colCoveredCount >= rows) {
             return 7;
         } else {
             return 4;
@@ -221,8 +220,8 @@ public class Hungarian<T> {
     }
 
     private Pair<Integer, Integer> findAUncoveredZero(int row, int col) {
-        for (int r = row; r < matRow; r++) {
-            for (int c = col; c < matCol; c++) {
+        for (int r = row; r < rows; r++) {
+            for (int c = col; c < cols; c++) {
                 if (mat.get(r, c) == 0 && !C_cover[c] && !R_cover[r]) {
                     return new Pair<>(r, c);
                 }
@@ -233,7 +232,7 @@ public class Hungarian<T> {
 
 
     private int findStarredInRow(int row) {
-        for (int c = 0; c < matCol; c++) {
+        for (int c = 0; c < cols; c++) {
             if (maskMat[row][c] == ZeroMasks.starred) {
                 return c;
             }
@@ -304,7 +303,7 @@ public class Hungarian<T> {
     }
 
     private int findPrimeInRow(int row) {
-        for (int c = 0; c < matCol; c++) {
+        for (int c = 0; c < cols; c++) {
             if (maskMat[row][c] == ZeroMasks.primed) {
                 return c;
             }
@@ -313,7 +312,7 @@ public class Hungarian<T> {
     }
 
     private int findStarredInCol(int col) {
-        for (int r = 0; r < matRow; r++) {
+        for (int r = 0; r < rows; r++) {
             if (maskMat[r][col] == ZeroMasks.starred) {
                 return r;
             }
@@ -343,10 +342,10 @@ public class Hungarian<T> {
         rowIndexes.forEach(r -> colIndexes.forEach(c -> {
             double val = mat.get(r, c);
             if (R_cover[r]) {
-                mat.put(r, c, val + minVal);
+                mat.set(r, c, val + minVal);
             }
             if (!C_cover[c]) {
-                mat.put(r, c, val - minVal);
+                mat.set(r, c, val - minVal);
             }
         }));
         return 4;
@@ -354,8 +353,8 @@ public class Hungarian<T> {
 
     private double findSmallestOfUncovered() {
         double tpVal = Double.MAX_VALUE;
-        for (int r = 0; r < matRow; r++) {
-            for (int c = 0; c < matCol; c++) {
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
                 if (!R_cover[r] && !C_cover[c]) {
                     double val = mat.get(r, c);
                     if (val < tpVal) {
@@ -373,8 +372,8 @@ public class Hungarian<T> {
      */
     protected int[] finish() {
 //        logInfo("Hungarian step 7-Finish");
-        int[] result = new int[matRow];
-        for (int r = 0; r < matRow; r++) {
+        int[] result = new int[rows];
+        for (int r = 0; r < rows; r++) {
             int indexCol = findStarredInRow(r);
             result[r] = indexCol;
         }
@@ -390,10 +389,4 @@ public class Hungarian<T> {
         this.logger = logger;
     }
 
-
-    private void logInfo(String message) {
-        if (logger != null) {
-            logger.info(message);
-        }
-    }
 }

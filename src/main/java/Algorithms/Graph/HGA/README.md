@@ -33,7 +33,7 @@ nohup mvn clean test -Dtest=Algorithms.Graph.HGA.HGARunSpec#<test> &
 ```java
  @Test
     void run_yeast() throws IOException {
-         // reader for reading undirected graphs and the similarity matrix
+         // reader for reading undirected graphs and the similarity Matrix
         GraphFileReader reader = new GraphFileReader(true, false, false);
         // read graphs with the file path
         undG1 = reader.readToUndirectedGraph("src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/net-38n.txt", false);
@@ -45,15 +45,15 @@ nohup mvn clean test -Dtest=Algorithms.Graph.HGA.HGARunSpec#<test> &
                 undG1.getAllNodes(), undG2.getAllNodes(), true);
         // hga init
         hga = new HGA(simMat, undG1, undG2, 0.4,true,0.5,0.01);
-        // specify where you want the log matrix, score, and mapping result.
+        // specify where you want the log Matrix, score, and mapping result.
         HGA.debugOutputPath = "src\\test\\java\\resources\\Jupiter\\data\\";
         hga.run();
     }
 ```
 
-Notice: the similarity matrix is consist of the index graph's nodes as its rows, and the target graph's as its columns.
+Notice: the similarity Matrix is consist of the index graph's nodes as its rows, and the target graph's as its columns.
 
-The matrix's size should be equal to or more than m*n as it has to cover all pairs. 
+The Matrix's size should be equal to or more than m*n as it has to cover all pairs. 
 
 
 
@@ -77,7 +77,7 @@ INFO: Hungarian mapping...
 Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: Scoring for mapping ...
 Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
-INFO: output matrix
+INFO: output Matrix
 Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
 Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
@@ -89,7 +89,7 @@ INFO: AddTopology for all nodes pairs in two graphs:
 Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
 ```
 
-When the matrix has converged, it will be an output information to denote that all iterations needed have been finished.
+When the Matrix has converged, it will be an output information to denote that all iterations needed have been finished.
 
 ```
 Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
@@ -97,14 +97,14 @@ INFO: HGA mapping finish!With iteration 14 times.
 Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output mapping
 Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
-INFO: output matrix
+INFO: output Matrix
 Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
 INFO: output scores
 ```
 
 ### GPU acceleration 
 
-The algorithm is still complicated as updating the matrix with topological information will be tedious. The time complexity will be (n*m)^2, for more information on how to implement this method, please visit my blog [here](http://www.haotian.life/2020/07/28/new-feature-gpu-for-hga/).
+The algorithm is still complicated as updating the Matrix with topological information will be tedious. The time complexity will be (n*m)^2, for more information on how to implement this method, please visit my blog [here](http://www.haotian.life/2020/07/28/new-feature-gpu-for-hga/).
 
 ```
 @Test
