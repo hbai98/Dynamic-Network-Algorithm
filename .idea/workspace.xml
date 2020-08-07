@@ -30,11 +30,7 @@
   <component name="ChangeListManager">
     <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/DK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/DK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Matrix/StatisticsMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Matrix/StatisticsMatrix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Dynamic/DK.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Dynamic/DK.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DS/Matrix/StatisticsMatrix.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DS/Matrix/StatisticsMatrix.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Dynamic/DKTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Dynamic/DKTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -111,6 +107,19 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.DKTest.run">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DKTest.inverse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
@@ -235,7 +244,7 @@
       <workItem from="1596770038289" duration="9739000" />
       <workItem from="1596788173629" duration="505000" />
       <workItem from="1596788703411" duration="6363000" />
-      <workItem from="1596795136134" duration="3860000" />
+      <workItem from="1596795136134" duration="7051000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -297,54 +306,54 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1596792165464" />
-    <state x="44" y="125" key="#xdebugger.evaluate" timestamp="1596798492594">
+    <state x="44" y="125" key="#xdebugger.evaluate" timestamp="1596801025347">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="44" y="125" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1596798492594" />
+    <state x="44" y="125" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1596801025347" />
     <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1596425190502">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1596425190502" />
-    <state width="438" height="438" key="DebuggerActiveHint" timestamp="1596798308154">
+    <state width="438" height="438" key="DebuggerActiveHint" timestamp="1596800307716">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="438" height="438" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1596798308154" />
+    <state width="438" height="438" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1596800307716" />
     <state x="577" y="195" key="FileChooserDialogImpl" timestamp="1596674903890">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="577" y="195" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1596674903890" />
-    <state width="1493" height="211" key="GridCell.Tab.0.bottom" timestamp="1596799014704">
+    <state width="1493" height="211" key="GridCell.Tab.0.bottom" timestamp="1596801027451">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596799014704" />
-    <state width="1493" height="211" key="GridCell.Tab.0.center" timestamp="1596799014704">
+    <state width="1493" height="211" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596801027451" />
+    <state width="1493" height="211" key="GridCell.Tab.0.center" timestamp="1596801027451">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1596799014704" />
-    <state width="1493" height="211" key="GridCell.Tab.0.left" timestamp="1596799014704">
+    <state width="1493" height="211" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1596801027451" />
+    <state width="1493" height="211" key="GridCell.Tab.0.left" timestamp="1596801027450">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1596799014704" />
-    <state width="1493" height="211" key="GridCell.Tab.0.right" timestamp="1596799014704">
+    <state width="1493" height="211" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1596801027450" />
+    <state width="1493" height="211" key="GridCell.Tab.0.right" timestamp="1596801027451">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1596799014704" />
-    <state width="1493" height="211" key="GridCell.Tab.1.bottom" timestamp="1596799015413">
+    <state width="1493" height="211" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1596801027451" />
+    <state width="1493" height="211" key="GridCell.Tab.1.bottom" timestamp="1596801027452">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596799015413" />
-    <state width="1493" height="211" key="GridCell.Tab.1.center" timestamp="1596799015413">
+    <state width="1493" height="211" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596801027452" />
+    <state width="1493" height="211" key="GridCell.Tab.1.center" timestamp="1596801027451">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1596799015413" />
-    <state width="1493" height="211" key="GridCell.Tab.1.left" timestamp="1596799015413">
+    <state width="1493" height="211" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1596801027451" />
+    <state width="1493" height="211" key="GridCell.Tab.1.left" timestamp="1596801027451">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1596799015413" />
-    <state width="1493" height="211" key="GridCell.Tab.1.right" timestamp="1596799015413">
+    <state width="1493" height="211" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1596801027451" />
+    <state width="1493" height="211" key="GridCell.Tab.1.right" timestamp="1596801027451">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1596799015413" />
+    <state width="1493" height="211" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1596801027451" />
     <state x="299" y="87" key="Maven.ArtifactSearchDialog" timestamp="1596781244709">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -357,10 +366,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1596425379944" />
-    <state width="1047" height="689" key="XDebugger.FullValuePopup" timestamp="1596799025331">
+    <state width="1047" height="689" key="XDebugger.FullValuePopup" timestamp="1596801010741">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1047" height="689" key="XDebugger.FullValuePopup/0.0.1536.864@0.0.1536.864" timestamp="1596799025331" />
+    <state width="1047" height="689" key="XDebugger.FullValuePopup/0.0.1536.864@0.0.1536.864" timestamp="1596801010741" />
     <state x="540" y="242" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1596778586399">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -426,8 +435,11 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="431" />
+          <line>31</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="448" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
