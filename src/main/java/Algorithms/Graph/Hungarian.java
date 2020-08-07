@@ -71,15 +71,34 @@ public class Hungarian<T> {
         int step = 1;
         while (!done) {
             switch (step) {
-                case 1 -> step = subtractRowMinimal();
-                case 2 -> step = starZeros();
-                case 3 -> step = coverStarredZeros();
-                case 4 -> step = primeZeros();
-                case 5 -> step = augmentingPath();
-                case 6 -> step = adjustMat();
-                case 7 -> {
+                case 1 : {
+                    step = subtractRowMinimal();
+                    break;
+                }
+                case 2 :{
+                    step = starZeros();
+                    break;
+                }
+                case 3 : {
+                    step = coverStarredZeros();
+                    break;
+                }
+                case 4 :{
+                    step = primeZeros();
+                    break;
+                }
+                case 5 :{
+                    step = augmentingPath();
+                    break;
+                }
+                case 6 :{
+                    step = adjustMat();
+                    break;
+                }
+                case 7 :{
                     result = finish();
                     done = true;
+                    break;
                 }
             }
         }

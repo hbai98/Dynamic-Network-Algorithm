@@ -1,14 +1,20 @@
 package DS.Matrix;
 
+
 import DS.Matrix.Alg.CommonOps_DDRM_extend;
 import org.ejml.data.*;
 import org.ejml.dense.row.CommonOps_DDRM;
 import org.ejml.simple.SimpleBase;
 import org.ejml.simple.SimpleMatrix;
+import org.ejml.sparse.csc.CommonOps_DSCC;
 
 public class StatisticsMatrix extends SimpleBase<StatisticsMatrix> {
     public StatisticsMatrix(int numRows, int numCols) {
         super(numRows, numCols);
+    }
+    public StatisticsMatrix(int row,int col,boolean rowMajor,double[] data){
+        DMatrixRMaj mat = new DMatrixRMaj(row,col,rowMajor,data);
+        this.setMatrix(mat);
     }
 
     public StatisticsMatrix(double[] data) {
@@ -123,10 +129,16 @@ public class StatisticsMatrix extends SimpleBase<StatisticsMatrix> {
         return i * numCols() + j;
     }
 
-    public static StatisticsMatrix createIdentity(int n){
-        SimpleMatrix ret = SimpleMatrix.identity(n);
-        StatisticsMatrix  res = new StatisticsMatrix();
-        res.setMatrix(ret.getMatrix());
+    public static StatisticsMatrix createIdentity(int n,boolean sparse){
+        DMatrix ret;
+        StatisticsMatrix res = new StatisticsMatrix();
+        if(sparse){
+            ret = CommonOps_DSCC.identity(n);
+        }
+        else{
+            ret = CommonOps_DDRM.identity(n);
+        }
+        res.setMatrix(ret);
         return res;
     }
 
@@ -134,7 +146,7 @@ public class StatisticsMatrix extends SimpleBase<StatisticsMatrix> {
      * Invert the matrix when it's diagonal, which cost time O(n)
      */
     public StatisticsMatrix inverseDig(){
-        CommonOps_DDRM_extend.inverseDig((DMatrixRMaj)this.mat);
+        CommonOps_DDRM_extend.inverseDig((DMatrix)this.mat);
         return this;
     }
 

@@ -3,19 +3,13 @@ package Algorithms.Graph.HGA;
 
 import Algorithms.Graph.Hungarian;
 import Algorithms.Graph.NBM;
+import DS.Matrix.SimMat;
 import DS.Matrix.StatisticsMatrix;
 import DS.Network.Graph;
-import DS.Matrix.SimMat;
 import DS.Network.UndirectedGraph;
 import IO.AbstractFileWriter;
-
-
 import com.aparapi.Range;
-import com.google.common.primitives.Doubles;
-import com.google.common.primitives.Floats;
 import org.apache.commons.io.FileUtils;
-import org.ejml.data.DMatrixRMaj;
-import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
 import java.io.File;
