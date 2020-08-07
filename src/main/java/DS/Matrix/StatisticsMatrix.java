@@ -12,8 +12,9 @@ public class StatisticsMatrix extends SimpleBase<StatisticsMatrix> {
     public StatisticsMatrix(int numRows, int numCols) {
         super(numRows, numCols);
     }
-    public StatisticsMatrix(int row,int col,boolean rowMajor,double[] data){
-        DMatrixRMaj mat = new DMatrixRMaj(row,col,rowMajor,data);
+
+    public StatisticsMatrix(int row, int col, boolean rowMajor, double[] data) {
+        DMatrixRMaj mat = new DMatrixRMaj(row, col, rowMajor, data);
         this.setMatrix(mat);
     }
 
@@ -23,6 +24,31 @@ public class StatisticsMatrix extends SimpleBase<StatisticsMatrix> {
 
     protected StatisticsMatrix() {
     }
+    public StatisticsMatrix(int numRows, int numCols, MatrixType type) {
+        switch(type) {
+            case DDRM:
+                this.setMatrix(new DMatrixRMaj(numRows, numCols));
+                break;
+            case FDRM:
+                this.setMatrix(new FMatrixRMaj(numRows, numCols));
+                break;
+            case ZDRM:
+                this.setMatrix(new ZMatrixRMaj(numRows, numCols));
+                break;
+            case CDRM:
+                this.setMatrix(new CMatrixRMaj(numRows, numCols));
+                break;
+            case DSCC:
+                this.setMatrix(new DMatrixSparseCSC(numRows, numCols));
+                break;
+            case FSCC:
+                this.setMatrix(new FMatrixSparseCSC(numRows, numCols));
+                break;
+            default:
+                throw new RuntimeException("Unknown matrix type");
+        }
+
+    }
 
     /**
      * Returns a matrix of StatisticsMatrix type so that SimpleMatrix functions create matrices
@@ -30,7 +56,7 @@ public class StatisticsMatrix extends SimpleBase<StatisticsMatrix> {
      */
     @Override
     protected StatisticsMatrix createMatrix(int numRows, int numCols, MatrixType matrixType) {
-        return new StatisticsMatrix(numRows, numCols);
+        return new StatisticsMatrix(numRows, numCols,matrixType);
     }
 
     /**
@@ -68,7 +94,6 @@ public class StatisticsMatrix extends SimpleBase<StatisticsMatrix> {
         }
         return array;
     }
-
 
 
     /**
@@ -129,15 +154,10 @@ public class StatisticsMatrix extends SimpleBase<StatisticsMatrix> {
         return i * numCols() + j;
     }
 
-    public static StatisticsMatrix createIdentity(int n,boolean sparse){
+    public static StatisticsMatrix createIdentity(int n) {
         DMatrix ret;
         StatisticsMatrix res = new StatisticsMatrix();
-        if(sparse){
-            ret = CommonOps_DSCC.identity(n);
-        }
-        else{
-            ret = CommonOps_DDRM.identity(n);
-        }
+        ret = CommonOps_DDRM.identity(n);
         res.setMatrix(ret);
         return res;
     }
@@ -145,8 +165,8 @@ public class StatisticsMatrix extends SimpleBase<StatisticsMatrix> {
     /**
      * Invert the matrix when it's diagonal, which cost time O(n)
      */
-    public StatisticsMatrix inverseDig(){
-        CommonOps_DDRM_extend.inverseDig((DMatrix)this.mat);
+    public StatisticsMatrix inverseDig() {
+        CommonOps_DDRM_extend.inverseDig((DMatrix) this.mat);
         return this;
     }
 

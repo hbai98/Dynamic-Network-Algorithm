@@ -4,9 +4,10 @@ import DS.Matrix.StatisticsMatrix;
 import DS.Network.Graph;
 import com.google.common.primitives.Booleans;
 import org.apache.commons.lang3.ArrayUtils;
-import org.ejml.sparse.csc.CommonOps_DSCC;
 
+import java.util.HashMap;
 import java.util.Set;
+import java.util.Vector;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 
@@ -25,7 +26,7 @@ import java.util.function.Function;
  */
 public class DK<V, E> extends Scale<V, E> {
     // algorithm's params
-    private StatisticsMatrix adjMat; // sparse adjacent matrix of the Graph tgtG
+    private StatisticsMatrix adjMat; // adjacent matrix of the Graph tgtG
     private StatisticsMatrix query; // a boolean vector to indicate query nodes(introducing the flow)
     private final double loss; // loss fluid within each node
     private StatisticsMatrix dia; //a diagonal matrix with Sii which is the degree of node i ∈ V
@@ -61,15 +62,14 @@ public class DK<V, E> extends Scale<V, E> {
 
     private void initDia() {
         Set<V> tgtN = tgtG.vertexSet();
-        int s = tgtN.size();
-        double[] diaArray = new double[s];
+        double[] diaArray = new double[tgtSize * tgtSize];
         AtomicInteger i = new AtomicInteger();
         tgtN.forEach(t -> {
-            diaArray[i.get()] = tgtG.degreeOf(t);
+            int x = i.get();
+            diaArray[x+tgtSize*x] = tgtG.degreeOf(t);
             i.incrementAndGet();
         });
-        dia = new StatisticsMatrix(diaArray).diag();
-        dia.convertToSparse();
+        dia = new StatisticsMatrix(tgtSize, tgtSize, true, diaArray);
     }
 
     /**
@@ -79,17 +79,17 @@ public class DK<V, E> extends Scale<V, E> {
     private void initQry() {
         Set<V> srcN = srcG.vertexSet();
         Set<V> tgtN = tgtG.vertexSet();
+        Vector<V> tgt = new Vector<>(tgtN);
         double[] queryArray = new double[tgtSize];
-        AtomicInteger i = new AtomicInteger();
-        srcN.forEach(s -> {
-            if (tgtN.contains(s)) {
-                queryArray[i.get()] = 1;
+
+        for (int i = 0; i < tgt.size(); i++) {
+            V t = tgt.get(i);
+            if(srcN.contains(t)){
+                queryArray[i] = 1.;
             }
-            i.incrementAndGet();
-        });
+        }
+
         query = new StatisticsMatrix(queryArray);
-        // the computation require sparse multiplies sparse
-        query.convertToSparse();
     }
 
     /**
@@ -106,29 +106,30 @@ public class DK<V, E> extends Scale<V, E> {
         Function<? super Boolean, ?> boolToFloat = (Function<Boolean, Object>) aBoolean -> aBoolean ? 1. : 0.;
         double[] adjArray = ArrayUtils.toPrimitive(Booleans.asList(tgtG.getAdjMat()).stream()
                 .map(boolToFloat).toArray(Double[]::new));
-        this.adjMat = new StatisticsMatrix(tgtSize,tgtSize,true,adjArray);
-        this.adjMat.convertToSparse();
+        this.adjMat = new StatisticsMatrix(tgtSize, tgtSize, true, adjArray);
     }
 
     /**
      * Public interface for users to run Diffusion Kernel
      */
     public void run() {
-        // G is defined
+        // G is kernel
         StatisticsMatrix G = getG();
         // compute the equilibrium state
         // set result
         result = getStableP(G);
     }
-
     /**
-     * P_ss = Kernel * query vector
-     * @return the score vector for every node in the graph
+     * as defined in the paper a linear expression of the self-item to compute the equilibrium status of the diffusion
+     * by (dia + loss*I)^(-1)
+     * <p>
+     * G0 is the inverse of a diagonal matrix and hence trivial to calculate.
+     * @return self-item
      */
-    private StatisticsMatrix getStableP(StatisticsMatrix G) {
-        return G.mult(query);
+    private StatisticsMatrix getSelfItem() {
+        StatisticsMatrix I = StatisticsMatrix.createIdentity(tgtSize);
+        return dia.plus(I.scale(loss)).inverseDig();
     }
-
     /**
      * G = L^-1 = (I-G0A)^(-1)G0
      *
@@ -137,22 +138,17 @@ public class DK<V, E> extends Scale<V, E> {
     private StatisticsMatrix getG() {
         // compute self-item G0
         StatisticsMatrix G0 = getSelfItem();
-        StatisticsMatrix I = StatisticsMatrix.createIdentity(tgtSize,true);
+        StatisticsMatrix I = StatisticsMatrix.createIdentity(tgtSize);
         return I.minus(G0.mult(adjMat)).invert().mult(G0);
     }
-
-    /**
-     * as defined in the paper a linear expression of the self-item to compute the equilibrium status of the diffusion
-     * by (dia + loss*I)^(-1)
-     * <p>
-     * G0 is the inverse of a diagonal matrix and hence trivial to calculate.
-     *
-     * @return self-item
-     */
-    private StatisticsMatrix getSelfItem() {
-        StatisticsMatrix I = StatisticsMatrix.createIdentity(tgtSize,true);
-        return dia.plus(I.scale(loss)).inverseDig();
+/**
+ * P_ss = Kernel * query vector
+ * @return the score vector for every node in the graph
+ **/
+    private StatisticsMatrix getStableP(StatisticsMatrix G) {
+        return G.mult(query);
     }
+
 
     public StatisticsMatrix getResult() {
         return result;
