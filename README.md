@@ -26,7 +26,9 @@ You could navigate [here](https://github.com/164140757/MyAlgorithms/tree/master/
 
 Propagate the biological network for predicting novel genetic interactions and co-complex membership
 
-<div style="text-align:center"><img src="README.assets/image-20200804134839541.png" alt="image-20200804134839541" style="zoom: 80%;" /> </div>
+<img src="README.assets/init.png" style="zoom: 80%;" />
+
+![](README.assets/res.png)
 
 Diffusion with source and sink. Fluid is pumped from the source into a selected set of query nodes and is allowed to leak out from each node into a sink at first-order rate. For clarity, an undirected network is shown
 
