@@ -11,6 +11,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.ejml.data.MatrixType;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -28,7 +29,7 @@ public class SimMatReader<V> extends AbstractFileReader {
     public final Class<V> typeParameterClass;
     private final SimMat<V> simMat;
 
-    public SimMatReader(Set<V> g1,Set<V> g2, Class<V> typeParameterClass) {
+    public SimMatReader(Set<V> g1, Set<V> g2, Class<V> typeParameterClass) {
         this.simMat =new SimMat<>(g1, g2, typeParameterClass);
         this.typeParameterClass = typeParameterClass;
     }

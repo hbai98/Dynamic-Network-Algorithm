@@ -15,6 +15,8 @@ public abstract class Scale<V, E> {
     protected final Graph<V, E> srcG;
     protected final Graph<V, E> tgtG;
     protected Graph<V,E> periphery;
+    protected int srcSize;
+    protected int tgtSize;
 
     /**
      * @param srcG the graph to be handled
@@ -23,7 +25,10 @@ public abstract class Scale<V, E> {
      */
     public Scale(Graph<V, E> srcG, Graph<V, E> tgtG) {
         this.srcG = srcG;
-        this.tgtG = tgtG;   
+        this.tgtG = tgtG;
+        // initialize sizes
+        this.srcSize = srcG.vertexSet().size();
+        this.tgtSize = tgtG.vertexSet().size();
     }
 
     /**

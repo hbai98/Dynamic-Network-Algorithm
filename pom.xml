@@ -8,7 +8,6 @@
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
         <assertj.core.version>3.15.0</assertj.core.version>
         <jgrapht.core.version>1.5.0</jgrapht.core.version>
-        <jblas.version>1.2.4</jblas.version>
         <ejml.version>0.39</ejml.version>
         <uniport.japi.version>1.0.30</uniport.japi.version>
         <swingx.version>1.6.1</swingx.version>
@@ -58,8 +57,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>14</source>
-                    <target>14</target>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -89,11 +88,6 @@
             <scope>test</scope>
         </dependency>
         <!-- java linear algebra lib for algorithms building -->
-        <dependency>
-            <groupId>org.jblas</groupId>
-            <artifactId>jblas</artifactId>
-            <version>${jblas.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.ejml</groupId>
             <artifactId>ejml-all</artifactId>

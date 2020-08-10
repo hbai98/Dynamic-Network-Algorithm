@@ -1,7 +1,5 @@
 package IO;
 
-import org.jblas.DoubleMatrix;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -45,8 +43,8 @@ public class DoubleMatrixReader {
         }
     }
 
-    public DoubleMatrix getMat(){
-        return new DoubleMatrix(result);
-    }
+//    public DoubleMatrix getMat(){
+//        return new DoubleMatrix(result);
+//    }
 
 }

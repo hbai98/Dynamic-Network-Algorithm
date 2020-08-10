@@ -1,43 +1,53 @@
 package DS.Matrix;
 
-import org.jblas.DoubleMatrix;
+import org.ejml.data.DMatrixRMaj;
+import org.ejml.data.MatrixType;
 import org.jgrapht.alg.util.Pair;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class SimMat<T> {
-    private DoubleMatrix mat;
+public class SimMat<K> {
+    protected StatisticsMatrix mat;
     //------------------similarity matrix----------
-    private HashMap<T, Integer> rowMap;
-    private HashMap<T, Integer> colMap;
+    protected HashMap<K, Integer> rowMap;
+    protected HashMap<K, Integer> colMap;
     //-----------------index name map---------------------
-    private HashMap<Integer, T> rowIndexNameMap;
-    private HashMap<Integer, T> colIndexNameMap;
-    //----------------preferences---------------------
-    public Class<T> typeParameterClass;
+    protected HashMap<Integer, K> rowIndexNameMap;
+    protected HashMap<Integer, K> colIndexNameMap;
+    public Class<K> mapKeyType;
 
-
-    public SimMat(Set<T> graph1Nodes, Set<T> graph2Nodes, Class<T> typeParameterClass) {
-        this.mat = new DoubleMatrix(graph1Nodes.size(), graph2Nodes.size());
-        this.rowMap = new HashMap<>(graph1Nodes.size());
-        this.colMap = new HashMap<>(graph2Nodes.size());
-        this.rowIndexNameMap = new HashMap<>(graph1Nodes.size());
-        this.colIndexNameMap = new HashMap<>(graph2Nodes.size());
-        this.typeParameterClass = typeParameterClass;
+    /**
+     * Construct a similarity matrix based on nodes from two graph
+     *
+     * @param g1          graph1 all nodes
+     * @param g2          graph2 all nodes
+     * @param mapKeyClass similarity matrix row and column index maps, key class
+     */
+    public SimMat(Set<K> g1, Set<K> g2, Class<K> mapKeyClass) {
+        initMat(g1, g2);
+        this.rowMap = new HashMap<>(g1.size());
+        this.colMap = new HashMap<>(g2.size());
+        this.rowIndexNameMap = new HashMap<>(g1.size());
+        this.colIndexNameMap = new HashMap<>(g2.size());
+        this.mapKeyType = mapKeyClass;
         // init row,col Map
-        initRowColMap(graph1Nodes, graph2Nodes);
+        initRowColMap(g1, g2);
         getIndexNameMap();
     }
 
+    private void initMat(Set<K> g1, Set<K> g2) {
+        this.mat = new StatisticsMatrix(g1.size(), g2.size());
+    }
 
-    private void initRowColMap(Set<T> graph1Nodes, Set<T> graph2Nodes) {
+
+    private void initRowColMap(Set<K> graph1Nodes, Set<K> graph2Nodes) {
         int i = 0;
-        for (T node : graph1Nodes) {
+        for (K node : graph1Nodes) {
             rowMap.put(node, i++);
         }
         i = 0;
-        for (T node : graph2Nodes) {
+        for (K node : graph2Nodes) {
             colMap.put(node, i++);
         }
     }
@@ -45,104 +55,68 @@ public class SimMat<T> {
     /**
      * The rowMat have to be in the same length and same order
      */
-    public SimMat(HashMap<T, Integer> rowMap, HashMap<T, Integer> colMap,
-                  DoubleMatrix matrix,
-                  Class<T> typeParameterClass
+    public SimMat(HashMap<K, Integer> rowMap, HashMap<K, Integer> colMap,
+                  StatisticsMatrix Matrix,
+                  Class<K> mapKeyType
     ) {
-        mat = matrix;
+        mat = Matrix;
         rowIndexNameMap = new HashMap<>(rowMap.size());
         colIndexNameMap = new HashMap<>(colMap.size());
         this.rowMap = rowMap;
         this.colMap = colMap;
-        this.typeParameterClass = typeParameterClass;
+        this.mapKeyType = mapKeyType;
         getIndexNameMap();
     }
 
 
-    public SimMat(HashMap<T, Integer> rowMap, HashMap<Integer, T> rowIndexNameMap, HashMap<T, Integer> colMap,
-                  HashMap<Integer, T> colIndexNameMap, DoubleMatrix matrix,
-                  Class<T> typeParameterClass) {
-        mat = matrix;
+    public SimMat(HashMap<K, Integer> rowMap, HashMap<Integer, K> rowIndexNameMap, HashMap<K, Integer> colMap,
+                  HashMap<Integer, K> colIndexNameMap, StatisticsMatrix Matrix,
+                  Class<K> mapKeyType) {
+        mat = Matrix;
         this.rowIndexNameMap = rowIndexNameMap;
         this.colIndexNameMap = colIndexNameMap;
-        this.typeParameterClass = typeParameterClass;
         this.rowMap = rowMap;
         this.colMap = colMap;
     }
 
 
-    public void put(T node1, T node2, double val) {
+    public void put(K node1, K node2, double val) {
         // only input the nodes in need
         if (rowMap.containsKey(node1) && colMap.containsKey(node2)) {
             int i = rowMap.get(node1);
             int j = colMap.get(node2);
-            mat.put(i, j, val);
+            mat.set(i, j, val);
         }
-
     }
 
 
     private void getIndexNameMap() {
         // switch key and value only because of the bi-direction relationship maintained by the NodeList
         // sorted by natural order of the key
-        TreeMap<T, Integer> colTree = new TreeMap<>(colMap);
-        TreeMap<T, Integer> rowTree = new TreeMap<>(rowMap);
+        TreeMap<K, Integer> colTree = new TreeMap<>(colMap);
+        TreeMap<K, Integer> rowTree = new TreeMap<>(rowMap);
         // switch
         colTree.forEach((name, index) -> colIndexNameMap.put(index, name));
         rowTree.forEach((name, index) -> rowIndexNameMap.put(index, name));
     }
 
-    public double getVal(T node1, T node2) {
+    public double getVal(K node1, K node2) {
         int i = rowMap.get(node1);
         int j = colMap.get(node2);
-        return mat.get(i, j);
+        return getVal(i, j);
     }
+
 
     public double getVal(int i, int j) {
         return mat.get(i, j);
     }
 
     /**
-     * return the split result and the left result for adjList in which rows have at least h nonzero elements
-     *
-     * @param h number of nonzero elements
-     * @return matrix for split
-     */
-    public Pair<SimMat<T>, SimMat<T>> getSplit(int h) {
-        HashMap<T, Integer> rowMap_split = new HashMap<>();
-        HashMap<T, Integer> rowMap_left = new HashMap<>();
-        // record i index for nonZerosMap
-        for (int i = 0; i < mat.rows; i++) {
-            rowMap_left.put(this.rowIndexNameMap.get(i), i);
-        }
-        SimMat<T> split_ = setUpSimMat(rowMap_split);
-        SimMat<T> left_ = setUpSimMat(rowMap_left);
-
-        return new Pair<>(split_, left_);
-    }
-
-
-    private SimMat<T> setUpSimMat(HashMap<T, Integer> map) {
-        DoubleMatrix res = new DoubleMatrix(map.size(), colMap.size());
-        // copy other info
-        HashMap<T, HashSet<T>> nonZerosOfRowMap = new HashMap<>();
-        int j = 0;
-        // map values -> indexes in selection
-        for (Map.Entry<T, Integer> e : map.entrySet()) {
-            res.putRow(j, mat.getRow(e.getValue()));
-            j++;
-        }
-
-        return new SimMat<>(map, colMap, res, typeParameterClass);
-    }
-
-
-    /**
      * Split the matrix which contains only rows in rowSet and cols in colSet
      *
      * @return split result
      */
-    public SimMat<T> getPart(Collection<T> rowSet, Collection<T> colSet) {
+    public SimMat<K> getPart(Collection<K> rowSet, Collection<K> colSet) {
         assert (getRowSet().containsAll(rowSet) && getColSet().containsAll(colSet));
         if (rowSet.equals(this.getRowSet()) && colSet.equals(this.getColSet())) {
             return this;
@@ -151,18 +125,18 @@ public class SimMat<T> {
         int j = 0;
         int[] rowIndexes = new int[rowSet.size()];
         int[] colIndexes = new int[colSet.size()];
-        HashMap<T, Integer> rowMap = new HashMap<>();
-        HashMap<T, Integer> colMap = new HashMap<>();
-        for (T s : rowSet) {
+        HashMap<K, Integer> rowMap = new HashMap<>();
+        HashMap<K, Integer> colMap = new HashMap<>();
+        for (K s : rowSet) {
             rowIndexes[i] = this.rowMap.get(s);
             rowMap.put(s, i++);
         }
-        for (T s : colSet) {
+        for (K s : colSet) {
             colIndexes[j] = this.colMap.get(s);
             colMap.put(s, j++);
         }
-        DoubleMatrix res = mat.get(rowIndexes, colIndexes);
-        return new SimMat<>(rowMap, colMap, res, typeParameterClass);
+        StatisticsMatrix res = mat.getMat(mat, rowIndexes, colIndexes);
+        return new SimMat<>(rowMap, colMap, res, mapKeyType);
     }
 
     /**
@@ -170,83 +144,66 @@ public class SimMat<T> {
      *
      * @return deep copy result
      */
-    public SimMat<T> dup() {
-        DoubleMatrix mat = this.mat.dup();
+    public SimMat<K> dup() {
+        StatisticsMatrix mat = this.mat.copy();
         //------------------similarity matrix----------
-        HashMap<T, Integer> rowMap = new HashMap<>(this.rowMap);
-        HashMap<T, Integer> colMap = new HashMap<>(this.colMap);
+        HashMap<K, Integer> rowMap = new HashMap<>(this.rowMap);
+        HashMap<K, Integer> colMap = new HashMap<>(this.colMap);
         //-----------------index name map---------------------
-        HashMap<Integer, T> rowIndexNameMap = new HashMap<>(this.rowIndexNameMap);
-        HashMap<Integer, T> colIndexNameMap = new HashMap<>(this.colIndexNameMap);
-        return new SimMat<>(rowMap, rowIndexNameMap, colMap, colIndexNameMap, mat, typeParameterClass);
+        HashMap<Integer, K> rowIndexNameMap = new HashMap<>(this.rowIndexNameMap);
+        HashMap<Integer, K> colIndexNameMap = new HashMap<>(this.colIndexNameMap);
+        return new SimMat<>(rowMap, rowIndexNameMap, colMap, colIndexNameMap, mat,mapKeyType);
     }
 
-    public DoubleMatrix getMat() {
-        return mat;
+    public StatisticsMatrix getMat() {
+        return mat.copy();
     }
 
-    HashMap<T, HashSet<T>> computeNonZeros() {
 
-        HashMap<T, HashSet<T>> nonZeros = new HashMap<>();
-        getRowSet().parallelStream().forEach(
-                r -> getColSet().parallelStream().forEach(c -> {
-                    if (nonZeros.containsKey(r)) {
-                        HashSet<T> tmp = nonZeros.get(r);
-                        tmp.add(c);
-                        nonZeros.put(r, tmp);
-                    } else {
-                        nonZeros.put(r, new HashSet<>());
-                    }
-                })
-        );
-        return nonZeros;
-    }
-
-    public HashMap<Integer, T> getRowIndexNameMap() {
+    public HashMap<Integer, K> getRowIndexNameMap() {
         return new HashMap<>(rowIndexNameMap);
     }
 
-    public HashMap<Integer, T> getColIndexNameMap() {
+    public HashMap<Integer, K> getColIndexNameMap() {
         return new HashMap<>(colIndexNameMap);
     }
 
-    public HashMap<T, Integer> getColMap() {
+    public HashMap<K, Integer> getColMap() {
         return new HashMap<>(colMap);
     }
 
-    public HashMap<T, Integer> getRowMap() {
+    public HashMap<K, Integer> getRowMap() {
         return new HashMap<>(rowMap);
     }
 
 
-    public HashSet<T> getRowSet() {
+    public HashSet<K> getRowSet() {
 
         return new HashSet<>(this.rowMap.keySet());
     }
 
 
-    public Set<T> getColSet() {
+    public Set<K> getColSet() {
         return new HashSet<>(this.colMap.keySet());
     }
 
-
-    public void setColIndexNameMap(HashMap<Integer, T> colIndexNameMap) {
+    public void setColIndexNameMap(HashMap<Integer, K> colIndexNameMap) {
         this.colIndexNameMap = colIndexNameMap;
     }
 
-    public void setRowIndexNameMap(HashMap<Integer, T> rowIndexNameMap) {
+    public void setRowIndexNameMap(HashMap<Integer, K> rowIndexNameMap) {
         this.rowIndexNameMap = rowIndexNameMap;
     }
 
-    public void setColMap(HashMap<T, Integer> colMap) {
+    public void setColMap(HashMap<K, Integer> colMap) {
         this.colMap = colMap;
     }
 
-    public void setRowMap(HashMap<T, Integer> rowMap) {
+    public void setRowMap(HashMap<K, Integer> rowMap) {
         this.rowMap = rowMap;
     }
 
-    public void setMat(DoubleMatrix mat) {
+    public void setMat(StatisticsMatrix mat) {
         this.mat = mat;
     }
 
@@ -254,24 +211,24 @@ public class SimMat<T> {
      * @param account Hungarian account
      * @return simMat with rows' average similarity which meet the account[Hungarian mat], Greedy mat
      */
-    public Pair<SimMat<T>, SimMat<T>> splitByPercentage(double account) {
-        Vector<Pair<T, Double>> rowAves = new Vector<>();
+    public Pair<SimMat<K>, SimMat<K>> splitByPercentage(double account) {
+        Vector<Pair<K, Double>> rowAves = new Vector<>();
         rowMap.keySet().parallelStream().forEach(r -> {
             int row = rowMap.get(r);
-            double ave = mat.getRow(row).sum() / colMap.size();
+            double ave = mat.getRow(row).elementSum()/ colMap.size();
             rowAves.add(new Pair<>(r, ave));
         });
         // sort
-        List<Pair<T, Double>> res = rowAves.stream().sorted(Comparator.comparingDouble(Pair::getSecond)).collect(Collectors.toList());
+        List<Pair<K, Double>> res = rowAves.stream().sorted(Comparator.comparingDouble(Pair::getSecond)).collect(Collectors.toList());
         int num = (int) (account * rowMap.size());
-        HashSet<T> rows = new HashSet<>();
+        HashSet<K> rows = new HashSet<>();
         for (int i = num; i < res.size(); i++) {
             rows.add(res.get(i).getFirst());
         }
-        HashSet<T> left = getRowSet();
+        HashSet<K> left = getRowSet();
         left.removeAll(rows);
-        SimMat<T> H = getPart(rows, getColSet());
-        SimMat<T> G = getPart(left, getColSet());
+        SimMat<K> H = getPart(rows, getColSet());
+        SimMat<K> G = getPart(left, getColSet());
         return new Pair<>(H, G);
     }
 
@@ -281,10 +238,10 @@ public class SimMat<T> {
      * @param assign previous mapping result
      * @return the best node for mapping by greedy algorithm, null for all nodes has been assigned
      */
-    public T getMax(int row, HashSet<T> assign) {
+    public K getMax(int row, HashSet<K> assign) {
         double max = -Double.MAX_VALUE;
-        T res = null;
-        for (T s : getColSet()) {
+        K res = null;
+        for (K s : getColSet()) {
             int j = colMap.get(s);
             double val = mat.get(row, j);
             if (!assign.contains(s) && val > max) {
@@ -294,6 +251,15 @@ public class SimMat<T> {
         }
         assign.add(res);
         return res;
+    }
+
+    /**
+     * Set data using array
+     * @param out one dimension array
+     */
+    public void setData(double[] out) {
+        assert(mat.getMatrix().getType().equals(MatrixType.DDRM));
+        mat.getDDRM().setData(out);
     }
 
 }

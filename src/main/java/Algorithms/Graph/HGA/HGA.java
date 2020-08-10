@@ -3,16 +3,13 @@ package Algorithms.Graph.HGA;
 
 import Algorithms.Graph.Hungarian;
 import Algorithms.Graph.NBM;
-import DS.Network.SimMat;
+import DS.Matrix.SimMat;
+import DS.Matrix.StatisticsMatrix;
+import DS.Network.Graph;
 import DS.Network.UndirectedGraph;
 import IO.AbstractFileWriter;
-
-
 import com.aparapi.Range;
-import com.google.common.primitives.Doubles;
-import com.google.common.primitives.Floats;
 import org.apache.commons.io.FileUtils;
-import org.jblas.DoubleMatrix;
 import org.jgrapht.alg.util.Pair;
 
 import java.io.File;
@@ -31,8 +28,9 @@ import java.util.stream.Collectors;
  * Article in IEEE/ACM Transactions on Computational Biology and Bioinformatics · January 2015
  * DOI: 10.1109/TCBB.2015.2465957
  *
- * @author: Haotian Bai
- * Shanghai University, department of computer science
+ * @Author Haotian Bai
+ * @Email bht98@i.shu.edu.cn
+ * @Blog www.haotian.life
  */
 
 public class HGA<V,E> {
@@ -40,8 +38,8 @@ public class HGA<V,E> {
     private final int LimitOfIndexGraph = 60;
 
     protected SimMat<V> simMat;
-    protected UndirectedGraph<V,E> udG1;
-    protected UndirectedGraph<V,E> udG2;
+    protected Graph<V,E> udG1;
+    protected Graph<V,E> udG2;
     // parameters
     private boolean forcedMappingForSame;
     private double hAccount;
@@ -55,7 +53,7 @@ public class HGA<V,E> {
     private double PS_res;
     private double EC_res;
     private double score_res;
-    private DoubleMatrix matrix_res;
+    private StatisticsMatrix matrix_res;
     //---------------mapping for iteration---------
     public HashMap<V,V> mapping;
     private double PE;
@@ -65,7 +63,7 @@ public class HGA<V,E> {
     private double score;
     //---------------mapping for iteration---------
     private final SimMat<V> originalMat;
-    private Stack<DoubleMatrix> stackMat;
+    private Stack<StatisticsMatrix> stackMat;
     private Stack<Double> stackScore;
 
     //----------limit-----
@@ -86,7 +84,7 @@ public class HGA<V,E> {
 
     /**
      * Step 1:
-     * using homologous coefficients of proteins
+     * Initialize with the homologous coefficients of proteins
      * computed by alignment algorithms for PINs
      *
      * @param udG1                 graph1
@@ -95,6 +93,8 @@ public class HGA<V,E> {
      * @param nodalFactor          nodal compared with topological effect
      * @param forcedMappingForSame whether force mapping
      * @param hAccount             hungarian matrix account
+     * @param tolerance            the limit to check whether the matrix has converged
+     *
      */
     public HGA(SimMat<V> simMat,
                UndirectedGraph<V,E> udG1,
@@ -143,7 +143,7 @@ public class HGA<V,E> {
 
     /**
      * divide S(t)
-     * into two matrixes: the H-matrix, in which each row
+     * into two matrices: the H-matrix, in which each row
      * has at least h nonzero entries, and the G-matrix, which
      * collects the remaining entries of S(t)
      *
@@ -312,7 +312,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         // https://docs.oracle.com/javase/tutorial/collections/streams/parallelism.html
         // similarity matrix after the neighborhood adjustment
         SimMat<V> preSimMat = simMat.dup();
-        sumPreSimMat = preSimMat.getMat().sum();
+        sumPreSimMat = preSimMat.getMat().elementSum();
         // when index graph nodes scale is less than LIMIT then HGA uses parallel CPU instead
         // && nodes1.size() > LimitOfIndexGraph
         if (GPU) {
@@ -342,11 +342,11 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         // so (i,j) in simMat -> int[] neighbors = nei_x[start_x[i],start_x[i+1]) and nei_y[start_y[j],start_y[j+1])
         // int[] non-neighbors = [0,n-1]-nei_x[start_x[i],start_x[i+1]) and [0,m-1]-nei_y[start_y[j],start_y[j+1])
         // result to be polished
-        float[] out =  Floats.toArray(Doubles.asList(simMat.getMat().data));
+        double[] out =  simMat.getMat().data();
         // preMat data
-        final float[] pre =  Floats.toArray(Doubles.asList(preMat.getMat().data));
+        final double[] pre =  preMat.getMat().data();
         // original data
-        final float[] ori =  Floats.toArray(Doubles.asList(originalMat.getMat().data));
+        final double[] ori =  originalMat.getMat().data();
         // initialize nei_x
         initNeighborToArray(nodes1, udG1, rowMap, nei_x, start_x);
         // initialize nei_y
@@ -357,14 +357,14 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
                 nei_x,start_x, // graph1 neighbors
                 nei_y,start_y, // graph2 neighbors
                 sumPreSimMat, // sum of mat
-                (float) bioFactor);
+                bioFactor);
         Range range = Range.create(nodes1.size()*nodes2.size(),1);
         kernel.execute(range).get(out);
-        simMat.getMat().data = Doubles.toArray(Floats.asList(out));
+        simMat.setData(out);
         kernel.dispose();
     }
 
-    private void initNeighborToArray(Set<V> nodes, UndirectedGraph<V,E> g,
+    private void initNeighborToArray(Set<V> nodes, Graph<V,E> g,
                                      HashMap<V, Integer> map, Vector<Integer> neighbors,
                                      int[] starts) {
         starts[0] = 0;
@@ -500,17 +500,17 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
             if (iterCount > iterMax) {
                 return true;
             }
-            DoubleMatrix s1 = stackMat.get(1);
-            DoubleMatrix s = stackMat.peek();
+            StatisticsMatrix s1 = stackMat.get(1);
+            StatisticsMatrix s = stackMat.peek();
             // remove bottom which is the oldest for every iteration
-            DoubleMatrix s2 = stackMat.remove(0);
+            StatisticsMatrix s2 = stackMat.remove(0);
 
             double score = stackScore.peek();
             double score1 = stackScore.get(1);
             double score2 = stackScore.remove(0);
 
-            double dif_1 = s.sub(s1).normmax();
-            double dif_2 = s.sub(s2).normmax();
+            double dif_1 = s.minus(s1).elementMaxAbs();
+            double dif_2 = s.minus(s2).elementMaxAbs();
             logInfo("Iteration:" + iterCount + "\tdif_1 " + dif_1 + "\t" + "dif_2 " + dif_2 + "\nScore:" + "score1 " + score1
                     + "\t" + "score2 " + score2);
             return dif_1 < tolerance || dif_2 < tolerance ||
@@ -519,8 +519,8 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         }
         // size = 2
         else if(stackMat.size() == 2){
-            DoubleMatrix s = stackMat.peek();
-            double dif = s.sub(stackMat.get(0)).normmax();
+            StatisticsMatrix s = stackMat.peek();
+            double dif = s.minus(stackMat.get(0)).elementMaxAbs();
             logInfo("Iteration:" + iterCount + "\tdif " + dif);
             return dif < tolerance;
         }
@@ -561,7 +561,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
             // step 2 score the mapping
             scoreMapping(this.mapping);
             // record
-            stackMat.push(this.simMat.getMat().dup());
+            stackMat.push(this.simMat.getMat().copy());
             stackScore.push(score);
             outDebug();
             // step 3 update based on mapped nodes
@@ -576,7 +576,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
             checkPassed = checkPassed(tolerance);
         } while (!checkPassed);
         // output result
-        logInfo("HGA mapping finish!With iteration "+iterCount+" times.");
+        logInfo("HGA mapping finish!With iteration "+this.iterCount+" times.");
         outPutResult();
 
     }
@@ -640,16 +640,14 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         }
     }
 
-    public void outPutMatrix(DoubleMatrix mat, boolean isResult) {
+    public void outPutMatrix(StatisticsMatrix mat, boolean isResult) {
         logInfo("output matrix");
         String path = debugOutputPath + "matrix/";
         Vector<String> matrixVec = new Vector<>();
-        double[][] mat_ = mat.toArray2();
-        for (double[] doubles : mat_) {
-            for (int j = 0; j < mat_[0].length; j++) {
-                matrixVec.add(doubles[j] + " ");
+        for (int i = 0; i < mat.numRows(); i++) {
+            for (int j = 0; j < mat.numCols(); j++) {
+                matrixVec.add(mat.get(i,j) + " ");
             }
-            matrixVec.add("\n");
         }
         try {
             if (isResult) {
@@ -732,7 +730,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
 
         score_res = score;
         mappingResult = new HashMap<>(mapping);
-        matrix_res = simMat.getMat().dup();
+        matrix_res = simMat.getMat().copy();
     }
 
     private void initScores(double... scores) {
@@ -776,7 +774,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         return score_res;
     }
 
-    public DoubleMatrix getMatrix_res() {
+    public StatisticsMatrix getMatrix_res() {
         return matrix_res;
     }
 

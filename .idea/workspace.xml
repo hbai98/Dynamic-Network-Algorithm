@@ -28,7 +28,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="" />
+    <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +36,15 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,7 +56,7 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectId" id="1ftyhTy54hs58eaq6u2hbgcWrAj" />
+  <component name="ProjectId" id="1fabHF89SB0BNKed9sgwfA9h1RK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -57,19 +66,88 @@
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../environment/Java" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="JUnit.HGARunSpec.run_test_GPU">
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="Algorithms.Graph.Dynamic" />
+      <recent name="DS.Network" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Development\Algorithms\src\test\java\resources\AlgTest" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.DKTest.run">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DKTest.inverse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Algorithms.Graph.Dynamic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.Dynamic" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Dynamic.DKTest" />
+      <option name="METHOD_NAME" value="inverse" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DKTest.run" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Algorithms.Graph.Dynamic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.Dynamic" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Dynamic.DKTest" />
+      <option name="METHOD_NAME" value="run" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HGARunSpec.run_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <useClassPathOnly />
@@ -104,10 +182,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UndirectedGraphTest.getAdjMat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DS.Matrix.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="DS.Network" />
+      <option name="MAIN_CLASS_NAME" value="DS.Network.UndirectedGraphTest" />
+      <option name="METHOD_NAME" value="getAdjMat" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.DKTest.run" />
+      <item itemvalue="JUnit.HGARunSpec.run_test" />
+      <item itemvalue="JUnit.HGARunSpec.run_test_GPU" />
+      <item itemvalue="JUnit.UndirectedGraphTest.getAdjMat" />
+      <item itemvalue="JUnit.DKTest.inverse" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.HGARunSpec.run_test_GPU" />
+        <item itemvalue="JUnit.DKTest.run" />
         <item itemvalue="JUnit.HGARunSpec.run_test" />
+        <item itemvalue="JUnit.DKTest.inverse" />
+        <item itemvalue="JUnit.UndirectedGraphTest.getAdjMat" />
+        <item itemvalue="JUnit.HGARunSpec.run_test_GPU" />
       </list>
     </recent_temporary>
   </component>
@@ -121,12 +225,22 @@
       <updated>1596377047507</updated>
     </task>
     <task active="true" id="Default" summary="Default task">
-      <changelist id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="" />
-      <created>1597051833163</created>
+      <changelist id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht" />
+      <created>1596459069577</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1597051833163</updated>
-      <workItem from="1597051846938" duration="765000" />
+      <updated>1596459069577</updated>
+      <workItem from="1596459100275" duration="11000" />
+      <workItem from="1596518673337" duration="13581000" />
+      <workItem from="1596538830187" duration="1408000" />
+      <workItem from="1596587812768" duration="2459000" />
+      <workItem from="1596621676544" duration="1307000" />
+      <workItem from="1596673305620" duration="28975000" />
+      <workItem from="1596714628869" duration="2346000" />
+      <workItem from="1596770038289" duration="9739000" />
+      <workItem from="1596788173629" duration="505000" />
+      <workItem from="1596788703411" duration="6363000" />
+      <workItem from="1596795136134" duration="7145000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -160,89 +274,175 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <MESSAGE value="Update using jgrapht" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update using jgrapht" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596424836997">
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596788609774">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1596424836997" />
-    <state x="524" y="134" key="#xdebugger.evaluate" timestamp="1596424727025">
+    <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1596788609774" />
+    <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser" timestamp="1596698334259">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="524" y="134" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1596424727025" />
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1596377045879">
+    <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1596698334259" />
+    <state x="499" y="211" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1596679967201">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1596377045879" />
-    <state x="577" y="195" key="FileChooserDialogImpl" timestamp="1596377290246">
+    <state x="499" y="211" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.864@0.0.1536.864" timestamp="1596679967201" />
+    <state x="551" y="301" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1596679971019">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="577" y="195" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1596377290246" />
-    <state width="1493" height="256" key="GridCell.Tab.0.bottom" timestamp="1596424956228">
+    <state x="551" y="301" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.864@0.0.1536.864" timestamp="1596679971019" />
+    <state x="26" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596683448674">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="256" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596424956228" />
-    <state width="1493" height="256" key="GridCell.Tab.0.center" timestamp="1596424956228">
+    <state x="26" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.864@0.0.1536.864" timestamp="1596683448674" />
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1596792165464">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="256" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1596424956228" />
-    <state width="1493" height="256" key="GridCell.Tab.0.left" timestamp="1596424956228">
+    <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1596792165464" />
+    <state x="44" y="125" key="#xdebugger.evaluate" timestamp="1596801025347">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="256" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1596424956228" />
-    <state width="1493" height="256" key="GridCell.Tab.0.right" timestamp="1596424956228">
+    <state x="44" y="125" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1596801025347" />
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1596425190502">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="256" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1596424956228" />
-    <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1596424790245">
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1596425190502" />
+    <state width="438" height="438" key="DebuggerActiveHint" timestamp="1596800307716">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596424790245" />
-    <state width="1493" height="223" key="GridCell.Tab.1.center" timestamp="1596424790245">
+    <state width="438" height="438" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1596800307716" />
+    <state x="577" y="195" key="FileChooserDialogImpl" timestamp="1596674903890">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1596424790245" />
-    <state width="1493" height="223" key="GridCell.Tab.1.left" timestamp="1596424790245">
+    <state x="577" y="195" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1596674903890" />
+    <state width="1493" height="211" key="GridCell.Tab.0.bottom" timestamp="1596802335828">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1596424790245" />
-    <state width="1493" height="223" key="GridCell.Tab.1.right" timestamp="1596424790245">
+    <state width="1493" height="211" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596802335828" />
+    <state width="1493" height="211" key="GridCell.Tab.0.center" timestamp="1596802335828">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1596424790245" />
-    <state x="277" y="14" key="SettingsEditor" timestamp="1596377885896">
+    <state width="1493" height="211" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1596802335828" />
+    <state width="1493" height="211" key="GridCell.Tab.0.left" timestamp="1596802335828">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="277" y="14" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1596377885896" />
-    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1596377050486">
+    <state width="1493" height="211" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1596802335828" />
+    <state width="1493" height="211" key="GridCell.Tab.0.right" timestamp="1596802335828">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1596377050486" />
+    <state width="1493" height="211" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1596802335828" />
+    <state width="1493" height="211" key="GridCell.Tab.1.bottom" timestamp="1596802335829">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="211" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596802335829" />
+    <state width="1493" height="211" key="GridCell.Tab.1.center" timestamp="1596802335828">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="211" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1596802335828" />
+    <state width="1493" height="211" key="GridCell.Tab.1.left" timestamp="1596802335828">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="211" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1596802335828" />
+    <state width="1493" height="211" key="GridCell.Tab.1.right" timestamp="1596802335828">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="211" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1596802335828" />
+    <state x="299" y="87" key="Maven.ArtifactSearchDialog" timestamp="1596781244709">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="299" y="87" key="Maven.ArtifactSearchDialog/0.0.1536.864@0.0.1536.864" timestamp="1596781244709" />
+    <state x="277" y="14" key="SettingsEditor" timestamp="1596788653072">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="277" y="14" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1596788653072" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1596425379944">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1596425379944" />
+    <state width="1047" height="689" key="XDebugger.FullValuePopup" timestamp="1596801010741">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1047" height="689" key="XDebugger.FullValuePopup/0.0.1536.864@0.0.1536.864" timestamp="1596801010741" />
+    <state x="540" y="242" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1596778586399">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="540" y="242" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.864@0.0.1536.864" timestamp="1596778586399" />
+    <state x="313" y="161" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1596789300271">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="313" y="161" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.864@0.0.1536.864" timestamp="1596789300271" />
+    <state x="815" y="165" key="extract.method.dialog" timestamp="1596704574162">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="815" y="165" key="extract.method.dialog/0.0.1536.864@0.0.1536.864" timestamp="1596704574162" />
+    <state width="546" height="311" key="javadoc.popup.new" timestamp="1596792767151">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="546" height="311" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1596792767151" />
+    <state x="562" y="180" key="refactoring.ChangeSignatureDialog" timestamp="1596698337803">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="562" y="180" key="refactoring.ChangeSignatureDialog/0.0.1536.864@0.0.1536.864" timestamp="1596698337803" />
+    <state x="425" y="197" key="run.anything.popup" timestamp="1596789963192">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1596789963192" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/IO/SimMatReader.java</url>
-          <line>128</line>
+          <line>126</line>
           <option name="timeStamp" value="326" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="344" />
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/DS/Matrix/SimMat.java</url>
+          <line>229</line>
+          <option name="timeStamp" value="354" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java</url>
+          <line>363</line>
+          <option name="timeStamp" value="357" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/ejml/ejml-ddense/0.39/ejml-ddense-0.39.jar!/org/ejml/dense/row/CommonOps_DDRM.class</url>
+          <line>378</line>
+          <option name="timeStamp" value="374" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/ejml/ejml-dsparse/0.39/ejml-dsparse-0.39.jar!/org/ejml/sparse/csc/misc/TriangularSolver_DSCC.class</url>
+          <line>136</line>
+          <option name="timeStamp" value="378" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/ejml/ejml-dsparse/0.39/ejml-dsparse-0.39.jar!/org/ejml/sparse/csc/misc/TriangularSolver_DSCC.class</url>
+          <line>70</line>
+          <option name="timeStamp" value="403" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/ejml/ejml-dsparse/0.39/ejml-dsparse-0.39.jar!/org/ejml/sparse/csc/CommonOps_DSCC.class</url>
+          <line>1176</line>
+          <option name="timeStamp" value="406" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/IO/GraphFileReader.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="345" />
+          <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java</url>
+          <line>31</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="448" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo />
+        <PinnedItemInfo parentTag="org.ejml.data.IGrowArray" memberName="data" />
       </pinned-members>
     </pin-to-top-manager>
   </component>
