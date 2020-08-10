@@ -28,16 +28,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/DK.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/HumanNet.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/Human-20120513.fasta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/net-38n.txt" beforeDir="false" />
-    </list>
+    <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,7 +126,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597051833163</updated>
-      <workItem from="1597051846938" duration="653000" />
+      <workItem from="1597051846938" duration="765000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
