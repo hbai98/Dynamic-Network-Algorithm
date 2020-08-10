@@ -2,10 +2,10 @@ package DS.Network;
 
 import java.util.Set;
 
-<<<<<<< HEAD
 public interface Graph<V,E> extends org.jgrapht.Graph<V,E> {
     /**
      * Get all neighbors for a vertex.
+     *
      * @param vertex the target vertex
      * @return a set of neighbor points
      */
@@ -14,14 +14,9 @@ public interface Graph<V,E> extends org.jgrapht.Graph<V,E> {
     /**
      * Get a boolean matrix to describe the graph connections,
      * and A(i,j) = true means Vi and Vj is connected.
+     *
      * @return a one-dimension boolean adjacent matrix
      */
     boolean[] getAdjMat();
 
-=======
-public interface Graph<V,E> {
-    Set<V> getNeb(V vertex);
-
-    int getNebNum(V vertex);
->>>>>>> v0.1
 }

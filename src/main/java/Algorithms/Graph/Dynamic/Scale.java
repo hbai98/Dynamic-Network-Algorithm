@@ -1,6 +1,5 @@
 package Algorithms.Graph.Dynamic;
 
-<<<<<<< HEAD
 import DS.Network.Graph;
 
 /**
@@ -62,8 +61,4 @@ public abstract class Scale<V, E> {
 
         return change;
     }
-=======
-public class Scale {
->>>>>>> v0.1
-
 }

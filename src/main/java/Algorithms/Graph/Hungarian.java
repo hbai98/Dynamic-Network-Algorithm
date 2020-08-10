@@ -1,6 +1,5 @@
 package Algorithms.Graph;
 
-import DS.Network.SimMat;
 
 import DS.Matrix.StatisticsMatrix;
 import org.jgrapht.alg.util.Pair;

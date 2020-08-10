@@ -12,3 +12,6 @@ First you have to build by maven, and please make sure your workplace is current
 mvn compile
 ```
 
+Next, you could navigate the [test method](https://github.com/164140757/MyAlgorithms/blob/master/src/test/java/Algorithms/Graph/Dynamic/DKTest.java) which I wrote for the demo in my blog.
+
+![](README.assets/res.png)

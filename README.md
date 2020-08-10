@@ -34,7 +34,7 @@ Diffusion with source and sink. Fluid is pumped from the source into a selected 
 
 For more information, a blog is available [here](http://www.haotian.life/2020/08/10/diffusion-kernel/). 
 
-Code is available [here](https://github.com/164140757/MyAlgorithms/tree/master/src/main/java/Algorithms/Graph/Dynamic).
+Code is available [here](https://github.com/164140757/MyAlgorithms/tree/master/src/main/java/Algorithms/Graph/Dynamic/Diffusion_Kernel).
 
 Please refer to [Finding friends and enemies in an enemies-only network: A graph diffusion kernel for predicting
 novel genetic interactions and co-complex membership from yeast genetic interactions](10.1101/gr.077693.108) for the design of the algorithm.

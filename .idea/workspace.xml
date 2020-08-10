@@ -28,7 +28,19 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht" />
+    <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Diffusion_Kernel/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Diffusion_Kernel/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Hungarian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Hungarian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Network/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Network/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Network/SimMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Network/SimMat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -103,15 +115,13 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.DKTest.run">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -241,6 +251,7 @@
       <workItem from="1596788173629" duration="505000" />
       <workItem from="1596788703411" duration="6363000" />
       <workItem from="1596795136134" duration="7145000" />
+      <workItem from="1597055310436" duration="288000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -396,12 +407,12 @@
       <breakpoints>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/IO/SimMatReader.java</url>
-          <line>126</line>
+          <line>124</line>
           <option name="timeStamp" value="326" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/DS/Matrix/SimMat.java</url>
-          <line>229</line>
+          <line>187</line>
           <option name="timeStamp" value="354" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -431,7 +442,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java</url>
-          <line>31</line>
+          <line>32</line>
           <properties>
             <option name="lambda-ordinal" value="-1" />
           </properties>

@@ -1,7 +1,6 @@
 package Algorithms.Graph.HGA;
 
 
-import DS.Network.SimMat;
 import DS.Network.UndirectedGraph;
 import IO.GraphFileReader;
 import IO.SimMatReader;
