@@ -29,16 +29,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Diffusion_Kernel/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Diffusion_Kernel/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Hungarian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Hungarian.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Diffusion_Kernel/DK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Diffusion_Kernel/DK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Network/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Network/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Network/SimMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Network/SimMat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Network/SimMat.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,6 +86,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../environment/Java" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -130,7 +128,7 @@
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.Dynamic.*" />
+          <option name="PATTERN" value="Algorithms.Graph.Dynamic.Diffusion_Kernel.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -146,7 +144,7 @@
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.Dynamic.*" />
+          <option name="PATTERN" value="Algorithms.Graph.Dynamic.Diffusion_Kernel.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -251,7 +249,7 @@
       <workItem from="1596788173629" duration="505000" />
       <workItem from="1596788703411" duration="6363000" />
       <workItem from="1596795136134" duration="7145000" />
-      <workItem from="1597055310436" duration="288000" />
+      <workItem from="1597055310436" duration="608000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -407,7 +405,7 @@
       <breakpoints>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/IO/SimMatReader.java</url>
-          <line>124</line>
+          <line>121</line>
           <option name="timeStamp" value="326" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
@@ -417,7 +415,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java</url>
-          <line>363</line>
+          <line>362</line>
           <option name="timeStamp" value="357" />
         </line-breakpoint>
         <line-breakpoint type="java-line">

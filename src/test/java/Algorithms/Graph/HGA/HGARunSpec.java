@@ -1,11 +1,10 @@
 
 package Algorithms.Graph.HGA;
 
-import DS.Network.SimMat;
+import DS.Matrix.SimMat;
 import DS.Network.UndirectedGraph;
 import IO.GraphFileReader;
 import IO.SimMatReader;
-import org.ejml.data.MatrixType;
 import org.jgrapht.graph.DefaultEdge;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

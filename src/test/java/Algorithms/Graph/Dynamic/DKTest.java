@@ -1,12 +1,12 @@
 package Algorithms.Graph.Dynamic;
 
+import Algorithms.Graph.Dynamic.Diffusion_Kernel.DK;
 import DS.Matrix.StatisticsMatrix;
 import DS.Network.UndirectedGraph;
 import IO.GraphFileReader;
 import org.jgrapht.graph.DefaultEdge;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 
 import java.io.IOException;
 import java.util.Arrays;

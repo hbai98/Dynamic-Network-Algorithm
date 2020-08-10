@@ -1,5 +1,6 @@
-package Algorithms.Graph.Dynamic;
+package Algorithms.Graph.Dynamic.Diffusion_Kernel;
 
+import Algorithms.Graph.Dynamic.Scale;
 import DS.Matrix.StatisticsMatrix;
 import DS.Network.Graph;
 import com.google.common.primitives.Booleans;

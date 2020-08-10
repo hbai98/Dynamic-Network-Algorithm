@@ -1,7 +1,8 @@
 package Algorithms.Graph;
 
 
-import DS.Network.UndirectedGraph;
+import DS.Matrix.SimMat;
+import DS.Network.Graph;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -46,13 +47,13 @@ import java.util.stream.Collectors;
  */
 public class NBM<V, E> {
 
-    private final UndirectedGraph<V, E> udG1;
-    private final UndirectedGraph<V, E> udG2;
+    private final Graph<V, E> udG1;
+    private final Graph<V, E> udG2;
     private final HashMap<V, V> mapping;
     private final SimMat<V> simMat;
 
-    public NBM(UndirectedGraph<V, E> udG1,
-               UndirectedGraph<V, E> udG2,
+    public NBM(Graph<V, E> udG1,
+               Graph<V, E> udG2,
                SimMat<V> simMat,
                HashMap<V, V> mapping
     ) {
@@ -84,7 +85,7 @@ public class NBM<V, E> {
             Set<V> neb2 = udG2.getNeb(node2);
             // no parallel here! stateful lambda
             neb1.forEach(n1 -> {
-                int nebNumbNode1 = udG1.getNebNum(n1);
+                int nebNumbNode1 = udG1.getNeb(n1).size();
                 double reward = simUV / nebNumbNode1;
                 neb2.forEach(n2 -> {
                     double newWeight = simMat.getVal(n1, n2) + reward;
@@ -95,4 +96,3 @@ public class NBM<V, E> {
     }
 
 }
-
