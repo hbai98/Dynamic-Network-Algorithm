@@ -28,18 +28,34 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DS/Matrix/Matrix.java" afterDir="false" />
+    <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/DK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/DK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Hungarian.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Hungarian.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/NBM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Network/SimMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Matrix/SimMat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HGALogFile.log" beforeDir="false" afterPath="$PROJECT_DIR$/HGALogFile.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IO/GraphFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/GraphFileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/IO/FastaFileReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/IO/OrganismHostName.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/IO/OrganismName.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/IO/WebServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mappingResult_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrixResult_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoringResult_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DS/Network/SimMat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DS/Network/SimMat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/IO/FastaFileReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/IO/GraphFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/IO/GraphFileReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/IO/OrganismHostName.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/IO/OrganismName.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/IO/SimMatReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/IO/SimMatReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/IO/WebServices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Tools/Functions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tools/Functions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGARunSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGARunSpec.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,15 +64,6 @@
   </component>
   <component name="ComposerSettings">
     <execution />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-        <option value="JUnit5 Test Class" />
-        <option value="Interface" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -68,44 +75,20 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectId" id="1fabHF89SB0BNKed9sgwfA9h1RK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-    <option name="showMembers" value="true" />
-  </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../environment/Java" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
-  <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="DS.Network" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-  </component>
-  <component name="RunManager" selected="JUnit.UndirectedGraphTest.getAdjMat">
+  <component name="RunManager" selected="JUnit.HGARunSpec.run_test_GPU">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -151,36 +134,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UndirectedGraphTest.getAdjMat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="DS.Matrix.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="DS.Network" />
-      <option name="MAIN_CLASS_NAME" value="DS.Network.UndirectedGraphTest" />
-      <option name="METHOD_NAME" value="getAdjMat" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="JUnit.HGARunSpec.run_test" />
-      <item itemvalue="JUnit.HGARunSpec.run_test_GPU" />
-      <item itemvalue="JUnit.UndirectedGraphTest.getAdjMat" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UndirectedGraphTest.getAdjMat" />
         <item itemvalue="JUnit.HGARunSpec.run_test_GPU" />
         <item itemvalue="JUnit.HGARunSpec.run_test" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="Update">
       <created>1596377047507</created>
@@ -189,23 +149,8 @@
       <option name="project" value="LOCAL" />
       <updated>1596377047507</updated>
     </task>
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht" />
-      <created>1596459069577</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1596459069577</updated>
-      <workItem from="1596459100275" duration="11000" />
-      <workItem from="1596518673337" duration="13581000" />
-      <workItem from="1596538830187" duration="1408000" />
-      <workItem from="1596587812768" duration="2459000" />
-      <workItem from="1596621676544" duration="1307000" />
-    </task>
     <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -233,86 +178,65 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update" />
-    <MESSAGE value="Update using jgrapht" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update using jgrapht" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596424836997">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1596424836997" />
-    <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser" timestamp="1596524336784">
+    <state x="524" y="134" key="#xdebugger.evaluate" timestamp="1596424727025">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1596524336784" />
-    <state x="71" y="268" key="#xdebugger.evaluate" timestamp="1596528726531">
+    <state x="524" y="134" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1596424727025" />
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1596377045879">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="71" y="268" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1596528726531" />
-    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1596425190502">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1596425190502" />
-    <state width="395" height="438" key="DebuggerActiveHint" timestamp="1596528631193">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="395" height="438" key="DebuggerActiveHint/0.0.1536.864@0.0.1536.864" timestamp="1596528631193" />
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1596377045879" />
     <state x="577" y="195" key="FileChooserDialogImpl" timestamp="1596377290246">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="577" y="195" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1596377290246" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1596528732283">
+    <state width="1493" height="256" key="GridCell.Tab.0.bottom" timestamp="1596424956228">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596528732283" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1596528732283">
+    <state width="1493" height="256" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596424956228" />
+    <state width="1493" height="256" key="GridCell.Tab.0.center" timestamp="1596424956228">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1596528732283" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1596528732283">
+    <state width="1493" height="256" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1596424956228" />
+    <state width="1493" height="256" key="GridCell.Tab.0.left" timestamp="1596424956228">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1596528732283" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1596528732283">
+    <state width="1493" height="256" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1596424956228" />
+    <state width="1493" height="256" key="GridCell.Tab.0.right" timestamp="1596424956228">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1596528732283" />
-    <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1596528732283">
+    <state width="1493" height="256" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1596424956228" />
+    <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1596424790245">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596528732283" />
-    <state width="1493" height="223" key="GridCell.Tab.1.center" timestamp="1596528732283">
+    <state width="1493" height="223" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1596424790245" />
+    <state width="1493" height="223" key="GridCell.Tab.1.center" timestamp="1596424790245">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1596528732283" />
-    <state width="1493" height="223" key="GridCell.Tab.1.left" timestamp="1596528732283">
+    <state width="1493" height="223" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1596424790245" />
+    <state width="1493" height="223" key="GridCell.Tab.1.left" timestamp="1596424790245">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1596528732283" />
-    <state width="1493" height="223" key="GridCell.Tab.1.right" timestamp="1596528732283">
+    <state width="1493" height="223" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1596424790245" />
+    <state width="1493" height="223" key="GridCell.Tab.1.right" timestamp="1596424790245">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1596528732283" />
+    <state width="1493" height="223" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1596424790245" />
     <state x="277" y="14" key="SettingsEditor" timestamp="1596377885896">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="277" y="14" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1596377885896" />
-    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1596425379944">
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1596377050486">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1596425379944" />
-    <state x="540" y="242" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1596525894644">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="540" y="242" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.864@0.0.1536.864" timestamp="1596525894644" />
-    <state x="816" y="104" key="extract.method.dialog" timestamp="1596520855275">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state x="816" y="104" key="extract.method.dialog/0.0.1536.864@0.0.1536.864" timestamp="1596520855275" />
-    <state width="546" height="311" key="javadoc.popup.new" timestamp="1596619147798">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="546" height="311" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1596619147798" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1596377050486" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -326,6 +250,11 @@
           <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java</url>
           <line>29</line>
           <option name="timeStamp" value="344" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/IO/GraphFileReader.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="345" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

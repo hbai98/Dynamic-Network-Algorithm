@@ -73,7 +73,7 @@ public class Functions {
     }
 
     static public boolean isIdentifier(String str) {
-        Pattern p = Pattern.compile("[a-zA-Z][0-9|a-zA-Z]*");
+        Pattern p = Pattern.compile("[a-zA-Z][[0-9]|[a-zA-Z]]*");
         Matcher m = p.matcher(str);
         return m.find();
     }

@@ -3,8 +3,7 @@ package Algorithms.Graph.HGA;
 
 import Algorithms.Graph.Hungarian;
 import Algorithms.Graph.NBM;
-import DS.Network.Graph;
-import DS.Matrix.SimMat;
+import DS.Network.SimMat;
 import DS.Network.UndirectedGraph;
 import IO.AbstractFileWriter;
 
@@ -32,9 +31,8 @@ import java.util.stream.Collectors;
  * Article in IEEE/ACM Transactions on Computational Biology and Bioinformatics · January 2015
  * DOI: 10.1109/TCBB.2015.2465957
  *
- * @Author Haotian Bai
- * @Email bht98@i.shu.edu.cn
- * @Blog www.haotian.life
+ * @author: Haotian Bai
+ * Shanghai University, department of computer science
  */
 
 public class HGA<V,E> {
@@ -42,12 +40,12 @@ public class HGA<V,E> {
     private final int LimitOfIndexGraph = 60;
 
     protected SimMat<V> simMat;
-    protected Graph<V,E> udG1;
-    protected Graph<V,E> udG2;
+    protected UndirectedGraph<V,E> udG1;
+    protected UndirectedGraph<V,E> udG2;
     // parameters
     private boolean forcedMappingForSame;
     private double hAccount;
-    protected float bioFactor;
+    protected double bioFactor;
     private double edgeScore = 1.;
     private int h = 5;
     //---------------mapping result(best mapping)-------------
@@ -101,7 +99,7 @@ public class HGA<V,E> {
     public HGA(SimMat<V> simMat,
                UndirectedGraph<V,E> udG1,
                UndirectedGraph<V,E> udG2,
-               float nodalFactor, boolean forcedMappingForSame, double hAccount, double tolerance) throws IOException {
+               double nodalFactor, boolean forcedMappingForSame, double hAccount, double tolerance) throws IOException {
 
         this.udG1 = udG1;
         this.udG2 = udG2;
@@ -145,7 +143,7 @@ public class HGA<V,E> {
 
     /**
      * divide S(t)
-     * into two matrices: the H-matrix, in which each row
+     * into two matrixes: the H-matrix, in which each row
      * has at least h nonzero entries, and the G-matrix, which
      * collects the remaining entries of S(t)
      *
@@ -359,14 +357,14 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
                 nei_x,start_x, // graph1 neighbors
                 nei_y,start_y, // graph2 neighbors
                 sumPreSimMat, // sum of mat
-                bioFactor);
+                (float) bioFactor);
         Range range = Range.create(nodes1.size()*nodes2.size(),1);
         kernel.execute(range).get(out);
         simMat.getMat().data = Doubles.toArray(Floats.asList(out));
         kernel.dispose();
     }
 
-    private void initNeighborToArray(Set<V> nodes, Graph<V,E> g,
+    private void initNeighborToArray(Set<V> nodes, UndirectedGraph<V,E> g,
                                      HashMap<V, Integer> map, Vector<Integer> neighbors,
                                      int[] starts) {
         starts[0] = 0;
@@ -820,7 +818,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
     }
 
 
-    public void setBioFactor(float bioFactor) {
+    public void setBioFactor(double bioFactor) {
         assert (bioFactor >= 0 && bioFactor <= 1);
         this.bioFactor = bioFactor;
     }

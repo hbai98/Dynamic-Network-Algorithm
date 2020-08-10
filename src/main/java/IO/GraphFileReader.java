@@ -41,12 +41,14 @@ public class GraphFileReader<V, E> extends AbstractFileReader {
         Vector<V> sifLine = new Vector<>();
         String line;
         while ((line = reader.readLine()) != null) {
-            Object[] tokens = splitter.split(line);
+            String[] tokens = splitter.split(line);
             if (tokens.length == 0) continue;
             //  it will be handled in pareLine()
             // which will throw an IOException if not the right case.
-            for (Object token : tokens) {
-                sifLine.add((V) token);
+            for (String token : tokens) {
+                if (token.length() != 0) {
+                    sifLine.add((V) token);
+                }
             }
             parseForGraph(udG, sifLine);
             // clean for each line
@@ -96,11 +98,11 @@ public class GraphFileReader<V, E> extends AbstractFileReader {
             for (int index = 1; index < sifSize; index += 2) {
                 // name
                 V tgt = sifLine.get(index);
-                String val = String.valueOf(sifLine.get(index + 1));
+                V val = sifLine.get(index + 1);
                 graph.addVertex(tgt);
                 graph.addEdge(src, tgt);
-                if (isDouble(val)) {
-                    graph.setEdgeWeight(src, tgt, Double.parseDouble(val));
+                if (isDouble((String) val)) {
+                    graph.setEdgeWeight(src, tgt, Double.parseDouble((String) val));
                 } else {
                     throw new IOException("The file reader format is not correct. Plus: some name-value pairs are incorrect!");
                 }

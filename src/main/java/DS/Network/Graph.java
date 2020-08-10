@@ -2,6 +2,7 @@ package DS.Network;
 
 import java.util.Set;
 
+<<<<<<< HEAD
 public interface Graph<V,E> extends org.jgrapht.Graph<V,E> {
     /**
      * Get all neighbors for a vertex.
@@ -17,4 +18,10 @@ public interface Graph<V,E> extends org.jgrapht.Graph<V,E> {
      */
     boolean[] getAdjMat();
 
+=======
+public interface Graph<V,E> {
+    Set<V> getNeb(V vertex);
+
+    int getNebNum(V vertex);
+>>>>>>> v0.1
 }
