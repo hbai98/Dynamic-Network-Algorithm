@@ -30,32 +30,13 @@
   <component name="ChangeListManager">
     <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HGALogFile.log" beforeDir="false" afterPath="$PROJECT_DIR$/HGALogFile.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IO/GraphFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/GraphFileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/IO/FastaFileReader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/IO/OrganismHostName.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/IO/OrganismName.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/IO/WebServices.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mappingResult_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrixResult_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoringResult_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DS/Network/SimMat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DS/Network/SimMat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/IO/FastaFileReader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/IO/GraphFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/IO/GraphFileReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/IO/OrganismHostName.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/IO/OrganismName.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/IO/SimMatReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/IO/SimMatReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/IO/WebServices.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tools/Functions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tools/Functions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGARunSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGARunSpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/DK.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/HumanNet.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/Human-20120513.fasta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/net-38n.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,10 +56,19 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProjectId" id="1ftyhTy54hs58eaq6u2hbgcWrAj" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../environment/Java" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -89,17 +79,6 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RunManager" selected="JUnit.HGARunSpec.run_test_GPU">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="HGARunSpec.run_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <useClassPathOnly />
@@ -141,6 +120,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="Update">
       <created>1596377047507</created>
@@ -149,8 +129,19 @@
       <option name="project" value="LOCAL" />
       <updated>1596377047507</updated>
     </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="" />
+      <created>1597051833163</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597051833163</updated>
+      <workItem from="1597051846938" duration="653000" />
+    </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -243,17 +234,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/IO/SimMatReader.java</url>
-          <line>125</line>
+          <line>128</line>
           <option name="timeStamp" value="326" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java</url>
-          <line>29</line>
+          <line>28</line>
           <option name="timeStamp" value="344" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/IO/GraphFileReader.java</url>
-          <line>52</line>
+          <line>54</line>
           <option name="timeStamp" value="345" />
         </line-breakpoint>
       </breakpoints>

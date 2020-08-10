@@ -30,7 +30,9 @@ Propagate the biological network for predicting novel genetic interactions and c
 
 ![](README.assets/res.png)
 
-Diffusion with source and sink. Fluid is pumped from the source into a selected set of query nodes and is allowed to leak out from each node into a sink at first-order rate. For clarity, an undirected network is shown
+Diffusion with source and sink. Fluid is pumped from the source into a selected set of query nodes and is allowed to leak out from each node into a sink at first-order rate. For clarity, an undirected network is shown above, which illustrates the initial state to the diffused and equilibrium result and 'F', 'C' are the source nodes.
+
+For more information, a blog is available [here](http://www.haotian.life/2020/08/10/diffusion-kernel/). 
 
 Code is available [here](https://github.com/164140757/MyAlgorithms/tree/master/src/main/java/Algorithms/Graph/Dynamic).
 
