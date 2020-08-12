@@ -1,4 +1,6 @@
 Algorithms\Graph\HGA\HGASpc.class
+DS\Network\UndirectedGraphTest.class
 Tools\Stopwatch.class
 Algorithms\Set\FDTest.class
+Algorithms\Graph\Dynamic\DKTest.class
 Algorithms\Graph\HGA\HGARunSpec.class

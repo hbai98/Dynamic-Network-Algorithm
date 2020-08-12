@@ -5,6 +5,7 @@ D:\Development\Algorithms\src\main\java\Algorithms\Set\FD.java
 D:\Development\Algorithms\src\main\java\UI\Tree\ChildNode.java
 D:\Development\Algorithms\src\main\java\IO\AbstractFileWriter.java
 D:\Development\Algorithms\src\main\java\Tools\Functions.java
+D:\Development\Algorithms\src\main\java\Algorithms\Graph\Dynamic\Diffusion_Kernel\DK.java
 D:\Development\Algorithms\src\main\java\DS\Matrix\StatisticsMatrix.java
 D:\Development\Algorithms\src\main\java\Algorithms\Graph\HGA\GPUKernelForHGA.java
 D:\Development\Algorithms\src\main\java\Algorithms\Graph\HGA\HGA.java
@@ -19,5 +20,5 @@ D:\Development\Algorithms\src\main\java\UI\Tree\Node.java
 D:\Development\Algorithms\src\main\java\IO\SimMatReader.java
 D:\Development\Algorithms\src\main\java\IO\GraphFileReader.java
 D:\Development\Algorithms\src\main\java\DS\Matrix\SimMat.java
-D:\Development\Algorithms\src\main\java\Algorithms\Graph\Dynamic\DK.java
 D:\Development\Algorithms\src\main\java\Algorithms\Graph\NBM.java
+D:\Development\Algorithms\src\main\java\IO\MappingResultReader.java

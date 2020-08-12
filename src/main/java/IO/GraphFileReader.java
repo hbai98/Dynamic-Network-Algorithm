@@ -1,6 +1,7 @@
 package IO;
 
 import DS.Network.UndirectedGraph;
+import org.jgrapht.graph.DefaultWeightedEdge;
 
 import java.io.IOException;
 import java.util.Vector;
@@ -33,7 +34,7 @@ public class GraphFileReader<V, E> extends AbstractFileReader {
         this.edgeClass = edgeClass;
     }
 
-    public UndirectedGraph<V, E> readToUndirectedGraph(String inputFilePath,boolean closeWhenFinished) throws IOException {
+    public UndirectedGraph<V,E> readToUndirectedGraph(String inputFilePath, boolean closeWhenFinished) throws IOException {
         // matches sequence of one or more whitespace characters.
         setInputFilePath(inputFilePath);
         udG = new UndirectedGraph<>(edgeClass);

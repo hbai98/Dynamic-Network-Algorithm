@@ -33,13 +33,13 @@ import java.util.stream.Collectors;
  * @Blog www.haotian.life
  */
 
-public class HGA<V,E> {
+public class HGA<V, E> {
     public static boolean GPU = false;
     private final int LimitOfIndexGraph = 60;
 
     protected SimMat<V> simMat;
-    protected Graph<V,E> udG1;
-    protected Graph<V,E> udG2;
+    protected Graph<V, E> udG1;
+    protected Graph<V, E> udG2;
     // parameters
     private boolean forcedMappingForSame;
     private double hAccount;
@@ -47,7 +47,7 @@ public class HGA<V,E> {
     private double edgeScore = 1.;
     private int h = 5;
     //---------------mapping result(best mapping)-------------
-    public HashMap<V,V> mappingResult;
+    public HashMap<V, V> mappingResult;
     private double PE_res;
     private double ES_res;
     private double PS_res;
@@ -55,7 +55,7 @@ public class HGA<V,E> {
     private double score_res;
     private StatisticsMatrix matrix_res;
     //---------------mapping for iteration---------
-    public HashMap<V,V> mapping;
+    public HashMap<V, V> mapping;
     private double PE;
     private double ES;
     private double PS;
@@ -75,10 +75,10 @@ public class HGA<V,E> {
     //--------------Logging-------------
     public Logger logger;
     private AbstractFileWriter writer;
-    public boolean debugOut;
+    public static boolean debugOut = true;
     private double tolerance;
     public int iter_res;
-    public Vector<Pair<E,E>> mappingEdges;
+    private Vector<Pair<E, E>> mappingEdges;
     private double sumPreSimMat;
 
 
@@ -94,11 +94,10 @@ public class HGA<V,E> {
      * @param forcedMappingForSame whether force mapping
      * @param hAccount             hungarian matrix account
      * @param tolerance            the limit to check whether the matrix has converged
-     *
      */
     public HGA(SimMat<V> simMat,
-               UndirectedGraph<V,E> udG1,
-               UndirectedGraph<V,E> udG2,
+               UndirectedGraph<V, E> udG1,
+               UndirectedGraph<V, E> udG2,
                double nodalFactor, boolean forcedMappingForSame, double hAccount, double tolerance) throws IOException {
 
         this.udG1 = udG1;
@@ -111,8 +110,9 @@ public class HGA<V,E> {
         setBioFactor(nodalFactor);
         sethAccount(hAccount);
         // set up logging
-        setupLogger();
-        debugOut = true;
+        if (debugOut) {
+            setupLogger();
+        }
     }
 
     /**
@@ -121,7 +121,7 @@ public class HGA<V,E> {
      *
      * @return the mapping result
      */
-    protected HashMap<V,V> getMappingFromHA(SimMat<V> simMat) {
+    protected HashMap<V, V> getMappingFromHA(SimMat<V> simMat) {
         logInfo("Hungarian mapping...");
         Hungarian<V> hungarian = new Hungarian<>(simMat, Hungarian.ProblemType.maxLoc);
         hungarian.setLogger(logger);
@@ -147,10 +147,10 @@ public class HGA<V,E> {
      * has at least h nonzero entries, and the G-matrix, which
      * collects the remaining entries of S(t)
      *
-     * @param toMap      matrix for hga mapping
+     * @param toMap  matrix for hga mapping
      * @param hLimit if index graph nodes is less than this limit, use the hungarian directly
      */
-    protected HashMap<V,V> remapping(SimMat<V> toMap, int hLimit) {
+    protected HashMap<V, V> remapping(SimMat<V> toMap, int hLimit) {
         assert (toMap != null);
         logInfo("Selecting " + this.hAccount * 100 + "% of rows for Hungarian allocation, " +
                 "and the left " + (100 - hAccount * 100) + "% for Greedy mapping.");
@@ -208,7 +208,7 @@ public class HGA<V,E> {
      */
     protected void updatePairNeighbors(HashMap<V, V> mapping) {
         logInfo("adjust neighborhood similarity based on mapping result...");
-        NBM<V,E> nbm = new NBM<>(udG1,udG2,simMat,mapping);
+        NBM<V, E> nbm = new NBM<>(udG1, udG2, simMat, mapping);
         nbm.neighborSimAdjust();
     }
 
@@ -239,7 +239,7 @@ public class HGA<V,E> {
      * @param node1 one node from the graph1
      * @param node2 one node from the graph2
      */
-protected void addTopology(V node1, V node2, SimMat<V> preMat) {
+    protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         Set<V> neighbors_1 = udG1.getNeb(node1);
         Set<V> neighbors_2 = udG2.getNeb(node2);
         // compute topologyInfo
@@ -342,29 +342,29 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         // so (i,j) in simMat -> int[] neighbors = nei_x[start_x[i],start_x[i+1]) and nei_y[start_y[j],start_y[j+1])
         // int[] non-neighbors = [0,n-1]-nei_x[start_x[i],start_x[i+1]) and [0,m-1]-nei_y[start_y[j],start_y[j+1])
         // result to be polished
-        double[] out =  simMat.getMat().data();
+        double[] out = simMat.getMat().data();
         // preMat data
-        final double[] pre =  preMat.getMat().data();
+        final double[] pre = preMat.getMat().data();
         // original data
-        final double[] ori =  originalMat.getMat().data();
+        final double[] ori = originalMat.getMat().data();
         // initialize nei_x
         initNeighborToArray(nodes1, udG1, rowMap, nei_x, start_x);
         // initialize nei_y
         initNeighborToArray(nodes2, udG2, colMap, nei_y, start_y);
 
         GPUKernelForHGA kernel = new GPUKernelForHGA(
-                pre,ori,out, // 3 matrix
-                nei_x,start_x, // graph1 neighbors
-                nei_y,start_y, // graph2 neighbors
+                pre, ori, out, // 3 matrix
+                nei_x, start_x, // graph1 neighbors
+                nei_y, start_y, // graph2 neighbors
                 sumPreSimMat, // sum of mat
                 bioFactor);
-        Range range = Range.create(nodes1.size()*nodes2.size(),1);
+        Range range = Range.create(nodes1.size() * nodes2.size(), 1);
         kernel.execute(range).get(out);
         simMat.setData(out);
         kernel.dispose();
     }
 
-    private void initNeighborToArray(Set<V> nodes, Graph<V,E> g,
+    private void initNeighborToArray(Set<V> nodes, Graph<V, E> g,
                                      HashMap<V, Integer> map, Vector<Integer> neighbors,
                                      int[] starts) {
         starts[0] = 0;
@@ -403,7 +403,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
     protected void scoreMapping(HashMap<V, V> mapping) {
         logInfo("Scoring for mapping ...");
         // edge correctness EC
-        Vector<Pair<E, E>> mappingEdges = setEC(mapping);
+        mappingEdges = setEC(mapping);
         // point and edge score PE
         ES = getES(mappingEdges);
         PS = getPS(mappingEdges);
@@ -450,7 +450,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
     /**
      * @return set edge correctness and mapping edges[Pair:{graph1Source,graph1Target},{graph2Source,graph2Target}]
      */
-    protected Vector<Pair<E, E>> setEC(HashMap<V, V> mapping) {
+    public Vector<Pair<E, E>> setEC(HashMap<V, V> mapping) {
         mappingEdges = new Vector<>();
         // toMap will decrease when nodes have been checked
         HashSet<V> toMap = new HashSet<>(mapping.keySet());
@@ -474,7 +474,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
                 V n2_ = mapping.get(n2);
                 if (udG2.getNeb(n1_).contains(n2_)) {
                     count.getAndIncrement();
-                    mappingEdges.add(new Pair<>(udG1.getEdge(n1,n2), udG2.getEdge(n1_, n2_)));
+                    mappingEdges.add(new Pair<>(udG1.getEdge(n1, n2), udG2.getEdge(n1_, n2_)));
                 }
             });
         }
@@ -518,7 +518,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
 
         }
         // size = 2
-        else if(stackMat.size() == 2){
+        else if (stackMat.size() == 2) {
             StatisticsMatrix s = stackMat.peek();
             double dif = s.minus(stackMat.get(0)).elementMaxAbs();
             logInfo("Iteration:" + iterCount + "\tdif " + dif);
@@ -539,7 +539,6 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
                 , iterCount, score, PE, EC, PS, ES);
 
     }
-
 
 
     private void hgaIterate(HashMap<V, V> mapping, SimMat<V> simMat,
@@ -576,7 +575,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
             checkPassed = checkPassed(tolerance);
         } while (!checkPassed);
         // output result
-        logInfo("HGA mapping finish!With iteration "+this.iterCount+" times.");
+        logInfo("HGA mapping finish!With iteration " + this.iterCount + " times.");
         outPutResult();
 
     }
@@ -600,9 +599,6 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         res.putAll(forced);
         return res;
     }
-
-
-
 
 
     protected Pair<HashMap<V, V>, SimMat<V>> getRemapForForced() {
@@ -646,7 +642,7 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         Vector<String> matrixVec = new Vector<>();
         for (int i = 0; i < mat.numRows(); i++) {
             for (int j = 0; j < mat.numCols(); j++) {
-                matrixVec.add(mat.get(i,j) + " ");
+                matrixVec.add(mat.get(i, j) + " ");
             }
         }
         try {
@@ -702,9 +698,9 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
     }
 
     void cleanDebugResult() {
-        debugOutputPath = System.getProperty("user.dir").replace('/','\\')+"\\"+debugOutputPath;
+        debugOutputPath = System.getProperty("user.dir").replace('/', '\\') + "\\" + debugOutputPath;
         // use '\' to fit with linux
-        debugOutputPath=debugOutputPath.replace('\\','/');
+        debugOutputPath = debugOutputPath.replace('\\', '/');
         String mapping = debugOutputPath + "mapping";
         String scoring = debugOutputPath + "scoring";
         String matrix = debugOutputPath + "matrix";
@@ -742,9 +738,11 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
     }
 
     public void outPutResult() {
-        outPutMapping(mappingResult, true);
-        outPutMatrix(matrix_res, true);
-        outPutScoring(true, score_res, PE_res, EC_res, ES_res, PS_res);
+        if (debugOut) {
+            outPutMapping(mappingResult, true);
+            outPutMatrix(matrix_res, true);
+            outPutScoring(true, score_res, PE_res, EC_res, ES_res, PS_res);
+        }
     }
 //TODO retain
 //    /**
@@ -795,10 +793,6 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         return PE;
     }
 
-    public double getEC() {
-        return EC;
-    }
-
     public double getScore() {
         return score;
     }
@@ -815,6 +809,13 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         return mappingResult;
     }
 
+    public void setUdG1(Graph<V, E> udG1) {
+        this.udG1 = udG1;
+    }
+
+    public void setUdG2(Graph<V, E> udG2) {
+        this.udG2 = udG2;
+    }
 
     public void setBioFactor(double bioFactor) {
         assert (bioFactor >= 0 && bioFactor <= 1);
@@ -846,6 +847,10 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
         this.tolerance = tolerance;
     }
 
+    public Vector<Pair<E, E>> getMappingEdges() {
+        return mappingEdges;
+    }
+
     public void setupLogger() throws IOException {
         logger = Logger.getLogger("MyLog");
         FileHandler fh;
@@ -859,11 +864,13 @@ protected void addTopology(V node1, V node2, SimMat<V> preMat) {
                 super.write(context, false);
             }
         };
-
     }
 
     public void setIterMax(int iterMax) {
         this.iterMax = iterMax;
     }
 
+    public double getEC() {
+        return EC;
+    }
 }

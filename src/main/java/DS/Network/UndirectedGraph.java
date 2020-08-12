@@ -1,5 +1,6 @@
 package DS.Network;
 
+import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.DefaultUndirectedWeightedGraph;
 
 import java.util.Set;
