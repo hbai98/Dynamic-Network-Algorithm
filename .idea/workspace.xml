@@ -29,68 +29,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
-      <change afterPath="$PROJECT_DIR$/src/main/java/IO/MappingResultReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HGALog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/HGALog.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Network/UndirectedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Network/UndirectedGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IO/GraphFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/GraphFileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mappingResult_14.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_10.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_11.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_12.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_13.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/mapping/mapping_9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrixResult_14.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_10.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_11.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_12.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_13.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/matrix/matrix_9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoringResult_14.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_10.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_11.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_12.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_13.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupyter/data/scoring/scoring_9.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2020-06-23T10-57-35_902.dumpstream" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2020-06-23T12-35-11_171.dumpstream" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/Algorithms.Graph.HGA.Human_YeastSub38NTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-Algorithms.Graph.HGA.Human_YeastSub38NTest.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,7 +247,7 @@
       <workItem from="1596788703411" duration="6363000" />
       <workItem from="1596795136134" duration="7145000" />
       <workItem from="1597055310436" duration="1664000" />
-      <workItem from="1597198785310" duration="8331000" />
+      <workItem from="1597198785310" duration="9588000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -368,10 +309,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1597055861717" />
-    <state x="44" y="125" key="#xdebugger.evaluate" timestamp="1597213835735">
+    <state x="44" y="125" key="#xdebugger.evaluate" timestamp="1597214572006">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="44" y="125" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1597213835735" />
+    <state x="44" y="125" key="#xdebugger.evaluate/0.0.1536.864@0.0.1536.864" timestamp="1597214572006" />
     <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1596425190502">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -384,38 +325,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="577" y="195" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1597202392958" />
-    <state width="1493" height="211" key="GridCell.Tab.0.bottom" timestamp="1597213959477">
+    <state width="1493" height="351" key="GridCell.Tab.0.bottom" timestamp="1597225460635">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597213959477" />
-    <state width="1493" height="211" key="GridCell.Tab.0.center" timestamp="1597213959476">
+    <state width="1493" height="351" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597225460635" />
+    <state width="1493" height="351" key="GridCell.Tab.0.center" timestamp="1597225460635">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1597213959476" />
-    <state width="1493" height="211" key="GridCell.Tab.0.left" timestamp="1597213959476">
+    <state width="1493" height="351" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1597225460635" />
+    <state width="1493" height="351" key="GridCell.Tab.0.left" timestamp="1597225460634">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1597213959476" />
-    <state width="1493" height="211" key="GridCell.Tab.0.right" timestamp="1597213959476">
+    <state width="1493" height="351" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1597225460634" />
+    <state width="1493" height="351" key="GridCell.Tab.0.right" timestamp="1597225460635">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1597213959476" />
-    <state width="1493" height="211" key="GridCell.Tab.1.bottom" timestamp="1597213959292">
+    <state width="1493" height="351" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1597225460635" />
+    <state width="1493" height="351" key="GridCell.Tab.1.bottom" timestamp="1597225460635">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597213959292" />
-    <state width="1493" height="211" key="GridCell.Tab.1.center" timestamp="1597213959292">
+    <state width="1493" height="351" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597225460635" />
+    <state width="1493" height="351" key="GridCell.Tab.1.center" timestamp="1597225460635">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1597213959292" />
-    <state width="1493" height="211" key="GridCell.Tab.1.left" timestamp="1597213959292">
+    <state width="1493" height="351" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1597225460635" />
+    <state width="1493" height="351" key="GridCell.Tab.1.left" timestamp="1597225460635">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1597213959292" />
-    <state width="1493" height="211" key="GridCell.Tab.1.right" timestamp="1597213959292">
+    <state width="1493" height="351" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1597225460635" />
+    <state width="1493" height="351" key="GridCell.Tab.1.right" timestamp="1597225460635">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1597213959292" />
+    <state width="1493" height="351" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1597225460635" />
     <state x="299" y="87" key="Maven.ArtifactSearchDialog" timestamp="1596781244709">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -424,6 +365,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="277" y="14" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1596788653072" />
+    <state width="533" height="446" key="SwitcherDM" timestamp="1597214489495">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="533" height="446" key="SwitcherDM/0.0.1536.864@0.0.1536.864" timestamp="1597214489495" />
     <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1596425379944">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -505,7 +450,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java</url>
-          <line>32</line>
+          <line>33</line>
           <properties>
             <option name="lambda-ordinal" value="-1" />
           </properties>
