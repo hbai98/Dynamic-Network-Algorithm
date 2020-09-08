@@ -79,9 +79,9 @@ public class StatisticsMatrix extends SimpleBase<StatisticsMatrix> {
      * @return sub-matrix
      */
     public StatisticsMatrix getMat(StatisticsMatrix mat, int[] rows, int[] cols) {
-        StatisticsMatrix ret = new StatisticsMatrix();
+        StatisticsMatrix ret = new StatisticsMatrix(rows.length,cols.length);
         double[] array = cut(mat, rows, cols);
-        ret.setMatrix(new DMatrixRMaj(array));
+        ret.setMatrix(new DMatrixRMaj(rows.length,cols.length,true,array));
         return ret;
     }
 

@@ -79,8 +79,6 @@ public class SimMatReader<V> extends AbstractFileReader {
                 }
             }
             parseForSimMat((Vector<V>) sifLine);
-            // clean for each line
-            sifLine.clear();
         }
         if (closeWhenFinished) {
             reader.close();
@@ -88,50 +86,12 @@ public class SimMatReader<V> extends AbstractFileReader {
         return simMat;
     }
 
-    /**
-     * <ol>
-     *     <li>node1 node2 value12</li>
-     *     <li>node2 node3 value23 node4 value24 node5 value25</>
-     *     <li>node0 value00</li>
-     *  </ol>
-     * <p>
-     *     The first line identifies two nodes, called node1 and node2, and the weight of the edge between node1 node2. The second line specifies three new nodes, node3, node4, and node5; here “node2” refers to the same node as in the first line.
-     *     The second line also specifies three relationships, all of the individual weight and with node2 as the source, with node3, node4, and node5 as the targets.
-     *     This second form is simply shorthand for specifying multiple relationships of the same type with the same source node.
-     *     The third line indicates how to specify a node that has no relationships with other nodes.
-     * </p>
-     *
-     * <p>NOTICE:add() -> use sortAdd()</p>
-     *
-     * @param sifLine result very line
-     */
     private void parseForSimMat(Vector<V> sifLine) throws IOException {
         int sifSize = sifLine.size();
-        if (sifSize == 0) {
-            throw new IOException("Nothing has been reader!.");
+        if(sifSize!=3){
+            throw new IOException("The simMat format is not right. Please follow source target value.");
         }
-        if (sifSize == 2) {
-            V src = sifLine.get(0);
-            V tgt = sifLine.get(1);
-            simMat.put(src, tgt,0.);
-        } else if ((sifSize - 1) % 2 != 0) {
-            throw new IOException("The file reader format is not correct.");
-        } else {
-            V src = sifLine.get(0);
-            // name value ... and it has already checked (sifSize -1) % 2 == 0
-            for (int index = 1; index < sifSize; index += 2) {
-                V tgt = sifLine.get(index);
-                V val = sifLine.get(index + 1);
-                if (!isDouble((String)val)) {
-                    throw new IOException("The file reader format is not correct. Plus: some name-value pairs are incorrect!");
-                }
-                double weight = Double.parseDouble((String)val);
-                // make sure only nodes in selection will be put into the simMat
-                if (weight != 0 && simMat.getRowMap().containsKey(src) && simMat.getColMap().containsKey(tgt)) {
-                    simMat.put(src, tgt, weight);
-                }
-            }
-        }
+        simMat.put(sifLine.get(0),sifLine.get(1),Double.parseDouble((String) sifLine.get(2)));
         sifLine.clear();
     }
 

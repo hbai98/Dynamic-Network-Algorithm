@@ -30,8 +30,15 @@
   <component name="ChangeListManager">
     <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HGALog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/HGALog.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Matrix/StatisticsMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Matrix/StatisticsMatrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/AlgTest/HGA/simMat.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/AlgTest/HGA/simMat.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Algorithms-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/IO/SimMatReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/IO/SimMatReader.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +79,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
@@ -82,7 +90,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../environment/Java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -108,19 +116,6 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.HGARunSpec.run_test">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DKTest.inverse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
@@ -248,6 +243,8 @@
       <workItem from="1596795136134" duration="7145000" />
       <workItem from="1597055310436" duration="1664000" />
       <workItem from="1597198785310" duration="9588000" />
+      <workItem from="1598171104751" duration="1472000" />
+      <workItem from="1598232920647" duration="4125000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -325,38 +322,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="577" y="195" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1597202392958" />
-    <state width="1493" height="351" key="GridCell.Tab.0.bottom" timestamp="1597225460635">
+    <state width="1493" height="253" key="GridCell.Tab.0.bottom" timestamp="1598259866268">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597225460635" />
-    <state width="1493" height="351" key="GridCell.Tab.0.center" timestamp="1597225460635">
+    <state width="1493" height="253" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1598259866268" />
+    <state width="1493" height="253" key="GridCell.Tab.0.center" timestamp="1598259866267">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1597225460635" />
-    <state width="1493" height="351" key="GridCell.Tab.0.left" timestamp="1597225460634">
+    <state width="1493" height="253" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1598259866267" />
+    <state width="1493" height="253" key="GridCell.Tab.0.left" timestamp="1598259866267">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1597225460634" />
-    <state width="1493" height="351" key="GridCell.Tab.0.right" timestamp="1597225460635">
+    <state width="1493" height="253" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1598259866267" />
+    <state width="1493" height="253" key="GridCell.Tab.0.right" timestamp="1598259866268">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1597225460635" />
-    <state width="1493" height="351" key="GridCell.Tab.1.bottom" timestamp="1597225460635">
+    <state width="1493" height="253" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1598259866268" />
+    <state width="1493" height="351" key="GridCell.Tab.1.bottom" timestamp="1598259866264">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1597225460635" />
-    <state width="1493" height="351" key="GridCell.Tab.1.center" timestamp="1597225460635">
+    <state width="1493" height="351" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
+    <state width="1493" height="351" key="GridCell.Tab.1.center" timestamp="1598259866264">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1597225460635" />
-    <state width="1493" height="351" key="GridCell.Tab.1.left" timestamp="1597225460635">
+    <state width="1493" height="351" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
+    <state width="1493" height="351" key="GridCell.Tab.1.left" timestamp="1598259866264">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1597225460635" />
-    <state width="1493" height="351" key="GridCell.Tab.1.right" timestamp="1597225460635">
+    <state width="1493" height="351" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
+    <state width="1493" height="351" key="GridCell.Tab.1.right" timestamp="1598259866264">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1597225460635" />
+    <state width="1493" height="351" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
     <state x="299" y="87" key="Maven.ArtifactSearchDialog" timestamp="1596781244709">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -393,10 +390,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="815" y="165" key="extract.method.dialog/0.0.1536.864@0.0.1536.864" timestamp="1596704574162" />
-    <state width="546" height="311" key="javadoc.popup.new" timestamp="1597213300038">
+    <state width="546" height="311" key="javadoc.popup.new" timestamp="1598236558593">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="546" height="311" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1597213300038" />
+    <state width="546" height="311" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1598236558593" />
     <state x="209" y="93" key="new project wizard" timestamp="1597202401987">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -413,11 +410,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/IO/SimMatReader.java</url>
-          <line>122</line>
-          <option name="timeStamp" value="326" />
-        </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/DS/Matrix/SimMat.java</url>
           <line>187</line>
@@ -455,11 +447,6 @@
             <option name="lambda-ordinal" value="-1" />
           </properties>
           <option name="timeStamp" value="448" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java</url>
-          <line>476</line>
-          <option name="timeStamp" value="450" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -62,7 +62,7 @@ public class HGA<V, E> {
     private double EC;
     private double score;
     //---------------mapping for iteration---------
-    private final SimMat<V> originalMat;
+    private SimMat<V> originalMat;
     private Stack<StatisticsMatrix> stackMat;
     private Stack<Double> stackScore;
 
@@ -102,7 +102,9 @@ public class HGA<V, E> {
 
         this.udG1 = udG1;
         this.udG2 = udG2;
-        this.originalMat = simMat.dup();
+        // allow null
+        if (simMat != null)
+            this.originalMat = simMat.dup();
         this.simMat = simMat;
         this.forcedMappingForSame = forcedMappingForSame;
         this.tolerance = tolerance;
@@ -114,6 +116,7 @@ public class HGA<V, E> {
             setupLogger();
         }
     }
+
 
     /**
      * HGA to initialize the mapping between two graph by HA,
