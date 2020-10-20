@@ -49,3 +49,11 @@ novel genetic interactions and co-complex membership from yeast genetic interact
 
   Please visit https://apps.cytoscape.org/apps/bnmatch2 for more information.
 
+* DKernel(based on DK)
+
+  A Cytoscape app to diffuse and propagate networks for disease gene pathway, social network, etc analysis, and it will visualize the result with a customized color choice.
+
+  ![image-20201020170036091](README.assets/image-20201020170036091.png)
+
+  Please visit https://apps.cytoscape.org/apps/dkernel for more information.
+
