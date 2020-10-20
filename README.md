@@ -22,6 +22,8 @@ Get the mapping subgraph across species.
 
 You could navigate [here](https://github.com/164140757/MyAlgorithms/tree/master/src/main/java/Algorithms/Graph/HGA#gpu-acceleration) to see how to build HGA and run it.
 
+For more information, a blog is available [here](http://www.haotian.life/2020/07/13/bnmatch-tutorial/). 
+
 ## DK
 
 Propagate the biological network for predicting novel genetic interactions and co-complex membership
