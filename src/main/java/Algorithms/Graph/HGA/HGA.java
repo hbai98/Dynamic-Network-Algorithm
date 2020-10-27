@@ -587,7 +587,6 @@ public class HGA<V, E> {
      * @return full mapping result
      */
     protected HashMap<V, V> remap(SimMat<V> toRemap, HashMap<V, V> forced) {
-//        int h = getHByAccount();
         logInfo("Remapping : select rows have at least " + h + " non-zero items;");
         // regain from file, and there is no remap part, retain.
         if (toRemap == null) {
