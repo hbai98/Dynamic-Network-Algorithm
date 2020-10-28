@@ -29,7 +29,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +106,7 @@
       <recent name="D:\Development\Algorithms\src\test\java\resources\AlgTest" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HGARunSpec.run_test">
+  <component name="RunManager" selected="JUnit.HGARunSpec.run_yeast">
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -170,7 +170,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HGARunSpec.run_test_GPU" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HGARunSpec.run_yeast" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
@@ -180,7 +180,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
       <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGARunSpec" />
-      <option name="METHOD_NAME" value="run_test_GPU" />
+      <option name="METHOD_NAME" value="run_yeast" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -205,17 +205,17 @@
     <list>
       <item itemvalue="JUnit.DKTest.run" />
       <item itemvalue="JUnit.HGARunSpec.run_test" />
-      <item itemvalue="JUnit.HGARunSpec.run_test_GPU" />
       <item itemvalue="JUnit.UndirectedGraphTest.getAdjMat" />
       <item itemvalue="JUnit.DKTest.inverse" />
+      <item itemvalue="JUnit.HGARunSpec.run_yeast" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HGARunSpec.run_yeast" />
         <item itemvalue="JUnit.HGARunSpec.run_test" />
         <item itemvalue="JUnit.DKTest.run" />
         <item itemvalue="JUnit.DKTest.inverse" />
         <item itemvalue="JUnit.UndirectedGraphTest.getAdjMat" />
-        <item itemvalue="JUnit.HGARunSpec.run_test_GPU" />
       </list>
     </recent_temporary>
   </component>
