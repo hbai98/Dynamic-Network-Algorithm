@@ -57,8 +57,7 @@ class HGARunSpec {
         simMat = simMatReader.readToSimMat(
                 "src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt",true);
         hga = new HGA<>(simMat, udG1, udG2, 0.4, true, 0.5, 0.01);
-        hga.run();
-        HGA.debugOutputPath = "src\\test\\java\\resources\\Jupiter\\data\\";
+        HGA.debugOutputPath = "src\\test\\java\\resources\\jupyter\\data\\";
         HGA.GPU = true;
         hga.run();
     }
