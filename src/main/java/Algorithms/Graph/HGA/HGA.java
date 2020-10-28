@@ -686,7 +686,7 @@ public class HGA<V, E> {
         logInfo("output mapping");
         String path = debugOutputPath + "mapping/";
         Vector<String> mappingVec = new Vector<>();
-        mapping.forEach((k, v) -> mappingVec.add(k + "->" + v + "\n"));
+        mapping.forEach((k, v) -> mappingVec.add(k +" "+ v + "\n"));
         try {
             if (isResult) {
                 writer.setPath(path + "mappingResult_" + iter_res + ".txt");

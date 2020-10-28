@@ -29,7 +29,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mappingResult_14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrixResult_14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoringResult_14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_9.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,20 +154,7 @@
       <recent name="D:\Development\Algorithms\src\test\java\resources\AlgTest" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HGARunSpec.run_yeast">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.HGARunSpec.run_test">
     <configuration name="DKTest.inverse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
@@ -249,6 +284,8 @@
       <workItem from="1597198785310" duration="9588000" />
       <workItem from="1598171104751" duration="1472000" />
       <workItem from="1598232920647" duration="4125000" />
+      <workItem from="1603884079827" duration="2149000" />
+      <workItem from="1603892970070" duration="1357000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -286,6 +323,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Update using jgrapht" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="553" y="199" key="#Deployment" timestamp="1603884363785">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="553" y="199" key="#Deployment/0.0.1920.1080@0.0.1920.1080" timestamp="1603884363785" />
     <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596788609774">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -298,6 +339,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="499" y="211" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.864@0.0.1536.864" timestamp="1596679967201" />
+    <state x="641" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1603884271543">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="641" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603884271543" />
     <state x="551" y="301" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1596679971019">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -326,46 +371,46 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="577" y="195" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1597202392958" />
-    <state width="1878" height="350" key="GridCell.Tab.0.bottom" timestamp="1603883766969">
+    <state width="1878" height="350" key="GridCell.Tab.0.bottom" timestamp="1603892718311">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="253" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1598259866268" />
-    <state width="1878" height="350" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1603883766969" />
-    <state width="1878" height="350" key="GridCell.Tab.0.center" timestamp="1603883766969">
+    <state width="1878" height="350" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1603892718311" />
+    <state width="1878" height="350" key="GridCell.Tab.0.center" timestamp="1603892718311">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="253" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1598259866267" />
-    <state width="1878" height="350" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1603883766969" />
-    <state width="1878" height="350" key="GridCell.Tab.0.left" timestamp="1603883766969">
+    <state width="1878" height="350" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1603892718311" />
+    <state width="1878" height="350" key="GridCell.Tab.0.left" timestamp="1603892718311">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="253" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1598259866267" />
-    <state width="1878" height="350" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1603883766969" />
-    <state width="1878" height="350" key="GridCell.Tab.0.right" timestamp="1603883766969">
+    <state width="1878" height="350" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1603892718311" />
+    <state width="1878" height="350" key="GridCell.Tab.0.right" timestamp="1603892718311">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="253" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1598259866268" />
-    <state width="1878" height="350" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1603883766969" />
-    <state width="1878" height="350" key="GridCell.Tab.1.bottom" timestamp="1603883766985">
+    <state width="1878" height="350" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1603892718311" />
+    <state width="1878" height="350" key="GridCell.Tab.1.bottom" timestamp="1603892718311">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="351" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
-    <state width="1878" height="350" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1603883766985" />
-    <state width="1878" height="350" key="GridCell.Tab.1.center" timestamp="1603883766969">
+    <state width="1878" height="350" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1603892718311" />
+    <state width="1878" height="350" key="GridCell.Tab.1.center" timestamp="1603892718311">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="351" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
-    <state width="1878" height="350" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1603883766969" />
-    <state width="1878" height="350" key="GridCell.Tab.1.left" timestamp="1603883766969">
+    <state width="1878" height="350" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1603892718311" />
+    <state width="1878" height="350" key="GridCell.Tab.1.left" timestamp="1603892718311">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="351" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
-    <state width="1878" height="350" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1603883766969" />
-    <state width="1878" height="350" key="GridCell.Tab.1.right" timestamp="1603883766969">
+    <state width="1878" height="350" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1603892718311" />
+    <state width="1878" height="350" key="GridCell.Tab.1.right" timestamp="1603892718311">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="351" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
-    <state width="1878" height="350" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1603883766969" />
+    <state width="1878" height="350" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1603892718311" />
     <state x="299" y="87" key="Maven.ArtifactSearchDialog" timestamp="1596781244709">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -382,10 +427,11 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1596425379944" />
-    <state width="1047" height="689" key="XDebugger.FullValuePopup" timestamp="1596801010741">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state width="1309" height="862" key="XDebugger.FullValuePopup" timestamp="1603890470979">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1047" height="689" key="XDebugger.FullValuePopup/0.0.1536.864@0.0.1536.864" timestamp="1596801010741" />
+    <state width="1309" height="862" key="XDebugger.FullValuePopup/0.0.1920.1080@0.0.1920.1080" timestamp="1603890470979" />
     <state x="584" y="210" key="chooseDestDirectoryDialog" timestamp="1597055909966">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -402,6 +448,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="815" y="165" key="extract.method.dialog/0.0.1536.864@0.0.1536.864" timestamp="1596704574162" />
+    <state x="846" y="272" key="ftp.server.browser" timestamp="1603884362980">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="846" y="272" key="ftp.server.browser/0.0.1920.1080@0.0.1920.1080" timestamp="1603884362980" />
     <state width="546" height="311" key="javadoc.popup.new" timestamp="1598236558593">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

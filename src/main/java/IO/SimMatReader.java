@@ -126,9 +126,10 @@ public class SimMatReader<V> extends AbstractFileReader {
                     throw new IOException("The file reader format is not correct. Plus: some name-value pairs are incorrect!");
                 }
                 double weight = Double.parseDouble((String)val);
+                double eValue = 1 / (1 - 1 / Math.log(weight));
                 // make sure only nodes in selection will be put into the simMat
                 if (weight != 0 && simMat.getRowMap().containsKey(src) && simMat.getColMap().containsKey(tgt)) {
-                    simMat.put(src, tgt, weight);
+                    simMat.put(src, tgt, eValue);
                 }
             }
         }
