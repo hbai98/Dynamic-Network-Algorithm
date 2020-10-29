@@ -1,0 +1,10 @@
+Oct 29, 2020 9:28:54 AM Algorithms.Graph.HGA.HGA logInfo
+INFO: Init mapping...
+Oct 29, 2020 9:28:54 AM Algorithms.Graph.HGA.HGA logInfo
+INFO: ------------Iteration 0/1000------------
+Oct 29, 2020 9:28:54 AM Algorithms.Graph.HGA.HGA logInfo
+INFO: Remapping : select rows have at least 5 non-zero items;
+Oct 29, 2020 9:29:28 AM Algorithms.Graph.HGA.HGA logInfo
+INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
+Oct 29, 2020 9:30:04 AM Algorithms.Graph.HGA.HGA logInfo
+INFO: Hungarian mapping...
