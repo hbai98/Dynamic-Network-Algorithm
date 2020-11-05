@@ -30,7 +30,7 @@ class HGARunSpec {
         udG2 = reader.readToUndirectedGraph( "src/test/java/resources/AlgTest/HGA/graph2.txt",false);
         SimMatReader<String> simMatReader = new SimMatReader<>(udG1.vertexSet(),udG2.vertexSet(),String.class);
         simMat = simMatReader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt",true);
-        hga = new HGA<>(simMat, udG1, udG2, 0.5, true, 0.5, 0.01);
+        hga = new HGA<>(simMat, udG1, udG2, 0.5, true,  0.01);
         hga.run();
     }
 
@@ -41,7 +41,7 @@ class HGARunSpec {
         udG2 = reader.readToUndirectedGraph( "src/test/java/resources/AlgTest/HGA/graph2.txt",false);
         SimMatReader<String> simMatReader = new SimMatReader<>(udG1.vertexSet(),udG2.vertexSet(),String.class);
         simMat = simMatReader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt",true);
-        hga = new HGA<>(simMat, udG1, udG2, 0.5, true, 0.5, 0.01);
+        hga = new HGA<>(simMat, udG1, udG2, 0.5, true,  0.01);
         HGA.GPU = true;
         hga.run();
     }
@@ -56,7 +56,7 @@ class HGARunSpec {
         SimMatReader<String> simMatReader = new SimMatReader<>(udG1.vertexSet(),udG2.vertexSet(),String.class);
         simMat = simMatReader.readToSimMat(
                 "src/test/java/resources/TestModule/HGATestData/Human-YeastSub38N/fasta/yeastHumanSimList_EvalueLessThan1e-10.txt",true);
-        hga = new HGA<>(simMat, udG1, udG2, 0.4, true, 0.5, 0.01);
+        hga = new HGA<>(simMat, udG1, udG2, 0.4, true,  0.01);
         HGA.debugOutputPath = "src\\test\\java\\resources\\jupiter\\data\\";
         HGA.GPU = true;
         hga.run();

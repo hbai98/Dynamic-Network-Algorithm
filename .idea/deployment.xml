@@ -5,7 +5,7 @@
       <paths name="SHU-lab">
         <serverdata>
           <mappings>
-            <mapping deploy="/Algorithms" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/Dynamic-Network-Algorithm" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

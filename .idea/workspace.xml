@@ -29,15 +29,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/TestModule/DKtestData/COV19/host_cf_greater_0.7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/resources/TestModule/DKtestData/COV19/human_cf_greater_0.7.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HGALog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/HGALog.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_0.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/IO/SimMatReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/IO/SimMatReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +82,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
@@ -261,7 +261,9 @@
       <workItem from="1603884079827" duration="2149000" />
       <workItem from="1603892970070" duration="1357000" />
       <workItem from="1603934321442" duration="108000" />
-      <workItem from="1603934479939" duration="1418000" />
+      <workItem from="1603934479939" duration="3577000" />
+      <workItem from="1604378572995" duration="2854000" />
+      <workItem from="1604535535635" duration="987000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -299,14 +301,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="Update using jgrapht" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="553" y="199" key="#Deployment" timestamp="1603884363785">
+    <state x="553" y="199" key="#Deployment" timestamp="1604536152846">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="553" y="199" key="#Deployment/0.0.1920.1080@0.0.1920.1080" timestamp="1603884363785" />
+    <state x="553" y="199" key="#Deployment/0.0.1920.1080@0.0.1920.1080" timestamp="1604536152846" />
     <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596788609774">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1596788609774" />
+    <state x="691" y="330" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604392843844">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="691" y="330" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1604392843844" />
     <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser" timestamp="1596698334259">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -348,46 +354,46 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="577" y="195" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1597202392958" />
-    <state width="1878" height="342" key="GridCell.Tab.0.bottom" timestamp="1603935172830">
+    <state width="1878" height="462" key="GridCell.Tab.0.bottom" timestamp="1604536336570">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="253" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1598259866268" />
-    <state width="1878" height="342" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1603935172830" />
-    <state width="1878" height="342" key="GridCell.Tab.0.center" timestamp="1603935172830">
+    <state width="1878" height="462" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1604536336570" />
+    <state width="1878" height="462" key="GridCell.Tab.0.center" timestamp="1604536336570">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="253" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1598259866267" />
-    <state width="1878" height="342" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1603935172830" />
-    <state width="1878" height="342" key="GridCell.Tab.0.left" timestamp="1603935172830">
+    <state width="1878" height="462" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1604536336570" />
+    <state width="1878" height="462" key="GridCell.Tab.0.left" timestamp="1604536336570">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="253" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1598259866267" />
-    <state width="1878" height="342" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1603935172830" />
-    <state width="1878" height="342" key="GridCell.Tab.0.right" timestamp="1603935172830">
+    <state width="1878" height="462" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1604536336570" />
+    <state width="1878" height="462" key="GridCell.Tab.0.right" timestamp="1604536336570">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="253" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1598259866268" />
-    <state width="1878" height="342" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1603935172830" />
-    <state width="1878" height="342" key="GridCell.Tab.1.bottom" timestamp="1603935172830">
+    <state width="1878" height="462" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1604536336570" />
+    <state width="1878" height="342" key="GridCell.Tab.1.bottom" timestamp="1604536279135">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="351" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
-    <state width="1878" height="342" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1603935172830" />
-    <state width="1878" height="342" key="GridCell.Tab.1.center" timestamp="1603935172830">
+    <state width="1878" height="342" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1604536279135" />
+    <state width="1878" height="342" key="GridCell.Tab.1.center" timestamp="1604536279135">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="351" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
-    <state width="1878" height="342" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1603935172830" />
-    <state width="1878" height="342" key="GridCell.Tab.1.left" timestamp="1603935172830">
+    <state width="1878" height="342" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1604536279135" />
+    <state width="1878" height="342" key="GridCell.Tab.1.left" timestamp="1604536279135">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="351" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
-    <state width="1878" height="342" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1603935172830" />
-    <state width="1878" height="342" key="GridCell.Tab.1.right" timestamp="1603935172830">
+    <state width="1878" height="342" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1604536279135" />
+    <state width="1878" height="342" key="GridCell.Tab.1.right" timestamp="1604536279135">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="351" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
-    <state width="1878" height="342" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1603935172830" />
+    <state width="1878" height="342" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1604536279135" />
     <state x="299" y="87" key="Maven.ArtifactSearchDialog" timestamp="1596781244709">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -433,10 +439,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="815" y="165" key="extract.method.dialog/0.0.1536.864@0.0.1536.864" timestamp="1596704574162" />
-    <state x="846" y="272" key="ftp.server.browser" timestamp="1603884362980">
+    <state x="846" y="272" key="ftp.server.browser" timestamp="1604536149001">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="846" y="272" key="ftp.server.browser/0.0.1920.1080@0.0.1920.1080" timestamp="1603884362980" />
+    <state x="846" y="272" key="ftp.server.browser/0.0.1920.1080@0.0.1920.1080" timestamp="1604536149001" />
     <state width="546" height="311" key="javadoc.popup.new" timestamp="1598236558593">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -453,6 +459,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1596789963192" />
+    <state x="623" y="236" key="search.everywhere.popup" timestamp="1604392771914">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="236" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1604392771914" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -476,14 +486,6 @@
           <url>jar://$MAVEN_REPOSITORY$/org/ejml/ejml-dsparse/0.39/ejml-dsparse-0.39.jar!/org/ejml/sparse/csc/CommonOps_DSCC.class</url>
           <line>1176</line>
           <option name="timeStamp" value="406" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java</url>
-          <line>33</line>
-          <properties>
-            <option name="lambda-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="448" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
