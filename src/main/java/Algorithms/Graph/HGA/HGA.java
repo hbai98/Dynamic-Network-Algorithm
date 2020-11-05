@@ -92,12 +92,13 @@ public class HGA<V, E> {
      * @param simMat               similarity matrix
      * @param nodalFactor          nodal compared with topological effect
      * @param forcedMappingForSame whether force mapping
+     * @param hAccount             hungarian matrix account
      * @param tolerance            the limit to check whether the matrix has converged
      */
     public HGA(SimMat<V> simMat,
                UndirectedGraph<V, E> udG1,
                UndirectedGraph<V, E> udG2,
-               double nodalFactor, boolean forcedMappingForSame, double tolerance) throws IOException {
+               double nodalFactor, boolean forcedMappingForSame, double hAccount, double tolerance) throws IOException {
 
         this.udG1 = udG1;
         this.udG2 = udG2;

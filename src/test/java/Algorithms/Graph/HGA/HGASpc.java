@@ -30,7 +30,7 @@ class HGASpc{
         udG2 = reader.readToUndirectedGraph( "src/test/java/resources/AlgTest/HGA/graph2.txt",false);
         SimMatReader<String> simMatReader = new SimMatReader<>(udG1.vertexSet(),udG2.vertexSet(),String.class);
         simMat = simMatReader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt",true);
-        hga = new HGA<>(simMat, udG1, udG2, (float) 0.5, true,  0.01);
+        hga = new HGA<>(simMat, udG1, udG2, (float) 0.5, true,  0.5,0.01);
     }
 
     @DisplayName("Greedily map")
