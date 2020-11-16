@@ -7,7 +7,7 @@ import DS.Matrix.SimMat;
 import DS.Matrix.StatisticsMatrix;
 import DS.Network.Graph;
 import DS.Network.UndirectedGraph;
-import IO.AbstractFileWriter;
+import IO.Writer.AbstractFileWriter;
 import com.aparapi.Range;
 import org.apache.commons.io.FileUtils;
 import org.jgrapht.alg.util.Pair;

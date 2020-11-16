@@ -3,9 +3,8 @@ package Algorithms.Graph.HGA;
 
 import DS.Matrix.SimMat;
 import DS.Network.UndirectedGraph;
-import IO.GraphFileReader;
-import IO.SimMatReader;
-import org.jgrapht.graph.DefaultWeightedEdge;
+import IO.Reader.GraphFileReader;
+import IO.Reader.SimMatReader;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -61,6 +60,8 @@ class HGARunSpec {
         HGA.GPU = true;
         hga.run();
     }
+
+
 
 }
 

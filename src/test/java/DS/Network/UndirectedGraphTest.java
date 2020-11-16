@@ -1,14 +1,12 @@
 package DS.Network;
 
-import IO.GraphFileReader;
+import IO.Reader.GraphFileReader;
 import org.jgrapht.graph.DefaultEdge;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class UndirectedGraphTest {
     private UndirectedGraph<Character, DefaultEdge> graph;
