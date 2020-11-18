@@ -1,12 +1,11 @@
 package Algorithms.Graph.Dynamic.Diffusion_Kernel;
 
-import Algorithms.Graph.Dynamic.Scale;
+import Algorithms.Graph.Dynamic.Scale.Scale;
 import DS.Matrix.StatisticsMatrix;
 import DS.Network.Graph;
 import com.google.common.primitives.Booleans;
 import org.apache.commons.lang3.ArrayUtils;
 
-import java.util.HashMap;
 import java.util.Set;
 import java.util.Vector;
 import java.util.concurrent.atomic.AtomicInteger;

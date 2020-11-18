@@ -29,32 +29,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/cov19/COV19_hosts_more_0.7.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/cov19/humanPPI_score_more_0.7.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IO/AbstractFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/Reader/AbstractFileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IO/AbstractFileWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/Writer/AbstractFileWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IO/DoubleMatrixReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/Reader/DoubleMatrixReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IO/GraphFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/Reader/GraphFileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IO/MappingResultReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/Reader/MappingResultReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/IO/SimMatReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IO/Reader/SimMatReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/DS/Network/UndirectedGraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/DS/Network/UndirectedGraphTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/IO/AbstractFileReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/IO/AbstractFileWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/IO/DoubleMatrixReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/IO/GraphFileReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/IO/MappingResultReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/IO/SimMatReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Dynamic/DKTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Dynamic/DKTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGARunSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGARunSpec.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGASpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGASpc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/DS/Network/UndirectedGraphTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/DS/Network/UndirectedGraphTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HGALog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/HGALog.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Diffusion_Kernel/DK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Diffusion_Kernel/DK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale/Scale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/GPUKernelForHGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/GPUKernelForHGA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/HGA/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGARunSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Alignment/HGA/HGARunSpec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/HGA/HGASpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Alignment/HGA/HGASpc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/cov19/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/cov19/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/cov19/initial_data_pocessing.ipynb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,15 +148,13 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.DKTest.test_nCov_host_diffuse">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -179,11 +163,11 @@
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.Dynamic.Diffusion_Kernel.*" />
+          <option name="PATTERN" value="Algorithms.Graph.Dynamic.Scale.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.Dynamic" />
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.Diffusion" />
       <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Dynamic.DKTest" />
       <option name="METHOD_NAME" value="inverse" />
       <option name="TEST_OBJECT" value="method" />
@@ -195,11 +179,11 @@
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.Dynamic.Diffusion_Kernel.*" />
+          <option name="PATTERN" value="Algorithms.Graph.Dynamic.Scale.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.Dynamic" />
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.Diffusion" />
       <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Dynamic.DKTest" />
       <option name="METHOD_NAME" value="run" />
       <option name="TEST_OBJECT" value="method" />
@@ -211,11 +195,11 @@
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.Dynamic.*" />
+          <option name="PATTERN" value="Algorithms.Graph.Dynamic.Scale.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.Dynamic" />
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.Diffusion" />
       <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Dynamic.DKTest" />
       <option name="METHOD_NAME" value="test_nCov_host_diffuse" />
       <option name="TEST_OBJECT" value="method" />
@@ -228,12 +212,12 @@
       <useClassPathOnly />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.HGA.*" />
+          <option name="PATTERN" value="Algorithms.Graph.Alignment.HGA.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGARunSpec" />
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.Alignment.HGA" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Alignment.HGA.HGARunSpec" />
       <option name="METHOD_NAME" value="run_test" />
       <option name="TEST_OBJECT" value="method" />
       <option name="PARAMETERS" value="" />
@@ -245,12 +229,12 @@
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.HGA.*" />
+          <option name="PATTERN" value="Algorithms.Graph.Alignment.HGA.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.HGA" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.HGA.HGARunSpec" />
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.Alignment.HGA" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Alignment.HGA.HGARunSpec" />
       <option name="METHOD_NAME" value="run_yeast" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -318,6 +302,8 @@
       <workItem from="1605399389143" duration="757000" />
       <workItem from="1605410105733" duration="3528000" />
       <workItem from="1605444570735" duration="2308000" />
+      <workItem from="1605611326696" duration="1941000" />
+      <workItem from="1605687692581" duration="6775000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -371,10 +357,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="641" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603884271543" />
-    <state x="648" y="457" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1605425120980">
+    <state x="648" y="457" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1605687781590">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="648" y="457" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605425120980" />
+    <state x="648" y="457" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605687781590" />
     <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1597055861717">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -456,15 +442,19 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="846" y="272" key="ftp.server.browser/0.0.1920.1080@0.0.1920.1080" timestamp="1604536149001" />
-    <state width="683" height="389" key="javadoc.popup.new" timestamp="1605425267907">
+    <state width="683" height="389" key="javadoc.popup.new" timestamp="1605689313787">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="546" height="311" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1598236558593" />
-    <state width="683" height="389" key="javadoc.popup.new/0.0.1920.1080@0.0.1920.1080" timestamp="1605425267907" />
+    <state width="683" height="389" key="javadoc.popup.new/0.0.1920.1080@0.0.1920.1080" timestamp="1605689313787" />
     <state x="209" y="93" key="new project wizard" timestamp="1597202401987">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="209" y="93" key="new project wizard/0.0.1536.864@0.0.1536.864" timestamp="1597202401987" />
+    <state x="621" y="254" key="run.anything.popup" timestamp="1605705167506">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="621" y="254" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1605705167506" />
     <state x="623" y="236" key="search.everywhere.popup" timestamp="1604392771914">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -492,11 +482,6 @@
           <url>jar://$MAVEN_REPOSITORY$/org/ejml/ejml-dsparse/0.39/ejml-dsparse-0.39.jar!/org/ejml/sparse/csc/CommonOps_DSCC.class</url>
           <line>1176</line>
           <option name="timeStamp" value="406" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="407" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

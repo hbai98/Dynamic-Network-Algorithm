@@ -1,22 +1,22 @@
-Nov 05, 2020 8:32:08 AM Algorithms.Graph.HGA.HGA logInfo
+Nov 05, 2020 8:32:08 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: Init mapping...
-Nov 05, 2020 8:32:08 AM Algorithms.Graph.HGA.HGA logInfo
+Nov 05, 2020 8:32:08 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: ------------Iteration 0/1000------------
-Nov 05, 2020 8:32:08 AM Algorithms.Graph.HGA.HGA logInfo
+Nov 05, 2020 8:32:08 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: Remapping : select rows have at least 5 non-zero items;
-Nov 05, 2020 8:32:08 AM Algorithms.Graph.HGA.HGA logInfo
+Nov 05, 2020 8:32:08 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Nov 05, 2020 8:32:08 AM Algorithms.Graph.HGA.HGA logInfo
+Nov 05, 2020 8:32:08 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Nov 05, 2020 8:32:09 AM Algorithms.Graph.HGA.HGA logInfo
+Nov 05, 2020 8:32:09 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Nov 05, 2020 8:32:09 AM Algorithms.Graph.HGA.HGA logInfo
+Nov 05, 2020 8:32:09 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: output matrix
-Nov 05, 2020 8:32:09 AM Algorithms.Graph.HGA.HGA logInfo
+Nov 05, 2020 8:32:09 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: output scores
-Nov 05, 2020 8:32:09 AM Algorithms.Graph.HGA.HGA logInfo
+Nov 05, 2020 8:32:09 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: output mapping
-Nov 05, 2020 8:32:09 AM Algorithms.Graph.HGA.HGA logInfo
+Nov 05, 2020 8:32:09 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Nov 05, 2020 8:32:09 AM Algorithms.Graph.HGA.HGA logInfo
+Nov 05, 2020 8:32:09 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs with the GPU programming:

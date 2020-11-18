@@ -25,7 +25,7 @@ Then, please navigate to the pom.xml file from the root, and comment the < skipT
 In your server command line, input the follow command
 
 ```
-nohup mvn clean test -Dtest=Algorithms.Graph.HGA.HGARunSpec#<test> &
+nohup mvn clean test -Dtest=Algorithms.Graph.Alignment.HGA.HGARunSpec#<test> &
 ```
 
 < test > can be any junit test class method, for example, < test > can be run_yeast like example below:
@@ -64,41 +64,41 @@ It's flexible for you to write a new test method for your customized design and 
 If you would like to check the status of the current mapping, there is a HGALogFile.log in the root path.
 
 ```
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: Init mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: ------------Iteration 0/1000------------
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: Remapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: Hungarian mapping...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: Scoring for mapping ...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: output Matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: output scores
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: adjust neighborhood similarity based on mapping result...
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: AddTopology for all nodes pairs in two graphs:
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.Alignment.HGA.HGA logInfo
 ```
 
 When the Matrix has converged, it will be an output information to denote that all iterations needed have been finished.
 
 ```
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: HGA mapping finish!With iteration 14 times.
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: output mapping
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: output Matrix
-Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.HGA.HGA logInfo
+Jul 12, 2020 10:59:22 AM Internal.Algorithms.Graph.Alignment.HGA.HGA logInfo
 INFO: output scores
 ```
 

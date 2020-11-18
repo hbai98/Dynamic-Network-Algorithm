@@ -1,4 +1,4 @@
-package Algorithms.Graph.HGA;
+package Algorithms.Graph.Alignment.HGA;
 
 
 import Algorithms.Graph.Hungarian;

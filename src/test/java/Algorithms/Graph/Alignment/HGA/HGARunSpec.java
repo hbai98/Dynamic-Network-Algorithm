@@ -1,5 +1,5 @@
 
-package Algorithms.Graph.HGA;
+package Algorithms.Graph.Alignment.HGA;
 
 import DS.Matrix.SimMat;
 import DS.Network.UndirectedGraph;

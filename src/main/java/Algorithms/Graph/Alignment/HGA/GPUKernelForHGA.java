@@ -1,6 +1,6 @@
 
 
-package Algorithms.Graph.HGA;
+package Algorithms.Graph.Alignment.HGA;
 
 import com.aparapi.Kernel;
 import org.apache.commons.lang3.ArrayUtils;
