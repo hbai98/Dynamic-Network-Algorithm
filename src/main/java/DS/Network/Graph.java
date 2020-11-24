@@ -2,7 +2,7 @@ package DS.Network;
 
 import java.util.Set;
 
-public interface Graph<V,E> extends org.jgrapht.Graph<V,E> {
+public interface Graph<V,E> extends org.jgrapht.Graph<V, E> {
     /**
      * Get all neighbors for a vertex.
      *
@@ -19,4 +19,10 @@ public interface Graph<V,E> extends org.jgrapht.Graph<V,E> {
      */
     boolean[] getAdjMat();
 
+    /**
+     * Extract a subnetwork based on given nodes
+     * @param nodes nodes from the subnetwork
+     * @return a subgraph
+     */
+    Graph<V,E> getSub(Set<V> nodes);
 }

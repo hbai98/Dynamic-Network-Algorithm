@@ -24,7 +24,10 @@ import java.util.function.Function;
  * @Email bht98@i.shu.edu.cn
  * @Blog www.haotian.life
  */
-public class DK<V, E> extends Scale<V, E> {
+public class DK<V, E> {
+    private final Set<V> nodes;
+    private final Graph<V, E> tgtG;
+    private final int tgtSize;
     // algorithm's params
     private StatisticsMatrix adjMat; // adjacent matrix of the Graph tgtG
     private StatisticsMatrix query; // a boolean vector to indicate query nodes(introducing the flow)
@@ -35,13 +38,15 @@ public class DK<V, E> extends Scale<V, E> {
     // internal
 
     /**
-     * @param srcG the graph to be handled
+     * @param nodes nodes in the subgraph
      * @param tgtG the connections needed to do the dynamic changes, normally a large graph
      * @param loss a constant non-zero value which means the fluid loss out of each node,
      *             larger loss leads to faster loss, hence short diffusive paths
      */
-    public DK(Graph<V, E> srcG, Graph<V, E> tgtG, double loss) {
-        super(srcG, tgtG);
+    public DK(Set<V> nodes, Graph<V, E> tgtG, double loss) {
+        this.nodes = nodes;
+        this.tgtG = tgtG;
+        this.tgtSize = tgtG.vertexSet().size();
         // initialize loss
         this.loss = loss;
 
@@ -77,14 +82,13 @@ public class DK<V, E> extends Scale<V, E> {
      * true for them.
      */
     private void initQry() {
-        Set<V> srcN = srcG.vertexSet();
         Set<V> tgtN = tgtG.vertexSet();
         Vector<V> tgt = new Vector<>(tgtN);
         double[] queryArray = new double[tgtSize];
 
         for (int i = 0; i < tgt.size(); i++) {
             V t = tgt.get(i);
-            if(srcN.contains(t)){
+            if(nodes.contains(t)){
                 queryArray[i] = 1.;
             }
         }

@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import javax.swing.text.BadLocationException;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 class DKTest {
@@ -27,9 +29,7 @@ class DKTest {
     @Test
     void run() throws IOException {
         graph = reader.readToUndirectedGraph("src/test/java/resources/AlgTest/small/sGraph1.txt", true);
-        UndirectedGraph<String, DefaultWeightedEdge> src = new UndirectedGraph<>(DefaultWeightedEdge.class);
-        src.addVertex("F");
-        src.addVertex("C");
+        Set<String> src = new HashSet<>(Arrays.asList("F","C"));
         DK<String, DefaultWeightedEdge> dk = new DK<>(src, graph, 0.5);
         dk.run();
         StatisticsMatrix res = dk.getResult();
