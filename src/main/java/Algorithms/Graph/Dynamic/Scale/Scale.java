@@ -32,67 +32,22 @@ public class Scale<V, E> {
 
     /**
      * This propagate function is to scale the network by steps, which means
-     * It accept an integer which denotes how long the peripheral nodes should
-     * step out, when a positive integer is accepted, its scale become larger, and
-     * on the other hand, a negative will shrink it.
+     * It accept a boolean which denotes forward or backward.
      * <p>
      * The mechanism of action beneath the algorithm is graph theory and Bell
      * analysis of peripheral problems solved by Chartrand G., Johns G., Oellermann O.R.
      * (1990) On Peripheral Vertices in Graphs. https://doi.org/10.1007/978-3-642-46908-4_22
      * <p>
-     * time complexity : O(|E|∗|V|)
-     * <p>
-     * pseudocode :
-     * <p>
-     * (get the maximum shortest path for every vertex in G)
-     * [Greedy algorithm => DFS]
-     * for v in V do
-     * Dijkstra's(v)
-     * Let  the maximum shortest path be max(d)
-     * e(v)←max(d)
-     * <p>
-     * let P(G) be the induced subgraph with vertexes whose e(v) equals diameter<p>
-     * <p>
-     * <p>
-     * (propagate)<p>
-     * let N(u) be the immediate neighbors of vertex u, forward(v) be {v` | v`∈N(u) & d(v`) > d(v)}, backward(v) be {v` | v`∈N(u) & d(v`)< d(v)}<p>
-     * let set store new nodes in the next P(G)<p>
-     * <p>
-     * (forward)
-     * if(s >= 0)<p>
-     * for 1 to step do<p>
-     * for each v in P(G) do<p>
-     * add forward(v) to set<p>
-     * add forward(v) and edges to G<p>
-     * P(G)←set<p>
-     * clean set<p>
-     * (backward)<p>
-     * else<p>
-     * for 1 to |step| do<p>
-     * for each v in P(G) do<p>
-     * add backward(v) to set<p>
-     * delete backward(v) and edges in G<p>
-     * P(G)←set<p>
-     * clean set<p>
-     * <p>
-     * <p>
-     * return whether P(G) has changed
-     *
-     * @param step an integer to denote the distance to propagate the network
-     * @return a bool value to indicate whether the process should continue
+     * time complexity : O(|E|*log|V|*|V|)
      */
-    protected boolean propagate(int step) {
-        boolean change = false;
+    protected void propagate(boolean forward) {
 
-        if (step == 0) {
-            return change;
-        }
         // get the maximum shortest path(length->topology) for every vertex in G
         Map<V, Integer> max_sp = getMapForSP();
         // periphery
         Set<V> periphery = getPeriphery(max_sp);
         // propagate
-        if (step > 0) {
+        if (forward) {
             periphery.forEach(v -> {
                 // unvisited neighbors
                 tgtG.getNeb(v).forEach(resG::addVertex);
@@ -105,13 +60,11 @@ public class Scale<V, E> {
                     resG.addEdge(source, target);
                 }
             }));
-            // update periphery
-            
         }
         else{
-
+            // delete nodes
+            periphery.forEach(resG::removeVertex);
         }
-        return change;
     }
 
     private Set<V> getPeriphery(Map<V, Integer> max_sp) {
@@ -153,5 +106,7 @@ public class Scale<V, E> {
         return res;
     }
 
-
+    public Graph<V, E> getResG() {
+        return resG;
+    }
 }

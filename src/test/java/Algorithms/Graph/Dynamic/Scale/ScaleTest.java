@@ -25,7 +25,14 @@ class ScaleTest {
     void propagate(){
         Set<String> nodes = new HashSet<>(Arrays.asList("G", "B","F","Q","W"));
         Scale<String, DefaultWeightedEdge> scale = new Scale<>(nodes, udG);
-        boolean res = scale.propagate(1);
+        scale.propagate(true);
     }
+    @Test
+    void propagate_back(){
+        Set<String> nodes = new HashSet<>(Arrays.asList("G", "B","F","Q","W"));
+        Scale<String, DefaultWeightedEdge> scale = new Scale<>(nodes, udG);
+        scale.propagate(false);
+    }
+
 
 }

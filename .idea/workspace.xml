@@ -29,27 +29,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Search/BFS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/Scale/ScaleTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/Search/BFSTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/TestModule/network/weighted/graph1_small.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/resources/TestModule/network/weighted/graph2_small.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Diffusion_Kernel/DK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Diffusion_Kernel/DK.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale/Scale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale/Scale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Network/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Network/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Network/UndirectedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Network/UndirectedGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Dynamic/Diffusion_Kernel/DK.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Dynamic/Diffusion_Kernel/DK.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Dynamic/Scale.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/GPUKernelForHGA.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/HGA/HGA.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DS/Network/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DS/Network/Graph.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DS/Network/UndirectedGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DS/Network/UndirectedGraph.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Dynamic/DKTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Dynamic/DKTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGARunSpec.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/HGA/HGASpc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/Scale/ScaleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/Scale/ScaleTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,15 +142,13 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.ScaleTest.propagate">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -200,22 +180,6 @@
       <option name="PACKAGE_NAME" value="Algorithms.Graph.Diffusion" />
       <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Dynamic.DKTest" />
       <option name="METHOD_NAME" value="test_nCov_host_diffuse" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HGARunSpec.run_yeast" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.Alignment.HGA.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.Alignment.HGA" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Alignment.HGA.HGARunSpec" />
-      <option name="METHOD_NAME" value="run_yeast" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -253,20 +217,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ScaleTest.propagate_back" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Algorithms.Graph.Dynamic.Scale.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.Dynamic.Scale" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Dynamic.Scale.ScaleTest" />
+      <option name="METHOD_NAME" value="propagate_back" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="JUnit.DKTest.run" />
-      <item itemvalue="JUnit.HGARunSpec.run_yeast" />
       <item itemvalue="JUnit.DKTest.test_nCov_host_diffuse" />
       <item itemvalue="JUnit.ScaleTest.getSp" />
       <item itemvalue="JUnit.ScaleTest.propagate" />
+      <item itemvalue="JUnit.ScaleTest.propagate_back" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ScaleTest.propagate" />
+        <item itemvalue="JUnit.ScaleTest.propagate_back" />
         <item itemvalue="JUnit.ScaleTest.getSp" />
         <item itemvalue="JUnit.DKTest.run" />
         <item itemvalue="JUnit.DKTest.test_nCov_host_diffuse" />
-        <item itemvalue="JUnit.HGARunSpec.run_yeast" />
       </list>
     </recent_temporary>
   </component>
@@ -321,6 +301,7 @@
       <workItem from="1606002626121" duration="893000" />
       <workItem from="1606029545334" duration="3429000" />
       <workItem from="1606178884510" duration="6323000" />
+      <workItem from="1606204314502" duration="1411000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -398,50 +379,50 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="55" y="156" key="#xdebugger.evaluate/0.0.1920.1080@0.0.1920.1080" timestamp="1605449806793" />
-    <state width="548" height="548" key="DebuggerActiveHint" timestamp="1606179745387">
+    <state width="548" height="548" key="DebuggerActiveHint" timestamp="1606205402363">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="548" height="548" key="DebuggerActiveHint/0.0.1920.1080@0.0.1920.1080" timestamp="1606179745387" />
-    <state width="1878" height="342" key="GridCell.Tab.0.bottom" timestamp="1606181218859">
+    <state width="548" height="548" key="DebuggerActiveHint/0.0.1920.1080@0.0.1920.1080" timestamp="1606205402363" />
+    <state width="1878" height="342" key="GridCell.Tab.0.bottom" timestamp="1606205549375">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="253" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1598259866268" />
-    <state width="1878" height="342" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606181218859" />
-    <state width="1878" height="342" key="GridCell.Tab.0.center" timestamp="1606181218859">
+    <state width="1878" height="342" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
+    <state width="1878" height="342" key="GridCell.Tab.0.center" timestamp="1606205549375">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="253" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1598259866267" />
-    <state width="1878" height="342" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606181218859" />
-    <state width="1878" height="342" key="GridCell.Tab.0.left" timestamp="1606181218859">
+    <state width="1878" height="342" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
+    <state width="1878" height="342" key="GridCell.Tab.0.left" timestamp="1606205549374">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="253" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1598259866267" />
-    <state width="1878" height="342" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606181218859" />
-    <state width="1878" height="342" key="GridCell.Tab.0.right" timestamp="1606181218859">
+    <state width="1878" height="342" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549374" />
+    <state width="1878" height="342" key="GridCell.Tab.0.right" timestamp="1606205549375">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="253" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1598259866268" />
-    <state width="1878" height="342" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606181218859" />
-    <state width="1878" height="342" key="GridCell.Tab.1.bottom" timestamp="1606181218859">
+    <state width="1878" height="342" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
+    <state width="1878" height="342" key="GridCell.Tab.1.bottom" timestamp="1606205549375">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="351" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
-    <state width="1878" height="342" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606181218859" />
-    <state width="1878" height="342" key="GridCell.Tab.1.center" timestamp="1606181218859">
+    <state width="1878" height="342" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
+    <state width="1878" height="342" key="GridCell.Tab.1.center" timestamp="1606205549375">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="351" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
-    <state width="1878" height="342" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606181218859" />
-    <state width="1878" height="342" key="GridCell.Tab.1.left" timestamp="1606181218859">
+    <state width="1878" height="342" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
+    <state width="1878" height="342" key="GridCell.Tab.1.left" timestamp="1606205549375">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="351" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
-    <state width="1878" height="342" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606181218859" />
-    <state width="1878" height="342" key="GridCell.Tab.1.right" timestamp="1606181218859">
+    <state width="1878" height="342" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
+    <state width="1878" height="342" key="GridCell.Tab.1.right" timestamp="1606205549375">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1493" height="351" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
-    <state width="1878" height="342" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606181218859" />
+    <state width="1878" height="342" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
     <state x="491" y="195" key="Maven.ArtifactSearchDialog" timestamp="1606180263427">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -466,11 +447,11 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="846" y="272" key="ftp.server.browser/0.0.1920.1080@0.0.1920.1080" timestamp="1604536149001" />
-    <state width="683" height="389" key="javadoc.popup.new" timestamp="1606184928202">
+    <state width="683" height="389" key="javadoc.popup.new" timestamp="1606205042770">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="546" height="311" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1598236558593" />
-    <state width="683" height="389" key="javadoc.popup.new/0.0.1920.1080@0.0.1920.1080" timestamp="1606184928202" />
+    <state width="683" height="389" key="javadoc.popup.new/0.0.1920.1080@0.0.1920.1080" timestamp="1606205042770" />
     <state x="621" y="254" key="run.anything.popup" timestamp="1605705167506">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -502,11 +483,6 @@
           <url>jar://$MAVEN_REPOSITORY$/org/ejml/ejml-dsparse/0.39/ejml-dsparse-0.39.jar!/org/ejml/sparse/csc/CommonOps_DSCC.class</url>
           <line>1176</line>
           <option name="timeStamp" value="406" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale/Scale.java</url>
-          <line>113</line>
-          <option name="timeStamp" value="410" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
