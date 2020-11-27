@@ -1,22 +1,264 @@
-Nov 05, 2020 8:32:08 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
-INFO: Init mapping...
-Nov 05, 2020 8:32:08 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
-INFO: ------------Iteration 0/1000------------
-Nov 05, 2020 8:32:08 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
-INFO: Remapping : select rows have at least 5 non-zero items;
-Nov 05, 2020 8:32:08 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
-INFO: Selecting 50.0% of rows for Hungarian allocation, and the left 50.0% for Greedy mapping.
-Nov 05, 2020 8:32:08 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
-INFO: Hungarian mapping...
-Nov 05, 2020 8:32:09 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
-INFO: Scoring for mapping ...
-Nov 05, 2020 8:32:09 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
-INFO: output matrix
-Nov 05, 2020 8:32:09 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
-INFO: output scores
-Nov 05, 2020 8:32:09 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
-INFO: output mapping
-Nov 05, 2020 8:32:09 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
-INFO: adjust neighborhood similarity based on mapping result...
-Nov 05, 2020 8:32:09 AM Algorithms.Graph.Alignment.HGA.HGA logInfo
-INFO: AddTopology for all nodes pairs in two graphs with the GPU programming:
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Init mapping...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Initialize mapping to split the matrix.
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Map directly using Hungarian allocation strategy.
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Hungarian mapping...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: ------------Iteration 0/1000------------
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Scoring for mapping ...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output matrix
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output scores
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output mapping
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: adjust neighborhood similarity based on mapping result...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: AddTopology for all nodes pairs in two graphs with the CPU parallel programming:
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Remap based on the updated matrix.
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Hungarian mapping...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: ------------Iteration 1/1000------------
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Scoring for mapping ...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output matrix
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output scores
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output mapping
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: adjust neighborhood similarity based on mapping result...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: AddTopology for all nodes pairs in two graphs with the CPU parallel programming:
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Iteration:2	dif 0.36003877829139447
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Remap based on the updated matrix.
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Hungarian mapping...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: ------------Iteration 2/1000------------
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Scoring for mapping ...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output matrix
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output scores
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output mapping
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: adjust neighborhood similarity based on mapping result...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: AddTopology for all nodes pairs in two graphs with the CPU parallel programming:
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Iteration:3	dif_1 0.1300647391100531	dif_2 0.38705258002304077
+Score:score1 40.169710401948414	score2 45.30080045291379
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Remap based on the updated matrix.
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Hungarian mapping...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: ------------Iteration 3/1000------------
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Scoring for mapping ...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output matrix
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output scores
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output mapping
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: adjust neighborhood similarity based on mapping result...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: AddTopology for all nodes pairs in two graphs with the CPU parallel programming:
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Iteration:4	dif_1 0.10142200499011511	dif_2 0.18594056426567104
+Score:score1 48.83886098668746	score2 40.169710401948414
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Remap based on the updated matrix.
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Hungarian mapping...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: ------------Iteration 4/1000------------
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Scoring for mapping ...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output matrix
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output scores
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output mapping
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: adjust neighborhood similarity based on mapping result...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: AddTopology for all nodes pairs in two graphs with the CPU parallel programming:
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Iteration:5	dif_1 0.0834773495855371	dif_2 0.141168626815791
+Score:score1 49.63966863038576	score2 48.83886098668746
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Remap based on the updated matrix.
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Hungarian mapping...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: ------------Iteration 5/1000------------
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Scoring for mapping ...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output matrix
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output scores
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output mapping
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: adjust neighborhood similarity based on mapping result...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: AddTopology for all nodes pairs in two graphs with the CPU parallel programming:
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Iteration:6	dif_1 0.04126928935715546	dif_2 0.12359745838816305
+Score:score1 50.21275153700502	score2 49.63966863038576
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Remap based on the updated matrix.
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Hungarian mapping...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: ------------Iteration 6/1000------------
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Scoring for mapping ...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output matrix
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output scores
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output mapping
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: adjust neighborhood similarity based on mapping result...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: AddTopology for all nodes pairs in two graphs with the CPU parallel programming:
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Iteration:7	dif_1 0.033141227183988486	dif_2 0.07373398067634684
+Score:score1 50.65758787634899	score2 50.21275153700502
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Remap based on the updated matrix.
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Hungarian mapping...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: ------------Iteration 7/1000------------
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Scoring for mapping ...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output matrix
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output scores
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output mapping
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: adjust neighborhood similarity based on mapping result...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: AddTopology for all nodes pairs in two graphs with the CPU parallel programming:
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Iteration:8	dif_1 0.025232398219291907	dif_2 0.058373625403280394
+Score:score1 50.9975387093998	score2 50.65758787634899
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Remap based on the updated matrix.
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Hungarian mapping...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: ------------Iteration 8/1000------------
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Scoring for mapping ...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output matrix
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output scores
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output mapping
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: adjust neighborhood similarity based on mapping result...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: AddTopology for all nodes pairs in two graphs with the CPU parallel programming:
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Iteration:9	dif_1 0.01935978526957316	dif_2 0.04459218348886507
+Score:score1 51.2582242079473	score2 50.9975387093998
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Remap based on the updated matrix.
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Hungarian mapping...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: ------------Iteration 9/1000------------
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Scoring for mapping ...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output matrix
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output scores
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output mapping
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: adjust neighborhood similarity based on mapping result...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: AddTopology for all nodes pairs in two graphs with the CPU parallel programming:
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Iteration:10	dif_1 0.014811763693358015	dif_2 0.034171548962931175
+Score:score1 51.45772241090346	score2 51.2582242079473
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Remap based on the updated matrix.
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Hungarian mapping...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: ------------Iteration 10/1000------------
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Scoring for mapping ...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output matrix
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output scores
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output mapping
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: adjust neighborhood similarity based on mapping result...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: AddTopology for all nodes pairs in two graphs with the CPU parallel programming:
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Iteration:11	dif_1 0.01133158433410808	dif_2 0.026143348027466096
+Score:score1 51.6103299165515	score2 51.45772241090346
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Remap based on the updated matrix.
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Hungarian mapping...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: ------------Iteration 11/1000------------
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Scoring for mapping ...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output matrix
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output scores
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output mapping
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: adjust neighborhood similarity based on mapping result...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: AddTopology for all nodes pairs in two graphs with the CPU parallel programming:
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Iteration:12	dif_1 0.008667683263557935	dif_2 0.019999267597666015
+Score:score1 51.72706288648364	score2 51.6103299165515
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Remap based on the updated matrix.
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: Hungarian mapping...
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: HGA mapping finish!With iteration 12 times.
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output mapping
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output matrix
+11月 27, 2020 4:57:32 下午 Algorithms.Graph.Alignment.HGA.HGA_fix logInfo
+信息: output scores

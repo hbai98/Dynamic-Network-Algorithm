@@ -17,6 +17,9 @@ public class SimMat<K> {
     protected HashMap<Integer, K> colIndexNameMap;
     public Class<K> mapKeyType;
 
+    // ----------------temporary parameters to mark rows for the hungarian allocation(hga_fix)-------------------
+    private HashSet<K> hungRows;
+    private HashSet<K> hungRowsLeft;
     /**
      * Construct a similarity matrix based on nodes from two graph
      *
@@ -262,4 +265,67 @@ public class SimMat<K> {
         mat.getDDRM().setData(out);
     }
 
+    /**
+     * @param nonZeros with at least nonZeros -> Hungarian allocation
+     * @return simMat with rows' average similarity which meet the account[Hungarian mat], Greedy mat
+     */
+    public Pair<SimMat<K>, SimMat<K>> splitByNoneZeros(int nonZeros) {
+        // selected for Hungarian
+        // hungRows -> for later updating
+        hungRows = new HashSet<>();
+        hungRowsLeft = new HashSet<>();
+
+        rowMap.keySet().parallelStream().forEach(r -> {
+            int nonZero = getNonZero(r);
+            // hungarian
+            if(nonZero >= nonZeros){
+                hungRows.add(r);
+            }
+            else{
+                hungRowsLeft.add(r);
+            }
+        });
+
+        setHungRowsLeft(hungRowsLeft);
+        setHungRows(hungRows);
+
+        // split the matrix to H and G
+        SimMat<K> H = getPart(hungRows, getColSet());
+        SimMat<K> G = getPart(hungRowsLeft, getColSet());
+        return new Pair<>(H, G);
+    }
+
+    /**
+     * Count nonZero items within a row
+     *
+     * @param r   row key
+     * @param <K> key type
+     * @return nonzero number
+     */
+    public <K> int getNonZero(K r) {
+        StatisticsMatrix row = mat.getRow(rowMap.get(r));
+        int nonZero = 0;
+        for (int c = 0; c < row.numCols(); c++) {
+            if(row.get(0,c) != 0){
+                nonZero++;
+            }
+        }
+        return nonZero;
+    }
+
+    public HashSet<K> getHungRows() {
+        return hungRows;
+    }
+
+    public HashSet<K> getHungRowsLeft() {
+        return hungRowsLeft;
+    }
+
+    public void setHungRows(HashSet<K> hungRows) {
+        this.hungRows = hungRows;
+    }
+
+    public void setHungRowsLeft(HashSet<K> hungRowsLeft) {
+        this.hungRowsLeft = hungRowsLeft;
+    }
 }

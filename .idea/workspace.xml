@@ -29,9 +29,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA_fix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA_fix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA_fix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Matrix/SimMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Matrix/SimMat.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +149,18 @@
       <recent name="D:\Development\projects\Algorithms\src\test\java\resources\cov19" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ScaleTest.propagate">
+  <component name="RunManager" selected="JUnit.HGARunSpec.run_test">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DKTest.run" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
@@ -166,17 +177,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DKTest.test_nCov_host_diffuse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HGARunSpec.run_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.Dynamic.Scale.*" />
+          <option name="PATTERN" value="Algorithms.Graph.Alignment.HGA.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.Diffusion" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Dynamic.DKTest" />
-      <option name="METHOD_NAME" value="test_nCov_host_diffuse" />
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.Alignment.HGA" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Alignment.HGA.HGARunSpec" />
+      <option name="METHOD_NAME" value="run_test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -232,18 +243,18 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.DKTest.run" />
-      <item itemvalue="JUnit.DKTest.test_nCov_host_diffuse" />
       <item itemvalue="JUnit.ScaleTest.getSp" />
       <item itemvalue="JUnit.ScaleTest.propagate" />
       <item itemvalue="JUnit.ScaleTest.propagate_back" />
+      <item itemvalue="JUnit.HGARunSpec.run_test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HGARunSpec.run_test" />
         <item itemvalue="JUnit.ScaleTest.propagate" />
         <item itemvalue="JUnit.ScaleTest.propagate_back" />
         <item itemvalue="JUnit.ScaleTest.getSp" />
         <item itemvalue="JUnit.DKTest.run" />
-        <item itemvalue="JUnit.DKTest.test_nCov_host_diffuse" />
       </list>
     </recent_temporary>
   </component>
@@ -305,7 +316,7 @@
       <workItem from="1606440353502" duration="605000" />
       <workItem from="1606463121562" duration="364000" />
       <workItem from="1606464291144" duration="480000" />
-      <workItem from="1606465439623" duration="1109000" />
+      <workItem from="1606465439623" duration="1799000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -445,6 +456,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="491" y="195" key="Maven.ArtifactSearchDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606180263427" />
+    <state x="233" y="94" key="Vcs.Push.Dialog.v2" timestamp="1606466548211">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="233" y="94" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1606466548211" />
     <state width="1309" height="862" key="XDebugger.FullValuePopup" timestamp="1603890470979">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
