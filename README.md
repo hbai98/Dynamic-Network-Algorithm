@@ -26,9 +26,7 @@ For more information, a blog is available [here](http://www.haotian.life/2020/07
 
 ## DK
 
-Propagate the biological network for predicting novel genetic interactions and co-complex membership
-
-<img src="README.assets/init.png" style="zoom: 80%;" />
+Propagate the biological network for predicting novel genetic interactions and co-complex membership.
 
 ![](README.assets/res.png)
 
