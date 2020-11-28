@@ -36,7 +36,16 @@ public class HGA_sp<V,E> extends HGA<V,E>{
         score += getSP(mapping.values()) ;
     }
 
-    private double getSP(Collection<V> values) {
+    /**
+     * get shortest path score.
+     * The closer possible drug targets to disease proteins, the higher the score will be.
+     * SP = 1/d<CT>
+     *
+     * d<CT> = Sum(sp-> c:t + t:c)/ (||C||+||T||)
+     * @param alignSet possible drug targets for treatment of new diseases
+     * @return SP
+     */
+    private double getSP(Collection<V> alignSet) {
         
         return 0;
     }

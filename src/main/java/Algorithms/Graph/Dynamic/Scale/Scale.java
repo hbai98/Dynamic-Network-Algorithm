@@ -1,9 +1,7 @@
 package Algorithms.Graph.Dynamic.Scale;
 
+import Algorithms.Graph.Dynamic.Search.Path;
 import DS.Network.Graph;
-import org.jgrapht.alg.interfaces.ShortestPathAlgorithm;
-import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
-
 import java.util.*;
 
 /**
@@ -43,7 +41,8 @@ public class Scale<V, E> {
     protected void propagate(boolean forward) {
 
         // get the maximum shortest path(length->topology) for every vertex in G
-        Map<V, Integer> max_sp = getMapForSP();
+        Path<V,E> path = new Path<>();
+        Map<V, Integer> max_sp = path.innerSPMap(resG);
         // periphery
         Set<V> periphery = getPeriphery(max_sp);
         // propagate
@@ -81,30 +80,6 @@ public class Scale<V, E> {
         return res;
     }
 
-    private Map<V, Integer> getMapForSP() {
-        int longest = 0;
-        HashMap<V, Integer> res = new HashMap<>();
-
-        for (V v : resG.vertexSet()) {
-            DijkstraShortestPath<V, E> dijkstraAlg = new DijkstraShortestPath<>(resG);
-            // find the max path
-            ShortestPathAlgorithm.SingleSourcePaths<V, E> path = dijkstraAlg.getPaths(v);
-            Set<V> others = new HashSet<>(resG.vertexSet());
-            others.remove(v);
-            // propagate by length
-            for (V o : others) {
-                int l = path.getPath(o).getLength();
-                if (l > longest) {
-                    longest = l;
-                }
-            }
-            // record the longest for each node
-            res.put(v, longest);
-            // refresh longest
-            longest = 0;
-        }
-        return res;
-    }
 
     public Graph<V, E> getResG() {
         return resG;
