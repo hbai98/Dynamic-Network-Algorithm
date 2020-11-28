@@ -29,9 +29,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA_sp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HGALog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/HGALog.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA_fix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA_fix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Matrix/SimMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Matrix/SimMat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/TestModule/COV19/Drug_repurposing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/TestModule/COV19/Drug_repurposing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mappingResult_12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_10.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_11.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_4.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_5.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_6.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_6.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_7.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_8.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_8.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_9.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrixResult_12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_10.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_11.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_4.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_5.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_6.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_6.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_7.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_8.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_8.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_9.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoringResult_12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_0.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_0.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_10.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_10.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_11.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_11.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_4.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_5.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_6.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_6.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_7.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_8.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_8.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_9.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_9.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Alignment/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Alignment/HGA/HGA.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Alignment/HGA/HGA_fix$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Alignment/HGA/HGA_fix.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Alignment/HGA/HGA_fix.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/resources/TestModule/COV19/Drug_repurposing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/resources/TestModule/COV19/Drug_repurposing.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,11 +133,6 @@
         <option name="mavenHome" value="D:\development\jetbrains\IntelliJ IDEA 2020.2.4\plugins\maven\lib\maven3" />
       </MavenGeneralSettings>
     </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="948" />
-    <option name="width" value="981" />
-    <option name="height" value="1092" />
   </component>
   <component name="ProjectId" id="1fabHF89SB0BNKed9sgwfA9h1RK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -316,7 +356,7 @@
       <workItem from="1606440353502" duration="605000" />
       <workItem from="1606463121562" duration="364000" />
       <workItem from="1606464291144" duration="480000" />
-      <workItem from="1606465439623" duration="1799000" />
+      <workItem from="1606465439623" duration="5328000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -400,9 +440,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="648" y="457" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605687781590" />
-    <state x="236" y="117" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605773580385">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606538495781">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.720@0.0.1280.720" timestamp="1606538495781" />
     <state x="236" y="117" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605773580385" />
     <state x="55" y="156" key="#xdebugger.evaluate" timestamp="1605449806793">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -412,24 +453,28 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="548" height="548" key="DebuggerActiveHint/0.0.1920.1080@0.0.1920.1080" timestamp="1606205402363" />
-    <state width="1878" height="342" key="GridCell.Tab.0.bottom" timestamp="1606205549375">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1237" height="402" key="GridCell.Tab.0.bottom" timestamp="1606468021879">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state width="1237" height="402" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1606468021879" />
     <state width="1493" height="253" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1598259866268" />
     <state width="1878" height="342" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
-    <state width="1878" height="342" key="GridCell.Tab.0.center" timestamp="1606205549375">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1237" height="402" key="GridCell.Tab.0.center" timestamp="1606468021879">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state width="1237" height="402" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1606468021879" />
     <state width="1493" height="253" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1598259866267" />
     <state width="1878" height="342" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
-    <state width="1878" height="342" key="GridCell.Tab.0.left" timestamp="1606205549374">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1237" height="402" key="GridCell.Tab.0.left" timestamp="1606468021879">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state width="1237" height="402" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1606468021879" />
     <state width="1493" height="253" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1598259866267" />
     <state width="1878" height="342" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549374" />
-    <state width="1878" height="342" key="GridCell.Tab.0.right" timestamp="1606205549375">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1237" height="402" key="GridCell.Tab.0.right" timestamp="1606468021879">
+      <screen x="0" y="0" width="1280" height="720" />
     </state>
+    <state width="1237" height="402" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1606468021879" />
     <state width="1493" height="253" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1598259866268" />
     <state width="1878" height="342" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
     <state width="1878" height="342" key="GridCell.Tab.1.bottom" timestamp="1606205549375">
@@ -516,6 +561,20 @@
           <url>jar://$MAVEN_REPOSITORY$/org/ejml/ejml-dsparse/0.39/ejml-dsparse-0.39.jar!/org/ejml/sparse/csc/CommonOps_DSCC.class</url>
           <line>1176</line>
           <option name="timeStamp" value="406" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/Alignment/HGA/HGARunSpec.java</url>
+          <line>25</line>
+          <properties class="Algorithms.Graph.Alignment.HGA.HGARunSpec" method="run_test">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="407" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA.java</url>
+          <line>39</line>
+          <properties field="simMat" class="Algorithms.Graph.Alignment.HGA.HGA" />
+          <option name="timeStamp" value="408" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
