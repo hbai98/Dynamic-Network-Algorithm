@@ -2,10 +2,13 @@ package Algorithms.Graph.Alignment.HGA;
 
 import DS.Matrix.SimMat;
 import DS.Network.UndirectedGraph;
+import org.jgrapht.alg.interfaces.ShortestPathAlgorithm;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Using shortest path in scoring
@@ -38,6 +41,7 @@ public class HGA_sp<V,E> extends HGA<V,E>{
 
     /**
      * get shortest path score.
+     * O(n^2 log n)
      * The closer possible drug targets to disease proteins, the higher the score will be.
      * SP = 1/d<CT>
      *
@@ -46,7 +50,37 @@ public class HGA_sp<V,E> extends HGA<V,E>{
      * @return SP
      */
     private double getSP(Collection<V> alignSet) {
-        
-        return 0;
+        DijkstraShortestPath<V, E> dijkstraAlg = new DijkstraShortestPath<>(this.target);
+        AtomicInteger sum_ct = new AtomicInteger();
+        AtomicInteger sum_tc = new AtomicInteger();
+
+        AtomicInteger shortest = new AtomicInteger(Integer.MAX_VALUE);
+        // c:t
+        alignSet.forEach(n->{
+            ShortestPathAlgorithm.SingleSourcePaths<V, E> path = dijkstraAlg.getPaths(n);
+            target.vertexSet().forEach(v->{
+                int l = path.getPath(v).getLength();
+                if(l < shortest.get()){
+                    shortest.set(l);
+                }
+            });
+            sum_ct.addAndGet(shortest.get());
+        });
+
+        AtomicInteger shortest_ = new AtomicInteger(Integer.MAX_VALUE);
+        // t:c
+        target.vertexSet().forEach(n->{
+            ShortestPathAlgorithm.SingleSourcePaths<V, E> path = dijkstraAlg.getPaths(n);
+            alignSet.forEach(v-> {
+                int l = path.getPath(v).getLength();
+                if(l < shortest_.get()){
+                    shortest_.set(l);
+                }
+            });
+            sum_tc.addAndGet(shortest_.get());
+        });
+
+        // score
+        return (sum_ct.get()+sum_tc.get())*1.0/ (alignSet.size()+target.vertexSet().size());
     }
 }

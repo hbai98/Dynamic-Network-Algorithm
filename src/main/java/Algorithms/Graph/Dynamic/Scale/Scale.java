@@ -42,7 +42,7 @@ public class Scale<V, E> {
 
         // get the maximum shortest path(length->topology) for every vertex in G
         Path<V,E> path = new Path<>();
-        Map<V, Integer> max_sp = path.innerSPMap(resG);
+        Map<V, Integer> max_sp = path.getLongestShortPath(resG);
         // periphery
         Set<V> periphery = getPeriphery(max_sp);
         // propagate

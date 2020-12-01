@@ -33,11 +33,10 @@ public class Path<V,E> {
     }
 
     /**
-     * Single connected graph
      * @param graph connected graph
      * @return a map of all nodes' longest shortest distances within the graph
      */
-    public Map<V, Integer> innerSPMap(Graph<V, E> graph) {
+    public Map<V, Integer> getLongestShortPath(Graph<V, E> graph) {
         int longest = 0;
         HashMap<V, Integer> res = new HashMap<>();
 
