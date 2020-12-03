@@ -18,21 +18,6 @@ public class Path<V,E> {
     // it will not take edges' weights into account
 
     /**
-     * d(c, t) is the shortest distance between node c and t in the network.
-     * It calculates the shortest path for each node in graph1 to graph2.
-     * @param graph1 g1
-     * @param graph2 g2
-     * @return a map of all shortest paths for each node in graph1 to reach graph2
-     */
-    public Map<V,Integer> betweenSPMap(Graph<V,E> graph1, Graph<V,E> graph2){
-        int shortest = 0;
-        HashMap<V, Integer> res = new HashMap<>();
-
-        
-        return res;
-    }
-
-    /**
      * @param graph connected graph
      * @return a map of all nodes' longest shortest distances within the graph
      */

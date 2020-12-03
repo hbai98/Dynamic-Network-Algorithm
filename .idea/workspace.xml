@@ -30,9 +30,8 @@
   <component name="ChangeListManager">
     <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA_sp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA_sp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale/Scale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Scale/Scale.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Search/Path.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Search/Path.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/TestModule/COV19/Drug_repurposing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/TestModule/COV19/Drug_repurposing.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +85,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="D:\development\jetbrains\IntelliJ IDEA 2020.2.4\plugins\maven\lib\maven3" />
+        <option name="mavenHome" value="D:\environment\jetbrains\IntelliJ IDEA 2020.1.3\plugins\maven\lib\maven3" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -145,18 +144,29 @@
       <recent name="D:\Development\projects\Algorithms\src\test\java\resources\cov19" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HGARunSpec.run_test">
-    <configuration name="DKTest.run" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.Drug_repurposing.find_drug_by_hga">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Drug_repurposing.find_drug_by_hga" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.Dynamic.Scale.*" />
+          <option name="PATTERN" value="resources.TestModule.COV19.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.Diffusion" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Dynamic.DKTest" />
-      <option name="METHOD_NAME" value="run" />
+      <option name="PACKAGE_NAME" value="resources.TestModule.COV19" />
+      <option name="MAIN_CLASS_NAME" value="resources.TestModule.COV19.Drug_repurposing" />
+      <option name="METHOD_NAME" value="find_drug_by_hga" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -227,19 +237,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.DKTest.run" />
       <item itemvalue="JUnit.ScaleTest.getSp" />
       <item itemvalue="JUnit.ScaleTest.propagate" />
       <item itemvalue="JUnit.ScaleTest.propagate_back" />
       <item itemvalue="JUnit.HGARunSpec.run_test" />
+      <item itemvalue="JUnit.Drug_repurposing.find_drug_by_hga" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Drug_repurposing.find_drug_by_hga" />
         <item itemvalue="JUnit.HGARunSpec.run_test" />
         <item itemvalue="JUnit.ScaleTest.propagate" />
         <item itemvalue="JUnit.ScaleTest.propagate_back" />
         <item itemvalue="JUnit.ScaleTest.getSp" />
-        <item itemvalue="JUnit.DKTest.run" />
       </list>
     </recent_temporary>
   </component>
@@ -303,6 +313,9 @@
       <workItem from="1606464291144" duration="480000" />
       <workItem from="1606465439623" duration="5328000" />
       <workItem from="1606786789648" duration="2288000" />
+      <workItem from="1606867897307" duration="3240000" />
+      <workItem from="1606885924185" duration="1304000" />
+      <workItem from="1606957450347" duration="403000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -378,10 +391,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="718" y="174" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1606030480750" />
-    <state x="641" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1603884271543">
+    <state x="641" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1606868380308">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="641" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603884271543" />
+    <state x="641" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606868380308" />
     <state x="648" y="457" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1605687781590">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -403,45 +416,37 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state width="1237" height="402" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1606613879376" />
-    <state width="1493" height="253" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1598259866268" />
     <state width="1878" height="342" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
     <state width="1237" height="402" key="GridCell.Tab.0.center" timestamp="1606613879376">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state width="1237" height="402" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1606613879376" />
-    <state width="1493" height="253" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1598259866267" />
     <state width="1878" height="342" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
     <state width="1237" height="402" key="GridCell.Tab.0.left" timestamp="1606613879376">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state width="1237" height="402" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1606613879376" />
-    <state width="1493" height="253" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1598259866267" />
     <state width="1878" height="342" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549374" />
     <state width="1237" height="402" key="GridCell.Tab.0.right" timestamp="1606613879376">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state width="1237" height="402" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1606613879376" />
-    <state width="1493" height="253" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1598259866268" />
     <state width="1878" height="342" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
     <state width="1878" height="342" key="GridCell.Tab.1.bottom" timestamp="1606205549375">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
     <state width="1878" height="342" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
     <state width="1878" height="342" key="GridCell.Tab.1.center" timestamp="1606205549375">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
     <state width="1878" height="342" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
     <state width="1878" height="342" key="GridCell.Tab.1.left" timestamp="1606205549375">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
     <state width="1878" height="342" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
     <state width="1878" height="342" key="GridCell.Tab.1.right" timestamp="1606205549375">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1493" height="351" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1598259866264" />
     <state width="1878" height="342" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606205549375" />
     <state x="491" y="195" key="Maven.ArtifactSearchDialog" timestamp="1606180263427">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -471,11 +476,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="846" y="272" key="ftp.server.browser/0.0.1920.1080@0.0.1920.1080" timestamp="1604536149001" />
-    <state width="683" height="389" key="javadoc.popup.new" timestamp="1606205042770">
+    <state width="683" height="389" key="javadoc.popup.new" timestamp="1606957610460">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="546" height="311" key="javadoc.popup.new/0.0.1536.864@0.0.1536.864" timestamp="1598236558593" />
-    <state width="683" height="389" key="javadoc.popup.new/0.0.1920.1080@0.0.1920.1080" timestamp="1606205042770" />
+    <state width="683" height="389" key="javadoc.popup.new/0.0.1920.1080@0.0.1920.1080" timestamp="1606957610460" />
     <state x="621" y="254" key="run.anything.popup" timestamp="1605705167506">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -508,6 +512,11 @@
           <line>1176</line>
           <option name="timeStamp" value="406" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/resources/TestModule/COV19/Drug_repurposing.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="409" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/Alignment/HGA/HGARunSpec.java</url>
           <line>25</line>
@@ -526,13 +535,13 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Algorithms$HGARunSpec_run_test.ic" NAME="HGARunSpec.run_test Coverage Results" MODIFIED="1603934529790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Algorithms.Graph.HGA.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/Algorithms$HGASpc_run.ic" NAME="HGASpc.run Coverage Results" MODIFIED="1592809996988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Algorithms.Graph.HGA.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Algorithms$HGASpc_addAllTopo.ic" NAME="HGASpc.addAllTopo Coverage Results" MODIFIED="1592705881610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Algorithms.Graph.HGA.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Algorithms$HGARunSpec_run_test.ic" NAME="HGARunSpec.run_test Coverage Results" MODIFIED="1603934529790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Algorithms.Graph.HGA.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Algorithms$Human_YeastSub38NTest_topo.ic" NAME="Human_YeastSub38NTest.topo Coverage Results" MODIFIED="1592536351513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
