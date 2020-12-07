@@ -5,17 +5,21 @@ import DS.Matrix.Alg.CommonOps_DDRM_extend;
 import org.ejml.data.*;
 import org.ejml.dense.row.CommonOps_DDRM;
 import org.ejml.simple.SimpleBase;
-import org.ejml.simple.SimpleMatrix;
-import org.ejml.sparse.csc.CommonOps_DSCC;
 
 public class StatisticsMatrix extends SimpleBase<StatisticsMatrix> {
     public StatisticsMatrix(int numRows, int numCols) {
         super(numRows, numCols);
     }
 
-    public StatisticsMatrix(int row, int col, boolean rowMajor, double[] data) {
-        DMatrixRMaj mat = new DMatrixRMaj(row, col, rowMajor, data);
-        this.setMatrix(mat);
+    public StatisticsMatrix(int row, int col, boolean rowMajor,boolean sparse, double[] data) {
+        if(sparse){
+            DMatrixSparseCSC mat = new DMatrixSparseCSC(row, col, data.length);
+            this.setMatrix(mat);
+        }
+        else{
+            DMatrixRMaj mat = new DMatrixRMaj(row, col, rowMajor, data);
+            this.setMatrix(mat);
+        }
     }
 
     public StatisticsMatrix(double[] data) {

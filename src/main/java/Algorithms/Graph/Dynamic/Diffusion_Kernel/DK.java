@@ -1,6 +1,5 @@
 package Algorithms.Graph.Dynamic.Diffusion_Kernel;
 
-import Algorithms.Graph.Dynamic.Scale.Scale;
 import DS.Matrix.StatisticsMatrix;
 import DS.Network.Graph;
 import com.google.common.primitives.Booleans;
@@ -74,7 +73,7 @@ public class DK<V, E> {
             diaArray[x+tgtSize*x] = tgtG.degreeOf(t);
             i.incrementAndGet();
         });
-        dia = new StatisticsMatrix(tgtSize, tgtSize, true, diaArray);
+        dia = new StatisticsMatrix(tgtSize, tgtSize, true, true, diaArray);
     }
 
     /**
@@ -110,7 +109,7 @@ public class DK<V, E> {
         Function<? super Boolean, ?> boolToFloat = (Function<Boolean, Object>) aBoolean -> aBoolean ? 1. : 0.;
         double[] adjArray = ArrayUtils.toPrimitive(Booleans.asList(tgtG.getAdjMat()).stream()
                 .map(boolToFloat).toArray(Double[]::new));
-        this.adjMat = new StatisticsMatrix(tgtSize, tgtSize, true, adjArray);
+        this.adjMat = new StatisticsMatrix(tgtSize, tgtSize, true, false, adjArray);
     }
 
     /**
