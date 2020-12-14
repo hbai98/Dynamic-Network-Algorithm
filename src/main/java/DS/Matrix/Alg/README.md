@@ -517,8 +517,7 @@ fig.savefig('img\storage.png'.format(ts), dpi=300, bbox_inches='tight')
 
 
 
-
-![png](img\output_25_1.png)
+<img src="img\storage.png" alt="png" style="zoom:150%;" />
     
 
 
