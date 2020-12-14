@@ -1,6 +1,8 @@
-# Algorithms
+[TOC]
 
-This is a repository written in my experiments for several algorithms.
+This is a repository written in my experiments for several algorithms, and something to share along with my [blog](www.haotian.life).
+
+# Algorithms
 
 ## HGA
 
@@ -39,7 +41,21 @@ Code is available [here](https://github.com/164140757/MyAlgorithms/tree/master/s
 Please refer to [Finding friends and enemies in an enemies-only network: A graph diffusion kernel for predicting
 novel genetic interactions and co-complex membership from yeast genetic interactions](10.1101/gr.077693.108) for the design of the algorithm.
 
-### Applications
+## Data Structure
+
+* Two types of sparse matrices
+
+  1. Triple Matrix
+
+     <img src="README.assets/Triples_to_LIL.png" style="zoom: 50%;" />
+
+  2. 
+
+
+
+
+
+## Applications
 
 * BNMatch(based on HGA)
 
