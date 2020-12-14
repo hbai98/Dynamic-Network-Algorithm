@@ -2,7 +2,7 @@
 
 # Comparison between different types of matrix
 
-[TOC]
+The below is the experiment code to compare storage ability of different matrices. Blog is available [here](http://www.haotian.life/2020/12/14/matrix-storage-and-efficiency/).
 
 ```python
 # environment settings
