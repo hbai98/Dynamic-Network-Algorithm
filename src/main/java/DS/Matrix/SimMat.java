@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class SimMat<K> {
-    protected StatisticsMatrix mat;
+    protected DenseMatrix mat;
     //------------------similarity matrix----------
     protected HashMap<K, Integer> rowMap;
     protected HashMap<K, Integer> colMap;
@@ -40,7 +40,7 @@ public class SimMat<K> {
     }
 
     private void initMat(Set<K> g1, Set<K> g2) {
-        this.mat = new StatisticsMatrix(g1.size(), g2.size());
+        this.mat = new DenseMatrix(g1.size(), g2.size());
     }
 
 
@@ -59,7 +59,7 @@ public class SimMat<K> {
      * The rowMat have to be in the same length and same order
      */
     public SimMat(HashMap<K, Integer> rowMap, HashMap<K, Integer> colMap,
-                  StatisticsMatrix Matrix,
+                  DenseMatrix Matrix,
                   Class<K> mapKeyType
     ) {
         mat = Matrix;
@@ -73,8 +73,7 @@ public class SimMat<K> {
 
 
     public SimMat(HashMap<K, Integer> rowMap, HashMap<Integer, K> rowIndexNameMap, HashMap<K, Integer> colMap,
-                  HashMap<Integer, K> colIndexNameMap, StatisticsMatrix Matrix,
-                  Class<K> mapKeyType) {
+                  HashMap<Integer, K> colIndexNameMap, DenseMatrix Matrix) {
         mat = Matrix;
         this.rowIndexNameMap = rowIndexNameMap;
         this.colIndexNameMap = colIndexNameMap;
@@ -138,7 +137,7 @@ public class SimMat<K> {
             colIndexes[j] = this.colMap.get(s);
             colMap.put(s, j++);
         }
-        StatisticsMatrix res = mat.getMat(mat, rowIndexes, colIndexes);
+        DenseMatrix res = DenseMatrix.getMat((DenseMatrix) mat, rowIndexes, colIndexes);
         return new SimMat<>(rowMap, colMap, res, mapKeyType);
     }
 
@@ -148,17 +147,17 @@ public class SimMat<K> {
      * @return deep copy result
      */
     public SimMat<K> dup() {
-        StatisticsMatrix mat = this.mat.copy();
+        DenseMatrix mat = this.mat.copy();
         //------------------similarity matrix----------
         HashMap<K, Integer> rowMap = new HashMap<>(this.rowMap);
         HashMap<K, Integer> colMap = new HashMap<>(this.colMap);
         //-----------------index name map---------------------
         HashMap<Integer, K> rowIndexNameMap = new HashMap<>(this.rowIndexNameMap);
         HashMap<Integer, K> colIndexNameMap = new HashMap<>(this.colIndexNameMap);
-        return new SimMat<>(rowMap, rowIndexNameMap, colMap, colIndexNameMap, mat,mapKeyType);
+        return new SimMat<>(rowMap, rowIndexNameMap, colMap, colIndexNameMap,mat);
     }
 
-    public StatisticsMatrix getMat() {
+    public DenseMatrix getMat() {
         return mat.copy();
     }
 
@@ -206,7 +205,7 @@ public class SimMat<K> {
         this.rowMap = rowMap;
     }
 
-    public void setMat(StatisticsMatrix mat) {
+    public void setMat(DenseMatrix mat) {
         this.mat = mat;
     }
 

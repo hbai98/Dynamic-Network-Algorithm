@@ -47,7 +47,7 @@ public class Functions {
      * Arrays.stream(arr) or IntStream.of(arr)。
      * <ol>
      *  <li>Use Arrays.stream transform int[] into IntStream。</li>
-     *  <li>Use IntStream boxed() to wrap it. Transform IntStream into Stream<Integer>.</li>
+     *  <li>Use IntStream boxed() to setMat it. Transform IntStream into Stream<Integer>.</li>
      *  <li>Use Stream's collect()，Transform Stream<T> to List<T>.</li>
      * </ol>
      * @return Integer list

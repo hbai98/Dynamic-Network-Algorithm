@@ -1,11 +1,16 @@
 package Algorithms.Graph.Dynamic;
 
 import Algorithms.Graph.Dynamic.Diffusion_Kernel.DK;
+import DS.Matrix.DenseMatrix;
+import DS.Matrix.SparseMatrix;
 import DS.Matrix.StatisticsMatrix;
 import DS.Network.UndirectedGraph;
 import IO.Reader.GraphFileReader;
 import IO.Writer.AbstractFileWriter;
 import org.checkerframework.checker.units.qual.A;
+import org.ejml.data.DMatrix;
+import org.ejml.data.DMatrixSparse;
+import org.ejml.data.DMatrixSparseCSC;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,15 +40,8 @@ class DKTest {
         StatisticsMatrix res = dk.getResult();
         // normalize to percentage
         double sum = res.elementSum();
-        Arrays.stream(res.data()).forEach(e -> System.out.printf("%f.2\n", e / sum * 100));
-    }
-
-    @Test
-    void inverse() throws IOException {
-        graph = reader.readToUndirectedGraph("src/test/java/resources/AlgTest/small/sGraph1.txt", true);
-        StatisticsMatrix statisticsMatrix = StatisticsMatrix.createIdentity(2);
-        statisticsMatrix.convertToSparse();
-        StatisticsMatrix res = statisticsMatrix.invert();
+        res.convertToDense();
+        Arrays.stream(res.getDDRM().data).forEach(e -> System.out.printf("%f.2\n", e / sum * 100));
     }
 
 

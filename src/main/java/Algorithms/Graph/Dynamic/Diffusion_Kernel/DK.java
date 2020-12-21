@@ -1,14 +1,19 @@
 package Algorithms.Graph.Dynamic.Diffusion_Kernel;
 
+import DS.Matrix.DenseMatrix;
+import DS.Matrix.SparseMatrix;
 import DS.Matrix.StatisticsMatrix;
 import DS.Network.Graph;
-import com.google.common.primitives.Booleans;
-import org.apache.commons.lang3.ArrayUtils;
+import org.ejml.data.DMatrixRMaj;
+import org.ejml.data.DMatrixSparseCSC;
+import org.ejml.data.Matrix;
+import org.ejml.sparse.csc.CommonOps_DSCC;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Set;
 import java.util.Vector;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Function;
 
 /**
  * DK stands for Graph Diffusion Kernel, which is an algorithm aimed to
@@ -24,15 +29,18 @@ import java.util.function.Function;
  * @Blog www.haotian.life
  */
 public class DK<V, E> {
-    private final Set<V> nodes;
+    private final Set<V> nodes; // nodes to propagate
     private final Graph<V, E> tgtG;
     private final int tgtSize;
+    private Vector<V> tgtNodes; // vector of nodes to propagate
+
     // algorithm's params
     private StatisticsMatrix adjMat; // adjacent matrix of the Graph tgtG
     private StatisticsMatrix query; // a boolean vector to indicate query nodes(introducing the flow)
     private final double loss; // loss fluid within each node
     private StatisticsMatrix dia; //a diagonal matrix with Sii which is the degree of node i ∈ V
     private StatisticsMatrix result; // stable system
+    private HashMap<V, Integer> nodesMap;
 
     // internal
 
@@ -48,7 +56,7 @@ public class DK<V, E> {
         this.tgtSize = tgtG.vertexSet().size();
         // initialize loss
         this.loss = loss;
-
+        this.tgtNodes = new Vector<>(tgtG.vertexSet());
         init();
     }
 
@@ -56,6 +64,8 @@ public class DK<V, E> {
      * initialize other data in need.
      */
     private void init() {
+        // get maps of nodes' names to indexes in the matrix
+        initMap();
         // adjacent matrix
         initAdj();
         // query nodes vector
@@ -64,16 +74,19 @@ public class DK<V, E> {
         initDia();
     }
 
+    private void initMap() {
+        this.nodesMap = new HashMap<>();
+        for (int i = 0; i < tgtSize; i++) {
+            nodesMap.put(tgtNodes.get(i), i);
+        }
+    }
+
     private void initDia() {
         Set<V> tgtN = tgtG.vertexSet();
-        double[] diaArray = new double[tgtSize * tgtSize];
-        AtomicInteger i = new AtomicInteger();
-        tgtN.forEach(t -> {
-            int x = i.get();
-            diaArray[x+tgtSize*x] = tgtG.degreeOf(t);
-            i.incrementAndGet();
-        });
-        dia = new StatisticsMatrix(tgtSize, tgtSize, true, true, diaArray);
+        double[] data = new double[tgtSize];
+        AtomicInteger i = new AtomicInteger(-1);
+        tgtN.forEach(t -> data[i.addAndGet(1)] = tgtG.degreeOf(t));
+        dia = SparseMatrix.createDia(data);
     }
 
     /**
@@ -81,18 +94,21 @@ public class DK<V, E> {
      * true for them.
      */
     private void initQry() {
-        Set<V> tgtN = tgtG.vertexSet();
-        Vector<V> tgt = new Vector<>(tgtN);
-        double[] queryArray = new double[tgtSize];
 
-        for (int i = 0; i < tgt.size(); i++) {
-            V t = tgt.get(i);
+        // fill array
+        double[] queryArray = new double[nodes.size()];
+        Arrays.fill(queryArray, 1.);
+        // check source
+        // prepare col to store the source annotation
+        Vector<Integer> rows = new Vector<>();
+        for (int i = 0; i < tgtNodes.size(); i++) {
+            V t = tgtNodes.get(i);
             if(nodes.contains(t)){
-                queryArray[i] = 1.;
+                rows.add(i);
             }
         }
-
-        query = new StatisticsMatrix(queryArray);
+        int[] columns = new int[nodes.size()];
+        query = new SparseMatrix(tgtSize, 1,rows.stream().mapToInt(i->i).toArray(), columns, queryArray);
     }
 
     /**
@@ -106,10 +122,15 @@ public class DK<V, E> {
      * </p>
      */
     private void initAdj() {
-        Function<? super Boolean, ?> boolToFloat = (Function<Boolean, Object>) aBoolean -> aBoolean ? 1. : 0.;
-        double[] adjArray = ArrayUtils.toPrimitive(Booleans.asList(tgtG.getAdjMat()).stream()
-                .map(boolToFloat).toArray(Double[]::new));
-        this.adjMat = new StatisticsMatrix(tgtSize, tgtSize, true, false, adjArray);
+        adjMat = new SparseMatrix(tgtSize, tgtSize, 2*tgtG.edgeSet().size());
+        tgtG.edgeSet().forEach(e->{
+            V v1 = tgtG.getEdgeSource(e);
+            V v2 = tgtG.getEdgeTarget(e);
+            int i = nodesMap.get(v1);
+            int j = nodesMap.get(v2);
+            adjMat.set(i, j, 1.);
+            adjMat.set(j, i, 1.);
+        });
     }
 
     /**
@@ -130,7 +151,7 @@ public class DK<V, E> {
      * @return self-item
      */
     private StatisticsMatrix getSelfItem() {
-        StatisticsMatrix I = StatisticsMatrix.createIdentity(tgtSize);
+        SparseMatrix I = SparseMatrix.createIdentity(tgtSize);
         return dia.plus(I.scale(loss)).inverseDig();
     }
     /**
@@ -141,8 +162,14 @@ public class DK<V, E> {
     private StatisticsMatrix getG() {
         // compute self-item G0
         StatisticsMatrix G0 = getSelfItem();
-        StatisticsMatrix I = StatisticsMatrix.createIdentity(tgtSize);
-        return I.minus(G0.mult(adjMat)).invert().mult(G0);
+        SparseMatrix I = SparseMatrix.createIdentity(tgtSize);
+        DMatrixRMaj inverse = new DMatrixRMaj();
+        StatisticsMatrix mat = I.minus(G0.mult(adjMat));
+        // invert
+        CommonOps_DSCC.invert(mat.getMatrix(), inverse);
+        StatisticsMatrix mat_ = new StatisticsMatrix();
+        mat_.setMat(inverse);
+        return mat_.mult(G0);
     }
 /**
  * P_ss = Kernel * query vector

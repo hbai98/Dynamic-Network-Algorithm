@@ -41,18 +41,18 @@ public class HGA<V, E> {
     protected Graph<V, E> index;
     protected Graph<V, E> target;
     // parameters
-    private boolean forcedMappingForSame;
+    protected boolean forcedMappingForSame;
     private double hAccount;
     protected double bioFactor;
     private double edgeScore = 1.;
     private int h = 5;
     //---------------mapping result(best mapping)-------------
     public HashMap<V, V> mappingResult;
-    private double PE_res;
+    protected double PE_res;
     private double ES_res;
     private double PS_res;
     private double EC_res;
-    private double score_res;
+    protected double score_res;
     private StatisticsMatrix matrix_res;
     //---------------mapping for iteration---------
     public HashMap<V, V> mapping;
@@ -62,13 +62,13 @@ public class HGA<V, E> {
     private double EC;
     protected double score;
     //---------------mapping for iteration---------
-    private SimMat<V> originalMat;
-    private Stack<StatisticsMatrix> stackMat;
-    private Stack<Double> stackScore;
+    protected SimMat<V> originalMat;
+    protected Stack<StatisticsMatrix> stackMat;
+    protected Stack<Double> stackScore;
 
     //----------limit-----
-    private final int splitLimit = 20;
-    private int iterCount = 0;
+    protected final int splitLimit = 20;
+    protected int iterCount = 0;
     private int iterMax = 1000;
     //--------------debug---------------
     public static String debugOutputPath = "src\\test\\java\\resources\\jupiter\\data\\";
@@ -76,7 +76,7 @@ public class HGA<V, E> {
     public Logger logger;
     private AbstractFileWriter writer;
     public static boolean debugOut = true;
-    private double tolerance;
+    protected double tolerance;
     public int iter_res;
     private Vector<Pair<E, E>> mappingEdges;
     private double sumPreSimMat;

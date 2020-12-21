@@ -1,6 +1,6 @@
 package DS.Matrix;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * Sparse matrix using the triples
@@ -9,26 +9,46 @@ import java.util.Arrays;
  * @Blog: www.haotian.life
  */
 public class TripleSparseMat {
+    // use a triple to store a non-zero indexes and a value
+    static class Triple{
+        public Triple(int row){
+            this.row = row;
+            this.cols = new ArrayList<>();
+            this.vals = new ArrayList<>();
+        }
+        public int row;
+        // column indexes in the row
+        public List<Integer> cols;
+        public List<Double> vals;
+
+        /**
+         * Add a col index and val into the triple
+         * @param col column index
+         * @param val value
+         */
+        public void add(int col, double val){
+            int idx = Collections.binarySearch(this.cols,col);
+            // not found
+            if(idx == -1){
+                this.cols.add(col);
+                this.vals.add(val);
+            }
+            // found, then replace
+            else{
+                this.cols.set(idx, col);
+                this.vals.set(idx, val);
+            }
+        }
+    }
     // indexes for non_zero entries
-    int[] rows;
-    int[] cols;
-    // non-zero values
-    double[] values;
-    // current index of the non-zero in the list
-    int index = 0;
+    List<Triple> non_zero_list;
 
     /**
      * Initialize triples
      *
-     * @param size the size of non-zeros
      */
-    public TripleSparseMat(int size) {
-        if (size <= 0) {
-            throw new IllegalArgumentException("The size of the non-zeros should be a positive integer.");
-        }
-        this.rows = new int[size];
-        this.cols = new int[size];
-        this.values = new double[size];
+    public TripleSparseMat() {
+        non_zero_list = new ArrayList<>();
     }
 
     /**
@@ -42,24 +62,20 @@ public class TripleSparseMat {
      */
     public void add(int row, int col, double value) {
         // safety check
-        if(row >= rows.length || row < 0 || col <0 || col >=cols.length){
+        if(row < 0 || col <0){
             throw new IllegalArgumentException("The row or col index are illegal.");
         }
         // binary search
-        int idx = Arrays.binarySearch(this.rows, row);
+        int idx = Collections.binarySearch(this.non_zero_list, new Triple(row), Comparator.comparingInt(o -> o.row));
         // not found : add the triple
         if (idx == -1) {
-            rows[this.index] = row;
-            cols[this.index] = col;
-            values[this.index] = value;
-            // increase the index
-            this.index += 1;
+            Triple triple = new Triple(row);
+            triple.add(col, value);
+            non_zero_list.add(triple);
         }
-        // found: replace the value
+        // found: insert
         else {
-            rows[idx] = row;
-            cols[idx] = col;
-            values[idx] = value;
+            non_zero_list.get(idx).add(col, value);
         }
     }
 }

@@ -29,14 +29,71 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b1bcb-bed6-4799-9717-93c60f9c9755" name="Default Changelist" comment="Update using jgrapht">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA_fix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA_fix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Diffusion_Kernel/DK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithms/Graph/Dynamic/Diffusion_Kernel/DK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Matrix/SimMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Matrix/SimMat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Matrix/SimpleMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Matrix/SimpleMatrix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DS/Matrix/StatisticsMatrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Matrix/StatisticsMatrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/TestModule/COV19/Drug_repurposing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/resources/TestModule/COV19/Drug_repurposing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/cov19/Cytoscape/humanPPI_score_more_0.7_slice.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/cov19/Cytoscape/humanPPI_vs_Host_DKernel_scores.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/resources/cov19/Cytoscape/nCoV_host_info.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/resources/TestModule/COV19/Drug_repurposing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/resources/TestModule/COV19/Drug_repurposing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DS/Matrix/TripleSparseMat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DS/Matrix/TripleSparseMat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Tools/Functions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tools/Functions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Alignment/HGA/HGARunSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Alignment/HGA/HGARunSpec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mappingResult_13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/mapping/mapping_9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrixResult_13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/matrix/matrix_9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoringResult_13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_5.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_6.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/resources/jupiter/data/scoring/scoring_9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Alignment/HGA/HGA.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Alignment/HGA/HGA.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Alignment/HGA/HGA_fix.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Alignment/HGA/HGA_fix.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Dynamic/Diffusion_Kernel/DK.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Dynamic/Diffusion_Kernel/DK.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Algorithms/Graph/Hungarian.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DS/Matrix/Alg/CommonOps_DDRM_extend.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DS/Matrix/SimMat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DS/Matrix/SimMat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DS/Matrix/StatisticsMatrix$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DS/Matrix/StatisticsMatrix$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DS/Matrix/StatisticsMatrix.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DS/Matrix/StatisticsMatrix.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Dynamic/DKTest$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Dynamic/DKTest$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Dynamic/DKTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Algorithms/Graph/Dynamic/DKTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,13 +144,6 @@
       </RecentBranches>
     </option>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="D:\environment\jetbrains\IntelliJ IDEA 2020.1.3\plugins\maven\lib\maven3" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectId" id="1fabHF89SB0BNKed9sgwfA9h1RK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -128,7 +178,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="jprofiler" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -149,30 +199,16 @@
       <recent name="D:\Development\projects\Algorithms\src\test\java\resources\cov19" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DKTest.test_nCov_host_diffuse">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.HGARunSpec.run_test">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DKTest.inverse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Algorithms" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Algorithms.Graph.Dynamic.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Algorithms.Graph.Dynamic" />
-      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Dynamic.DKTest" />
-      <option name="METHOD_NAME" value="inverse" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -209,7 +245,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Drug_repurposing.DK" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Drug_repurposing" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
@@ -219,42 +255,57 @@
       </extension>
       <option name="PACKAGE_NAME" value="resources.TestModule.COV19" />
       <option name="MAIN_CLASS_NAME" value="resources.TestModule.COV19.Drug_repurposing" />
-      <option name="METHOD_NAME" value="DK" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HGARunSpec.run_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Algorithms.Graph.Alignment.HGA.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Algorithms.Graph.Alignment.HGA" />
+      <option name="MAIN_CLASS_NAME" value="Algorithms.Graph.Alignment.HGA.HGARunSpec" />
+      <option name="METHOD_NAME" value="run_test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Drug_repurposing.find_drug_by_hga" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SparseMatrixTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Algorithms" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="resources.TestModule.COV19.*" />
+          <option name="PATTERN" value="DS.Matrix.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="resources.TestModule.COV19" />
-      <option name="MAIN_CLASS_NAME" value="resources.TestModule.COV19.Drug_repurposing" />
-      <option name="METHOD_NAME" value="find_drug_by_hga" />
+      <option name="PACKAGE_NAME" value="DS.Matrix" />
+      <option name="MAIN_CLASS_NAME" value="DS.Matrix.SparseMatrixTest" />
+      <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.Drug_repurposing.find_drug_by_hga" />
       <item itemvalue="JUnit.DKTest.test_nCov_host_diffuse" />
-      <item itemvalue="JUnit.DKTest.inverse" />
       <item itemvalue="JUnit.DKTest.run" />
-      <item itemvalue="JUnit.Drug_repurposing.DK" />
+      <item itemvalue="JUnit.Drug_repurposing" />
+      <item itemvalue="JUnit.SparseMatrixTest.test" />
+      <item itemvalue="JUnit.HGARunSpec.run_test" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DKTest.test_nCov_host_diffuse" />
-        <item itemvalue="JUnit.Drug_repurposing.DK" />
+        <item itemvalue="JUnit.HGARunSpec.run_test" />
         <item itemvalue="JUnit.DKTest.run" />
-        <item itemvalue="JUnit.DKTest.inverse" />
-        <item itemvalue="JUnit.Drug_repurposing.find_drug_by_hga" />
+        <item itemvalue="JUnit.SparseMatrixTest.test" />
+        <item itemvalue="JUnit.Drug_repurposing" />
+        <item itemvalue="JUnit.DKTest.test_nCov_host_diffuse" />
       </list>
     </recent_temporary>
   </component>
@@ -324,7 +375,17 @@
       <workItem from="1606960427986" duration="1462000" />
       <workItem from="1607089670927" duration="619000" />
       <workItem from="1607240092955" duration="5093000" />
-      <workItem from="1607303048925" duration="2179000" />
+      <workItem from="1607303048925" duration="6299000" />
+      <workItem from="1607413714124" duration="2589000" />
+      <workItem from="1607481002390" duration="9179000" />
+      <workItem from="1607570186721" duration="14745000" />
+      <workItem from="1607654140763" duration="2713000" />
+      <workItem from="1607664170155" duration="4908000" />
+      <workItem from="1607741266124" duration="3308000" />
+      <workItem from="1607745205967" duration="1968000" />
+      <workItem from="1607905487523" duration="4285000" />
+      <workItem from="1607931563516" duration="1145000" />
+      <workItem from="1608532181124" duration="6853000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -375,137 +436,6 @@
     <MESSAGE value="Update using jgrapht" />
     <option name="LAST_COMMIT_MESSAGE" value="Update using jgrapht" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="731" y="0" key="#Auto_Import" timestamp="1605713803911">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="731" y="0" key="#Auto_Import/0.0.1920.1080@0.0.1920.1080" timestamp="1605713803911" />
-    <state x="553" y="199" key="#Deployment" timestamp="1604536152846">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="553" y="199" key="#Deployment/0.0.1920.1080@0.0.1920.1080" timestamp="1604536152846" />
-    <state x="587" y="219" key="#Inspections" timestamp="1606181087647">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="587" y="219" key="#Inspections/0.0.1920.1080@0.0.1920.1080" timestamp="1606181087647" />
-    <state x="441" y="115" key="#Project_Structure" timestamp="1605713370965">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="441" y="115" key="#Project_Structure/0.0.1920.1080@0.0.1920.1080" timestamp="1605713370965" />
-    <state x="416" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606960350545">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="416" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606960350545" />
-    <state x="691" y="330" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604392843844">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="691" y="330" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1604392843844" />
-    <state x="742" y="246" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1606960148066">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="742" y="246" key="#com.intellij.ide.macro.MacrosDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606960148066" />
-    <state x="718" y="174" key="#com.intellij.ide.util.MemberChooser" timestamp="1606030480750">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="718" y="174" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1606030480750" />
-    <state x="641" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1607250787623">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="641" y="276" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1607250787623" />
-    <state x="648" y="457" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1605687781590">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="648" y="457" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605687781590" />
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606538495781">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.720@0.0.1280.720" timestamp="1606538495781" />
-    <state x="236" y="117" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605773580385" />
-    <state x="55" y="156" key="#xdebugger.evaluate" timestamp="1605449806793">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="55" y="156" key="#xdebugger.evaluate/0.0.1920.1080@0.0.1920.1080" timestamp="1605449806793" />
-    <state width="548" height="548" key="DebuggerActiveHint" timestamp="1606205402363">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="548" height="548" key="DebuggerActiveHint/0.0.1920.1080@0.0.1920.1080" timestamp="1606205402363" />
-    <state width="1878" height="288" key="GridCell.Tab.0.bottom" timestamp="1606960541911">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1237" height="402" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1606613879376" />
-    <state width="1878" height="288" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606960541911" />
-    <state width="1878" height="288" key="GridCell.Tab.0.center" timestamp="1606960541911">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1237" height="402" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1606613879376" />
-    <state width="1878" height="288" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606960541911" />
-    <state width="1878" height="288" key="GridCell.Tab.0.left" timestamp="1606960541911">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1237" height="402" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1606613879376" />
-    <state width="1878" height="288" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606960541911" />
-    <state width="1878" height="288" key="GridCell.Tab.0.right" timestamp="1606960541911">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1237" height="402" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1606613879376" />
-    <state width="1878" height="288" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606960541911" />
-    <state width="1878" height="342" key="GridCell.Tab.1.bottom" timestamp="1606960408146">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1878" height="342" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1606960408146" />
-    <state width="1878" height="342" key="GridCell.Tab.1.center" timestamp="1606960408146">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1878" height="342" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1606960408146" />
-    <state width="1878" height="342" key="GridCell.Tab.1.left" timestamp="1606960408146">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1878" height="342" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1606960408146" />
-    <state width="1878" height="342" key="GridCell.Tab.1.right" timestamp="1606960408146">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1878" height="342" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1606960408146" />
-    <state x="491" y="195" key="Maven.ArtifactSearchDialog" timestamp="1606180263427">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="491" y="195" key="Maven.ArtifactSearchDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1606180263427" />
-    <state x="233" y="94" key="Vcs.Push.Dialog.v2" timestamp="1606466548211">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="233" y="94" key="Vcs.Push.Dialog.v2/0.0.1280.720@0.0.1280.720" timestamp="1606466548211" />
-    <state width="1309" height="862" key="XDebugger.FullValuePopup" timestamp="1603890470979">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="1309" height="862" key="XDebugger.FullValuePopup/0.0.1920.1080@0.0.1920.1080" timestamp="1603890470979" />
-    <state x="736" y="385" key="cloudConfig.PluginsDialog" timestamp="1603934401175">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="736" y="385" key="cloudConfig.PluginsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603934401175" />
-    <state x="831" y="385" key="cloudConfig.SelfSettingsDialog" timestamp="1603934392238">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="831" y="385" key="cloudConfig.SelfSettingsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1603934392238" />
-    <state x="732" y="347" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1605773543751">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="732" y="347" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605773543751" />
-    <state x="846" y="272" key="ftp.server.browser" timestamp="1604536149001">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="846" y="272" key="ftp.server.browser/0.0.1920.1080@0.0.1920.1080" timestamp="1604536149001" />
-    <state width="683" height="389" key="javadoc.popup.new" timestamp="1607251291215">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state width="683" height="389" key="javadoc.popup.new/0.0.1920.1080@0.0.1920.1080" timestamp="1607251291215" />
-    <state x="621" y="254" key="run.anything.popup" timestamp="1605705167506">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="621" y="254" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1605705167506" />
-    <state x="623" y="236" key="search.everywhere.popup" timestamp="1604392771914">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="623" y="236" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1604392771914" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -529,25 +459,6 @@
           <line>1176</line>
           <option name="timeStamp" value="406" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/Dynamic/DKTest.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="411" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/test/java/Algorithms/Graph/Alignment/HGA/HGARunSpec.java</url>
-          <line>25</line>
-          <properties class="Algorithms.Graph.Alignment.HGA.HGARunSpec" method="run_test">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="407" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/main/java/Algorithms/Graph/Alignment/HGA/HGA.java</url>
-          <line>39</line>
-          <properties field="simMat" class="Algorithms.Graph.Alignment.HGA.HGA" />
-          <option name="timeStamp" value="408" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -555,13 +466,13 @@
     <SUITE FILE_PATH="coverage/Algorithms$HGASpc_run.ic" NAME="HGASpc.run Coverage Results" MODIFIED="1592809996988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Algorithms.Graph.HGA.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Algorithms$Human_YeastSub38NTest_topo.ic" NAME="Human_YeastSub38NTest.topo Coverage Results" MODIFIED="1592536351513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Algorithms.Graph.HGA.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Algorithms$HGASpc_addAllTopo.ic" NAME="HGASpc.addAllTopo Coverage Results" MODIFIED="1592705881610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Algorithms.Graph.HGA.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Algorithms$HGARunSpec_run_test.ic" NAME="HGARunSpec.run_test Coverage Results" MODIFIED="1603934529790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Algorithms.Graph.HGA.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Algorithms$Human_YeastSub38NTest_topo.ic" NAME="Human_YeastSub38NTest.topo Coverage Results" MODIFIED="1592536351513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Algorithms.Graph.HGA.*</FILTER>
     </SUITE>
   </component>

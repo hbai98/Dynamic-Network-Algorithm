@@ -29,7 +29,7 @@ class HGARunSpec {
         udG2 = reader.readToUndirectedGraph( "src/test/java/resources/AlgTest/HGA/graph2.txt",false);
         SimMatReader<String> simMatReader = new SimMatReader<>(udG1.vertexSet(),udG2.vertexSet(),String.class);
         simMat = simMatReader.readToSimMat("src/test/java/resources/AlgTest/HGA/simMat.txt",true);
-        HGA_fix<String,DefaultWeightedEdge> hga = new HGA_fix<>(simMat, udG1, udG2,0.5,true,0.01);
+        HGA_fix<String,DefaultWeightedEdge> hga = new HGA_fix<>(simMat, udG1, udG2,0.5,true, 0.01);
         hga.run();
     }
 

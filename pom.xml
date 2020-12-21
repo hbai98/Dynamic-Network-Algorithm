@@ -8,7 +8,7 @@
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
         <assertj.core.version>3.15.0</assertj.core.version>
         <jgrapht.core.version>1.5.0</jgrapht.core.version>
-        <ejml.version>0.39</ejml.version>
+        <ejml.version>0.40</ejml.version>
         <uniport.japi.version>1.0.30</uniport.japi.version>
         <swingx.version>1.6.1</swingx.version>
         <maven-bundle-plugin.version>4.2.1</maven-bundle-plugin.version>

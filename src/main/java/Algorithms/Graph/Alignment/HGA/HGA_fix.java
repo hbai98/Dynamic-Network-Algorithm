@@ -27,59 +27,16 @@ import java.util.logging.Logger;
  */
 public class HGA_fix<V, E> extends HGA<V, E> {
     private static final int NON_ZERO_ROW_ = 5;
-    public static boolean GPU = false;
 
-    protected SimMat<V> simMat;
-    protected Graph<V, E> udG1;
-    protected Graph<V, E> udG2;
-    // parameters
-    private boolean forcedMappingForSame;
-    protected double bioFactor;
-    private double edgeScore = 1.;
-    //---------------mapping result(best mapping)-------------
-    public HashMap<V, V> mappingResult;
-    private double PE_res;
-    private double ES_res;
-    private double PS_res;
-    private double EC_res;
-    private double score_res;
-    private StatisticsMatrix matrix_res;
-    //---------------mapping for iteration---------
-    public HashMap<V, V> mapping;
-    private double PE;
-    private double ES;
-    private double PS;
-    private double EC;
-    private double score;
-    //---------------mapping for iteration---------
-    private SimMat<V> originalMat;
-    private Stack<StatisticsMatrix> stackMat;
-    private Stack<Double> stackScore;
-
-    //----------limit-----
-    private final int splitLimit = 20;
-    private int iterCount = 0;
-    private int iterMax = 1000;
-    //--------------debug---------------
-    public static String debugOutputPath = "src\\test\\java\\resources\\jupiter\\data\\";
-    //--------------Logging-------------
-    public Logger logger;
-    private AbstractFileWriter writer;
-    public static boolean debugOut = true;
-    private double tolerance;
-    public int iter_res;
-    private Vector<Pair<E, E>> mappingEdges;
-    private double sumPreSimMat;
 
 
     /**
      * Step 1:
      * Initialize with the homologous coefficients of proteins
      * computed by alignment algorithms for PINs
-     *
+     *  @param simMat               similarity matrix
      * @param udG1                 graph1
      * @param udG2                 graph2
-     * @param simMat               similarity matrix
      * @param nodalFactor          nodal compared with topological effect
      * @param forcedMappingForSame whether force mapping
      * @param tolerance            the limit to check whether the matrix has converged
@@ -89,8 +46,8 @@ public class HGA_fix<V, E> extends HGA<V, E> {
                    UndirectedGraph<V, E> udG2,
                    double nodalFactor, boolean forcedMappingForSame, double tolerance) throws IOException {
         super(simMat, udG1, udG2, nodalFactor, forcedMappingForSame, 0, tolerance);
-        this.udG1 = udG1;
-        this.udG2 = udG2;
+        this.index = udG1;
+        this.target = udG2;
         this.originalMat = simMat.dup();
         this.simMat = simMat;
         this.forcedMappingForSame = forcedMappingForSame;
@@ -119,7 +76,7 @@ public class HGA_fix<V, E> extends HGA<V, E> {
         logInfo("Initialize mapping to split the matrix.");
         assert (toMap != null);
 
-        if (udG1.vertexSet().size() < hLimit && udG2.vertexSet().size() < hLimit) {
+        if (index.vertexSet().size() < hLimit && target.vertexSet().size() < hLimit) {
             logInfo("Map directly using Hungarian allocation strategy.");
             // simMat's parameters initialize -> hungRows + hungRowsLeft = toMap rows)
             simMat.setHungRows(toMap.getRowSet());
@@ -148,7 +105,7 @@ public class HGA_fix<V, E> extends HGA<V, E> {
     private void hgaIterate(HashMap<V, V> mapping, SimMat<V> simMat,
                             SimMat<V> toRemap, HashMap<V, V> forcedPart, int iterCount, double... scores) {
         initScores(scores);
-        score_res = score;
+        this.score_res = score;
         this.mapping = mapping;
         this.simMat = simMat;
         this.iterCount = iterCount;

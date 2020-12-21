@@ -1,32 +1,12 @@
 package DS.Matrix;
 
 
-import DS.Matrix.Alg.CommonOps_DDRM_extend;
+import org.ejml.MatrixDimensionException;
 import org.ejml.data.*;
-import org.ejml.dense.row.CommonOps_DDRM;
 import org.ejml.simple.SimpleBase;
 
 public class StatisticsMatrix extends SimpleBase<StatisticsMatrix> {
-    public StatisticsMatrix(int numRows, int numCols) {
-        super(numRows, numCols);
-    }
-
-    public StatisticsMatrix(int row, int col, boolean rowMajor,boolean sparse, double[] data) {
-        if(sparse){
-            DMatrixSparseCSC mat = new DMatrixSparseCSC(row, col, data.length);
-            this.setMatrix(mat);
-        }
-        else{
-            DMatrixRMaj mat = new DMatrixRMaj(row, col, rowMajor, data);
-            this.setMatrix(mat);
-        }
-    }
-
-    public StatisticsMatrix(double[] data) {
-        this.setMatrix(new DMatrixRMaj(data));
-    }
-
-    protected StatisticsMatrix() {
+    public StatisticsMatrix() {
     }
     public StatisticsMatrix(int numRows, int numCols, MatrixType type) {
         switch(type) {
@@ -51,8 +31,8 @@ public class StatisticsMatrix extends SimpleBase<StatisticsMatrix> {
             default:
                 throw new RuntimeException("Unknown matrix type");
         }
-
     }
+
 
     /**
      * Returns a matrix of StatisticsMatrix type so that SimpleMatrix functions create matrices
@@ -74,30 +54,10 @@ public class StatisticsMatrix extends SimpleBase<StatisticsMatrix> {
         return ret;
     }
 
-    /**
-     * Get all elements from the specified rows and columns.
-     *
-     * @param mat  mat to be handled
-     * @param rows row indexes
-     * @param cols col indexes
-     * @return sub-matrix
-     */
-    public StatisticsMatrix getMat(StatisticsMatrix mat, int[] rows, int[] cols) {
-        StatisticsMatrix ret = new StatisticsMatrix(rows.length,cols.length);
-        double[] array = cut(mat, rows, cols);
-        ret.setMatrix(new DMatrixRMaj(rows.length,cols.length,true,array));
-        return ret;
+    public void setMat(Matrix matrix){
+        this.setMatrix(matrix);
     }
 
-    private double[] cut(StatisticsMatrix mat, int[] rows, int[] cols) {
-        double[] array = new double[rows.length * cols.length];
-        for (int i = 0; i < rows.length; i++) {
-            for (int j = 0; j < cols.length; j++) {
-                array[i * cols.length + j] = mat.get(rows[i], cols[j]);
-            }
-        }
-        return array;
-    }
 
 
     /**
@@ -128,7 +88,6 @@ public class StatisticsMatrix extends SimpleBase<StatisticsMatrix> {
         return min;
     }
 
-
     /**
      * Replace the row using one-dimensional matrix
      *
@@ -145,33 +104,26 @@ public class StatisticsMatrix extends SimpleBase<StatisticsMatrix> {
     }
 
     /**
-     * Get all matrix double data as one dimensional array
-     *
-     * @return all matrix data
+     * Invert the matrix when it's diagonal, which cost time O(n)
      */
-    public double[] data() {
-        DMatrixRMaj mat_ = (DMatrixRMaj) mat;
-        return mat_.data;
-    }
-
-    private int index(int i, int j) {
-        return i * numCols() + j;
-    }
-
-    public static StatisticsMatrix createIdentity(int n) {
-        DMatrix ret;
-        StatisticsMatrix res = new StatisticsMatrix();
-        ret = CommonOps_DDRM.identity(n);
-        res.setMatrix(ret);
-        return res;
+    public StatisticsMatrix inverseDig() {
+        inverseDig((DMatrix) this.mat);
+        return this;
     }
 
     /**
      * Invert the matrix when it's diagonal, which cost time O(n)
+     * @param mat matrix to be handled
      */
-    public StatisticsMatrix inverseDig() {
-        CommonOps_DDRM_extend.inverseDig((DMatrix) this.mat);
-        return this;
+    public void inverseDig(DMatrix mat){
+        if (mat.getNumCols() != mat.getNumRows()) {
+            throw new MatrixDimensionException("Must be a square matrix.");
+        }
+        for (int i = 0; i < mat.getNumCols(); i++) {
+            mat.set(i,i,1/mat.get(i,i));
+        }
     }
+
+
 
 }

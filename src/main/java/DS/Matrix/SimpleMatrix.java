@@ -4,6 +4,8 @@ package DS.Matrix;
  * Simple matrix
  */
 public class SimpleMatrix {
+    private final int row;
+    private final int col;
     // data compressed into the one-dimensional type
     double[] data;
 
@@ -16,6 +18,8 @@ public class SimpleMatrix {
         if(row <0 || col <0){
             throw new IllegalArgumentException("The width and length of the matrix should be a positive integer.");
         }
+        this.row = row;
+        this.col = col;
         this.data = new double[row*col];
     }
     /**
@@ -30,6 +34,8 @@ public class SimpleMatrix {
         if(data.length > row*col){
             throw new IllegalArgumentException("The data's length is longer than row*col.");
         }
+        this.row = row;
+        this.col = col;
         this.data = new double[row*col];
         // transfer
         System.arraycopy(data, 0, this.data, 0, data.length);
@@ -43,7 +49,11 @@ public class SimpleMatrix {
      */
     public void add(int row, int col, double val){
         // safe-check
-         
+         if(row < 0 || col < 0 || row > this.row || col > this.col){
+            throw new IllegalArgumentException("The row or column index is illegal.");
+         }
+         // add value
+        this.data[row*this.col + col] = val;
     }
 
 
