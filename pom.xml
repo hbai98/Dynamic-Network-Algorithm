@@ -13,7 +13,7 @@
         <swingx.version>1.6.1</swingx.version>
         <maven-bundle-plugin.version>4.2.1</maven-bundle-plugin.version>
         <Apache-Commons-Collections.version>3.2.2</Apache-Commons-Collections.version>
-        <commons-io.version>2.5</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
         <tablesaw.version>LATEST</tablesaw.version>
         <aparapi.version>2.0.0</aparapi.version>
         <commons-lang3.version>3.11</commons-lang3.version>
